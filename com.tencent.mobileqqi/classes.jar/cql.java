@@ -1,44 +1,26 @@
-import QQService.TagInfo;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.EditTagActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.HornPublishActivity;
+import com.tencent.mobileqq.app.NearHornHandler;
+import com.tencent.mobileqq.utils.VipUtils;
 
-class cql
-  implements CompoundButton.OnCheckedChangeListener
+public class cql
+  implements TextWatcher
 {
-  cql(cqk paramcqk, int paramInt) {}
+  public cql(HornPublishActivity paramHornPublishActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramBoolean) {
-      if (this.jdField_a_of_type_Cqk.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.jdField_a_of_type_JavaUtilArrayList.size() < this.jdField_a_of_type_Cqk.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.b.ae)
-      {
-        this.jdField_a_of_type_Cqk.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Cqk.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int));
-        this.jdField_a_of_type_Cqk.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.a(this.jdField_a_of_type_Cqk.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.jdField_a_of_type_JavaUtilArrayList.size());
-      }
+    if ((!VipUtils.a(this.a.b)) && (!TextUtils.isEmpty(paramEditable.toString())) && (this.a.a.d + this.a.a.e + this.a.a.f == 0)) {
+      HornPublishActivity.a(this.a);
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Cqk.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.jdField_a_of_type_Cqm != null) {
-        this.jdField_a_of_type_Cqk.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.jdField_a_of_type_Cqm.notifyDataSetChanged();
-      }
-      return;
-      paramCompoundButton.setChecked(false);
-      continue;
-      int i = 0;
-      while (i < this.jdField_a_of_type_Cqk.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        if (((TagInfo)this.jdField_a_of_type_Cqk.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.jdField_a_of_type_JavaUtilArrayList.get(i)).iTagId == ((TagInfo)this.jdField_a_of_type_Cqk.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).iTagId)
-        {
-          this.jdField_a_of_type_Cqk.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.jdField_a_of_type_JavaUtilArrayList.remove(i);
-          this.jdField_a_of_type_Cqk.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.a(this.jdField_a_of_type_Cqk.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.jdField_a_of_type_JavaUtilArrayList.size());
-        }
-        i += 1;
-      }
-    }
+    HornPublishActivity.c(this.a);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

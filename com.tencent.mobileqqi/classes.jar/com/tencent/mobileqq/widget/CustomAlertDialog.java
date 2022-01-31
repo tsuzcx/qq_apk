@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.ListView;
-import hkk;
+import hgg;
 import java.util.List;
 
 public class CustomAlertDialog
@@ -44,7 +44,7 @@ public class CustomAlertDialog
     this.d = paramInt4;
     this.jdField_a_of_type_Float = paramFloat;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = new hkk(this, paramList);
+    paramContext = new hgg(this, paramList);
     this.jdField_a_of_type_AndroidWidgetListView = ((ListView)((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2130903126, null));
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(paramContext);
   }

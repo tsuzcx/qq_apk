@@ -104,18 +104,18 @@ public class AppNotificationManager
     Notification localNotification = new Notification();
     localNotification.tickerText = paramNoticeParam.jdField_b_of_type_JavaLangString;
     localNotification.when = paramNoticeParam.jdField_a_of_type_Long;
-    RemoteViews localRemoteViews = new RemoteViews(CommonDataAdapter.a().a().getPackageName(), 2130903332);
+    RemoteViews localRemoteViews = new RemoteViews(CommonDataAdapter.a().a().getPackageName(), 2130903334);
     Object localObject = IntentFactory.a(1, paramNoticeParam);
     a(localRemoteViews);
-    localRemoteViews.setTextViewText(2131232118, StringAddition.a(paramNoticeParam.jdField_b_of_type_JavaLangString, 18, true, true));
+    localRemoteViews.setTextViewText(2131232121, StringAddition.a(paramNoticeParam.jdField_b_of_type_JavaLangString, 18, true, true));
     if (paramNoticeParam.jdField_b_of_type_Int == 1)
     {
-      localNotification.icon = 2130838625;
-      localRemoteViews.setImageViewResource(2131232116, 2130838621);
-      localRemoteViews.setViewVisibility(2131232120, 8);
-      localRemoteViews.setViewVisibility(2131232121, 0);
+      localNotification.icon = 2130838627;
+      localRemoteViews.setImageViewResource(2131232119, 2130838623);
+      localRemoteViews.setViewVisibility(2131232123, 8);
+      localRemoteViews.setViewVisibility(2131232124, 0);
       if (Build.VERSION.SDK_INT > 10) {
-        localRemoteViews.setOnClickPendingIntent(2131232115, (PendingIntent)localObject);
+        localRemoteViews.setOnClickPendingIntent(2131232118, (PendingIntent)localObject);
       }
     }
     for (;;)
@@ -126,21 +126,21 @@ public class AppNotificationManager
       continue;
       if ((paramNoticeParam.jdField_b_of_type_Int == 0) || (paramNoticeParam.jdField_b_of_type_Int == 2) || (paramNoticeParam.jdField_b_of_type_Int == 3))
       {
-        localNotification.icon = 2130838625;
+        localNotification.icon = 2130838627;
         if (paramNoticeParam.jdField_b_of_type_Int == 0)
         {
-          localRemoteViews.setTextViewText(2131232120, CommonDataAdapter.a().a().getString(2131560026));
+          localRemoteViews.setTextViewText(2131232123, CommonDataAdapter.a().a().getString(2131560026));
           localNotification.flags |= 0x10;
           localNotification.defaults |= 0x1;
           localNotification.defaults |= 0x4;
-          localRemoteViews.setImageViewResource(2131232116, 2130838621);
+          localRemoteViews.setImageViewResource(2131232119, 2130838623);
         }
         if (paramNoticeParam.jdField_b_of_type_Int == 2)
         {
-          localRemoteViews.setTextViewText(2131232120, CommonDataAdapter.a().a().getString(2131560023));
+          localRemoteViews.setTextViewText(2131232123, CommonDataAdapter.a().a().getString(2131560023));
           localObject = AppUtil.a(paramNoticeParam.d);
           if (localObject != null) {
-            localRemoteViews.setImageViewBitmap(2131232116, (Bitmap)localObject);
+            localRemoteViews.setImageViewBitmap(2131232119, (Bitmap)localObject);
           }
           localNotification.flags |= 0x10;
           localNotification.defaults |= 0x1;
@@ -149,13 +149,13 @@ public class AppNotificationManager
         }
         if (paramNoticeParam.jdField_b_of_type_Int == 3)
         {
-          localRemoteViews.setTextViewText(2131232120, CommonDataAdapter.a().a().getString(2131560026));
+          localRemoteViews.setTextViewText(2131232123, CommonDataAdapter.a().a().getString(2131560026));
           localObject = IntentFactory.a(4, paramNoticeParam);
           Bitmap localBitmap = ImageUtil.a(paramNoticeParam.jdField_a_of_type_JavaLangString);
           if (localBitmap == null) {
             break label428;
           }
-          localRemoteViews.setImageViewBitmap(2131232116, localBitmap);
+          localRemoteViews.setImageViewBitmap(2131232119, localBitmap);
         }
         for (;;)
         {
@@ -163,11 +163,11 @@ public class AppNotificationManager
           {
             if (Build.VERSION.SDK_INT > 10)
             {
-              localRemoteViews.setOnClickPendingIntent(2131232115, (PendingIntent)localObject);
+              localRemoteViews.setOnClickPendingIntent(2131232118, (PendingIntent)localObject);
               break;
               label428:
               LogUtility.b(jdField_a_of_type_JavaLangString, ">>download icon fail,so we use default notification icon");
-              localRemoteViews.setImageViewResource(2131232116, 2130838621);
+              localRemoteViews.setImageViewResource(2131232119, 2130838623);
               continue;
             }
             localNotification.contentIntent = ((PendingIntent)localObject);
@@ -178,20 +178,20 @@ public class AppNotificationManager
       }
       else if (paramNoticeParam.jdField_b_of_type_Int == 4)
       {
-        localNotification.icon = 2130838625;
-        localRemoteViews.setImageViewResource(2131232116, 2130838621);
-        localRemoteViews.setTextViewText(2131232120, CommonDataAdapter.a().a().getString(2131560029));
-        localRemoteViews.setViewVisibility(2131232120, 0);
-        localRemoteViews.setViewVisibility(2131232121, 8);
+        localNotification.icon = 2130838627;
+        localRemoteViews.setImageViewResource(2131232119, 2130838623);
+        localRemoteViews.setTextViewText(2131232123, CommonDataAdapter.a().a().getString(2131560029));
+        localRemoteViews.setViewVisibility(2131232123, 0);
+        localRemoteViews.setViewVisibility(2131232124, 8);
         paramNoticeParam = IntentFactory.a(5, paramNoticeParam);
         localNotification.flags |= 0x10;
         localNotification.contentIntent = paramNoticeParam;
       }
       else
       {
-        localNotification.icon = 2130838190;
-        localRemoteViews.setImageViewResource(2131232116, 2130838191);
-        localRemoteViews.setTextViewText(2131232120, paramNoticeParam.c);
+        localNotification.icon = 2130838192;
+        localRemoteViews.setImageViewResource(2131232119, 2130838193);
+        localRemoteViews.setTextViewText(2131232123, paramNoticeParam.c);
         localNotification.contentIntent = ((PendingIntent)localObject);
       }
     }
@@ -248,31 +248,31 @@ public class AppNotificationManager
     }
     LogUtility.b("notificationtest", "title color:" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.b());
     if (this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.b() != null) {
-      paramRemoteViews.setTextColor(2131232118, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.b().intValue());
+      paramRemoteViews.setTextColor(2131232121, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.b().intValue());
     }
     LogUtility.b("notificationtest", "text color:" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.a());
     if (this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.a() != null) {
-      paramRemoteViews.setTextColor(2131232120, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.a().intValue());
+      paramRemoteViews.setTextColor(2131232123, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.a().intValue());
     }
     if (this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.a() != null) {
-      paramRemoteViews.setTextColor(2131232119, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.a().intValue());
+      paramRemoteViews.setTextColor(2131232122, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.a().intValue());
     }
     LogUtility.b("notificationtest", "text size:" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.a());
     if (this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.a() > 0.0F) {
-      paramRemoteViews.setFloat(2131232120, "setTextSize", this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.a());
+      paramRemoteViews.setFloat(2131232123, "setTextSize", this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.a());
     }
     if (this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.a() > 0.0F) {
-      paramRemoteViews.setFloat(2131232119, "setTextSize", this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.a());
+      paramRemoteViews.setFloat(2131232122, "setTextSize", this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.a());
     }
     if (this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.b() > 0.0F) {
-      paramRemoteViews.setFloat(2131232118, "setTextSize", this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.b());
+      paramRemoteViews.setFloat(2131232121, "setTextSize", this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.b());
     }
     ApplicationInfo localApplicationInfo = CommonDataAdapter.a().a().getApplicationInfo();
     if ((localApplicationInfo != null) && (localApplicationInfo.targetSdkVersion < 10) && (Build.VERSION.SDK_INT > 10)) {}
     try
     {
       int i = this.jdField_a_of_type_ComTencentOpenDownloadnewCommonAppNotificationManager$NotificationStyleDiscover.b().intValue();
-      paramRemoteViews.setInt(2131232115, "setBackgroundColor", (i & 0xFF000000) + (-1 - i));
+      paramRemoteViews.setInt(2131232118, "setBackgroundColor", (i & 0xFF000000) + (-1 - i));
       return;
     }
     catch (Exception paramRemoteViews) {}

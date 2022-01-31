@@ -1,46 +1,42 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class ezf
-  implements View.OnTouchListener
+  extends BroadcastReceiver
 {
-  public ezf(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  private ezf(BaseActivity paramBaseActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramMotionEvent.getAction() == 0)
+    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
     {
-      paramView = new int[2];
-      this.a.e.getLocationInWindow(paramView);
-      paramMotionEvent = new int[2];
-      this.a.e.getLocationOnScreen(paramMotionEvent);
-      paramMotionEvent = new int[2];
-      VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
-      VoipDialInterfaceActivity.d(this.a).offsetTopAndBottom(paramView[1] - paramMotionEvent[1] + this.a.e.getHeight() / 2 - VoipDialInterfaceActivity.d(this.a).getHeight() / 2);
-      VoipDialInterfaceActivity.d(this.a).offsetLeftAndRight(paramView[0] + this.a.e.getWidth() / 2 - VoipDialInterfaceActivity.d(this.a).getWidth() / 2);
-      VoipDialInterfaceActivity.d(this.a).setVisibility(0);
+      if ((this.a.d_ != 0) || (!this.a.p) || (this.a.b == null) || (GesturePWDUtils.getGesturePWDState(this.a.a(), this.a.b.a()) != 2) || (GesturePWDUtils.getGesturePWDMode(this.a.a(), this.a.b.a()) != 21) || ((this.a.a() instanceof GesturePWDUnlockActivity)) || ((this.a.a() instanceof LoginActivity)) || (GesturePWDUtils.getGestureLocking(this.a.a()))) {
+        break label176;
+      }
+      this.a.B();
     }
-    while (paramMotionEvent.getAction() != 1) {
-      return false;
+    for (;;)
+    {
+      BaseActivity.r = false;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("qqBaseActivity", 4, "onReceive broadcastreceiver.action=" + paramIntent.getAction());
+      }
+      return;
+      label176:
+      this.a.c_();
     }
-    paramView = new int[2];
-    this.a.e.getLocationInWindow(paramView);
-    paramMotionEvent = new int[2];
-    VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
-    VoipDialInterfaceActivity.d(this.a).offsetTopAndBottom(-(paramView[1] - paramMotionEvent[1] + this.a.e.getHeight() / 2 - VoipDialInterfaceActivity.d(this.a).getHeight() / 2));
-    VoipDialInterfaceActivity.d(this.a).offsetLeftAndRight(-(paramView[0] + this.a.e.getWidth() / 2 - VoipDialInterfaceActivity.d(this.a).getWidth() / 2));
-    VoipDialInterfaceActivity.d(this.a).setVisibility(4);
-    VoipDialInterfaceActivity.c(this.a).invalidate();
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ezf
  * JD-Core Version:    0.7.0.1
  */

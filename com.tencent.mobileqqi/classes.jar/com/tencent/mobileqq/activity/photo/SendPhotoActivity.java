@@ -8,7 +8,7 @@ import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.pic.Logger;
 import com.tencent.mobileqq.utils.FileUtils;
-import esd;
+import enp;
 import java.util.ArrayList;
 
 public class SendPhotoActivity
@@ -61,8 +61,8 @@ public class SendPhotoActivity
         this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131624405);
         this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130903317);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131232066));
+        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130903319);
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131232069));
       }
       return;
     }
@@ -90,7 +90,7 @@ public class SendPhotoActivity
       finish();
       return true;
     }
-    new esd(this).execute(new Void[0]);
+    new enp(this).execute(new Void[0]);
     return true;
   }
   

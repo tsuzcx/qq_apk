@@ -1,71 +1,54 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.VideoInviteFull;
-import com.tencent.av.ui.VideoInviteLock;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class bld
-  extends BroadcastReceiver
+public final class bld
+  implements BusinessObserver
 {
-  public static final int a = 0;
-  static final String jdField_a_of_type_JavaLangString = "reason";
-  public static final int b = 1;
-  static final String b = "homekey";
-  public static final int c = 2;
-  static final String c = "rencentkeys";
-  private int d = -1;
+  public bld(AppInterface paramAppInterface, Context paramContext, String paramString) {}
   
-  public bld(VideoInviteFull paramVideoInviteFull, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.d = paramInt;
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    switch (this.d)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
     }
-    do
+    if (!paramBoolean) {}
+    for (;;)
     {
-      do
+      return;
+      if (paramBoolean) {}
+      try
       {
-        do
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
         {
-          do
+          mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+          localFollowResponse.mergeFrom(paramBundle);
+          paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+          if (paramInt == 0)
           {
+            PublicAccountUtil.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
             return;
-          } while (!paramIntent.getAction().equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"));
-          paramContext = paramIntent.getStringExtra("reason");
-        } while ((paramContext == null) || (!paramContext.equals("homekey")));
-        if (this.a.b)
-        {
-          ReportController.b(null, "CliOper", "", "", "0X8004399", "0X8004399", 0, 0, Integer.toString(this.a.d), Integer.toString(this.a.jdField_f_of_type_Int), "", "");
+          }
+          if (paramInt == 58)
+          {
+            PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131560549);
+            return;
+          }
+          PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131560545);
           return;
         }
-        ReportController.b(null, "CliOper", "", "", "0X80043F8", "0X80043F8", 0, 0, Integer.toString(this.a.d), Integer.toString(this.a.jdField_f_of_type_Int), "", "");
-        return;
-      } while (!"android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()));
-      paramContext = new Intent(this.a, VideoInviteLock.class);
-      paramContext.addFlags(268435456);
-      paramContext.putExtra("uinType", this.a.e);
-      paramContext.putExtra("peerUin", this.a.c);
-      paramContext.putExtra("isAudioMode", this.a.b);
-      paramContext.putExtra("curUserStatus", this.a.d);
-      paramContext.putExtra("powerKey", true);
-      this.a.startActivity(paramContext);
-      this.a.finish();
-      this.a.jdField_f_of_type_Boolean = true;
-      return;
-      paramContext = paramIntent.getStringExtra("selfUin");
-      paramIntent = paramIntent.getStringExtra("sendUin");
-      if (QLog.isColorLevel()) {
-        QLog.d(VideoInviteFull.g, 2, "recv cancel video request");
       }
-    } while ((this.a.a.a() != null) && ((!this.a.a.a().equals(paramContext)) || (!paramIntent.equals(this.a.c))));
-    this.a.finish();
+      catch (Exception paramBundle) {}
+    }
+    PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131560545);
+    return;
   }
 }
 

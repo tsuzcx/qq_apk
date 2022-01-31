@@ -19,8 +19,8 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
 import com.tencent.widget.XListView;
-import gyq;
-import gyr;
+import guj;
+import guk;
 import java.util.ArrayList;
 
 public class TroopLocationActivity
@@ -63,7 +63,7 @@ public class TroopLocationActivity
     this.jdField_g_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new gyr(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new guk(this);
   }
   
   public long a()
@@ -289,19 +289,19 @@ public class TroopLocationActivity
   
   public void d()
   {
-    setContentView(2130903412);
+    setContentView(2130903414);
     if (this.k != null) {
       this.k.setText(2131561694);
     }
-    c(2131561889, new gyq(this));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232531));
+    c(2131561889, new guj(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232534));
     this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130837729);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903323, this.jdField_a_of_type_ComTencentWidgetXListView, false));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903325, this.jdField_a_of_type_ComTencentWidgetXListView, false));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(this);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903413, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903415, this.jdField_a_of_type_ComTencentWidgetXListView, false);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131230796));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232532));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232535));
     this.jdField_a_of_type_ComTencentWidgetXListView.a(this.jdField_a_of_type_AndroidViewView);
     setTitle(2131562191);
     this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopLocationActivity$TroopsAdapter = new TroopLocationActivity.TroopsAdapter(this, this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView);

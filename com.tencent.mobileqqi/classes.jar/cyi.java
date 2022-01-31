@@ -1,32 +1,30 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import com.tencent.widget.XListView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class cyi
-  implements AdapterView.OnItemClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public cyi(Leba paramLeba) {}
+  public cyi(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (Leba.b(this.a))
+    NotifyPushSettingActivity.b(this.a).setContentDescription("夜间防骚扰模式");
+    SettingCloneUtil.writeValue(this.a, null, "no_disturb_mode", "qqsetting_nodisturb_mode_key", paramBoolean);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      Leba.b(this.a, false);
-      this.a.a(paramView, paramInt, null);
-      this.a.a.postDelayed(new cyj(this), 500L);
-    }
-    while (!QLog.isColorLevel()) {
+      ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Clk_night_mode", 0, i, String.valueOf(i), "", "", "");
       return;
     }
-    QLog.d("Q.lebatab.leba", 2, "clickAction is dismiss,click too frequently.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cyi
  * JD-Core Version:    0.7.0.1
  */

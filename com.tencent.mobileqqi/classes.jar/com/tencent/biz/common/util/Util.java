@@ -9,7 +9,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import boc;
+import bhy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
@@ -137,7 +137,7 @@ public class Util
   
   public static final void a(QQAppInterface paramQQAppInterface, LoadedCallBack paramLoadedCallBack)
   {
-    new Thread(new boc(paramQQAppInterface, paramLoadedCallBack)).start();
+    new Thread(new bhy(paramQQAppInterface, paramLoadedCallBack)).start();
   }
   
   public static final void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, long paramLong1, long paramLong2, String paramString3)

@@ -1,27 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import android.os.Handler;
+import android.view.ViewStub;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.main.CommonLoadingView;
+import com.tencent.mobileqq.activity.main.CommonLoadingView.OnFirstDrawListener;
 
 public class cru
-  implements Animation.AnimationListener
+  implements CommonLoadingView.OnFirstDrawListener
 {
-  public cru(ForwardFriendListActivity paramForwardFriendListActivity, int paramInt) {}
+  public cru(Leba paramLeba, CommonLoadingView paramCommonLoadingView, ViewStub paramViewStub) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void x_()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity.a.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity.a.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity.a.requestLayout();
+    this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.post(new crv(this));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     cru
  * JD-Core Version:    0.7.0.1
  */

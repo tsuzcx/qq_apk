@@ -12,7 +12,7 @@ import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.FaceInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Stranger;
 import com.tencent.widget.XListView;
-import dqh;
+import dkq;
 import java.util.ArrayList;
 
 public class StrangerManageActivity$StrangeManagerListAdapter
@@ -59,14 +59,14 @@ public class StrangerManageActivity$StrangeManagerListAdapter
     Stranger localStranger = (Stranger)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130903444, null);
-      paramViewGroup = new dqh();
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130903446, null);
+      paramViewGroup = new dkq();
       paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131230940));
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(16908308));
       paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131230943));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232612));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231982));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232613));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232615));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231985));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232616));
       paramView.setTag(paramViewGroup);
       paramView.setOnClickListener(this.a);
       paramViewGroup.jdField_a_of_type_Long = localStranger.time;
@@ -86,7 +86,7 @@ public class StrangerManageActivity$StrangeManagerListAdapter
       if (!localStranger.uiSelected) {
         break label425;
       }
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838083);
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838085);
       label231:
       if (!TextUtils.isEmpty(localStranger.remark)) {
         break label437;
@@ -114,7 +114,7 @@ public class StrangerManageActivity$StrangeManagerListAdapter
       paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localStringBuilder.toString());
       this.a.a(paramViewGroup);
       return paramView;
-      paramViewGroup = (dqh)paramView.getTag();
+      paramViewGroup = (dkq)paramView.getTag();
       break;
       label398:
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localStranger.name);
@@ -123,17 +123,17 @@ public class StrangerManageActivity$StrangeManagerListAdapter
       paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
       break label214;
       label425:
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838082);
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838084);
       break label231;
       label437:
       paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
       paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText("(" + localStranger.remark + ")");
       break label260;
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838067);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838069);
       continue;
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838066);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838068);
     }
   }
 }

@@ -1,28 +1,33 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.ConversationFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.securemodule.service.CloudScanListener;
+import com.tencent.util.MsgAutoMonitorUtil;
+import com.tencent.widget.TraceUtils;
 
 public class fjp
-  implements CloudScanListener
+  implements Runnable
 {
-  public fjp(QQAppInterface paramQQAppInterface) {}
+  public fjp(QQMessageFacade paramQQMessageFacade) {}
   
-  public void onFinish(int paramInt)
+  public void run()
   {
-    if (paramInt == 0) {
-      PreferenceManager.getDefaultSharedPreferences(QQAppInterface.f(this.a)).edit().putLong("security_scan_last_time", System.currentTimeMillis()).putBoolean("security_scan_last_result", false).commit();
-    }
-  }
-  
-  public void onRiskFound()
-  {
+    TraceUtils.a("initMsgCache");
+    long l1 = System.currentTimeMillis();
     if (QLog.isColorLevel()) {
-      QLog.d("security_scan", 2, "Find Risk");
+      QLog.d("Q.msg.QQMessageFacade", 2, "before refreshCache");
     }
-    PreferenceManager.getDefaultSharedPreferences(QQAppInterface.e(this.a)).edit().putBoolean("security_scan_last_result", true).commit();
+    this.a.a().a();
+    this.a.d();
+    QQMessageFacade.a(this.a);
+    this.a.notifyObservers(new RecentUser());
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.msg.QQMessageFacade", 2, "after refreshCache");
+      long l2 = System.currentTimeMillis();
+      MsgAutoMonitorUtil.a().a("MSG_InitCostTime", l2 - l1 + "");
+    }
+    TraceUtils.a();
   }
 }
 

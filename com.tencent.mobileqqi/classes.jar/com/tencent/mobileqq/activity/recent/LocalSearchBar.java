@@ -8,10 +8,10 @@ import com.tencent.mobileqq.activity.contact.SearchResultDialog;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.widget.XListView;
-import ete;
-import etf;
-import etg;
-import eth;
+import eoq;
+import eor;
+import eos;
+import eot;
 
 public class LocalSearchBar
 {
@@ -25,17 +25,17 @@ public class LocalSearchBar
   public LocalSearchBar(XListView paramXListView, View paramView1, View paramView2, BaseActivity paramBaseActivity, OnRecentUserOpsListener paramOnRecentUserOpsListener)
   {
     this.jdField_a_of_type_Long = 0L;
-    paramXListView = paramBaseActivity.getLayoutInflater().inflate(2130903942, paramXListView, false);
-    paramXListView.findViewById(2131233084).setVisibility(8);
+    paramXListView = paramBaseActivity.getLayoutInflater().inflate(2130903944, paramXListView, false);
+    paramXListView.findViewById(2131233086).setVisibility(8);
     IphoneTitleBarActivity.b(paramXListView);
     this.jdField_a_of_type_AndroidViewView = paramView1;
     this.b = paramView2;
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentOnRecentUserOpsListener = paramOnRecentUserOpsListener;
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    paramXListView = (EditText)paramXListView.findViewById(2131233085);
+    paramXListView = (EditText)paramXListView.findViewById(2131233087);
     paramXListView.setFocusableInTouchMode(false);
     paramXListView.setCursorVisible(false);
-    paramXListView.setOnClickListener(new ete(this));
+    paramXListView.setOnClickListener(new eoq(this));
   }
   
   public void a()
@@ -45,11 +45,11 @@ public class LocalSearchBar
     }
     System.currentTimeMillis();
     this.b.getHeight();
-    etf localetf = new etf(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog = new etg(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b, 4, localetf);
+    eor localeor = new eor(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog = new eos(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b, 4, localeor);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.setCanceledOnTouchOutside(true);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.show();
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.setOnDismissListener(new eth(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.setOnDismissListener(new eot(this));
   }
   
   /* Error */

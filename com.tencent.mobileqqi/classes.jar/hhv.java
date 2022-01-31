@@ -1,19 +1,33 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomSplitDialog;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollGroupFloatingListener;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollToTopListener;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class hhv
-  implements View.OnClickListener
+  implements AbsListView.OnScrollListener
 {
-  public hhv(QQCustomSplitDialog paramQQCustomSplitDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  public hhv(SlideDetectListView paramSlideDetectListView) {}
   
-  public void onClick(View paramView)
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog, 0);
+    this.a.c = paramInt;
+    if (SlideDetectListView.a(this.a) != null) {
+      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt);
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog.dismiss();
+    if (SlideDetectListView.a(this.a) != null) {
+      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt);
+    }
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (SlideDetectListView.a(this.a) != null) {
+      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
+    if (SlideDetectListView.a(this.a) != null) {
+      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
   }
 }
 

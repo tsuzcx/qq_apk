@@ -21,8 +21,8 @@ import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
 import com.tencent.mobileqq.transfile.bitmapcreator.ExifBitmapCreator;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
-import gro;
-import grp;
+import gnh;
+import gni;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -52,28 +52,28 @@ public class FileAssistantDownloader
     return localBitmap;
   }
   
-  private Bitmap a(gro paramgro)
+  private Bitmap a(gnh paramgnh)
   {
     Bitmap localBitmap = null;
-    int i = paramgro.jdField_a_of_type_Int;
-    int j = paramgro.jdField_b_of_type_Int;
+    int i = paramgnh.jdField_a_of_type_Int;
+    int j = paramgnh.jdField_b_of_type_Int;
     try
     {
       Object localObject = new BitmapFactory.Options();
       ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.RGB_565;
       ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-      BitmapFactory.decodeFile(paramgro.jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject);
+      BitmapFactory.decodeFile(paramgnh.jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject);
       ((BitmapFactory.Options)localObject).inSampleSize = ImageUtil.b((BitmapFactory.Options)localObject, i, j);
       ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
-      localObject = BitmapFactory.decodeFile(paramgro.jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject);
+      localObject = BitmapFactory.decodeFile(paramgnh.jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject);
       if (localObject != null) {
-        localBitmap = new ExifBitmapCreator(paramgro.jdField_a_of_type_JavaLangString).a((Bitmap)localObject);
+        localBitmap = new ExifBitmapCreator(paramgnh.jdField_a_of_type_JavaLangString).a((Bitmap)localObject);
       }
       return localBitmap;
     }
-    catch (Throwable paramgro)
+    catch (Throwable paramgnh)
     {
-      QLog.d("AlbumThumbManager", 2, "make Thumb", paramgro);
+      QLog.d("AlbumThumbManager", 2, "make Thumb", paramgnh);
     }
     return null;
   }
@@ -86,23 +86,23 @@ public class FileAssistantDownloader
     return ImageUtil.a(paramBitmap, paramInt1, paramInt1, paramInt2);
   }
   
-  public gro a(URL paramURL)
+  public gnh a(URL paramURL)
   {
     boolean bool2 = true;
     try
     {
       paramURL = paramURL.getFile().split("\\|");
-      gro localgro = new gro(this);
-      localgro.jdField_a_of_type_JavaLangString = paramURL[0];
-      localgro.jdField_a_of_type_Int = Integer.parseInt(paramURL[1]);
-      localgro.jdField_b_of_type_Int = Integer.parseInt(paramURL[2]);
-      localgro.jdField_b_of_type_Long = Long.parseLong(paramURL[3]);
+      gnh localgnh = new gnh(this);
+      localgnh.jdField_a_of_type_JavaLangString = paramURL[0];
+      localgnh.jdField_a_of_type_Int = Integer.parseInt(paramURL[1]);
+      localgnh.jdField_b_of_type_Int = Integer.parseInt(paramURL[2]);
+      localgnh.jdField_b_of_type_Long = Long.parseLong(paramURL[3]);
       if (paramURL.length > 4)
       {
         if (Integer.parseInt(paramURL[4]) == 1)
         {
           bool1 = true;
-          localgro.jdField_a_of_type_Boolean = bool1;
+          localgnh.jdField_a_of_type_Boolean = bool1;
         }
       }
       else
@@ -114,7 +114,7 @@ public class FileAssistantDownloader
           }
           bool1 = true;
           label105:
-          localgro.jdField_b_of_type_Boolean = bool1;
+          localgnh.jdField_b_of_type_Boolean = bool1;
         }
         if (paramURL.length > 6) {
           if (Integer.parseInt(paramURL[6]) != 1) {
@@ -126,8 +126,8 @@ public class FileAssistantDownloader
       label150:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        localgro.c = bool1;
-        return localgro;
+        localgnh.c = bool1;
+        return localgnh;
         bool1 = false;
         break;
         bool1 = false;
@@ -147,24 +147,24 @@ public class FileAssistantDownloader
     return new File(paramOutputStream.jdField_a_of_type_JavaLangString);
   }
   
-  public Object a(DownloadParams paramDownloadParams, gro paramgro)
+  public Object a(DownloadParams paramDownloadParams, gnh paramgnh)
   {
     Object localObject = null;
     paramDownloadParams = null;
-    String str = paramgro.jdField_a_of_type_JavaLangString;
+    String str = paramgnh.jdField_a_of_type_JavaLangString;
     if (str == null) {
-      paramgro = paramDownloadParams;
+      paramgnh = paramDownloadParams;
     }
     File localFile;
     for (;;)
     {
-      return paramgro;
+      return paramgnh;
       localFile = new File(str);
       try
       {
-        if ((GifDrawable.isGifFile(localFile)) && (paramgro.jdField_a_of_type_Boolean))
+        if ((GifDrawable.isGifFile(localFile)) && (paramgnh.jdField_a_of_type_Boolean))
         {
-          paramgro = paramDownloadParams;
+          paramgnh = paramDownloadParams;
           if (!QLog.isColorLevel()) {
             continue;
           }
@@ -187,52 +187,52 @@ public class FileAssistantDownloader
     if ((localOptions.outHeight == 0) || (localOptions.outWidth == 0)) {
       throw new IOException("step:decode bounds error, not valid pic");
     }
-    localOptions.inSampleSize = AbstractImageDownloader.a(localOptions, paramgro.jdField_a_of_type_Int, paramgro.jdField_b_of_type_Int);
+    localOptions.inSampleSize = AbstractImageDownloader.a(localOptions, paramgnh.jdField_a_of_type_Int, paramgnh.jdField_b_of_type_Int);
     int i = localOptions.outWidth;
     i = localOptions.outHeight;
     localOptions.inJustDecodeBounds = false;
     i = 1;
-    paramgro = null;
+    paramgnh = null;
     label223:
     paramDownloadParams = localObject;
     if (i <= 3)
     {
-      paramDownloadParams = paramgro;
+      paramDownloadParams = paramgnh;
       try
       {
-        paramgro = BitmapFactory.decodeFile(localFile.getAbsolutePath(), localOptions);
-        if (paramgro == null)
+        paramgnh = BitmapFactory.decodeFile(localFile.getAbsolutePath(), localOptions);
+        if (paramgnh == null)
         {
-          paramDownloadParams = paramgro;
+          paramDownloadParams = paramgnh;
           throw new OutOfMemoryError("DecodeFile Failed,bitmap == null, url:" + str + " ,retry count: " + i + ",path:" + localFile.getAbsolutePath());
         }
       }
-      catch (OutOfMemoryError paramgro)
+      catch (OutOfMemoryError paramgnh)
       {
         if (paramDownloadParams != null) {
           paramDownloadParams.recycle();
         }
-        if (paramgro == null) {}
+        if (paramgnh == null) {}
       }
     }
-    for (paramgro = paramgro.getMessage();; paramgro = null)
+    for (paramgnh = paramgnh.getMessage();; paramgnh = null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("FileAssistantDownloader", 2, "DecodeFile ERROR,oom retryCount=" + i + ",options.inSampleSize=" + localOptions.inSampleSize + ",cacheFile=" + localFile.getAbsolutePath() + ",url=" + str + ",oom.msg:" + paramgro);
+        QLog.d("FileAssistantDownloader", 2, "DecodeFile ERROR,oom retryCount=" + i + ",options.inSampleSize=" + localOptions.inSampleSize + ",cacheFile=" + localFile.getAbsolutePath() + ",url=" + str + ",oom.msg:" + paramgnh);
       }
       localOptions.inSampleSize *= 2;
       i += 1;
-      paramgro = paramDownloadParams;
+      paramgnh = paramDownloadParams;
       break label223;
-      paramDownloadParams = paramgro;
+      paramDownloadParams = paramgnh;
       if (Build.VERSION.SDK_INT >= 11)
       {
-        paramDownloadParams = paramgro;
-        boolean bool = SliceBitmap.needSlice(paramgro);
+        paramDownloadParams = paramgnh;
+        boolean bool = SliceBitmap.needSlice(paramgnh);
         if (!bool) {}
       }
-      paramDownloadParams = paramgro;
-      paramgro = paramDownloadParams;
+      paramDownloadParams = paramgnh;
+      paramgnh = paramDownloadParams;
       if (paramDownloadParams != null) {
         break;
       }
@@ -249,15 +249,15 @@ public class FileAssistantDownloader
   {
     paramURLDrawableHandler = null;
     paramFile = AlbumThumbManager.a(BaseApplicationImpl.getContext());
-    gro localgro = a(paramDownloadParams.url);
-    if ((localgro.jdField_a_of_type_Boolean) && (!localgro.jdField_b_of_type_Boolean) && (!localgro.c))
+    gnh localgnh = a(paramDownloadParams.url);
+    if ((localgnh.jdField_a_of_type_Boolean) && (!localgnh.jdField_b_of_type_Boolean) && (!localgnh.c))
     {
-      paramDownloadParams = a(paramDownloadParams, localgro);
+      paramDownloadParams = a(paramDownloadParams, localgnh);
       return paramDownloadParams;
     }
-    if (localgro.c)
+    if (localgnh.c)
     {
-      paramFile = FileCategoryUtil.b(this.a, localgro.jdField_a_of_type_JavaLangString);
+      paramFile = FileCategoryUtil.b(this.a, localgnh.jdField_a_of_type_JavaLangString);
       if (paramFile == null) {
         break label133;
       }
@@ -269,10 +269,10 @@ public class FileAssistantDownloader
       if (paramFile == null) {
         break;
       }
-      if (localgro.jdField_b_of_type_Boolean)
+      if (localgnh.jdField_b_of_type_Boolean)
       {
         return a(paramFile, paramFile.getWidth(), paramFile.getHeight());
-        paramFile = paramFile.a(paramDownloadParams.url, new grp(this));
+        paramFile = paramFile.a(paramDownloadParams.url, new gni(this));
       }
       else
       {

@@ -1,22 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
 
 public class dss
-  extends Handler
+  implements View.OnClickListener
 {
-  public dss(SubLoginActivity paramSubLoginActivity) {}
+  public dss(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1982: 
-      this.a.finish();
-      return;
-    }
     this.a.e();
   }
 }

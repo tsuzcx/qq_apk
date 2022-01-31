@@ -1,16 +1,9 @@
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.stt.SttManager;
-import protocol.KQQConfig.GetResourceRespInfo;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class fex
-  implements Runnable
 {
-  public fex(ConfigHandler paramConfigHandler, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
-  
-  public void run()
-  {
-    SttManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer);
-  }
+  public int a;
+  public PublicAccountInfo a;
 }
 
 

@@ -26,13 +26,13 @@ import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.mobileqq.widget.QQToastNotifier;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
-import exd;
-import exe;
-import exf;
-import exg;
-import exh;
-import exi;
-import exj;
+import esp;
+import esq;
+import esr;
+import ess;
+import est;
+import esu;
+import esv;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -54,13 +54,13 @@ public class QvipSpecialSoundActivity
   private long jdField_a_of_type_Long;
   private Intent jdField_a_of_type_AndroidContentIntent;
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private Handler jdField_a_of_type_AndroidOsHandler = new exe(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new esq(this);
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private QvipSpecialCareManager jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialCareManager;
   private QvipSpecialSoundActivity.SpecialSoundAdapter jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity$SpecialSoundAdapter;
   private QvipSpecialSoundManager jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager;
-  private QvipSpecialCareObserver jdField_a_of_type_ComTencentMobileqqAppQvipSpecialCareObserver = new exi(this);
+  private QvipSpecialCareObserver jdField_a_of_type_ComTencentMobileqqAppQvipSpecialCareObserver = new esu(this);
   private QQToastNotifier jdField_a_of_type_ComTencentMobileqqWidgetQQToastNotifier;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   private HashMap jdField_a_of_type_JavaUtilHashMap = null;
@@ -137,7 +137,7 @@ public class QvipSpecialSoundActivity
   
   private void c(String paramString)
   {
-    DialogUtil.a(this, 230, getString(2131562519), paramString, 2131561746, 2131562229, new exg(this), new exh(this)).show();
+    DialogUtil.a(this, 230, getString(2131562519), paramString, 2131561746, 2131562229, new ess(this), new est(this)).show();
   }
   
   private boolean c()
@@ -147,15 +147,15 @@ public class QvipSpecialSoundActivity
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131233459));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131233461));
     h(2131561692);
-    View localView = LayoutInflater.from(this).inflate(2130903699, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    View localView = LayoutInflater.from(this).inflate(2130903701, this.jdField_a_of_type_ComTencentWidgetXListView, false);
     this.jdField_a_of_type_ComTencentWidgetXListView.a(localView);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131233461));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131233462));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131233465));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131233463));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131233464));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131233467));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131233460));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131233462));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
   }
   
@@ -183,7 +183,7 @@ public class QvipSpecialSoundActivity
     if (!this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a())
     {
       d();
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(new exd(this, str));
+      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(new esp(this, str));
       return;
     }
     this.jdField_a_of_type_JavaUtilList = ((List)QvipSpecialSoundManager.jdField_a_of_type_JavaUtilHashMap.get(str));
@@ -209,14 +209,14 @@ public class QvipSpecialSoundActivity
   
   private void i()
   {
-    ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131233463)).setImageDrawable(getResources().getDrawable(2130840344));
+    ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131233465)).setImageDrawable(getResources().getDrawable(2130840346));
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
   }
   
   private void j()
   {
-    ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131233463)).setImageDrawable(getResources().getDrawable(2130840346));
+    ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131233465)).setImageDrawable(getResources().getDrawable(2130840348));
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
   }
@@ -243,12 +243,12 @@ public class QvipSpecialSoundActivity
         {
           return;
           this.jdField_a_of_type_Long = l;
-          localObject = (exj)paramView.getTag();
+          localObject = (esv)paramView.getTag();
           if (localObject != null)
           {
-            i = ((exj)localObject).jdField_a_of_type_Int;
+            i = ((esv)localObject).jdField_a_of_type_Int;
             if (VipUtils.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface)) {
-              a(this.jdField_c_of_type_JavaLangString, ((exj)localObject).jdField_a_of_type_Int);
+              a(this.jdField_c_of_type_JavaLangString, ((esv)localObject).jdField_a_of_type_Int);
             }
             while (c())
             {
@@ -278,7 +278,7 @@ public class QvipSpecialSoundActivity
           }
         }
       } while (i <= 1);
-      paramView = new File(getFilesDir(), ((exj)localObject).jdField_a_of_type_JavaLangString);
+      paramView = new File(getFilesDir(), ((esv)localObject).jdField_a_of_type_JavaLangString);
       if (paramView.exists())
       {
         a(paramView.getAbsolutePath());
@@ -289,11 +289,11 @@ public class QvipSpecialSoundActivity
         b(getString(2131562488));
         return;
       }
-      localObject = ((exj)localObject).jdField_a_of_type_JavaLangString;
+      localObject = ((esv)localObject).jdField_a_of_type_JavaLangString;
     } while (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject));
     this.jdField_a_of_type_JavaUtilHashMap.put(localObject, Boolean.valueOf(true));
     d();
-    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new exf(this, (String)localObject, paramView));
+    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new esr(this, (String)localObject, paramView));
   }
   
   public void a(String paramString)
@@ -325,7 +325,7 @@ public class QvipSpecialSoundActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903698);
+    setContentView(2130903700);
     setTitle(2131562597);
     d();
     e();
@@ -381,10 +381,10 @@ public class QvipSpecialSoundActivity
     {
     default: 
       return;
-    case 2131233465: 
+    case 2131233467: 
       VipUtils.b(this, 3, "mvip.gongneng.mobileqq.tiexintixing.listandroid");
       return;
-    case 2131233460: 
+    case 2131233462: 
       h();
       return;
     }

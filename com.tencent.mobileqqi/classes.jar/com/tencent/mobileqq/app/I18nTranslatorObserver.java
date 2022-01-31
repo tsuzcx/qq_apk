@@ -10,7 +10,7 @@ import java.util.List;
 public class I18nTranslatorObserver
   implements BusinessObserver
 {
-  protected void a(int paramInt, boolean paramBoolean, Long paramLong, List paramList) {}
+  public void a(int paramInt, boolean paramBoolean, Long paramLong, List paramList) {}
   
   public void a(int paramInt, boolean paramBoolean, Object paramObject)
   {

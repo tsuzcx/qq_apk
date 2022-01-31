@@ -17,12 +17,12 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import com.tencent.mobileqq.activity.photo.RegionView;
-import dff;
-import dfg;
-import dfh;
-import dfi;
-import dfj;
-import dfk;
+import czo;
+import czp;
+import czq;
+import czr;
+import czs;
+import czt;
 
 @SuppressLint({"NewApi"})
 public class PortraitImageview
@@ -120,9 +120,9 @@ public class PortraitImageview
     this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_c_of_type_JavaLangRunnable = new dff(this);
-    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, new dfk(this));
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new dfj(this, null));
+    this.jdField_c_of_type_JavaLangRunnable = new czo(this);
+    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, new czt(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new czs(this, null));
     if (Build.VERSION.SDK_INT >= 11) {
       setLayerType(2, null);
     }
@@ -248,7 +248,7 @@ public class PortraitImageview
   {
     paramFloat1 = (paramFloat1 - a()) / paramFloat4;
     float f1 = a();
-    post(new dfh(this, paramFloat4, System.currentTimeMillis(), f1, paramFloat1, paramFloat2, paramFloat3));
+    post(new czq(this, paramFloat4, System.currentTimeMillis(), f1, paramFloat1, paramFloat2, paramFloat3));
   }
   
   public float b()
@@ -301,7 +301,7 @@ public class PortraitImageview
   
   protected void c(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new dfi(this, paramFloat3, System.currentTimeMillis(), paramFloat1, paramFloat2);
+    this.jdField_a_of_type_JavaLangRunnable = new czr(this, paramFloat3, System.currentTimeMillis(), paramFloat1, paramFloat2);
     post(this.jdField_a_of_type_JavaLangRunnable);
   }
   
@@ -461,7 +461,7 @@ public class PortraitImageview
     }
     if (getWidth() <= 0)
     {
-      this.jdField_b_of_type_JavaLangRunnable = new dfg(this, paramBitmap);
+      this.jdField_b_of_type_JavaLangRunnable = new czp(this, paramBitmap);
       return;
     }
     if (paramBitmap != null) {

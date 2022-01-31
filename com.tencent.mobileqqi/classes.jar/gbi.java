@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.maproam.Utils;
 
-public class gbi
+public final class gbi
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  
-  public gbi(UniformDownloadMgr paramUniformDownloadMgr) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (paramDialogInterface == Utils.a) {
+      Utils.a = null;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gbi
  * JD-Core Version:    0.7.0.1
  */

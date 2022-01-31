@@ -1,38 +1,25 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.music.QQPlayerService;
 
-public class gcx
-  implements Animation.AnimationListener
+public final class gcx
+  extends Handler
 {
-  public gcx(FilePreviewAnimQueue paramFilePreviewAnimQueue, FilePreviewAnimQueue.FilePreviewAnim paramFilePreviewAnim) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public gcx(QQPlayerService paramQQPlayerService, Looper paramLooper)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue$FilePreviewAnim.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a();
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
+    super(paramLooper);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.jdField_a_of_type_Boolean = true;
+    QQPlayerService.a(this.a, (Intent)paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gcx
  * JD-Core Version:    0.7.0.1
  */

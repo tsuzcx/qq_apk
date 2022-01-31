@@ -31,6 +31,7 @@ public class EUCountryUtils
   private static final String h = "eu_user";
   private static final String i = "eu_birthday";
   private static final String j = "eu_intercept";
+  private static final String k = "eu_parent_access";
   
   public static int a(String paramString)
   {
@@ -102,6 +103,11 @@ public class EUCountryUtils
     }
   }
   
+  public static void a(String paramString, boolean paramBoolean)
+  {
+    a(paramString).edit().putBoolean("eu_parent_access", paramBoolean).commit();
+  }
+  
   public static boolean a(int paramInt)
   {
     return a(ProfileUtil.a(paramInt));
@@ -121,10 +127,10 @@ public class EUCountryUtils
   {
     SharedPreferences localSharedPreferences = a();
     HashSet localHashSet = new HashSet(localSharedPreferences.getStringSet("eu_login_privacy", new HashSet()));
-    int k = localHashSet.size();
+    int m = localHashSet.size();
     String str;
     String[] arrayOfString;
-    if (k > 0)
+    if (m > 0)
     {
       Iterator localIterator = localHashSet.iterator();
       while (localIterator.hasNext())
@@ -147,7 +153,7 @@ public class EUCountryUtils
     }
     for (;;)
     {
-      if (localHashSet.size() != k) {
+      if (localHashSet.size() != m) {
         localSharedPreferences.edit().putStringSet("eu_login_privacy", localHashSet).commit();
       }
       return;
@@ -171,14 +177,14 @@ public class EUCountryUtils
     {
       return false;
       String[] arrayOfString = a;
-      int m = arrayOfString.length;
-      int k = 0;
-      while (k < m)
+      int n = arrayOfString.length;
+      int m = 0;
+      while (m < n)
       {
-        if (paramString.equals(arrayOfString[k])) {
+        if (paramString.equals(arrayOfString[m])) {
           return true;
         }
-        k += 1;
+        m += 1;
       }
     }
   }
@@ -253,6 +259,11 @@ public class EUCountryUtils
   {
     long l = a(paramString).getLong("eu_intercept", 0L);
     return (l <= 0L) || (System.currentTimeMillis() - l > 86400000L);
+  }
+  
+  public static boolean f(String paramString)
+  {
+    return a(paramString).getBoolean("eu_parent_access", false);
   }
 }
 

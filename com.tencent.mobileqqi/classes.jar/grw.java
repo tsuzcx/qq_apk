@@ -1,20 +1,18 @@
-import android.os.Handler;
-import com.tencent.mobileqq.transfile.NetworkCenter;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
 public class grw
   implements Runnable
 {
-  public grw(NetworkCenter paramNetworkCenter) {}
+  public grw(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
   public void run()
   {
-    this.a.b();
-    NetworkCenter.a(this.a).postDelayed(this, 120000L);
+    this.a.d = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     grw
  * JD-Core Version:    0.7.0.1
  */

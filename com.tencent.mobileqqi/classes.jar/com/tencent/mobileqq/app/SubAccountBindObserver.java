@@ -21,11 +21,11 @@ public class SubAccountBindObserver
     a(paramBoolean, (SubAccountBackProtocData)paramObject);
   }
   
-  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData) {}
+  public void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData) {}
   
-  protected void b(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData) {}
+  public void b(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData) {}
   
-  protected void c(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData) {}
+  public void c(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData) {}
 }
 
 

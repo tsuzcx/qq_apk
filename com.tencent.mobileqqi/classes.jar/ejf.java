@@ -1,71 +1,28 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.contact.newfriend.BaseNewFriendView.INewFriendContext;
-import com.tencent.mobileqq.activity.contact.newfriend.ContactRecommendActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.util.EUCountryUtils;
 
-public class ejf
-  implements BaseNewFriendView.INewFriendContext
+class ejf
+  implements ejj
 {
-  public ejf(ContactRecommendActivity paramContactRecommendActivity) {}
-  
-  public Activity a()
-  {
-    return this.a;
-  }
-  
-  public View a()
-  {
-    if ((View)this.a.findViewById(2131231448).getParent() != null) {
-      return (View)this.a.findViewById(2131231448).getParent().getParent();
-    }
-    return null;
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.b;
-  }
+  ejf(eje parameje) {}
   
   public void a()
   {
-    ContactRecommendActivity.b(this.a);
-  }
-  
-  public void a(int paramInt, View.OnClickListener paramOnClickListener) {}
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (this.a.isResume()) {
-      QQToast.a(a(), paramString, 0).b(this.a.d());
-    }
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public View b()
-  {
-    return (View)this.a.findViewById(2131231448).getParent();
+    this.a.a.f();
   }
   
   public void b()
   {
-    ContactRecommendActivity.a(this.a);
-  }
-  
-  public View c()
-  {
-    return null;
+    EUCountryUtils.a(this.a.a.a.b.a(), 1);
+    EUCountryUtils.b(this.a.a.a.b.a(), 1);
+    MainAssistObserver.a(this.a.a, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ejf
  * JD-Core Version:    0.7.0.1
  */

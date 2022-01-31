@@ -1,24 +1,17 @@
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.data.DiscussionMemberInfo;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
 
 public class cod
-  implements Comparator
+  implements AdapterView.OnItemLongClickListener
 {
-  public cod(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public cod(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public int a(DiscussionMemberInfo paramDiscussionMemberInfo1, DiscussionMemberInfo paramDiscussionMemberInfo2)
+  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((paramDiscussionMemberInfo1 != null) && (paramDiscussionMemberInfo2 != null)) {
-      return paramDiscussionMemberInfo1.discussionUin.compareTo(paramDiscussionMemberInfo2.discussionUin);
-    }
-    if (paramDiscussionMemberInfo1 != null) {
-      return 1;
-    }
-    if (paramDiscussionMemberInfo2 != null) {
-      return -1;
-    }
-    return 0;
+    FriendProfileImageActivity.a(this.a);
+    return true;
   }
 }
 

@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
-public class ekq
-  implements DialogInterface.OnDismissListener
+class ekq
+  implements Runnable
 {
-  public ekq(BaseTroopView paramBaseTroopView, int paramInt) {}
+  ekq(ekp paramekp) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.b.setVisibility(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.a = null;
+    this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.e();
+    this.a.a.jdField_a_of_type_Ekz.sendEmptyMessage(3);
   }
 }
 

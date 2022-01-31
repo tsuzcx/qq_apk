@@ -1,26 +1,15 @@
-import android.content.Intent;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.app.AppConstants;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class cgv
-  implements View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  public cgv(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity) {}
+  public cgv(DialogActivity paramDialogActivity) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramView = this.a.getIntent();
-    String str = AppConstants.an + ChatBackgroundSettingActivity.a(this.a) + "/" + "custom_background/";
-    str = str + System.currentTimeMillis() + ".jpg";
-    Rect localRect = new Rect();
-    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-    paramView.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
-    PhotoUtils.a(paramView, this.a, ChatBackgroundSettingActivity.class.getName(), localRect.width() / 5 * 4, localRect.height() / 5 * 4, localRect.width(), localRect.height(), str);
+    this.a.finish();
   }
 }
 

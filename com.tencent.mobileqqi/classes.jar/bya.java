@@ -1,41 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr.GagStatus;
 
 public class bya
-  implements DialogInterface.OnClickListener
+  extends BizTroopObserver
 {
-  public bya(AccountManageActivity paramAccountManageActivity) {}
+  public bya(ChatActivity paramChatActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(TroopGagMgr.GagStatus paramGagStatus)
   {
-    com.tencent.mobileqq.activity.SubAccountBaseActivity.a = true;
-    com.tencent.mobileqq.activity.SubAccountBaseActivity.b = true;
-    paramDialogInterface = new Intent();
-    List localList = this.a.getAppRuntime().getApplication().getAllAccounts();
-    if ((localList != null) && (localList.size() > 1)) {
-      paramDialogInterface.setClass(this.a, SubAccountBindActivity.class);
+    if ((paramGagStatus.jdField_a_of_type_Int == 2) && (paramGagStatus.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$SelfGagInfo != null) && (this.a.a.jdField_a_of_type_JavaLangString.equals(paramGagStatus.jdField_a_of_type_JavaLangString))) {
+      ChatActivity.a(this.a, paramGagStatus.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$SelfGagInfo, true);
     }
-    for (;;)
-    {
-      this.a.startActivity(paramDialogInterface);
-      ReportController.a(this.a.b, "CliOper", "", "", "0X80040A6", "0X80040A6", 0, 0, "", "", "", "");
-      this.a.e();
-      return;
-      paramDialogInterface.setClass(this.a, SubLoginActivity.class);
+  }
+  
+  protected void a(Object paramObject)
+  {
+    if (ChatActivity.a(this.a) != null) {
+      ChatActivity.a(this.a).notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    long l = ((Long)paramObject).longValue();
+    if ((this.a.a.jdField_a_of_type_Int == 1) && (this.a.a.jdField_a_of_type_JavaLangString.equals(String.valueOf(l)))) {
+      ChatActivity.c(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bya
  * JD-Core Version:    0.7.0.1
  */

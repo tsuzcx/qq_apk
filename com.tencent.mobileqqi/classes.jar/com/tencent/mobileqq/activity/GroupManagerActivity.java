@@ -32,19 +32,19 @@ import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import cvr;
-import cvs;
-import cvt;
-import cvu;
-import cvv;
-import cvw;
-import cvx;
-import cvy;
-import cvz;
-import cwa;
-import cwb;
-import cwc;
-import cwd;
+import cpl;
+import cpm;
+import cpn;
+import cpo;
+import cpp;
+import cpq;
+import cpr;
+import cps;
+import cpt;
+import cpu;
+import cpv;
+import cpw;
+import cpx;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -64,21 +64,21 @@ public class GroupManagerActivity
   private static final int h = 0;
   private static final int i = 0;
   private Dialog jdField_a_of_type_AndroidAppDialog;
-  private DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new cvz(this);
+  private DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new cpt(this);
   @SuppressLint({"HandlerLeak"})
-  private Handler jdField_a_of_type_AndroidOsHandler = new cvt(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new cpn(this);
   private GroupEditeDragSortAdapter jdField_a_of_type_ComTencentMobileqqAdapterGroupEditeDragSortAdapter;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cvv(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cpp(this);
   private Groups jdField_a_of_type_ComTencentMobileqqDataGroups;
-  private DragSortListView.DropListener jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DropListener = new cwb(this);
-  private DragSortListView.RemoveListener jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveListener = new cwc(this);
+  private DragSortListView.DropListener jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DropListener = new cpv(this);
+  private DragSortListView.RemoveListener jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveListener = new cpw(this);
   private DragSortListView jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView;
   private QQCustomDialogWtihInput jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput;
   public List a;
   private boolean jdField_a_of_type_Boolean;
   public byte[] a;
   private Dialog jdField_b_of_type_AndroidAppDialog;
-  private DialogInterface.OnClickListener jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new cwa(this);
+  private DialogInterface.OnClickListener jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new cpu(this);
   private boolean jdField_b_of_type_Boolean;
   public byte[] b;
   private boolean jdField_c_of_type_Boolean;
@@ -103,8 +103,8 @@ public class GroupManagerActivity
     localActionSheet.a(2131561645);
     localActionSheet.a(2131562752, 3);
     localActionSheet.d(2131561744);
-    localActionSheet.setOnDismissListener(new cwd(this));
-    localActionSheet.a(new cvs(this, paramByte));
+    localActionSheet.setOnDismissListener(new cpx(this));
+    localActionSheet.a(new cpm(this, paramByte));
     this.jdField_a_of_type_AndroidAppDialog = localActionSheet;
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
@@ -118,7 +118,7 @@ public class GroupManagerActivity
   private void d()
   {
     this.jdField_k_of_type_AndroidWidgetTextView.setVisibility(8);
-    c(2131561978, new cvr(this));
+    c(2131561978, new cpl(this));
     setTitle(2131561778);
   }
   
@@ -130,12 +130,12 @@ public class GroupManagerActivity
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setOnTouchListener((View.OnTouchListener)localObject);
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDropListener(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DropListener);
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setRemoveListener(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveListener);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setOnItemClickListener(new cvw(this));
-    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setLeftEventListener(new cvx(this));
+    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setOnItemClickListener(new cpq(this));
+    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setLeftEventListener(new cpr(this));
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setVerticalScrollBarEnabled(false);
-    localObject = getLayoutInflater().inflate(2130903245, null);
+    localObject = getLayoutInflater().inflate(2130903247, null);
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.addHeaderView((View)localObject);
-    ((View)localObject).findViewById(2131231765).setOnClickListener(new cvy(this));
+    ((View)localObject).findViewById(2131231767).setOnClickListener(new cps(this));
     localObject = new View(a());
     ((View)localObject).setLayoutParams(new AbsListView.LayoutParams(-1, (int)(10.0F * getResources().getDisplayMetrics().density)));
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.addFooterView((View)localObject);
@@ -211,7 +211,7 @@ public class GroupManagerActivity
     Object localObject = new QQProgressDialog(this, this.j);
     ((QQProgressDialog)localObject).b(paramInt);
     this.jdField_b_of_type_AndroidAppDialog = ((Dialog)localObject);
-    this.jdField_b_of_type_AndroidAppDialog.setOnDismissListener(new cvu(this));
+    this.jdField_b_of_type_AndroidAppDialog.setOnDismissListener(new cpo(this));
     this.jdField_b_of_type_AndroidAppDialog.show();
     this.jdField_b_of_type_Boolean = false;
     this.c = false;
@@ -270,7 +270,7 @@ public class GroupManagerActivity
     }
     super.doOnCreate(paramBundle);
     this.j = getResources().getDimensionPixelSize(2131427376);
-    setContentView(2130903577);
+    setContentView(2130903579);
     d();
     e();
     this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);

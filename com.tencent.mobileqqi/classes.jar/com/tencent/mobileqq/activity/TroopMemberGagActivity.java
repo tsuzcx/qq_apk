@@ -11,7 +11,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.utils.TroopGagMgr;
 import com.tencent.mobileqq.troop.utils.TroopGagMgr.GagItem;
-import dwh;
+import dqq;
 import java.util.ArrayList;
 
 public class TroopMemberGagActivity
@@ -25,22 +25,22 @@ public class TroopMemberGagActivity
   Button jdField_a_of_type_AndroidWidgetButton;
   ListView jdField_a_of_type_AndroidWidgetListView;
   TroopMemberGagActivity.TroopGagListAdapter jdField_a_of_type_ComTencentMobileqqActivityTroopMemberGagActivity$TroopGagListAdapter;
-  dwh jdField_a_of_type_Dwh;
+  dqq jdField_a_of_type_Dqq;
   String d;
   String e;
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130904025);
+    setContentView(2130904027);
     setTitle(getString(2131560649));
     paramBundle = ((TroopGagMgr)this.b.getManager(44)).a();
     this.jdField_a_of_type_Int = ((TroopGagMgr.GagItem)paramBundle.get(0)).jdField_a_of_type_Int;
-    this.jdField_a_of_type_Dwh = new dwh(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberGagActivity$TroopGagListAdapter = new TroopMemberGagActivity.TroopGagListAdapter(this, paramBundle, this.jdField_a_of_type_Dwh);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131234602));
+    this.jdField_a_of_type_Dqq = new dqq(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberGagActivity$TroopGagListAdapter = new TroopMemberGagActivity.TroopGagListAdapter(this, paramBundle, this.jdField_a_of_type_Dqq);
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131234604));
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberGagActivity$TroopGagListAdapter);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131234603));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131234605));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     paramBundle = getIntent();
     this.d = paramBundle.getStringExtra("param_key_troopUin");

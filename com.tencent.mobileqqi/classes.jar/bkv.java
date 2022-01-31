@@ -1,24 +1,28 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.Button;
-import android.widget.ImageButton;
-import com.tencent.av.ui.VideoControlUI;
+import com.tencent.biz.pubaccount.assistant.PubAccountAssistantSettingActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import java.util.Comparator;
 
 public class bkv
-  implements Animation.AnimationListener
+  implements Comparator
 {
-  public bkv(VideoControlUI paramVideoControlUI) {}
+  public bkv(PubAccountAssistantSettingActivity paramPubAccountAssistantSettingActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(PublicAccountInfo paramPublicAccountInfo1, PublicAccountInfo paramPublicAccountInfo2)
   {
-    this.a.c.clearAnimation();
-    this.a.f.clearAnimation();
-    this.a.f.setVisibility(8);
+    try
+    {
+      if (paramPublicAccountInfo1.mCompareSpell != null) {
+        return paramPublicAccountInfo1.mCompareSpell.compareTo(paramPublicAccountInfo2.mCompareSpell);
+      }
+      if (paramPublicAccountInfo1.name != null)
+      {
+        int i = paramPublicAccountInfo1.name.compareTo(paramPublicAccountInfo2.mCompareSpell);
+        return i;
+      }
+    }
+    catch (Exception paramPublicAccountInfo1) {}
+    return -1;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

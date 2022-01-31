@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendGroupListInfo;
+import com.tencent.mobileqq.activity.photo.LocalPhotoInfo;
+import com.tencent.mobileqq.transfile.DataLineDownloader;
 
-public final class gnd
-  implements Parcelable.Creator
+public class gnd
 {
-  public FriendGroupListInfo a(Parcel paramParcel)
-  {
-    return new FriendGroupListInfo(paramParcel);
-  }
+  public LocalPhotoInfo a;
+  public boolean a;
   
-  public FriendGroupListInfo[] a(int paramInt)
-  {
-    return new FriendGroupListInfo[paramInt];
-  }
+  public gnd(DataLineDownloader paramDataLineDownloader) {}
 }
 
 

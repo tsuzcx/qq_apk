@@ -1,21 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.SplashActivity;
 
 public class dkh
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public dkh(RegisterActivity paramRegisterActivity) {}
+  public dkh(SplashActivity paramSplashActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a = 0;
-    this.a.finish();
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dkh
  * JD-Core Version:    0.7.0.1
  */

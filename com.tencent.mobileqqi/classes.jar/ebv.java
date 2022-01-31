@@ -1,16 +1,13 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
 
 public class ebv
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ebv(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable) {}
+  public ebv(AIOGalleryScene paramAIOGalleryScene) {}
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(2, 300, new Object[] { this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, Integer.valueOf(0) });
-  }
+  public void onClick(View paramView) {}
 }
 
 

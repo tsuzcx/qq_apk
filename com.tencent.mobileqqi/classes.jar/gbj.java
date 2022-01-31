@@ -1,24 +1,15 @@
-import android.os.HandlerThread;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadNfn;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.maproam.Utils;
 
-public class gbj
-  implements Runnable
+public final class gbj
+  implements View.OnClickListener
 {
-  public gbj(UniformDownloadNfn paramUniformDownloadNfn) {}
-  
-  public void run()
-  {
-    this.a.jdField_a_of_type_AndroidOsHandlerThread.getLooper().quit();
-    this.a.jdField_a_of_type_AndroidOsHandlerThread = null;
-    this.a.jdField_a_of_type_AndroidOsHandler = null;
-    QLog.i(UniformDownloadNfn.jdField_a_of_type_JavaLangString, 1, "[UniformDL] >>>stop thread:D_NFThread...");
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gbj
  * JD-Core Version:    0.7.0.1
  */

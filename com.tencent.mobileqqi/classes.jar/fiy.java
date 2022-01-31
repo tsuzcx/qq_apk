@@ -1,36 +1,17 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.app.message.C2CMessageProcessor;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.Comparator;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
 
 public class fiy
   implements Comparator
 {
-  public fiy(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public fiy(C2CMessageProcessor paramC2CMessageProcessor) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public int a(msg_comm.Msg paramMsg1, msg_comm.Msg paramMsg2)
   {
-    Object localObject2 = paramPhoneContact1.pinyinFirst;
-    String str = paramPhoneContact2.pinyinFirst;
-    int i;
-    if ((localObject2 == null) || (str == null)) {
-      i = 0;
-    }
-    int j;
-    do
-    {
-      return i;
-      Object localObject1 = localObject2;
-      if (((String)localObject2).endsWith("#")) {
-        localObject1 = "Za";
-      }
-      localObject2 = str;
-      if (str.endsWith("#")) {
-        localObject2 = "Za";
-      }
-      j = ((String)localObject1).compareTo((String)localObject2);
-      i = j;
-    } while (j != 0);
-    return paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
+    return ((msg_comm.MsgHead)paramMsg1.msg_head.get()).msg_time.get() - ((msg_comm.MsgHead)paramMsg2.msg_head.get()).msg_time.get();
   }
 }
 

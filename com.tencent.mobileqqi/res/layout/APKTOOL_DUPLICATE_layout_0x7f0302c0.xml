@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080ba1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" android:adjustViewBounds="true" />
-</merge>
+<RelativeLayout android:layout_width="62.0dip" android:layout_height="62.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqqi">
+    <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b9f" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020be4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f080ba0" android:visibility="visible" android:layout_width="24.0dip" android:layout_height="24.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading5" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
+</RelativeLayout>

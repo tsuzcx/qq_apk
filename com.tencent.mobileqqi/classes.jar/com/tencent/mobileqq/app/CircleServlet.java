@@ -538,12 +538,12 @@ public class CircleServlet
     //   572: aload 8
     //   574: putfield 554	com/tencent/mobileqq/transfile/HttpNetReq:jdField_a_of_type_ArrayOfByte	[B
     //   577: aload 9
-    //   579: new 556	fen
+    //   579: new 556	ezz
     //   582: dup
     //   583: aload_0
     //   584: aload_1
     //   585: aload 7
-    //   587: invokespecial 559	fen:<init>	(Lcom/tencent/mobileqq/app/CircleServlet;Landroid/content/Intent;[B)V
+    //   587: invokespecial 559	ezz:<init>	(Lcom/tencent/mobileqq/app/CircleServlet;Landroid/content/Intent;[B)V
     //   590: putfield 562	com/tencent/mobileqq/transfile/HttpNetReq:jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener	Lcom/tencent/mobileqq/transfile/INetEngine$INetEngineListener;
     //   593: aload 9
     //   595: aload_2

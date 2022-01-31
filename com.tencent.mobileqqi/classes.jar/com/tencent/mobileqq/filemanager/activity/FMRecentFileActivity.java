@@ -21,16 +21,16 @@ import com.tencent.mobileqq.widget.SlideDetectListView;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.BubblePopupWindow;
-import fvi;
-import fvj;
-import fvp;
-import fvq;
-import fvr;
-import fvs;
-import fvt;
-import fvu;
-import fvw;
-import fvx;
+import fqw;
+import fqx;
+import frd;
+import fre;
+import frf;
+import frg;
+import frh;
+import fri;
+import frk;
+import frl;
 import java.util.List;
 
 public class FMRecentFileActivity
@@ -58,7 +58,7 @@ public class FMRecentFileActivity
   private FMObserver b;
   public View.OnClickListener c;
   boolean c;
-  public View.OnClickListener d = new fvx(this);
+  public View.OnClickListener d = new frl(this);
   int e = 0;
   
   static
@@ -71,11 +71,11 @@ public class FMRecentFileActivity
     this.jdField_a_of_type_Long = -1L;
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter = null;
     this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fvp(this);
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new fvt(this);
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new fvu(this);
-    this.jdField_c_of_type_AndroidViewView$OnClickListener = new fvw(this);
-    this.jdField_b_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new fvj(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new frd(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new frh(this);
+    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new fri(this);
+    this.jdField_c_of_type_AndroidViewView$OnClickListener = new frk(this);
+    this.jdField_b_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new fqx(this);
   }
   
   private void h()
@@ -95,12 +95,12 @@ public class FMRecentFileActivity
   
   private void i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232715));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232718));
     this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable = new ScrollerRunnable(this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setSelection(0);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.a(Integer.valueOf(-1));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnSlideListener(new fvi(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnSlideListener(new fqw(this));
   }
   
   private void j()
@@ -159,9 +159,9 @@ public class FMRecentFileActivity
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
     localActionSheet.a(getResources().getStringArray(2131689515)[0], 3);
-    localActionSheet.a(new fvq(this, localActionSheet));
-    localActionSheet.setOnDismissListener(new fvr(this));
-    localActionSheet.setOnCancelListener(new fvs(this));
+    localActionSheet.a(new fre(this, localActionSheet));
+    localActionSheet.setOnDismissListener(new frf(this));
+    localActionSheet.setOnCancelListener(new frg(this));
     localActionSheet.d(2131561746);
     localActionSheet.show();
   }
@@ -174,7 +174,7 @@ public class FMRecentFileActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903485);
+    setContentView(2130903487);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(a());
     this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_b_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
     this.jdField_a_of_type_JavaUtilList = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().a();

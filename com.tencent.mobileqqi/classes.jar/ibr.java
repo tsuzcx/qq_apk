@@ -1,15 +1,15 @@
-import com.tencent.widget.TipsPopupWindow;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.CrashNotificationActivity;
 
 public class ibr
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ibr(TipsPopupWindow paramTipsPopupWindow) {}
+  public ibr(CrashNotificationActivity paramCrashNotificationActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    TipsPopupWindow.a(this.a);
-    TipsPopupWindow.a(this.a, false);
-    TipsPopupWindow.b(this.a, false);
+    this.a.a();
   }
 }
 

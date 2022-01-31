@@ -167,7 +167,7 @@ public class DbCacheDatabase
     //   83: monitorexit
     //   84: aload_1
     //   85: athrow
-    //   86: astore_1
+    //   86: astore_2
     //   87: aload_0
     //   88: getfield 37	com/tencent/open/component/cache/database/DbCacheDatabase:jdField_a_of_type_Boolean	Z
     //   91: ifeq +29 -> 120
@@ -185,26 +185,26 @@ public class DbCacheDatabase
     //   115: aload_0
     //   116: iconst_0
     //   117: putfield 37	com/tencent/open/component/cache/database/DbCacheDatabase:jdField_a_of_type_Boolean	Z
-    //   120: aload_1
+    //   120: aload_2
     //   121: athrow
     //   122: astore_2
     //   123: goto -84 -> 39
     //   126: astore_2
     //   127: goto -65 -> 62
-    //   130: astore_2
+    //   130: astore_1
     //   131: goto -16 -> 115
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	134	0	this	DbCacheDatabase
     //   3	74	1	localObject1	Object
     //   81	4	1	localObject2	Object
-    //   86	35	1	localObject3	Object
-    //   8	41	2	localObject4	Object
-    //   50	1	2	localThrowable1	java.lang.Throwable
-    //   59	19	2	localObject5	Object
-    //   122	1	2	localThrowable2	java.lang.Throwable
-    //   126	1	2	localThrowable3	java.lang.Throwable
-    //   130	1	2	localThrowable4	java.lang.Throwable
+    //   130	1	1	localThrowable1	java.lang.Throwable
+    //   8	41	2	localObject3	Object
+    //   50	1	2	localThrowable2	java.lang.Throwable
+    //   59	19	2	localObject4	Object
+    //   86	35	2	localObject5	Object
+    //   122	1	2	localThrowable3	java.lang.Throwable
+    //   126	1	2	localThrowable4	java.lang.Throwable
     // Exception table:
     //   from	to	target	type
     //   4	9	50	java/lang/Throwable

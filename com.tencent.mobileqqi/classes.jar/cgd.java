@@ -1,24 +1,51 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler.Callback;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.DetailProfileActivity;
+import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public final class cgd
-  implements DialogInterface.OnClickListener
+public class cgd
+  implements ActionSheet.OnButtonClickListener
 {
-  public cgd(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString, boolean paramBoolean, Handler.Callback paramCallback) {}
+  public cgd(DetailProfileActivity paramDetailProfileActivity, ActionSheet paramActionSheet) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsHandler$Callback);
-    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler == null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler = ((CardHandler)this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.b.a(2));
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.a(2131561424, 1);
+      return;
+    }
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Byte != 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Byte = 0;
+        this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Byte, null);
+        this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Byte);
+        continue;
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Byte != 1)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Byte = 1;
+          this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Byte, null);
+          this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Byte);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cgd
  * JD-Core Version:    0.7.0.1
  */

@@ -28,8 +28,8 @@ public class MagicfaceEmoticonInfo
   static
   {
     Resources localResources = BaseApplication.getContext().getResources();
-    jdField_a_of_type_AndroidGraphicsDrawableDrawable = localResources.getDrawable(2130839112);
-    b = localResources.getDrawable(2130839113);
+    jdField_a_of_type_AndroidGraphicsDrawableDrawable = localResources.getDrawable(2130839114);
+    b = localResources.getDrawable(2130839115);
   }
   
   public MagicfaceEmoticonInfo() {}

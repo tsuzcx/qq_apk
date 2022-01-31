@@ -2,8 +2,8 @@ package com.tencent.common.app;
 
 import android.os.SystemClock;
 import android.util.Log;
-import bvs;
-import bvu;
+import bpu;
+import bpw;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -31,7 +31,7 @@ public class ThreadTracker
   
   public static Iterable a(Iterable paramIterable, boolean paramBoolean)
   {
-    return new bvs(paramIterable, paramBoolean);
+    return new bpu(paramIterable, paramBoolean);
   }
   
   public static void a(String paramString)
@@ -59,14 +59,14 @@ public class ThreadTracker
     }
   }
   
-  private static bvu b(long paramLong, List paramList)
+  private static bpw b(long paramLong, List paramList)
   {
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      bvu localbvu = (bvu)paramList.next();
-      if (bvu.a(localbvu) == paramLong) {
-        return localbvu;
+      bpw localbpw = (bpw)paramList.next();
+      if (bpw.a(localbpw) == paramLong) {
+        return localbpw;
       }
     }
     return null;
@@ -101,9 +101,9 @@ public class ThreadTracker
         localObject1 = paramString[i];
         localObject2 = b(((Thread)localObject1).getId(), localArrayList);
         if (localObject2 != null) {
-          bvu.a((bvu)localObject2, ((Thread)localObject1).getName());
+          bpw.a((bpw)localObject2, ((Thread)localObject1).getName());
         } else {
-          localArrayList.add(new bvu(((Thread)localObject1).getId(), ((Thread)localObject1).getName(), 0L, null));
+          localArrayList.add(new bpw(((Thread)localObject1).getId(), ((Thread)localObject1).getName(), 0L, null));
         }
       }
     }
@@ -118,10 +118,10 @@ public class ThreadTracker
     label220:
     if (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (bvu)((Iterator)localObject1).next();
-      if (!bvu.a((bvu)localObject2).startsWith("SharedPreferencesImpl"))
+      localObject2 = (bpw)((Iterator)localObject1).next();
+      if (!bpw.a((bpw)localObject2).startsWith("SharedPreferencesImpl"))
       {
-        localPrintStream.println(i + "," + ((bvu)localObject2).toString());
+        localPrintStream.println(i + "," + ((bpw)localObject2).toString());
         i += 1;
         break label575;
       }
@@ -132,12 +132,12 @@ public class ThreadTracker
       localObject1 = localArrayList.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (bvu)((Iterator)localObject1).next();
-        if ((bvu.a((bvu)localObject2) != null) && (!bvu.a((bvu)localObject2).startsWith("SharedPreferencesImpl")))
+        localObject2 = (bpw)((Iterator)localObject1).next();
+        if ((bpw.a((bpw)localObject2) != null) && (!bpw.a((bpw)localObject2).startsWith("SharedPreferencesImpl")))
         {
-          localPrintStream.println("id:" + bvu.a((bvu)localObject2));
-          localPrintStream.println("name:" + bvu.a((bvu)localObject2));
-          bvu.a((bvu)localObject2).printStackTrace(localPrintStream);
+          localPrintStream.println("id:" + bpw.a((bpw)localObject2));
+          localPrintStream.println("name:" + bpw.a((bpw)localObject2));
+          bpw.a((bpw)localObject2).printStackTrace(localPrintStream);
           localPrintStream.println();
         }
       }
@@ -153,10 +153,10 @@ public class ThreadTracker
         localObject1 = b(paramString[i].getId(), localArrayList);
         if (localObject1 != null)
         {
-          localPrintStream.println("id:" + bvu.a((bvu)localObject1));
-          localPrintStream.println("name:" + bvu.a((bvu)localObject1));
-          if (bvu.a((bvu)localObject1) != null) {
-            bvu.a((bvu)localObject1).printStackTrace(localPrintStream);
+          localPrintStream.println("id:" + bpw.a((bpw)localObject1));
+          localPrintStream.println("name:" + bpw.a((bpw)localObject1));
+          if (bpw.a((bpw)localObject1) != null) {
+            bpw.a((bpw)localObject1).printStackTrace(localPrintStream);
           }
           for (;;)
           {

@@ -1,52 +1,49 @@
-import com.tencent.widget.TCWDatePicker;
-import com.tencent.widget.TCWNumberPicker;
-import com.tencent.widget.TCWNumberPicker.OnChangedListener;
-import java.util.Calendar;
+import android.view.View;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import cooperation.qqfav.widget.FavoriteActionSheet;
+import cooperation.qqfav.widget.FavoriteActionSheet.Actions;
+import java.util.List;
 
 public class ibk
-  implements TCWNumberPicker.OnChangedListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public ibk(TCWDatePicker paramTCWDatePicker) {}
+  public ibk(FavoriteActionSheet paramFavoriteActionSheet) {}
   
-  public void a(TCWNumberPicker paramTCWNumberPicker, int paramInt1, int paramInt2)
+  public void OnClick(View paramView, int paramInt)
   {
-    TCWDatePicker.b(this.a).setTimeInMillis(TCWDatePicker.a(this.a).getTimeInMillis());
-    int i;
-    if (paramTCWNumberPicker == TCWDatePicker.a(this.a))
+    if ((this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions == null)) {
+      return;
+    }
+    this.a.jdField_a_of_type_Boolean = true;
+    if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())
     {
-      i = TCWDatePicker.b(this.a).getActualMaximum(5);
-      if ((paramInt1 == i) && (paramInt2 == 1)) {
-        TCWDatePicker.b(this.a).add(5, 1);
+      paramInt = ((Integer)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).intValue();
+      if (paramInt == 1)
+      {
+        this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.a();
+        FavoriteActionSheet.a(this.a);
       }
     }
     for (;;)
     {
-      TCWDatePicker.a(this.a, TCWDatePicker.b(this.a).get(1), TCWDatePicker.b(this.a).get(2), TCWDatePicker.b(this.a).get(5));
-      TCWDatePicker.b(this.a);
-      TCWDatePicker.c(this.a);
+      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
-      if ((paramInt1 == 1) && (paramInt2 == i))
+      if (paramInt == 2)
       {
-        TCWDatePicker.b(this.a).add(5, -1);
+        this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.c();
       }
-      else
+      else if (paramInt == 4)
       {
-        TCWDatePicker.b(this.a).add(5, paramInt2 - paramInt1);
+        this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.d();
+      }
+      else if (paramInt == 8)
+      {
+        this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.b();
         continue;
-        if (paramTCWNumberPicker == TCWDatePicker.b(this.a))
-        {
-          TCWDatePicker.a(this.a);
-          if ((paramInt1 == 11) && (paramInt2 == 0)) {
-            TCWDatePicker.b(this.a).add(2, 1);
-          } else if ((paramInt1 == 0) && (paramInt2 == 11)) {
-            TCWDatePicker.b(this.a).add(2, -1);
-          } else {
-            TCWDatePicker.b(this.a).add(2, paramInt2 - paramInt1);
-          }
-        }
-        else if (paramTCWNumberPicker == TCWDatePicker.c(this.a))
-        {
-          TCWDatePicker.b(this.a).set(1, paramInt2);
+        paramInt -= this.a.jdField_a_of_type_JavaUtilList.size();
+        if ((paramInt >= 0) && (paramInt < this.a.b.size())) {
+          this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.a((String)this.a.b.get(paramInt));
         }
       }
     }

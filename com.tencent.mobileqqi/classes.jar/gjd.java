@@ -1,28 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.profile.view.CircularProgressBar;
+import com.qq.jce.wup.UniAttribute;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.service.qzone.QZoneFeedCountPackeger;
 
-public class gjd
-  extends Handler
+public final class gjd
+  implements Runnable
 {
-  public gjd(CircularProgressBar paramCircularProgressBar) {}
+  public gjd(UniAttribute paramUniAttribute, QQAppInterface paramQQAppInterface) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    this.a.invalidate();
-    if (CircularProgressBar.a(this.a))
-    {
-      CircularProgressBar.a(this.a, CircularProgressBar.a(this.a));
-      if (CircularProgressBar.b(this.a) > 360) {
-        CircularProgressBar.b(this.a, 0);
-      }
-      CircularProgressBar.a(this.a).sendEmptyMessageDelayed(0, CircularProgressBar.c(this.a));
-    }
+    QZoneFeedCountPackeger.a(this.jdField_a_of_type_ComQqJceWupUniAttribute, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gjd
  * JD-Core Version:    0.7.0.1
  */

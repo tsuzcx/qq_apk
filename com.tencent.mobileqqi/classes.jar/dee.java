@@ -1,20 +1,15 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
 
 public class dee
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public dee(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public dee(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent(this.a, TroopAssisSettingActivity.class);
-    this.a.startActivity(paramView);
-    ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Clk_msginfor_grp", 0, 0, "", "", "", "");
+    paramDialogInterface.dismiss();
   }
 }
 

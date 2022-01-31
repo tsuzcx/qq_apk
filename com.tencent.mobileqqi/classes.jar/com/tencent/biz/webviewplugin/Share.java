@@ -14,12 +14,12 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import buy;
-import bva;
-import bvc;
-import bvd;
-import bvf;
-import bvh;
+import bpa;
+import bpc;
+import bpe;
+import bpf;
+import bph;
+import bpj;
 import com.tencent.biz.ProtoServlet;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.biz.common.util.Util;
@@ -98,8 +98,8 @@ public class Share
     this.jdField_a_of_type_AndroidWidgetImageView = null;
     this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse = null;
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new bvf(this);
-    this.jdField_a_of_type_AndroidOsHandler = new bvh(this);
+    this.jdField_a_of_type_MqqObserverBusinessObserver = new bph(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bpj(this);
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     this.k = paramAppInterface.getAccount();
     this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity = paramQQBrowserActivity;
@@ -227,7 +227,7 @@ public class Share
     localGetAppinfoRequest.client_id.set(paramLong1);
     localGetAppinfoRequest.sdkp.set("android");
     localGetAppinfoRequest.os.set(Build.VERSION.RELEASE);
-    localGetAppinfoRequest.qqv.set("6.0.1");
+    localGetAppinfoRequest.qqv.set("6.0.2");
     localGetAppinfoRequest.setHasFlag(true);
     paramContext = new NewIntent(paramContext, ProtoServlet.class);
     paramContext.putExtra("uin", paramString);
@@ -372,7 +372,7 @@ public class Share
     label351:
     if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new bvc(this);
+      this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new bpe(this);
       WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
     }
     label448:
@@ -571,7 +571,7 @@ public class Share
         break label210;
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-      new buy(this, bool1, paramString, bool2, bool3, localBitmap, paramInt).start();
+      new bpa(this, bool1, paramString, bool2, bool3, localBitmap, paramInt).start();
       return true;
       localBitmap = (Bitmap)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       break;
@@ -593,7 +593,7 @@ public class Share
     }
     label255:
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-    new bva(this, paramString, paramBoolean, localBitmap, paramInt).start();
+    new bpc(this, paramString, paramBoolean, localBitmap, paramInt).start();
     return true;
   }
   
@@ -641,7 +641,7 @@ public class Share
         break label160;
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-      new bvd(this, bool, paramString5, paramString1, paramString2, paramString3, paramString4, paramString6).start();
+      new bpf(this, bool, paramString5, paramString1, paramString2, paramString3, paramString4, paramString6).start();
     }
     for (;;)
     {

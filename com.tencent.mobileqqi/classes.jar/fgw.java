@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.StartAppCheckHandler;
 
 public class fgw
-  implements Runnable
 {
-  public fgw(FriendListHandler paramFriendListHandler) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  Intent jdField_a_of_type_AndroidContentIntent;
+  public String a;
   
-  public void run()
+  public fgw(StartAppCheckHandler paramStartAppCheckHandler, String paramString, Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StatusPush", 2, "handlePushBatchFStatus notifyUI uin:" + this.a.a.a() + " at " + System.currentTimeMillis());
-    }
-    this.a.a(1, true, Boolean.valueOf(true));
-    this.a.a(7, true, Boolean.valueOf(true));
-    FriendListHandler.a(this.a, 0);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
   }
 }
 

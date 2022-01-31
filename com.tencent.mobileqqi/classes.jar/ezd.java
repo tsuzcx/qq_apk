@@ -1,20 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class ezd
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ezd(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  public ezd(BaseActivity paramBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.q();
+    if (BaseActivity.a() == null)
+    {
+      ezg localezg = new ezg(null);
+      SensorManager localSensorManager = (SensorManager)this.a.getSystemService("sensor");
+      localSensorManager.registerListener(localezg, localSensorManager.getDefaultSensor(1), 0);
+      BaseActivity.a(localezg);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ezd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.CircleMemberListActivity;
-import com.tencent.mobileqq.data.CircleBuddy;
-import com.tencent.mobileqq.service.circle.IFriendObserver;
-import com.tencent.widget.XListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
 public class ehz
-  implements IFriendObserver
+  implements DialogInterface.OnDismissListener
 {
-  public ehz(CircleMemberListActivity paramCircleMemberListActivity) {}
+  public ehz(MainAssistObserver paramMainAssistObserver) {}
   
-  public void a(String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    int j;
-    int i;
-    if (this.a.jdField_a_of_type_Int == 0)
-    {
-      j = CircleMemberListActivity.a(this.a).getChildCount();
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < j)
-      {
-        Object localObject = CircleMemberListActivity.a(this.a).getChildAt(i).getTag();
-        if ((localObject != null) && ((localObject instanceof eii)))
-        {
-          localObject = (eii)localObject;
-          if (((eii)localObject).a.uin.equals(paramString)) {
-            this.a.a(CircleMemberListActivity.a(this.a).getChildAt(i), ((eii)localObject).a);
-          }
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
-    }
-  }
-  
-  public void a(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_Int == 0)) {
-      this.a.jdField_a_of_type_Eih.notifyDataSetChanged();
-    }
+    this.a.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ehz
  * JD-Core Version:    0.7.0.1
  */

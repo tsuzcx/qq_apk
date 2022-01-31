@@ -1,26 +1,13 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
+import com.tencent.mobileqq.widget.OvalProgress;
 
 public class hhb
-  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
+  float jdField_a_of_type_Float;
+  float b;
+  float c;
+  float d;
   
-  public hhb(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.a != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.a.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.a(this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
-    }
-  }
+  hhb(OvalProgress paramOvalProgress) {}
 }
 
 

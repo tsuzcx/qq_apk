@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.troop.activity.TroopBarPublishBarSelectActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
 
-class gxb
+public class gxb
   implements Runnable
 {
-  gxb(gwz paramgwz) {}
+  public gxb(VideoPlayLogic paramVideoPlayLogic) {}
   
   public void run()
   {
-    this.a.a.a(1);
+    if (VideoPlayLogic.a(this.a) != null) {
+      VideoPlayLogic.c(this.a);
+    }
+    this.a.b.removeCallbacks(VideoPlayLogic.a(this.a));
   }
 }
 

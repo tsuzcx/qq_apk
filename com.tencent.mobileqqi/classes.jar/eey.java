@@ -1,17 +1,19 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.MyEnterTroopChatItemBuilder;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.newfriend.RecommendListView;
 
 public class eey
-  extends AbstractChatItemBuilder.ViewHolder
+  implements Runnable
 {
-  public TextView b;
+  public eey(RecommendListView paramRecommendListView, View paramView) {}
   
-  public eey(MyEnterTroopChatItemBuilder paramMyEnterTroopChatItemBuilder) {}
+  public void run()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     eey
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AuthDevActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class cbq
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public cbq(AuthDevActivity paramAuthDevActivity) {}
+  public cbq(ChatHistory paramChatHistory) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.b();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

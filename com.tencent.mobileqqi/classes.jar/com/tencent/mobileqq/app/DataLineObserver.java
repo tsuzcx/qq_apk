@@ -3,9 +3,9 @@ package com.tencent.mobileqq.app;
 public class DataLineObserver
   implements BusinessObserver
 {
-  protected void a() {}
+  public void a() {}
   
-  protected void a(int paramInt, String paramString) {}
+  public void a(int paramInt, String paramString) {}
   
   public void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
@@ -62,7 +62,7 @@ public class DataLineObserver
     a();
   }
   
-  protected void a(long paramLong) {}
+  public void a(long paramLong) {}
   
   public void a(long paramLong, float paramFloat) {}
   

@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202bf" android:layout_width="290.0dip" android:layout_height="190.0dip"
+<FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080556" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="19.0sp" android:textColor="#ff333333" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0804f1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginBottom="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0632" android:layout_alignParentTop="true" />
-    <TextView android:textSize="15.0sp" android:textColor="#ff535353" android:gravity="left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080561" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginBottom="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0633" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0804f1" />
-    <CheckBox android:textSize="15.0sp" android:textColor="#ff535353" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080562" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:checked="false" android:button="@null" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0634" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c1" android:drawablePadding="4.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f080561" />
-    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:layout_marginBottom="10.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f080562">
-        <Button android:textSize="16.0sp" android:textColor="#ff333333" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080563" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c0" android:layout_width="120.0dip" android:layout_height="40.0dip" android:layout_marginRight="10.0dip" android:text="@string/cancel" />
-        <Button android:textSize="16.0sp" android:textColor="#ff333333" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080564" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c0" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0a02" />
-    </LinearLayout>
-</RelativeLayout>
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08055b" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08055c" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200d5" />
+</FrameLayout>

@@ -1,26 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.richstatus.MovieDetailActivity;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
 public class ghi
-  extends BroadcastReceiver
+  extends WebChromeClient
 {
-  public ghi(QQPlayerService paramQQPlayerService) {}
+  private ghi(MovieDetailActivity paramMovieDetailActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "QQPlayerBroadcastReceiverReceiver onReceive,action:" + paramIntent.getAction());
-    }
-    if (("com.tencent.mobileqq.intent.logout".equals(paramIntent.getAction())) || ("qqplayer_exit_action".equals(paramIntent.getAction())))
-    {
-      if ((paramIntent.getBooleanExtra("musicplayer.isDelFileOnDonwloadThreadOver", false)) && (this.a.a != null)) {
-        this.a.a.b = true;
-      }
-      QQPlayerService.c(this.a.getApplicationContext());
-    }
+    super.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
+    paramGeolocationPermissionsCallback.invoke(paramString, true, false);
+  }
+  
+  public void onProgressChanged(WebView paramWebView, int paramInt)
+  {
+    super.onProgressChanged(paramWebView, paramInt);
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    this.a.setTitle(paramString);
+    this.a.d();
   }
 }
 

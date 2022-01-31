@@ -1,23 +1,40 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.map.lbsapi.api.SOSOMapLBSApi;
+import com.tencent.map.lbsapi.api.SOSOMapLBSApiListener;
+import com.tencent.map.lbsapi.api.SOSOMapLBSApiResult;
+import com.tencent.mobileqq.maproam.activity.RoamingActivity;
 
-public final class gby
-  implements Parcelable.Creator
+public class gby
+  extends SOSOMapLBSApiListener
 {
-  public FileInfo a(Parcel paramParcel)
+  public gby(RoamingActivity paramRoamingActivity, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return new FileInfo(paramParcel, null);
+    super(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  public FileInfo[] a(int paramInt)
+  public void onLocationUpdate(SOSOMapLBSApiResult paramSOSOMapLBSApiResult)
   {
-    return new FileInfo[paramInt];
+    SOSOMapLBSApi.getInstance().removeLocationUpdate();
+    if (paramSOSOMapLBSApiResult.Address == null) {}
+    for (String str = "";; str = paramSOSOMapLBSApiResult.Address)
+    {
+      if (paramSOSOMapLBSApiResult.Info == 1) {
+        this.a.runOnUiThread(new gbz(this, paramSOSOMapLBSApiResult, str));
+      }
+      try
+      {
+        this.a.dismissDialog(0);
+        return;
+      }
+      catch (IllegalArgumentException paramSOSOMapLBSApiResult)
+      {
+        paramSOSOMapLBSApiResult.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gby
  * JD-Core Version:    0.7.0.1
  */

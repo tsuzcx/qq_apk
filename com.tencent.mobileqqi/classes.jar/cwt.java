@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.HornPublishActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.maproam.Utils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
 
 public class cwt
-  implements View.OnClickListener
+  implements Runnable
 {
-  public cwt(HornPublishActivity paramHornPublishActivity, String paramString) {}
+  public cwt(MySelfTroopMemberCard paramMySelfTroopMemberCard, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.a.setEnabled(false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.b.a(new cwu(this));
-    Utils.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_f_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.g = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_f_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.g);
   }
 }
 

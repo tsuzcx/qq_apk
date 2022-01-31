@@ -1,23 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.widget.RadioButton;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.activity.UserguideActivity;
+import com.tencent.mobileqq.activity.qquserguide.UserguideVideoFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ent
-  implements DialogInterface.OnDismissListener
+  implements MediaPlayer.OnErrorListener
 {
-  public ent(MainAssistObserver paramMainAssistObserver, RadioButton paramRadioButton) {}
+  public ent(UserguideVideoFragment paramUserguideVideoFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_AndroidWidgetRadioButton.isChecked()) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a = false;
+    this.a.jdField_a_of_type_Int = 0;
+    if (QLog.isDevelopLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 4, "fight........onError....extra .== ..........." + paramInt2);
     }
+    this.a.a().finish();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ent
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.SystemItemBuilder;
+import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
 
 public class efz
-  extends BaseBubbleBuilder.ViewHolder
+  implements Runnable
 {
-  public efz(SystemItemBuilder paramSystemItemBuilder) {}
+  public efz(RecommendTroopView paramRecommendTroopView) {}
+  
+  public void run()
+  {
+    RecommendTroopView.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     efz
  * JD-Core Version:    0.7.0.1
  */

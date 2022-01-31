@@ -1,69 +1,41 @@
-import com.tencent.mobileqq.app.ConfigHandler;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class fev
-  implements Runnable
+  extends ClickableSpan
 {
-  public fev(ConfigHandler paramConfigHandler, String paramString1, String paramString2) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  /* Error */
-  public void run()
+  public fev(Context paramContext, String paramString1, String paramString2)
   {
-    // Byte code:
-    //   0: new 27	java/io/File
-    //   3: dup
-    //   4: aload_0
-    //   5: getfield 16	fev:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   8: invokespecial 30	java/io/File:<init>	(Ljava/lang/String;)V
-    //   11: astore_1
-    //   12: aload_0
-    //   13: getfield 14	fev:jdField_a_of_type_ComTencentMobileqqAppConfigHandler	Lcom/tencent/mobileqq/app/ConfigHandler;
-    //   16: getfield 35	com/tencent/mobileqq/app/ConfigHandler:a	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   19: new 37	java/net/URL
-    //   22: dup
-    //   23: aload_0
-    //   24: getfield 18	fev:b	Ljava/lang/String;
-    //   27: invokespecial 38	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   30: aload_1
-    //   31: invokestatic 43	com/tencent/mobileqq/utils/HttpDownloadUtil:a	(Lcom/tencent/common/app/AppInterface;Ljava/net/URL;Ljava/io/File;)Z
-    //   34: ifeq +16 -> 50
-    //   37: aload_0
-    //   38: getfield 14	fev:jdField_a_of_type_ComTencentMobileqqAppConfigHandler	Lcom/tencent/mobileqq/app/ConfigHandler;
-    //   41: iconst_3
-    //   42: iconst_1
-    //   43: aload_0
-    //   44: getfield 16	fev:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   47: invokevirtual 46	com/tencent/mobileqq/app/ConfigHandler:a	(IZLjava/lang/Object;)V
-    //   50: aload_0
-    //   51: getfield 14	fev:jdField_a_of_type_ComTencentMobileqqAppConfigHandler	Lcom/tencent/mobileqq/app/ConfigHandler;
-    //   54: aload_0
-    //   55: getfield 18	fev:b	Ljava/lang/String;
-    //   58: invokestatic 49	com/tencent/mobileqq/app/ConfigHandler:a	(Lcom/tencent/mobileqq/app/ConfigHandler;Ljava/lang/String;)V
-    //   61: return
-    //   62: astore_1
-    //   63: aload_0
-    //   64: getfield 14	fev:jdField_a_of_type_ComTencentMobileqqAppConfigHandler	Lcom/tencent/mobileqq/app/ConfigHandler;
-    //   67: aload_0
-    //   68: getfield 18	fev:b	Ljava/lang/String;
-    //   71: invokestatic 49	com/tencent/mobileqq/app/ConfigHandler:a	(Lcom/tencent/mobileqq/app/ConfigHandler;Ljava/lang/String;)V
-    //   74: return
-    //   75: astore_1
-    //   76: aload_0
-    //   77: getfield 14	fev:jdField_a_of_type_ComTencentMobileqqAppConfigHandler	Lcom/tencent/mobileqq/app/ConfigHandler;
-    //   80: aload_0
-    //   81: getfield 18	fev:b	Ljava/lang/String;
-    //   84: invokestatic 49	com/tencent/mobileqq/app/ConfigHandler:a	(Lcom/tencent/mobileqq/app/ConfigHandler;Ljava/lang/String;)V
-    //   87: aload_1
-    //   88: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	89	0	this	fev
-    //   11	20	1	localFile	java.io.File
-    //   62	1	1	localException	java.lang.Exception
-    //   75	13	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   12	50	62	java/lang/Exception
-    //   12	50	75	finally
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramString1;
+  }
+  
+  public void onClick(View paramView)
+  {
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    if (!TextUtils.isEmpty(this.b)) {
+      paramView.putExtra("uin", this.b);
+    }
+    paramView.putExtra("ba_is_login", false);
+    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    paramView.putExtra("hide_more_button", true);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#ffe9e9e9" android:layout_width="fill_parent" android:layout_height="fill_parent" android:baselineAligned="false" android:measureWithLargestChild="false"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:qzone="http://schemas.android.com/apk/res/com.tencent.mobileqqi">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206cb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="15.0dip" android:layout_marginTop="25.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="20.0dip">
+        <com.qzone.widget.AsyncImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c71" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginTop="25.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207a1" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="30.0dip">
+            <com.qzone.gift.ui.component.DashedLineView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c72" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <TextView android:textSize="15.0sp" android:textColor="#ff7e6b5a" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c73" android:layout_width="fill_parent" android:layout_height="wrap_content" android:lineSpacingExtra="5.0dip" />
+        </FrameLayout>
+        <LinearLayout android:gravity="center|right" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="30.0dip">
+            <com.qzone.widget.AvatarImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c74" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020791" android:scaleType="centerInside" qzone:avatarSize="20.0dip" />
+            <TextView android:textSize="13.0sp" android:textColor="#ff7e6b5a" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c75" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:maxWidth="200.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

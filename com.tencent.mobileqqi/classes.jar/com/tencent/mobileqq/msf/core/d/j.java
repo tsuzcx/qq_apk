@@ -257,7 +257,6 @@ public class j
       Object localObject = new l(this);
       CrashStrategyBean localCrashStrategyBean = new CrashStrategyBean();
       localCrashStrategyBean.setMaxStackFrame(6);
-      localCrashStrategyBean.setMaxStackLine(400);
       CrashReport.initCrashReport(BaseApplication.getContext(), (CrashHandleListener)localObject, new a(), true, localCrashStrategyBean);
       UserAction.closeUseInfoEvent();
       UserAction.setAutoLaunchEventUsable(true);

@@ -12,39 +12,39 @@ import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.utils.MsgUtils;
 import com.tencent.qphone.base.util.QLog;
-import fzh;
-import fzi;
-import fzj;
-import fzk;
-import fzm;
-import fzn;
-import fzo;
-import fzp;
-import fzq;
-import fzr;
-import fzs;
-import fzv;
-import fzw;
-import fzx;
-import fzy;
-import fzz;
-import gaa;
-import gab;
-import gac;
-import gad;
-import gaf;
-import gag;
-import gah;
-import gaj;
-import gak;
-import gam;
-import gan;
-import gao;
-import gap;
-import gaq;
-import gas;
-import gat;
-import gau;
+import fuv;
+import fuw;
+import fux;
+import fuy;
+import fva;
+import fvb;
+import fvc;
+import fvd;
+import fve;
+import fvf;
+import fvg;
+import fvj;
+import fvk;
+import fvl;
+import fvm;
+import fvn;
+import fvo;
+import fvp;
+import fvq;
+import fvr;
+import fvt;
+import fvu;
+import fvv;
+import fvx;
+import fvy;
+import fwa;
+import fwb;
+import fwc;
+import fwd;
+import fwe;
+import fwg;
+import fwh;
+import fwi;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -69,8 +69,8 @@ public class OnlineFileSessionWorker
   public static final long g = 172800L;
   public QQAppInterface a;
   public FileManagerEntity a;
-  private fzn jdField_a_of_type_Fzn;
-  public gau a;
+  private fvb jdField_a_of_type_Fvb;
+  public fwi a;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private Timer jdField_a_of_type_JavaUtilTimer = null;
   private Object jdField_b_of_type_JavaLangObject = new Object();
@@ -84,23 +84,23 @@ public class OnlineFileSessionWorker
   public OnlineFileSessionWorker(QQAppInterface paramQQAppInterface, long paramLong)
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = null;
-    this.jdField_a_of_type_Gau = new gau(this);
+    this.jdField_a_of_type_Fwi = new fwi(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.h = paramLong;
-    this.jdField_a_of_type_Fzn = new fzn(this);
+    this.jdField_a_of_type_Fvb = new fvb(this);
   }
   
   private void a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] setCurStateOfEntityTo can not find entity . state change :(" + this.jdField_a_of_type_Fzn.a() + "-> StateEnd)");
-      this.jdField_a_of_type_Fzn = new fzv(this);
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] setCurStateOfEntityTo can not find entity . state change :(" + this.jdField_a_of_type_Fvb.a() + "-> StateEnd)");
+      this.jdField_a_of_type_Fvb = new fvj(this);
     }
     do
     {
       return;
-      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state:" + this.jdField_a_of_type_Fzn.a() + " curstate of entity change: (opType:" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType + " status:" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status + ") -> (opType:" + paramInt1 + "  status:" + paramInt2 + ") savedb=" + paramBoolean);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state:" + this.jdField_a_of_type_Fvb.a() + " curstate of entity change: (opType:" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType + " status:" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status + ") -> (opType:" + paramInt1 + "  status:" + paramInt2 + ") savedb=" + paramBoolean);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType = paramInt1;
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = paramInt2;
     } while (!paramBoolean);
@@ -119,8 +119,8 @@ public class OnlineFileSessionWorker
     {
       if (!bool)
       {
-        QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] goto next state failed. state change :(" + this.jdField_a_of_type_Fzn.a() + "-> StateEnd)");
-        this.jdField_a_of_type_Fzn = new fzv(this);
+        QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] goto next state failed. state change :(" + this.jdField_a_of_type_Fvb.a() + "-> StateEnd)");
+        this.jdField_a_of_type_Fvb = new fvj(this);
       }
       return bool;
       switch (paramInt2)
@@ -129,33 +129,33 @@ public class OnlineFileSessionWorker
         QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] no status. when GOTO_UPLOAD:" + paramInt2);
         break;
       case 9: 
-        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateCancelUploadWhenRecv)");
-        this.jdField_a_of_type_Fzn = new fzq(this);
+        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateCancelUploadWhenRecv)");
+        this.jdField_a_of_type_Fvb = new fve(this);
         bool = true;
         break;
       case 10: 
-        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateChangeToOffFailedWhenRecv)");
-        this.jdField_a_of_type_Fzn = new fzs(this);
+        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateChangeToOffFailedWhenRecv)");
+        this.jdField_a_of_type_Fvb = new fvg(this);
         bool = true;
         break;
       case 11: 
-        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateLocalFailedWhenRecv)");
-        this.jdField_a_of_type_Fzn = new gac(this);
+        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateLocalFailedWhenRecv)");
+        this.jdField_a_of_type_Fvb = new fvq(this);
         bool = true;
         break;
       case 12: 
-        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateExcepInvalidWhenRecv)");
-        this.jdField_a_of_type_Fzn = new fzy(this);
+        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateExcepInvalidWhenRecv)");
+        this.jdField_a_of_type_Fvb = new fvm(this);
         bool = true;
         break;
       case 14: 
-        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateUploadingWhenRecv)");
-        this.jdField_a_of_type_Fzn = new gap(this);
+        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateUploadingWhenRecv)");
+        this.jdField_a_of_type_Fvb = new fwd(this);
         bool = true;
         break;
       case 15: 
-        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateWaitResultWhenRecv)");
-        this.jdField_a_of_type_Fzn = new gat(this);
+        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateWaitResultWhenRecv)");
+        this.jdField_a_of_type_Fvb = new fwh(this);
         bool = true;
         break;
       case 4: 
@@ -172,33 +172,33 @@ public class OnlineFileSessionWorker
           QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] no status. when STOP_UPLOAD:" + paramInt2);
           break;
         case 9: 
-          QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateCancelUploadWhenPause)");
-          this.jdField_a_of_type_Fzn = new fzp(this);
+          QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateCancelUploadWhenPause)");
+          this.jdField_a_of_type_Fvb = new fvd(this);
           bool = true;
           break;
         case 10: 
-          QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateChangeToOffFailedWhenPause)");
-          this.jdField_a_of_type_Fzn = new fzr(this);
+          QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateChangeToOffFailedWhenPause)");
+          this.jdField_a_of_type_Fvb = new fvf(this);
           bool = true;
           break;
         case 11: 
-          QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateLocalFailedWhenPause)");
-          this.jdField_a_of_type_Fzn = new gab(this);
+          QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateLocalFailedWhenPause)");
+          this.jdField_a_of_type_Fvb = new fvp(this);
           bool = true;
           break;
         case 12: 
-          QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateExcepInvalidWhenPause)");
-          this.jdField_a_of_type_Fzn = new fzx(this);
+          QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateExcepInvalidWhenPause)");
+          this.jdField_a_of_type_Fvb = new fvl(this);
           bool = true;
           break;
         case 14: 
-          QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateUploadingWhenPause)");
-          this.jdField_a_of_type_Fzn = new gao(this);
+          QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateUploadingWhenPause)");
+          this.jdField_a_of_type_Fvb = new fwc(this);
           bool = true;
           break;
         case 15: 
-          QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateWaitResultWhenPause)");
-          this.jdField_a_of_type_Fzn = new gas(this);
+          QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateWaitResultWhenPause)");
+          this.jdField_a_of_type_Fvb = new fwg(this);
           bool = true;
           break;
         case 4: 
@@ -215,48 +215,48 @@ public class OnlineFileSessionWorker
             QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] no status. when BE_PC_HANDLED:" + paramInt2);
             break;
           case 5: 
-            QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateAcceptByPC)");
-            this.jdField_a_of_type_Fzn = new fzk(this);
+            QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateAcceptByPC)");
+            this.jdField_a_of_type_Fvb = new fuy(this);
             bool = true;
             break;
           case 6: 
-            QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateRefuseByPC)");
-            this.jdField_a_of_type_Fzn = new gad(this);
+            QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateRefuseByPC)");
+            this.jdField_a_of_type_Fvb = new fvr(this);
             bool = true;
             break;
           case 7: 
-            QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateSaveToWeiYunByPC)");
-            this.jdField_a_of_type_Fzn = new gah(this);
+            QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateSaveToWeiYunByPC)");
+            this.jdField_a_of_type_Fvb = new fvv(this);
             bool = true;
             break;
           case 8: 
-            QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateSenderCancelSend)");
-            this.jdField_a_of_type_Fzn = new gak(this);
+            QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateSenderCancelSend)");
+            this.jdField_a_of_type_Fvb = new fvy(this);
             bool = true;
             break;
           case 9: 
-            QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateCancelUploadWhenChangeToOff)");
-            this.jdField_a_of_type_Fzn = new fzo(this);
+            QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateCancelUploadWhenChangeToOff)");
+            this.jdField_a_of_type_Fvb = new fvc(this);
             bool = true;
             break;
           case 12: 
-            QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateExcepInvalidWhenChangeToOff)");
-            this.jdField_a_of_type_Fzn = new fzw(this);
+            QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateExcepInvalidWhenChangeToOff)");
+            this.jdField_a_of_type_Fvb = new fvk(this);
             bool = true;
             break;
           case 13: 
-            QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateUploadoneWhenChangeToOff)");
-            this.jdField_a_of_type_Fzn = new gaq(this);
+            QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateUploadoneWhenChangeToOff)");
+            this.jdField_a_of_type_Fvb = new fwe(this);
             bool = true;
             break;
           case 14: 
-            QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateUploadingWhenChangeToOff)");
-            this.jdField_a_of_type_Fzn = new gan(this);
+            QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateUploadingWhenChangeToOff)");
+            this.jdField_a_of_type_Fvb = new fwb(this);
             bool = true;
             break;
           case 11: 
-            QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateLocalFailedWhenChangeToOff)");
-            this.jdField_a_of_type_Fzn = new gaa(this);
+            QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateLocalFailedWhenChangeToOff)");
+            this.jdField_a_of_type_Fvb = new fvo(this);
             bool = true;
             break;
           case 4: 
@@ -270,8 +270,8 @@ public class OnlineFileSessionWorker
               QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] no status. when TYPE_UNKNOW:" + paramInt2);
               break;
             case 4: 
-              QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateRequest)");
-              this.jdField_a_of_type_Fzn = new gag(this);
+              QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateRequest)");
+              this.jdField_a_of_type_Fvb = new fvu(this);
               bool = true;
               break;
             case 5: 
@@ -287,8 +287,8 @@ public class OnlineFileSessionWorker
             case 15: 
               QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] can not set the status. when TYPE_UNKNOW:" + paramInt2);
               continue;
-              QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateGotoOffFileProcess)");
-              this.jdField_a_of_type_Fzn = new fzz(this);
+              QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateGotoOffFileProcess)");
+              this.jdField_a_of_type_Fvb = new fvn(this);
               bool = true;
               continue;
               switch (paramInt2)
@@ -297,23 +297,23 @@ public class OnlineFileSessionWorker
                 QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] can not set the status. when BE_PC_HANDLED_ON_RECV2OFF_FAILED:" + paramInt2);
                 break;
               case 5: 
-                QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateAcceptByPCWhenToOffFailed)");
-                this.jdField_a_of_type_Fzn = new fzm(this);
+                QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateAcceptByPCWhenToOffFailed)");
+                this.jdField_a_of_type_Fvb = new fva(this);
                 bool = true;
                 break;
               case 6: 
-                QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateRefuseByPCWhenToOffFailed)");
-                this.jdField_a_of_type_Fzn = new gaf(this);
+                QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateRefuseByPCWhenToOffFailed)");
+                this.jdField_a_of_type_Fvb = new fvt(this);
                 bool = true;
                 break;
               case 7: 
-                QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateSaveToWeiYunByPCWhenToOffFailed)");
-                this.jdField_a_of_type_Fzn = new gaj(this);
+                QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateSaveToWeiYunByPCWhenToOffFailed)");
+                this.jdField_a_of_type_Fvb = new fvx(this);
                 bool = true;
                 break;
               case 8: 
-                QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateSenderCancelSendWhenToOffFailed)");
-                this.jdField_a_of_type_Fzn = new gam(this);
+                QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateSenderCancelSendWhenToOffFailed)");
+                this.jdField_a_of_type_Fvb = new fwa(this);
                 bool = true;
               }
               break;
@@ -331,8 +331,8 @@ public class OnlineFileSessionWorker
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] setStateToDatabase can not find entity . state change :(" + this.jdField_a_of_type_Fzn.a() + "-> StateEnd)");
-      this.jdField_a_of_type_Fzn = new fzv(this);
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] setStateToDatabase can not find entity . state change :(" + this.jdField_a_of_type_Fvb.a() + "-> StateEnd)");
+      this.jdField_a_of_type_Fvb = new fvj(this);
       return;
     }
     FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.clone();
@@ -359,12 +359,12 @@ public class OnlineFileSessionWorker
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] setDBStateOfEntityTo can not find entity . state change :(" + this.jdField_a_of_type_Fzn.a() + "-> StateEnd)");
-      this.jdField_a_of_type_Fzn = new fzv(this);
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] setDBStateOfEntityTo can not find entity . state change :(" + this.jdField_a_of_type_Fvb.a() + "-> StateEnd)");
+      this.jdField_a_of_type_Fvb = new fvj(this);
       return;
     }
     FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.clone();
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state:" + this.jdField_a_of_type_Fzn.a() + " curstate: (opType:" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType + " status:" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status + ").  save state:(opType:" + paramInt1 + "  status:" + paramInt2 + ") to DB");
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state:" + this.jdField_a_of_type_Fvb.a() + " curstate: (opType:" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType + " status:" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status + ").  save state:(opType:" + paramInt1 + "  status:" + paramInt2 + ") to DB");
     localFileManagerEntity.nOpType = paramInt1;
     localFileManagerEntity.status = paramInt2;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localFileManagerEntity);
@@ -375,10 +375,10 @@ public class OnlineFileSessionWorker
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
     {
       if (0L != this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastTime) {
-        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state :" + this.jdField_a_of_type_Fzn.a() + " initForMakeProgress. but had init. lastTime =" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastTime);
+        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state :" + this.jdField_a_of_type_Fvb.a() + " initForMakeProgress. but had init. lastTime =" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastTime);
       }
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastTime = System.currentTimeMillis();
-      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state :" + this.jdField_a_of_type_Fzn.a() + " initForMakeProgress lastTime =" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastTime);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state :" + this.jdField_a_of_type_Fvb.a() + " initForMakeProgress lastTime =" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastTime);
     }
   }
   
@@ -392,41 +392,41 @@ public class OnlineFileSessionWorker
     {
       if (this.jdField_a_of_type_JavaUtilTimer != null)
       {
-        QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] state:" + this.jdField_a_of_type_Fzn.a() + " failure to startWaitSenderReplayOnRecvTimer ant it is runing");
+        QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] state:" + this.jdField_a_of_type_Fvb.a() + " failure to startWaitSenderReplayOnRecvTimer ant it is runing");
         return;
       }
-      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] state:" + this.jdField_a_of_type_Fzn.a() + " startWaitSenderReplayOnRecvTimer. outTimerInterval=" + l1);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] state:" + this.jdField_a_of_type_Fvb.a() + " startWaitSenderReplayOnRecvTimer. outTimerInterval=" + l1);
       this.jdField_a_of_type_JavaUtilTimer = new Timer();
-      this.jdField_a_of_type_JavaUtilTimer.schedule(new fzh(this), l1);
+      this.jdField_a_of_type_JavaUtilTimer.schedule(new fuv(this), l1);
       return;
     }
   }
   
   public void a(float paramFloat)
   {
-    new Thread(new fzj(this, paramFloat)).start();
+    new Thread(new fux(this, paramFloat)).start();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Fzn.a(paramInt);
-    this.jdField_a_of_type_Fzn = this.jdField_a_of_type_Fzn.a();
+    this.jdField_a_of_type_Fvb.a(paramInt);
+    this.jdField_a_of_type_Fvb = this.jdField_a_of_type_Fvb.a();
     o();
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fzn.a() + " stopWaitAskUpProgressResultTimer. stopWaitSenderReplayOnRecvTimer. when onSenderUploadProgressNotify");
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fvb.a() + " stopWaitAskUpProgressResultTimer. stopWaitSenderReplayOnRecvTimer. when onSenderUploadProgressNotify");
     c();
     b();
-    this.jdField_a_of_type_Fzn.a(paramInt1, paramInt2);
-    this.jdField_a_of_type_Fzn = this.jdField_a_of_type_Fzn.a();
+    this.jdField_a_of_type_Fvb.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_Fvb = this.jdField_a_of_type_Fvb.a();
   }
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Fzn.a(paramInt, paramString);
-    this.jdField_a_of_type_Fzn = this.jdField_a_of_type_Fzn.a();
+    this.jdField_a_of_type_Fvb.a(paramInt, paramString);
+    this.jdField_a_of_type_Fvb = this.jdField_a_of_type_Fvb.a();
   }
   
   void a(long paramLong)
@@ -443,12 +443,12 @@ public class OnlineFileSessionWorker
     {
       if (this.jdField_b_of_type_JavaUtilTimer != null)
       {
-        QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] state:" + this.jdField_a_of_type_Fzn.a() + " failure to startWaitAskUpProgressResultTimer ant it is runing");
+        QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] state:" + this.jdField_a_of_type_Fvb.a() + " failure to startWaitAskUpProgressResultTimer ant it is runing");
         return;
       }
-      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] state:" + this.jdField_a_of_type_Fzn.a() + " startWaitAskUpProgressResultTimer. outTimerInterval=" + l1);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] state:" + this.jdField_a_of_type_Fvb.a() + " startWaitAskUpProgressResultTimer. outTimerInterval=" + l1);
       this.jdField_b_of_type_JavaUtilTimer = new Timer();
-      this.jdField_b_of_type_JavaUtilTimer.schedule(new fzi(this), l1);
+      this.jdField_b_of_type_JavaUtilTimer.schedule(new fuw(this), l1);
       return;
     }
   }
@@ -507,20 +507,20 @@ public class OnlineFileSessionWorker
   
   public void a(boolean paramBoolean)
   {
-    gau localgau;
+    fwi localfwi;
     if (paramBoolean)
     {
-      localgau = this.jdField_a_of_type_Gau;
-      localgau.jdField_a_of_type_Int += 1;
+      localfwi = this.jdField_a_of_type_Fwi;
+      localfwi.jdField_a_of_type_Int += 1;
       a();
     }
     for (;;)
     {
-      this.jdField_a_of_type_Fzn.a(paramBoolean);
-      this.jdField_a_of_type_Fzn = this.jdField_a_of_type_Fzn.a();
+      this.jdField_a_of_type_Fvb.a(paramBoolean);
+      this.jdField_a_of_type_Fvb = this.jdField_a_of_type_Fvb.a();
       return;
-      localgau = this.jdField_a_of_type_Gau;
-      localgau.jdField_b_of_type_Int += 1;
+      localfwi = this.jdField_a_of_type_Fwi;
+      localfwi.jdField_b_of_type_Int += 1;
     }
   }
   
@@ -539,10 +539,10 @@ public class OnlineFileSessionWorker
   
   public boolean a(int paramInt, String paramString, long paramLong)
   {
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fzn.a() + " stopWaitSenderReplayOnRecvTimer ant stopWaitAskUpProgressResultTimer. when onSenderUploadCompleted");
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fvb.a() + " stopWaitSenderReplayOnRecvTimer ant stopWaitAskUpProgressResultTimer. when onSenderUploadCompleted");
     d();
-    boolean bool = this.jdField_a_of_type_Fzn.a(paramInt, paramString, paramLong);
-    this.jdField_a_of_type_Fzn = this.jdField_a_of_type_Fzn.a();
+    boolean bool = this.jdField_a_of_type_Fvb.a(paramInt, paramString, paramLong);
+    this.jdField_a_of_type_Fvb = this.jdField_a_of_type_Fvb.a();
     return bool;
   }
   
@@ -550,37 +550,37 @@ public class OnlineFileSessionWorker
   {
     if (paramFileManagerEntity == null)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] init failed. state change :(" + this.jdField_a_of_type_Fzn.a() + "-> StateEnd)");
-      this.jdField_a_of_type_Fzn = new fzv(this);
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] init failed. state change :(" + this.jdField_a_of_type_Fvb.a() + "-> StateEnd)");
+      this.jdField_a_of_type_Fvb = new fvj(this);
       return false;
     }
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
     boolean bool = a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] init state to:" + this.jdField_a_of_type_Fzn.a());
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] init state to:" + this.jdField_a_of_type_Fvb.a());
     return bool;
   }
   
   public boolean a(String paramString, long paramLong)
   {
-    if (this.jdField_a_of_type_Gau.c) {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "]  state:" + this.jdField_a_of_type_Fzn.a() + " internalRecvOnlineFile. recv is going on, why?? ");
+    if (this.jdField_a_of_type_Fwi.c) {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "]  state:" + this.jdField_a_of_type_Fvb.a() + " internalRecvOnlineFile. recv is going on, why?? ");
     }
     boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, paramLong);
     if (!bool)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "]  state:" + this.jdField_a_of_type_Fzn.a() + " internalRecvOnlineFile. recv cmd send failed.... ");
-      paramString = this.jdField_a_of_type_Gau;
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "]  state:" + this.jdField_a_of_type_Fvb.a() + " internalRecvOnlineFile. recv cmd send failed.... ");
+      paramString = this.jdField_a_of_type_Fwi;
       paramString.jdField_b_of_type_Int += 1;
     }
     do
     {
       return bool;
-      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "]  state:" + this.jdField_a_of_type_Fzn.a() + " internalRecvOnlineFile. recv cmd send success, and will ask progress .... ");
-      this.jdField_a_of_type_Gau.c = true;
-      this.jdField_a_of_type_Gau.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Gau.jdField_b_of_type_Boolean = false;
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "]  state:" + this.jdField_a_of_type_Fvb.a() + " internalRecvOnlineFile. recv cmd send success, and will ask progress .... ");
+      this.jdField_a_of_type_Fwi.c = true;
+      this.jdField_a_of_type_Fwi.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Fwi.jdField_b_of_type_Boolean = false;
     } while (a(true, 0L));
-    QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "]  state:" + this.jdField_a_of_type_Fzn.a() + " internalRecvOnlineFile. ask progress failed.... ");
+    QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "]  state:" + this.jdField_a_of_type_Fvb.a() + " internalRecvOnlineFile. ask progress failed.... ");
     c(2);
     return bool;
   }
@@ -605,7 +605,7 @@ public class OnlineFileSessionWorker
         } while (1 == 0);
         bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOLfileSessionId);
         this.i += 1L;
-        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] state:" + this.jdField_a_of_type_Fzn.a() + " ask upload progress isSuccess = " + bool + ". askUpProgressCount=" + this.i);
+        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] state:" + this.jdField_a_of_type_Fvb.a() + " ask upload progress isSuccess = " + bool + ". askUpProgressCount=" + this.i);
         paramBoolean = bool;
       } while (!bool);
       a(paramLong);
@@ -623,36 +623,36 @@ public class OnlineFileSessionWorker
       {
         this.jdField_a_of_type_JavaUtilTimer.cancel();
         this.jdField_a_of_type_JavaUtilTimer = null;
-        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fzn.a() + " stopWaitSenderReplayOnRecvTimer");
+        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fvb.a() + " stopWaitSenderReplayOnRecvTimer");
         return;
       }
-      QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fzn.a() + " stopWaitSenderReplayOnRecvTimer.but timer had stop");
+      QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fvb.a() + " stopWaitSenderReplayOnRecvTimer.but timer had stop");
     }
   }
   
   public void b(int paramInt)
   {
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fzn.a() + " stopWaitSenderReplayOnRecvTimer ant stopWaitAskUpProgressResultTimer. when onNetworkChanged");
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fvb.a() + " stopWaitSenderReplayOnRecvTimer ant stopWaitAskUpProgressResultTimer. when onNetworkChanged");
     d();
-    this.jdField_a_of_type_Fzn.b(1);
-    this.jdField_a_of_type_Fzn = this.jdField_a_of_type_Fzn.a();
+    this.jdField_a_of_type_Fvb.b(1);
+    this.jdField_a_of_type_Fvb = this.jdField_a_of_type_Fvb.a();
   }
   
   public void b(long paramLong)
   {
-    this.jdField_a_of_type_Fzn.a(paramLong);
-    this.jdField_a_of_type_Fzn = this.jdField_a_of_type_Fzn.a();
+    this.jdField_a_of_type_Fvb.a(paramLong);
+    this.jdField_a_of_type_Fvb = this.jdField_a_of_type_Fvb.a();
   }
   
   public void b(boolean paramBoolean)
   {
     if (!paramBoolean)
     {
-      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fzn.a() + " stopWaitAskUpProgressResultTimer. when onAskSenderUpProgressResult = false");
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fvb.a() + " stopWaitAskUpProgressResultTimer. when onAskSenderUpProgressResult = false");
       c();
     }
-    this.jdField_a_of_type_Fzn.b(paramBoolean);
-    this.jdField_a_of_type_Fzn = this.jdField_a_of_type_Fzn.a();
+    this.jdField_a_of_type_Fvb.b(paramBoolean);
+    this.jdField_a_of_type_Fvb = this.jdField_a_of_type_Fvb.a();
   }
   
   public boolean b()
@@ -677,36 +677,36 @@ public class OnlineFileSessionWorker
       {
         this.jdField_b_of_type_JavaUtilTimer.cancel();
         this.jdField_b_of_type_JavaUtilTimer = null;
-        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fzn.a() + " stopWaitAskUpProgressResultTimer");
+        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fvb.a() + " stopWaitAskUpProgressResultTimer");
         return;
       }
-      QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fzn.a() + " stopWaitAskUpProgressResultTimer.but timer had stop");
+      QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fvb.a() + " stopWaitAskUpProgressResultTimer.but timer had stop");
     }
   }
   
   public void c(int paramInt)
   {
     if (1 == paramInt) {
-      if (this.jdField_a_of_type_Gau.c)
+      if (this.jdField_a_of_type_Fwi.c)
       {
-        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "]  state:" + this.jdField_a_of_type_Fzn.a() + " recv olfile is going on. but the resp of sender is error");
-        this.jdField_a_of_type_Gau.jdField_a_of_type_Boolean = true;
+        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "]  state:" + this.jdField_a_of_type_Fvb.a() + " recv olfile is going on. but the resp of sender is error");
+        this.jdField_a_of_type_Fwi.jdField_a_of_type_Boolean = true;
       }
     }
-    while ((2 != paramInt) || (!this.jdField_a_of_type_Gau.c)) {
+    while ((2 != paramInt) || (!this.jdField_a_of_type_Fwi.c)) {
       return;
     }
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "]  state:" + this.jdField_a_of_type_Fzn.a() + " recv olfile is going on. but the resp of ask progress is error");
-    this.jdField_a_of_type_Gau.jdField_b_of_type_Boolean = true;
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "]  state:" + this.jdField_a_of_type_Fvb.a() + " recv olfile is going on. but the resp of ask progress is error");
+    this.jdField_a_of_type_Fwi.jdField_b_of_type_Boolean = true;
   }
   
   public void c(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Gau.c)
+    if (this.jdField_a_of_type_Fwi.c)
     {
-      this.jdField_a_of_type_Gau.c = false;
-      this.jdField_a_of_type_Gau.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Gau.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_Fwi.c = false;
+      this.jdField_a_of_type_Fwi.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Fwi.jdField_b_of_type_Boolean = false;
       if (paramBoolean) {
         QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfile session[" + this.h + "]  internalRecvOnlineFileOver.recv success!!");
       }
@@ -720,7 +720,7 @@ public class OnlineFileSessionWorker
   
   public boolean c()
   {
-    return this.jdField_a_of_type_Fzn.jdField_a_of_type_Boolean;
+    return this.jdField_a_of_type_Fvb.jdField_a_of_type_Boolean;
   }
   
   public void d()
@@ -731,56 +731,56 @@ public class OnlineFileSessionWorker
   
   public boolean d()
   {
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fzn.a() + " user recv online file....!!");
-    boolean bool = this.jdField_a_of_type_Fzn.a();
-    this.jdField_a_of_type_Fzn = this.jdField_a_of_type_Fzn.a();
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fvb.a() + " user recv online file....!!");
+    boolean bool = this.jdField_a_of_type_Fvb.a();
+    this.jdField_a_of_type_Fvb = this.jdField_a_of_type_Fvb.a();
     return bool;
   }
   
   public void e()
   {
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fzn.a() + " stopWaitSenderReplayOnRecvTimer ant stopWaitAskUpProgressResultTimer. when onSenderCancelUpload");
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fvb.a() + " stopWaitSenderReplayOnRecvTimer ant stopWaitAskUpProgressResultTimer. when onSenderCancelUpload");
     d();
-    this.jdField_a_of_type_Fzn.b();
-    this.jdField_a_of_type_Fzn = this.jdField_a_of_type_Fzn.a();
+    this.jdField_a_of_type_Fvb.b();
+    this.jdField_a_of_type_Fvb = this.jdField_a_of_type_Fvb.a();
   }
   
   public boolean e()
   {
-    return (!this.jdField_a_of_type_Gau.c) || ((this.jdField_a_of_type_Gau.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Gau.jdField_b_of_type_Boolean));
+    return (!this.jdField_a_of_type_Fwi.c) || ((this.jdField_a_of_type_Fwi.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Fwi.jdField_b_of_type_Boolean));
   }
   
   public void f()
   {
-    this.jdField_a_of_type_Fzn.c();
-    this.jdField_a_of_type_Fzn = this.jdField_a_of_type_Fzn.a();
+    this.jdField_a_of_type_Fvb.c();
+    this.jdField_a_of_type_Fvb = this.jdField_a_of_type_Fvb.a();
   }
   
   public void g()
   {
-    this.jdField_a_of_type_Fzn.a();
-    this.jdField_a_of_type_Fzn = this.jdField_a_of_type_Fzn.a();
+    this.jdField_a_of_type_Fvb.a();
+    this.jdField_a_of_type_Fvb = this.jdField_a_of_type_Fvb.a();
   }
   
   public void h()
   {
-    this.jdField_a_of_type_Fzn.g();
-    this.jdField_a_of_type_Fzn = this.jdField_a_of_type_Fzn.a();
+    this.jdField_a_of_type_Fvb.g();
+    this.jdField_a_of_type_Fvb = this.jdField_a_of_type_Fvb.a();
   }
   
   public void i()
   {
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fzn.a() + " stopWaitSenderReplayOnRecvTimer. stopWaitAskUpProgressResultTimer. when onSenderReplayComeOnRecv");
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fvb.a() + " stopWaitSenderReplayOnRecvTimer. stopWaitAskUpProgressResultTimer. when onSenderReplayComeOnRecv");
     b();
     c();
-    this.jdField_a_of_type_Fzn.e();
-    this.jdField_a_of_type_Fzn = this.jdField_a_of_type_Fzn.a();
+    this.jdField_a_of_type_Fvb.e();
+    this.jdField_a_of_type_Fvb = this.jdField_a_of_type_Fvb.a();
   }
   
   public void j()
   {
-    this.jdField_a_of_type_Fzn.f();
-    this.jdField_a_of_type_Fzn = this.jdField_a_of_type_Fzn.a();
+    this.jdField_a_of_type_Fvb.f();
+    this.jdField_a_of_type_Fvb = this.jdField_a_of_type_Fvb.a();
   }
   
   public void k()
@@ -792,35 +792,35 @@ public class OnlineFileSessionWorker
       return;
       l1 = MessageCache.a();
     } while ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.cloudType != 0) || (l1 - this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.srvTime <= 172800L));
-    QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state :" + this.jdField_a_of_type_Fzn.a() + " is too long session and invaild!!!! invaild time=" + 172800L);
-    this.jdField_a_of_type_Fzn.h();
-    this.jdField_a_of_type_Fzn = this.jdField_a_of_type_Fzn.a();
+    QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.h + "] state :" + this.jdField_a_of_type_Fvb.a() + " is too long session and invaild!!!! invaild time=" + 172800L);
+    this.jdField_a_of_type_Fvb.h();
+    this.jdField_a_of_type_Fvb = this.jdField_a_of_type_Fvb.a();
   }
   
   public void l()
   {
-    this.jdField_a_of_type_Fzn.i();
-    this.jdField_a_of_type_Fzn = this.jdField_a_of_type_Fzn.a();
+    this.jdField_a_of_type_Fvb.i();
+    this.jdField_a_of_type_Fvb = this.jdField_a_of_type_Fvb.a();
   }
   
   public void m()
   {
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fzn.a() + " stopWaitAskUpProgressResultTimer. when onAskUpProgressAndSessionInvaid");
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fvb.a() + " stopWaitAskUpProgressResultTimer. when onAskUpProgressAndSessionInvaid");
     c();
-    this.jdField_a_of_type_Fzn.j();
-    this.jdField_a_of_type_Fzn = this.jdField_a_of_type_Fzn.a();
+    this.jdField_a_of_type_Fvb.j();
+    this.jdField_a_of_type_Fvb = this.jdField_a_of_type_Fvb.a();
   }
   
   public void n()
   {
-    if ((this.jdField_a_of_type_Fzn != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null))
+    if ((this.jdField_a_of_type_Fvb != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null))
     {
-      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fzn.a() + " stop worker...");
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fvb.a() + " stop worker...");
       d();
-      this.jdField_a_of_type_Fzn.k();
+      this.jdField_a_of_type_Fvb.k();
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = null;
       this.h = 0L;
-      this.jdField_a_of_type_Fzn = this.jdField_a_of_type_Fzn.a();
+      this.jdField_a_of_type_Fvb = this.jdField_a_of_type_Fvb.a();
     }
   }
   
@@ -830,14 +830,14 @@ public class OnlineFileSessionWorker
     {
       if ((5 == this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status) || (6 == this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status) || (7 == this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status))
       {
-        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fzn.a() + " checkAndDeleteRecordFromFM mEntity.nOpType = " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType);
+        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]  state:" + this.jdField_a_of_type_Fvb.a() + " checkAndDeleteRecordFromFM mEntity.nOpType = " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType);
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bDelInFM = true;
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, false);
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 3, null);
       }
       return;
     }
-    QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[]  state:" + this.jdField_a_of_type_Fzn.a() + " checkAndDeleteRecordFromFM. mEntity = null");
+    QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[]  state:" + this.jdField_a_of_type_Fvb.a() + " checkAndDeleteRecordFromFM. mEntity = null");
   }
 }
 

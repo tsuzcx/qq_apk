@@ -2,8 +2,8 @@ package com.tencent.open.base;
 
 import android.text.TextUtils;
 import com.tencent.mobileqq.utils.HexUtil;
-import hps;
-import hpt;
+import hlo;
+import hlp;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -22,8 +22,8 @@ public class MD5Utils
   
   static
   {
-    jdField_a_of_type_JavaUtilComparator = new hpt();
-    b = new hps();
+    jdField_a_of_type_JavaUtilComparator = new hlp();
+    b = new hlo();
     jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
@@ -32,34 +32,39 @@ public class MD5Utils
     return HexUtil.a(a(paramString));
   }
   
+  public static String a(byte[] paramArrayOfByte)
+  {
+    return HexUtil.a(a(paramArrayOfByte));
+  }
+  
   /* Error */
   protected static byte[] a(String paramString)
   {
     // Byte code:
-    //   0: ldc 46
-    //   2: invokestatic 52	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   0: ldc 49
+    //   2: invokestatic 55	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   5: astore_3
-    //   6: new 54	java/io/File
+    //   6: new 57	java/io/File
     //   9: dup
     //   10: aload_0
-    //   11: invokespecial 57	java/io/File:<init>	(Ljava/lang/String;)V
+    //   11: invokespecial 60	java/io/File:<init>	(Ljava/lang/String;)V
     //   14: astore_0
     //   15: aload_0
-    //   16: invokevirtual 61	java/io/File:exists	()Z
+    //   16: invokevirtual 64	java/io/File:exists	()Z
     //   19: ifne +5 -> 24
     //   22: aconst_null
     //   23: areturn
-    //   24: new 63	java/io/FileInputStream
+    //   24: new 66	java/io/FileInputStream
     //   27: dup
     //   28: aload_0
-    //   29: invokespecial 66	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   29: invokespecial 69	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   32: astore_2
     //   33: sipush 1024
     //   36: newarray byte
     //   38: astore_0
     //   39: aload_2
     //   40: aload_0
-    //   41: invokevirtual 70	java/io/FileInputStream:read	([B)I
+    //   41: invokevirtual 73	java/io/FileInputStream:read	([B)I
     //   44: istore_1
     //   45: iload_1
     //   46: iconst_m1
@@ -68,51 +73,51 @@ public class MD5Utils
     //   51: aload_0
     //   52: iconst_0
     //   53: iload_1
-    //   54: invokevirtual 74	java/security/MessageDigest:update	([BII)V
+    //   54: invokevirtual 77	java/security/MessageDigest:update	([BII)V
     //   57: goto -18 -> 39
     //   60: astore_0
     //   61: aload_0
-    //   62: invokevirtual 77	java/io/IOException:printStackTrace	()V
+    //   62: invokevirtual 80	java/io/IOException:printStackTrace	()V
     //   65: aload_2
-    //   66: invokevirtual 80	java/io/FileInputStream:close	()V
+    //   66: invokevirtual 83	java/io/FileInputStream:close	()V
     //   69: aconst_null
     //   70: astore_0
     //   71: aload_0
     //   72: areturn
     //   73: aload_3
-    //   74: invokevirtual 84	java/security/MessageDigest:digest	()[B
+    //   74: invokevirtual 87	java/security/MessageDigest:digest	()[B
     //   77: astore_0
     //   78: aload_2
-    //   79: invokevirtual 80	java/io/FileInputStream:close	()V
+    //   79: invokevirtual 83	java/io/FileInputStream:close	()V
     //   82: goto -11 -> 71
     //   85: astore_2
     //   86: aload_2
-    //   87: invokevirtual 77	java/io/IOException:printStackTrace	()V
+    //   87: invokevirtual 80	java/io/IOException:printStackTrace	()V
     //   90: goto -19 -> 71
     //   93: astore_0
     //   94: aload_0
-    //   95: invokevirtual 85	java/io/FileNotFoundException:printStackTrace	()V
+    //   95: invokevirtual 88	java/io/FileNotFoundException:printStackTrace	()V
     //   98: aconst_null
     //   99: areturn
     //   100: astore_0
     //   101: aload_0
-    //   102: invokevirtual 77	java/io/IOException:printStackTrace	()V
+    //   102: invokevirtual 80	java/io/IOException:printStackTrace	()V
     //   105: aconst_null
     //   106: astore_0
     //   107: goto -36 -> 71
     //   110: astore_0
     //   111: aload_2
-    //   112: invokevirtual 80	java/io/FileInputStream:close	()V
+    //   112: invokevirtual 83	java/io/FileInputStream:close	()V
     //   115: aload_0
     //   116: athrow
     //   117: astore_0
     //   118: aload_0
-    //   119: invokevirtual 86	java/security/NoSuchAlgorithmException:printStackTrace	()V
+    //   119: invokevirtual 89	java/security/NoSuchAlgorithmException:printStackTrace	()V
     //   122: aconst_null
     //   123: areturn
     //   124: astore_2
     //   125: aload_2
-    //   126: invokevirtual 77	java/io/IOException:printStackTrace	()V
+    //   126: invokevirtual 80	java/io/IOException:printStackTrace	()V
     //   129: goto -14 -> 115
     // Local variable table:
     //   start	length	slot	name	signature

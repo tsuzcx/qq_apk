@@ -1,28 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.DropdownView;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
 
-class czz
-  implements View.OnClickListener
+public final class czz
+  implements Parcelable.Creator
 {
-  czz(czx paramczx, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public ProfileActivity.CardContactInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Czx.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.removeTextChangedListener(this.jdField_a_of_type_Czx.a.b);
-    paramView = (SimpleAccount)this.jdField_a_of_type_Czx.a.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
-    LoginActivity.a(this.jdField_a_of_type_Czx.a, paramView);
-    this.jdField_a_of_type_Czx.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.addTextChangedListener(this.jdField_a_of_type_Czx.a.b);
-    this.jdField_a_of_type_Czx.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.clearFocus();
-    this.jdField_a_of_type_Czx.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.clearFocus();
-    this.jdField_a_of_type_Czx.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setClearButtonVisible(false);
-    this.jdField_a_of_type_Czx.a.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView.a().setVisibility(8);
+    ProfileActivity.CardContactInfo localCardContactInfo = new ProfileActivity.CardContactInfo(null);
+    localCardContactInfo.a = paramParcel.readString();
+    localCardContactInfo.c = paramParcel.readString();
+    localCardContactInfo.b = paramParcel.readString();
+    return localCardContactInfo;
+  }
+  
+  public ProfileActivity.CardContactInfo[] a(int paramInt)
+  {
+    return new ProfileActivity.CardContactInfo[paramInt];
   }
 }
 

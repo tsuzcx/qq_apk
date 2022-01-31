@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.maproam.activity.RoamingActivity;
-import com.tencent.mobileqq.maproam.activity.RoamingActivity.GetAddressTaskListener;
-import com.tencent.mobileqq.maproam.widget.RoamLocalSearchBar;
+import android.view.View;
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import com.tencent.widget.VerticalGallery.OnSelectViewDataUpdateListener;
 
 public class ggb
-  implements RoamingActivity.GetAddressTaskListener
+  implements VerticalGallery.OnSelectViewDataUpdateListener
 {
-  public ggb(RoamingActivity paramRoamingActivity) {}
+  public ggb(IosTimepicker paramIosTimepicker) {}
   
-  public void a(String paramString)
+  public void a(View paramView, int paramInt)
   {
-    if ((paramString != null) && (paramString.length() > 0)) {
-      this.a.a.a(paramString);
-    }
+    IosTimepicker.a(this.a, paramView, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     ggb
  * JD-Core Version:    0.7.0.1
  */

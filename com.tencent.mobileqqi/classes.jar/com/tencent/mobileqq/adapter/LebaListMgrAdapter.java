@@ -43,8 +43,8 @@ public class LebaListMgrAdapter
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130838958);
-    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131427604);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130838960);
+    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131427607);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     if (paramList != null) {
       this.jdField_a_of_type_JavaUtilList.addAll(paramList);
@@ -115,8 +115,8 @@ public class LebaListMgrAdapter
     if (paramView == null)
     {
       localViewHolder = new LebaListMgrAdapter.ViewHolder(this);
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903583, null);
-      localViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)localView.findViewById(2131232989));
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903585, null);
+      localViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)localView.findViewById(2131232992));
       localView.setTag(localViewHolder);
       localViewHolder.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem = localLebaViewItem;
       localViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setText(localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strResName);

@@ -19,7 +19,7 @@ public abstract class DrawableContainer
     return this.jdField_a_of_type_ComTencentMobileqqWidgetDrawableContainer$ContainerState.a;
   }
   
-  protected void a(DrawableContainer.ContainerState paramContainerState)
+  public void a(DrawableContainer.ContainerState paramContainerState)
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetDrawableContainer$ContainerState = paramContainerState;
   }

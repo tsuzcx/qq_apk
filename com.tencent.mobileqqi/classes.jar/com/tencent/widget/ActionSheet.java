@@ -25,8 +25,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import iaf;
-import iag;
+import hvl;
+import hvm;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -67,10 +67,10 @@ public class ActionSheet
   private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
   private CharSequence jdField_b_of_type_JavaLangCharSequence;
   private boolean jdField_b_of_type_Boolean;
-  private View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new iaf(this);
+  private View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new hvl(this);
   private CharSequence jdField_c_of_type_JavaLangCharSequence;
   private boolean jdField_c_of_type_Boolean;
-  private View.OnClickListener jdField_d_of_type_AndroidViewView$OnClickListener = new iag(this);
+  private View.OnClickListener jdField_d_of_type_AndroidViewView$OnClickListener = new hvm(this);
   private boolean jdField_d_of_type_Boolean = true;
   private int k = -1;
   private int l = 300;
@@ -203,7 +203,7 @@ public class ActionSheet
         {
           localObject = new View(getContext());
           ((View)localObject).setLayoutParams(new LinearLayout.LayoutParams(-2, 4));
-          ((View)localObject).setBackgroundColor(getContext().getResources().getColor(2131361895));
+          ((View)localObject).setBackgroundColor(getContext().getResources().getColor(2131361905));
           this.jdField_b_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
         }
         int n = this.jdField_a_of_type_JavaUtilArrayList.size();
@@ -215,7 +215,7 @@ public class ActionSheet
           Pair localPair = (Pair)this.jdField_a_of_type_JavaUtilArrayList.get(m);
           localTextView.setText((CharSequence)localPair.first);
           localTextView.setContentDescription(localPair.first + "按钮");
-          localTextView.setTextColor(this.jdField_a_of_type_AndroidContentResResources.getColor(2131361891));
+          localTextView.setTextColor(this.jdField_a_of_type_AndroidContentResResources.getColor(2131361901));
           localTextView.setSingleLine(true);
           localTextView.setEllipsize(TextUtils.TruncateAt.END);
           ((View)localObject).setId(m);
@@ -231,7 +231,7 @@ public class ActionSheet
             if (m != this.k) {
               break label502;
             }
-            ((ImageView)localObject).setBackgroundResource(2130840215);
+            ((ImageView)localObject).setBackgroundResource(2130840217);
           }
           for (;;)
           {
@@ -239,13 +239,13 @@ public class ActionSheet
             {
               localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
               ((ImageView)localObject).setLayoutParams(new LinearLayout.LayoutParams(-1, 1));
-              ((ImageView)localObject).setBackgroundColor(getContext().getResources().getColor(2131361896));
+              ((ImageView)localObject).setBackgroundColor(getContext().getResources().getColor(2131361906));
               this.jdField_b_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
             }
             m += 1;
             break;
             label502:
-            ((ImageView)localObject).setBackgroundResource(2130840216);
+            ((ImageView)localObject).setBackgroundResource(2130840218);
           }
         }
       }
@@ -493,7 +493,7 @@ public class ActionSheet
       {
         View localView = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.k);
         if (localView != null) {
-          ((ImageView)localView.findViewById(2131231062)).setBackgroundResource(2130840215);
+          ((ImageView)localView.findViewById(2131231062)).setBackgroundResource(2130840217);
         }
       }
     }

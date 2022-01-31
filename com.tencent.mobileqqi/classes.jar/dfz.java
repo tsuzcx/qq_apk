@@ -1,29 +1,21 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.CardObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class dfz
-  extends CardObserver
+  implements DialogInterface.OnClickListener
 {
-  public dfz(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public dfz(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.a.a.equals(paramString)) {
-      return;
-    }
-    this.a.h();
-    if (paramBoolean)
-    {
-      this.a.a(2131562776, 2);
-      return;
-    }
-    this.a.a(2131562773, 1);
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dfz
  * JD-Core Version:    0.7.0.1
  */

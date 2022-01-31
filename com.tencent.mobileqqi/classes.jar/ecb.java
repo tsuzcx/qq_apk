@@ -1,16 +1,10 @@
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ecb
-  implements Runnable
+public final class ecb
+  implements DialogInterface.OnClickListener
 {
-  public ecb(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, ChatMessage paramChatMessage) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(1, 200, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq) });
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

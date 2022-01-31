@@ -1,16 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.international.activity.FeedbackActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
 
 public class gds
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public gds(FeedbackActivity paramFeedbackActivity) {}
+  public gds(PhoneNumLoginImpl paramPhoneNumLoginImpl) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FeedbackActivity.a(this.a);
-    this.a.finish();
+    try
+    {
+      paramDialogInterface.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
+    }
   }
 }
 

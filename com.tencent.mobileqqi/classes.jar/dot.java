@@ -1,39 +1,32 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
 
 public class dot
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public dot(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public dot(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    int i = 1;
-    if (paramBoolean)
+    this.a.jdField_b_of_type_Boolean = false;
+    if (TroopAssistantActivity.a(this.a) != null)
     {
-      this.a.b.d(1);
-      paramCompoundButton = this.a.b;
-      if (!paramBoolean) {
-        break label68;
-      }
+      TroopAssistantActivity.a(this.a).a(4);
+      this.a.i();
+      this.a.h();
     }
-    for (;;)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_grpshake", 0, i, "", "", "", "");
-      return;
-      this.a.b.d(0);
-      break;
-      label68:
-      i = 0;
+    if (TroopAssistantManager.a().c()) {
+      TroopAssistantManager.a().f(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
     }
+    TroopAssistantActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dot
  * JD-Core Version:    0.7.0.1
  */

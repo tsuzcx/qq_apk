@@ -11,9 +11,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Display;
 import android.view.WindowManager;
-import brj;
-import brl;
-import brm;
+import blf;
+import blh;
+import bli;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
@@ -202,7 +202,7 @@ public class CodeMaskManager
     } while (System.currentTimeMillis() - l < 86400000L);
     Display localDisplay = ((WindowManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("window")).getDefaultDisplay();
     int i = localDisplay.getHeight();
-    this.jdField_a_of_type_JavaLangThread = new brj(this, localSharedPreferences, localDisplay.getWidth(), i, paramInt);
+    this.jdField_a_of_type_JavaLangThread = new blf(this, localSharedPreferences, localDisplay.getWidth(), i, paramInt);
     this.jdField_a_of_type_JavaLangThread.start();
   }
   
@@ -306,9 +306,9 @@ public class CodeMaskManager
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore_3
+    //   1: astore_3
+    //   2: aconst_null
+    //   3: astore 4
     //   5: aload_2
     //   6: ifnull +81 -> 87
     //   9: new 77	java/io/File
@@ -359,19 +359,19 @@ public class CodeMaskManager
     //   100: iconst_0
     //   101: ireturn
     //   102: astore_1
-    //   103: aload_3
-    //   104: astore_1
-    //   105: aload_1
-    //   106: ifnull -21 -> 85
-    //   109: aload_1
-    //   110: invokevirtual 413	java/io/FileOutputStream:close	()V
-    //   113: iconst_0
-    //   114: ireturn
-    //   115: astore_1
-    //   116: iconst_0
-    //   117: ireturn
-    //   118: astore_1
-    //   119: aload 4
+    //   103: aload 4
+    //   105: astore_1
+    //   106: aload_1
+    //   107: ifnull -22 -> 85
+    //   110: aload_1
+    //   111: invokevirtual 413	java/io/FileOutputStream:close	()V
+    //   114: iconst_0
+    //   115: ireturn
+    //   116: astore_1
+    //   117: iconst_0
+    //   118: ireturn
+    //   119: astore_1
+    //   120: aload_3
     //   121: astore_1
     //   122: aload_1
     //   123: ifnull -38 -> 85
@@ -388,22 +388,22 @@ public class CodeMaskManager
     //   138: astore_2
     //   139: goto -17 -> 122
     //   142: astore_2
-    //   143: goto -38 -> 105
+    //   143: goto -37 -> 106
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	146	0	this	CodeMaskManager
     //   0	146	1	paramString	String
     //   0	146	2	paramArrayOfByte	byte[]
-    //   4	100	3	localObject1	Object
-    //   1	119	4	localObject2	Object
+    //   1	120	3	localObject1	Object
+    //   3	101	4	localObject2	Object
     // Exception table:
     //   from	to	target	type
     //   91	99	99	java/io/IOException
     //   9	63	102	java/io/IOException
     //   63	72	102	java/io/IOException
-    //   109	113	115	java/io/IOException
-    //   9	63	118	finally
-    //   63	72	118	finally
+    //   110	114	116	java/io/IOException
+    //   9	63	119	finally
+    //   63	72	119	finally
     //   126	130	132	java/io/IOException
     //   81	85	135	java/io/IOException
     //   72	77	138	finally
@@ -500,9 +500,9 @@ public class CodeMaskManager
       c();
       return;
     }
-    localObject = new brm(this, paramCallback, (Bundle)localObject);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new brl(this, (brm)localObject, paramCallback), 10000L);
-    ((brm)localObject).start();
+    localObject = new bli(this, paramCallback, (Bundle)localObject);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new blh(this, (bli)localObject, paramCallback), 10000L);
+    ((bli)localObject).start();
   }
 }
 

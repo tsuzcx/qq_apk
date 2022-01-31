@@ -1,34 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
-import com.tencent.qphone.base.util.QLog;
-import com.weiyun.sdk.IWyFileSystem.IWyCallback;
-import com.weiyun.sdk.IWyFileSystem.Thumbnail;
-import com.weiyun.sdk.IWyFileSystem.WyErrorStatus;
+import com.tencent.mobileqq.maproam.activity.RoamingActivity;
+import com.tencent.mobileqq.maproam.widget.RoamingMapView;
+import com.tencent.tencentmap.mapsdk.map.MapController;
 
 public class gbt
-  implements IWyFileSystem.IWyCallback
+  implements Runnable
 {
-  public gbt(WeiYunLogicCenter paramWeiYunLogicCenter) {}
+  public gbt(RoamingActivity paramRoamingActivity) {}
   
-  public void a(IWyFileSystem.Thumbnail paramThumbnail)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onSucceed. filePath[" + paramThumbnail.filePath + "]");
-    }
-    this.a.a.a().a(true, 39, new Object[] { paramThumbnail });
-  }
-  
-  public void onFailed(IWyFileSystem.WyErrorStatus paramWyErrorStatus)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onFailed: errcode[" + paramWyErrorStatus.errorCode + "], errmsg[" + paramWyErrorStatus.errorMsg + "]");
-    }
+    this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapController.setZoom(this.a.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamingMapView.getMaxZoomLevel() - 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gbt
  * JD-Core Version:    0.7.0.1
  */

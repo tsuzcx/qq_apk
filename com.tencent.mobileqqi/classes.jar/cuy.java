@@ -1,69 +1,46 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.gesturelock.LockPatternView;
-import com.tencent.mobileqq.gesturelock.LockPatternView.DisplayMode;
-import com.tencent.mobileqq.gesturelock.LockPatternView.OnPatternListener;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import com.tencent.mobileqq.international.LocaleString;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class cuy
-  implements LockPatternView.OnPatternListener
+  extends WtloginObserver
 {
-  public cuy(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
+  public cuy(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
   
-  public void a() {}
-  
-  public void a(List paramList)
+  public void OnCheckSMSVerifyLoginAccount(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
   {
-    if (paramList != null) {
-      switch (this.a.jdField_b_of_type_Int)
-      {
-      }
-    }
-    do
+    if (QLog.isColorLevel())
     {
-      return;
-      if ((paramList != null) && (paramList.size() >= 3))
-      {
-        this.a.a(paramList);
-        this.a.jdField_a_of_type_JavaLangString = GesturePWDUtils.encodeGesture(GesturePWDUtils.patternToString(paramList), this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a());
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131561865);
-        this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new cuz(this), 500L);
-        this.a.jdField_b_of_type_Int = 1;
-        return;
+      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount appid=" + paramLong1 + " subAppid=" + paramLong2 + " countryCode=" + paramString1 + " mobile=" + paramString2);
+      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount msg=" + paramString3 + " msgCnt=" + paramInt1 + " timeLimit=" + paramInt2 + " ret=" + paramInt3);
+      if (paramErrMsg != null) {
+        QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
-      this.a.a(1, this.a.getString(2131563296));
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new cva(this), 500L);
-      return;
-      paramList = GesturePWDUtils.encodeGesture(GesturePWDUtils.patternToString(paramList), this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a());
-      if ((this.a.jdField_a_of_type_JavaLangString == null) || (paramList == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramList))) {
-        break;
-      }
-      GesturePWDUtils.setGesturePWD(this.a, this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), this.a.jdField_a_of_type_JavaLangString);
-      GesturePWDUtils.setGesturePWDState(this.a, this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), 2);
-      ReportController.b(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Setting_tab", "Gesture_password", 0, 1, "", "", "", "");
-      this.a.a(2, this.a.getString(2131562892));
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new cvb(this), 300L);
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.gesturelock.creat", 2, "gesture lock create success...");
-    return;
-    this.a.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new cvc(this), 500L);
-    this.a.a(1, this.a.getString(2131562232));
-  }
-  
-  public void b() {}
-  
-  public void b(List paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.creat", 2, "celladd.");
     }
+    this.a.g();
+    if (this.a.isFinishing()) {
+      return;
+    }
+    if (paramInt3 == 0)
+    {
+      this.a.s_();
+      return;
+    }
+    paramString1 = null;
+    if (paramErrMsg != null)
+    {
+      paramString1 = paramErrMsg.getMessage();
+      paramString1 = LocaleString.a(this.a, paramString1);
+    }
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      this.a.a(null, paramString1);
+      return;
+    }
+    this.a.a(2131562783, 1);
   }
 }
 

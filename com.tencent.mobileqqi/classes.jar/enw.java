@@ -1,21 +1,26 @@
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.service.profile.ProfileUtil;
-import com.tencent.widget.TimePickerView.TimePickerListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
-class enw
-  implements TimePickerView.TimePickerListener
+public class enw
+  implements View.OnClickListener
 {
-  enw(env paramenv) {}
+  public enw(BannerManager paramBannerManager, String paramString) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    paramInt1 = ProfileUtil.a(paramInt1, paramInt2, paramInt3);
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ProfileUtil.a(paramInt1));
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, "click move to url:" + this.jdField_a_of_type_JavaLangString);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.b = paramInt1;
-    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+    paramView = new Intent(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), QQBrowserDelegationActivity.class);
+    paramView.putExtra("injectrecommend", true);
+    BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).startActivity(paramView.putExtra("url", this.jdField_a_of_type_JavaLangString));
+    ReportController.a(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).b, "CliOper", "", "", "0X8004029", "0X8004029", 0, 0, "", "", "", "");
   }
 }
 

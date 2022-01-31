@@ -24,9 +24,9 @@ import com.tencent.mobileqq.service.message.MessageUtils;
 import com.tencent.mobileqq.transfile.AbsDownloader;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.qphone.base.util.QLog;
-import goy;
-import gpb;
-import gpc;
+import gkr;
+import gku;
+import gkv;
 import java.io.File;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
@@ -37,9 +37,9 @@ public class StructMsgForAudioShare
   extends AbsShareMsg
   implements QQPlayerService.QQPlayerCallback
 {
-  private static View.OnClickListener a = new gpb();
+  private static View.OnClickListener a = new gku();
   private WeakReference mCoverImage;
-  private View.OnClickListener musicShareCoverClikListener = new gpc(this);
+  private View.OnClickListener musicShareCoverClikListener = new gkv(this);
   
   StructMsgForAudioShare()
   {
@@ -93,7 +93,7 @@ public class StructMsgForAudioShare
   
   public View getPreDialogView(Context paramContext, View paramView)
   {
-    View localView = LayoutInflater.from(paramContext).inflate(2130903994, null);
+    View localView = LayoutInflater.from(paramContext).inflate(2130903996, null);
     ImageView localImageView = (ImageView)localView.findViewById(2131230795);
     Object localObject = (TextView)localView.findViewById(2131230796);
     TextView localTextView = (TextView)localView.findViewById(2131230797);
@@ -114,9 +114,9 @@ public class StructMsgForAudioShare
     for (int i = 3;; i = 2)
     {
       ((TextView)localObject).setMaxLines(i);
-      i = 2130840239;
+      i = 2130840241;
       if ((this instanceof StructMsgForAudioShare)) {
-        i = 2130840242;
+        i = 2130840244;
       }
       localObject = paramContext.getResources().getDrawable(i);
       localImageView.setBackgroundDrawable(null);
@@ -147,7 +147,7 @@ public class StructMsgForAudioShare
   {
     Object localObject1 = paramContext.getResources();
     paramView = super.getView(paramContext, paramView, paramOnLongClickAndTouchListener);
-    View localView = LayoutInflater.from(paramContext).inflate(2130903992, null);
+    View localView = LayoutInflater.from(paramContext).inflate(2130903994, null);
     paramOnLongClickAndTouchListener = (URLImageView)localView.findViewById(2131230795);
     this.mCoverImage = new WeakReference(paramOnLongClickAndTouchListener);
     Object localObject2 = (TextView)localView.findViewById(2131230796);
@@ -169,14 +169,14 @@ public class StructMsgForAudioShare
       if (!QQPlayerService.a(this)) {
         break label320;
       }
-      paramOnLongClickAndTouchListener.setImageResource(2130838982);
+      paramOnLongClickAndTouchListener.setImageResource(2130838984);
       paramOnLongClickAndTouchListener.setContentDescription(((Resources)localObject1).getString(2131562974));
       label165:
       if (TextUtils.isEmpty(this.mContentCover)) {
         break label388;
       }
       localObject2 = this.mContentCover;
-      localObject1 = ((Resources)localObject1).getDrawable(2130840242);
+      localObject1 = ((Resources)localObject1).getDrawable(2130840244);
     }
     for (;;)
     {
@@ -218,13 +218,13 @@ public class StructMsgForAudioShare
         break;
         i = 2;
         break label127;
-        paramOnLongClickAndTouchListener.setImageResource(2130838981);
+        paramOnLongClickAndTouchListener.setImageResource(2130838983);
         paramOnLongClickAndTouchListener.setContentDescription(((Resources)localObject1).getString(2131562616));
         break label165;
         bool = false;
         continue;
         label388:
-        paramOnLongClickAndTouchListener.setBackgroundResource(2130840242);
+        paramOnLongClickAndTouchListener.setBackgroundResource(2130840244);
         continue;
       }
       paramContext.width = BaseChatItemLayout.g;
@@ -249,11 +249,11 @@ public class StructMsgForAudioShare
     Resources localResources = localURLImageView.getContext().getResources();
     if ((paramInt == 2) || (paramInt == 1))
     {
-      localURLImageView.setImageResource(2130838982);
+      localURLImageView.setImageResource(2130838984);
       localURLImageView.setContentDescription(localResources.getString(2131562974));
       return;
     }
-    localURLImageView.setImageResource(2130838981);
+    localURLImageView.setImageResource(2130838983);
     localURLImageView.setContentDescription(localResources.getString(2131562616));
   }
   
@@ -348,31 +348,31 @@ public class StructMsgForAudioShare
     this.mCompatibleText = paramObjectInput.readUTF();
   }
   
-  protected void toContentXml(goy paramgoy)
+  protected void toContentXml(gkr paramgkr)
   {
-    paramgoy.startTag(null, "item");
-    paramgoy.attribute(null, "layout", String.valueOf(this.mContentLayout));
-    paramgoy.startTag(null, "audio");
+    paramgkr.startTag(null, "item");
+    paramgkr.attribute(null, "layout", String.valueOf(this.mContentLayout));
+    paramgkr.startTag(null, "audio");
     if (this.mContentCover == null)
     {
       str = "";
-      paramgoy.attribute(null, "cover", str);
+      paramgkr.attribute(null, "cover", str);
       if (this.mContentSrc != null) {
         break label173;
       }
       str = "";
       label66:
-      paramgoy.attribute(null, "src", str);
-      paramgoy.endTag(null, "audio");
-      paramgoy.startTag(null, "title");
+      paramgkr.attribute(null, "src", str);
+      paramgkr.endTag(null, "audio");
+      paramgkr.startTag(null, "title");
       if (this.mContentTitle != null) {
         break label181;
       }
       str = "";
       label105:
-      paramgoy.text(str);
-      paramgoy.endTag(null, "title");
-      paramgoy.startTag(null, "summary");
+      paramgkr.text(str);
+      paramgkr.endTag(null, "title");
+      paramgkr.startTag(null, "summary");
       if (this.mContentSummary != null) {
         break label189;
       }
@@ -382,9 +382,9 @@ public class StructMsgForAudioShare
     label189:
     for (String str = "";; str = this.mContentSummary)
     {
-      paramgoy.text(str);
-      paramgoy.endTag(null, "summary");
-      paramgoy.endTag(null, "item");
+      paramgkr.text(str);
+      paramgkr.endTag(null, "summary");
+      paramgkr.endTag(null, "item");
       return;
       str = this.mContentCover;
       break;

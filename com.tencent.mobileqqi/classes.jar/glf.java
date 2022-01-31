@@ -1,24 +1,33 @@
-import android.view.animation.AlphaAnimation;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.photopreview.CountDownTimer.CountDownTimerListener;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView.TimerCallback;
 
-class glf
-  implements Runnable
+public class glf
+  extends CountDownTimer.CountDownTimerListener
 {
-  glf(gle paramgle, ImageView paramImageView, TextView paramTextView) {}
-  
-  public void run()
+  public glf(CountdownTextView paramCountdownTextView, long paramLong, CountdownTextView.TimerCallback paramTimerCallback)
   {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation.setDuration(200L);
-    localAlphaAnimation.setAnimationListener(new glg(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localAlphaAnimation);
-    this.jdField_a_of_type_AndroidWidgetTextView.startAnimation(localAlphaAnimation);
+    super(paramLong);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback.a();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.a();
+  }
+  
+  public void b(long paramLong)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback.a(paramLong);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     glf
  * JD-Core Version:    0.7.0.1
  */

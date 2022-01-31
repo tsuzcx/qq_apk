@@ -18,7 +18,7 @@ import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
-import cy;
+import dg;
 import java.io.File;
 import java.util.List;
 
@@ -28,7 +28,7 @@ public class LiteMpFileFileDetailActivity
   public static String a;
   private float jdField_a_of_type_Float = 0.0F;
   private long jdField_a_of_type_Long = 0L;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new cy(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new dg(this);
   private long jdField_b_of_type_Long = 0L;
   private String jdField_b_of_type_JavaLangString;
   private long c;

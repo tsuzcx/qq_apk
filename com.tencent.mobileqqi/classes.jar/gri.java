@@ -1,27 +1,32 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.mobileqq.transfile.C2CPttUploadProcessor;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.troop.activity.TroopAdminList;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class gri
-  extends MessageObserver
+  extends FriendListObserver
 {
-  public gri(C2CPttUploadProcessor paramC2CPttUploadProcessor) {}
+  public gri(TroopAdminList paramTroopAdminList) {}
   
-  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  protected void a(ArrayList paramArrayList, boolean paramBoolean)
   {
-    this.a.a("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopAdminList", 2, "onUpdateFriendInfoFinished ");
     }
-    this.a.d();
+    this.a.f();
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
+      this.a.f();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     gri
  * JD-Core Version:    0.7.0.1
  */

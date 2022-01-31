@@ -42,18 +42,18 @@ public class StructMsgItemLayout4
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
     a(paramContext);
     b(paramContext);
-    int k = localResources.getDimensionPixelSize(2131427485);
-    int m = localResources.getDimensionPixelSize(2131427486);
+    int k = localResources.getDimensionPixelSize(2131427488);
+    int m = localResources.getDimensionPixelSize(2131427489);
     int i;
     if (a(1))
     {
-      i = localResources.getDimensionPixelSize(2131427487);
+      i = localResources.getDimensionPixelSize(2131427490);
       if (!a(2)) {
         break label121;
       }
     }
     label121:
-    for (int j = localResources.getDimensionPixelSize(2131427488);; j = AIOUtils.a(6.0F, localResources))
+    for (int j = localResources.getDimensionPixelSize(2131427491);; j = AIOUtils.a(6.0F, localResources))
     {
       paramContext.setPadding(k, i, m, j);
       paramContext.setLayoutParams(localLayoutParams);

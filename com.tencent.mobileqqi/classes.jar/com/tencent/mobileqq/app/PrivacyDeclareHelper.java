@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.activity.PrivacyDeclareViewActivity;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.international.LocaleUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToastNotifier;
@@ -28,20 +29,26 @@ public class PrivacyDeclareHelper
   public static final String b = "key_privacy_type";
   public static final int c = 2;
   public static final String c = "key_privacy_uin";
-  public static final int d = 1001;
+  public static final int d = 3;
   public static final String d = "key_privacy_underage";
-  public static final int e = 11;
+  public static final int e = 1001;
   public static final String e = "url";
+  public static final int f = 11;
   public static final String f = "privacy://";
+  public static final int g = 2000;
   public static final String g = "https://sqimg.qq.com/qq_product_operations/i18n/loginPrivacy.html?language={language}";
+  public static final int h = 2001;
   public static final String h = "privacy://continueClick";
+  public static final int i = 2002;
   public static final String i = "privacy://cancelClick";
   public static final String j = "https://sqimg.qq.com/qq_product_operations/i18n/newUser.html?language={language}";
   public static final String k = "privacy://ShowMeABox";
   public static final String l = "checkbox";
   public static final String m = "language";
-  public static final String n = "https://sqimg.qq.com/qq_product_operations/i18n/parentalPermission.html?language={language}";
-  private static String o = null;
+  public static final String n = "http://ti.qq.com/adyen/index.html";
+  public static final String o = "ti.qq.com/adyen/index";
+  public static final String p = "privacy://authSuccess";
+  private static String q = null;
   
   private static Resources a(PackageManager paramPackageManager, String paramString1, String paramString2)
   {
@@ -88,7 +95,7 @@ public class PrivacyDeclareHelper
   
   public static String a(Context paramContext)
   {
-    return a(paramContext, "https://sqimg.qq.com/qq_product_operations/i18n/parentalPermission.html?language={language}");
+    return a(paramContext, "http://ti.qq.com/adyen/index.html");
   }
   
   public static String a(Context paramContext, int paramInt, String paramString)
@@ -158,6 +165,7 @@ public class PrivacyDeclareHelper
     if (a(i1, paramBundle))
     {
       paramCallback = new Intent(paramContext, PrivacyDeclareViewActivity.class);
+      paramBundle = "";
       if (i1 == 1)
       {
         paramBundle = "https://sqimg.qq.com/qq_product_operations/i18n/loginPrivacy.html?language={language}";
@@ -169,7 +177,7 @@ public class PrivacyDeclareHelper
           if ((paramContext instanceof BaseActivity))
           {
             ((BaseActivity)paramContext).startActivityForResult(paramCallback, 1001);
-            label165:
+            label168:
             ((Activity)paramContext).overridePendingTransition(2130968596, 2130968597);
             return;
           }
@@ -184,17 +192,20 @@ public class PrivacyDeclareHelper
     {
       a();
       return;
+      if ((i1 != 2) && (i1 != 3)) {
+        break;
+      }
       paramBundle = "https://sqimg.qq.com/qq_product_operations/i18n/newUser.html?language={language}";
       break;
       paramContext.startActivity(paramCallback);
-      break label165;
+      break label168;
       a.c();
     }
   }
   
   public static void a(String paramString)
   {
-    o = null;
+    q = null;
     try
     {
       EUCountryUtils.b(paramString);
@@ -224,14 +235,14 @@ public class PrivacyDeclareHelper
     boolean bool = true;
     if (paramInt == 1)
     {
-      if ((paramString != null) && (paramString.equals(o))) {
+      if ((paramString != null) && (paramString.equals(q))) {
         bool = false;
       }
     }
     else {
       return bool;
     }
-    o = paramString;
+    q = paramString;
     try
     {
       bool = EUCountryUtils.d(paramString);
@@ -275,10 +286,15 @@ public class PrivacyDeclareHelper
       for (;;)
       {
         return bool;
-        if (!(paramContext instanceof LoginActivity)) {
-          break label151;
+        if ((paramContext instanceof LoginActivity))
+        {
+          i1 = 1;
+          break;
         }
-        i1 = 1;
+        if (!(paramContext instanceof SplashActivity)) {
+          break label164;
+        }
+        i1 = 3;
         break;
         if (paramInt2 == 11)
         {
@@ -289,7 +305,7 @@ public class PrivacyDeclareHelper
         break label98;
         bool = false;
       }
-      label151:
+      label164:
       i1 = 0;
     }
   }

@@ -1,15 +1,10 @@
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.TroopUnreadTipsChatItemBuilder;
 
 public class ebl
-  implements Runnable
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public ebl(MediaPlayerManager paramMediaPlayerManager, AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, this.jdField_a_of_type_Int);
-  }
+  public ebl(TroopUnreadTipsChatItemBuilder paramTroopUnreadTipsChatItemBuilder) {}
 }
 
 

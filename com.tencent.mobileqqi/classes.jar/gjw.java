@@ -1,50 +1,39 @@
+import android.util.Log;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QCallRecord;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.qcall.QCallFacade;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.startup.director.StartupDirector;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.util.HashMap;
 
 public class gjw
   implements Runnable
 {
-  public gjw(QCallDetailActivity paramQCallDetailActivity) {}
+  public gjw(StartupDirector paramStartupDirector, boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
   public void run()
   {
-    ArrayList localArrayList;
-    if (QCallDetailActivity.a(this.a) != null) {
-      localArrayList = new ArrayList();
-    }
-    for (;;)
+    Object localObject;
+    if (this.jdField_a_of_type_Boolean)
     {
-      synchronized (QCallDetailActivity.a(this.a))
-      {
-        List localList = QCallDetailActivity.a(this.a).a(QCallDetailActivity.a(this.a), QCallDetailActivity.a(this.a));
-        if ((QCallDetailActivity.a(this.a) != null) && (localList != null) && (!localList.isEmpty()))
-        {
-          int i = 20;
-          int j = 0;
-          if ((j >= i) || (j >= localList.size())) {
-            break label191;
-          }
-          if (((QCallRecord)localList.get(j)).type == QCallRecord.TYPE_DATE)
-          {
-            i += 1;
-            localArrayList.add(localList.get(j));
-            j += 1;
-            continue;
-            this.a.b.runOnUiThread(new gjx(this, localArrayList, bool));
-          }
-        }
-        else
-        {
-          bool = true;
-        }
+      localObject = BaseApplicationImpl.a.a();
+      if ((localObject != null) && ((localObject instanceof QQAppInterface))) {
+        ReportController.b((QQAppInterface)localObject, "CliOper", "", "", "0X8003F36", "0X8003F36", 0, 0, "", "", "", "");
       }
-      continue;
-      label191:
-      boolean bool = false;
+    }
+    if (this.jdField_a_of_type_Long > 0L)
+    {
+      Log.i("AutoMonitor", "ActionLoginM, cost=" + this.b);
+      localObject = new HashMap();
+      ((HashMap)localObject).put("cost", this.b + "");
+      StatisticCollector.a(BaseApplicationImpl.a).a(null, "actLoginM", true, this.b, 0L, (HashMap)localObject, null);
+    }
+    if (this.c < 0L)
+    {
+      Log.i("AutoMonitor", "STATE_TOTAL, cost=" + this.d);
+      localObject = new HashMap();
+      ((HashMap)localObject).put("cost", this.d + "");
+      StatisticCollector.a(BaseApplicationImpl.a).a(null, "actLoginS", true, this.d, 0L, (HashMap)localObject, null);
     }
   }
 }

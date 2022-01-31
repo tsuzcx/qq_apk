@@ -1,26 +1,4 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.util.FaceDrawable;
-
-public class her
-  extends FriendListObserver
-{
-  private her(FaceDrawable paramFaceDrawable) {}
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    FaceDrawable.a(this.a, paramBoolean, 1, paramString, FaceDrawable.a(this.a));
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    FaceDrawable.a(this.a, paramBoolean, 11, paramString, FaceDrawable.a(this.a));
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    FaceDrawable.a(this.a, paramBoolean, 4, paramString, FaceDrawable.a(this.a));
-  }
-}
+public class her {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar

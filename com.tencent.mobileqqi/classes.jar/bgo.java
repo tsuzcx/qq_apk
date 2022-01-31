@@ -1,20 +1,21 @@
-import android.graphics.Bitmap;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.utils.QAVNotification;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.PoiMapActivity.ShopListAdapter;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class bgo
-  implements Runnable
+  implements AbsListView.OnScrollListener
 {
-  public bgo(VideoController paramVideoController) {}
+  public bgo(PoiMapActivity paramPoiMapActivity) {}
   
-  public void run()
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    String str = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.g, this.a.a().j, null);
-    Bitmap localBitmap = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.g, this.a.a().j, null, true, true);
-    QAVNotification.a(this.a.jdField_a_of_type_AndroidContentContext).a(str, localBitmap, this.a.a().j, 44);
+    if ((paramInt == 0) && (paramAbsListView.r() == paramAbsListView.a() - 1) && (this.a.a.a)) {
+      this.a.a.a();
+    }
   }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,14 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.base.ImageUtil;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.img.ImageCache;
+import com.tencent.open.base.img.ImageDownCallback;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
 
-class hmt
-  implements DialogInterface.OnClickListener
+public class hmt
+  implements ImageDownCallback
 {
-  hmt(hms paramhms) {}
+  public hmt(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString1, String paramString2, String paramString3) {}
+  
+  public void b(String paramString1, String paramString2, String paramString3)
   {
-    paramDialogInterface.dismiss();
+    LogUtility.d(DownloadManager.a, ">>download apk icon err,should load another size icon");
+    ImageCache.a("app", ImageUtil.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b, 75), null);
   }
 }
 

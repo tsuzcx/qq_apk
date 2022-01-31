@@ -1,40 +1,29 @@
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.activity.recent.RecentCallHelper;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class eoi
-  implements View.OnKeyListener, TextView.OnEditorActionListener
+  implements View.OnClickListener
 {
-  private eoi(MessageSearchDialog paramMessageSearchDialog) {}
+  public eoi(BannerManager paramBannerManager) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 3)
+    if (BannerManager.a(this.a) != null)
     {
-      MessageSearchDialog.a(this.a);
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if ((paramKeyEvent.getKeyCode() == 66) || (paramKeyEvent.getKeyCode() == 84))
-    {
-      if (paramKeyEvent.getAction() == 1) {
-        MessageSearchDialog.a(this.a);
+      BannerManager.a(this.a).b();
+      if (BannerManager.a(this.a) != null) {
+        ReportController.b(BannerManager.a(this.a).b, "CliOper", "", "", "0X80040AA", "0X80040AA", 0, 0, "", "", "", "");
       }
-      return true;
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eoi
  * JD-Core Version:    0.7.0.1
  */

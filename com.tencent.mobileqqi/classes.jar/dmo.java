@@ -1,23 +1,21 @@
-import android.os.Handler;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SubAccountSettingActivity;
+import com.tencent.mobileqq.activity.SubaccountUgActivity;
 
-public class dmo
-  implements Runnable
+class dmo
+  implements DialogInterface.OnClickListener
 {
-  public dmo(RegisterSendUpSms paramRegisterSendUpSms) {}
+  dmo(dml paramdml) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (RegisterSendUpSms.a(this.a) == 1)
-    {
-      RegisterSendUpSms.a(this.a).setText(2131562881);
-      RegisterSendUpSms.a(this.a).setEnabled(true);
-      return;
-    }
-    RegisterSendUpSms.b(this.a);
-    RegisterSendUpSms.a(this.a).setText(this.a.getString(2131562881) + "(" + RegisterSendUpSms.a(this.a) + ")");
-    this.a.b.postDelayed(this, 1000L);
+    this.a.a.a().setTitle("");
+    paramDialogInterface = new Intent(this.a.a.a(), SubaccountUgActivity.class);
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

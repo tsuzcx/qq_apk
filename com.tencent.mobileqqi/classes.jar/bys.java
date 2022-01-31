@@ -1,79 +1,40 @@
-import android.content.res.Resources;
-import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import mqq.app.permission.PermissionManager;
 
 public class bys
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public bys(AccountManageActivity paramAccountManageActivity) {}
+  public bys(ChatActivity paramChatActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!this.a.d) {
-      return;
-    }
-    paramView = this.a;
-    boolean bool;
-    label102:
-    int i;
-    if (!this.a.c)
-    {
-      bool = true;
-      paramView.c = bool;
-      if (!this.a.c) {
-        break label156;
-      }
-      AccountManageActivity.g(this.a).setVisibility(8);
-      AccountManageActivity.h(this.a).setVisibility(0);
-      AccountManageActivity.i(this.a).setText(2131561977);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131362099));
-      int j = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-      i = 0;
-      label115:
-      if (i >= j) {
-        break label263;
-      }
-      paramView = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      if ((paramView != null) && (paramView.getTag() != null)) {
-        break label216;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label115;
-      bool = false;
-      break;
-      label156:
-      AccountManageActivity.j(this.a).setVisibility(0);
-      AccountManageActivity.k(this.a).setVisibility(8);
-      AccountManageActivity.l(this.a).setText(2131562001);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131362073));
-      break label102;
-      label216:
-      paramView = paramView.findViewById(2131230999);
-      if (paramView != null)
+    if (paramMotionEvent.getAction() == 0) {
+      if ((!this.a.permissionManager.checkPermission("android.permission.RECORD_AUDIO")) || (!this.a.permissionManager.checkPermission("android.permission.WRITE_EXTERNAL_STORAGE")))
       {
-        ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) * AccountManageActivity.b(this.a)));
-        paramView.setLayoutParams(localLayoutParams);
+        paramView = new PermissionsDialog();
+        paramMotionEvent = this.a.a();
+        localbyt = new byt(this);
+        paramView.a(paramMotionEvent, new String[] { "android.permission.RECORD_AUDIO", "android.permission.WRITE_EXTERNAL_STORAGE" }, localbyt);
       }
     }
-    label263:
-    this.a.b();
-    this.a.a(this.a.c);
-    this.a.d = false;
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new byt(this), 400L);
+    while (paramMotionEvent.getAction() != 1)
+    {
+      byt localbyt;
+      return false;
+      this.a.findViewById(2131231203).setBackgroundResource(2130840096);
+      return false;
+    }
+    this.a.findViewById(2131231203).setBackgroundResource(2130840095);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bys
  * JD-Core Version:    0.7.0.1
  */

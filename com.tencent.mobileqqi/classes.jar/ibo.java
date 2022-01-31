@@ -1,38 +1,46 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.widget.TCWNumberPicker;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.qqfav.widget.FavoriteActionSheet.DefaultActions;
+import cooperation.qqfav.widget.LocationDetailActivity;
+import java.lang.ref.WeakReference;
 
 public class ibo
-  implements InputFilter
+  extends FavoriteActionSheet.DefaultActions
 {
-  private ibo(TCWNumberPicker paramTCWNumberPicker) {}
+  private WeakReference a;
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public ibo(LocationDetailActivity paramLocationDetailActivity)
   {
-    int i = 0;
-    if (TCWNumberPicker.a(this.a) == null)
-    {
-      paramCharSequence = TCWNumberPicker.a(this.a).filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-      return paramCharSequence;
+    this.a = new WeakReference(paramLocationDetailActivity);
+  }
+  
+  public void a()
+  {
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if (localLocationDetailActivity == null) {
+      return;
     }
-    String str = String.valueOf(paramCharSequence.subSequence(paramInt1, paramInt2));
-    paramSpanned = String.valueOf(String.valueOf(paramSpanned.subSequence(0, paramInt3)) + str + paramSpanned.subSequence(paramInt4, paramSpanned.length())).toLowerCase();
-    String[] arrayOfString = TCWNumberPicker.a(this.a);
-    paramInt2 = arrayOfString.length;
-    paramInt1 = i;
-    for (;;)
+    if ((localLocationDetailActivity.s != null) && (localLocationDetailActivity.t != null))
     {
-      if (paramInt1 >= paramInt2) {
-        break label154;
-      }
-      paramCharSequence = str;
-      if (arrayOfString[paramInt1].toLowerCase().startsWith(paramSpanned)) {
-        break;
-      }
-      paramInt1 += 1;
+      Intent localIntent = LocationDetailActivity.a(localLocationDetailActivity);
+      localIntent.setClass(localLocationDetailActivity, ForwardRecentActivity.class);
+      localIntent.putExtra("forward_type", -2).putExtra("forward_latitude", localLocationDetailActivity.d).putExtra("forward_longitude", localLocationDetailActivity.e).putExtra("forward_location", localLocationDetailActivity.p).putExtra("forward_location_string", localLocationDetailActivity.p).putExtra("forward_thumb", AppConstants.aQ + localLocationDetailActivity.s + "_" + localLocationDetailActivity.t + ".png").putExtra("isFromFavorites", true).putExtra("title", localLocationDetailActivity.o).putExtra("summary", localLocationDetailActivity.p);
+      localLocationDetailActivity.startActivityForResult(localIntent, 103);
+      return;
     }
-    label154:
-    return "";
+    QQToast.a(localLocationDetailActivity, 2131560787, 1, 2000).b(5);
+  }
+  
+  public void a(String paramString)
+  {
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if (localLocationDetailActivity == null) {}
+    while (localLocationDetailActivity.getString(2131560818).compareTo(paramString) != 0) {
+      return;
+    }
+    LocationDetailActivity.a(localLocationDetailActivity);
   }
 }
 

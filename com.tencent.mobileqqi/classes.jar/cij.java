@@ -1,16 +1,17 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.DoodleActivity;
 
 public class cij
   implements View.OnClickListener
 {
-  public cij(ChatHistory paramChatHistory) {}
+  public cij(DoodleActivity paramDoodleActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
+    this.a.b.setVisibility(0);
+    this.a.a.setVisibility(8);
   }
 }
 

@@ -13,8 +13,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.managers.TroopAssistantManager;
-import dty;
-import dtz;
+import doh;
+import doi;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -24,7 +24,7 @@ public class TroopAssistSetGuideActivity
 {
   public static final String a = "troop_uin";
   public static final String b = "troop_name";
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new dty(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new doh(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -35,8 +35,8 @@ public class TroopAssistSetGuideActivity
   private void e()
   {
     setTitle(this.d);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234634));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234636));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234636));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234638));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.d);
     if (!TextUtils.isEmpty(this.c))
     {
@@ -45,8 +45,8 @@ public class TroopAssistSetGuideActivity
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
       }
     }
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131234639));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131234638));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131234641));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131234640));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     d();
@@ -105,7 +105,7 @@ public class TroopAssistSetGuideActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130904040);
+    setContentView(2130904042);
     paramBundle = getIntent();
     if (paramBundle != null)
     {
@@ -126,7 +126,7 @@ public class TroopAssistSetGuideActivity
   public void update(Observable paramObservable, Object paramObject)
   {
     if (((paramObject instanceof MessageRecord)) && (!((MessageRecord)paramObject).isSendFromLocal())) {
-      runOnUiThread(new dtz(this));
+      runOnUiThread(new doi(this));
     }
   }
 }

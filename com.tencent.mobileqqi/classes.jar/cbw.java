@@ -1,26 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.proxy.ProxyObserver;
 
 public class cbw
-  extends Handler
+  extends ProxyObserver
 {
-  public cbw(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  public cbw(ChatHistory paramChatHistory) {}
   
-  public void handleMessage(Message paramMessage)
+  public void b()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.g();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131563125);
-    }
-    this.a.a(paramMessage, 1);
+    this.a.runOnUiThread(new cbx(this));
   }
 }
 

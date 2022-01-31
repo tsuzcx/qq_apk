@@ -1,18 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
 
 class cne
-  implements DialogInterface.OnClickListener
+  implements PermissionDialogCallback
 {
-  cne(cnc paramcnc) {}
+  cne(cnd paramcnd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.a();
-    DevlockQuickLoginActivity.d(this.a.a);
-    DevlockQuickLoginActivity.c(this.a.a, 0, 2130968599);
-  }
+  public void a() {}
+  
+  public void b() {}
 }
 
 

@@ -1,27 +1,35 @@
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
+import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
 
 public class gxe
-  implements AbsListView.OnScrollListener
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
+  public gxe(VideoPlayLogic paramVideoPlayLogic) {}
   
-  public gxe(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size() - 1))
-    {
-      paramInt = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a(paramInt, false);
+    if (VideoPlayLogic.a(this.a).a()) {
+      if (VideoPlayLogic.a(this.a) != null)
+      {
+        VideoPlayLogic.a(this.a).setVisibility(0);
+        if (VideoPlayLogic.a(this.a)) {
+          ReportController.b(VideoPlayLogic.a(this.a).b, "P_CliOper", "Grp_AIO", "", "video", "close_barrage", 0, 0, VideoPlayLogic.a(this.a).a, "1", "", "");
+        }
+      }
     }
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+    while (VideoPlayLogic.a(this.a) == null) {
+      return;
+    }
+    if (VideoPlayLogic.a(this.a)) {
+      ReportController.b(VideoPlayLogic.a(this.a).b, "P_CliOper", "Grp_AIO", "", "video", "close_barrage", 0, 0, VideoPlayLogic.a(this.a).a, "0", "", "");
+    }
+    VideoPlayLogic.a(this.a).setVisibility(8);
   }
 }
 

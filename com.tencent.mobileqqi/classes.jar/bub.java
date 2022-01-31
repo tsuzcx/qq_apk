@@ -1,80 +1,36 @@
-import android.content.res.Resources;
-import android.os.Handler;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.ui.CustomMenuBar;
-import com.tencent.biz.ui.PopupMenu;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class bub
   implements View.OnClickListener
 {
-  public bub(CustomMenuBar paramCustomMenuBar, ImageView paramImageView, TextView paramTextView, PopupMenu paramPopupMenu) {}
+  public bub(AddFriendVerifyActivity paramAddFriendVerifyActivity, EditText paramEditText, String paramString1, int paramInt, String paramString2) {}
   
   public void onClick(View paramView)
   {
-    for (;;)
+    if ("".equals(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim()))
     {
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_ComTencentBizUiPopupMenu == null)
-        {
-          if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean) {
-            return;
-          }
-          this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838490);
-          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131362078));
-          this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b = false;
-          this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
-          this.jdField_a_of_type_ComTencentBizUiPopupMenu.a(paramView);
-          this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidViewView.setVisibility(0);
-          this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_ComTencentBizUiPopupMenu = this.jdField_a_of_type_ComTencentBizUiPopupMenu;
-          return;
-        }
-      }
-      finally {}
-      if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_ComTencentBizUiPopupMenu == this.jdField_a_of_type_ComTencentBizUiPopupMenu)
-      {
-        if (!this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b)
-        {
-          if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean) {
-            return;
-          }
-          this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838490);
-          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131362078));
-          this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b = false;
-          this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
-          this.jdField_a_of_type_ComTencentBizUiPopupMenu.a(paramView);
-          this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        }
-        else
-        {
-          this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b = false;
-        }
-      }
-      else
-      {
-        if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean) {
-          return;
-        }
-        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838490);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131362078));
-        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b = false;
-        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
-        this.jdField_a_of_type_ComTencentBizUiPopupMenu.a(paramView);
-        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_ComTencentBizUiPopupMenu = this.jdField_a_of_type_ComTencentBizUiPopupMenu;
-      }
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1, this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131561421), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.d());
+      return;
     }
+    if (NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))
+    {
+      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.b.a(1)).a(this.jdField_a_of_type_JavaLangString, AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity), true, (byte)0, this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getIntent().getIntExtra("sub_source_id", 0), this.b, (byte)0, null, this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getIntent().getStringExtra("troop_uin"), false, null);
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1, this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131562449), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.d());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bub
  * JD-Core Version:    0.7.0.1
  */

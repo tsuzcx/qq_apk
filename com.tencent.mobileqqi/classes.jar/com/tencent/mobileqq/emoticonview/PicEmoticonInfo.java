@@ -65,8 +65,8 @@ public class PicEmoticonInfo
     if ((jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || (jdField_b_of_type_AndroidGraphicsDrawableDrawable == null))
     {
       paramString = BaseApplication.getContext().getResources();
-      jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130839112);
-      jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130839113);
+      jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130839114);
+      jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130839115);
     }
   }
   

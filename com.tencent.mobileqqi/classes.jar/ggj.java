@@ -1,76 +1,66 @@
-import android.content.Context;
-import android.os.AsyncTask;
-import android.widget.TextView;
-import com.tencent.mobileqq.maproam.activity.RoamingActivity.GetAddressTaskListener;
-import com.tencent.mobileqq.utils.ReverseGeocode;
-import com.tencent.tencentmap.mapsdk.map.GeoPoint;
-import java.lang.ref.SoftReference;
-import java.lang.ref.WeakReference;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
+import com.tencent.mobileqq.richstatus.ActionListActivity;
+import com.tencent.mobileqq.richstatus.StateTag;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ggj
-  extends AsyncTask
+  extends PagerAdapter
 {
-  GeoPoint jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint;
-  SoftReference jdField_a_of_type_JavaLangRefSoftReference;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public ggj(GeoPoint paramGeoPoint, TextView paramTextView, RoamingActivity.GetAddressTaskListener paramGetAddressTaskListener)
+  private ggj(ActionListActivity paramActionListActivity) {}
+  
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint = new GeoPoint(paramGeoPoint.getLatitudeE6(), paramGeoPoint.getLongitudeE6());
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTextView);
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramGetAddressTaskListener);
-    if (paramTextView != null) {
-      paramTextView.setTag(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint);
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      StateTag localStateTag = (StateTag)localIterator.next();
+      GridView localGridView = new GridView(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getApplicationContext());
+      localGridView.setNumColumns(3);
+      localGridView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+      localGridView.setSelector(new ColorDrawable(0));
+      localGridView.setScrollingCacheEnabled(false);
+      localGridView.setAdapter(new ggi(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity, localStateTag.jdField_a_of_type_JavaUtilArrayList));
+      this.jdField_a_of_type_JavaUtilArrayList.add(localGridView);
     }
+    super.notifyDataSetChanged();
   }
   
-  protected String a(Context... paramVarArgs)
+  public void destroyItem(View paramView, int paramInt, Object paramObject) {}
+  
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    if ((paramVarArgs != null) && (paramVarArgs[0] != null))
-    {
-      paramVarArgs = paramVarArgs[0];
-      int i = 0;
-      while (i < 2)
-      {
-        String str = ReverseGeocode.a(paramVarArgs, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLatitudeE6() / 1000000.0D, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLongitudeE6() / 1000000.0D, 3);
-        if ((str != null) && (str.length() > 0)) {
-          return str;
-        }
-        i += 1;
-      }
-    }
-    return "";
+    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
   }
   
-  protected void a(String paramString)
+  public int getCount()
   {
-    TextView localTextView = (TextView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    RoamingActivity.GetAddressTaskListener localGetAddressTaskListener = (RoamingActivity.GetAddressTaskListener)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-    if ((localTextView != null) && ((localTextView.getTag() instanceof GeoPoint)))
-    {
-      GeoPoint localGeoPoint = (GeoPoint)localTextView.getTag();
-      if ((localGeoPoint.getLatitudeE6() == this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLatitudeE6()) && (localGeoPoint.getLongitudeE6() == this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLongitudeE6()))
-      {
-        if ((paramString == null) || (paramString.length() <= 0)) {
-          break label103;
-        }
-        localTextView.setText(paramString);
-      }
-    }
-    for (;;)
-    {
-      if (localGetAddressTaskListener != null) {
-        localGetAddressTaskListener.a(paramString);
-      }
-      return;
-      label103:
-      localTextView.setText(String.format("(%.3f,%.3f)", new Object[] { Double.valueOf(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLatitudeE6() / 1000000.0D), Double.valueOf(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLongitudeE6() / 1000000.0D) }));
-    }
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    GridView localGridView = (GridView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramViewGroup.addView(localGridView);
+    return localGridView;
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     ggj
  * JD-Core Version:    0.7.0.1
  */

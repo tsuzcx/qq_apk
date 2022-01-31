@@ -30,9 +30,9 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dqa;
-import dqb;
-import dqc;
+import dkj;
+import dkk;
+import dkl;
 import java.io.File;
 import java.util.List;
 import mqq.app.AppRuntime;
@@ -76,8 +76,8 @@ public class SplashActivityCore
       {
         localObject = DialogUtil.a(paramActivity, 0);
         ((QQCustomDialog)localObject).setTitle(BaseApplicationImpl.getContext().getString(2131559133));
-        ((QQCustomDialog)localObject).setPositiveButton("ok", new dqa());
-        ((QQCustomDialog)localObject).setOnDismissListener(new dqb(paramActivity, paramQQAppInterface));
+        ((QQCustomDialog)localObject).setPositiveButton("ok", new dkj());
+        ((QQCustomDialog)localObject).setOnDismissListener(new dkk(paramActivity, paramQQAppInterface));
         ((QQCustomDialog)localObject).show();
         bool = true;
       }
@@ -195,7 +195,7 @@ public class SplashActivityCore
       this.handler.removeMessages(4);
       this.handler.removeMessages(5);
       paramMessage = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit();
-      paramMessage.putString("qq_version", "6600");
+      paramMessage.putString("qq_version", "6602");
       paramMessage.commit();
       if ((this.mWrapperActivity.getAppRuntime() != null) && (this.mWrapperActivity.getAppRuntime().isLogin()))
       {
@@ -368,7 +368,7 @@ public class SplashActivityCore
       this.handler.sendEmptyMessage(5);
       return;
     }
-    new Thread(new dqc(this, paramUri), "Splash.TestCanPlayMp4").start();
+    new Thread(new dkl(this, paramUri), "Splash.TestCanPlayMp4").start();
   }
 }
 

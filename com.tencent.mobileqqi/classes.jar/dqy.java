@@ -1,19 +1,19 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import android.view.View;
+import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-class dqy
-  implements DialogInterface.OnClickListener
+public class dqy
+  implements DialogInterface.OnDismissListener
 {
-  dqy(dqv paramdqv) {}
+  public dqy(TroopMemberListActivity paramTroopMemberListActivity, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    SubAccountAssistantForward.a(this.a.a.b);
-    SubAccountAssistantForward.a(this.a.a.b, this.a.a, this.a.a.b.getAccount());
-    this.a.a.finish();
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.findViewById(2131234622).getHandler().postDelayed(new dqz(this), 150L);
   }
 }
 

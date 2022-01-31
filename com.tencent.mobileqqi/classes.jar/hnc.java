@@ -1,30 +1,35 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.open.agent.FriendChooser;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.downloadnew.DownloadConstants;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
 
-public class hnc
-  implements View.OnTouchListener
+class hnc
+  implements DialogInterface.OnClickListener
 {
-  float jdField_a_of_type_Float = 0.0F;
-  float b = 0.0F;
+  hnc(hna paramhna) {}
   
-  public hnc(FriendChooser paramFriendChooser) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0)
+    try
     {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.b = paramMotionEvent.getRawY();
+      paramDialogInterface.dismiss();
+      label6:
+      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.a);
+      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.i);
+      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.e);
+      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.h);
+      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.k);
+      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(DownloadConstants.x, true);
+      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_Int, bool);
+      this.a.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(10, paramDialogInterface);
+      return;
     }
-    while ((i != 2) || ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float <= 10.0F) && (paramMotionEvent.getRawY() - this.b <= 10.0F))) {
-      return false;
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
     }
-    this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
   }
 }
 

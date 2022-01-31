@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundActivity;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.activity.voip.VoipTencentPayActivity;
 
-public class exg
-  implements DialogInterface.OnClickListener
+class exg
+  implements Runnable
 {
-  public exg(QvipSpecialSoundActivity paramQvipSpecialSoundActivity) {}
+  exg(exf paramexf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    VipUtils.b(this.a, 3, "mvip.gongneng.mobileqq.tiexintixing.ringandroid");
+    this.a.a.finish();
   }
 }
 

@@ -1,20 +1,21 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.PublicAccountManager.InitDoneObserver;
-import com.tencent.mobileqq.activity.PublicAccountChatActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
 
 public class dgo
-  implements PublicAccountManager.InitDoneObserver
+  implements View.OnClickListener
 {
-  public dgo(PublicAccountChatActivity paramPublicAccountChatActivity) {}
+  public dgo(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    PublicAccountChatActivity.a(this.a).sendEmptyMessage(1);
+    RegisterSendUpSms.a(this.a, this.a.getString(2131562642));
+    RegisterSendUpSms.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dgo
  * JD-Core Version:    0.7.0.1
  */

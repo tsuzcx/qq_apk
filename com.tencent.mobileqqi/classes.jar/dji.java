@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SpaceGateActivity;
+import com.tencent.mobileqq.widget.SlipLimitedListView;
 
 public class dji
-  extends ConfigObserver
+  implements View.OnClickListener
 {
-  public dji(QQSettingMe paramQQSettingMe) {}
+  public dji(SpaceGateActivity paramSpaceGateActivity) {}
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public void onClick(View paramView)
   {
-    QQSettingMe.a(this.a, paramUpgradeDetailWrapper);
-    if (this.a.b) {
-      this.a.a.runOnUiThread(new djj(this));
+    if (SpaceGateActivity.a(this.a) != null) {
+      SpaceGateActivity.a(this.a).b();
     }
+    SpaceGateActivity.a(this.a).a("");
+    SpaceGateActivity.a(this.a);
   }
 }
 

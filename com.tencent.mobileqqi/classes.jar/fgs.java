@@ -1,31 +1,50 @@
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.ProtoServlet;
+import com.tencent.ims.signature.SignatureReport;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.app.StartAppCheckHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import mqq.app.NewIntent;
 
 public class fgs
-  extends fhi
+  extends Handler
 {
-  private String a;
-  
-  public fgs()
+  public fgs(StartAppCheckHandler paramStartAppCheckHandler, Looper paramLooper)
   {
-    this.jdField_a_of_type_JavaLangString = null;
+    super(paramLooper);
   }
   
-  protected void a(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  protected void b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    CoreService.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.e();
-  }
-  
-  protected void d(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, this.jdField_a_of_type_JavaLangString);
+    switch (paramMessage.what)
+    {
+    case 2: 
+    default: 
+      return;
+    case 1: 
+      Object localObject;
+      if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface != null))
+      {
+        localObject = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), ProtoServlet.class);
+        ((NewIntent)localObject).putExtra("data", ((fgx)paramMessage.obj).a.toByteArray());
+        ((NewIntent)localObject).putExtra("cmd", "SecCheckSigSvc.UploadReq");
+        ((NewIntent)localObject).setObserver(this.a);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.startServlet((NewIntent)localObject);
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_Boolean = false;
+        this.a.jdField_a_of_type_Fgx = null;
+        return;
+        localObject = this.a.a("SecCheckSigSvc.UploadReq");
+        ((ToServiceMsg)localObject).putWupBuffer(((fgx)paramMessage.obj).a.toByteArray());
+        this.a.b((ToServiceMsg)localObject);
+      }
+    }
+    new Thread(this.a.jdField_a_of_type_JavaLangRunnable).start();
   }
 }
 

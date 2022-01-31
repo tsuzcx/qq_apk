@@ -1,27 +1,22 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.PublicAccountActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
-public class dgc
-  implements Animation.AnimationListener
+class dgc
+  implements DialogInterface.OnClickListener
 {
-  public dgc(PublicAccountActivity paramPublicAccountActivity, int paramInt) {}
+  dgc(dgb paramdgb) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity).setAnimation(null);
-    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity).offsetTopAndBottom(this.jdField_a_of_type_Int);
-    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity).requestLayout();
+    paramDialogInterface.dismiss();
+    this.a.a.a(2131562877);
+    RegisterPhoneNumActivity.c(this.a.a);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dgc
  * JD-Core Version:    0.7.0.1
  */

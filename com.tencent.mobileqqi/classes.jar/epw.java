@@ -1,15 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
 
 public class epw
-  implements DialogInterface.OnDismissListener
+  extends Handler
 {
-  public epw(DialogBaseActivity paramDialogBaseActivity) {}
+  public epw(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.b = null;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.a.setPadding(0, 0, 40, 0);
+      return;
+    }
+    this.a.a.setPadding(0, 0, 0, 0);
   }
 }
 

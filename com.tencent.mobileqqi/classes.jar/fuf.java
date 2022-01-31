@@ -1,27 +1,28 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.CloudFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.ImageFileAdapter;
-import com.tencent.mobileqq.filemanager.data.ImageFileAdapter.ViewHolder;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
 
 public class fuf
-  implements AdapterView.OnItemClickListener
+  extends Handler
 {
-  public fuf(CloudFileBrowserActivity paramCloudFileBrowserActivity) {}
-  
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public fuf(FileManagerNotifyCenter paramFileManagerNotifyCenter, Looper paramLooper)
   {
-    paramAdapterView = (ImageFileAdapter.ViewHolder)paramView.getTag();
-    paramInt = this.a.a.b(paramInt);
-    this.a.a.getClass();
-    if (paramInt == 1)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      paramInt = paramAdapterView.a;
-      CloudFileBrowserActivity.a(this.a, paramInt);
+    default: 
       return;
     }
-    CloudFileBrowserActivity.a(this.a);
+    this.a.a.a().b();
+    this.a.a.a().b(-1);
   }
 }
 

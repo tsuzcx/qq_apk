@@ -1,48 +1,20 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import com.tencent.mobileqq.activity.HornPublishActivity;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonInfo;
-import com.tencent.mobileqq.text.TextUtils;
-import com.tencent.widget.XEditText;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
 
 public class cww
-  implements EmoticonCallback
+  implements Runnable
 {
-  public cww(HornPublishActivity paramHornPublishActivity) {}
+  public cww(MySelfTroopMemberCard paramMySelfTroopMemberCard, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
   
-  public void a()
+  public void run()
   {
-    TextUtils.a(this.a.a);
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.a.setText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.b.setText(this.b);
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.c.setText(this.c);
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.d.setText(this.d);
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.e.setText(this.e);
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.f.setText(this.f);
   }
-  
-  public void a(EmoticonInfo paramEmoticonInfo)
-  {
-    if ((paramEmoticonInfo instanceof SystemEmoticonInfo))
-    {
-      int i = this.a.a.getSelectionStart();
-      int j = this.a.a.getSelectionEnd();
-      if ((i >= 0) && (j >= 0) && (j >= i)) {
-        this.a.a.getEditableText().replace(i, j, TextUtils.b(((SystemEmoticonInfo)paramEmoticonInfo).a));
-      }
-    }
-  }
-  
-  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
-  
-  public boolean a(EmoticonInfo paramEmoticonInfo)
-  {
-    return false;
-  }
-  
-  public void b() {}
-  
-  public void b(EmoticonInfo paramEmoticonInfo) {}
-  
-  public void d() {}
-  
-  public void u_() {}
 }
 
 

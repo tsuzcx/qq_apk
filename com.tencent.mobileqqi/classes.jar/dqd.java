@@ -1,28 +1,20 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnInfoListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.SplashActivityCore;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.TroopMemberCardActivity;
 
 class dqd
-  implements MediaPlayer.OnInfoListener
+  implements Runnable
 {
-  dqd(dqc paramdqc) {}
+  dqd(dqc paramdqc, Bitmap paramBitmap) {}
   
-  public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void run()
   {
-    if ((paramInt1 == 700) || (paramInt1 == 1)) {
-      this.a.a.handler.sendEmptyMessage(5);
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Splash.testCanPlayMp4", 1, "onInfo...what = ." + paramInt1 + " extra = " + paramInt2);
-    }
-    return false;
+    this.jdField_a_of_type_Dqc.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dqd
  * JD-Core Version:    0.7.0.1
  */

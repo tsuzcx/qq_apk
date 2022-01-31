@@ -1,6 +1,6 @@
 package com.google.zxing.common.reedsolomon;
 
-import fh;
+import fp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,23 +16,23 @@ public final class ReedSolomonEncoder
     }
     this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF = paramGenericGF;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(new fh(paramGenericGF, new int[] { 1 }));
+    this.jdField_a_of_type_JavaUtilList.add(new fp(paramGenericGF, new int[] { 1 }));
   }
   
-  private fh a(int paramInt)
+  private fp a(int paramInt)
   {
     if (paramInt >= this.jdField_a_of_type_JavaUtilList.size())
     {
-      fh localfh = (fh)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1);
+      fp localfp = (fp)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1);
       int i = this.jdField_a_of_type_JavaUtilList.size();
       while (i <= paramInt)
       {
-        localfh = localfh.b(new fh(this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF, new int[] { 1, this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.a(i - 1) }));
-        this.jdField_a_of_type_JavaUtilList.add(localfh);
+        localfp = localfp.b(new fp(this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF, new int[] { 1, this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.a(i - 1) }));
+        this.jdField_a_of_type_JavaUtilList.add(localfp);
         i += 1;
       }
     }
-    return (fh)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return (fp)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
   public void a(int[] paramArrayOfInt, int paramInt)
@@ -47,7 +47,7 @@ public final class ReedSolomonEncoder
     Object localObject = a(paramInt);
     int[] arrayOfInt = new int[i];
     System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, i);
-    localObject = new fh(this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF, arrayOfInt).a(paramInt, 1).a(localObject)[1].a();
+    localObject = new fp(this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF, arrayOfInt).a(paramInt, 1).a(localObject)[1].a();
     int j = paramInt - localObject.length;
     paramInt = 0;
     while (paramInt < j)

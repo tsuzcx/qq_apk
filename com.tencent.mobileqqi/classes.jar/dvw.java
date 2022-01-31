@@ -1,38 +1,85 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberCardActivity;
-import com.tencent.mobileqq.data.TroopMemberCard;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.PanelAdapter;
+import com.tencent.mobileqq.activity.aio.PanelAdapter.ViewHolder;
 
 public class dvw
-  implements View.OnClickListener
+  extends LinearLayout
 {
-  public dvw(TroopMemberCardActivity paramTroopMemberCardActivity) {}
+  public int a;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater = null;
   
-  public void onClick(View paramView)
+  public dvw(PanelAdapter paramPanelAdapter, Context paramContext, AttributeSet paramAttributeSet)
   {
-    if (this.a.a == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "mOnTroopBarItemClickListener, mTroopMemberCard == null");
-      }
-    }
-    do
+    super(paramContext, paramAttributeSet);
+    setOrientation(1);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    int k = paramPanelAdapter.a();
+    int m = paramPanelAdapter.b();
+    int i = 0;
+    while (i < m)
     {
-      return;
-      if (!TextUtils.isEmpty(this.a.a.gbarLinkUrl)) {
-        break;
+      paramPanelAdapter = new LinearLayout(paramContext);
+      paramAttributeSet = new LinearLayout.LayoutParams(-1, -1);
+      paramAttributeSet.weight = 1.0F;
+      paramPanelAdapter.setOrientation(0);
+      int j = 0;
+      while (j < k)
+      {
+        Object localObject = new LinearLayout.LayoutParams(-1, -1);
+        ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
+        if (j == 0) {
+          ((LinearLayout.LayoutParams)localObject).leftMargin = AIOUtils.a(23.0F, getContext().getResources());
+        }
+        if (j == k - 1) {
+          ((LinearLayout.LayoutParams)localObject).rightMargin = AIOUtils.a(23.0F, getContext().getResources());
+        }
+        if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
+          this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+        }
+        View localView = LayoutInflater.from(paramContext).inflate(2130903120, null);
+        paramPanelAdapter.addView(localView, (ViewGroup.LayoutParams)localObject);
+        localObject = new PanelAdapter.ViewHolder();
+        ((PanelAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131231293));
+        ((PanelAdapter.ViewHolder)localObject).b = ((ImageView)localView.findViewById(2131231295));
+        ((PanelAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231294));
+        localView.setTag(localObject);
+        j += 1;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "mOnTroopBarItemClickListener, gbarLinkUrl is empty");
-    return;
-    this.a.d(this.a.a.gbarLinkUrl);
-    this.a.f("Clk_tribe");
+      addView(paramPanelAdapter, paramAttributeSet);
+      i += 1;
+    }
+  }
+  
+  public void a()
+  {
+    int i = 0;
+    while (i < getChildCount())
+    {
+      Object localObject = getChildAt(i);
+      if (localObject != null)
+      {
+        localObject = (PanelAdapter.ViewHolder)((View)localObject).getTag();
+        if (((PanelAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView != null) {
+          ((PanelAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+        }
+      }
+      i += 1;
+    }
+    this.jdField_a_of_type_Int = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dvw
  * JD-Core Version:    0.7.0.1
  */

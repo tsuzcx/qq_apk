@@ -1,27 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.os.Handler.Callback;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class cgo
-  implements DialogInterface.OnCancelListener
+public class cgo
+  implements Runnable
 {
-  public cgo(boolean paramBoolean, Handler.Callback paramCallback) {}
+  public cgo(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler$Callback != null) {
-      this.jdField_a_of_type_AndroidOsHandler$Callback.handleMessage(null);
-    }
-    paramDialogInterface.dismiss();
+    Object localObject = this.a.b.a();
+    localObject = this.a.b.b((String)localObject);
+    this.a.runOnUiThread(new cgp(this, (Drawable)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cgo
  * JD-Core Version:    0.7.0.1
  */

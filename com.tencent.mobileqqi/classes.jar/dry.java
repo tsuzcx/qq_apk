@@ -1,20 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubAccountSettingActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
 
-public class dry
-  extends Handler
+class dry
+  implements View.OnClickListener
 {
-  public dry(SubAccountSettingActivity paramSubAccountSettingActivity) {}
+  dry(drx paramdrx, TroopMemberListActivity.ATroopMember paramATroopMember) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.finish();
+    TroopMemberListActivity.a(this.jdField_a_of_type_Drx.a, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ATroopMember.a);
   }
 }
 

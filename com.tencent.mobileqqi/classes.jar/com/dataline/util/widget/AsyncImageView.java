@@ -16,7 +16,7 @@ import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableBitmapDrawable;
-import ev;
+import fd;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -162,7 +162,7 @@ public class AsyncImageView
     {
       paramString = URLDrawable.getDrawable(localURL, paramString, paramString, false);
       setImageDrawable(paramString);
-      paramString.setURLDrawableListener(new ev(this));
+      paramString.setURLDrawableListener(new fd(this));
       return;
       if (this.jdField_b_of_type_Boolean) {
         paramString = new ColorDrawable(this.d);

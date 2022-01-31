@@ -1,30 +1,57 @@
-import com.tencent.widget.AbsListView;
+import common.qzone.component.cache.common.SoftHashMap;
+import java.util.AbstractCollection;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 public class hzn
-  implements Runnable
+  extends AbstractCollection
 {
-  public hzn(AbsListView paramAbsListView) {}
+  public hzn(SoftHashMap paramSoftHashMap) {}
   
-  public void run()
+  public void clear()
   {
-    if (this.a.f)
-    {
-      AbsListView localAbsListView = this.a;
-      this.a.g = false;
-      localAbsListView.f = false;
-      AbsListView.a(this.a, false);
-      if ((AbsListView.n(this.a) & 0x2) == 0) {
-        AbsListView.b(this.a, false);
-      }
-      if (!this.a.isAlwaysDrawnWithCacheEnabled()) {
-        this.a.invalidate();
-      }
+    this.a.clear();
+  }
+  
+  public boolean contains(Object paramObject)
+  {
+    return this.a.containsValue(paramObject);
+  }
+  
+  public Iterator iterator()
+  {
+    return new hzm(this.a);
+  }
+  
+  public int size()
+  {
+    return this.a.size();
+  }
+  
+  public Object[] toArray()
+  {
+    ArrayList localArrayList = new ArrayList(size());
+    Iterator localIterator = iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(localIterator.next());
     }
+    return localArrayList.toArray();
+  }
+  
+  public Object[] toArray(Object[] paramArrayOfObject)
+  {
+    ArrayList localArrayList = new ArrayList(size());
+    Iterator localIterator = iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(localIterator.next());
+    }
+    return localArrayList.toArray(paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hzn
  * JD-Core Version:    0.7.0.1
  */

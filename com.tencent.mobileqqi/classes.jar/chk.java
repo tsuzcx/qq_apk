@@ -1,30 +1,13 @@
-import com.tencent.biz.eqq.CrmUtils;
-import com.tencent.mobileqq.activity.ChatForEnterpriseActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.EnterpriseQQObserver;
-import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 
 public class chk
-  extends EnterpriseQQObserver
+  implements DialogInterface.OnClickListener
 {
-  public chk(ChatForEnterpriseActivity paramChatForEnterpriseActivity) {}
+  public chk(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean)
-    {
-      paramObject = EnterpriseQQManager.a(this.a.b).a(this.a.b, this.a.c());
-      if (!CrmUtils.a(this.a.b, this.a.a.a)) {
-        paramObject = null;
-      }
-      ChatForEnterpriseActivity.a(this.a, paramObject);
-      if (paramObject != null) {
-        ChatForEnterpriseActivity.a(this.a, false);
-      }
-    }
-  }
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

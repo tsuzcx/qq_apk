@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.voip.VoipBuyGoods.BuyGoodsRsp;
+import com.tencent.mobileqq.activity.voip.VoipTencentPayActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class exh
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public exh(QvipSpecialSoundActivity paramQvipSpecialSoundActivity) {}
+  public exh(VoipTencentPayActivity paramVoipTencentPayActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    paramDialogInterface.dismiss();
+    paramMessage = (VoipBuyGoods.BuyGoodsRsp)paramMessage.obj;
+    if (paramMessage.error_code.get() == 0)
+    {
+      VoipTencentPayActivity.a(this.a, paramMessage.url_params.get());
+      VoipTencentPayActivity.b(this.a);
+      return;
+    }
+    VoipTencentPayActivity.a(this.a);
   }
 }
 

@@ -15,14 +15,14 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cxm;
-import cxn;
-import cxo;
-import cxp;
-import cxq;
-import cxr;
-import cxs;
-import cxt;
+import crg;
+import crh;
+import cri;
+import crj;
+import crk;
+import crl;
+import crm;
+import crn;
 import java.lang.reflect.Field;
 
 public class LbsBaseActivity
@@ -89,8 +89,8 @@ public class LbsBaseActivity
   {
     if (this.a == null)
     {
-      this.a = a(17039380, 2131563091, 2131561088, 2131562541, new cxo(this), new cxp(this));
-      this.a.setOnDismissListener(new cxq(this, paramRunnable));
+      this.a = a(17039380, 2131563091, 2131561088, 2131562541, new cri(this), new crj(this));
+      this.a.setOnDismissListener(new crk(this, paramRunnable));
     }
     c();
     this.a.show();
@@ -98,13 +98,13 @@ public class LbsBaseActivity
   
   private void h(Runnable paramRunnable)
   {
-    paramRunnable = new cxr(this, paramRunnable);
-    this.jdField_b_of_type_AndroidAppDialog = a(2131562689, a(), 2131562511, 2131562541, new cxs(this), new cxt(this));
+    paramRunnable = new crl(this, paramRunnable);
+    this.jdField_b_of_type_AndroidAppDialog = a(2131562689, a(), 2131562511, 2131562541, new crm(this), new crn(this));
     this.jdField_b_of_type_AndroidAppDialog.setOnDismissListener(paramRunnable);
     this.jdField_b_of_type_AndroidAppDialog.show();
   }
   
-  protected int a()
+  public int a()
   {
     return 2131563281;
   }
@@ -155,19 +155,19 @@ public class LbsBaseActivity
     }
   }
   
-  protected void a(int paramInt, String paramString)
+  public void a(int paramInt, String paramString)
   {
     if (isResume()) {
       QQToast.a(this, paramInt, paramString, 0).b(d());
     }
   }
   
-  protected void a(Runnable paramRunnable)
+  public void a(Runnable paramRunnable)
   {
     f(paramRunnable);
   }
   
-  protected int b()
+  public int b()
   {
     try
     {
@@ -184,7 +184,7 @@ public class LbsBaseActivity
   
   public void b() {}
   
-  protected void b(Runnable paramRunnable)
+  public void b(Runnable paramRunnable)
   {
     if (f())
     {
@@ -194,7 +194,7 @@ public class LbsBaseActivity
     h(paramRunnable);
   }
   
-  protected void c() {}
+  public void c() {}
   
   protected void c(Runnable paramRunnable)
   {
@@ -208,9 +208,9 @@ public class LbsBaseActivity
     finish();
   }
   
-  protected void d(Runnable paramRunnable)
+  public void d(Runnable paramRunnable)
   {
-    this.c = a(2131561835, 2131561451, 2131561746, 2131561918, new cxm(this), new cxn(this, paramRunnable));
+    this.c = a(2131561835, 2131561451, 2131561746, 2131561918, new crg(this), new crh(this, paramRunnable));
     this.c.show();
   }
   

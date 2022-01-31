@@ -1,64 +1,29 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareManager;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundActivity;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundActivity.SpecialSoundAdapter;
-import com.tencent.mobileqq.app.QvipSpecialCareObserver;
+import com.tencent.mobileqq.adapter.AllBuddyListAdapter;
+import com.tencent.mobileqq.app.ContactSorter;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.Comparator;
 
 public class exi
-  extends QvipSpecialCareObserver
+  implements Comparator
 {
-  public exi(QvipSpecialSoundActivity paramQvipSpecialSoundActivity) {}
+  public exi(AllBuddyListAdapter paramAllBuddyListAdapter) {}
   
-  public void a(Object paramObject)
+  private String a(Entity paramEntity)
   {
-    if (paramObject != null)
-    {
-      QvipSpecialSoundActivity.d(this.a);
-      if (QvipSpecialSoundActivity.a(this.a) != null) {
-        QvipSpecialSoundActivity.a(this.a).removeMessages(2);
-      }
-      switch (((Integer)paramObject).intValue())
-      {
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (QvipSpecialSoundActivity.a(this.a) == null);
-      QvipSpecialSoundActivity.b(this.a);
-      QvipSpecialSoundActivity.a(this.a).notifyDataSetChanged();
-      return;
-      QvipSpecialSoundActivity.c(this.a);
-    } while (QvipSpecialSoundActivity.a(this.a) == null);
-    QvipSpecialSoundActivity.a(this.a).notifyDataSetChanged();
+    paramEntity = (Friends)paramEntity;
+    return ContactUtils.a(paramEntity) + paramEntity.uin;
   }
   
-  public void b(Object paramObject)
+  public int a(Entity paramEntity1, Entity paramEntity2)
   {
-    if (paramObject != null)
-    {
-      QvipSpecialSoundActivity.e(this.a);
-      if (QvipSpecialSoundActivity.a(this.a) != null) {
-        QvipSpecialSoundActivity.a(this.a).removeMessages(2);
-      }
-      if (((Integer)paramObject).intValue() == 10010)
-      {
-        QvipSpecialSoundActivity.a(this.a, this.a.getString(2131562091));
-        QvipSpecialSoundActivity.a(this.a).a(null, 1, null);
-      }
-    }
-    else
-    {
-      return;
-    }
-    QvipSpecialSoundActivity.a(this.a, this.a.getString(2131562882));
+    return ContactSorter.a(a(paramEntity1), a(paramEntity2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     exi
  * JD-Core Version:    0.7.0.1
  */

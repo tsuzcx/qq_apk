@@ -1,19 +1,32 @@
-import com.tencent.mobileqq.activity.voip.VoipGoogleWalletPayActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.TimerTask;
+import wifiphoto.WifiPhotoDataCenter;
+import wifiphoto.WifiPhotoStatusMgr;
 
 public class fay
-  implements Runnable
+  extends TimerTask
 {
-  public fay(VoipGoogleWalletPayActivity paramVoipGoogleWalletPayActivity) {}
+  public fay(DataLineHandler paramDataLineHandler) {}
   
   public void run()
   {
-    this.a.a.show();
+    if (QLog.isColorLevel()) {
+      QLog.d("wifiphoto", 2, "wifiphoto heart beat check");
+    }
+    long l = System.currentTimeMillis();
+    if ((DataLineHandler.a.jdField_a_of_type_WifiphotoWifiPhotoStatusMgr.b()) && (l > DataLineHandler.a.jdField_a_of_type_Long) && (l - DataLineHandler.a.jdField_a_of_type_Long > 45000L))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("wifiphoto", 2, "wifiphoto heart beat timer out");
+      }
+      this.a.b(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fay
  * JD-Core Version:    0.7.0.1
  */

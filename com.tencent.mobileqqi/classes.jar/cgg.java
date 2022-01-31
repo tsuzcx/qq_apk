@@ -1,27 +1,28 @@
-import android.app.Dialog;
-import android.view.animation.AlphaAnimation;
-import android.widget.TextView;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.DetailProfileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusManager;
 
-public final class cgg
-  implements Runnable
+public class cgg
+  implements IIconListener
 {
-  public cgg(Dialog paramDialog) {}
+  public cgg(DetailProfileActivity paramDetailProfileActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (this.a.isShowing())
-    {
-      TextView localTextView = (TextView)this.a.findViewById(2131231132);
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.9F, 0.0F);
-      localAlphaAnimation.setDuration(500L);
-      localAlphaAnimation.setAnimationListener(new cgh(this));
-      localTextView.startAnimation(localAlphaAnimation);
+    if (DetailProfileActivity.a(this.a) == null) {
+      DetailProfileActivity.a(this.a, (StatusManager)this.a.b.getManager(13));
+    }
+    if ((DetailProfileActivity.a(this.a) != null) && (DetailProfileActivity.a(this.a).a().b == paramInt1) && (paramInt2 == 201) && (paramBitmap != null)) {
+      this.a.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cgg
  * JD-Core Version:    0.7.0.1
  */

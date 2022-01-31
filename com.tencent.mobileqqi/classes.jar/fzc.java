@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
 public class fzc
-  implements Runnable
+  implements FMDialogUtil.FMDialogInterface
 {
-  public fzc(OnlineFileSessionCenter paramOnlineFileSessionCenter, int paramInt) {}
+  public fzc(SendBottomBar paramSendBottomBar) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionCenter.a(this.jdField_a_of_type_Int);
+    this.a.b();
   }
+  
+  public void b() {}
 }
 
 

@@ -22,15 +22,15 @@ public class AsyncStep
   public static final int f = 8;
   private static final int j = 1;
   private static final int k = 3;
-  protected Automator a;
+  public Automator a;
   protected IResultListener a;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private boolean jdField_a_of_type_Boolean = true;
   protected long b;
-  protected String b;
-  protected volatile int g = 1;
-  protected int h = -1;
-  protected int i = 0;
+  public String b;
+  public volatile int g = 1;
+  public int h = -1;
+  public int i = 0;
   
   public AsyncStep()
   {

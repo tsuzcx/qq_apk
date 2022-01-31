@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.magicface.magicfaceaction;
 
 import com.tencent.mobileqq.app.ThreadManager;
-import gev;
+import gaj;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -18,7 +18,7 @@ public class ActionGlobalData
   public int a;
   private ActionGlobalData.ActionCountdownOver jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData$ActionCountdownOver;
   public MagicfacebackText a;
-  private TimerTask jdField_a_of_type_JavaUtilTimerTask = new gev(this);
+  private TimerTask jdField_a_of_type_JavaUtilTimerTask = new gaj(this);
   public boolean a;
   public int b;
   public boolean b = false;

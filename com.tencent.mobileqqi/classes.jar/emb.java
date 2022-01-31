@@ -1,68 +1,15 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.discussion.LinkShareActionSheetBuilder;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.photo.AlbumListActivity;
+import com.tencent.mobileqq.data.QQAlbumInfo;
+import java.util.Comparator;
 
 public class emb
-  extends BaseAdapter
+  implements Comparator
 {
-  private emb(LinkShareActionSheetBuilder paramLinkShareActionSheetBuilder) {}
+  public emb(AlbumListActivity paramAlbumListActivity) {}
   
-  public int getCount()
+  public int a(QQAlbumInfo paramQQAlbumInfo1, QQAlbumInfo paramQQAlbumInfo2)
   {
-    return 5;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = LayoutInflater.from(LinkShareActionSheetBuilder.a(this.a)).inflate(2130904028, null);
-    }
-    int i;
-    int j;
-    switch (paramInt)
-    {
-    case 1: 
-    default: 
-      i = 2131561882;
-      j = 2130837749;
-      paramInt = 2131561884;
-    }
-    for (;;)
-    {
-      paramView = (ImageView)paramViewGroup.findViewById(2131232543);
-      TextView localTextView = (TextView)paramViewGroup.findViewById(2131232544);
-      paramView.setImageResource(j);
-      localTextView.setText(i);
-      paramViewGroup.setContentDescription(LinkShareActionSheetBuilder.a(this.a).getString(paramInt));
-      return paramViewGroup;
-      i = 2131562390;
-      j = 2130837750;
-      paramInt = 2131562913;
-      continue;
-      i = 2131561882;
-      j = 2130837749;
-      paramInt = 2131561884;
-      continue;
-      i = 2131561882;
-      j = 2130837749;
-      paramInt = 2131561884;
-    }
+    return -Long.valueOf(paramQQAlbumInfo1.coverDate).compareTo(Long.valueOf(paramQQAlbumInfo2.coverDate));
   }
 }
 

@@ -1,104 +1,53 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.av.utils.DataReport;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.assistant.PubAccountAssistantSettingAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class bkx
-  implements SensorEventListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public bkx(VideoControlUI paramVideoControlUI) {}
+  public bkx(PubAccountAssistantSettingAdapter paramPubAccountAssistantSettingAdapter, PublicAccountInfo paramPublicAccountInfo, View paramView) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int k = 0;
-    float f2 = paramSensorEvent.values[0];
-    float f1 = 3.1F;
-    if (3.1F > this.a.b.getMaximumRange()) {
-      f1 = this.a.b.getMaximumRange();
-    }
+    paramCompoundButton = this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo;
     int i;
-    if ((f2 >= 0.0D) && (f2 < f1) && (f2 < this.a.b.getMaximumRange()))
+    Object localObject;
+    label33:
+    String str;
+    if (paramBoolean)
     {
       i = 1;
-      if ((i == 0) || (!this.a.j)) {
-        break label231;
+      paramCompoundButton.mShowMsgFlag = i;
+      paramCompoundButton = this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantSettingAdapter;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo;
+      if (!paramBoolean) {
+        break label152;
       }
-      paramSensorEvent = this.a.a.a().a;
-      if (!this.a.a.a().n) {
-        break label222;
-      }
-      if (paramSensorEvent != null)
-      {
-        i = 0;
-        label123:
-        if (i >= paramSensorEvent.length) {
-          break label357;
-        }
-        j = k;
-        if (!paramSensorEvent[i].equals("DEVICE_WIREDHEADSET")) {
-          if (!paramSensorEvent[i].equals("DEVICE_BLUETOOTHHEADSET")) {
-            break label213;
-          }
-        }
+      i = 1;
+      PubAccountAssistantSettingAdapter.a(paramCompoundButton, (PublicAccountInfo)localObject, 5, i);
+      localObject = PubAccountAssistantSettingAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantSettingAdapter).getString(2131560566);
+      str = this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name;
+      if (!paramBoolean) {
+        break label157;
       }
     }
-    label213:
-    label222:
-    label357:
-    for (int j = k;; j = 1)
+    label152:
+    label157:
+    for (paramCompoundButton = PubAccountAssistantSettingAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantSettingAdapter).getString(2131562562);; paramCompoundButton = PubAccountAssistantSettingAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantSettingAdapter).getString(2131561841))
     {
-      if (j != 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoControlUI", 2, "setSensors pressHandFreeBtn");
-        }
-        this.a.s();
-        this.a.k = true;
-        DataReport.p(this.a.a);
-      }
-      label231:
-      do
-      {
-        return;
-        i = 0;
-        break;
-        i += 1;
-        break label123;
-        this.a.k = false;
-        return;
-      } while (!this.a.k);
-      if (this.a.a != null) {}
-      for (paramSensorEvent = this.a.a.a().a;; paramSensorEvent = null)
-      {
-        if (paramSensorEvent != null)
-        {
-          i = 0;
-          if (i >= paramSensorEvent.length) {
-            break label346;
-          }
-          if ((!paramSensorEvent[i].equals("DEVICE_WIREDHEADSET")) && (!paramSensorEvent[i].equals("DEVICE_BLUETOOTHHEADSET"))) {
-            break label337;
-          }
-        }
-        for (i = 0;; i = 1)
-        {
-          if (i != 0)
-          {
-            this.a.s();
-            DataReport.p(this.a.a);
-          }
-          this.a.k = false;
-          return;
-          i += 1;
-          break;
-        }
-      }
+      paramCompoundButton = String.format((String)localObject, new Object[] { str, paramCompoundButton });
+      this.jdField_a_of_type_AndroidViewView.setContentDescription(paramCompoundButton);
+      ReportController.b(PubAccountAssistantSettingAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantSettingAdapter), "P_CliOper", "Pb_account_lifeservice", PubAccountAssistantSettingAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantSettingAdapter).getAccount(), "mp_msg_zhushou_3", "share_succ", 0, 0, "", "", "", "");
+      return;
+      i = 0;
+      break;
+      i = 2;
+      break label33;
     }
   }
 }

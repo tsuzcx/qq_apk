@@ -1,20 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.galleryactivity.AbstractImageListScene;
+import com.tencent.mobileqq.activity.AuthDevUgActivity;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
 
 public class bvz
-  implements View.OnClickListener
+  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  public bvz(AbstractImageListScene paramAbstractImageListScene) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.d();
-  }
+  public bvz(AuthDevUgActivity paramAuthDevUgActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bvz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.TroopGagActivity;
+import com.tencent.mobileqq.app.TroopObserver;
 
 public class dpf
-  implements DialogInterface.OnDismissListener
+  extends TroopObserver
 {
-  public dpf(SplashActivity paramSplashActivity) {}
+  public dpf(TroopGagActivity paramTroopGagActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a(boolean paramBoolean)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    if (paramBoolean) {
+      this.a.a.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dpf
  * JD-Core Version:    0.7.0.1
  */

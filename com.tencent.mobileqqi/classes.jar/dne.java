@@ -1,22 +1,31 @@
+import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SecurityProtectActivity;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
+import com.tencent.mobileqq.widget.InputMethodRelativeLayout.onSizeChangedListenner;
 
 public class dne
-  implements Runnable
+  implements InputMethodRelativeLayout.onSizeChangedListenner
 {
-  public dne(SecurityProtectActivity paramSecurityProtectActivity) {}
+  public dne(SubLoginActivity paramSubLoginActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    SecurityProtectActivity.a(this.a, false);
-    SecurityProtectActivity.a(this.a).setText(2131558466);
-    SecurityProtectActivity.b(this.a).setVisibility(0);
-    SecurityProtectActivity.a(this.a).setVisibility(0);
-    ((LinearLayout)this.a.findViewById(2131234416)).setVisibility(8);
-    FMToastUtil.a(2131562488);
+    if (paramBoolean)
+    {
+      int[] arrayOfInt = new int[2];
+      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
+      paramInt1 = arrayOfInt[1];
+      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
+      paramInt1 = paramInt1 - arrayOfInt[1] + SubLoginActivity.a(this.a).getHeight() - paramInt2;
+      if (paramInt1 > 0) {
+        SubLoginActivity.a(this.a).setPadding(SubLoginActivity.a(this.a).getPaddingLeft(), SubLoginActivity.a(this.a).getPaddingTop() - paramInt1, SubLoginActivity.a(this.a).getPaddingRight(), SubLoginActivity.a(this.a).getPaddingBottom());
+      }
+      SubLoginActivity.b(this.a).setVisibility(8);
+      return;
+    }
+    SubLoginActivity.b(this.a).setVisibility(0);
+    SubLoginActivity.a(this.a).setPadding(0, 0, 0, 0);
   }
 }
 

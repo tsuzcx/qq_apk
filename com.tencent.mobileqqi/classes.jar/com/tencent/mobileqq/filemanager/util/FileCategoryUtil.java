@@ -18,7 +18,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import gcs;
+import fyg;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -37,7 +37,7 @@ public class FileCategoryUtil
   
   static
   {
-    a = new gcs();
+    a = new fyg();
   }
   
   public static int a(Context paramContext)

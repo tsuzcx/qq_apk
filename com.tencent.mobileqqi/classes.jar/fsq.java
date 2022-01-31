@@ -1,24 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.emoticonview.EmoticonGridViewAdapter;
+import com.tencent.mobileqq.filemanager.activity.VerifyPwdActivity;
 
-public class fsq
-  implements View.OnTouchListener
+class fsq
+  implements Runnable
 {
-  public fsq(EmoticonGridViewAdapter paramEmoticonGridViewAdapter) {}
+  fsq(fsp paramfsp) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-      this.a.a();
-    }
-    return false;
+    VerifyPwdActivity.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fsq
  * JD-Core Version:    0.7.0.1
  */

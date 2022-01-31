@@ -1,15 +1,16 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
 
-public class ebt
+class ebt
   implements Runnable
 {
-  public ebt(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable) {}
+  ebt(ebq paramebq, AIOImageData[] paramArrayOfAIOImageData, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(2, 300, new Object[] { this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, Integer.valueOf(0) });
+    if (ebp.e(this.jdField_a_of_type_Ebq.a) != null) {
+      ((AIOGalleryScene)ebp.f(this.jdField_a_of_type_Ebq.a)).a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_Int);
+    }
   }
 }
 

@@ -1,28 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.language.SelectLanguageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.international.LocaleUtil;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
 
 public class emh
   implements View.OnClickListener
 {
-  public emh(SelectLanguageActivity paramSelectLanguageActivity) {}
+  public emh(CameraPreviewActivity paramCameraPreviewActivity) {}
   
   public void onClick(View paramView)
   {
-    LocaleUtil.b(this.a.getApplicationContext(), LocaleUtil.a[SelectLanguageActivity.a(this.a)]);
-    LocaleUtil.a(this.a.getApplicationContext(), SelectLanguageActivity.a(this.a));
-    paramView = new HashMap();
-    paramView.put("external_" + LocaleUtil.a[SelectLanguageActivity.a(this.a)].toString(), Integer.valueOf(1));
-    StatisticCollector.a(BaseApplication.getContext()).b(this.a.b, this.a.b.a(), paramView);
-    this.a.b.p();
-    this.a.finish();
+    if (!CameraPreviewActivity.a(this.a))
+    {
+      PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 0, true);
+      paramView.setClickable(false);
+    }
   }
 }
 

@@ -1,21 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishBarSelectActivity;
-import com.tencent.widget.XListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
 
 public class gxc
-  extends Handler
+  implements View.OnClickListener
 {
-  public gxc(TroopBarPublishBarSelectActivity paramTroopBarPublishBarSelectActivity) {}
+  public gxc(VideoPlayLogic paramVideoPlayLogic) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if ((VideoPlayLogic.a(this.a) instanceof ChatActivity)) {
+      ((ChatActivity)VideoPlayLogic.a(this.a)).t();
     }
-    this.a.a.B();
   }
 }
 

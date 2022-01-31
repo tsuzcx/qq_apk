@@ -1,38 +1,63 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.VideoInviteActivity;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.mobileqq.activity.aio.XMLMessageUtils;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.PAMessage;
+import com.tencent.mobileqq.data.PAMessage.Item;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
 
-public class blc
-  implements DialogInterface.OnClickListener
+public final class blc
+  implements ActionSheet.OnButtonClickListener
 {
-  int jdField_a_of_type_Int;
+  public blc(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean, Context paramContext, ActionSheet paramActionSheet) {}
   
-  public blc(VideoInviteActivity paramVideoInviteActivity, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a == null) {
-      return;
-    }
-    switch (this.jdField_a_of_type_Int)
+    switch (paramInt)
     {
-    default: 
-      return;
-    case 0: 
-      paramDialogInterface.dismiss();
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.r();
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d = true;
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d();
-      return;
     }
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c);
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.t();
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
+    do
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+      if (this.jdField_a_of_type_Boolean) {
+        PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_9", "aio_delete");
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        break;
+        PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_8", "aio_delete");
+      }
+    } while (!this.jdField_a_of_type_JavaLangString.equals("2010741172"));
+    paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    if (paramView != null)
+    {
+      paramView = XMLMessageUtils.a(paramView);
+      if (paramView != null)
+      {
+        paramView = (PAMessage.Item)paramView.items.get(0);
+        if (paramView.url != null) {
+          PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramView.url);
+        }
+      }
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    if (this.jdField_a_of_type_Boolean) {
+      PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_9", "aio_delete");
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      break;
+      PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_8", "aio_delete");
+    }
   }
 }
 

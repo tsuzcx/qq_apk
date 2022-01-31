@@ -1,11 +1,17 @@
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DoodleActivity;
+import com.tencent.mobileqq.widget.DoodleTextView;
 
-public class ciz
+class ciz
+  implements DialogInterface.OnClickListener
 {
-  public MessageRecord a;
+  ciz(ciy paramciy) {}
   
-  private ciz(ChatHistory paramChatHistory) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.a.e();
+  }
 }
 
 

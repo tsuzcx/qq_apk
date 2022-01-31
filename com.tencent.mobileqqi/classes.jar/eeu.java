@@ -1,21 +1,20 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.RecommendListView;
 
 public class eeu
-  extends EmoticonPackageDownloadListener
+  implements View.OnClickListener
 {
-  private eeu(MarketFaceItemBuilder paramMarketFaceItemBuilder) {}
+  public eeu(RecommendListView paramRecommendListView) {}
   
-  public void a(int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, PicEmoticonInfo paramPicEmoticonInfo, QQProgressDialog paramQQProgressDialog, SessionInfo paramSessionInfo) {}
+  public void onClick(View paramView)
+  {
+    this.a.i();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     eeu
  * JD-Core Version:    0.7.0.1
  */

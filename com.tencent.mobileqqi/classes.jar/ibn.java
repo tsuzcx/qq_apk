@@ -1,23 +1,22 @@
-import android.os.Handler;
-import com.tencent.widget.TCWNumberPicker;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qqfav.QfavHelper;
+import cooperation.qqfav.widget.LocationDetailActivity;
 
 public class ibn
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ibn(TCWNumberPicker paramTCWNumberPicker) {}
+  public ibn(LocationDetailActivity paramLocationDetailActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (TCWNumberPicker.a(this.a))
-    {
-      TCWNumberPicker.a(this.a, TCWNumberPicker.a(this.a) + 1);
-      TCWNumberPicker.a(this.a).postDelayed(this, TCWNumberPicker.a(this.a));
-    }
-    while (!TCWNumberPicker.b(this.a)) {
-      return;
-    }
-    TCWNumberPicker.a(this.a, TCWNumberPicker.a(this.a) - 1);
-    TCWNumberPicker.a(this.a).postDelayed(this, TCWNumberPicker.a(this.a));
+    Object localObject = LocationDetailActivity.b(this.a);
+    paramView = new Intent(this.a.getIntent());
+    paramView.putExtras((Intent)localObject);
+    paramView.setClassName("com.qqfav", "com.qqfav.activity.AddLocationFavActivity");
+    localObject = paramView.getStringExtra("pluginsdk_selfuin");
+    QfavHelper.a(this.a, (String)localObject, paramView, 13321);
   }
 }
 

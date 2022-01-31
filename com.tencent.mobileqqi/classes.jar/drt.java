@@ -1,18 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountMessageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class drt
-  implements DialogInterface.OnClickListener
+public class drt
+  implements Runnable
 {
-  drt(drs paramdrs) {}
+  public drt(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    SubAccountAssistantForward.a(this.a.a.b, this.a.a, this.a.a.b.getAccount());
-    this.a.a.finish();
+    if ((this.a.h == 1) || (this.a.h == 2)) {}
+    for (Object[] arrayOfObject = this.a.a(TroopMemberListActivity.a(this.a));; arrayOfObject = this.a.b(TroopMemberListActivity.a(this.a)))
+    {
+      this.a.a.sendMessage(this.a.a.obtainMessage(1, arrayOfObject));
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopMemberListActivity", 2, "read troop members from database before updating data from server");
+      }
+    }
   }
 }
 

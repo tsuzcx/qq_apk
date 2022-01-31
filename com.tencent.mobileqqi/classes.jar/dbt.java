@@ -1,18 +1,22 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.smtt.sdk.WebView;
 
-class dbt
+public final class dbt
   implements Runnable
 {
-  dbt(dbs paramdbs) {}
+  public dbt(WebView paramWebView, String paramString) {}
   
   public void run()
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a.a, 230).setTitle(this.a.a.getString(2131561929)).setMessage(String.format(this.a.a.getString(2131561417), new Object[] { this.a.a.b })).setPositiveButton(2131562701, new dbu(this));
-    localQQCustomDialog.setOnDismissListener(new dbv(this));
-    localQQCustomDialog.show();
+    try
+    {
+      ((CustomWebView)this.jdField_a_of_type_ComTencentSmttSdkWebView).a("javascript:" + this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

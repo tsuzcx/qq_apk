@@ -1,29 +1,36 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.biz.PoiMapActivity;
+import java.util.ArrayList;
 
 public class bgm
-  implements MediaPlayer.OnCompletionListener
+  implements Runnable
 {
-  public bgm(VideoController paramVideoController) {}
+  public bgm(PoiMapActivity paramPoiMapActivity, String paramString1, ArrayList paramArrayList, int paramInt1, int paramInt2, int paramInt3, String paramString2, int paramInt4, boolean paramBoolean) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "onCompletion request");
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      PoiMapActivity localPoiMapActivity;
+      String str;
+      ArrayList localArrayList;
+      if (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentBizPoiMapActivity.c))
+      {
+        localPoiMapActivity = this.jdField_a_of_type_ComTencentBizPoiMapActivity;
+        str = this.jdField_a_of_type_JavaLangString;
+        localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+        if (this.jdField_a_of_type_Int <= 0) {
+          break label61;
+        }
+      }
+      label61:
+      for (boolean bool = true;; bool = false)
+      {
+        localPoiMapActivity.a(str, localArrayList, bool);
+        return;
+      }
     }
-    if (paramMediaPlayer != null) {
-      paramMediaPlayer.release();
-    }
-    if (!this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.f()) {
-      return;
-    }
-    this.a.a(2131165204, 1, this.a.b);
-    this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.e = 6;
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(14), Integer.valueOf(this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.l) });
+    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_Int, this.c, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.d, this.jdField_a_of_type_Boolean);
   }
 }
 

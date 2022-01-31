@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import msf.msgcomm.msg_comm.Msg;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.pic.PicBusiManager;
+import com.tencent.mobileqq.pic.PicReq;
+import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
 
-public final class gnk
-  implements Runnable
+public class gnk
+  extends AsyncTask
 {
-  public gnk(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg) {}
+  public gnk(GroupPicUploadProcessor paramGroupPicUploadProcessor, PicReq paramPicReq) {}
   
-  public void run()
+  protected Void a(Void... paramVarArgs)
   {
-    ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.a(8)).a(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg);
+    PicBusiManager.a(this.jdField_a_of_type_ComTencentMobileqqPicPicReq, this.jdField_a_of_type_ComTencentMobileqqTransfileGroupPicUploadProcessor.a);
+    return null;
   }
 }
 

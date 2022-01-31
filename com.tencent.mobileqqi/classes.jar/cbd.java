@@ -1,20 +1,30 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.mobileqq.activity.ChatForEnterpriseActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.EnterpriseQQObserver;
+import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
 
 public class cbd
-  implements CompoundButton.OnCheckedChangeListener
+  extends EnterpriseQQObserver
 {
-  public cbd(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public cbd(ChatForEnterpriseActivity paramChatForEnterpriseActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    AssistantSettingActivity.e(this.a).setContentDescription("联系人列表按字母排列");
-    SettingCloneUtil.writeValue(this.a, this.a.b.a(), null, "qqsetting_msg_lockscreen_key", paramBoolean);
+    if (paramBoolean)
+    {
+      paramObject = EnterpriseQQManager.a(this.a.b).a(this.a.b, this.a.c());
+      if (!CrmUtils.a(this.a.b, this.a.a.a)) {
+        paramObject = null;
+      }
+      ChatForEnterpriseActivity.a(this.a, paramObject);
+      if (paramObject != null) {
+        ChatForEnterpriseActivity.a(this.a, false);
+      }
+    }
   }
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

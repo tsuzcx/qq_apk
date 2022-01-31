@@ -1,67 +1,46 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.RecommendContact;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
-import protocol.KQQConfig.GetResourceRespInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class fer
   implements Runnable
 {
-  public fer(ConditionSearchManager paramConditionSearchManager, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
+  public fer(PhoneContactManagerImp paramPhoneContactManagerImp, List paramList) {}
   
   public void run()
   {
-    boolean bool3 = true;
-    File localFile = new File(ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager).getApplication().getFilesDir(), "temp_admin_regin_config");
-    int i = HttpDownloadUtil.a(ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager), this.jdField_a_of_type_JavaLangString, localFile);
-    Object localObject;
-    boolean bool1;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("onCheckupConfig | download result = ");
-      if (i == 0)
-      {
-        bool1 = true;
-        QLog.d("ConditionSearch.Manager", 2, bool1);
-      }
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return;
     }
-    else
+    synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      if (i != 0) {
-        break label262;
-      }
-      localObject = new File(ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager).getApplication().getFilesDir(), "admin_region_config");
-      if ((!localFile.renameTo((File)localObject)) && (!localFile.renameTo((File)localObject)) && (!localFile.renameTo((File)localObject))) {
-        break label252;
-      }
-      ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer);
-      ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager).edit().putLong("key_config_version", ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager)).commit();
-      bool1 = true;
-      label192:
-      bool2 = bool1;
-      if (QLog.isColorLevel()) {
-        QLog.d("ConditionSearch.Manager", 2, "onCheckupConfig | rename result = " + bool1);
-      }
-    }
-    label262:
-    for (boolean bool2 = bool1;; bool2 = true)
-    {
-      if ((i == 0) && (bool2)) {}
-      for (bool1 = bool3;; bool1 = false)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a(bool1);
+      if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
         return;
-        bool1 = false;
-        break;
-        label252:
-        bool1 = false;
-        break label192;
       }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContactManager", 2, "setRecommendMsgReaded");
+    }
+    EntityTransaction localEntityTransaction = PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).a();
+    try
+    {
+      localEntityTransaction.a();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        RecommendContact localRecommendContact = (RecommendContact)localIterator.next();
+        PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).a(localRecommendContact);
+      }
+    }
+    finally
+    {
+      localEntityTransaction.b();
+    }
+    localEntityTransaction.b();
   }
 }
 

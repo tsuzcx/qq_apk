@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.config.Config;
-import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
-import com.tencent.mobileqq.config.struct.PicAndAdConf;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
+import com.tencent.mobileqq.filemanager.data.RecentFileAdapter;
 
 public class frg
-  extends Thread
+  implements DialogInterface.OnCancelListener
 {
-  public frg(ConfigServlet paramConfigServlet, String paramString) {}
+  public frg(FMRecentFileActivity paramFMRecentFileActivity) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    Config.a.a_(this.jdField_a_of_type_JavaLangString);
+    this.a.a.a(Integer.valueOf(-1));
+    FMRecentFileActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     frg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,13 @@
-import com.dataline.util.file.ImageInfo;
-import java.util.Comparator;
+import com.dataline.activities.LiteMutiPicViewerActivity;
 
-public final class cj
-  implements Comparator
+class cj
+  implements Runnable
 {
-  public int a(ImageInfo paramImageInfo1, ImageInfo paramImageInfo2)
+  cj(cf paramcf) {}
+  
+  public void run()
   {
-    return -Long.valueOf(paramImageInfo1.a()).compareTo(Long.valueOf(paramImageInfo2.a()));
+    LiteMutiPicViewerActivity.a(this.a.a);
   }
 }
 

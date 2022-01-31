@@ -1,46 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Timer;
-import java.util.TimerTask;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class fln
-  extends Timer
+public class fln
+  implements ConditionSearchManager.IConfigListener
 {
-  public fln(String paramString)
-  {
-    super(paramString);
-  }
+  public fln(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void cancel()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    QLog.e("ThreadManager", 1, "Can't cancel Global Timer");
-  }
-  
-  public void schedule(TimerTask paramTimerTask, long paramLong)
-  {
-    try
+    if ((paramInt == 2) && (paramBoolean)) {
+      this.a.d = true;
+    }
+    if ((this.a.h == 1) || (this.a.h == 2)) {
+      if (!paramBoolean) {
+        this.a.e();
+      }
+    }
+    while ((!this.a.c) || (paramInt != 2) || (!paramBoolean))
     {
-      super.schedule(paramTimerTask, paramLong);
+      QQToast.a(this.a, 2131562108, 0).b(this.a.d());
+      do
+      {
+        return;
+      } while (paramInt != 2);
+      this.a.e();
+      this.a.a(this.a.h);
       return;
     }
-    catch (Exception paramTimerTask)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ThreadManager", 2, "timer schedule err", paramTimerTask);
-    }
-  }
-  
-  public void schedule(TimerTask paramTimerTask, long paramLong1, long paramLong2)
-  {
-    try
-    {
-      super.schedule(paramTimerTask, paramLong1, paramLong2);
-      return;
-    }
-    catch (Exception paramTimerTask)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ThreadManager", 2, "timer schedule2 err", paramTimerTask);
-    }
+    this.a.d();
   }
 }
 

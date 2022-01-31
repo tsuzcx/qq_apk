@@ -1,42 +1,32 @@
-import android.os.Bundle;
-import com.tencent.biz.webviewplugin.AdWebviewPlugin;
-import com.tencent.mobileqq.mp.SSOHttp.SSOHttpResponse;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class buo
-  implements BusinessObserver
+  implements DialogInterface.OnClickListener
 {
-  public buo(AdWebviewPlugin paramAdWebviewPlugin, String paramString) {}
+  public buo(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!paramBoolean) {}
-    while (!paramBoolean) {
-      return;
-    }
-    try
+    if (NetworkUtil.e(BaseApplication.getContext()))
     {
-      SSOHttp.SSOHttpResponse localSSOHttpResponse = new SSOHttp.SSOHttpResponse();
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localSSOHttpResponse.mergeFrom(paramBundle);
-      }
-      paramBundle = new JSONObject();
-      paramBundle.put("header", localSSOHttpResponse.header.get());
-      paramBundle.put("body", localSSOHttpResponse.body.get());
-      paramBundle.put("retcode", localSSOHttpResponse.retcode.get());
-      this.jdField_a_of_type_ComTencentBizWebviewpluginAdWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+      long l = Long.valueOf(this.a.b.a()).longValue();
+      this.a.showDialog(2);
+      this.a.a.a(l, Long.valueOf(AddRequestActivity.a(this.a)).longValue(), 1);
       return;
     }
-    catch (Exception paramBundle) {}
+    QQToast.a(this.a, 2131562449, 0).b(this.a.d());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     buo
  * JD-Core Version:    0.7.0.1
  */

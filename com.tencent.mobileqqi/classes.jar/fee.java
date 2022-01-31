@@ -1,14 +1,31 @@
-import com.tencent.mobileqq.app.CircleManager;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
-class fee
-  implements Runnable
+public class fee
+  extends Handler
 {
-  fee(fed paramfed) {}
-  
-  public void run()
+  public fee(MessageHandler paramMessageHandler, Looper paramLooper)
   {
-    CircleManager.b(this.a.a);
-    CircleManager.d(this.a.a);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      paramMessage = paramMessage.getData();
+    } while ((paramMessage == null) || (!paramMessage.containsKey("update_unread_uin")) || (!paramMessage.containsKey("update_unread_time")));
+    this.a.a.a().a(paramMessage.getString("update_unread_uin"), paramMessage.getInt("update_unread_type", 0), paramMessage.getLong("update_unread_time"));
+    MessageHandler.a(this.a, 2002, true, null);
   }
 }
 

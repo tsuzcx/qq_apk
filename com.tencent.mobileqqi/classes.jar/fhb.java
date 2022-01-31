@@ -1,15 +1,46 @@
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.observer.AccountObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class fhb
-  extends AccountObserver
+public final class fhb
+  extends Timer
 {
-  public fhb(FriendsManager paramFriendsManager) {}
-  
-  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
+  public fhb(String paramString)
   {
-    ThreadManager.b(new fhc(this, paramString2, paramString1));
+    super(paramString);
+  }
+  
+  public void cancel()
+  {
+    QLog.e("ThreadManager", 1, "Can't cancel Global Timer");
+  }
+  
+  public void schedule(TimerTask paramTimerTask, long paramLong)
+  {
+    try
+    {
+      super.schedule(paramTimerTask, paramLong);
+      return;
+    }
+    catch (Exception paramTimerTask)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ThreadManager", 2, "timer schedule err", paramTimerTask);
+    }
+  }
+  
+  public void schedule(TimerTask paramTimerTask, long paramLong1, long paramLong2)
+  {
+    try
+    {
+      super.schedule(paramTimerTask, paramLong1, paramLong2);
+      return;
+    }
+    catch (Exception paramTimerTask)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ThreadManager", 2, "timer schedule2 err", paramTimerTask);
+    }
   }
 }
 

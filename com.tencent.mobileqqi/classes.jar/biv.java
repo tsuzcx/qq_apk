@@ -1,27 +1,95 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
+import android.os.Bundle;
+import com.tencent.biz.eqq.EnterpriseDetailActivity;
+import com.tencent.biz.pubaccount.assistant.PubAccountAssistantManager;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SetFunctionFlagResponse;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.Switch;
+import mqq.observer.BusinessObserver;
 
 public class biv
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  public biv(AVActivity paramAVActivity) {}
+  public biv(EnterpriseDetailActivity paramEnterpriseDetailActivity, mobileqq_mp.ConfigInfo paramConfigInfo, Switch paramSwitch, int paramInt, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = this.a.jdField_a_of_type_ComTencentAvVideoController.a().a;
-    if ((i == 1) || (i == 2)) {
-      this.a.a(this.a.b, this.a.i, this.a.j);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.jdField_a_of_type_JavaLangString, 2, "success:" + String.valueOf(paramBoolean));
     }
-    while ((i != 3) && (i != 4)) {
+    EnterpriseDetailActivity.b(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity);
+    if (!paramBoolean)
+    {
+      EnterpriseDetailActivity.a(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
+      this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a(2131560545);
+      paramBundle = this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity;
+      paramBundle.jdField_a_of_type_Int -= 1;
+      if (this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.jdField_a_of_type_Int == 0) {
+        EnterpriseDetailActivity.b(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity);
+      }
       return;
     }
-    paramView = this.a.jdField_a_of_type_ComTencentAvVideoController.a().j;
-    String str = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3000, paramView, null);
-    this.a.a(paramView, 3000, str);
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          mobileqq_mp.SetFunctionFlagResponse localSetFunctionFlagResponse = new mobileqq_mp.SetFunctionFlagResponse();
+          localSetFunctionFlagResponse.mergeFrom(paramBundle);
+          if (((mobileqq_mp.RetInfo)localSetFunctionFlagResponse.ret_info.get()).ret_code.get() == 0)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo.state.set(this.jdField_a_of_type_Int);
+            this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.accountData = this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetEqqAccountDetailInfoResponse.toByteArray();
+            if (this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo.state_id.get() == 5)
+            {
+              paramBundle = this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.jdField_a_of_type_ComTencentMobileqqDataEqqDetail;
+              if (!this.jdField_a_of_type_Boolean) {
+                break label505;
+              }
+              paramInt = 1;
+              paramBundle.mShowMsgFlag = paramInt;
+              if (this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.mShowMsgFlag == 1)
+              {
+                PubAccountAssistantManager.a().c(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.uin, this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+                ReportController.b(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.b, "mp_msg_ziliao_4", "share_click", 0, 0, "", "", "", "");
+                EnterpriseDetailActivity.b(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+                break;
+              }
+              PubAccountAssistantManager.a().a(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.uin, this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+              ReportController.b(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.b, "mp_msg_ziliao_3", "share_click", 0, 0, "", "", "", "");
+              continue;
+            }
+            if (this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo.state_id.get() != 3) {
+              continue;
+            }
+            this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.mIsAgreeSyncLbs = this.jdField_a_of_type_Boolean;
+            this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.mIsSyncLbsSelected = true;
+            continue;
+          }
+          EnterpriseDetailActivity.a(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
+          this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a(2131560545);
+          break;
+        }
+        EnterpriseDetailActivity.a(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
+        this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a(2131560545);
+      }
+      catch (Exception paramBundle) {}
+      EnterpriseDetailActivity.a(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
+      this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a(2131560545);
+      break;
+      break;
+      label505:
+      paramInt = 0;
+    }
   }
 }
 

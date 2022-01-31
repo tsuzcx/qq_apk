@@ -1,51 +1,80 @@
-import android.media.ExifInterface;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import android.os.AsyncTask;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.fling.ScreenCapture;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.ref.WeakReference;
 
 public class ehb
   extends AsyncTask
 {
-  public ehb(AIOGalleryScene paramAIOGalleryScene, File paramFile, int paramInt) {}
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  protected Void a(Void... paramVarArgs)
+  public ehb(View paramView)
   {
+    if (paramView != null)
+    {
+      Context localContext = paramView.getContext();
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+      paramView.setDrawingCacheEnabled(true);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramView.getDrawingCache();
+      ScreenCapture.setSnapFile(localContext, false);
+    }
+  }
+  
+  protected Boolean a(String... paramVarArgs)
+  {
+    Boolean localBoolean = Boolean.FALSE;
+    if (isCancelled()) {}
+    while ((this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      return localBoolean;
+    }
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    paramVarArgs = new File(paramVarArgs[0]);
+    File localFile = paramVarArgs.getParentFile();
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
     try
     {
-      paramVarArgs = new ExifInterface(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-      if (this.jdField_a_of_type_Int == 0) {
-        paramVarArgs.setAttribute("Orientation", String.valueOf(1));
-      }
-      for (;;)
-      {
-        paramVarArgs.saveAttributes();
-        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene;
-        paramVarArgs.c += 1;
-        break label138;
-        if (this.jdField_a_of_type_Int != 1) {
-          break;
-        }
-        paramVarArgs.setAttribute("Orientation", String.valueOf(6));
-      }
+      paramVarArgs = new FileOutputStream(paramVarArgs);
+      localBitmap.compress(Bitmap.CompressFormat.JPEG, 90, paramVarArgs);
+      paramVarArgs.flush();
+      paramVarArgs.close();
+      paramVarArgs = Boolean.TRUE;
+      return paramVarArgs;
     }
     catch (IOException paramVarArgs)
     {
-      while (QLog.isColorLevel())
+      paramVarArgs.printStackTrace();
+    }
+    return localBoolean;
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localView != null)
       {
-        QLog.e("AIOGalleryScene", 2, "save exif error", paramVarArgs);
-        break;
-        if (this.jdField_a_of_type_Int == 2) {
-          paramVarArgs.setAttribute("Orientation", String.valueOf(3));
-        } else if (this.jdField_a_of_type_Int == 3) {
-          paramVarArgs.setAttribute("Orientation", String.valueOf(8));
+        if (paramBoolean.booleanValue()) {
+          ScreenCapture.setSnapFile(localView.getContext(), true);
         }
+        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+        localView.setDrawingCacheEnabled(false);
+        localView.destroyDrawingCache();
       }
     }
-    label138:
-    return null;
   }
+  
+  protected void onCancelled() {}
 }
 
 

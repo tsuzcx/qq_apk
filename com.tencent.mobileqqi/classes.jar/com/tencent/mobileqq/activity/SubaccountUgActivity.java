@@ -24,12 +24,12 @@ import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
 import com.tencent.mobileqq.utils.DBUtils;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.remote.SimpleAccount;
-import dtd;
-import dte;
-import dtg;
-import dti;
-import dtj;
-import dtn;
+import dnm;
+import dnn;
+import dnp;
+import dnr;
+import dns;
+import dnw;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -41,8 +41,8 @@ public class SubaccountUgActivity
   implements View.OnClickListener, Observer
 {
   public static final int a = 1980;
-  Handler jdField_a_of_type_AndroidOsHandler = new dtd(this);
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new dte(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new dnm(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new dnn(this);
   SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver;
   public SubAccountAssistantManager a;
   public String a;
@@ -96,22 +96,22 @@ public class SubaccountUgActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130904000);
+    setContentView(2130904002);
     setTitle(2131562836);
     this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountAssistantManager = SubAccountAssistantManager.a();
-    ImageView localImageView = (ImageView)findViewById(2131234549);
-    Object localObject4 = (ImageView)findViewById(2131234548);
-    TextView localTextView = (TextView)findViewById(2131234550);
-    Object localObject3 = (TextView)findViewById(2131234551);
-    Button localButton = (Button)findViewById(2131234552);
-    Object localObject2 = findViewById(2131234553);
+    ImageView localImageView = (ImageView)findViewById(2131234551);
+    Object localObject4 = (ImageView)findViewById(2131234550);
+    TextView localTextView = (TextView)findViewById(2131234552);
+    Object localObject3 = (TextView)findViewById(2131234553);
+    Button localButton = (Button)findViewById(2131234554);
+    Object localObject2 = findViewById(2131234555);
     Object localObject1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), false);
     paramBundle = (Bundle)localObject1;
     if (localObject1 == null) {
       paramBundle = ImageUtil.a();
     }
     localImageView.setImageBitmap(paramBundle);
-    localTextView.setTextColor(getResources().getColor(2131362070));
+    localTextView.setTextColor(getResources().getColor(2131362080));
     this.c = this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountAssistantManager.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
     int k = 0;
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountAssistantManager.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
@@ -137,7 +137,7 @@ public class SubaccountUgActivity
         if (!this.c) {
           break label918;
         }
-        localTextView.setTextColor(getResources().getColor(2131362070));
+        localTextView.setTextColor(getResources().getColor(2131362080));
         paramBundle = this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountAssistantManager.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
         localObject1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(paramBundle, false);
         if (localObject1 != null) {
@@ -225,13 +225,13 @@ public class SubaccountUgActivity
         ((TextView)localObject3).setVisibility(0);
         localButton.setText(2131563165);
         ((View)localObject2).setVisibility(0);
-        localObject3 = (Button)((View)localObject2).findViewById(2131234554);
-        localObject2 = (Button)((View)localObject2).findViewById(2131234556);
+        localObject3 = (Button)((View)localObject2).findViewById(2131234556);
+        localObject2 = (Button)((View)localObject2).findViewById(2131234558);
         i = ((Button)localObject3).getPaint().getFlags() | 0x8;
         ((Button)localObject3).getPaint().setFlags(i);
         ((Button)localObject2).getPaint().setFlags(i);
-        ((Button)localObject3).setOnClickListener(new dtg(this, paramBundle));
-        ((Button)localObject2).setOnClickListener(new dti(this));
+        ((Button)localObject3).setOnClickListener(new dnp(this, paramBundle));
+        ((Button)localObject2).setOnClickListener(new dnr(this));
         i = ((String)localObject4).indexOf((String)localObject1);
         if (i > -1)
         {
@@ -247,7 +247,7 @@ public class SubaccountUgActivity
         if (paramBundle.a(a(), this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getAccount())) {
           paramBundle.a(a(), this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), false);
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new dtj(this);
+        this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new dns(this);
         a(this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver);
         a(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
         if (!jdField_a_of_type_Boolean)
@@ -260,7 +260,7 @@ public class SubaccountUgActivity
         ((TextView)localObject3).setVisibility(8);
         break;
         label918:
-        ((ImageView)localObject4).setImageResource(2130840246);
+        ((ImageView)localObject4).setImageResource(2130840248);
       }
       label929:
       i = 0;
@@ -295,15 +295,15 @@ public class SubaccountUgActivity
   public void h()
   {
     this.c = false;
-    View localView = findViewById(2131234553);
-    TextView localTextView1 = (TextView)findViewById(2131234550);
-    TextView localTextView2 = (TextView)findViewById(2131234551);
-    ImageView localImageView = (ImageView)findViewById(2131234548);
-    ((Button)findViewById(2131234552)).setText(2131561704);
+    View localView = findViewById(2131234555);
+    TextView localTextView1 = (TextView)findViewById(2131234552);
+    TextView localTextView2 = (TextView)findViewById(2131234553);
+    ImageView localImageView = (ImageView)findViewById(2131234550);
+    ((Button)findViewById(2131234554)).setText(2131561704);
     localView.setVisibility(8);
     localTextView1.setText(2131563252);
     localTextView2.setVisibility(8);
-    localImageView.setImageResource(2130840246);
+    localImageView.setImageResource(2130840248);
   }
   
   public void i()
@@ -367,7 +367,7 @@ public class SubaccountUgActivity
   public void update(Observable paramObservable, Object paramObject)
   {
     if (((paramObject instanceof MessageRecord)) && (!((MessageRecord)paramObject).isSendFromLocal())) {
-      runOnUiThread(new dtn(this));
+      runOnUiThread(new dnw(this));
     }
   }
 }

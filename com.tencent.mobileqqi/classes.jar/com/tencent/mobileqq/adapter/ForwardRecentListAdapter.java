@@ -52,8 +52,8 @@ import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.mobileqq.widget.MotionViewSetter;
-import fcu;
-import fcv;
+import eyg;
+import eyh;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -88,7 +88,7 @@ public class ForwardRecentListAdapter
   private int jdField_b_of_type_Int;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = null;
-  private View.OnLongClickListener jdField_b_of_type_AndroidViewView$OnLongClickListener = new fcu(this);
+  private View.OnLongClickListener jdField_b_of_type_AndroidViewView$OnLongClickListener = new eyg(this);
   private String jdField_b_of_type_JavaLangString;
   private HashMap jdField_b_of_type_JavaUtilHashMap;
   private Drawable jdField_c_of_type_AndroidGraphicsDrawableDrawable;
@@ -125,18 +125,18 @@ public class ForwardRecentListAdapter
     this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
     b();
     c();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130840226);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130840220);
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130840231);
-    this.jdField_d_of_type_AndroidGraphicsDrawableDrawable = paramQQAppInterface.a(BitmapFactory.decodeResource(paramContext.getResources(), 2130838027));
-    this.jdField_e_of_type_AndroidGraphicsDrawableDrawable = paramQQAppInterface.a(BitmapFactory.decodeResource(paramContext.getResources(), 2130838023));
-    this.jdField_f_of_type_AndroidGraphicsDrawableDrawable = paramQQAppInterface.a(BitmapFactory.decodeResource(paramContext.getResources(), 2130838028));
-    this.i = paramContext.getResources().getDrawable(2130839634);
-    this.j = paramContext.getResources().getDrawable(2130839635);
-    this.h = paramContext.getResources().getDrawable(2130839633);
-    this.k = paramContext.getResources().getDrawable(2130839632);
-    this.l = paramContext.getResources().getDrawable(2130839636);
-    this.g = paramContext.getResources().getDrawable(2130838091);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130840228);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130840222);
+    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130840233);
+    this.jdField_d_of_type_AndroidGraphicsDrawableDrawable = paramQQAppInterface.a(BitmapFactory.decodeResource(paramContext.getResources(), 2130838029));
+    this.jdField_e_of_type_AndroidGraphicsDrawableDrawable = paramQQAppInterface.a(BitmapFactory.decodeResource(paramContext.getResources(), 2130838025));
+    this.jdField_f_of_type_AndroidGraphicsDrawableDrawable = paramQQAppInterface.a(BitmapFactory.decodeResource(paramContext.getResources(), 2130838030));
+    this.i = paramContext.getResources().getDrawable(2130839636);
+    this.j = paramContext.getResources().getDrawable(2130839637);
+    this.h = paramContext.getResources().getDrawable(2130839635);
+    this.k = paramContext.getResources().getDrawable(2130839634);
+    this.l = paramContext.getResources().getDrawable(2130839638);
+    this.g = paramContext.getResources().getDrawable(2130838093);
     this.jdField_a_of_type_JavaLangString = paramContext.getString(2131561544);
     this.jdField_b_of_type_JavaLangString = paramContext.getString(2131561555);
     this.jdField_c_of_type_JavaLangString = paramContext.getString(2131561419);
@@ -325,7 +325,7 @@ public class ForwardRecentListAdapter
     {
       str = paramString2;
     }
-    return DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setTitle(str).setItems(2131689474, new fcv(this, paramString2));
+    return DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setTitle(str).setItems(2131689474, new eyh(this, paramString2));
   }
   
   public void a()
@@ -445,7 +445,7 @@ public class ForwardRecentListAdapter
     for (;;)
     {
       localView.setTag(2131230985, null);
-      localView.setTag(2131233143, Integer.valueOf(n));
+      localView.setTag(2131233145, Integer.valueOf(n));
       paramViewGroup = null;
       Object localObject2;
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null)
@@ -715,7 +715,7 @@ public class ForwardRecentListAdapter
               if (localImageView2 != null)
               {
                 localImageView2.setVisibility(0);
-                localImageView2.setImageResource(2130840233);
+                localImageView2.setImageResource(2130840235);
               }
               label1613:
               localDrawable = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(str);

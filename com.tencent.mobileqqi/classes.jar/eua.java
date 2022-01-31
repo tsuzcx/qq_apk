@@ -1,30 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class eua
-  implements Animation.AnimationListener
+  implements TextWatcher
 {
-  public eua(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public eua(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, 0.0F);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation);
-    this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.cancel();
-    paramAnimation = new LinearLayout.LayoutParams(-1, -2);
-    paramAnimation.setMargins(0, 0, 0, this.a.jdField_b_of_type_AndroidWidgetLinearLayout.getHeight());
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramAnimation);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

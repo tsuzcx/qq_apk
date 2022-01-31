@@ -1,29 +1,14 @@
-import android.widget.ProgressBar;
-import com.tencent.av.utils.TipsManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class bmh
   implements Runnable
 {
-  public bmh(TipsManager paramTipsManager) {}
+  public bmh(QRDisplayActivity paramQRDisplayActivity) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TipsManager", 2, "tipsRunnable");
-    }
-    this.a.b();
-    if (this.a.a != null) {
-      this.a.a.setVisibility(8);
-    }
-    if (this.a.b) {
-      this.a.a();
-    }
-    if (this.a.e)
-    {
-      this.a.a(this.a.c, true);
-      this.a.e = false;
-    }
+    this.a.b = true;
+    this.a.e();
   }
 }
 

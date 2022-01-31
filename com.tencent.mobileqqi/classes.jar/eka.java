@@ -1,48 +1,18 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.contact.newfriend.RecommendListView;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class eka
-  extends FriendListObserver
+  implements DialogInterface.OnKeyListener
 {
-  public eka(RecommendListView paramRecommendListView) {}
+  public eka(BaseActivityView paramBaseActivityView) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (!RecommendListView.a(this.a)) {}
-    while (!paramBoolean) {
-      return;
-    }
-    RecommendListView.a(this.a);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (!RecommendListView.a(this.a)) {}
-    while (!paramBoolean) {
-      return;
-    }
-    this.a.jdField_a_of_type_Eke.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!RecommendListView.a(this.a)) {}
-    while (!paramBoolean1) {
-      return;
-    }
-    RecommendListView.a(this.a);
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if (!RecommendListView.a(this.a)) {}
-    while ((!paramBoolean) || (paramString == null)) {
-      return;
-    }
-    Drawable localDrawable = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramString, (byte)3);
-    this.a.jdField_a_of_type_Eke.a(paramString, localDrawable);
+    return (paramInt == 4) && (this.a.a.i()) && (NetworkUtil.e(this.a.getContext()));
   }
 }
 

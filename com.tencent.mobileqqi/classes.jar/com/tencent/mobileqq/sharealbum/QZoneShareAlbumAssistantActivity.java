@@ -38,16 +38,16 @@ import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
-import gnr;
-import gnt;
-import gnu;
-import gnv;
-import gnw;
-import gnx;
-import gny;
-import gnz;
-import goa;
-import gob;
+import gji;
+import gjk;
+import gjl;
+import gjm;
+import gjn;
+import gjo;
+import gjp;
+import gjq;
+import gjr;
+import gjs;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -138,7 +138,7 @@ public class QZoneShareAlbumAssistantActivity
       }
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) {
-      runOnUiThread(new gnv(this));
+      runOnUiThread(new gjm(this));
     }
   }
   
@@ -185,8 +185,8 @@ public class QZoneShareAlbumAssistantActivity
   
   private void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131234196));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(a()).inflate(2130903323, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, false));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131234198));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(a()).inflate(2130903325, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, false));
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOverScrollListener(this);
     View localView = getLayoutInflater().inflate(2130903134, null);
@@ -195,8 +195,8 @@ public class QZoneShareAlbumAssistantActivity
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter = new RecentAdapter(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, this, 2);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter);
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131234173);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234174));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131234175);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234176));
     if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     }
@@ -233,7 +233,7 @@ public class QZoneShareAlbumAssistantActivity
   private void h()
   {
     setTitle(2131562911);
-    c(2131561016, new gnw(this));
+    c(2131561016, new gjn(this));
   }
   
   private void i()
@@ -266,10 +266,10 @@ public class QZoneShareAlbumAssistantActivity
     this.jdField_b_of_type_AndroidViewView.setFocusable(true);
     this.jdField_b_of_type_AndroidViewView.setContentDescription(getResources().getString(2131561259));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231463));
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840159);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840161);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight((int)getResources().getDimension(2131427723));
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new gnx(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight((int)getResources().getDimension(2131427736));
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new gjo(this));
     b(this.jdField_b_of_type_AndroidViewView);
   }
   
@@ -287,17 +287,17 @@ public class QZoneShareAlbumAssistantActivity
   {
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((ViewStub)findViewById(2131234197)).inflate());
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131233598));
-      gny localgny = new gny(this);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((ViewStub)findViewById(2131234199)).inflate());
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131233600));
+      gjp localgjp = new gjp(this);
       this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(a(), 2130968628);
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(localgny);
+      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(localgjp);
       this.jdField_b_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(a(), 2130968626);
-      this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(localgny);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new gnz(this));
-      findViewById(2131233597).setOnTouchListener(new goa(this));
-      findViewById(2131233992).setOnClickListener(new gob(this));
-      findViewById(2131234145).setOnClickListener(new gnt(this));
+      this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(localgjp);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new gjq(this));
+      findViewById(2131233599).setOnTouchListener(new gjr(this));
+      findViewById(2131233994).setOnClickListener(new gjs(this));
+      findViewById(2131234147).setOnClickListener(new gjk(this));
     }
   }
   
@@ -329,7 +329,7 @@ public class QZoneShareAlbumAssistantActivity
     n();
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(AnimationUtils.loadAnimation(a(), 2130968627));
-    findViewById(2131233597).startAnimation(AnimationUtils.loadAnimation(a(), 2130968625));
+    findViewById(2131233599).startAnimation(AnimationUtils.loadAnimation(a(), 2130968625));
   }
   
   private void q()
@@ -337,7 +337,7 @@ public class QZoneShareAlbumAssistantActivity
     this.jdField_b_of_type_AndroidViewView.setContentDescription(getResources().getString(2131561259));
     o();
     this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-    findViewById(2131233597).startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
+    findViewById(2131233599).startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
   }
   
   private void r()
@@ -440,11 +440,11 @@ public class QZoneShareAlbumAssistantActivity
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSharealbumQZoneShareAlbumAssistantManager$onShareAlbumResultListener = new gnr(this);
+    this.jdField_a_of_type_ComTencentMobileqqSharealbumQZoneShareAlbumAssistantManager$onShareAlbumResultListener = new gji(this);
     if (this.jdField_a_of_type_ComTencentMobileqqSharealbumQZoneShareAlbumAssistantManager$onShareAlbumResultListener != null) {
       QZoneShareAlbumAssistantManager.a().a(this.jdField_a_of_type_ComTencentMobileqqSharealbumQZoneShareAlbumAssistantManager$onShareAlbumResultListener);
     }
-    this.jdField_a_of_type_JavaUtilComparator = new gnu(this);
+    this.jdField_a_of_type_JavaUtilComparator = new gjl(this);
     QZoneShareAlbumAssistantManager.a().j(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
     g();
   }
@@ -455,7 +455,7 @@ public class QZoneShareAlbumAssistantActivity
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    setContentView(2130903870);
+    setContentView(2130903872);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout = DragRelativeLayout.a(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout.a(this, false);
     f();

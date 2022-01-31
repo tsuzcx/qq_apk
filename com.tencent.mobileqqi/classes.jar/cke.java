@@ -1,18 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.view.DragSortAdapter;
+import com.tencent.mobileqq.emoticon.EmoticonController;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.statistics.StatisticAssist;
+import java.util.Iterator;
+import java.util.List;
 
 public class cke
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public cke(ChatSettingForTroop paramChatSettingForTroop, QQCustomDialog paramQQCustomDialog) {}
+  public cke(EmosmActivity paramEmosmActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+    paramView = EmosmActivity.a(this.a).getSelectedPackages().iterator();
+    while (paramView.hasNext())
+    {
+      EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramView.next();
+      EmosmActivity.a(this.a).b(localEmoticonPackage.epId);
+      EmosmActivity.a(this.a).setNotifyOnChange(true);
+      EmosmActivity.a(this.a).remove(localEmoticonPackage);
+      EmoticonController.a(this.a.b).b(localEmoticonPackage);
+      StatisticAssist.a(this.a, this.a.b.a(), "Delete_ep");
+      EmosmActivity.a(this.a, localEmoticonPackage);
     }
+    EmosmActivity.a(this.a).clearSelectStatus();
+    EmosmActivity.a(this.a).setEnabled(false);
   }
 }
 

@@ -1,22 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
-import com.tencent.mobileqq.data.MessageForText;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
 
 public class ege
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public ege(TextItemBuilder paramTextItemBuilder, MessageForText paramMessageForText) {}
+  public ege(RecommendTroopView paramRecommendTroopView, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ChatActivityFacade.a(TextItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder), TextItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder), TextItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder), this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.uniseq);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ege
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,17 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.activity.ChatActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class cda
-  implements MessageQueue.IdleHandler
+  implements DialogInterface.OnClickListener
 {
-  public cda(ChatActivity paramChatActivity) {}
+  public cda(ChatSettingActivity paramChatSettingActivity) {}
   
-  public boolean queueIdle()
-  {
-    ChatActivity.b(this.a);
-    return false;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cda
  * JD-Core Version:    0.7.0.1
  */

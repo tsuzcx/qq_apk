@@ -26,7 +26,7 @@ public abstract class AbsStructMsgItem
   private static final String h = AbsStructMsgItem.class.getSimpleName();
   public ArrayList a;
   public int i;
-  protected int j;
+  public int j;
   protected int k;
   public int l;
   
@@ -77,7 +77,7 @@ public abstract class AbsStructMsgItem
     return localStringBuffer.toString();
   }
   
-  protected void a(View paramView)
+  public void a(View paramView)
   {
     if (!TextUtils.isEmpty(this.b)) {}
     switch (a())
@@ -400,7 +400,7 @@ public abstract class AbsStructMsgItem
   
   public abstract String b();
   
-  protected void b(View paramView)
+  public void b(View paramView)
   {
     if ((b()) && (a())) {
       switch (this.j)

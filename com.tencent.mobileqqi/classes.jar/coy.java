@@ -1,17 +1,21 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DoodleActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.activity.GesturePWDGuideActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class coy
   implements View.OnClickListener
 {
-  public coy(DoodleActivity paramDoodleActivity) {}
+  public coy(GesturePWDGuideActivity paramGesturePWDGuideActivity) {}
   
   public void onClick(View paramView)
   {
-    DialogUtil.a(this.a, 230, this.a.getString(2131561832), this.a.getString(2131561823), 2131561746, 2131561915, new coz(this), new cpa(this)).show();
+    paramView = new Intent(this.a, GesturePWDCreateActivity.class);
+    this.a.startActivityForResult(paramView, 999);
+    this.a.overridePendingTransition(2130968598, 2130968595);
+    ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Clk_Gesture_password", 0, 0, "", "", "", "");
   }
 }
 

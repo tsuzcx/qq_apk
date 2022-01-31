@@ -1,29 +1,22 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.contact.CircleMemberListActivity;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import android.os.Handler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
 public class eie
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public eie(CircleMemberListActivity paramCircleMemberListActivity) {}
+  public eie(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.show();
-    this.a.jdField_a_of_type_AndroidViewView.setAnimation(null);
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    if ((!BaseApplicationImpl.a(BaseApplicationImpl.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) && (MainAssistObserver.a(this.a) < 5)) {
+      BaseApplicationImpl.jdField_a_of_type_AndroidOsHandler.postDelayed(MainAssistObserver.a(this.a), MainAssistObserver.b(this.a) * 30000);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eie
  * JD-Core Version:    0.7.0.1
  */

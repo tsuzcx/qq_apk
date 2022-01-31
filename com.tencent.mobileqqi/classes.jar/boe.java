@@ -1,15 +1,13 @@
-import com.tencent.biz.eqq.EnterpriseDetailActivity;
+import com.tencent.biz.ui.PopupMenu;
 
-public class boe
+class boe
   implements Runnable
 {
-  public boe(EnterpriseDetailActivity paramEnterpriseDetailActivity, int paramInt) {}
+  boe(bod parambod) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.jdField_a_of_type_Int > 0) {
-      EnterpriseDetailActivity.a(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_Int);
-    }
+    this.a.a.b();
   }
 }
 

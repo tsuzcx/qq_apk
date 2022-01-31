@@ -11,10 +11,10 @@ import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import dz;
-import ea;
-import eb;
-import ec;
+import eh;
+import ei;
+import ej;
+import ek;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +51,7 @@ public class MpfileTaskProxy
       a(paramMpfileTaskRecord, null);
       return 0L;
     }
-    new Handler(localLooper).post(new ec(this, paramMpfileTaskRecord, localWaitEvent));
+    new Handler(localLooper).post(new ek(this, paramMpfileTaskRecord, localWaitEvent));
     localWaitEvent.a(-1L);
     return 0L;
   }
@@ -86,7 +86,7 @@ public class MpfileTaskProxy
       this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, MpfileTaskRecord.tableName(), paramEntity, 0, paramProxyListener);
       return;
     }
-    new Handler(localLooper).post(new dz(this, paramEntity, paramProxyListener, localWaitEvent));
+    new Handler(localLooper).post(new eh(this, paramEntity, paramProxyListener, localWaitEvent));
     localWaitEvent.a(-1L);
   }
   
@@ -98,7 +98,7 @@ public class MpfileTaskProxy
       this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, paramString1, paramContentValues, paramString2, paramArrayOfString, 1, paramProxyListener);
       return;
     }
-    new Handler(localLooper).post(new ea(this, paramString1, paramContentValues, paramString2, paramArrayOfString, paramProxyListener));
+    new Handler(localLooper).post(new ei(this, paramString1, paramContentValues, paramString2, paramArrayOfString, paramProxyListener));
   }
   
   protected void a(String paramString1, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener)
@@ -109,7 +109,7 @@ public class MpfileTaskProxy
       this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, paramString1, paramString2, paramArrayOfString, 2, paramProxyListener);
       return;
     }
-    new Handler(localLooper).post(new eb(this, paramString1, paramString2, paramArrayOfString, paramProxyListener));
+    new Handler(localLooper).post(new ej(this, paramString1, paramString2, paramArrayOfString, paramProxyListener));
   }
   
   protected void b() {}

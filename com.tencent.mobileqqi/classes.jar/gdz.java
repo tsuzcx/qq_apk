@@ -1,31 +1,14 @@
-import com.tencent.mobileqq.jsbridge.WebBridge.JsBridgeListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.PicPreDownloader;
 
 public class gdz
   implements Runnable
 {
-  public gdz(WebBridge.JsBridgeListener paramJsBridgeListener, WebView paramWebView) {}
+  public gdz(PicPreDownloader paramPicPreDownloader, MessageRecord paramMessageRecord, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("responseId", this.jdField_a_of_type_ComTencentMobileqqJsbridgeWebBridge$JsBridgeListener.a);
-      localJSONObject.put("responseData", new JSONObject("{'result':-1,'message':'not find method'}"));
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:qqJSBridge.setMessage('" + localJSONObject.toString() + "');");
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("BaseWebActivity.WebBridge", 2, "WebBridge onComplete Exception:" + localJSONException.getMessage());
-      }
-      localJSONException.printStackTrace();
-    }
+    PicPreDownloader.a(this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 

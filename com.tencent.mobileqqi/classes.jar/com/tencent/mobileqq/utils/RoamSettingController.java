@@ -6,7 +6,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.RoamSettingManager;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import hij;
+import hec;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -456,7 +456,7 @@ public class RoamSettingController
             break;
           }
           i = this.jdField_b_of_type_Int * 15 * 1000;
-          ThreadManager.b().postDelayed(new hij(this), i);
+          ThreadManager.b().postDelayed(new hec(this), i);
         } while (!QLog.isColorLevel());
         QLog.d("RoamSetting", 2, "onUploadRomingSettingFinish fail, wait for " + i + "ms. uploadTryCount=" + this.jdField_b_of_type_Int);
         return;

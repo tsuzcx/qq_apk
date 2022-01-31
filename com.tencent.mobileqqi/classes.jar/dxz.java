@@ -1,20 +1,37 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
-import java.util.Comparator;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class dxz
-  implements Comparator
+  implements Runnable
 {
-  private dxz(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public dxz(PressToSpeakPanel paramPressToSpeakPanel, int paramInt, double paramDouble) {}
   
-  public int a(TroopMemberListActivity.ATroopMember paramATroopMember1, TroopMemberListActivity.ATroopMember paramATroopMember2)
+  public void run()
   {
-    return paramATroopMember1.f.compareToIgnoreCase(paramATroopMember2.f);
+    int i = AudioPanel.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel.a(i);
+    if (PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel) == 1) {
+      PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).setText(BaseApplication.getContext().getResources().getString(2131558880));
+    }
+    for (;;)
+    {
+      PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel, this.jdField_a_of_type_Double);
+      return;
+      if (PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel) == 2) {
+        PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).setText(BaseApplication.getContext().getResources().getString(2131558881));
+      } else {
+        PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).setText(AudioPanel.a(this.jdField_a_of_type_Double));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dxz
  * JD-Core Version:    0.7.0.1
  */

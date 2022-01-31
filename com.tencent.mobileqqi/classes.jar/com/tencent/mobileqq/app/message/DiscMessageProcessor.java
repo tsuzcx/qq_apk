@@ -24,7 +24,7 @@ import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import fno;
+import fjc;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -50,7 +50,7 @@ public class DiscMessageProcessor
   extends BaseMessageProcessorForTroopAndDisc
 {
   public static final String c = "Q.msg.DiscMessageProcessor";
-  public fno a;
+  public fjc a;
   private final Timer a;
   public final ConcurrentHashMap a;
   
@@ -59,7 +59,7 @@ public class DiscMessageProcessor
     super(paramQQAppInterface, paramMessageHandler);
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_JavaUtilTimer = ThreadManager.a();
-    this.jdField_a_of_type_Fno = new fno(this, null);
+    this.jdField_a_of_type_Fjc = new fjc(this, null);
   }
   
   private void a(ToServiceMsg paramToServiceMsg, ArrayList paramArrayList, msg_svc.PbGetDiscussMsgResp paramPbGetDiscussMsgResp)

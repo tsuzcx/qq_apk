@@ -1,18 +1,18 @@
-import com.tencent.biz.pubaccount.assistant.PubAccountAssistantActivity;
+import com.tencent.litetransfersdk.LiteTransferListenerCallback;
 
 public class bqr
   implements Runnable
 {
-  public bqr(PubAccountAssistantActivity paramPubAccountAssistantActivity) {}
+  public bqr(LiteTransferListenerCallback paramLiteTransferListenerCallback, long paramLong, int paramInt) {}
   
   public void run()
   {
-    this.a.m_();
+    LiteTransferListenerCallback.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferListenerCallback, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bqr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,31 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.MultiVideoMembersHolderUI;
-import com.tencent.av.utils.MultiVideoMembersClickListener;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.mobileqq.app.LBSObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
 public class bkl
-  implements View.OnTouchListener
+  extends LBSObserver
 {
-  public bkl(MultiVideoMembersHolderUI paramMultiVideoMembersHolderUI) {}
+  public bkl(PublicAccountManager paramPublicAccountManager) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(boolean paramBoolean, byte[] paramArrayOfByte, String paramString1, String paramString2, String paramString3)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    paramArrayOfByte = (QQAppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramBoolean)
+    {
+      double d1 = Double.valueOf(paramString1).doubleValue();
+      double d2 = Double.valueOf(paramString2).doubleValue();
+      this.a.a(this.a.jdField_a_of_type_AndroidContentContext, paramArrayOfByte, this.a.p, this.a.q, true, d1, d2, (BusinessObserver)PublicAccountManager.a(this.a).get());
     }
-    return paramMotionEvent.getAction() == 2;
+    for (;;)
+    {
+      if (paramArrayOfByte != null) {
+        paramArrayOfByte.c(this.a.jdField_a_of_type_ComTencentMobileqqAppLBSObserver);
+      }
+      return;
+      this.a.a(this.a.jdField_a_of_type_AndroidContentContext, paramArrayOfByte, this.a.p, this.a.q, false, 0.0D, 0.0D, (BusinessObserver)PublicAccountManager.a(this.a).get());
+    }
   }
 }
 

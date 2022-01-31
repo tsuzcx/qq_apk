@@ -1,21 +1,17 @@
-import EncounterSvc.RespGetEncounterV2;
-import com.tencent.mobileqq.activity.NearPeopleActivity;
-import com.tencent.mobileqq.activity.PeopleAroundBaseActivity;
-import com.tencent.mobileqq.activity.PeopleAroundBaseActivity.BaseLbsObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.tencentmap.mapsdk.map.MapController;
 
 public class dcx
-  extends PeopleAroundBaseActivity.BaseLbsObserver
+  implements View.OnClickListener
 {
-  public dcx(NearPeopleActivity paramNearPeopleActivity)
-  {
-    super(paramNearPeopleActivity);
-  }
+  public dcx(QQMapActivity paramQQMapActivity) {}
   
-  protected void a(boolean paramBoolean1, String paramString, int paramInt1, RespGetEncounterV2 paramRespGetEncounterV2, boolean paramBoolean2, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    if (paramInt2 == PeopleAroundBaseActivity.w) {
-      super.a(paramBoolean1, paramString, paramInt1, paramRespGetEncounterV2, paramBoolean2, paramInt2, paramInt3);
-    }
+    this.a.a.zoomOut();
+    this.a.o();
   }
 }
 

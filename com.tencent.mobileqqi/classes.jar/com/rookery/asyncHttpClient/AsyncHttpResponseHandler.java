@@ -3,7 +3,7 @@ package com.rookery.asyncHttpClient;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bft;
+import bgb;
 import java.io.IOException;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -24,7 +24,7 @@ public class AsyncHttpResponseHandler
   public AsyncHttpResponseHandler()
   {
     if (Looper.myLooper() != null) {
-      this.a = new bft(this);
+      this.a = new bgb(this);
     }
   }
   

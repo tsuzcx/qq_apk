@@ -1,18 +1,19 @@
-import com.tencent.open.agent.OpenSdkFriendService;
-import com.tencent.open.agent.OpenSdkFriendService.GetFriendListCallback;
-import java.util.ArrayList;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.MyAppApi;
 
 public class hno
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public hno(OpenSdkFriendService.GetFriendListCallback paramGetFriendListCallback, ArrayList paramArrayList, String paramString) {}
+  public hno(MyAppApi paramMyAppApi) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ("action_invite".equals(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$GetFriendListCallback.a.i))
-    {
-      this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$GetFriendListCallback.a.a(this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$GetFriendListCallback.a.a(this.jdField_a_of_type_JavaLangString);
+    LogUtility.c("MyAppApi", "onReceive ---INTENT = " + paramIntent);
+    if ((paramIntent != null) && (paramIntent.getAction().equals("mqq.i.intent.action.ACCOUNT_EXPIRED"))) {
+      this.a.f();
     }
   }
 }

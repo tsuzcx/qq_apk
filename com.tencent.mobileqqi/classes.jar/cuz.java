@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.gesturelock.LockPatternView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
 
-class cuz
-  implements Runnable
+public class cuz
+  extends Handler
 {
-  cuz(cuy paramcuy) {}
+  public cuz(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.a.a();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.finish();
   }
 }
 

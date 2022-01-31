@@ -1,15 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.IphoneTitleBarLocalAlbumsActivity;
+import java.io.File;
+import java.util.Comparator;
 
-public class fhs
-  implements View.OnClickListener
+class fhs
+  implements Comparator
 {
-  public fhs(IphoneTitleBarLocalAlbumsActivity paramIphoneTitleBarLocalAlbumsActivity) {}
+  fhs(fhq paramfhq) {}
   
-  public void onClick(View paramView)
+  public int a(File paramFile1, File paramFile2)
   {
-    this.a.b();
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
+    }
+    return 0;
   }
 }
 

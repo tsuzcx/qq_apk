@@ -1,26 +1,32 @@
-import QQService.SvcDevLoginInfo;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-import java.util.ArrayList;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class dkc
-  implements View.OnClickListener
+  implements Runnable
 {
-  public dkc(RecentLoginDevActivity paramRecentLoginDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
+  public dkc(SplashActivity paramSplashActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramView.stDeviceItemDes);
-    RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, paramView.strDeviceName, localArrayList, RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity), this.jdField_a_of_type_Int);
+    if (!this.a.isResume()) {}
+    do
+    {
+      return;
+      localIntent = this.a.b.a();
+      this.a.b.a(null);
+    } while (localIntent == null);
+    String str = localIntent.getStringExtra("wording");
+    int i = localIntent.getIntExtra("timetowait", 360000);
+    Intent localIntent = new Intent("com.tencent.mobileqq.action.SECURITY_DETECT_PUSH_BANNER");
+    localIntent.putExtra("wording", str);
+    localIntent.putExtra("timetowait", i);
+    SplashActivity.a(this.a, localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dkc
  * JD-Core Version:    0.7.0.1
  */

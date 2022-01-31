@@ -1,28 +1,12 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class cja
-  implements CompoundButton.OnCheckedChangeListener
+class cja
+  implements DialogInterface.OnClickListener
 {
-  public cja(ChatSettingActivity paramChatSettingActivity) {}
+  cja(ciy paramciy) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    if (ChatSettingActivity.a(this.a) == paramBoolean) {
-      return;
-    }
-    if (paramBoolean) {
-      ReportController.b(this.a.b, "CliOper", "", "", "0X80040EE", "0X80040EE", 0, 0, "2", "1", "", "");
-    }
-    for (;;)
-    {
-      ChatSettingActivity.a(this.a);
-      return;
-      ReportController.b(this.a.b, "CliOper", "", "", "0X80040EE", "0X80040EE", 0, 0, "2", "0", "", "");
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

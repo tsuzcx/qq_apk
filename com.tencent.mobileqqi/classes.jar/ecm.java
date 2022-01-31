@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
 
-class ecm
-  implements Runnable
+public class ecm
+  implements View.OnClickListener
 {
-  ecm(ecl paramecl) {}
+  public ecm(AIOImageListScene paramAIOImageListScene) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.d();
-    this.a.a.a.invalidate();
+    AIOImageListScene.a(this.a, ((TextView)paramView).getText().toString());
+    AIOImageListScene.d(this.a);
   }
 }
 

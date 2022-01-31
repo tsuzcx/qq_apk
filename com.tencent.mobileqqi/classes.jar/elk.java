@@ -1,19 +1,17 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 
 public class elk
-  extends FacePreloadBaseAdapter.ViewHolder
+  implements DialogInterface.OnKeyListener
 {
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public ShaderAnimLayout a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public elk(DialogBaseActivity paramDialogBaseActivity) {}
+  
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    return paramInt == 4;
+  }
 }
 
 

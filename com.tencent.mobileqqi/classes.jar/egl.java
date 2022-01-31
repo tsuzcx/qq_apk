@@ -1,39 +1,76 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
-import com.tencent.mobileqq.troop.utils.TroopFileManager;
-import java.util.UUID;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.RedDotTextView;
+import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import com.tencent.util.WeakReferenceHandler;
 
 public class egl
-  implements DialogInterface.OnClickListener
+  implements TabBarView.OnTabChangeListener
 {
-  public egl(TroopFileItemBuilder paramTroopFileItemBuilder, long paramLong, UUID paramUUID, ChatMessage paramChatMessage, Activity paramActivity) {}
+  public egl(TroopActivity paramTroopActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    switch (paramInt)
+    if (TroopActivity.a(this.a) != null) {
+      TroopActivity.a(this.a).c();
+    }
+    if (this.a.j != 2)
+    {
+      switch (paramInt2)
+      {
+      default: 
+        ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
+        this.a.i = 0;
+      }
+      for (;;)
+      {
+        this.a.a(this.a.i);
+        TroopActivity.a(this.a).sendEmptyMessage(1234);
+        return;
+        ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
+        this.a.i = 0;
+        continue;
+        ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "discuss", "contact_discuss_tab", 0, 0, "", "", "", "");
+        this.a.i = 1;
+      }
+    }
+    switch (paramInt2)
     {
     default: 
-      return;
-    case 0: 
-      paramDialogInterface = TroopFileManager.a(TroopFileItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder), this.jdField_a_of_type_Long);
-      paramDialogInterface.a(paramDialogInterface.a(this.jdField_a_of_type_JavaUtilUUID));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      TroopFileItemBuilder.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder).a().e(TroopFileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder).jdField_a_of_type_JavaLangString, TroopFileItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder).jdField_a_of_type_Int);
-      return;
+      if (!TroopActivity.a(this.a).a(0).a()) {
+        break;
+      }
     }
-    new TroopFileItemOperation(this.jdField_a_of_type_Long, TroopFileItemBuilder.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder), this.jdField_a_of_type_AndroidAppActivity).a(this.jdField_a_of_type_JavaUtilUUID);
+    for (String str = "0";; str = "1")
+    {
+      ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
+      ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
+      this.a.i = 0;
+      break;
+      if (TroopActivity.a(this.a).a(0).a()) {}
+      for (str = "0";; str = "1")
+      {
+        ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
+        ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
+        this.a.i = 0;
+        break;
+      }
+      if (TroopActivity.a(this.a).a(1).a()) {}
+      for (str = "0";; str = "1")
+      {
+        ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grprecom", 0, 0, "", str, "", "");
+        ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "notice", "enter_recom", 0, 0, "", "", "", "");
+        this.a.i = 1;
+        break;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     egl
  * JD-Core Version:    0.7.0.1
  */

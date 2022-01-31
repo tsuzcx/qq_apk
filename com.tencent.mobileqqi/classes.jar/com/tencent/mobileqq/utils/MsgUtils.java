@@ -290,34 +290,18 @@ public class MsgUtils
     if (paramArrayOfString == null) {
       return "";
     }
-    if (paramArrayOfString.length > 1) {
-      try
-      {
-        i = Integer.parseInt(paramArrayOfString[1]);
-        switch (i)
-        {
-        default: 
-          return paramContext.getResources().getString(2131560115);
-        }
-      }
-      catch (NumberFormatException paramArrayOfString)
-      {
-        for (;;)
-        {
-          int i = 0;
-        }
-        paramArrayOfString = ContactUtils.a(paramQQAppInterface, paramString2, paramString1, 2, 0);
-        paramContext = paramContext.getResources().getString(2131560115);
-        paramQQAppInterface = paramArrayOfString;
-        if (paramArrayOfString.length() > 11)
-        {
-          paramQQAppInterface = paramArrayOfString.substring(0, 10);
-          paramQQAppInterface = paramQQAppInterface + "...";
-        }
-        return paramQQAppInterface + paramContext;
-      }
+    if (paramArrayOfString.length > 1) {}
+    try
+    {
+      Integer.parseInt(paramArrayOfString[1]);
+      label20:
+      return paramContext.getResources().getString(2131560115);
+      return "";
     }
-    return "";
+    catch (NumberFormatException paramQQAppInterface)
+    {
+      break label20;
+    }
   }
   
   public static String a(String paramString)
@@ -333,143 +317,22 @@ public class MsgUtils
   
   public static String a(String[] paramArrayOfString, Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int k = 1;
     if (paramArrayOfString == null) {
       return "";
     }
-    if (paramArrayOfString.length > 1)
+    if (paramArrayOfString.length > 1) {}
+    try
     {
-      int j;
-      try
-      {
-        i = Integer.parseInt(paramArrayOfString[1]);
-        j = k;
-        if (paramArrayOfString.length > 3)
-        {
-          if ("1".equals(paramArrayOfString[3])) {
-            j = k;
-          }
-        }
-        else {
-          switch (i)
-          {
-          default: 
-            if (j == 0) {
-              break label862;
-            }
-            return paramContext.getResources().getString(2131560100);
-          }
-        }
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        for (;;)
-        {
-          int i = 0;
-          continue;
-          j = 0;
-        }
-        if (paramArrayOfString[0] == null) {
-          break label876;
-        }
-      }
-      if (paramContext.getString(2131560133).equals(paramArrayOfString[0]))
-      {
-        if (j != 0) {
-          return paramContext.getResources().getString(2131560107);
-        }
-        return paramContext.getResources().getString(2131560113);
-      }
-      if (j != 0) {
-        return paramContext.getResources().getString(2131560100) + " " + paramArrayOfString[0];
-      }
-      return paramContext.getResources().getString(2131560101) + " " + paramArrayOfString[0];
-      if (paramArrayOfString[0] != null)
-      {
-        if (paramContext.getString(2131560131).equals(paramArrayOfString[0]))
-        {
-          if (j != 0)
-          {
-            if (paramBoolean2) {
-              return paramContext.getResources().getString(2131560106);
-            }
-            return paramContext.getResources().getString(2131560104);
-          }
-          if (paramBoolean2) {
-            return paramContext.getResources().getString(2131560112);
-          }
-          return paramContext.getResources().getString(2131560110);
-        }
-        if (j != 0) {
-          return paramContext.getResources().getString(2131560100) + " " + paramArrayOfString[0];
-        }
-        return paramContext.getResources().getString(2131560101) + " " + paramArrayOfString[0];
-        if (j != 0)
-        {
-          if (paramBoolean2) {
-            return paramContext.getResources().getString(2131560106);
-          }
-          return paramContext.getResources().getString(2131560104);
-        }
-        if (paramBoolean2) {
-          return paramContext.getResources().getString(2131560112);
-        }
-        return paramContext.getResources().getString(2131560110);
-        if (j != 0)
-        {
-          if (paramBoolean2) {
-            return paramContext.getResources().getString(2131560106);
-          }
-          return paramContext.getResources().getString(2131560104);
-        }
-        if (paramBoolean2) {
-          return paramContext.getResources().getString(2131560112);
-        }
-        return paramContext.getResources().getString(2131560110);
-        if (j != 0) {
-          return paramContext.getResources().getString(2131560103);
-        }
-        return paramContext.getResources().getString(2131560109);
-        if (j != 0) {
-          return paramContext.getResources().getString(2131560100);
-        }
-        return paramContext.getResources().getString(2131560101);
-        if (j != 0) {
-          return paramContext.getResources().getString(2131560108);
-        }
-        return paramContext.getResources().getString(2131560114);
-        if (j != 0) {
-          return paramContext.getResources().getString(2131560107);
-        }
-        return paramContext.getResources().getString(2131560113);
-        if (paramArrayOfString[0] != null)
-        {
-          if (paramContext.getString(2131560133).equals(paramArrayOfString[0]))
-          {
-            if (j != 0) {
-              return paramContext.getResources().getString(2131560107);
-            }
-            return paramContext.getResources().getString(2131560113);
-          }
-          if (j != 0) {
-            return paramContext.getResources().getString(2131560100) + " " + paramArrayOfString[0];
-          }
-          return paramContext.getResources().getString(2131560101) + " " + paramArrayOfString[0];
-          if (paramArrayOfString[0] != null)
-          {
-            return paramContext.getResources().getString(2131560101) + " " + paramArrayOfString[0];
-            label862:
-            return paramContext.getResources().getString(2131560101);
-          }
-        }
-      }
-    }
-    else
-    {
+      Integer.parseInt(paramArrayOfString[1]);
+      label20:
+      if ((paramArrayOfString.length > 3) && ("1".equals(paramArrayOfString[3]))) {}
+      return "";
       return "";
     }
-    label876:
-    return "";
+    catch (NumberFormatException paramContext)
+    {
+      break label20;
+    }
   }
   
   /* Error */
@@ -482,13 +345,13 @@ public class MsgUtils
     //   5: iload 6
     //   7: ifne +1692 -> 1699
     //   10: aload_2
-    //   11: invokevirtual 352	com/tencent/mobileqq/app/message/QQMessageFacade$Message:isSendFromLocal	()Z
+    //   11: invokevirtual 327	com/tencent/mobileqq/app/message/QQMessageFacade$Message:isSendFromLocal	()Z
     //   14: ifne +24 -> 38
     //   17: aload_2
-    //   18: getfield 355	com/tencent/mobileqq/app/message/QQMessageFacade$Message:selfuin	Ljava/lang/String;
+    //   18: getfield 330	com/tencent/mobileqq/app/message/QQMessageFacade$Message:selfuin	Ljava/lang/String;
     //   21: ifnull +1678 -> 1699
     //   24: aload_2
-    //   25: getfield 355	com/tencent/mobileqq/app/message/QQMessageFacade$Message:selfuin	Ljava/lang/String;
+    //   25: getfield 330	com/tencent/mobileqq/app/message/QQMessageFacade$Message:selfuin	Ljava/lang/String;
     //   28: aload_2
     //   29: getfield 225	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
     //   32: invokevirtual 181	java/lang/String:equals	(Ljava/lang/Object;)Z
@@ -511,9 +374,9 @@ public class MsgUtils
     //   71: aload 5
     //   73: iconst_0
     //   74: bipush 11
-    //   76: invokevirtual 315	java/lang/String:substring	(II)Ljava/lang/String;
+    //   76: invokevirtual 334	java/lang/String:substring	(II)Ljava/lang/String;
     //   79: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: ldc_w 317
+    //   82: ldc_w 336
     //   85: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   88: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   91: astore 12
@@ -523,20 +386,20 @@ public class MsgUtils
     //   100: if_icmpne +34 -> 134
     //   103: aload_1
     //   104: aload_2
-    //   105: invokestatic 358	com/tencent/mobileqq/utils/MsgUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
+    //   105: invokestatic 339	com/tencent/mobileqq/utils/MsgUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
     //   108: istore 6
     //   110: aload_1
     //   111: aload_2
-    //   112: invokestatic 360	com/tencent/mobileqq/utils/MsgUtils:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
+    //   112: invokestatic 341	com/tencent/mobileqq/utils/MsgUtils:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
     //   115: istore 7
     //   117: aload 12
     //   119: aconst_null
     //   120: aload_2
-    //   121: getfield 363	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msg	Ljava/lang/String;
+    //   121: getfield 344	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msg	Ljava/lang/String;
     //   124: iload 6
     //   126: iload 7
     //   128: aload 4
-    //   130: invokestatic 366	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
+    //   130: invokestatic 347	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
     //   133: return
     //   134: aload_2
     //   135: getfield 204	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
@@ -553,37 +416,37 @@ public class MsgUtils
     //   157: getfield 28	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
     //   160: aload_2
     //   161: getfield 31	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
-    //   164: invokestatic 371	com/tencent/mobileqq/app/message/MsgProxyUtils:a	(Ljava/lang/String;I)Z
+    //   164: invokestatic 352	com/tencent/mobileqq/app/message/MsgProxyUtils:a	(Ljava/lang/String;I)Z
     //   167: ifeq +1529 -> 1696
     //   170: aload_2
     //   171: getfield 225	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
     //   174: astore 5
     //   176: aload_1
-    //   177: invokevirtual 374	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   177: invokevirtual 355	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
     //   180: aload 5
     //   182: aload_2
     //   183: getfield 31	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
     //   186: aload_2
     //   187: getfield 24	com/tencent/mobileqq/app/message/QQMessageFacade$Message:uniseq	J
-    //   190: invokevirtual 379	com/tencent/mobileqq/app/message/QQMessageFacade:b	(Ljava/lang/String;IJ)Lcom/tencent/mobileqq/data/MessageRecord;
-    //   193: checkcast 381	com/tencent/mobileqq/data/MessageForPic
+    //   190: invokevirtual 360	com/tencent/mobileqq/app/message/QQMessageFacade:b	(Ljava/lang/String;IJ)Lcom/tencent/mobileqq/data/MessageRecord;
+    //   193: checkcast 362	com/tencent/mobileqq/data/MessageForPic
     //   196: astore 13
     //   198: aload_1
-    //   199: invokevirtual 384	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/transfile/TransFileController;
+    //   199: invokevirtual 365	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/transfile/TransFileController;
     //   202: aload 5
     //   204: aload_2
     //   205: getfield 24	com/tencent/mobileqq/app/message/QQMessageFacade$Message:uniseq	J
-    //   208: invokevirtual 389	com/tencent/mobileqq/transfile/TransFileController:a	(Ljava/lang/String;J)Lcom/tencent/mobileqq/utils/httputils/IHttpCommunicatorListener;
+    //   208: invokevirtual 370	com/tencent/mobileqq/transfile/TransFileController:a	(Ljava/lang/String;J)Lcom/tencent/mobileqq/utils/httputils/IHttpCommunicatorListener;
     //   211: astore_1
     //   212: aload_2
-    //   213: invokevirtual 352	com/tencent/mobileqq/app/message/QQMessageFacade$Message:isSendFromLocal	()Z
+    //   213: invokevirtual 327	com/tencent/mobileqq/app/message/QQMessageFacade$Message:isSendFromLocal	()Z
     //   216: ifeq +142 -> 358
     //   219: aload_1
     //   220: ifnonnull +138 -> 358
     //   223: aload 13
     //   225: ifnull +133 -> 358
     //   228: aload 13
-    //   230: getfield 392	com/tencent/mobileqq/data/MessageForPic:size	J
+    //   230: getfield 373	com/tencent/mobileqq/data/MessageForPic:size	J
     //   233: lstore 10
     //   235: lload 10
     //   237: lconst_0
@@ -594,61 +457,61 @@ public class MsgUtils
     //   245: iload 6
     //   247: istore 7
     //   249: aload_1
-    //   250: instanceof 394
+    //   250: instanceof 375
     //   253: ifeq +167 -> 420
     //   256: aload_1
-    //   257: checkcast 394	com/tencent/mobileqq/transfile/BaseTransProcessor
+    //   257: checkcast 375	com/tencent/mobileqq/transfile/BaseTransProcessor
     //   260: astore_1
     //   261: aload_1
-    //   262: invokevirtual 397	com/tencent/mobileqq/transfile/BaseTransProcessor:c	()J
-    //   265: ldc2_w 398
+    //   262: invokevirtual 378	com/tencent/mobileqq/transfile/BaseTransProcessor:c	()J
+    //   265: ldc2_w 379
     //   268: lcmp
     //   269: ifeq +1415 -> 1684
     //   272: iconst_1
     //   273: istore 6
-    //   275: invokestatic 404	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   275: invokestatic 385	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   278: ifeq +60 -> 338
     //   281: aload_1
-    //   282: getfield 407	com/tencent/mobileqq/transfile/BaseTransProcessor:a	Lcom/tencent/mobileqq/transfile/TransferRequest;
+    //   282: getfield 388	com/tencent/mobileqq/transfile/BaseTransProcessor:a	Lcom/tencent/mobileqq/transfile/TransferRequest;
     //   285: ifnull +127 -> 412
     //   288: aload_1
-    //   289: getfield 407	com/tencent/mobileqq/transfile/BaseTransProcessor:a	Lcom/tencent/mobileqq/transfile/TransferRequest;
-    //   292: getfield 411	com/tencent/mobileqq/transfile/TransferRequest:a	J
+    //   289: getfield 388	com/tencent/mobileqq/transfile/BaseTransProcessor:a	Lcom/tencent/mobileqq/transfile/TransferRequest;
+    //   292: getfield 392	com/tencent/mobileqq/transfile/TransferRequest:a	J
     //   295: lstore 10
-    //   297: ldc_w 413
+    //   297: ldc_w 394
     //   300: iconst_2
     //   301: new 193	java/lang/StringBuilder
     //   304: dup
     //   305: invokespecial 194	java/lang/StringBuilder:<init>	()V
-    //   308: ldc_w 415
+    //   308: ldc_w 396
     //   311: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   314: lload 10
-    //   316: invokevirtual 418	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   319: ldc_w 420
+    //   316: invokevirtual 399	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   319: ldc_w 401
     //   322: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   325: aload_1
-    //   326: invokevirtual 421	com/tencent/mobileqq/transfile/BaseTransProcessor:a	()Ljava/lang/String;
+    //   326: invokevirtual 402	com/tencent/mobileqq/transfile/BaseTransProcessor:a	()Ljava/lang/String;
     //   329: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   332: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   335: invokestatic 425	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   335: invokestatic 406	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   338: aload 12
     //   340: aload_0
-    //   341: ldc_w 426
+    //   341: ldc_w 407
     //   344: invokevirtual 236	android/content/Context:getString	(I)Ljava/lang/String;
     //   347: aconst_null
     //   348: iload 7
     //   350: iload 6
     //   352: aload 4
-    //   354: invokestatic 366	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
+    //   354: invokestatic 347	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
     //   357: return
     //   358: aload_1
     //   359: ifnull +1331 -> 1690
     //   362: aload_1
-    //   363: instanceof 394
+    //   363: instanceof 375
     //   366: ifeq +1324 -> 1690
     //   369: aload_1
-    //   370: checkcast 394	com/tencent/mobileqq/transfile/BaseTransProcessor
-    //   373: invokevirtual 397	com/tencent/mobileqq/transfile/BaseTransProcessor:c	()J
+    //   370: checkcast 375	com/tencent/mobileqq/transfile/BaseTransProcessor
+    //   373: invokevirtual 378	com/tencent/mobileqq/transfile/BaseTransProcessor:c	()J
     //   376: lstore 10
     //   378: lload 10
     //   380: l2i
@@ -666,7 +529,7 @@ public class MsgUtils
     //   403: aconst_null
     //   404: astore_1
     //   405: aload_2
-    //   406: invokevirtual 429	java/lang/Exception:printStackTrace	()V
+    //   406: invokevirtual 410	java/lang/Exception:printStackTrace	()V
     //   409: goto -160 -> 249
     //   412: ldc2_w 32
     //   415: lstore 10
@@ -679,19 +542,19 @@ public class MsgUtils
     //   429: istore 8
     //   431: iload 8
     //   433: istore 6
-    //   435: invokestatic 404	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   435: invokestatic 385	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   438: ifeq -100 -> 338
-    //   441: ldc_w 413
+    //   441: ldc_w 394
     //   444: iconst_2
     //   445: new 193	java/lang/StringBuilder
     //   448: dup
     //   449: invokespecial 194	java/lang/StringBuilder:<init>	()V
-    //   452: ldc_w 431
+    //   452: ldc_w 412
     //   455: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   458: aload_1
-    //   459: invokevirtual 434	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   459: invokevirtual 415	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   462: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   465: invokestatic 425	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   465: invokestatic 406	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   468: iload 8
     //   470: istore 6
     //   472: goto -134 -> 338
@@ -711,30 +574,30 @@ public class MsgUtils
     //   504: iconst_0
     //   505: istore 8
     //   507: aload_1
-    //   508: invokevirtual 374	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   508: invokevirtual 355	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
     //   511: aload_2
     //   512: getfield 28	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
     //   515: aload_2
     //   516: getfield 31	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
     //   519: aload_2
     //   520: getfield 24	com/tencent/mobileqq/app/message/QQMessageFacade$Message:uniseq	J
-    //   523: invokevirtual 379	com/tencent/mobileqq/app/message/QQMessageFacade:b	(Ljava/lang/String;IJ)Lcom/tencent/mobileqq/data/MessageRecord;
+    //   523: invokevirtual 360	com/tencent/mobileqq/app/message/QQMessageFacade:b	(Ljava/lang/String;IJ)Lcom/tencent/mobileqq/data/MessageRecord;
     //   526: astore 13
     //   528: aload 13
-    //   530: instanceof 436
+    //   530: instanceof 417
     //   533: ifeq -529 -> 4
     //   536: aload 13
-    //   538: checkcast 436	com/tencent/mobileqq/data/MessageForPtt
+    //   538: checkcast 417	com/tencent/mobileqq/data/MessageForPtt
     //   541: astore 13
     //   543: iload 9
     //   545: istore 6
     //   547: iload 8
     //   549: istore 7
     //   551: aload_2
-    //   552: invokevirtual 352	com/tencent/mobileqq/app/message/QQMessageFacade$Message:isSendFromLocal	()Z
+    //   552: invokevirtual 327	com/tencent/mobileqq/app/message/QQMessageFacade$Message:isSendFromLocal	()Z
     //   555: ifeq +22 -> 577
     //   558: aload 13
-    //   560: getfield 439	com/tencent/mobileqq/data/MessageForPtt:fileSize	J
+    //   560: getfield 420	com/tencent/mobileqq/data/MessageForPtt:fileSize	J
     //   563: ldc2_w 32
     //   566: lcmp
     //   567: ifne +30 -> 597
@@ -744,31 +607,31 @@ public class MsgUtils
     //   575: istore 7
     //   577: aload 12
     //   579: aload_0
-    //   580: ldc_w 440
+    //   580: ldc_w 421
     //   583: invokevirtual 236	android/content/Context:getString	(I)Ljava/lang/String;
     //   586: aconst_null
     //   587: iload 6
     //   589: iload 7
     //   591: aload 4
-    //   593: invokestatic 366	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
+    //   593: invokestatic 347	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
     //   596: return
     //   597: iload 9
     //   599: istore 6
     //   601: iload 8
     //   603: istore 7
     //   605: aload 13
-    //   607: getfield 439	com/tencent/mobileqq/data/MessageForPtt:fileSize	J
+    //   607: getfield 420	com/tencent/mobileqq/data/MessageForPtt:fileSize	J
     //   610: lconst_0
     //   611: lcmp
     //   612: ifgt -35 -> 577
     //   615: aload_1
-    //   616: invokevirtual 384	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/transfile/TransFileController;
+    //   616: invokevirtual 365	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/transfile/TransFileController;
     //   619: aload 5
     //   621: aload 13
-    //   623: getfield 443	com/tencent/mobileqq/data/MessageForPtt:url	Ljava/lang/String;
+    //   623: getfield 424	com/tencent/mobileqq/data/MessageForPtt:url	Ljava/lang/String;
     //   626: aload 13
-    //   628: getfield 444	com/tencent/mobileqq/data/MessageForPtt:uniseq	J
-    //   631: invokevirtual 447	com/tencent/mobileqq/transfile/TransFileController:d	(Ljava/lang/String;Ljava/lang/String;J)I
+    //   628: getfield 425	com/tencent/mobileqq/data/MessageForPtt:uniseq	J
+    //   631: invokevirtual 428	com/tencent/mobileqq/transfile/TransFileController:d	(Ljava/lang/String;Ljava/lang/String;J)I
     //   634: istore_3
     //   635: iload_3
     //   636: sipush 1005
@@ -794,27 +657,27 @@ public class MsgUtils
     //   678: sipush -1038
     //   681: if_icmpne +47 -> 728
     //   684: aload_2
-    //   685: getfield 451	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgData	[B
+    //   685: getfield 432	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgData	[B
     //   688: astore_0
-    //   689: new 453	com/tencent/mobileqq/data/MessageForPlayTogetherResult$PlayTogetherResultInfo
+    //   689: new 434	com/tencent/mobileqq/data/MessageForPlayTogetherResult$PlayTogetherResultInfo
     //   692: dup
-    //   693: invokespecial 454	com/tencent/mobileqq/data/MessageForPlayTogetherResult$PlayTogetherResultInfo:<init>	()V
+    //   693: invokespecial 435	com/tencent/mobileqq/data/MessageForPlayTogetherResult$PlayTogetherResultInfo:<init>	()V
     //   696: astore 5
     //   698: aload 5
     //   700: aload_0
-    //   701: invokevirtual 458	com/tencent/mobileqq/data/MessageForPlayTogetherResult$PlayTogetherResultInfo:fromBytes	([B)V
+    //   701: invokevirtual 439	com/tencent/mobileqq/data/MessageForPlayTogetherResult$PlayTogetherResultInfo:fromBytes	([B)V
     //   704: aload 12
     //   706: aconst_null
     //   707: aload 5
-    //   709: getfield 461	com/tencent/mobileqq/data/MessageForPlayTogetherResult$PlayTogetherResultInfo:mGameName	Ljava/lang/String;
+    //   709: getfield 442	com/tencent/mobileqq/data/MessageForPlayTogetherResult$PlayTogetherResultInfo:mGameName	Ljava/lang/String;
     //   712: aload_1
     //   713: aload_2
-    //   714: invokestatic 358	com/tencent/mobileqq/utils/MsgUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
+    //   714: invokestatic 339	com/tencent/mobileqq/utils/MsgUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
     //   717: aload_1
     //   718: aload_2
-    //   719: invokestatic 360	com/tencent/mobileqq/utils/MsgUtils:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
+    //   719: invokestatic 341	com/tencent/mobileqq/utils/MsgUtils:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
     //   722: aload 4
-    //   724: invokestatic 366	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
+    //   724: invokestatic 347	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
     //   727: return
     //   728: aload_2
     //   729: getfield 204	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
@@ -825,18 +688,18 @@ public class MsgUtils
     //   743: dup
     //   744: invokespecial 194	java/lang/StringBuilder:<init>	()V
     //   747: aload_0
-    //   748: ldc_w 462
+    //   748: ldc_w 443
     //   751: invokevirtual 236	android/content/Context:getString	(I)Ljava/lang/String;
     //   754: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   757: ldc_w 464
+    //   757: ldc_w 445
     //   760: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   763: aload_2
-    //   764: getfield 363	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msg	Ljava/lang/String;
+    //   764: getfield 344	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msg	Ljava/lang/String;
     //   767: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   770: ldc_w 464
+    //   770: ldc_w 445
     //   773: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   776: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   779: putfield 469	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
+    //   779: putfield 450	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
     //   782: return
     //   783: aload_2
     //   784: getfield 204	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
@@ -844,26 +707,26 @@ public class MsgUtils
     //   790: if_icmpne +11 -> 801
     //   793: aload 4
     //   795: ldc 153
-    //   797: putfield 469	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
+    //   797: putfield 450	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
     //   800: return
     //   801: aload_2
     //   802: getfield 204	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
-    //   805: invokestatic 473	com/tencent/mobileqq/utils/ActionMsgUtil:a	(I)Z
+    //   805: invokestatic 454	com/tencent/mobileqq/utils/ActionMsgUtil:a	(I)Z
     //   808: ifeq +28 -> 836
     //   811: aload 12
     //   813: aload_0
     //   814: aload_1
     //   815: aload_2
-    //   816: invokestatic 475	com/tencent/mobileqq/utils/MsgUtils:a	(Landroid/content/Context;Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
+    //   816: invokestatic 456	com/tencent/mobileqq/utils/MsgUtils:a	(Landroid/content/Context;Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
     //   819: aconst_null
     //   820: aload_1
     //   821: aload_2
-    //   822: invokestatic 358	com/tencent/mobileqq/utils/MsgUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
+    //   822: invokestatic 339	com/tencent/mobileqq/utils/MsgUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
     //   825: aload_1
     //   826: aload_2
-    //   827: invokestatic 360	com/tencent/mobileqq/utils/MsgUtils:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
+    //   827: invokestatic 341	com/tencent/mobileqq/utils/MsgUtils:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
     //   830: aload 4
-    //   832: invokestatic 366	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
+    //   832: invokestatic 347	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
     //   835: return
     //   836: aload_2
     //   837: getfield 204	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
@@ -871,25 +734,25 @@ public class MsgUtils
     //   843: if_icmpne +29 -> 872
     //   846: aload 12
     //   848: aload_0
-    //   849: ldc_w 476
+    //   849: ldc_w 457
     //   852: invokevirtual 236	android/content/Context:getString	(I)Ljava/lang/String;
     //   855: aconst_null
     //   856: aload_1
     //   857: aload_2
-    //   858: invokestatic 358	com/tencent/mobileqq/utils/MsgUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
+    //   858: invokestatic 339	com/tencent/mobileqq/utils/MsgUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
     //   861: aload_1
     //   862: aload_2
-    //   863: invokestatic 360	com/tencent/mobileqq/utils/MsgUtils:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
+    //   863: invokestatic 341	com/tencent/mobileqq/utils/MsgUtils:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
     //   866: aload 4
-    //   868: invokestatic 366	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
+    //   868: invokestatic 347	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
     //   871: return
     //   872: aload_2
     //   873: getfield 204	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
-    //   876: invokestatic 478	com/tencent/mobileqq/utils/ActionMsgUtil:b	(I)Z
+    //   876: invokestatic 459	com/tencent/mobileqq/utils/ActionMsgUtil:b	(I)Z
     //   879: ifeq +35 -> 914
     //   882: aload_2
-    //   883: getfield 363	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msg	Ljava/lang/String;
-    //   886: invokestatic 483	com/tencent/mobileqq/transfile/TransfileUtile:a	(Ljava/lang/String;)[Ljava/lang/String;
+    //   883: getfield 344	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msg	Ljava/lang/String;
+    //   886: invokestatic 464	com/tencent/mobileqq/transfile/TransfileUtile:a	(Ljava/lang/String;)[Ljava/lang/String;
     //   889: astore_1
     //   890: aload_1
     //   891: ifnull -887 -> 4
@@ -897,19 +760,19 @@ public class MsgUtils
     //   896: aload_1
     //   897: aload_0
     //   898: aload_2
-    //   899: getfield 486	com/tencent/mobileqq/app/message/QQMessageFacade$Message:issend	I
-    //   902: invokestatic 487	com/tencent/mobileqq/utils/MsgUtils:b	(I)Z
+    //   899: getfield 467	com/tencent/mobileqq/app/message/QQMessageFacade$Message:issend	I
+    //   902: invokestatic 468	com/tencent/mobileqq/utils/MsgUtils:b	(I)Z
     //   905: iload 7
-    //   907: invokestatic 489	com/tencent/mobileqq/utils/MsgUtils:a	([Ljava/lang/String;Landroid/content/Context;ZZ)Ljava/lang/String;
-    //   910: putfield 469	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
+    //   907: invokestatic 470	com/tencent/mobileqq/utils/MsgUtils:a	([Ljava/lang/String;Landroid/content/Context;ZZ)Ljava/lang/String;
+    //   910: putfield 450	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
     //   913: return
     //   914: aload_2
     //   915: getfield 204	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
-    //   918: invokestatic 491	com/tencent/mobileqq/utils/ActionMsgUtil:c	(I)Z
+    //   918: invokestatic 472	com/tencent/mobileqq/utils/ActionMsgUtil:c	(I)Z
     //   921: ifeq +38 -> 959
     //   924: aload_2
-    //   925: getfield 363	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msg	Ljava/lang/String;
-    //   928: invokestatic 483	com/tencent/mobileqq/transfile/TransfileUtile:a	(Ljava/lang/String;)[Ljava/lang/String;
+    //   925: getfield 344	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msg	Ljava/lang/String;
+    //   928: invokestatic 464	com/tencent/mobileqq/transfile/TransfileUtile:a	(Ljava/lang/String;)[Ljava/lang/String;
     //   931: astore 5
     //   933: aload 5
     //   935: ifnull -931 -> 4
@@ -921,26 +784,26 @@ public class MsgUtils
     //   945: getfield 28	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
     //   948: aload_2
     //   949: getfield 225	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
-    //   952: invokestatic 493	com/tencent/mobileqq/utils/MsgUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;[Ljava/lang/String;Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   955: putfield 469	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
+    //   952: invokestatic 474	com/tencent/mobileqq/utils/MsgUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;[Ljava/lang/String;Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   955: putfield 450	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
     //   958: return
     //   959: aload_2
     //   960: getfield 204	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
-    //   963: invokestatic 495	com/tencent/mobileqq/utils/ActionMsgUtil:d	(I)Z
+    //   963: invokestatic 476	com/tencent/mobileqq/utils/ActionMsgUtil:d	(I)Z
     //   966: ifeq +29 -> 995
     //   969: aload 12
     //   971: aload_0
-    //   972: ldc_w 496
+    //   972: ldc_w 477
     //   975: invokevirtual 236	android/content/Context:getString	(I)Ljava/lang/String;
     //   978: aconst_null
     //   979: aload_1
     //   980: aload_2
-    //   981: invokestatic 358	com/tencent/mobileqq/utils/MsgUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
+    //   981: invokestatic 339	com/tencent/mobileqq/utils/MsgUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
     //   984: aload_1
     //   985: aload_2
-    //   986: invokestatic 360	com/tencent/mobileqq/utils/MsgUtils:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
+    //   986: invokestatic 341	com/tencent/mobileqq/utils/MsgUtils:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
     //   989: aload 4
-    //   991: invokestatic 366	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
+    //   991: invokestatic 347	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
     //   994: return
     //   995: aload_2
     //   996: getfield 204	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
@@ -949,11 +812,11 @@ public class MsgUtils
     //   1005: aconst_null
     //   1006: aconst_null
     //   1007: aload_2
-    //   1008: getfield 363	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msg	Ljava/lang/String;
+    //   1008: getfield 344	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msg	Ljava/lang/String;
     //   1011: iconst_0
     //   1012: iconst_0
     //   1013: aload 4
-    //   1015: invokestatic 366	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
+    //   1015: invokestatic 347	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
     //   1018: return
     //   1019: aload_2
     //   1020: getfield 204	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
@@ -961,9 +824,9 @@ public class MsgUtils
     //   1026: if_icmpne +16 -> 1042
     //   1029: aload 4
     //   1031: aload_0
-    //   1032: ldc_w 497
+    //   1032: ldc_w 478
     //   1035: invokevirtual 236	android/content/Context:getString	(I)Ljava/lang/String;
-    //   1038: putfield 469	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
+    //   1038: putfield 450	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
     //   1041: return
     //   1042: aload_2
     //   1043: getfield 204	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
@@ -971,72 +834,72 @@ public class MsgUtils
     //   1049: if_icmpne +56 -> 1105
     //   1052: aload_1
     //   1053: aload_2
-    //   1054: invokestatic 500	com/tencent/mobileqq/filemanager/util/FileManagerUtil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
+    //   1054: invokestatic 481	com/tencent/mobileqq/filemanager/util/FileManagerUtil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
     //   1057: astore 5
     //   1059: aload_1
     //   1060: aload_2
-    //   1061: invokestatic 358	com/tencent/mobileqq/utils/MsgUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
+    //   1061: invokestatic 339	com/tencent/mobileqq/utils/MsgUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
     //   1064: istore 6
     //   1066: aload_1
     //   1067: aload_2
-    //   1068: invokestatic 360	com/tencent/mobileqq/utils/MsgUtils:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
+    //   1068: invokestatic 341	com/tencent/mobileqq/utils/MsgUtils:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
     //   1071: istore 7
     //   1073: aload 12
     //   1075: aload_0
-    //   1076: ldc_w 501
+    //   1076: ldc_w 482
     //   1079: invokevirtual 236	android/content/Context:getString	(I)Ljava/lang/String;
     //   1082: aconst_null
     //   1083: iload 6
     //   1085: iload 7
     //   1087: aload 4
-    //   1089: invokestatic 366	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
+    //   1089: invokestatic 347	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
     //   1092: aload 5
     //   1094: ifnull -1090 -> 4
     //   1097: aload 4
     //   1099: aload 5
-    //   1101: putfield 469	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
+    //   1101: putfield 450	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
     //   1104: return
     //   1105: aload_2
-    //   1106: getfield 363	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msg	Ljava/lang/String;
+    //   1106: getfield 344	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msg	Ljava/lang/String;
     //   1109: ifnonnull +11 -> 1120
     //   1112: aload 4
     //   1114: ldc 153
-    //   1116: putfield 469	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
+    //   1116: putfield 450	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
     //   1119: return
     //   1120: aload_1
     //   1121: aload_2
-    //   1122: invokestatic 358	com/tencent/mobileqq/utils/MsgUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
+    //   1122: invokestatic 339	com/tencent/mobileqq/utils/MsgUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
     //   1125: istore 6
     //   1127: aload_1
     //   1128: aload_2
-    //   1129: invokestatic 360	com/tencent/mobileqq/utils/MsgUtils:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
+    //   1129: invokestatic 341	com/tencent/mobileqq/utils/MsgUtils:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Z
     //   1132: istore 7
     //   1134: aload_2
-    //   1135: getfield 504	com/tencent/mobileqq/app/message/QQMessageFacade$Message:fileType	I
+    //   1135: getfield 485	com/tencent/mobileqq/app/message/QQMessageFacade$Message:fileType	I
     //   1138: lookupswitch	default:+50->1188, 1:+101->1239, 2:+172->1310, 8:+172->1310, 65536:+83->1221, 65538:+154->1292
     //   1189: aconst_null
     //   1190: <illegal opcode>
     //   1191: aload_2
     //   1192: getfield 28	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
-    //   1195: invokevirtual 512	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   1195: invokevirtual 493	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   1198: ifeq +166 -> 1364
     //   1201: aload_2
     //   1202: getfield 31	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
     //   1205: ifne +159 -> 1364
     //   1208: aload 4
-    //   1210: invokestatic 517	com/tencent/mobileqq/systemmsg/SystemMsgController:a	()Lcom/tencent/mobileqq/systemmsg/SystemMsgController;
+    //   1210: invokestatic 498	com/tencent/mobileqq/systemmsg/SystemMsgController:a	()Lcom/tencent/mobileqq/systemmsg/SystemMsgController;
     //   1213: aload_1
-    //   1214: invokevirtual 520	com/tencent/mobileqq/systemmsg/SystemMsgController:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Ljava/lang/String;
-    //   1217: putfield 469	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
+    //   1214: invokevirtual 501	com/tencent/mobileqq/systemmsg/SystemMsgController:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Ljava/lang/String;
+    //   1217: putfield 450	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
     //   1220: return
     //   1221: aload 12
     //   1223: ldc 153
     //   1225: aload_2
-    //   1226: getfield 363	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msg	Ljava/lang/String;
+    //   1226: getfield 344	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msg	Ljava/lang/String;
     //   1229: iload 6
     //   1231: iload 7
     //   1233: aload 4
-    //   1235: invokestatic 366	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
+    //   1235: invokestatic 347	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
     //   1238: return
     //   1239: aload_2
     //   1240: getfield 31	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
@@ -1048,39 +911,39 @@ public class MsgUtils
     //   1256: if_icmpne +16 -> 1272
     //   1259: aload 4
     //   1261: aload_0
-    //   1262: ldc_w 521
+    //   1262: ldc_w 502
     //   1265: invokevirtual 236	android/content/Context:getString	(I)Ljava/lang/String;
-    //   1268: putfield 469	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
+    //   1268: putfield 450	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
     //   1271: return
     //   1272: aload 12
     //   1274: aload_0
-    //   1275: ldc_w 426
+    //   1275: ldc_w 407
     //   1278: invokevirtual 236	android/content/Context:getString	(I)Ljava/lang/String;
     //   1281: aconst_null
     //   1282: iload 6
     //   1284: iload 7
     //   1286: aload 4
-    //   1288: invokestatic 366	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
+    //   1288: invokestatic 347	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
     //   1291: return
     //   1292: aload 12
     //   1294: aload_0
-    //   1295: ldc_w 426
+    //   1295: ldc_w 407
     //   1298: invokevirtual 236	android/content/Context:getString	(I)Ljava/lang/String;
     //   1301: aconst_null
     //   1302: iconst_0
     //   1303: iconst_0
     //   1304: aload 4
-    //   1306: invokestatic 366	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
+    //   1306: invokestatic 347	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
     //   1309: return
     //   1310: aload_0
-    //   1311: ldc_w 440
+    //   1311: ldc_w 421
     //   1314: invokevirtual 236	android/content/Context:getString	(I)Ljava/lang/String;
     //   1317: astore_0
     //   1318: aload_2
     //   1319: getfield 225	com/tencent/mobileqq/app/message/QQMessageFacade$Message:senderuin	Ljava/lang/String;
     //   1322: aload_1
     //   1323: invokevirtual 81	com/tencent/mobileqq/app/QQAppInterface:a	()Ljava/lang/String;
-    //   1326: invokestatic 526	com/tencent/mobileqq/util/Utils:a	(Ljava/lang/Object;Ljava/lang/Object;)Z
+    //   1326: invokestatic 507	com/tencent/mobileqq/util/Utils:a	(Ljava/lang/Object;Ljava/lang/Object;)Z
     //   1329: ifeq +22 -> 1351
     //   1332: iload_3
     //   1333: ifeq +18 -> 1351
@@ -1090,7 +953,7 @@ public class MsgUtils
     //   1341: iload 6
     //   1343: iload 7
     //   1345: aload 4
-    //   1347: invokestatic 366	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
+    //   1347: invokestatic 347	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
     //   1350: return
     //   1351: aload 12
     //   1353: aload_0
@@ -1098,13 +961,13 @@ public class MsgUtils
     //   1356: iconst_0
     //   1357: iconst_0
     //   1358: aload 4
-    //   1360: invokestatic 366	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
+    //   1360: invokestatic 347	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
     //   1363: return
     //   1364: aload_2
-    //   1365: invokevirtual 530	com/tencent/mobileqq/app/message/QQMessageFacade$Message:getMessageText	()Ljava/lang/CharSequence;
+    //   1365: invokevirtual 511	com/tencent/mobileqq/app/message/QQMessageFacade$Message:getMessageText	()Ljava/lang/CharSequence;
     //   1368: astore 5
     //   1370: aload_2
-    //   1371: getfield 533	com/tencent/mobileqq/app/message/QQMessageFacade$Message:emoRecentMsg	Ljava/lang/CharSequence;
+    //   1371: getfield 514	com/tencent/mobileqq/app/message/QQMessageFacade$Message:emoRecentMsg	Ljava/lang/CharSequence;
     //   1374: ifnull +171 -> 1545
     //   1377: aload 5
     //   1379: ifnull +166 -> 1545
@@ -1122,7 +985,7 @@ public class MsgUtils
     //   1406: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1409: pop
     //   1410: aload_0
-    //   1411: ldc_w 535
+    //   1411: ldc_w 516
     //   1414: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1417: pop
     //   1418: iload 6
@@ -1132,28 +995,28 @@ public class MsgUtils
     //   1426: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1429: pop
     //   1430: aload 5
-    //   1432: instanceof 537
+    //   1432: instanceof 518
     //   1435: ifeq +59 -> 1494
     //   1438: aload 5
-    //   1440: checkcast 537	com/tencent/mobileqq/text/QQText
+    //   1440: checkcast 518	com/tencent/mobileqq/text/QQText
     //   1443: aload_0
     //   1444: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1447: iconst_1
     //   1448: iconst_0
     //   1449: newarray int
-    //   1451: invokevirtual 540	com/tencent/mobileqq/text/QQText:a	(Ljava/lang/String;Z[I)Lcom/tencent/mobileqq/text/QQText;
+    //   1451: invokevirtual 521	com/tencent/mobileqq/text/QQText:a	(Ljava/lang/String;Z[I)Lcom/tencent/mobileqq/text/QQText;
     //   1454: astore_0
     //   1455: aload 4
     //   1457: iconst_1
-    //   1458: putfield 543	com/tencent/mobileqq/activity/recent/MsgSummary:g	I
+    //   1458: putfield 524	com/tencent/mobileqq/activity/recent/MsgSummary:g	I
     //   1461: iload 6
     //   1463: ifeq +59 -> 1522
     //   1466: aload 4
     //   1468: iconst_2
-    //   1469: putfield 546	com/tencent/mobileqq/activity/recent/MsgSummary:f	I
+    //   1469: putfield 527	com/tencent/mobileqq/activity/recent/MsgSummary:f	I
     //   1472: aload 4
     //   1474: aload_0
-    //   1475: putfield 469	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
+    //   1475: putfield 450	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
     //   1478: return
     //   1479: iload 7
     //   1481: ifeq -51 -> 1430
@@ -1164,38 +1027,38 @@ public class MsgUtils
     //   1491: goto -61 -> 1430
     //   1494: aload_0
     //   1495: aload 5
-    //   1497: invokevirtual 549	java/lang/StringBuilder:append	(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
+    //   1497: invokevirtual 530	java/lang/StringBuilder:append	(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
     //   1500: pop
-    //   1501: new 551	android/text/SpannableString
+    //   1501: new 532	android/text/SpannableString
     //   1504: dup
     //   1505: aload_0
     //   1506: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1509: invokespecial 552	android/text/SpannableString:<init>	(Ljava/lang/CharSequence;)V
+    //   1509: invokespecial 533	android/text/SpannableString:<init>	(Ljava/lang/CharSequence;)V
     //   1512: astore_0
     //   1513: aload 4
     //   1515: iconst_0
-    //   1516: putfield 543	com/tencent/mobileqq/activity/recent/MsgSummary:g	I
+    //   1516: putfield 524	com/tencent/mobileqq/activity/recent/MsgSummary:g	I
     //   1519: goto -58 -> 1461
     //   1522: iload 7
     //   1524: ifeq +12 -> 1536
     //   1527: aload 4
     //   1529: iconst_1
-    //   1530: putfield 546	com/tencent/mobileqq/activity/recent/MsgSummary:f	I
+    //   1530: putfield 527	com/tencent/mobileqq/activity/recent/MsgSummary:f	I
     //   1533: goto -61 -> 1472
     //   1536: aload 4
     //   1538: iconst_0
-    //   1539: putfield 546	com/tencent/mobileqq/activity/recent/MsgSummary:f	I
+    //   1539: putfield 527	com/tencent/mobileqq/activity/recent/MsgSummary:f	I
     //   1542: goto -70 -> 1472
     //   1545: aload 5
     //   1547: ifnull +114 -> 1661
     //   1550: aload 5
-    //   1552: invokeinterface 553 1 0
+    //   1552: invokeinterface 534 1 0
     //   1557: invokevirtual 218	java/lang/String:trim	()Ljava/lang/String;
     //   1560: astore 5
-    //   1562: getstatic 509	com/tencent/mobileqq/app/AppConstants:U	Ljava/lang/String;
+    //   1562: getstatic 490	com/tencent/mobileqq/app/AppConstants:U	Ljava/lang/String;
     //   1565: aload_2
     //   1566: getfield 28	com/tencent/mobileqq/app/message/QQMessageFacade$Message:frienduin	Ljava/lang/String;
-    //   1569: invokevirtual 512	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   1569: invokevirtual 493	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   1572: ifeq +106 -> 1678
     //   1575: aload 5
     //   1577: ifnull +101 -> 1678
@@ -1206,44 +1069,44 @@ public class MsgUtils
     //   1589: aload_1
     //   1590: aload 5
     //   1592: aload_2
-    //   1593: invokestatic 555	com/tencent/mobileqq/utils/MsgUtils:a	(Landroid/content/Context;Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
+    //   1593: invokestatic 536	com/tencent/mobileqq/utils/MsgUtils:a	(Landroid/content/Context;Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;)Ljava/lang/String;
     //   1596: astore_0
     //   1597: aload 12
     //   1599: aconst_null
     //   1600: aload_0
     //   1601: iload 6
     //   1603: aload_1
-    //   1604: invokevirtual 558	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
+    //   1604: invokevirtual 539	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   1607: aload_2
-    //   1608: invokevirtual 563	com/tencent/mobileqq/service/message/MessageCache:b	(Lcom/tencent/mobileqq/data/MessageRecord;)Z
+    //   1608: invokevirtual 544	com/tencent/mobileqq/service/message/MessageCache:b	(Lcom/tencent/mobileqq/data/MessageRecord;)Z
     //   1611: aload 4
-    //   1613: invokestatic 366	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
+    //   1613: invokestatic 347	com/tencent/mobileqq/utils/MsgUtils:a	(Ljava/lang/CharSequence;Ljava/lang/String;Ljava/lang/CharSequence;ZZLcom/tencent/mobileqq/activity/recent/MsgSummary;)V
     //   1616: aload_2
     //   1617: getfield 204	com/tencent/mobileqq/app/message/QQMessageFacade$Message:msgtype	I
     //   1620: sipush -1000
     //   1623: if_icmpne +44 -> 1667
     //   1626: aload 4
-    //   1628: getfield 469	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
+    //   1628: getfield 450	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
     //   1631: ifnull +36 -> 1667
     //   1634: aload 4
-    //   1636: new 537	com/tencent/mobileqq/text/QQText
+    //   1636: new 518	com/tencent/mobileqq/text/QQText
     //   1639: dup
     //   1640: aload 4
-    //   1642: getfield 469	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
+    //   1642: getfield 450	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
     //   1645: iconst_1
     //   1646: bipush 16
-    //   1648: invokespecial 566	com/tencent/mobileqq/text/QQText:<init>	(Ljava/lang/CharSequence;II)V
-    //   1651: putfield 469	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
+    //   1648: invokespecial 547	com/tencent/mobileqq/text/QQText:<init>	(Ljava/lang/CharSequence;II)V
+    //   1651: putfield 450	com/tencent/mobileqq/activity/recent/MsgSummary:b	Ljava/lang/CharSequence;
     //   1654: aload 4
     //   1656: iconst_1
-    //   1657: putfield 543	com/tencent/mobileqq/activity/recent/MsgSummary:g	I
+    //   1657: putfield 524	com/tencent/mobileqq/activity/recent/MsgSummary:g	I
     //   1660: return
     //   1661: aconst_null
     //   1662: astore 5
     //   1664: goto -102 -> 1562
     //   1667: aload 4
     //   1669: iconst_0
-    //   1670: putfield 543	com/tencent/mobileqq/activity/recent/MsgSummary:g	I
+    //   1670: putfield 524	com/tencent/mobileqq/activity/recent/MsgSummary:g	I
     //   1673: return
     //   1674: astore_2
     //   1675: goto -1270 -> 405

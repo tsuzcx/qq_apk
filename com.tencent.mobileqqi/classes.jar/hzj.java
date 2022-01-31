@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.util.BinderWarpper;
+import common.qzone.component.cache.common.SoftHashMap;
 
-public final class hzj
-  implements Parcelable.Creator
+public class hzj
+  extends hzi
 {
-  public BinderWarpper a(Parcel paramParcel)
+  hzj(SoftHashMap paramSoftHashMap)
   {
-    return new BinderWarpper(paramParcel.readStrongBinder());
+    super(paramSoftHashMap);
   }
   
-  public BinderWarpper[] a(int paramInt)
+  public Object next()
   {
-    return new BinderWarpper[paramInt];
+    return a().getKey();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hzj
  * JD-Core Version:    0.7.0.1
  */

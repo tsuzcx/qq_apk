@@ -1,13 +1,29 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.activity.photo.AlbumListActivity;
+import com.tencent.widget.XListView;
+import java.util.List;
 
-class elz
-  implements Runnable
+public class elz
+  extends AsyncTask
 {
-  elz(ely paramely) {}
+  public elz(AlbumListActivity paramAlbumListActivity) {}
   
-  public void run()
+  protected List a(Object... paramVarArgs)
   {
-    this.a.a.a();
+    return this.a.a();
+  }
+  
+  protected void a(List paramList)
+  {
+    AlbumListActivity.b(this.a);
+    AlbumListActivity.a(this.a, paramList);
+  }
+  
+  protected void onPreExecute()
+  {
+    super.onPreExecute();
+    this.a.a.setEmptyView(null);
+    AlbumListActivity.a(this.a);
   }
 }
 

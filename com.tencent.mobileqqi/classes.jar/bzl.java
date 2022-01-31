@@ -1,79 +1,44 @@
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import cannon.Visitor;
-import com.tencent.mobileqq.activity.AddFriendActivity;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.StrangerHandler;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-public class bzl
-  extends BaseAdapter
+class bzl
+  implements ActionSheet.OnButtonClickListener
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bzm(this);
+  bzl(bzk parambzk, ActionSheet paramActionSheet) {}
   
-  public bzl(AddFriendActivity paramAddFriendActivity)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramAddFriendActivity.a.size() > 8)
+    switch (paramInt)
     {
-      Random localRandom = new Random();
-      ArrayList localArrayList = new ArrayList(8);
-      int i = 0;
-      while (i < 8)
-      {
-        int j = localRandom.nextInt(paramAddFriendActivity.a.size());
-        localArrayList.add(paramAddFriendActivity.a.get(j));
-        paramAddFriendActivity.a.remove(j);
-        i += 1;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      ReportController.b(this.jdField_a_of_type_Bzk.a.b, "CliOper", "", this.jdField_a_of_type_Bzk.a.a.a, "Manage_stranger", "Manage_str_delete", 0, 0, "", "", "", "");
+      paramView = (StrangerHandler)this.jdField_a_of_type_Bzk.a.b.a(28);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(Long.parseLong(this.jdField_a_of_type_Bzk.a.a.a)));
+      paramView.b(localArrayList);
+      if (ChatActivity.a(this.jdField_a_of_type_Bzk.a) == null) {
+        ChatActivity.a(this.jdField_a_of_type_Bzk.a, new QQProgressDialog(this.jdField_a_of_type_Bzk.a, 0));
       }
-      paramAddFriendActivity.a = localArrayList;
+      ChatActivity.a(this.jdField_a_of_type_Bzk.a).show();
     }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity.a.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity.a.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null)
-    {
-      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity.getLayoutInflater().inflate(2130903931, null);
-      paramView = new bzn(null);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131232906));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131232908));
-      paramViewGroup.setTag(paramView);
-      paramViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    }
-    paramView = (bzn)paramViewGroup.getTag();
-    Visitor localVisitor = (Visitor)this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity.a.get(paramInt);
-    paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity.b.b(localVisitor.uin + ""));
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localVisitor.name);
-    paramView.jdField_a_of_type_Int = paramInt;
-    paramViewGroup.setContentDescription("该联系人的昵称为" + localVisitor.name);
-    return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bzl
  * JD-Core Version:    0.7.0.1
  */

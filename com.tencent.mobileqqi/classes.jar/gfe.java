@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.profile.view.ProfilePhotoView;
+import java.util.HashMap;
 
-public class gfe
+class gfe
   implements Runnable
 {
-  public gfe(MagicfaceViewController paramMagicfaceViewController) {}
+  gfe(gfd paramgfd, Bitmap paramBitmap) {}
   
   public void run()
   {
-    MagicfaceViewController.a(this.a).d();
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_Gfd.a.a.get("map_key_face");
+    if (localImageView != null) {
+      localImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
   }
 }
 

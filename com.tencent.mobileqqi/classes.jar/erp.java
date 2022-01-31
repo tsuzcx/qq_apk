@@ -1,14 +1,22 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
-class erp
+public class erp
+  implements TextWatcher
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  ImageView b;
-  ImageView c;
+  private erp(SelectMemberActivity paramSelectMemberActivity) {}
   
-  private erp(ero paramero) {}
+  public void afterTextChanged(Editable paramEditable)
+  {
+    paramEditable = SelectMemberActivity.a(this.a).getText().toString().trim();
+    this.a.b(paramEditable);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

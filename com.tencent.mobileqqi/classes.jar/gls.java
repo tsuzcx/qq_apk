@@ -1,93 +1,25 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.jsbridge.JsBridge;
-import com.tencent.mobileqq.richstatus.MovieDetailActivity;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
-import com.tencent.widget.ProtectedWebView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class gls
-  extends WebViewClient
+  implements Runnable
 {
-  private gls(MovieDetailActivity paramMovieDetailActivity) {}
+  public gls(FriendSystemMsgController paramFriendSystemMsgController, QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  private boolean a(String paramString)
+  public void run()
   {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      Object localObject = Uri.parse(paramString);
-      String str = ((Uri)localObject).getQueryParameter("window");
-      paramString = str;
-      if (str == null)
-      {
-        localObject = ((Uri)localObject).getFragment();
-        paramString = str;
-        if (localObject != null)
-        {
-          int i = ((String)localObject).indexOf("window");
-          paramString = str;
-          if (i != -1) {
-            paramString = ((String)localObject).substring("window=".length() + i);
-          }
-        }
-      }
-      if (!TextUtils.isEmpty(paramString)) {}
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putInt("unread_friend_system_msg", this.jdField_a_of_type_Int).commit();
     }
-    else
-    {
-      return false;
-    }
-    paramString = paramString.toLowerCase();
-    if ((!"false".equals(paramString)) && (!"0".equals(paramString))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    MovieDetailActivity.a(this.a).setVisibility(8);
-    super.onPageFinished(paramWebView, paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    MovieDetailActivity.a(this.a).setVisibility(0);
-    MovieDetailActivity.a(this.a).setVisibility(8);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    MovieDetailActivity.a(this.a).clearView();
-    MovieDetailActivity.a(this.a).setVisibility(8);
-    MovieDetailActivity.a(this.a).setVisibility(0);
-    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if (MovieDetailActivity.a(this.a).a(paramWebView, paramString)) {
-      return true;
-    }
-    if (a(paramString))
-    {
-      paramWebView = new Intent(this.a, MovieDetailActivity.class);
-      paramWebView.putExtra("key_params_qq", paramString);
-      paramWebView.putExtra("k_same_tuin", MovieDetailActivity.a(this.a));
-      this.a.startActivity(paramWebView);
-      return true;
-    }
-    return super.shouldOverrideUrlLoading(paramWebView, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gls
  * JD-Core Version:    0.7.0.1
  */

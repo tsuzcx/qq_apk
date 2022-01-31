@@ -1,52 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic.TroopCreateResult;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class cnr
-  extends BizTroopObserver
+  implements Animation.AnimationListener
 {
-  public cnr(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public cnr(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
   
-  protected void d(boolean paramBoolean, Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int i = -1;
-    this.a.h();
-    if ((!paramBoolean) && (paramObject != null)) {}
-    try
-    {
-      int j = ((TroopCreateLogic.TroopCreateResult)paramObject).b;
-      i = j;
-    }
-    catch (Exception paramObject)
-    {
-      label29:
-      break label29;
-    }
-    i = TroopCreateLogic.TroopCreateResult.a(i);
-    if (i == 0) {}
-    do
-    {
-      do
-      {
-        return;
-        QQToast.a(this.a, i, 0).b(this.a.d());
-        return;
-        if (paramObject != null) {
-          break;
-        }
-        i = TroopCreateLogic.TroopCreateResult.a(-1);
-      } while (i == 0);
-      QQToast.a(this.a, i, 0).b(this.a.d());
-      return;
-      paramObject = (TroopInfo)paramObject;
-    } while (TextUtils.isEmpty(paramObject.troopuin));
-    DiscussionInfoCardActivity.c(this.a);
-    TroopCreateLogicActivity.a(this.a.b, this.a, paramObject.troopuin);
+    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

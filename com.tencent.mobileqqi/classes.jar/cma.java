@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.ForwardOperations;
 
-public class cma
+class cma
   implements Runnable
 {
-  public cma(Conversation paramConversation) {}
+  cma(clz paramclz) {}
   
   public void run()
   {
-    this.a.k();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a(1004, 0, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cma
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
 public class eix
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public eix(SearchResultDialog paramSearchResultDialog, int paramInt) {}
+  public eix(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog).setText(SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog));
-    SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog).setSelection(SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog).length());
-    ReportController.b(SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog), "CliOper", "", "", "Search", "Last_search", this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.b(this.jdField_a_of_type_Int), 0, "", "", "", "");
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eix
  * JD-Core Version:    0.7.0.1
  */

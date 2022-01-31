@@ -1,14 +1,10 @@
-import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
+import android.widget.TextView;
 
-class ele
-  implements Runnable
+public class ele
 {
-  ele(eld parameld) {}
-  
-  public void run()
-  {
-    RecommendTroopView.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView, this.a.jdField_a_of_type_JavaUtilList);
-  }
+  public TextView a;
+  public eld a;
+  public TextView b;
 }
 
 

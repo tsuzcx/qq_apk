@@ -1,28 +1,25 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import mqq.app.permission.PermissionCallback;
 
-public class dwn
-  implements Animation.AnimationListener
+class dwn
+  implements PermissionCallback
 {
-  public dwn(TroopMemberListActivity paramTroopMemberListActivity, View paramView) {}
+  dwn(dwm paramdwm) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
+    new PermissionsDialog().a(this.a.jdField_a_of_type_MqqAppAppActivity, paramInt, paramArrayOfString, new dwo(this));
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    PlusPanelUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_MqqAppAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dwn
  * JD-Core Version:    0.7.0.1
  */

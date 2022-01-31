@@ -7,7 +7,7 @@ import mqq.observer.BusinessObserver;
 public class OpenIdInfoObserver
   implements BusinessObserver
 {
-  protected void onOpenIdInfoReceive(boolean paramBoolean, String paramString1, String paramString2, Bundle paramBundle) {}
+  public void onOpenIdInfoReceive(boolean paramBoolean, String paramString1, String paramString2, Bundle paramBundle) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {

@@ -1,55 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.adapter.TroopMessageSettingAdapter;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class dtt
-  implements ActionSheet.OnButtonClickListener
+  implements DialogInterface.OnKeyListener
 {
-  public dtt(TroopAssisSettingActivity paramTroopAssisSettingActivity, int paramInt, TroopInfo paramTroopInfo, ActionSheet paramActionSheet) {}
+  public dtt(UpgradeActivity paramUpgradeActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramInt)
-    {
-    default: 
-      paramInt = -1;
-      if (this.jdField_a_of_type_Int != paramInt)
-      {
-        if (!NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.a())) {
-          break label201;
-        }
-        TroopAssistantManager.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.b, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin, paramInt);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin, Integer.valueOf(paramInt));
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_JavaUtilMap);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.notifyDataSetChanged();
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.e();
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.b, "P_CliOper", "Grp_msg", "", "set_page", "Clk_setmsg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin, String.valueOf(paramInt - 1), "", "");
-      }
-      break;
+    if (paramInt == 4) {
+      this.a.d();
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      paramInt = 1;
-      break;
-      paramInt = 4;
-      break;
-      paramInt = 2;
-      break;
-      paramInt = 3;
-      break;
-      label201:
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.a(), 2131562449, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.d());
-    }
+    return false;
   }
 }
 

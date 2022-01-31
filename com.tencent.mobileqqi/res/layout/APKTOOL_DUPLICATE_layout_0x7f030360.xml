@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0a008e" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0175" android:paddingTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0179" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0175" android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0179" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="66.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00aa" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080715" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0174" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0174" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false">
-        <com.qzone.widget.AsyncMarkImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080716" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b017b" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b017b" />
-        <com.qzone.widget.AsyncMarkImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080717" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b017b" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b017b" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0172" />
-        <com.qzone.widget.AsyncMarkImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080718" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b017b" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b017b" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0172" />
-    </LinearLayout>
-</LinearLayout>
+    <com.qzone.widget.LinerLayoutForListViewItem android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080d07" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080dda" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206bf" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207be" />
+            <TextView android:textSize="16.0sp" android:textColor="#ff464646" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0abe" />
+        </LinearLayout>
+        <View android:background="#ffd7d7d7" android:layout_width="1.0px" android:layout_height="fill_parent" android:layout_marginBottom="3.0px" />
+        <LinearLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080ddb" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206bf" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207f7" />
+            <TextView android:textSize="16.0sp" android:textColor="#ff464646" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0abf" />
+        </LinearLayout>
+    </com.qzone.widget.LinerLayoutForListViewItem>
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f080a6e" android:background="#7fffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

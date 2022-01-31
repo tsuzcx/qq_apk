@@ -1,25 +1,29 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.common.galleryactivity.AbstractGalleryScene;
-import com.tencent.common.galleryactivity.GalleryPageView;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class bwf
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public bwf(GalleryPageView paramGalleryPageView) {}
+  public bwf(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (!this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.c()) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    try
+    {
+      if ((AuthDevVerifyCodeActivity.a(this.a) != null) && (AuthDevVerifyCodeActivity.a(this.a).isShowing()))
+      {
+        AuthDevVerifyCodeActivity.a(this.a).dismiss();
+        AuthDevVerifyCodeActivity.a(this.a).cancel();
+      }
+      AuthDevVerifyCodeActivity.a(this.a, null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
     }
   }
 }

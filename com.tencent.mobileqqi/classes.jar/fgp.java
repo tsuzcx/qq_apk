@@ -1,34 +1,36 @@
-import android.os.Process;
-import com.tencent.mobileqq.app.EmoticonManagerImp;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.net.Uri;
+import android.os.SystemClock;
+import android.preference.PreferenceManager;
+import android.widget.Toast;
+import com.tencent.mobileqq.app.ScreenShot;
+import java.io.File;
 
-public class fgp
+class fgp
   implements Runnable
 {
-  public fgp(EmoticonManagerImp paramEmoticonManagerImp, long paramLong, boolean paramBoolean) {}
+  fgp(fgo paramfgo, File paramFile) {}
   
   public void run()
   {
-    Process.setThreadPriority(10);
-    try
+    if (this.jdField_a_of_type_Fgo.jdField_a_of_type_Boolean)
     {
-      Thread.sleep(this.jdField_a_of_type_Long);
-      if (this.jdField_a_of_type_Boolean) {
-        EmoticonManagerImp.b(this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonManagerImp", 2, "asyncReloadEmoticonKeyword,isChanged=" + this.jdField_a_of_type_Boolean);
-      }
-      EmoticonManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp);
+      this.jdField_a_of_type_Fgo.jdField_a_of_type_Fgm.k = this.jdField_a_of_type_Fgo.jdField_a_of_type_Fgm.f;
+      ScreenShot.a(this.jdField_a_of_type_Fgo.jdField_a_of_type_Fgm.a, false);
+      this.jdField_a_of_type_Fgo.jdField_a_of_type_Fgm.invalidate();
+      this.jdField_a_of_type_Fgo.jdField_a_of_type_Fgm.scheduleDrawable(null, new fgq(this), SystemClock.uptimeMillis() + 1000L);
+      String str = this.jdField_a_of_type_Fgo.jdField_a_of_type_Fgm.a.jdField_a_of_type_AndroidContentContext.getString(2131562807).replace("${path}", ScreenShot.jdField_a_of_type_JavaLangString);
+      SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_Fgo.jdField_a_of_type_Fgm.a.jdField_a_of_type_AndroidContentContext).edit();
+      localEditor.putString("LastScreenShotUri", Uri.fromFile(this.jdField_a_of_type_JavaIoFile).toString());
+      localEditor.commit();
+      this.jdField_a_of_type_Fgo.jdField_a_of_type_Fgm.a.jdField_a_of_type_AndroidContentContext.sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.fromFile(this.jdField_a_of_type_JavaIoFile)));
+      Toast.makeText(this.jdField_a_of_type_Fgo.jdField_a_of_type_Fgm.a.jdField_a_of_type_AndroidContentContext, str, 1).show();
       return;
     }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
-    }
+    Toast.makeText(this.jdField_a_of_type_Fgo.jdField_a_of_type_Fgm.a.jdField_a_of_type_AndroidContentContext, 2131562817, 1).show();
   }
 }
 

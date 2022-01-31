@@ -7,7 +7,7 @@ public class NameProcess
   extends Step
 {
   private static final String b = "unknown";
-  private static final int x = 3;
+  private static final int y = 3;
   
   protected boolean a()
   {

@@ -1,32 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.LoadedCallBack;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.widgets.ShareAioResultDialog;
 
 public class bpl
-  implements LoadedCallBack
+  implements View.OnClickListener
 {
-  public bpl(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  public bpl(ShareAioResultDialog paramShareAioResultDialog, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramString))) {}
-    try
-    {
-      paramString = new JSONObject(paramString);
-      Message localMessage = new Message();
-      localMessage.what = 0;
-      localMessage.obj = ("javascript: " + this.jdField_a_of_type_JavaLangString + "(" + paramString.toString() + ")");
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.sendMessage(localMessage);
-      return;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog, 0);
     }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.dismiss();
   }
 }
 

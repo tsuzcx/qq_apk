@@ -1,7 +1,7 @@
 package com.rookery.translate.tencent;
 
 import android.content.Context;
-import bfz;
+import bgh;
 import com.rookery.translate.Translator;
 import com.rookery.translate.type.Language;
 import com.rookery.translate.type.TranslateWithTimeCallback;
@@ -48,7 +48,7 @@ public class TencentTranslator
     }
     for (;;)
     {
-      paramContext = new bfz(this, paramLong, paramTranslateWithTimeCallback);
+      paramContext = new bgh(this, paramLong, paramTranslateWithTimeCallback);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramContext);
       this.jdField_a_of_type_ComTencentMobileqqAppI18nTranslatorHandler.a(paramLanguage.toString(), paramLong, paramList, true);
       return;

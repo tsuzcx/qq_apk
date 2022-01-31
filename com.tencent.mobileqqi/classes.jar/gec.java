@@ -1,39 +1,59 @@
-import android.app.Activity;
-import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.text.TextUtils;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.jsp.DataApiPlugin;
-import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
-import java.io.IOException;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.Logger;
+import com.tencent.mobileqq.pic.compress.PicQualityCommon;
+import com.tencent.mobileqq.pic.compress.PicType;
+import com.tencent.mobileqq.pic.compress.PicTypeLong;
+import com.tencent.mobileqq.pic.compress.Utils;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class gec
-  implements Runnable
+  extends PicQualityCommon
 {
-  public gec(DataApiPlugin paramDataApiPlugin, String paramString1, String paramString2, Bundle paramBundle1, Bundle paramBundle2, String paramString3) {}
-  
-  public void run()
+  public gec(PicTypeLong paramPicTypeLong, PicType paramPicType)
   {
-    i = 200;
-    Object localObject1 = null;
-    try
-    {
-      localObject2 = HttpUtil.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, this.jdField_b_of_type_AndroidOsBundle);
-      localObject1 = localObject2;
+    super(paramPicType);
+  }
+  
+  protected boolean b()
+  {
+    boolean bool1 = false;
+    this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.e = Utils.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.c, this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.g);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.e)) {
+      Logger.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.jdField_a_of_type_JavaLangString + " destPath is empty");
     }
-    catch (IOException localIOException)
+    boolean bool2;
+    do
     {
-      for (;;)
+      return bool1;
+      if (FileUtils.b(this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.e))
       {
-        Object localObject2;
-        i = 0;
-        localIOException.printStackTrace();
+        Logger.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.jdField_a_of_type_JavaLangString + " destPath exist. return true");
+        return true;
       }
-    }
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqJspDataApiPlugin.mRuntime.a();
-    if ((!TextUtils.isEmpty(this.c)) && (localObject2 != null)) {
-      ((Activity)localObject2).runOnUiThread(new ged(this, (Activity)localObject2, localObject1, i));
-    }
+      try
+      {
+        Bitmap localBitmap = BitmapFactory.decodeFile(this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.c);
+        if (localBitmap == null)
+        {
+          Logger.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.jdField_a_of_type_JavaLangString + " bm == null, maybe is broken");
+          return false;
+        }
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.a(true);
+        Logger.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.jdField_a_of_type_JavaLangString + " decodeFile oom, execute commonCompress()");
+        this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.e = "";
+        return this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.c();
+      }
+      bool2 = Utils.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.e, localOutOfMemoryError, this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a(), this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.jdField_a_of_type_JavaLangString);
+      bool1 = bool2;
+    } while (localOutOfMemoryError == null);
+    localOutOfMemoryError.recycle();
+    return bool2;
   }
 }
 

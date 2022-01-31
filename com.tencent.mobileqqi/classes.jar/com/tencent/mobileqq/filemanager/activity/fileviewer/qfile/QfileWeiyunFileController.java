@@ -16,12 +16,12 @@ import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import fxt;
-import fyc;
+import fth;
+import ftq;
 import java.util.List;
 
 public final class QfileWeiyunFileController
-  extends fxt
+  extends fth
 {
   static final String b = "<FileAssistant>QfileWeiyunFileController";
   
@@ -145,7 +145,7 @@ public final class QfileWeiyunFileController
     {
       if ((FileManagerUtil.a()) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize > 5242880L) && (!FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity)))
       {
-        FMDialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileviewerBaseBaseFileViewerActivity, 2131558759, 2131558757, new fyc(this));
+        FMDialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileviewerBaseBaseFileViewerActivity, 2131558759, 2131558757, new ftq(this));
         return;
       }
       e();

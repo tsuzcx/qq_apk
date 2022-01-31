@@ -1,22 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.MyEnterTroopChatItemBuilder;
 
 public class dzw
-  implements DialogInterface.OnClickListener
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public dzw(UpgradeActivity paramUpgradeActivity) {}
+  public TextView b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ReportController.b(this.a.b, "CliOper", "", "", "0X800417E", "0X800417E", 0, 0, "", "", "", "");
-    UpgradeActivity.a(this.a, false);
-  }
+  public dzw(MyEnterTroopChatItemBuilder paramMyEnterTroopChatItemBuilder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dzw
  * JD-Core Version:    0.7.0.1
  */

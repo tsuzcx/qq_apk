@@ -35,17 +35,17 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.utils.TroopFileUtils;
 import com.tencent.mobileqq.widget.QQToast;
-import hcv;
-import hcw;
-import hcx;
-import hcy;
-import hcz;
-import hda;
-import hdb;
-import hdc;
-import hdd;
-import hde;
-import hdf;
+import gyo;
+import gyp;
+import gyq;
+import gyr;
+import gys;
+import gyt;
+import gyu;
+import gyv;
+import gyw;
+import gyx;
+import gyy;
 import java.lang.reflect.Method;
 import java.util.Formatter;
 import java.util.Locale;
@@ -63,10 +63,10 @@ public class MediaControllerX
   private static final int jdField_h_of_type_Int = 2;
   private Context jdField_a_of_type_AndroidContentContext;
   public final SensorEventListener a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new hdc(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new gyv(this);
   public View.OnClickListener a;
-  private View.OnLayoutChangeListener jdField_a_of_type_AndroidViewView$OnLayoutChangeListener = new hcv(this);
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new hcy(this);
+  private View.OnLayoutChangeListener jdField_a_of_type_AndroidViewView$OnLayoutChangeListener = new gyo(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new gyr(this);
   private View jdField_a_of_type_AndroidViewView;
   private Window jdField_a_of_type_AndroidViewWindow;
   private WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
@@ -74,7 +74,7 @@ public class MediaControllerX
   private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private SeekBar.OnSeekBarChangeListener jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new hde(this);
+  private SeekBar.OnSeekBarChangeListener jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new gyx(this);
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private MediaControllerX.MediaControllerListener jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX$MediaControllerListener = null;
@@ -83,7 +83,7 @@ public class MediaControllerX
   StringBuilder jdField_a_of_type_JavaLangStringBuilder;
   Formatter jdField_a_of_type_JavaUtilFormatter;
   public boolean a;
-  View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new hda(this);
+  View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new gyt(this);
   private View jdField_b_of_type_AndroidViewView;
   private ImageButton jdField_b_of_type_AndroidWidgetImageButton;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -93,7 +93,7 @@ public class MediaControllerX
   private ImageButton jdField_c_of_type_AndroidWidgetImageButton;
   public boolean c;
   public int d;
-  View.OnClickListener jdField_d_of_type_AndroidViewView$OnClickListener = new hdb(this);
+  View.OnClickListener jdField_d_of_type_AndroidViewView$OnClickListener = new gyu(this);
   private ImageButton jdField_d_of_type_AndroidWidgetImageButton;
   private boolean jdField_d_of_type_Boolean;
   public int e;
@@ -103,13 +103,13 @@ public class MediaControllerX
   private View.OnClickListener jdField_f_of_type_AndroidViewView$OnClickListener;
   private ImageButton jdField_f_of_type_AndroidWidgetImageButton;
   private boolean jdField_f_of_type_Boolean;
-  private View.OnClickListener jdField_g_of_type_AndroidViewView$OnClickListener = new hdd(this);
+  private View.OnClickListener jdField_g_of_type_AndroidViewView$OnClickListener = new gyw(this);
   private ImageButton jdField_g_of_type_AndroidWidgetImageButton;
   private boolean jdField_g_of_type_Boolean;
-  private View.OnClickListener jdField_h_of_type_AndroidViewView$OnClickListener = new hdf(this);
+  private View.OnClickListener jdField_h_of_type_AndroidViewView$OnClickListener = new gyy(this);
   private ImageButton jdField_h_of_type_AndroidWidgetImageButton;
   private boolean jdField_h_of_type_Boolean;
-  private View.OnClickListener jdField_i_of_type_AndroidViewView$OnClickListener = new hcw(this);
+  private View.OnClickListener jdField_i_of_type_AndroidViewView$OnClickListener = new gyp(this);
   private boolean jdField_i_of_type_Boolean = false;
   private boolean j = false;
   private boolean k = false;
@@ -124,7 +124,7 @@ public class MediaControllerX
     this.jdField_d_of_type_Int = -1;
     this.jdField_e_of_type_Int = -1;
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new hcx(this);
+    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new gyq(this);
     this.jdField_b_of_type_AndroidViewView = this;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_f_of_type_Boolean = true;
@@ -146,7 +146,7 @@ public class MediaControllerX
     this.jdField_d_of_type_Int = -1;
     this.jdField_e_of_type_Int = -1;
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new hcx(this);
+    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new gyq(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
     this.jdField_a_of_type_JavaLangString = paramString;
@@ -214,7 +214,7 @@ public class MediaControllerX
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131232649));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131232652));
     if (this.jdField_a_of_type_AndroidWidgetImageButton != null)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX$MediaPlayerControlX.a())
@@ -226,7 +226,7 @@ public class MediaControllerX
     }
     else
     {
-      this.jdField_f_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131232658));
+      this.jdField_f_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131232661));
       if ((this.jdField_f_of_type_AndroidWidgetImageButton != null) && (!this.jdField_g_of_type_Boolean) && (!this.jdField_h_of_type_Boolean))
       {
         this.jdField_f_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
@@ -236,7 +236,7 @@ public class MediaControllerX
         this.jdField_f_of_type_AndroidWidgetImageButton.setContentDescription(getResources().getString(2131558473));
       }
       label138:
-      this.jdField_g_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131232656));
+      this.jdField_g_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131232659));
       if (this.jdField_g_of_type_AndroidWidgetImageButton != null)
       {
         this.jdField_g_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_d_of_type_AndroidViewView$OnClickListener);
@@ -251,13 +251,13 @@ public class MediaControllerX
       if (this.j) {
         this.jdField_g_of_type_AndroidWidgetImageButton.setVisibility(8);
       }
-      this.jdField_h_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131232657));
+      this.jdField_h_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131232660));
       if (this.jdField_h_of_type_AndroidWidgetImageButton != null)
       {
         this.jdField_h_of_type_AndroidWidgetImageButton.setContentDescription(getResources().getString(2131558478));
-        this.jdField_h_of_type_AndroidWidgetImageButton.setOnClickListener(new hcz(this));
+        this.jdField_h_of_type_AndroidWidgetImageButton.setOnClickListener(new gys(this));
       }
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131232650));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131232653));
       if (this.jdField_a_of_type_AndroidWidgetProgressBar != null)
       {
         this.jdField_a_of_type_AndroidWidgetProgressBar.setContentDescription(getResources().getString(2131558475));
@@ -266,12 +266,12 @@ public class MediaControllerX
         }
         this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(1000);
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232652));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232655));
       if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       }
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232655));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232653));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232658));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232656));
       this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
       this.jdField_a_of_type_JavaUtilFormatter = new Formatter(this.jdField_a_of_type_JavaLangStringBuilder, Locale.getDefault());
       l();
@@ -445,7 +445,7 @@ public class MediaControllerX
   
   protected View a()
   {
-    this.jdField_b_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2130903459, null);
+    this.jdField_b_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2130903461, null);
     a(this.jdField_b_of_type_AndroidViewView);
     return this.jdField_b_of_type_AndroidViewView;
   }
@@ -494,7 +494,7 @@ public class MediaControllerX
         this.jdField_g_of_type_AndroidWidgetImageButton.setVisibility(0);
       }
       if (this.jdField_f_of_type_AndroidWidgetImageButton != null) {
-        this.jdField_f_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838545);
+        this.jdField_f_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838547);
       }
     }
     for (;;)
@@ -509,7 +509,7 @@ public class MediaControllerX
           this.jdField_g_of_type_AndroidWidgetImageButton.setVisibility(8);
         }
         if (this.jdField_f_of_type_AndroidWidgetImageButton != null) {
-          this.jdField_f_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838546);
+          this.jdField_f_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838548);
         }
       }
     }
@@ -536,7 +536,7 @@ public class MediaControllerX
       this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().addFlags(1024);
       this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setRequestedOrientation(0);
       if (this.jdField_f_of_type_AndroidWidgetImageButton != null) {
-        this.jdField_f_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838545);
+        this.jdField_f_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838547);
       }
     }
     for (;;)
@@ -555,7 +555,7 @@ public class MediaControllerX
         this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().clearFlags(1024);
         this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setRequestedOrientation(1);
         if (this.jdField_f_of_type_AndroidWidgetImageButton != null) {
-          this.jdField_f_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838546);
+          this.jdField_f_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838548);
         }
       }
     }
@@ -608,11 +608,11 @@ public class MediaControllerX
     }
     if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX$MediaPlayerControlX.a())
     {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838548);
+      this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838550);
       this.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(getResources().getString(2131558471));
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838549);
+    this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838551);
     this.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(getResources().getString(2131558470));
   }
   

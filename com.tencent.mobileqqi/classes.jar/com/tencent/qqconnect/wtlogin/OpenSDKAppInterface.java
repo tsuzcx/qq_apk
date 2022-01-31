@@ -23,7 +23,7 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
-import hyq;
+import hum;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -131,7 +131,7 @@ public class OpenSDKAppInterface
     String str = MD5.toMD5(paramString);
     str = MD5.toMD5(str + paramString);
     paramString = MD5.toMD5(str + paramString);
-    return AppConstants.ay + paramString + ".png";
+    return AppConstants.aC + paramString + ".png";
   }
   
   public void a(Context paramContext, String paramString)
@@ -140,7 +140,7 @@ public class OpenSDKAppInterface
     {
       paramContext = new AlertDialog.Builder(paramContext);
       paramContext.setMessage(paramString);
-      paramContext.setNegativeButton("确定", new hyq(this));
+      paramContext.setNegativeButton("确定", new hum(this));
       paramContext.show();
     }
   }
@@ -180,7 +180,7 @@ public class OpenSDKAppInterface
     String str = MD5.toMD5(paramString);
     str = MD5.toMD5(str + paramString);
     paramString = MD5.toMD5(str + paramString);
-    return AppConstants.aL + paramString + ".png";
+    return AppConstants.aP + paramString + ".png";
   }
   
   public String c(String paramString)

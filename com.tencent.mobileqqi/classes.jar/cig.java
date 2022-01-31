@@ -1,28 +1,83 @@
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.FaceInfo;
+import java.util.List;
 
 public class cig
-  implements AbsListView.OnScrollListener
+  extends FacePreloadBaseAdapter
 {
-  public cig(ChatHistory paramChatHistory) {}
+  private List jdField_a_of_type_JavaUtilList;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public cig(DiscussionMemberActivity paramDiscussionMemberActivity, List paramList)
   {
-    this.a.v = paramInt;
-    if (paramInt == 0)
+    super(paramDiscussionMemberActivity, paramDiscussionMemberActivity.b, paramDiscussionMemberActivity.a, 1, true);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  protected Object a(int paramInt)
+  {
+    cid localcid = (cid)getItem(paramInt);
+    FacePreloadBaseAdapter.FaceInfo localFaceInfo = new FacePreloadBaseAdapter.FaceInfo(this);
+    if (localcid != null)
     {
-      AbstractGifImage.resumeAll();
-      return;
+      localFaceInfo.jdField_a_of_type_JavaLangString = localcid.jdField_a_of_type_JavaLangString;
+      localFaceInfo.jdField_a_of_type_Int = 1;
     }
-    if ((this.a.a != null) && (this.a.a.c == 1) && (!this.a.a.a)) {
-      this.a.a.b();
+    return localFaceInfo;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    AbstractGifImage.pauseAll();
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    cid localcid;
+    if (paramView == null)
+    {
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.getLayoutInflater().inflate(2130903205, paramViewGroup, false);
+      paramViewGroup = new cii(null);
+      paramViewGroup.c = ((ImageView)paramView.findViewById(2131231568));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231411));
+      paramView.setTag(paramViewGroup);
+      localcid = (cid)getItem(paramInt);
+      if ((localcid.b != null) && (!"".equals(localcid.b.trim()))) {
+        break label144;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localcid.jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      paramViewGroup.jdField_a_of_type_JavaLangString = localcid.jdField_a_of_type_JavaLangString;
+      paramViewGroup.c.setImageBitmap(a(1, localcid.jdField_a_of_type_JavaLangString));
+      return paramView;
+      paramViewGroup = (cii)paramView.getTag();
+      break;
+      label144:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localcid.b);
+    }
   }
 }
 

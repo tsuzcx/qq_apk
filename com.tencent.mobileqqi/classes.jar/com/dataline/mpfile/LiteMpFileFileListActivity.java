@@ -23,14 +23,14 @@ import com.tencent.mobileqq.app.RegisterProxySvcPackHandler;
 import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import cz;
-import da;
-import db;
-import dc;
-import dd;
-import df;
-import dg;
 import dh;
+import di;
+import dj;
+import dk;
+import dl;
+import dn;
+import do;
+import dp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -56,7 +56,7 @@ public class LiteMpFileFileListActivity
   public static final int j = 8;
   public static final int k = 101;
   private long jdField_a_of_type_Long = 0L;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new dc(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new dk(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ListView jdField_a_of_type_AndroidWidgetListView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
@@ -91,7 +91,7 @@ public class LiteMpFileFileListActivity
   {
     this.jdField_b_of_type_Long = System.currentTimeMillis();
     jdField_a_of_type_Int += 1;
-    MpfileFileListDownloader.a(jdField_a_of_type_Int, paramString, new dd(this));
+    MpfileFileListDownloader.a(jdField_a_of_type_Int, paramString, new dl(this));
   }
   
   private void b(String paramString)
@@ -143,7 +143,7 @@ public class LiteMpFileFileListActivity
     catch (JSONException paramString)
     {
       paramString.printStackTrace();
-      runOnUiThread(new dh(this));
+      runOnUiThread(new dp(this));
     }
     label298:
     label436:
@@ -170,11 +170,11 @@ public class LiteMpFileFileListActivity
           a(String.format(this.jdField_b_of_type_JavaLangString, new Object[] { MpfileDataCenter.k, Integer.valueOf(MpfileDataCenter.E), Integer.valueOf(this.l), Integer.valueOf(this.jdField_m_of_type_Int), this.jdField_a_of_type_JavaLangString }));
         }
       }
-      runOnUiThread(new df(this));
+      runOnUiThread(new dn(this));
       return;
       if (n == 2)
       {
-        runOnUiThread(new dg(this));
+        runOnUiThread(new do(this));
         return;
       }
     } while (n != 7);
@@ -266,7 +266,7 @@ public class LiteMpFileFileListActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903517);
+    setContentView(2130903519);
     paramBundle = getIntent().getExtras().getString("fileId");
     Object localObject = getIntent().getExtras().getString("name");
     h(2131558590);
@@ -276,13 +276,13 @@ public class LiteMpFileFileListActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232796));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232799));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232794));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232797));
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232797));
+      this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232800));
       this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232790));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232793));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231294));
       this.jdField_a_of_type_ComDatalineMpfileMpfileFileListAdapter = new MpfileFileListAdapter(this);
@@ -301,9 +301,9 @@ public class LiteMpFileFileListActivity
       }
       this.jdField_m_of_type_AndroidWidgetTextView.setVisibility(8);
       this.p.setVisibility(0);
-      this.p.setImageResource(2130838632);
+      this.p.setImageResource(2130838634);
       this.p.setContentDescription(getString(2131558594));
-      this.p.setOnClickListener(new cz(this));
+      this.p.setOnClickListener(new dh(this));
       b();
       f_();
       return false;
@@ -331,7 +331,7 @@ public class LiteMpFileFileListActivity
     {
       ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800421A", "0X800421A", 0, 0, "", "", "", "");
       f_();
-      this.jdField_a_of_type_AndroidWidgetButton.postDelayed(new db(this), 3000L);
+      this.jdField_a_of_type_AndroidWidgetButton.postDelayed(new dj(this), 3000L);
     }
   }
   
@@ -391,7 +391,7 @@ public class LiteMpFileFileListActivity
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    runOnUiThread(new da(this));
+    runOnUiThread(new di(this));
   }
 }
 

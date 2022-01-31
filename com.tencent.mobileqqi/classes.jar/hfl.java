@@ -1,27 +1,24 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.util.ThreadPriorityManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.CameraUtil;
+import com.tencent.mobileqq.widget.CameraFrameLayout;
 
-public final class hfl
-  extends Handler
+class hfl
+  implements View.OnClickListener
 {
-  public hfl(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  hfl(hfk paramhfk) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      ThreadPriorityManager.a();
+    if (!CameraFrameLayout.a(this.a.a)) {
       return;
     }
-    ThreadPriorityManager.b();
+    paramView = (QQAppInterface)((BaseActivity)this.a.a.getContext()).getAppRuntime();
+    ReportController.b(paramView, "CliOper", "", "", "background", "bkground_shut", 0, 0, "1", "", "", "");
+    CameraUtil.b(paramView);
   }
 }
 

@@ -1,32 +1,16 @@
-import android.os.Build;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.av.utils.QQAnimationListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.assistant.PubAccountAssistantSettingActivity;
+import com.tencent.biz.pubaccount.assistant.PubAccountAssistantSettingAdapter;
 
 public class bkt
-  extends QQAnimationListener
+  extends Handler
 {
-  public bkt(VideoControlUI paramVideoControlUI) {}
+  public bkt(PubAccountAssistantSettingActivity paramPubAccountAssistantSettingActivity) {}
   
-  public void a() {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
+  public void handleMessage(Message paramMessage)
   {
-    if (!this.a.h) {
-      this.a.u();
-    }
-    if ("GT-I9100G".equals(Build.MODEL))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoControlUI", 2, "Model is 9100G, don't do animation");
-      }
-      return;
-    }
-    this.a.U();
+    PubAccountAssistantSettingActivity.a(this.a).notifyDataSetChanged();
   }
 }
 

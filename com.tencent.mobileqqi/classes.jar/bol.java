@@ -1,17 +1,20 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.eqq.EnterpriseDetailActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.webviewplugin.Ad;
 
 public class bol
-  implements View.OnClickListener
+  implements Runnable
 {
-  public bol(EnterpriseDetailActivity paramEnterpriseDetailActivity, String paramString) {}
+  public bol(Ad paramAd) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    EnterpriseDetailActivity.b(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_JavaLangString);
-    ReportController.b(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a, "CliOper", "", "", "Biz_card", "Biz_card_more", 0, 0, this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.b, "", "", "");
+    if ((this.a.jdField_b_of_type_ComTencentBizPubaccountCustomWebView != null) && (this.a.d) && (Ad.a(this.a)) && (this.a.jdField_b_of_type_ComTencentBizPubaccountCustomWebView.getView().getScrollY() > 0))
+    {
+      this.a.h();
+      this.a.jdField_b_of_type_ComTencentBizPubaccountCustomWebView.removeCallbacks(this.a.jdField_b_of_type_JavaLangRunnable);
+      this.a.jdField_b_of_type_ComTencentBizPubaccountCustomWebView.postDelayed(this.a.jdField_b_of_type_JavaLangRunnable, 10000L);
+    }
   }
 }
 

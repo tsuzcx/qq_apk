@@ -1,27 +1,19 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
+import mqq.app.permission.PermissionItem;
+import mqq.app.permission.PermissionManager;
 
 public class bmv
-  implements Animation.AnimationListener
+  implements PermissionDialogCallback
 {
-  public bmv(PoiMapActivity paramPoiMapActivity) {}
+  public bmv(ScannerActivity paramScannerActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a() {}
+  
+  public void b()
   {
-    paramAnimation = (RelativeLayout.LayoutParams)this.a.d.getLayoutParams();
-    paramAnimation.bottomMargin = (-this.a.j);
-    this.a.d.setLayoutParams(paramAnimation);
-    this.a.d.clearAnimation();
-    this.a.a.setImageResource(2130838341);
+    this.a.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.CAMERA", 200), PermissionItem.init("android.permission.WRITE_EXTERNAL_STORAGE", 300) }).requests(new bmw(this));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

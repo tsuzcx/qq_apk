@@ -31,11 +31,11 @@ import com.tencent.tencentmap.mapsdk.map.GeoPoint;
 import com.tencent.tencentmap.mapsdk.map.MapView;
 import com.tencent.tencentmap.mapsdk.map.MapView.LayoutParams;
 import com.tencent.tencentmap.mapsdk.map.Projection;
-import hdj;
-import hdk;
-import hdl;
-import hdm;
-import hdn;
+import gzc;
+import gzd;
+import gze;
+import gzf;
+import gzg;
 import java.util.ArrayList;
 
 public class NearbyTroopsMapView
@@ -83,15 +83,15 @@ public class NearbyTroopsMapView
     this.jdField_b_of_type_Boolean = false;
     this.jdField_d_of_type_Boolean = false;
     this.e = false;
-    this.jdField_a_of_type_AndroidOsHandler = new hdj(this);
-    this.jdField_a_of_type_JavaLangThread = new hdk(this, "qqmapview_calculate_position");
+    this.jdField_a_of_type_AndroidOsHandler = new gzc(this);
+    this.jdField_a_of_type_JavaLangThread = new gzd(this, "qqmapview_calculate_position");
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Int = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838397);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838399);
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
     addView(this.jdField_b_of_type_AndroidWidgetImageView);
-    paramAttributeSet = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838398);
+    paramAttributeSet = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838400);
     paramContext = (NearbyTroopsActivity)this.jdField_a_of_type_AndroidContentContext;
     if ((paramContext.getAppRuntime() instanceof QQAppInterface)) {}
     for (paramContext = ((QQAppInterface)paramContext.getAppRuntime()).a();; paramContext = "")
@@ -99,21 +99,21 @@ public class NearbyTroopsMapView
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapViewItemOverlay = new NearbyTroopsMapViewItemOverlay(paramAttributeSet, paramContext);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapViewItemOverlay.setShadowEnable(false);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapViewItemOverlay.a(this);
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapViewItemOverlay.setOnFocusChangeListener(new hdl(this));
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapViewItemOverlay.setOnFocusChangeListener(new gze(this));
       addOverlay(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapViewItemOverlay);
       this.j = getZoomLevel();
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903388, this, false);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232410));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232411));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232412));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232413));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232408));
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903390, this, false);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232413));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232414));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232415));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232416));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232411));
       this.jdField_a_of_type_AndroidViewView.setVisibility(4);
       addView(this.jdField_a_of_type_AndroidViewView);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_b_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130968644);
       this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232414));
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232417));
       this.jdField_a_of_type_JavaLangThread.setPriority(10);
       this.jdField_a_of_type_JavaLangThread.start();
       return;
@@ -295,7 +295,7 @@ public class NearbyTroopsMapView
     if (paramBoolean)
     {
       this.jdField_a_of_type_AndroidViewAnimationAnimation = new ChangeViewSizeAnimation(this, getWidth(), getWidth(), getHeight(), localView.getHeight() - Utils.a(this.jdField_a_of_type_AndroidContentContext, 55.0F));
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(new hdm(this));
+      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(new gzf(this));
     }
     for (;;)
     {
@@ -304,7 +304,7 @@ public class NearbyTroopsMapView
       return;
       b(false);
       this.jdField_a_of_type_AndroidViewAnimationAnimation = new ChangeViewSizeAnimation(this, getWidth(), getWidth(), getHeight(), Utils.a(this.jdField_a_of_type_AndroidContentContext, 150.0F));
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(new hdn(this));
+      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(new gzg(this));
     }
   }
   

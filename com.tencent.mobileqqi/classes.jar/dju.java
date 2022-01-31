@@ -1,20 +1,31 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.widget.QQTabWidget.onTabWidgetTouchMoveListener;
+import com.tencent.qphone.base.util.QLog;
 
-class dju
-  implements Runnable
+public class dju
+  implements QQTabWidget.onTabWidgetTouchMoveListener
 {
-  dju(djt paramdjt) {}
+  public dju(SplashActivity paramSplashActivity) {}
   
-  public void run()
+  public void a()
   {
-    this.a.a.e();
-    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
+    int i = GesturePWDUtils.getGesturePWDState(this.a, this.a.b.a());
+    int j = GesturePWDUtils.getGesturePWDMode(this.a, this.a.b.a());
+    if ((i == 2) && (j == 20))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("mainactivity", 2, "gesturepwd manual move.");
+      }
+      SplashActivity.c(this.a);
+      this.a.overridePendingTransition(2130968598, 2130968595);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dju
  * JD-Core Version:    0.7.0.1
  */

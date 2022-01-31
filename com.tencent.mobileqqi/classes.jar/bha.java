@@ -1,17 +1,29 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.service.IQQServiceCallback.Stub;
-import com.tencent.av.service.RecvMsg;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.PoiMapActivity.POI;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.List;
 
 public class bha
-  extends IQQServiceCallback.Stub
+  implements AdapterView.OnItemClickListener
 {
-  public bha(VideoAppInterface paramVideoAppInterface) {}
+  public bha(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
   
-  public void a(RecvMsg paramRecvMsg)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramRecvMsg != null) {
-      this.a.a(new Object[] { Integer.valueOf(12), paramRecvMsg });
+    if (QLog.isColorLevel()) {
+      QLog.i("PoiMapActivity", 2, "setOnItemClickListener" + paramInt);
     }
+    paramAdapterView = (PoiMapActivity.POI)this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.get(paramInt);
+    if (paramAdapterView != null)
+    {
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(paramAdapterView);
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_result", "", "", "");
+    }
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

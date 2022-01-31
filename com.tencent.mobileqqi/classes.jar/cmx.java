@@ -1,32 +1,13 @@
-import com.tencent.mobileqq.activity.DevlockPushActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class cmx
   implements Runnable
 {
-  public cmx(DevlockPushActivity paramDevlockPushActivity) {}
+  public cmx(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
   public void run()
   {
-    try
-    {
-      if ((DevlockPushActivity.a(this.a) == null) && (!this.a.isFinishing()))
-      {
-        DevlockPushActivity.a(this.a, new QQProgressDialog(this.a, this.a.d()));
-        DevlockPushActivity.a(this.a).b(2131562645);
-      }
-      if ((DevlockPushActivity.a(this.a) != null) && (!DevlockPushActivity.a(this.a).isShowing())) {
-        DevlockPushActivity.a(this.a).show();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    this.a.k();
   }
 }
 

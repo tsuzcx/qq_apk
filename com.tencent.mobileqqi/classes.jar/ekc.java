@@ -1,14 +1,43 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.newfriend.RecommendListView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import java.lang.ref.WeakReference;
 
 public class ekc
-  implements Runnable
+  extends Handler
 {
-  public ekc(RecommendListView paramRecommendListView, View paramView) {}
+  private WeakReference a;
   
-  public void run()
+  public ekc(BaseActivityView paramBaseActivityView)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.a = new WeakReference(paramBaseActivityView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    BaseActivityView localBaseActivityView = (BaseActivityView)this.a.get();
+    if (localBaseActivityView == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (;;)
+      {
+        localBaseActivityView.b(i, bool);
+        return;
+        bool = false;
+      }
+    case 2: 
+      localBaseActivityView.f();
+      return;
+    }
+    localBaseActivityView.i();
   }
 }
 

@@ -1,15 +1,22 @@
-import com.tencent.mobileqq.app.automator.Automator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
 
-class fsa
-  implements Runnable
+public class fsa
+  implements DialogInterface.OnDismissListener
 {
-  fsa(frz paramfrz) {}
+  public fsa(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void run() {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.a.a(null);
+    LocalFileBrowserActivity.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fsa
  * JD-Core Version:    0.7.0.1
  */

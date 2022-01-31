@@ -1,49 +1,51 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQProfileItem;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.RegisterPush;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
+import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.service.profile.ProfileUtil;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class fmw
-  extends AccountObserver
+public final class fmw
+  extends Thread
 {
-  private fmw(RegisterPush paramRegisterPush) {}
+  public fmw(QQAppInterface paramQQAppInterface) {}
   
-  public void onlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2)
+  public void run()
   {
-    RegisterPush.a(this.a).h = true;
-    if (paramStatus == AppRuntime.Status.online)
+    Card localCard = ProfileCardUtil.a(this.a, this.a.a());
+    if (localCard != null)
     {
-      RegisterPush.b(this.a).a.a(11L, false);
-      if (!paramBoolean2) {
-        break label118;
+      if (QLog.isColorLevel()) {
+        QLog.i("SPLASH_ConfigServlet_birth", 2, "card!=null");
       }
-      RegisterPush.e(this.a).a((byte)0);
-    }
-    for (;;)
-    {
-      if (!paramBoolean1) {
-        break label152;
-      }
-      this.a.a(7);
-      return;
-      if (paramStatus == AppRuntime.Status.away)
+      j = (int)localCard.lBirthday;
+      i = ProfileUtil.c(j);
+      j = ProfileUtil.d(j);
+      SharedPreUtils.b(this.a.a(), ConfigServlet.a(i, j));
+      i = ConfigServlet.a(new SimpleDateFormat("MM-dd").format(new Date()), ConfigServlet.a(i, j));
+      if ((i >= 0) && (i <= 3))
       {
-        RegisterPush.c(this.a).a.a(31L, false);
-        break;
+        ConfigServlet.a(this.a, 3);
+        if (QLog.isColorLevel()) {
+          QLog.i("SPLASH_ConfigServlet_birth", 2, "birthday coming soon,date diff is " + i);
+        }
       }
-      if (paramStatus != AppRuntime.Status.invisiable) {
-        break;
-      }
-      RegisterPush.d(this.a).a.a(41L, false);
-      break;
-      label118:
-      paramStatus = new QQProfileItem(RegisterPush.f(this.a).a);
-      RegisterPush.g(this.a).a(101, paramStatus);
     }
-    label152:
-    this.a.a(6);
+    while (!QLog.isColorLevel())
+    {
+      int j;
+      int i;
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.i("SPLASH_ConfigServlet_birth", 2, "not birthday date diff is " + i);
+      return;
+    }
+    QLog.i("SPLASH_ConfigServlet_birth", 2, "card===null");
   }
 }
 

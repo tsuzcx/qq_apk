@@ -1,31 +1,51 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import com.tencent.mobileqq.adapter.ForwardSelectionFriendListAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.search.ContactSearchableFriend;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class clf
-  extends FMObserver
+  extends SearchResultDialog
 {
-  public clf(Conversation paramConversation) {}
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public clf(ForwardFriendListActivity paramForwardFriendListActivity, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("silasBug", 4, "OnFileTransferProgress");
-    }
-    this.a.a(8, paramString, -2147483648);
+    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  @SuppressLint({"UseSparseArrays"})
+  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("silasBug", 4, "OnFileTransferEnd");
+    ArrayList localArrayList = new ArrayList();
+    HashMap localHashMap = ForwardFriendListActivity.a(this.a).a();
+    Iterator localIterator = localHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (ArrayList)localHashMap.get((Integer)localIterator.next());
+      if (localObject != null)
+      {
+        localObject = ((ArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          Friends localFriends = (Friends)((Iterator)localObject).next();
+          localArrayList.add(new ContactSearchableFriend(paramContext, paramQQAppInterface, localFriends, ForwardFriendListActivity.a(this.a).a(localFriends.groupid), 0L, 42949672960L));
+        }
+      }
     }
-    this.a.a(8, paramString1, -2147483648);
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     clf
  * JD-Core Version:    0.7.0.1
  */

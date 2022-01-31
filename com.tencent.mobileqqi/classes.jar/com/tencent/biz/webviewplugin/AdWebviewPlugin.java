@@ -2,7 +2,7 @@ package com.tencent.biz.webviewplugin;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import buo;
+import bon;
 import com.tencent.biz.ProtoServlet;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -44,7 +44,7 @@ public class AdWebviewPlugin
         if (this.jdField_a_of_type_MqqAppNewIntent == null)
         {
           this.jdField_a_of_type_MqqAppNewIntent = new NewIntent(this.jdField_a_of_type_AndroidAppActivity, ProtoServlet.class);
-          this.jdField_a_of_type_MqqObserverBusinessObserver = new buo(this, (String)localObject);
+          this.jdField_a_of_type_MqqObserverBusinessObserver = new bon(this, (String)localObject);
           this.jdField_a_of_type_MqqAppNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
         }
         this.jdField_a_of_type_MqqAppNewIntent.putExtra("cmd", "QQMobileGdtSvr.GdtReport");

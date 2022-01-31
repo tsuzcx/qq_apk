@@ -10,9 +10,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import bro;
-import brq;
-import brr;
+import blk;
+import blm;
+import bln;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -65,25 +65,25 @@ public class LoginManagerActivity
   {
     paramView = DialogUtil.a(this, 230);
     paramView.setMessage(2131560504);
-    paramView.setPositiveButton(2131560528, new brq(this));
-    paramView.setNegativeButton(2131561746, new brr(this));
+    paramView.setPositiveButton(2131560528, new blm(this));
+    paramView.setNegativeButton(2131561746, new bln(this));
     paramView.show();
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130903437);
+    super.setContentView(2130903439);
     super.setTitle(2131560502);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232590));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232588));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232589));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131232587));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232593));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232591));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232592));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131232590));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     paramBundle = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a();
     this.jdField_b_of_type_AndroidWidgetTextView.setText(ContactUtils.g(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131560500, new Object[] { getIntent().getStringExtra("loginInfo") }));
-    new bro(this, paramBundle).start();
+    new blk(this, paramBundle).start();
   }
 }
 

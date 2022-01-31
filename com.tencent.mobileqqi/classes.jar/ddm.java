@@ -1,20 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusManager;
 
-class ddm
-  implements DialogInterface.OnDismissListener
+public class ddm
+  implements IIconListener
 {
-  ddm(ddl paramddl) {}
+  public ddm(QQSettingMe paramQQSettingMe) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.a.a.c();
+    if ((this.a.b) && (paramBitmap != null) && (QQSettingMe.a(this.a).a().b == paramInt1) && (paramInt2 == 200)) {
+      this.a.o();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ddm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.HornPublishActivity;
-import com.tencent.mobileqq.maproam.Utils;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
 
 public class cws
-  implements View.OnClickListener
+  extends Handler
 {
-  public cws(HornPublishActivity paramHornPublishActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    VipUtils.b(this.a, 1, "mvip.gongneng.mobileqq.zhidinglaba.numberandroid");
-    Utils.a();
-  }
+  public cws(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
 }
 
 

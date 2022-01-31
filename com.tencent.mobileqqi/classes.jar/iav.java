@@ -1,14 +1,28 @@
-import com.tencent.widget.Gallery;
+import cooperation.qlink.QlinkServiceProxy;
+import cooperation.qlink.SendMsg;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class iav
-  implements Runnable
+  extends Thread
 {
-  public iav(Gallery paramGallery) {}
+  public iav(QlinkServiceProxy paramQlinkServiceProxy) {}
   
   public void run()
   {
-    Gallery.a(this.a, false);
-    this.a.B_();
+    while (!QlinkServiceProxy.a(this.a).isEmpty())
+    {
+      SendMsg localSendMsg = (SendMsg)QlinkServiceProxy.a(this.a).poll();
+      if (localSendMsg != null) {
+        try
+        {
+          QlinkServiceProxy.a(this.a, localSendMsg);
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+        }
+      }
+    }
   }
 }
 

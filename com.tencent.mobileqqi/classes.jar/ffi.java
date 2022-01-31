@@ -1,16 +1,22 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.RecommendTroopManagerImp;
+import com.tencent.mobileqq.model.PhoneContactManager;
 
 public class ffi
   implements Runnable
 {
-  public ffi(DataLineHandler paramDataLineHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  public ffi(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.handleFileDeleteReply(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg, this.jdField_a_of_type_JavaLangObject);
+    Object localObject = (PhoneContactManager)this.a.getManager(10);
+    if (localObject != null) {
+      ((PhoneContactManager)localObject).a(false);
+    }
+    localObject = (RecommendTroopManagerImp)this.a.getManager(19);
+    if (localObject != null) {
+      ((RecommendTroopManagerImp)localObject).a();
+    }
   }
 }
 

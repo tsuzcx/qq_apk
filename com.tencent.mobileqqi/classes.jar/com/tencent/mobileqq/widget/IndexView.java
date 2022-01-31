@@ -317,7 +317,7 @@ public class IndexView
       if (this.jdField_a_of_type_ArrayOfJavaLangString[j] == "$")
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setText(null);
-        this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(getResources().getDrawable(2130838044));
+        this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(getResources().getDrawable(2130838046));
       }
       for (;;)
       {
@@ -345,7 +345,7 @@ public class IndexView
     if ("$".equals(paramArrayOfString[0]))
     {
       this.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838049);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838051);
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     }
     this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;

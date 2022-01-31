@@ -1,19 +1,17 @@
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.widget.ImageView;
+import com.tencent.mobileqq.widget.DropdownView;
 
-public class hgn
-  implements View.OnClickListener
+class hgn
+  implements Runnable
 {
-  public hgn(QQCustomDialog paramQQCustomDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  hgn(hgm paramhgm, View paramView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, 1);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    this.jdField_a_of_type_Hgm.a.jdField_a_of_type_Hgp.showDropDown();
+    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_Hgm.a.b);
+    this.jdField_a_of_type_Hgm.a.jdField_a_of_type_Boolean = true;
   }
 }
 

@@ -1,17 +1,32 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.troop.activity.TroopNewcomerNoticeActivity;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.troop.widget.MediaControllerX;
 
 public class gyu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public gyu(TroopNewcomerNoticeActivity paramTroopNewcomerNoticeActivity) {}
+  public gyu(MediaControllerX paramMediaControllerX) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    BaseApplicationImpl.getContext().getSharedPreferences("troop_new_guid", 0).edit().putBoolean(this.a.c, false).commit();
+    if (!this.a.b)
+    {
+      this.a.b = true;
+      MediaControllerX.b(this.a).setBackgroundResource(2130838546);
+      MediaControllerX.b(this.a).setContentDescription(this.a.getResources().getString(2131558476));
+    }
+    for (;;)
+    {
+      if (this.a.c != null) {
+        this.a.c.onClick(paramView);
+      }
+      return;
+      this.a.b = false;
+      MediaControllerX.b(this.a).setBackgroundResource(2130838536);
+      MediaControllerX.b(this.a).setContentDescription(this.a.getResources().getString(2131558477));
+    }
   }
 }
 

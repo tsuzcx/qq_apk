@@ -1,43 +1,45 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.CircleMemberListActivity;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.PrivacyDeclareHelper.Callback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.EUCountryUtils;
 
 public class eia
-  implements IIconListener
+  implements PrivacyDeclareHelper.Callback
 {
-  public eia(CircleMemberListActivity paramCircleMemberListActivity) {}
+  public eia(MainAssistObserver paramMainAssistObserver) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void a()
   {
-    if ((paramBitmap == null) || (paramInt2 == 201)) {}
-    for (;;)
-    {
-      return;
-      if (this.a.jdField_a_of_type_Int == 0)
-      {
-        int i = CircleMemberListActivity.a(this.a).getChildCount();
-        paramInt2 = 0;
-        while (paramInt2 < i)
-        {
-          paramBitmap = CircleMemberListActivity.a(this.a).getChildAt(paramInt2).getTag();
-          if ((paramBitmap != null) && ((paramBitmap instanceof eii)))
-          {
-            paramBitmap = (eii)paramBitmap;
-            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
-              this.a.a(paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqDataCircleBuddy);
-            }
-          }
-          paramInt2 += 1;
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Barry", 2, "in 16-UP to privacy page, user reject");
     }
+    MainAssistObserver.a(this.a);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Barry", 2, "in 16-UP to privacy page, user FinishSelf");
+    }
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Barry", 2, "in 16-UP to privacy page, user confirm");
+    }
+    EUCountryUtils.a(this.a.a.b.a(), 1);
+    EUCountryUtils.b(this.a.a.b.a(), 1);
+    MainAssistObserver.a(this.a, 0);
+    MainAssistObserver.a(this.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eia
  * JD-Core Version:    0.7.0.1
  */

@@ -31,8 +31,8 @@ import com.tencent.mobileqq.data.PAMessage;
 import com.tencent.mobileqq.data.PAMessage.Item;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
-import eez;
-import efa;
+import dzx;
+import dzy;
 import java.util.ArrayList;
 
 public class PAMultiItemBuilder
@@ -43,7 +43,7 @@ public class PAMultiItemBuilder
   public PAMultiItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new eez(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new dzx(this);
   }
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
@@ -60,15 +60,15 @@ public class PAMultiItemBuilder
     {
       if (i < localArrayList.size())
       {
-        efa localefa = new efa(this);
+        dzy localdzy = new dzy(this);
         PAMessage.Item localItem = (PAMessage.Item)localArrayList.get(i);
-        localefa.jdField_a_of_type_Int = 5;
-        localefa.jdField_c_of_type_JavaLangString = localItem.url;
-        localefa.jdField_b_of_type_Int = paramLinearLayout.type;
-        localefa.jdField_b_of_type_JavaLangString = localItem.actionUrl;
-        localefa.jdField_a_of_type_JavaLangString = localItem.nativeJumpString;
-        localefa.jdField_a_of_type_Long = paramView.uniseq;
-        localefa.jdField_c_of_type_Int = i;
+        localdzy.jdField_a_of_type_Int = 5;
+        localdzy.jdField_c_of_type_JavaLangString = localItem.url;
+        localdzy.jdField_b_of_type_Int = paramLinearLayout.type;
+        localdzy.jdField_b_of_type_JavaLangString = localItem.actionUrl;
+        localdzy.jdField_a_of_type_JavaLangString = localItem.nativeJumpString;
+        localdzy.jdField_a_of_type_Long = paramView.uniseq;
+        localdzy.jdField_c_of_type_Int = i;
         label168:
         ImageView localImageView;
         int j;
@@ -85,7 +85,7 @@ public class PAMultiItemBuilder
             if (i != 0) {
               break label528;
             }
-            j = 2130838482;
+            j = 2130838484;
             localObject = ((Resources)localObject).getDrawable(j);
             j = Util.a(this.jdField_a_of_type_AndroidContentContext, 5.0F);
             ((Drawable)localObject).setBounds(j, 0, Util.a(this.jdField_a_of_type_AndroidContentContext, 17.0F) + j, Util.a(this.jdField_a_of_type_AndroidContentContext, 20.0F));
@@ -98,7 +98,7 @@ public class PAMultiItemBuilder
         {
           localImageView.setImageDrawable(URLDrawable.getDrawable(localItem.cover));
           localViewGroup.addView(paramMessageRecord);
-          paramMessageRecord.setTag(localefa);
+          paramMessageRecord.setTag(localdzy);
           paramMessageRecord.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
           paramMessageRecord.setOnTouchListener(paramOnLongClickAndTouchListener);
           paramMessageRecord.setOnLongClickListener(paramOnLongClickAndTouchListener);
@@ -108,19 +108,19 @@ public class PAMultiItemBuilder
           {
             paramMessageRecord = new ImageView(this.jdField_a_of_type_AndroidContentContext);
             paramMessageRecord.setLayoutParams(new ViewGroup.LayoutParams(-1, k));
-            paramMessageRecord.setBackgroundResource(2130838175);
+            paramMessageRecord.setBackgroundResource(2130838177);
             localViewGroup.addView(paramMessageRecord);
             paramMessageRecord = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903107, null);
             break label168;
           }
           paramMessageRecord = new ImageView(this.jdField_a_of_type_AndroidContentContext);
           paramMessageRecord.setLayoutParams(new ViewGroup.LayoutParams(-1, k));
-          paramMessageRecord.setBackgroundResource(2130838175);
+          paramMessageRecord.setBackgroundResource(2130838177);
           localViewGroup.addView(paramMessageRecord);
           paramMessageRecord = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903108, null);
           break label168;
           label528:
-          j = 2130838483;
+          j = 2130838485;
         }
         catch (Exception localException)
         {
@@ -136,7 +136,7 @@ public class PAMultiItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new efa(this);
+    return new dzy(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
@@ -168,7 +168,7 @@ public class PAMultiItemBuilder
   public QQCustomMenuItem[] a(View paramView)
   {
     paramView = new QQCustomMenu();
-    paramView.a(2131234872, this.jdField_a_of_type_AndroidContentContext.getString(2131562749));
+    paramView.a(2131234874, this.jdField_a_of_type_AndroidContentContext.getString(2131562749));
     return paramView.a();
   }
 }

@@ -1,21 +1,28 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.observer.AccountObserver;
+import com.tencent.litetransfersdk.LiteTransferListenerCallback;
+import com.tencent.litetransfersdk.LiteTransferOperatorCallback;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
 
-public final class brf
-  extends AccountObserver
+public class brf
+  implements Runnable
 {
-  public brf(QQAppInterface paramQQAppInterface, Context paramContext, String paramString) {}
+  public brf(LiteTransferWrapper paramLiteTransferWrapper) {}
   
-  public void onUpdateSid(String paramString)
+  public void run()
   {
-    PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramString);
+    if (LiteTransferWrapper.access$300(this.a) == 0L)
+    {
+      this.a.initGlobalFuncCallback();
+      LiteTransferWrapper.access$402(this.a, new LiteTransferOperatorCallback(LiteTransferWrapper.access$500(this.a)));
+      LiteTransferWrapper.access$602(this.a, new LiteTransferListenerCallback(LiteTransferWrapper.access$500(this.a)));
+      LiteTransferWrapper.access$302(this.a, this.a.createOperator(LiteTransferWrapper.access$400(this.a), LiteTransferWrapper.access$600(this.a)));
+      this.a.checkPathExist();
+      this.a.SetProxyToJni();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     brf
  * JD-Core Version:    0.7.0.1
  */

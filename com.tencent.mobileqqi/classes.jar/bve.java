@@ -1,42 +1,31 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.utils.ShareMsgHelper;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-class bve
-  implements Runnable
+public class bve
+  implements CompoundButton.OnCheckedChangeListener
 {
-  bve(bvd parambvd, String paramString) {}
+  public bve(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    String str2;
-    String str3;
-    if ((this.jdField_a_of_type_Bvd.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.isResume()) && (!this.jdField_a_of_type_Bvd.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.isFinishing()))
+    AssistantSettingActivity.b(this.a).setContentDescription("2G/3G/4G下自动接收图片");
+    SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131563451), "qqsetting_auto_receive_pic_key", paramBoolean);
+    paramCompoundButton = this.a.b;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      if ((this.jdField_a_of_type_Bvd.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_Bvd.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.jdField_a_of_type_Bvd.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      }
-      str2 = String.format("mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.pubaccount.AccountDetailActivity&uin=%s", new Object[] { this.jdField_a_of_type_Bvd.b });
-      str3 = String.format("mqqapi://card/show_pslcard?src_type=internal&card_type=public_account&uin=%s&version=1", new Object[] { this.jdField_a_of_type_Bvd.b });
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break label241;
-      }
-    }
-    label241:
-    for (String str1 = this.jdField_a_of_type_Bvd.jdField_a_of_type_JavaLangString;; str1 = this.jdField_a_of_type_JavaLangString)
-    {
-      String str4 = String.format(this.jdField_a_of_type_Bvd.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131560575), new Object[] { this.jdField_a_of_type_Bvd.c });
-      ShareMsgHelper.a(this.jdField_a_of_type_Bvd.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, 1001, 1, "struct_msg_from_h5", this.jdField_a_of_type_Bvd.b, str1, this.jdField_a_of_type_Bvd.c, this.jdField_a_of_type_Bvd.d, str4, this.jdField_a_of_type_Bvd.e, "web", null, null, null, "plugin", null, str2, str3, "http://url.cn/JS8oE7", this.jdField_a_of_type_Bvd.f, null);
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bve
  * JD-Core Version:    0.7.0.1
  */

@@ -11,8 +11,8 @@ import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import eqg;
-import eqh;
+import els;
+import elt;
 
 @SuppressLint({"ViewConstructor"})
 public class PhoneMatchView
@@ -26,13 +26,13 @@ public class PhoneMatchView
   public PhoneMatchView(Context paramContext, boolean paramBoolean)
   {
     super(paramContext, paramBoolean);
-    a(2130903309, true);
+    a(2130903311, true);
     j();
   }
   
   private void j()
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131232046));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131232049));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -45,10 +45,10 @@ public class PhoneMatchView
     }
     if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new eqg(this);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new els(this);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new eqh(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new elt(this));
     a(2131562875, 1000L, true);
   }
   

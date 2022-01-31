@@ -1,19 +1,8 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.service.MobileQQService;
-
-public class gna
-  extends FriendListObserver
+public abstract interface gna
 {
-  public gna(MobileQQService paramMobileQQService) {}
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    String str = MobileQQService.a(this.a).a();
-    if ((paramBoolean) && (str != null) && (str.equals(paramString))) {
-      MobileQQService.a(this.a).a(MobileQQService.a(this.a).a());
-    }
-  }
+  public static final int a = 0;
+  public static final int b = 1;
+  public static final int c = 2;
 }
 
 

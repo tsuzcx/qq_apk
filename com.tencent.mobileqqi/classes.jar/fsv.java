@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.fileviewer.base.BaseFileViewerController;
 
-class fsv
-  implements Runnable
+public class fsv
+  implements View.OnClickListener
 {
-  fsv(fsu paramfsu) {}
+  public fsv(BaseFileViewerController paramBaseFileViewerController) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.a.a.getVisibility() == 0) && (EmoticonMainPanel.b() == 2)) {
-      EmoticonMainPanel.a(this.a.a, false);
-    }
+    this.a.c(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fsv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.GridListView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.open.appcommon.AppViewBaseActivity;
+import com.tencent.open.appcommon.js.BaseJsCallBack;
 
 public class hkv
-  implements View.OnClickListener
+  implements Runnable
 {
-  public hkv(GridListView paramGridListView) {}
+  public hkv(BaseJsCallBack paramBaseJsCallBack, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    int i = ((Integer)paramView.getTag(2131233143)).intValue();
-    this.a.a.a(this.a, paramView, i, 0L);
+    if (this.jdField_a_of_type_JavaLangString.equals("1")) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if ((this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack.activity instanceof AppViewBaseActivity)) {
+        ((AppViewBaseActivity)this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack.activity).c(bool);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hkv
  * JD-Core Version:    0.7.0.1
  */

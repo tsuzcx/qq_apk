@@ -1,12 +1,13 @@
 package com.tencent.feedback.eup;
 
-import com.tencent.feedback.common.e;
+import com.tencent.bugly.crashreport.crash.c;
+import com.tencent.bugly.proguard.x;
 import java.util.Locale;
 
 public class CrashStrategyBean
   implements Cloneable
 {
-  public static final String format = "[MSNum:%d ,Wifi:%d,GPRS:%d,ODay:%d,isMerged:%b,AfQ:%b,Silent:%b,mLog:%d,tag:%s,assert:%s, interval:%s, limit:%s]";
+  public static final String FORMAT = "[MSNum:%d ,Wifi:%d,GPRS:%d,ODay:%d,isMerged:%b,AfQ:%b,Silent:%b,mLog:%d,tag:%s,assert:%s, interval:%s, limit:%s]";
   private int a = 10;
   private int b = 10;
   private int c = 3;
@@ -15,15 +16,18 @@ public class CrashStrategyBean
   private boolean f = false;
   private boolean g = true;
   private int h = 100;
-  private String i = null;
-  private boolean j = false;
-  private String k = null;
-  private int l = 5000;
-  private int m = 3;
-  private int n = 100;
-  private boolean o = false;
-  private int p = 60;
-  private int q = 50;
+  private int i = c.e;
+  private String j = null;
+  private boolean k = false;
+  private String l = null;
+  private int m = c.k;
+  private int n = 1;
+  private int o = c.f;
+  private boolean p = false;
+  private int q = 60;
+  private int r = 50;
+  private boolean s = true;
+  private boolean t = true;
   
   public CrashStrategyBean clone()
     throws CloneNotSupportedException
@@ -33,16 +37,16 @@ public class CrashStrategyBean
       CrashStrategyBean localCrashStrategyBean = new CrashStrategyBean();
       localCrashStrategyBean.setEnableAfterQuery(this.f);
       localCrashStrategyBean.setMaxStoredNum(this.a);
-      localCrashStrategyBean.setMaxUploadNum_GPRS(this.c);
-      localCrashStrategyBean.setMaxUploadNum_Wifi(this.b);
+      localCrashStrategyBean.setMaxUploadNumGprs(this.c);
+      localCrashStrategyBean.setMaxUploadNumWifi(this.b);
       localCrashStrategyBean.setMerged(this.e);
       localCrashStrategyBean.setRecordOverDays(this.d);
       localCrashStrategyBean.setSilentUpload(this.g);
       localCrashStrategyBean.setMaxLogRow(this.h);
-      localCrashStrategyBean.setOnlyLogTag(this.i);
-      localCrashStrategyBean.setAssertEnable(this.o);
-      localCrashStrategyBean.setAssertTaskInterval(this.p);
-      localCrashStrategyBean.setAssertLimitCount(this.q);
+      localCrashStrategyBean.setOnlyLogTag(this.j);
+      localCrashStrategyBean.setAssertEnable(this.p);
+      localCrashStrategyBean.setAssertTaskInterval(this.q);
+      localCrashStrategyBean.setAssertLimitCount(this.r);
       return localCrashStrategyBean;
     }
     finally
@@ -56,7 +60,7 @@ public class CrashStrategyBean
   {
     try
     {
-      int i1 = this.q;
+      int i1 = this.r;
       return i1;
     }
     finally
@@ -70,7 +74,7 @@ public class CrashStrategyBean
   {
     try
     {
-      int i1 = this.p;
+      int i1 = this.q;
       return i1;
     }
     finally
@@ -84,7 +88,7 @@ public class CrashStrategyBean
   {
     try
     {
-      int i1 = this.l;
+      int i1 = this.m;
       return i1;
     }
     finally
@@ -92,6 +96,11 @@ public class CrashStrategyBean
       localObject = finally;
       throw localObject;
     }
+  }
+  
+  public int getMaxLogLength()
+  {
+    return this.i;
   }
   
   public int getMaxLogRow()
@@ -112,7 +121,7 @@ public class CrashStrategyBean
   {
     try
     {
-      int i1 = this.m;
+      int i1 = this.n;
       return i1;
     }
     finally
@@ -122,11 +131,11 @@ public class CrashStrategyBean
     }
   }
   
-  public int getMaxStackLine()
+  public int getMaxStackLength()
   {
     try
     {
-      int i1 = this.n;
+      int i1 = this.o;
       return i1;
     }
     finally
@@ -150,7 +159,7 @@ public class CrashStrategyBean
     }
   }
   
-  public int getMaxUploadNum_GPRS()
+  public int getMaxUploadNumGprs()
   {
     try
     {
@@ -164,7 +173,7 @@ public class CrashStrategyBean
     }
   }
   
-  public int getMaxUploadNum_Wifi()
+  public int getMaxUploadNumWifi()
   {
     try
     {
@@ -182,7 +191,7 @@ public class CrashStrategyBean
   {
     try
     {
-      String str = this.i;
+      String str = this.j;
       return str;
     }
     finally
@@ -210,7 +219,7 @@ public class CrashStrategyBean
   {
     try
     {
-      String str = this.k;
+      String str = this.l;
       return str;
     }
     finally
@@ -224,7 +233,7 @@ public class CrashStrategyBean
   {
     try
     {
-      boolean bool = this.o;
+      boolean bool = this.p;
       return bool;
     }
     finally
@@ -262,6 +271,20 @@ public class CrashStrategyBean
     }
   }
   
+  public boolean isOpenAnr()
+  {
+    try
+    {
+      boolean bool = this.s;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
   public boolean isSilentUpload()
   {
     try
@@ -280,7 +303,21 @@ public class CrashStrategyBean
   {
     try
     {
-      boolean bool = this.j;
+      boolean bool = this.k;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public boolean isUploadSpotCrash()
+  {
+    try
+    {
+      boolean bool = this.t;
       return bool;
     }
     finally
@@ -294,7 +331,7 @@ public class CrashStrategyBean
   {
     try
     {
-      this.o = paramBoolean;
+      this.p = paramBoolean;
       return;
     }
     finally
@@ -311,10 +348,10 @@ public class CrashStrategyBean
     {
       try
       {
-        e.a("rqdp{The trigger count of the assert store is smaller than the default count.} [%s]", new Object[] { Integer.valueOf(paramInt) });
+        x.a("rqdp{The trigger count of the assert store is smaller than the default count.} [%s]", new Object[] { Integer.valueOf(paramInt) });
       }
       finally {}
-      this.q = paramInt;
+      this.r = paramInt;
       return;
       paramInt = 50;
       continue;
@@ -329,10 +366,10 @@ public class CrashStrategyBean
     {
       try
       {
-        e.a("rqdp{The interval of assert check task is smaller than the default time.} [%s s]", new Object[] { Integer.valueOf(paramInt) });
+        x.a("rqdp{The interval of assert check task is smaller than the default time.} [%s s]", new Object[] { Integer.valueOf(paramInt) });
       }
       finally {}
-      this.p = paramInt;
+      this.q = paramInt;
       return;
       paramInt = 60;
       continue;
@@ -345,7 +382,7 @@ public class CrashStrategyBean
     if (paramInt > 0) {}
     try
     {
-      this.l = paramInt;
+      this.m = paramInt;
       return;
     }
     finally
@@ -369,6 +406,11 @@ public class CrashStrategyBean
     }
   }
   
+  public void setMaxLogLength(int paramInt)
+  {
+    this.i = paramInt;
+  }
+  
   public void setMaxLogRow(int paramInt)
   {
     if (paramInt > 0) {}
@@ -388,7 +430,7 @@ public class CrashStrategyBean
   {
     try
     {
-      this.m = paramInt;
+      this.n = paramInt;
       return;
     }
     finally
@@ -398,11 +440,11 @@ public class CrashStrategyBean
     }
   }
   
-  public void setMaxStackLine(int paramInt)
+  public void setMaxStackLength(int paramInt)
   {
     try
     {
-      this.n = paramInt;
+      this.o = paramInt;
       return;
     }
     finally
@@ -427,7 +469,7 @@ public class CrashStrategyBean
     }
   }
   
-  public void setMaxUploadNum_GPRS(int paramInt)
+  public void setMaxUploadNumGprs(int paramInt)
   {
     if (paramInt > 0) {}
     try
@@ -442,7 +484,7 @@ public class CrashStrategyBean
     }
   }
   
-  public void setMaxUploadNum_Wifi(int paramInt)
+  public void setMaxUploadNumWifi(int paramInt)
   {
     if (paramInt > 0) {}
     try
@@ -475,13 +517,27 @@ public class CrashStrategyBean
   {
     try
     {
-      this.i = paramString;
+      this.j = paramString;
       return;
     }
     finally
     {
       paramString = finally;
       throw paramString;
+    }
+  }
+  
+  public void setOpenAnr(boolean paramBoolean)
+  {
+    try
+    {
+      this.s = paramBoolean;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
@@ -518,7 +574,7 @@ public class CrashStrategyBean
   {
     try
     {
-      this.j = paramBoolean;
+      this.k = paramBoolean;
       return;
     }
     finally
@@ -532,7 +588,7 @@ public class CrashStrategyBean
   {
     try
     {
-      this.k = paramString;
+      this.l = paramString;
       return;
     }
     finally
@@ -542,18 +598,34 @@ public class CrashStrategyBean
     }
   }
   
+  public void setUploadSpotCrash(boolean paramBoolean)
+  {
+    try
+    {
+      this.t = paramBoolean;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
   public String toString()
   {
     try
     {
-      String str1 = String.format(Locale.US, "[MSNum:%d ,Wifi:%d,GPRS:%d,ODay:%d,isMerged:%b,AfQ:%b,Silent:%b,mLog:%d,tag:%s,assert:%s, interval:%s, limit:%s]", new Object[] { Integer.valueOf(this.a), Integer.valueOf(this.b), Integer.valueOf(this.c), Integer.valueOf(this.d), Boolean.valueOf(this.e), Boolean.valueOf(this.f), Boolean.valueOf(this.g), Integer.valueOf(this.h), this.i, Boolean.valueOf(this.o), Integer.valueOf(this.q), Integer.valueOf(this.p) });
+      String str1 = String.format(Locale.US, "[MSNum:%d ,Wifi:%d,GPRS:%d,ODay:%d,isMerged:%b,AfQ:%b,Silent:%b,mLog:%d,tag:%s,assert:%s, interval:%s, limit:%s]", new Object[] { Integer.valueOf(this.a), Integer.valueOf(this.b), Integer.valueOf(this.c), Integer.valueOf(this.d), Boolean.valueOf(this.e), Boolean.valueOf(this.f), Boolean.valueOf(this.g), Integer.valueOf(this.h), this.j, Boolean.valueOf(this.p), Integer.valueOf(this.r), Integer.valueOf(this.q) });
       return str1;
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        localThrowable.printStackTrace();
+        if (!x.a(localThrowable)) {
+          localThrowable.printStackTrace();
+        }
         String str2 = "error";
       }
     }

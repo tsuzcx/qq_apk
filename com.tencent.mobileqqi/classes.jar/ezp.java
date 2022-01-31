@@ -1,46 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import com.tencent.mobileqq.app.CircleManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.observer.AccountObserver;
 
 public class ezp
-  implements View.OnTouchListener
+  extends AccountObserver
 {
-  public ezp(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  public ezp(CircleManager paramCircleManager) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      paramView = new int[2];
-      VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramView);
-      paramMotionEvent = new int[2];
-      VoipDialInterfaceActivity.c(this.a).getLocationOnScreen(paramMotionEvent);
-      paramMotionEvent = new int[2];
-      VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
-      VoipDialInterfaceActivity.f(this.a).offsetTopAndBottom(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.c(this.a).getHeight() / 2 - VoipDialInterfaceActivity.f(this.a).getHeight() / 2);
-      VoipDialInterfaceActivity.f(this.a).offsetLeftAndRight(paramView[0] + VoipDialInterfaceActivity.c(this.a).getWidth() / 2 - VoipDialInterfaceActivity.f(this.a).getWidth() / 2);
-      VoipDialInterfaceActivity.f(this.a).setVisibility(0);
-    }
-    while (paramMotionEvent.getAction() != 1) {
-      return false;
-    }
-    paramView = new int[2];
-    VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramView);
-    paramMotionEvent = new int[2];
-    VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
-    VoipDialInterfaceActivity.f(this.a).offsetTopAndBottom(-(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.c(this.a).getHeight() / 2 - VoipDialInterfaceActivity.f(this.a).getHeight() / 2));
-    VoipDialInterfaceActivity.f(this.a).offsetLeftAndRight(-(paramView[0] + VoipDialInterfaceActivity.c(this.a).getWidth() / 2 - VoipDialInterfaceActivity.f(this.a).getWidth() / 2));
-    VoipDialInterfaceActivity.f(this.a).setVisibility(4);
-    VoipDialInterfaceActivity.c(this.a).invalidate();
-    return false;
+    CircleManager.a(this.a).a(new ezq(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ezp
  * JD-Core Version:    0.7.0.1
  */

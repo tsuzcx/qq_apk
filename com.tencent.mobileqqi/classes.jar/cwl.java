@@ -1,21 +1,15 @@
-import com.tencent.mobileqq.activity.HornListActivity;
-import com.tencent.mobileqq.app.NearHornHandler;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.MusicSharePlayActivity;
 
 public class cwl
-  implements Runnable
+  extends Handler
 {
-  public cwl(HornListActivity paramHornListActivity, Boolean paramBoolean) {}
+  public cwl(MusicSharePlayActivity paramMusicSharePlayActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {}
-    for (String str = "1";; str = "0")
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_b_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_b_of_type_Long), str, this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
-      }
-      return;
-    }
+    int i = paramMessage.what;
   }
 }
 

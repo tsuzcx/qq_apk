@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DoodleActivity;
-import com.tencent.mobileqq.widget.DoodleTextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class cpo
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public cpo(DoodleActivity paramDoodleActivity) {}
+  public cpo(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.f();
+    GroupManagerActivity.b(this.a, null);
   }
 }
 

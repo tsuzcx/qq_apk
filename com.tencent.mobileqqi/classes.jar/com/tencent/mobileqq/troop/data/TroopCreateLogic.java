@@ -11,9 +11,9 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
-import gzx;
-import gzy;
-import gzz;
+import gvq;
+import gvr;
+import gvs;
 import java.util.Timer;
 import mqq.manager.Manager;
 
@@ -34,7 +34,7 @@ public class TroopCreateLogic
   public static final int j = 51;
   public Activity a;
   public Dialog a;
-  private BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new gzx(this);
+  private BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new gvq(this);
   public QQAppInterface a;
   public TroopCreateLogic.TroopCreateCallback a;
   private TroopCreateLogic.TroopCreateInfo jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo = new TroopCreateLogic.TroopCreateInfo();
@@ -83,7 +83,7 @@ public class TroopCreateLogic
     localObject = new QQProgressDialog((Context)localObject, ((BaseActivity)localObject).d());
     ((QQProgressDialog)localObject).a(paramString);
     ((QQProgressDialog)localObject).setCancelable(false);
-    ((QQProgressDialog)localObject).setOnDismissListener(new gzy(this));
+    ((QQProgressDialog)localObject).setOnDismissListener(new gvr(this));
     this.jdField_a_of_type_AndroidAppDialog = ((Dialog)localObject);
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
@@ -132,7 +132,7 @@ public class TroopCreateLogic
         this.jdField_a_of_type_AndroidAppActivity = paramActivity;
         b(paramActivity.getString(2131560416));
         this.jdField_a_of_type_JavaUtilTimer = new Timer();
-        this.jdField_a_of_type_JavaUtilTimer.schedule(new gzz(this), 10000L);
+        this.jdField_a_of_type_JavaUtilTimer.schedule(new gvs(this), 10000L);
         this.k = 1;
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
         localBizTroopHandler.a(l1);

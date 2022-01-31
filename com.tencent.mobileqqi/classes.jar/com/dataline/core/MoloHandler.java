@@ -1,6 +1,5 @@
 package com.dataline.core;
 
-import co;
 import com.dataline.util.DataLineReportUtil;
 import com.tencent.mobileqq.app.DataLineHandler;
 import com.tencent.mobileqq.app.DataLineHandler.EFILETYPE;
@@ -18,6 +17,7 @@ import com.tencent.open.pcpush.PCPushProxy.OnDownloadListener;
 import com.tencent.open.pcpush.PCPushProxy.PkgEntry;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import cw;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -27,7 +27,7 @@ public class MoloHandler
   private static final int jdField_a_of_type_Int = 1;
   private static final String jdField_a_of_type_JavaLangString = "MoloHandler";
   public DataLineHandler a;
-  private PCPushProxy.OnDownloadListener jdField_a_of_type_ComTencentOpenPcpushPCPushProxy$OnDownloadListener = new co(this);
+  private PCPushProxy.OnDownloadListener jdField_a_of_type_ComTencentOpenPcpushPCPushProxy$OnDownloadListener = new cw(this);
   
   public MoloHandler(DataLineHandler paramDataLineHandler)
   {

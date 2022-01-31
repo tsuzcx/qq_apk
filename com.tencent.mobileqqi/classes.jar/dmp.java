@@ -1,24 +1,40 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SubAccountSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 
 public class dmp
-  implements Runnable
+  implements View.OnClickListener
 {
-  public dmp(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
+  public dmp(SubAccountSettingActivity paramSubAccountSettingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (RegisterVerifyCodeActivity.a(this.a) == 1)
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.a.a(), null);
+    switch (paramView.getId())
     {
-      RegisterVerifyCodeActivity.a(this.a).setText(2131562863);
-      RegisterVerifyCodeActivity.a(this.a).setEnabled(true);
-      RegisterVerifyCodeActivity.a(this.a).setClickable(true);
+    case 2131234577: 
+    default: 
+      return;
+    case 2131234576: 
+      localActionSheet.a(2131561668);
+      localActionSheet.a(2131562539, 3);
+      localActionSheet.d(2131561746);
+      localActionSheet.a(new dmq(this, localActionSheet));
+      localActionSheet.show();
+      return;
+    case 2131234578: 
+      localActionSheet.a(2131561628);
+      localActionSheet.a(2131561946, 3);
+      localActionSheet.d(2131561746);
+      localActionSheet.a(new dmr(this, localActionSheet));
+      localActionSheet.show();
       return;
     }
-    RegisterVerifyCodeActivity.b(this.a);
-    RegisterVerifyCodeActivity.a(this.a).setText(this.a.getString(2131562863) + "(" + RegisterVerifyCodeActivity.a(this.a) + ")");
-    this.a.b.postDelayed(this, 1000L);
+    SubAccountAssistantForward.a(this.a.b, this.a.a(), this.a.b.getAccount());
   }
 }
 

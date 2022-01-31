@@ -25,7 +25,7 @@ import com.tencent.mobileqq.qcall.QCallFacade;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.ImageUtil;
-import eyb;
+import etn;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -251,7 +251,7 @@ public class VoipDetailActivity
     }
     catch (Exception localException)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840367);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840369);
     }
   }
   
@@ -268,7 +268,7 @@ public class VoipDetailActivity
     {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840367);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840369);
   }
   
   public void a(View paramView)
@@ -306,17 +306,17 @@ public class VoipDetailActivity
       label104:
       paramView = localQCallRecent.uin;
     }
-    ChatActivityUtils.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, a(), i, paramView, str3, str1, true, str2, true, true, null, "from_internal");
+    ChatActivityUtils.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, a(), i, paramView, str3, str1, true, str2, true, true, null, "");
   }
   
   public void d()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131234664));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new eyb(this));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131234663));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131234665));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234661));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234660));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131234666));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new etn(this));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131234665));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131234667));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234663));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234662));
     switch (jdField_a_of_type_ComTencentMobileqqActivityVoipVoipContact.relationship)
     {
     }
@@ -1009,7 +1009,7 @@ public class VoipDetailActivity
     do
     {
       return;
-      setContentView(2130904051);
+      setContentView(2130904053);
       this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager = ((PhoneContactManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10));
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
       this.jdField_a_of_type_JavaUtilHashMap = new HashMap();

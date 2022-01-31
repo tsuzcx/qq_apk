@@ -14,11 +14,11 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
-import fax;
-import fay;
-import faz;
-import fba;
-import fbb;
+import ewj;
+import ewk;
+import ewl;
+import ewm;
+import ewn;
 
 public class VoipGoogleWalletPayActivity
   extends BaseActivity
@@ -39,22 +39,22 @@ public class VoipGoogleWalletPayActivity
   
   private void e()
   {
-    jdField_a_of_type_AndroidOsHandler.post(new fay(this));
+    jdField_a_of_type_AndroidOsHandler.post(new ewk(this));
   }
   
   private void f()
   {
-    jdField_a_of_type_AndroidOsHandler.post(new faz(this));
+    jdField_a_of_type_AndroidOsHandler.post(new ewl(this));
   }
   
   private void g()
   {
-    jdField_a_of_type_AndroidOsHandler.post(new fba(this));
+    jdField_a_of_type_AndroidOsHandler.post(new ewm(this));
   }
   
   private void h()
   {
-    jdField_a_of_type_AndroidOsHandler.post(new fbb(this));
+    jdField_a_of_type_AndroidOsHandler.post(new ewn(this));
   }
   
   public void a(Activity paramActivity)
@@ -94,7 +94,7 @@ public class VoipGoogleWalletPayActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130904060);
+    setContentView(2130904062);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131562300);
     paramBundle = getIntent().getExtras().getBundle("VoipGooglePayActivityParam");
@@ -112,7 +112,7 @@ public class VoipGoogleWalletPayActivity
   {
     super.doOnStart();
     a(this);
-    new Handler().postDelayed(new fax(this), 1000L);
+    new Handler().postDelayed(new ewj(this), 1000L);
   }
   
   protected void doOnStop()

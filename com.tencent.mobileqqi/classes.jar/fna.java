@@ -1,30 +1,18 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.UpdateFriend;
+import com.tencent.mobileqq.contactsync.ContactSyncManager;
 
 public class fna
-  extends FriendListObserver
+  implements Runnable
 {
-  private fna(UpdateFriend paramUpdateFriend) {}
+  public fna(ContactSyncManager paramContactSyncManager) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void run()
   {
-    if (!paramBoolean1) {
-      this.a.a(6);
-    }
-    while ((!paramBoolean1) || (!paramBoolean2)) {
-      return;
-    }
-    UpdateFriend.a(this.a).a.edit().putBoolean("isFriendlistok", true).commit();
-    UpdateFriend.b(this.a).a(3, true, Integer.valueOf(1));
-    this.a.a(7);
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     fna
  * JD-Core Version:    0.7.0.1
  */

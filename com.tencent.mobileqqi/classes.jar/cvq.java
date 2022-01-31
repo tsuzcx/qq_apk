@@ -1,24 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.activity.MayKnowManActivity;
 
 public class cvq
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public cvq(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public cvq(MayKnowManActivity paramMayKnowManActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.d();
+    if (MayKnowManActivity.a(this.a, 10, this.a.c)) {
+      MayKnowManActivity.a(this.a);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cvq
  * JD-Core Version:    0.7.0.1
  */

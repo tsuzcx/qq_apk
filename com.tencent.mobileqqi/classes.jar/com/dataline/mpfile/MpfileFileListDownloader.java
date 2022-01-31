@@ -1,7 +1,7 @@
 package com.dataline.mpfile;
 
 import com.tencent.mobileqq.app.ThreadManager;
-import dx;
+import ef;
 
 public class MpfileFileListDownloader
 {
@@ -238,7 +238,7 @@ public class MpfileFileListDownloader
   
   public static void a(int paramInt, String paramString, MpfileFileListDownloader.MpFileHttpDownloadListener paramMpFileHttpDownloadListener)
   {
-    ThreadManager.a(new dx(paramString, paramMpFileHttpDownloadListener, paramInt));
+    ThreadManager.a(new ef(paramString, paramMpFileHttpDownloadListener, paramInt));
   }
 }
 

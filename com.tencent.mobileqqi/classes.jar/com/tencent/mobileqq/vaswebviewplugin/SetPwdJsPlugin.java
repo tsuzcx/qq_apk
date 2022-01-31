@@ -94,7 +94,7 @@ public class SetPwdJsPlugin
     {
       Field localField = this.activity.getClass().getSuperclass().getDeclaredField("leftView");
       localField.setAccessible(true);
-      ((TextView)localField.get(this.activity)).setBackgroundDrawable(this.activity.getResources().getDrawable(2130840328));
+      ((TextView)localField.get(this.activity)).setBackgroundDrawable(this.activity.getResources().getDrawable(2130840330));
       return;
     }
     catch (Throwable localThrowable)

@@ -4,10 +4,10 @@
     <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0px" />
     <LinearLayout android:layout_width="fill_parent" android:layout_height="59.0dip">
         <FrameLayout android:gravity="center" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip">
-            <ImageView android:layout_width="41.0dip" android:layout_height="41.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020260" android:scaleType="fitXY" />
-            <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080110" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02025f" android:scaleType="fitXY" />
+            <ImageView android:layout_width="41.0dip" android:layout_height="41.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020262" android:scaleType="fitXY" />
+            <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080110" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020261" android:scaleType="fitXY" />
         </FrameLayout>
         <TextView android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080111" android:layout_width="0.0px" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00b6" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080112" android:padding="5.0dip" android:layout_width="29.0dip" android:layout_height="29.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020154" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080112" android:padding="5.0dip" android:layout_width="29.0dip" android:layout_height="29.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020156" />
     </LinearLayout>
 </LinearLayout>

@@ -1,23 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.TroopMemberCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Text;
 
-public class dvt
-  implements Runnable
+public final class dvt
+  implements Parcelable.Creator
 {
-  public dvt(TroopMemberCardActivity paramTroopMemberCardActivity, String paramString) {}
-  
-  public void run()
+  public ForwardUtils.Section_Text a(Parcel paramParcel)
   {
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.b.a(this.jdField_a_of_type_JavaLangString, (byte)3, true);
-    if (localBitmap != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.runOnUiThread(new dvu(this, localBitmap));
-    }
+    return new ForwardUtils.Section_Text(paramParcel);
+  }
+  
+  public ForwardUtils.Section_Text[] a(int paramInt)
+  {
+    return new ForwardUtils.Section_Text[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dvt
  * JD-Core Version:    0.7.0.1
  */

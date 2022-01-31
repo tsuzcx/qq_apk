@@ -1,30 +1,34 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack.Stub;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import com.tencent.mobileqq.app.FriendListObserver;
+import java.util.Map;
 
-class egt
-  extends IAIOImageProviderCallBack.Stub
+public class egt
+  extends FriendListObserver
 {
-  egt(egs paramegs) {}
+  private egt(TroopView paramTroopView) {}
   
-  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2)
+  protected void a(boolean paramBoolean, Map paramMap)
   {
-    this.a.a.runOnUiThread(new egv(this, paramLong1, paramInt1, paramInt2, paramInt3, paramLong2));
+    this.a.a();
   }
   
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  protected void c(boolean paramBoolean, String paramString)
   {
-    this.a.a.runOnUiThread(new egu(this, paramLong, paramInt1, paramInt2, paramInt3, paramString));
+    if (paramBoolean) {
+      this.a.a();
+    }
   }
   
-  public void a(AIOImageData[] paramArrayOfAIOImageData, int paramInt)
+  protected void c(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.a.runOnUiThread(new egw(this, paramArrayOfAIOImageData, paramInt));
+    if (paramBoolean1) {
+      this.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     egt
  * JD-Core Version:    0.7.0.1
  */

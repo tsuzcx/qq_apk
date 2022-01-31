@@ -3,12 +3,12 @@ package com.tencent.mobileqq.pic;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import gik;
+import geb;
 
 public class ReportInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new gik();
+  public static final Parcelable.Creator CREATOR = new geb();
   public static final int a = -1;
   public static final int b = 0;
   public static final int c = 1;

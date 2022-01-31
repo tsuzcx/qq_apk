@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.activity.selectmember.DiscussionListInnerFrame android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<TableLayout android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080e8d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TableRow android:layout_height="fill_parent" android:layout_weight="1.0">
+        <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080e8e" android:layout_width="40.0dip" android:layout_height="25.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020596" android:scaleType="centerInside" android:layout_weight="1.0" />
+        <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080e8f" android:layout_width="40.0dip" android:layout_height="25.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020596" android:scaleType="centerInside" android:layout_weight="1.0" />
+        <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080e90" android:layout_width="40.0dip" android:layout_height="25.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020596" android:scaleType="centerInside" android:layout_weight="1.0" />
+        <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080e91" android:layout_width="40.0dip" android:layout_height="25.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020596" android:scaleType="centerInside" android:layout_weight="1.0" />
+    </TableRow>
+</TableLayout>

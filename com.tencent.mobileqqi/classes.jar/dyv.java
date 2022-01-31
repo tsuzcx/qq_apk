@@ -1,24 +1,26 @@
-import android.view.MotionEvent;
+import android.content.Context;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class dyv
-  implements View.OnTouchListener
+  extends ClickableSpan
 {
-  public dyv(TroopTransferActivity paramTroopTransferActivity) {}
+  public dyv(GrayTipsItemBuilder paramGrayTipsItemBuilder, String paramString1, String paramString2) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.e();
-    }
-    return true;
+    paramView = GrayTipsItemBuilder.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder).getString(2131561734) + " " + this.jdField_a_of_type_JavaLangString;
+    paramView = DialogUtil.a(GrayTipsItemBuilder.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder), 230).setTitle(paramView).setMessage(this.b);
+    paramView.setPositiveButton(GrayTipsItemBuilder.g(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder).getString(2131561726), new dyx(this)).setNegativeButton(GrayTipsItemBuilder.f(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder).getString(2131561746), new dyw(this));
+    paramView.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dyv
  * JD-Core Version:    0.7.0.1
  */

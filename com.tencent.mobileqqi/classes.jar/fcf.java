@@ -1,23 +1,19 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.adapter.BuddyListAdapter;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.app.Frame;
+import com.tencent.mobileqq.app.FrameActivity;
+import java.util.Collection;
+import java.util.Iterator;
 
 public class fcf
-  implements View.OnClickListener
+  implements Runnable
 {
-  public fcf(BuddyListAdapter paramBuddyListAdapter) {}
+  public fcf(FrameActivity paramFrameActivity, Collection paramCollection) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((BuddyListAdapter.a(this.a) != null) && (BuddyListAdapter.a(this.a).isShowing())) {
-      BuddyListAdapter.a(this.a).dismiss();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilCollection.iterator();
+    while (localIterator.hasNext()) {
+      ((Frame)localIterator.next()).b();
     }
-    GroupManagerActivity.a((Activity)BuddyListAdapter.a(this.a));
-    ReportController.b(BuddyListAdapter.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
   }
 }
 

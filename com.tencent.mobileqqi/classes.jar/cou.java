@@ -1,22 +1,15 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.gesturelock.LockPatternView;
 
-public class cou
-  implements TextWatcher
+class cou
+  implements Runnable
 {
-  private cou(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  cou(cos paramcos) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.b(paramEditable);
+    this.a.a.a.a();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

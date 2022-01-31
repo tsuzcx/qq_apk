@@ -1,20 +1,23 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ScreenShot;
-import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
-import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
+import android.os.Message;
+import android.os.Process;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
 
 public class fkx
-  implements View.OnClickListener
+  implements Runnable
 {
-  public fkx(ScreenShot paramScreenShot) {}
+  public fkx(QQAnimationDrawable paramQQAnimationDrawable) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ScreenShot.a(this.a);
-    if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
-      KapalaiAdapterUtil.a().b(this.a.a);
+    QQAnimationDrawable.a(this.a, true);
+    Process.setThreadPriority(10);
+    QQAnimationDrawable.b(this.a, QQAnimationDrawable.a(this.a, QQAnimationDrawable.a(this.a, true, 0)));
+    QQAnimationDrawable.a(this.a, 1);
+    if (QQAnimationDrawable.a(this.a))
+    {
+      Message localMessage = QQAnimationDrawable.a(this.a).obtainMessage();
+      localMessage.obj = Integer.valueOf(0);
+      localMessage.sendToTarget();
     }
   }
 }

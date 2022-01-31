@@ -1,24 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI;
-import com.tencent.av.ui.MultiVideoMembersHolderUI;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-class bju
-  implements DialogInterface.OnClickListener
+public class bju
+  implements DialogInterface.OnDismissListener
 {
-  bju(bjq parambjq) {}
+  public bju(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_Bjq.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_ComTencentAvUiMultiVideoMembersHolderUI != null) {
-      this.jdField_a_of_type_Bjq.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_ComTencentAvUiMultiVideoMembersHolderUI.a();
-    }
-    this.jdField_a_of_type_Bjq.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_Bjq.jdField_a_of_type_JavaLangString = "CPU";
-    this.jdField_a_of_type_Bjq.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_Bjq.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bjq.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_a_of_type_Bjq.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_Bjq, 0L);
-    paramDialogInterface.dismiss();
+    AccountDetailActivity.a(this.a, false);
   }
 }
 

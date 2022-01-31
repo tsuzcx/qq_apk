@@ -22,8 +22,8 @@ import com.tencent.mobileqq.data.MessageForActivity;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.troop.browser.TroopQQBrowserHelper;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
-import edi;
-import edj;
+import dyg;
+import dyh;
 
 public class ActivityChatItemBuilder
   extends AbstractChatItemBuilder
@@ -38,15 +38,15 @@ public class ActivityChatItemBuilder
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramLinearLayout = (edj)paramViewHolder;
+    paramLinearLayout = (dyh)paramViewHolder;
     paramViewHolder = paramView;
     if (paramView == null)
     {
-      paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903364, null);
-      paramLinearLayout.b = ((TextView)paramViewHolder.findViewById(2131232291));
-      paramLinearLayout.c = ((TextView)paramViewHolder.findViewById(2131232296));
-      paramLinearLayout.d = ((TextView)paramViewHolder.findViewById(2131232297));
-      paramLinearLayout.a = ((ImageView)paramViewHolder.findViewById(2131232294));
+      paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903366, null);
+      paramLinearLayout.b = ((TextView)paramViewHolder.findViewById(2131232294));
+      paramLinearLayout.c = ((TextView)paramViewHolder.findViewById(2131232299));
+      paramLinearLayout.d = ((TextView)paramViewHolder.findViewById(2131232300));
+      paramLinearLayout.a = ((ImageView)paramViewHolder.findViewById(2131232297));
       paramViewHolder.setOnClickListener(this);
       paramLinearLayout.b.setOnClickListener(this);
       paramLinearLayout.c.setOnClickListener(this);
@@ -62,7 +62,7 @@ public class ActivityChatItemBuilder
     }
     try
     {
-      paramMessageRecord = URLDrawable.getDrawable(paramView.bigPic, paramViewHolder.getResources().getDrawable(2130838408), paramViewHolder.getResources().getDrawable(2130838407));
+      paramMessageRecord = URLDrawable.getDrawable(paramView.bigPic, paramViewHolder.getResources().getDrawable(2130838410), paramViewHolder.getResources().getDrawable(2130838409));
       paramLinearLayout.a.setBackgroundDrawable(paramMessageRecord);
       this.b = paramView.url;
       if (TextUtils.isEmpty(paramView.title))
@@ -81,7 +81,7 @@ public class ActivityChatItemBuilder
     {
       for (;;)
       {
-        paramLinearLayout.a.setBackgroundResource(2130838407);
+        paramLinearLayout.a.setBackgroundResource(2130838409);
         continue;
         paramMessageRecord = paramView.title;
         continue;
@@ -93,14 +93,14 @@ public class ActivityChatItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new edj(this);
+    return new dyh(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
   
   protected void a(String paramString, TextView paramTextView)
   {
-    paramTextView.getViewTreeObserver().addOnPreDrawListener(new edi(this, paramTextView, paramString));
+    paramTextView.getViewTreeObserver().addOnPreDrawListener(new dyg(this, paramTextView, paramString));
   }
   
   public QQCustomMenuItem[] a(View paramView)

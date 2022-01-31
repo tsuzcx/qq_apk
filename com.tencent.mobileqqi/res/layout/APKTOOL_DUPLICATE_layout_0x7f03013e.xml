@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f08061e" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f08028e" android:visibility="gone" android:layout_alignParentTop="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030076" />
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f08061f" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f08028e" />
-</com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqqi">
+    <com.tencent.av.opengl.QQGLGestureView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080615" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.av.widget.RotateLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080616" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080617" android:layout_width="wrap_content" android:layout_height="wrap_content" tencent:layout_angle="0">
+            <TextView android:textSize="10.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a007a" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080618" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b014d" android:layout_height="wrap_content" android:text="@null" android:singleLine="true" />
+            <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b001f" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0127" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080619" android:background="@drawable/skin_aio_friend_bubble_nor" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="44.0dip" android:text="@null" android:singleLine="true" />
+        </LinearLayout>
+    </com.tencent.av.widget.RotateLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f08061a" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020317" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0139" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b013a">
+        <com.tencent.av.opengl.QQGlView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08061b" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b013d" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b013d" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b013d" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b013d" />
+    </RelativeLayout>
+    <SurfaceView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08061c" android:layout_width="1.0dip" android:layout_height="1.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+</RelativeLayout>

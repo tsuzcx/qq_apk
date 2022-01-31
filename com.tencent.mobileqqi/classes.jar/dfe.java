@@ -1,27 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.RegisterBaseActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class dfe
-  extends Handler
+  implements Runnable
 {
-  private WeakReference a;
+  public dfe(RegisterBaseActivity paramRegisterBaseActivity, String paramString1, String paramString2) {}
   
-  public dfe(PermisionPrivacyActivity paramPermisionPrivacyActivity)
+  public void run()
   {
-    this.a = new WeakReference(paramPermisionPrivacyActivity);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if ((PermisionPrivacyActivity)this.a.get() == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    }
-    throw new RuntimeException("Unknown message: " + paramMessage.what);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity, 230);
+    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
+    localQQCustomDialog.setMessage(this.b);
+    localQQCustomDialog.setPositiveButton(2131562543, new dff(this));
+    localQQCustomDialog.show();
   }
 }
 

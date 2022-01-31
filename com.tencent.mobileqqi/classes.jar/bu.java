@@ -1,37 +1,33 @@
 import android.content.Intent;
-import android.view.View;
-import com.dataline.activities.LiteAdvanceActivity;
-import com.tencent.mobileqq.app.DataLineHandler;
+import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticAssist;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 import mqq.app.MobileQQ;
+import mqq.app.permission.PermissionCallback;
 
-public class bu
-  implements ActionSheet.OnButtonClickListener
+class bu
+  implements PermissionCallback
 {
-  public bu(LiteAdvanceActivity paramLiteAdvanceActivity, ActionSheet paramActionSheet) {}
+  bu(bn parambn) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      return;
-      StatisticAssist.a(this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.b.getApplication().getApplicationContext(), this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.b.a(), "dl_ckclearmsg");
-      paramView = (DataLineHandler)this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.b.a(8);
-      paramView.d(32);
-      paramView.e();
-      this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.b.a().b();
-      this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.getIntent().putExtra("clear_flag", true);
-      this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.setResult(-1, this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.getIntent());
-      this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.finish();
-    }
+    new PermissionsDialog().a(this.a.a, paramInt, paramArrayOfString, new bv(this));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    StatisticAssist.a(this.a.a.b.getApplication().getApplicationContext(), this.a.a.b.a(), "dl_ckfile");
+    paramArrayOfString = new Intent(this.a.a.getApplicationContext(), FMLocalFileActivity.class);
+    paramArrayOfString.putExtra("category", 6);
+    paramArrayOfString.putExtra("selectMode", true);
+    paramArrayOfString.putExtra("targetUin", AppConstants.P);
+    this.a.a.startActivityForResult(paramArrayOfString, 2);
+    ReportController.b(this.a.a.b, "CliOper", "", "", "0X800407C", "0X800407C", 0, 0, "", "", "", "");
   }
 }
 

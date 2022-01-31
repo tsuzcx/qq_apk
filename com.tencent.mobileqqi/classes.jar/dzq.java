@@ -1,20 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
 
 public class dzq
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public dzq(UpgradeActivity paramUpgradeActivity) {}
+  public dzq(MarketFaceItemBuilder paramMarketFaceItemBuilder) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dzq
  * JD-Core Version:    0.7.0.1
  */

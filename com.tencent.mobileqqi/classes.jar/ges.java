@@ -1,20 +1,23 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.ProfileCardBrowserActivity.ImageGalleryAdapter;
+import com.tencent.mobileqq.profile.view.CircularProgressBar;
 
-class ges
-  implements View.OnClickListener
+public class ges
 {
-  ges(gep paramgep, Dialog paramDialog) {}
+  public ImageView a;
+  public ProgressBar a;
+  public TextView a;
+  public CircularProgressBar a;
+  public ImageView b;
+  public ImageView c;
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-  }
+  public ges(ProfileCardBrowserActivity.ImageGalleryAdapter paramImageGalleryAdapter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     ges
  * JD-Core Version:    0.7.0.1
  */

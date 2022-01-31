@@ -5,7 +5,7 @@ import android.os.Parcel;
 import com.tencent.open.base.MD5Utils;
 import com.tencent.open.component.cache.database.DbCacheData;
 import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
-import hpy;
+import hlu;
 
 public class HttpCacheData
   extends DbCacheData
@@ -29,7 +29,7 @@ public class HttpCacheData
   
   static
   {
-    jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheData$DbCreator = new hpy();
+    jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheData$DbCreator = new hlu();
   }
   
   public HttpCacheData(String paramString1, String paramString2, long paramLong1, long paramLong2, String paramString3)

@@ -1,25 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.observer.GameCenterObserver;
 
 public class ddo
-  implements DialogInterface.OnClickListener
+  extends GameCenterObserver
 {
-  public ddo(NotificationActivity paramNotificationActivity) {}
+  public ddo(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(this.a.a + "&sid=" + this.a.b.getSid()));
-    this.a.startActivity(paramDialogInterface);
-    this.a.c();
+    if (this.a.b) {
+      this.a.g();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ddo
  * JD-Core Version:    0.7.0.1
  */

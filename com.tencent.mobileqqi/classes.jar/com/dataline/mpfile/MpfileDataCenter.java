@@ -18,10 +18,10 @@ import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.QLog;
-import dt;
-import du;
-import dv;
-import dw;
+import eb;
+import ec;
+import ed;
+import ee;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -76,7 +76,7 @@ public class MpfileDataCenter
   public Context a;
   public HttpDownload a;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public dw a;
+  public ee a;
   private Long jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
   private Timer jdField_a_of_type_JavaUtilTimer = new Timer();
   public boolean a;
@@ -102,7 +102,7 @@ public class MpfileDataCenter
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComDatalineUtilHttpDownload = new HttpDownload(true);
-    this.jdField_a_of_type_Dw = new dw(this, null);
+    this.jdField_a_of_type_Ee = new ee(this, null);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     b();
@@ -135,12 +135,12 @@ public class MpfileDataCenter
   
   private void b(long paramLong)
   {
-    dv localdv = new dv(this, null);
-    localdv.a(paramLong);
+    ed localed = new ed(this, null);
+    localed.a(paramLong);
     if (this.jdField_a_of_type_JavaUtilTimer == null) {
       this.jdField_a_of_type_JavaUtilTimer = new Timer();
     }
-    this.jdField_a_of_type_JavaUtilTimer.schedule(localdv, 5000L, 5000L);
+    this.jdField_a_of_type_JavaUtilTimer.schedule(localed, 5000L, 5000L);
   }
   
   private void c()
@@ -154,7 +154,7 @@ public class MpfileDataCenter
   
   private void e(String paramString)
   {
-    ThreadManager.a(new dt(this, paramString));
+    ThreadManager.a(new eb(this, paramString));
   }
   
   public long a(String paramString1, String paramString2, long paramLong)
@@ -174,7 +174,7 @@ public class MpfileDataCenter
       localMpfileTaskInfo.jdField_c_of_type_Long = 0L;
       localMpfileTaskInfo.jdField_a_of_type_JavaLangString = MD5Utils.b(localMpfileTaskInfo.jdField_e_of_type_JavaLangString);
       localMpfileTaskInfo.g = MpfileTaskInfo.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Dw.a(localMpfileTaskInfo);
+      this.jdField_a_of_type_Ee.a(localMpfileTaskInfo);
       paramLong = localMpfileTaskInfo.jdField_d_of_type_Long;
     }
     for (;;)
@@ -242,7 +242,7 @@ public class MpfileDataCenter
   
   public MpfileTaskInfo a(String paramString)
   {
-    paramString = this.jdField_a_of_type_Dw.a(paramString);
+    paramString = this.jdField_a_of_type_Ee.a(paramString);
     if (paramString != null)
     {
       if (!a(paramString)) {
@@ -457,7 +457,7 @@ public class MpfileDataCenter
   
   public ArrayList a()
   {
-    return this.jdField_a_of_type_Dw.a();
+    return this.jdField_a_of_type_Ee.a();
   }
   
   public void a()
@@ -475,7 +475,7 @@ public class MpfileDataCenter
   
   public void a(long paramLong)
   {
-    MpfileTaskInfo localMpfileTaskInfo = this.jdField_a_of_type_Dw.a(paramLong);
+    MpfileTaskInfo localMpfileTaskInfo = this.jdField_a_of_type_Ee.a(paramLong);
     if (localMpfileTaskInfo != null) {
       localMpfileTaskInfo.g = 1;
     }
@@ -483,7 +483,7 @@ public class MpfileDataCenter
   
   public void a(long paramLong1, long paramLong2)
   {
-    MpfileTaskInfo localMpfileTaskInfo = this.jdField_a_of_type_Dw.a(paramLong1);
+    MpfileTaskInfo localMpfileTaskInfo = this.jdField_a_of_type_Ee.a(paramLong1);
     if (localMpfileTaskInfo != null) {
       localMpfileTaskInfo.jdField_a_of_type_Long = paramLong2;
     }
@@ -491,7 +491,7 @@ public class MpfileDataCenter
   
   public void a(long paramLong1, long paramLong2, long paramLong3)
   {
-    MpfileTaskInfo localMpfileTaskInfo = this.jdField_a_of_type_Dw.a(paramLong1);
+    MpfileTaskInfo localMpfileTaskInfo = this.jdField_a_of_type_Ee.a(paramLong1);
     if (localMpfileTaskInfo != null)
     {
       localMpfileTaskInfo.jdField_b_of_type_Long = paramLong3;
@@ -508,7 +508,7 @@ public class MpfileDataCenter
       localIntent.putExtra("token_current_size", paramLong2);
       localIntent.putExtra("token_is_success", paramBoolean);
       localIntent.putExtra("token_http_code", paramInt);
-      MpfileTaskInfo localMpfileTaskInfo = this.jdField_a_of_type_Dw.a(paramLong1);
+      MpfileTaskInfo localMpfileTaskInfo = this.jdField_a_of_type_Ee.a(paramLong1);
       if (localMpfileTaskInfo != null) {
         localIntent.putExtra("token_file_id", localMpfileTaskInfo.jdField_c_of_type_JavaLangString);
       }
@@ -525,7 +525,7 @@ public class MpfileDataCenter
   {
     a(String.format("download onDoneD %s, nRetCode is %d, nStatusCode is %d", new Object[] { String.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
     b(paramLong1, paramLong2);
-    paramString1 = this.jdField_a_of_type_Dw.a(paramLong1);
+    paramString1 = this.jdField_a_of_type_Ee.a(paramLong1);
     if ((paramString1 != null) && (paramString1.jdField_f_of_type_JavaLangString != null))
     {
       if (!paramBoolean) {
@@ -607,12 +607,12 @@ public class MpfileDataCenter
   
   public void b()
   {
-    ThreadManager.b(new du(this));
+    ThreadManager.b(new ec(this));
   }
   
   public void b(long paramLong1, long paramLong2)
   {
-    MpfileTaskInfo localMpfileTaskInfo = this.jdField_a_of_type_Dw.a(paramLong1);
+    MpfileTaskInfo localMpfileTaskInfo = this.jdField_a_of_type_Ee.a(paramLong1);
     if (localMpfileTaskInfo != null) {
       localMpfileTaskInfo.jdField_c_of_type_Long = paramLong2;
     }
@@ -620,7 +620,7 @@ public class MpfileDataCenter
   
   public void b(long paramLong1, long paramLong2, long paramLong3)
   {
-    MpfileTaskInfo localMpfileTaskInfo = this.jdField_a_of_type_Dw.a(paramLong1);
+    MpfileTaskInfo localMpfileTaskInfo = this.jdField_a_of_type_Ee.a(paramLong1);
     if (localMpfileTaskInfo != null)
     {
       localMpfileTaskInfo.g = MpfileTaskInfo.jdField_b_of_type_Int;
@@ -656,7 +656,7 @@ public class MpfileDataCenter
           ((File)localObject).delete();
         }
       }
-      this.jdField_a_of_type_Dw.a(paramString);
+      this.jdField_a_of_type_Ee.a(paramString);
     }
   }
   
@@ -677,7 +677,7 @@ public class MpfileDataCenter
       localIntent.putExtra("token_task_id", paramLong1);
       localIntent.putExtra("token_current_size", paramLong2);
       localIntent.putExtra("token_total_size", paramLong3);
-      MpfileTaskInfo localMpfileTaskInfo = this.jdField_a_of_type_Dw.a(paramLong1);
+      MpfileTaskInfo localMpfileTaskInfo = this.jdField_a_of_type_Ee.a(paramLong1);
       if (localMpfileTaskInfo != null) {
         localIntent.putExtra("token_file_id", localMpfileTaskInfo.jdField_c_of_type_JavaLangString);
       }

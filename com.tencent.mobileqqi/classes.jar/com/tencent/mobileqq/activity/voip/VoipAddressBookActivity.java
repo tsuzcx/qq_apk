@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.activity.phone.PhoneFrame;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.statistics.ReportController;
-import exo;
+import eta;
 
 public class VoipAddressBookActivity
   extends IphoneTitleBarActivity
@@ -30,12 +30,12 @@ public class VoipAddressBookActivity
   
   private void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame = ((PhoneFrame)findViewById(2131232036));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame = ((PhoneFrame)findViewById(2131232039));
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.d = true;
     g(getString(2131561872));
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setActivity(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipAddressBookActivity = this;
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setPhoneContext(new exo(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setPhoneContext(new eta(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.a(null);
     Bundle localBundle;
     if (getIntent() != null)
@@ -97,7 +97,7 @@ public class VoipAddressBookActivity
   {
     super.doOnCreate(paramBundle);
     getWindow().setBackgroundDrawable(null);
-    setContentView(2130903307);
+    setContentView(2130903309);
     f();
     return true;
   }
@@ -165,7 +165,7 @@ public class VoipAddressBookActivity
         break label80;
       }
       paramMenu = paramMenu.add(0, 0, 0, " ");
-      paramMenu.setIcon(2130840320);
+      paramMenu.setIcon(2130840322);
       MenuItemCompat.setShowAsAction(paramMenu, 1);
     }
     for (;;)
@@ -180,7 +180,7 @@ public class VoipAddressBookActivity
         paramMenu = localMenuItem;
         if (this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipAddressBookView != null)
         {
-          localMenuItem.setIcon(2130840320);
+          localMenuItem.setIcon(2130840322);
           paramMenu = localMenuItem;
         }
       }

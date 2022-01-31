@@ -1,15 +1,50 @@
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.media.ExifInterface;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
 public class eby
-  implements Runnable
+  extends AsyncTask
 {
-  public eby(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, ChatMessage paramChatMessage) {}
+  public eby(AIOGalleryScene paramAIOGalleryScene, File paramFile, int paramInt) {}
   
-  public void run()
+  protected Void a(Void... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(1, 200, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq) });
+    try
+    {
+      paramVarArgs = new ExifInterface(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+      if (this.jdField_a_of_type_Int == 0) {
+        paramVarArgs.setAttribute("Orientation", String.valueOf(1));
+      }
+      for (;;)
+      {
+        paramVarArgs.saveAttributes();
+        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene;
+        paramVarArgs.c += 1;
+        break label138;
+        if (this.jdField_a_of_type_Int != 1) {
+          break;
+        }
+        paramVarArgs.setAttribute("Orientation", String.valueOf(6));
+      }
+    }
+    catch (IOException paramVarArgs)
+    {
+      while (QLog.isColorLevel())
+      {
+        QLog.e("AIOGalleryScene", 2, "save exif error", paramVarArgs);
+        break;
+        if (this.jdField_a_of_type_Int == 2) {
+          paramVarArgs.setAttribute("Orientation", String.valueOf(3));
+        } else if (this.jdField_a_of_type_Int == 3) {
+          paramVarArgs.setAttribute("Orientation", String.valueOf(8));
+        }
+      }
+    }
+    label138:
+    return null;
   }
 }
 

@@ -28,7 +28,7 @@ public abstract class VasWebviewJsPlugin
 {
   private static final String TAG = VasWebviewJsPlugin.class.getSimpleName();
   AuthorizeConfig authCfg;
-  protected Client.onRemoteRespObserver mOnRemoteResp = new VasWebviewJsPlugin.1(this);
+  public Client.onRemoteRespObserver mOnRemoteResp = new VasWebviewJsPlugin.1(this);
   
   private Method getMethod(Class paramClass, String paramString)
   {
@@ -398,7 +398,7 @@ public abstract class VasWebviewJsPlugin
   
   void onPushMsg(Bundle paramBundle) {}
   
-  protected void onResponse(Bundle paramBundle)
+  public void onResponse(Bundle paramBundle)
   {
     Object localObject;
     String str;
@@ -428,7 +428,7 @@ public abstract class VasWebviewJsPlugin
     catch (JSONException paramBundle) {}
   }
   
-  protected void sendRemoteReq(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
+  public void sendRemoteReq(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (!WebIPCOperator.getInstance().isServiceClientBinded())
     {

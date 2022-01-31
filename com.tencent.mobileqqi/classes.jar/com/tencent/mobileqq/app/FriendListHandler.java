@@ -99,13 +99,13 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.sc.qzonepush.QQService.SvcRespRegister;
 import com.tencent.widget.TraceUtils;
-import fgu;
-import fgv;
-import fgw;
-import fgx;
-import fgy;
-import fha;
-import fkf;
+import fcg;
+import fch;
+import fci;
+import fcj;
+import fck;
+import fcm;
+import fft;
 import friendlist.AddFriendResp;
 import friendlist.AddGroupResp;
 import friendlist.DelFriendResp;
@@ -270,8 +270,8 @@ public class FriendListHandler
   public static final int z = 39;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private QvipSpecialCareManager jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialCareManager = null;
-  private ProxyListener jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener = new fgv(this);
-  private fkf jdField_a_of_type_Fkf;
+  private ProxyListener jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener = new fch(this);
+  private fft jdField_a_of_type_Fft;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private HashMap jdField_a_of_type_JavaUtilHashMap;
   private Hashtable jdField_a_of_type_JavaUtilHashtable = new Hashtable();
@@ -295,7 +295,7 @@ public class FriendListHandler
   public FriendListHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_AndroidOsHandler = new fgu(this, paramQQAppInterface.a().getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new fcg(this, paramQQAppInterface.a().getMainLooper());
     OnlineStatusIconHelper.a();
     try
     {
@@ -729,18 +729,18 @@ public class FriendListHandler
         label236:
         paramQQHeadUrlResp.UserHeadInfoList = ???;
       }
-      if (this.jdField_a_of_type_Fkf == null) {}
+      if (this.jdField_a_of_type_Fft == null) {}
       synchronized (this.jdField_b_of_type_JavaLangObject)
       {
-        if (this.jdField_a_of_type_Fkf == null) {
-          this.jdField_a_of_type_Fkf = new fkf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
+        if (this.jdField_a_of_type_Fft == null) {
+          this.jdField_a_of_type_Fft = new fft(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
         }
         i1 = 0;
         if (i1 >= paramQQHeadUrlResp.UserHeadInfoList.size()) {
           continue;
         }
         ??? = (QQHeadInfo)paramQQHeadUrlResp.UserHeadInfoList.get(i1);
-        this.jdField_a_of_type_Fkf.a(???, paramToServiceMsg);
+        this.jdField_a_of_type_Fft.a(???, paramToServiceMsg);
         i1 += 1;
       }
     }
@@ -2974,17 +2974,17 @@ public class FriendListHandler
           break label244;
           ???.uin = localRspHeadInfo.dstUin.get();
           break label328;
-          if (this.jdField_a_of_type_Fkf == null) {}
+          if (this.jdField_a_of_type_Fft == null) {}
           synchronized (this.jdField_b_of_type_JavaLangObject)
           {
-            if (this.jdField_a_of_type_Fkf == null) {
-              this.jdField_a_of_type_Fkf = new fkf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
+            if (this.jdField_a_of_type_Fft == null) {
+              this.jdField_a_of_type_Fft = new fft(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
             }
             i2 = 0;
             if (i2 < ((List)localObject2).size())
             {
               ??? = (QQHeadInfo)((List)localObject2).get(i2);
-              this.jdField_a_of_type_Fkf.a(???, paramToServiceMsg);
+              this.jdField_a_of_type_Fft.a(???, paramToServiceMsg);
               i2 += 1;
             }
           }
@@ -3528,7 +3528,7 @@ public class FriendListHandler
       if (this.jdField_c_of_type_JavaUtilHashtable.containsKey(paramString1)) {
         this.jdField_c_of_type_JavaUtilHashtable.remove(paramString1);
       }
-      paramString2 = new fha(this);
+      paramString2 = new fcm(this);
       paramString2.jdField_a_of_type_Long = System.currentTimeMillis();
       this.jdField_c_of_type_JavaUtilHashtable.put(paramString1, paramString2);
     }
@@ -3582,7 +3582,7 @@ public class FriendListHandler
       label550:
       if (this.jdField_c_of_type_JavaUtilHashtable.containsKey(paramString1))
       {
-        localObject = (fha)this.jdField_c_of_type_JavaUtilHashtable.get(paramString1);
+        localObject = (fcm)this.jdField_c_of_type_JavaUtilHashtable.get(paramString1);
         switch (paramInt2)
         {
         }
@@ -3590,20 +3590,20 @@ public class FriendListHandler
         {
           paramString2 = (String)localObject;
           break;
-          ((fha)localObject).b = System.currentTimeMillis();
+          ((fcm)localObject).b = System.currentTimeMillis();
           if (!bool) {
             this.jdField_c_of_type_JavaUtilHashtable.remove(paramString1);
           }
-          ((fha)localObject).e = (((fha)localObject).b - ((fha)localObject).jdField_a_of_type_Long);
+          ((fcm)localObject).e = (((fcm)localObject).b - ((fcm)localObject).jdField_a_of_type_Long);
           paramString2 = (String)localObject;
           break;
-          ((fha)localObject).c = System.currentTimeMillis();
+          ((fcm)localObject).c = System.currentTimeMillis();
           paramString2 = (String)localObject;
           break;
-          ((fha)localObject).d = System.currentTimeMillis();
-          ((fha)localObject).jdField_a_of_type_Int = paramInt3;
-          ((fha)localObject).jdField_a_of_type_JavaLangString = paramString2;
-          ((fha)localObject).e = (((fha)localObject).d - ((fha)localObject).jdField_a_of_type_Long);
+          ((fcm)localObject).d = System.currentTimeMillis();
+          ((fcm)localObject).jdField_a_of_type_Int = paramInt3;
+          ((fcm)localObject).jdField_a_of_type_JavaLangString = paramString2;
+          ((fcm)localObject).e = (((fcm)localObject).d - ((fcm)localObject).jdField_a_of_type_Long);
           this.jdField_c_of_type_JavaUtilHashtable.remove(paramString1);
         }
       }
@@ -4589,7 +4589,7 @@ public class FriendListHandler
     if (this.aM == 0)
     {
       this.aM = 1;
-      new Handler(Looper.getMainLooper()).postDelayed(new fgw(this), 15000L);
+      new Handler(Looper.getMainLooper()).postDelayed(new fci(this), 15000L);
     }
   }
   
@@ -4781,7 +4781,7 @@ public class FriendListHandler
       if (!this.jdField_d_of_type_JavaUtilHashtable.containsKey(paramString)) {
         break label181;
       }
-      paramString = (fgy)this.jdField_d_of_type_JavaUtilHashtable.get(paramString);
+      paramString = (fck)this.jdField_d_of_type_JavaUtilHashtable.get(paramString);
       l2 = Math.abs(l1 - paramString.jdField_a_of_type_Long);
       if (paramString.c > 0L)
       {
@@ -4823,8 +4823,8 @@ public class FriendListHandler
       while (((Enumeration)localObject2).hasMoreElements())
       {
         String str = (String)((Enumeration)localObject2).nextElement();
-        fgy localfgy = (fgy)this.jdField_d_of_type_JavaUtilHashtable.get(str);
-        if (((localfgy.c == 0L) && (l1 - localfgy.jdField_a_of_type_Long > 60000L)) || ((localfgy.c > 0L) && (l1 > localfgy.c))) {
+        fck localfck = (fck)this.jdField_d_of_type_JavaUtilHashtable.get(str);
+        if (((localfck.c == 0L) && (l1 - localfck.jdField_a_of_type_Long > 60000L)) || ((localfck.c > 0L) && (l1 > localfck.c))) {
           ((ArrayList)localObject1).add(str);
         }
       }
@@ -4840,9 +4840,9 @@ public class FriendListHandler
       }
       else
       {
-        localObject1 = new fgy();
-        ((fgy)localObject1).jdField_a_of_type_Long = l1;
-        ((fgy)localObject1).b = 1L;
+        localObject1 = new fck();
+        ((fck)localObject1).jdField_a_of_type_Long = l1;
+        ((fck)localObject1).b = 1L;
         this.jdField_d_of_type_JavaUtilHashtable.put(paramString, localObject1);
         break;
         i1 = 0;
@@ -5076,8 +5076,8 @@ public class FriendListHandler
   
   public void c()
   {
-    if (this.jdField_a_of_type_Fkf != null) {
-      this.jdField_a_of_type_Fkf.a();
+    if (this.jdField_a_of_type_Fft != null) {
+      this.jdField_a_of_type_Fft.a();
     }
     super.c();
   }
@@ -5378,7 +5378,7 @@ public class FriendListHandler
   
   public void e(String paramString)
   {
-    new fgx(this, "saveSelfSig", paramString).start();
+    new fcj(this, "saveSelfSig", paramString).start();
     ToServiceMsg localToServiceMsg = a("ProfileService.SetRichSig");
     localToServiceMsg.extraData.putString("sig_value", paramString);
     localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a());

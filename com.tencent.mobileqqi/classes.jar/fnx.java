@@ -1,22 +1,14 @@
-import OnlinePushPack.MsgInfo;
-import android.util.Pair;
-import com.tencent.mobileqq.app.message.OnLinePushMessageProcessor;
-import java.util.ArrayList;
-import java.util.TimerTask;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.emoticonview.BigEmoticonViewBinder;
 
 public class fnx
-  extends TimerTask
+  implements Runnable
 {
-  public fnx(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, long paramLong1, long paramLong2, Pair paramPair1, MsgInfo paramMsgInfo, long paramLong3, long paramLong4, byte paramByte, long paramLong5, Pair paramPair2, ArrayList paramArrayList) {}
+  public fnx(BigEmoticonViewBinder paramBigEmoticonViewBinder, ProgressBar paramProgressBar, int paramInt) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Long != this.jdField_b_of_type_Long)
-    {
-      OnLinePushMessageProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOnLinePushMessageProcessor, this.jdField_a_of_type_AndroidUtilPair, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_b_of_type_Long, this.c, this.d, this.jdField_a_of_type_Byte, this.e, this.jdField_b_of_type_AndroidUtilPair);
-      return;
-    }
-    OnLinePushMessageProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOnLinePushMessageProcessor, this.jdField_a_of_type_AndroidUtilPair, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_Long, String.valueOf(this.c), this.jdField_a_of_type_Byte, this.e);
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(this.jdField_a_of_type_Int);
   }
 }
 

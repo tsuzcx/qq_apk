@@ -18,13 +18,13 @@ import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.widget.Gallery;
-import equ;
-import eqv;
-import eqw;
-import eqx;
-import eqy;
-import eqz;
-import era;
+import emg;
+import emh;
+import emi;
+import emj;
+import emk;
+import eml;
+import emm;
 import java.util.ArrayList;
 
 public class CameraPreviewActivity
@@ -36,7 +36,7 @@ public class CameraPreviewActivity
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   public QQCustomDialog a;
   private Gallery jdField_a_of_type_ComTencentWidgetGallery;
-  private era jdField_a_of_type_Era;
+  private emm jdField_a_of_type_Emm;
   String jdField_a_of_type_JavaLangString = null;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   boolean jdField_a_of_type_Boolean;
@@ -53,9 +53,9 @@ public class CameraPreviewActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230, str1, str2, new eqx(this), null);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(new eqy(this));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new eqz(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230, str1, str2, new emj(this), null);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(new emk(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new eml(this));
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       return;
       if (paramInt == 7)
@@ -119,10 +119,10 @@ public class CameraPreviewActivity
   private void e()
   {
     this.jdField_a_of_type_ComTencentWidgetGallery = new Gallery(this);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131427408));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131427411));
     this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentWidgetGallery, -1, -1);
-    this.jdField_a_of_type_Era = new era(this);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_Era);
+    this.jdField_a_of_type_Emm = new emm(this);
+    this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_Emm);
   }
   
   protected boolean a()
@@ -151,21 +151,21 @@ public class CameraPreviewActivity
   {
     super.onCreate(paramBundle);
     d();
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)getLayoutInflater().inflate(2130903313, null));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)getLayoutInflater().inflate(2130903315, null));
     e();
-    getLayoutInflater().inflate(2130903315, this.jdField_a_of_type_AndroidViewViewGroup);
+    getLayoutInflater().inflate(2130903317, this.jdField_a_of_type_AndroidViewViewGroup);
     this.jdField_a_of_type_Int = getResources().getDisplayMetrics().widthPixels;
     this.b = getResources().getDisplayMetrics().heightPixels;
     setContentView(this.jdField_a_of_type_AndroidViewViewGroup);
     if (this.jdField_a_of_type_Boolean) {
-      c(2131562154, new equ(this));
+      c(2131562154, new emg(this));
     }
-    paramBundle = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232060);
+    paramBundle = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232063);
     if (this.jdField_a_of_type_JavaLangString != null) {
       paramBundle.setText(this.jdField_a_of_type_JavaLangString);
     }
-    paramBundle.setOnClickListener(new eqv(this));
-    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232059).setOnClickListener(new eqw(this));
+    paramBundle.setOnClickListener(new emh(this));
+    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232062).setOnClickListener(new emi(this));
     getSupportActionBar().setTitle(2131562660);
   }
 }

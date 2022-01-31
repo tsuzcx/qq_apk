@@ -4,14 +4,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.mobileqq.app.ThreadManager;
-import hqd;
+import hlz;
 
 public class AppReportReceiver
   extends BroadcastReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ThreadManager.b(new hqd(this, paramIntent, paramContext));
+    ThreadManager.b(new hlz(this, paramIntent, paramContext));
   }
 }
 

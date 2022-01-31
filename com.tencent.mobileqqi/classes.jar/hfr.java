@@ -1,27 +1,17 @@
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AvatarPendantUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Vector;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import mqq.app.permission.PermissionCallback;
 
-public final class hfr
-  implements Runnable
+class hfr
+  implements PermissionCallback
 {
-  public hfr(QQAppInterface paramQQAppInterface) {}
+  hfr(hfq paramhfq) {}
   
-  public void run()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AvatarPendantUtil", 2, "Bulk fetch pendant id, size=" + AvatarPendantUtil.a().size());
-    }
-    FriendListHandler localFriendListHandler = (FriendListHandler)this.a.a(1);
-    if (localFriendListHandler != null)
-    {
-      String[] arrayOfString = new String[AvatarPendantUtil.a().size()];
-      localFriendListHandler.d((String[])AvatarPendantUtil.a().toArray(arrayOfString));
-    }
-    AvatarPendantUtil.a().clear();
+    new PermissionsDialog().a(this.a.a, paramInt, paramArrayOfString, new hfs(this));
   }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

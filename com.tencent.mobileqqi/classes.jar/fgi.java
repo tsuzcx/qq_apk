@@ -1,25 +1,20 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ScreenShot;
+import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
+import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
 
 public class fgi
-  extends Handler
+  implements View.OnClickListener
 {
-  private WeakReference a;
+  public fgi(ScreenShot paramScreenShot) {}
   
-  private fgi(Looper paramLooper, Handler.Callback paramCallback)
+  public void onClick(View paramView)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramCallback);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    if (localCallback != null) {
-      localCallback.handleMessage(paramMessage);
+    this.a.jdField_a_of_type_Fgm.a(false);
+    if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
+      KapalaiAdapterUtil.a().b(this.a.jdField_a_of_type_AndroidViewWindow);
     }
   }
 }

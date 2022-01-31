@@ -1,37 +1,23 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class eat
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public eat(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public eat(StructingMsgItemBuilder paramStructingMsgItemBuilder, Context paramContext, ChatMessage paramChatMessage) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      if ((VerifyPhoneNumActivity.a(this.a) == null) && (!this.a.isFinishing()))
-      {
-        VerifyPhoneNumActivity.a(this.a, new QQProgressDialog(this.a.a(), this.a.d()));
-        VerifyPhoneNumActivity.a(this.a).b(2131562645);
-      }
-      if ((VerifyPhoneNumActivity.a(this.a) != null) && (!VerifyPhoneNumActivity.a(this.a).isShowing())) {
-        VerifyPhoneNumActivity.a(this.a).show();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    ChatActivityFacade.a(StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder), this.jdField_a_of_type_AndroidContentContext, StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder), this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eat
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,20 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.recent.RecentOptionBar;
+import com.tencent.mobileqq.activity.voip.VoipAddressBookView;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
-public class etk
-  implements Animation.AnimationListener
+class etk
+  implements Runnable
 {
-  public etk(RecentOptionBar paramRecentOptionBar) {}
+  etk(etj parametj) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    RecentOptionBar.a(this.a).setVisibility(8);
-    RecentOptionBar.b(this.a).setVisibility(8);
-    RecentOptionBar.b(this.a).setOnClickListener(null);
+    VoipAddressBookView.c(this.a.a).e();
+    this.a.a.a.sendEmptyMessage(3);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     etk
  * JD-Core Version:    0.7.0.1
  */

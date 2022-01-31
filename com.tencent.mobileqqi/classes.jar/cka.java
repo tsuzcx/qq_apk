@@ -1,43 +1,35 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import com.tencent.mobileqq.activity.EditTagActivity;
+import com.tencent.mobileqq.widget.Workspace;
+import java.util.ArrayList;
 
-public class cka
-  implements URLDrawable.URLDrawableListener
+class cka
+  implements View.OnClickListener
 {
-  public cka(ChatSettingForTroop paramChatSettingForTroop, ImageView paramImageView) {}
+  cka(cjz paramcjz) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    try
+    paramView = paramView.getTag();
+    if ((paramView instanceof ckb))
     {
-      paramURLDrawable = ImageUtil.a(paramURLDrawable);
-      if (paramURLDrawable != null)
+      paramView = (ckb)paramView;
+      if ((paramView.a >= 0) && (paramView.a < this.a.jdField_a_of_type_JavaUtilArrayList.size()))
       {
-        Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.b.a(paramURLDrawable, paramURLDrawable.getWidth(), paramURLDrawable.getHeight());
-        paramURLDrawable.recycle();
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+        this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramView.a);
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.a(this.a.jdField_a_of_type_JavaUtilArrayList.size());
+        this.a.notifyDataSetChanged();
+        int i = 0;
+        while (i < this.a.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.a.getChildCount())
+        {
+          ((BaseAdapter)((GridView)this.a.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.a.getChildAt(i)).getAdapter()).notifyDataSetChanged();
+          i += 1;
+        }
       }
-      return;
     }
-    catch (NullPointerException paramURLDrawable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.chatopttroop", 2, QLog.getStackTraceString(paramURLDrawable));
-      return;
-    }
-    catch (OutOfMemoryError paramURLDrawable) {}
   }
 }
 

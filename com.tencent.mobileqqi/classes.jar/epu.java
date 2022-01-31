@@ -1,129 +1,75 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.MotionEvent;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.activity.selectmember.DiscussionListInnerFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.util.FaceDrawable;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.ArrayList;
 
 public class epu
-  extends Dialog
-  implements TextWatcher, View.OnClickListener, View.OnTouchListener
+  extends BaseAdapter
 {
-  private View jdField_a_of_type_AndroidViewView;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private ept jdField_a_of_type_Ept;
+  private epu(DiscussionListInnerFrame paramDiscussionListInnerFrame) {}
   
-  public epu(CountryActivity paramCountryActivity, Context paramContext)
+  public int getCount()
   {
-    super(paramContext, 2131624528);
-    requestWindowFeature(1);
-    getWindow().setSoftInputMode(36);
-    getWindow().setBackgroundDrawable(new ColorDrawable());
-    setContentView(2130903147);
-    paramContext = getWindow().getAttributes();
-    paramContext.x = 0;
-    paramContext.y = 0;
-    paramContext.width = -1;
-    paramContext.windowAnimations = 16973824;
-    paramContext.gravity = 51;
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131233085));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
-    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131233086));
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    paramContext = (Button)findViewById(2131233084);
-    paramContext.setVisibility(0);
-    paramContext.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131231401);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231403));
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131562494);
-    findViewById(2131231404).setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131231402));
-    this.jdField_a_of_type_Ept = new ept(paramCountryActivity, null);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Ept);
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(this);
+    if (this.a.jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
+    }
+    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  void a(String paramString)
+  public Object getItem(int paramInt)
   {
-    if ((paramString.equals("")) || (paramString.trim().length() == 0))
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      return;
+    if ((paramInt >= 0) && (paramInt < this.a.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_Ept.a(paramString);
-    if (this.jdField_a_of_type_Ept.getCount() == 0) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if ((paramView != null) && (paramView.getTag() != null))
+    {
+      localObject = (epv)paramView.getTag();
+      paramViewGroup = paramView;
+      paramView = (View)localObject;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Ept.notifyDataSetChanged();
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      localObject = (DiscussionInfo)getItem(paramInt);
+      String str1 = ((DiscussionInfo)localObject).uin;
+      String str2 = ContactUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, (DiscussionInfo)localObject);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(str2);
+      paramInt = ((FriendManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).c(str1);
+      paramView.b.setText(String.format("(%d)", new Object[] { Integer.valueOf(paramInt) }));
+      paramView.b.setContentDescription(" " + paramInt + "人");
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(FaceDrawable.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 101, str1));
+      paramView.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = ((DiscussionInfo)localObject);
+      paramViewGroup.setOnClickListener(this.a);
+      return paramViewGroup;
+      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903959, paramViewGroup, false);
+      paramView = new epv(this.a, null);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131230985));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131234456));
+      paramView.b = ((TextView)paramViewGroup.findViewById(2131234457));
+      paramViewGroup.setTag(paramView);
+      if (paramInt == 0) {
+        paramViewGroup.setBackgroundResource(2130837877);
+      }
     }
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    a(paramEditable);
-    if (paramEditable.equals(""))
-    {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void dismiss()
-  {
-    try
-    {
-      super.dismiss();
-      return;
-    }
-    catch (Exception localException) {}
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    case 2131233085: 
-    default: 
-      return;
-    case 2131233084: 
-      dismiss();
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    ((InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
   }
 }
 

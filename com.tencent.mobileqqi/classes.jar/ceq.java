@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.proxy.ProxyObserver;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.TroopQZoneUploadAlbumObserver;
 
 public class ceq
-  extends ProxyObserver
+  extends TroopQZoneUploadAlbumObserver
 {
-  public ceq(ChatActivity paramChatActivity) {}
+  public ceq(Conversation paramConversation) {}
   
-  public void a()
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    this.a.b(false);
+    if (!(paramObject instanceof String)) {
+      return;
+    }
+    paramObject = (String)paramObject;
+    this.a.a(8, paramObject, -2147483648);
   }
 }
 

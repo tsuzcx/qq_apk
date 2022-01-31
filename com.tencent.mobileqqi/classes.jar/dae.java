@@ -1,35 +1,24 @@
-import QQService.SvcDevLoginInfo;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.SubAccountObserver;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.app.MessageObserver;
 
-class dae
-  extends SubAccountObserver
+public class dae
+  extends MessageObserver
 {
-  dae(dad paramdad, SvcDevLoginInfo paramSvcDevLoginInfo) {}
+  public dae(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  protected void b(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.devlock.LoginInfoActivity", 2, "onGetKeyBack mainAccount=" + paramString1 + " subAccount=" + paramString2 + " key=" + paramString3);
+    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
+      this.a.a(paramBoolean, false);
     }
-    if ((paramString3 == null) || (paramString3.length() > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.LoginInfoActivity", 2, "onGetKeyBack begin to kickOutDev");
-      }
-      if (EquipmentLockImpl.a().a(this.jdField_a_of_type_Dad.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.b, this.jdField_a_of_type_QQServiceSvcDevLoginInfo.iAppId, (byte)1, HexUtil.a(paramString3), this.jdField_a_of_type_Dad.jdField_a_of_type_Int))
-      {
-        LoginInfoActivity.a(this.jdField_a_of_type_Dad.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, 1);
-        return;
-      }
-      LoginInfoActivity.a(this.jdField_a_of_type_Dad.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).post(new daf(this));
-      return;
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
+      this.a.a(paramBoolean, true);
     }
-    LoginInfoActivity.a(this.jdField_a_of_type_Dad.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).post(new dag(this));
   }
 }
 

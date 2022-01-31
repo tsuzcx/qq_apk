@@ -38,10 +38,10 @@ public class PublicAccountBrowser$ActionSheetItemAdapter
   {
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903224, null);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903226, null);
       paramViewGroup = new PublicAccountBrowser.ActionSheetItemViewHolder();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231673));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231674));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231675));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231676));
       paramView.setTag(paramViewGroup);
     }
     for (;;)

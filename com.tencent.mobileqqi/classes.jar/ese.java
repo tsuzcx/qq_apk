@@ -1,42 +1,76 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.activity.qfileJumpActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticAssist;
-import mqq.app.MobileQQ;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareActivity;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareManager;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.widget.Switch;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ese
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public ese(qfileJumpActivity paramqfileJumpActivity) {}
+  public ese(QvipSpecialCareActivity paramQvipSpecialCareActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    StatisticAssist.a(this.a.b.getApplication().getApplicationContext(), this.a.b.a(), "dl_share_my_pc");
-    Intent localIntent = this.a.getIntent();
-    Object localObject2 = localIntent.getExtras();
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = new Bundle();
+    paramCompoundButton = new ArrayList();
+    paramCompoundButton.add(QvipSpecialCareActivity.a(this.a));
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add("1");
+    if (paramBoolean) {
+      if (!QvipSpecialCareActivity.a(this.a).a(QvipSpecialCareActivity.a(this.a))) {}
     }
-    ((Bundle)localObject1).putString("leftBackText", this.a.getString(2131559092));
-    ((Bundle)localObject1).putBoolean("isBack2Root", true);
-    localObject2 = new Intent(this.a, LiteActivity.class);
-    ((Intent)localObject2).addFlags(268435456);
-    ((Intent)localObject2).addFlags(67108864);
-    ((Intent)localObject2).putExtra("dataline_share_finish", false);
-    ((Intent)localObject2).putExtras((Bundle)localObject1);
-    ((Intent)localObject2).putExtras(localIntent);
-    ((Intent)localObject2).setAction(localIntent.getAction());
-    ((Intent)localObject2).setType(localIntent.getType());
-    this.a.startActivity((Intent)localObject2);
-    this.a.finish();
+    while (!QvipSpecialCareActivity.a(this.a).a(QvipSpecialCareActivity.a(this.a)))
+    {
+      return;
+      if (!NetworkUtil.e(this.a))
+      {
+        QvipSpecialCareActivity.a(this.a, this.a.getString(2131562488));
+        QvipSpecialCareActivity.a(this.a);
+        return;
+      }
+      if (VipUtils.a(this.a.b))
+      {
+        if (QvipSpecialCareActivity.a(this.a).c() < QvipSpecialCareActivity.a(this.a).b())
+        {
+          QvipSpecialCareActivity.c(this.a);
+          QvipSpecialCareActivity.b(this.a);
+          QvipSpecialCareActivity.a(this.a).a(paramCompoundButton, 2, localArrayList);
+          return;
+        }
+        paramCompoundButton = String.format(this.a.getString(2131562994), new Object[] { Integer.valueOf(QvipSpecialCareActivity.a(this.a).b()) });
+        QvipSpecialCareActivity.b(this.a, paramCompoundButton);
+        QvipSpecialCareActivity.a(this.a).setChecked(false);
+        return;
+      }
+      if (QvipSpecialCareActivity.a(this.a).c() < QvipSpecialCareActivity.a(this.a).a())
+      {
+        QvipSpecialCareActivity.d(this.a);
+        QvipSpecialCareActivity.b(this.a);
+        QvipSpecialCareActivity.a(this.a).a(paramCompoundButton, 2, localArrayList);
+        return;
+      }
+      paramCompoundButton = String.format(this.a.getString(2131562138), new Object[] { Integer.valueOf(QvipSpecialCareActivity.a(this.a).a()), Integer.valueOf(QvipSpecialCareActivity.a(this.a).b()) });
+      QvipSpecialCareActivity.a(this.a, paramCompoundButton, 2131562229);
+      QvipSpecialCareActivity.a(this.a).setChecked(false);
+      return;
+    }
+    if (!NetworkUtil.e(this.a))
+    {
+      QvipSpecialCareActivity.a(this.a, this.a.getString(2131562488));
+      QvipSpecialCareActivity.a(this.a);
+      return;
+    }
+    QvipSpecialCareActivity.e(this.a);
+    QvipSpecialCareActivity.b(this.a);
+    QvipSpecialCareActivity.a(this.a).a(paramCompoundButton, 4, localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ese
  * JD-Core Version:    0.7.0.1
  */

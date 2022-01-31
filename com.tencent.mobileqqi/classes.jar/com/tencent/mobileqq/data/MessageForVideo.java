@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.qphone.base.util.QLog;
-
 public class MessageForVideo
   extends ChatMessage
 {
@@ -18,9 +15,7 @@ public class MessageForVideo
     if ((arrayOfString != null) && (arrayOfString.length > 0))
     {
       this.text = arrayOfString[0].trim();
-      if ((arrayOfString == null) || (arrayOfString.length <= 1)) {
-        break label215;
-      }
+      if ((arrayOfString == null) || (arrayOfString.length <= 1)) {}
     }
     for (;;)
     {
@@ -28,34 +23,25 @@ public class MessageForVideo
       {
         this.type = Integer.parseInt(arrayOfString[1]);
         if ((arrayOfString == null) || (arrayOfString.length <= 3)) {
-          break label228;
+          break label164;
         }
-        if (!"1".equals(arrayOfString[3])) {
-          break label223;
+        if ("1".equals(arrayOfString[3]))
+        {
+          this.isVideo = bool;
+          return;
+          this.text = "";
         }
-        this.isVideo = bool;
-        return;
-        this.text = "";
       }
       catch (Exception localException)
       {
-        if ((this.msg != null) && (this.msg.length() > 0) && (this.msg.charAt(0) == '\026')) {
-          throw new RuntimeException("java.lang.NumberFormatException: Invalid int: " + arrayOfString[1] + " msg is " + this.msg);
-        }
-        this.type = 5;
-        if (!QLog.isColorLevel()) {
+        if ((this.msg == null) || (this.msg.length() <= 0) || (this.msg.charAt(0) != '\026')) {
           continue;
         }
-        QLog.d("MessageForVideo", 2, "java.lang.NumberFormatException: Invalid int: " + arrayOfString[1] + " msg byte " + Utils.a(this.msg));
-        continue;
+        throw new RuntimeException("java.lang.NumberFormatException: Invalid int: " + arrayOfString[1] + " msg is " + this.msg);
       }
-      label215:
-      this.type = 5;
-      continue;
-      label223:
       bool = false;
     }
-    label228:
+    label164:
     this.isVideo = true;
   }
 }

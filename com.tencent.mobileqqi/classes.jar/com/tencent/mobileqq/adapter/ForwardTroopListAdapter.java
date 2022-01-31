@@ -14,8 +14,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQServiceEntry.Tag;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.utils.ViewUtils;
-import fcw;
-import fcx;
+import eyi;
+import eyj;
 import java.util.Collections;
 import java.util.List;
 
@@ -50,7 +50,7 @@ public class ForwardTroopListAdapter
   
   public void a()
   {
-    Collections.sort(this.jdField_a_of_type_JavaUtilList, new fcx(this));
+    Collections.sort(this.jdField_a_of_type_JavaUtilList, new eyj(this));
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -111,7 +111,7 @@ public class ForwardTroopListAdapter
     long l = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences((String)localObject1, 0).getLong((String)localObject1 + str, 1L);
     localObject1 = (ImageView)localView.findViewById(2131230940);
     Object localObject2 = (ImageView)localView.findViewById(2131231394);
-    localView.setBackgroundResource(2130837848);
+    localView.setBackgroundResource(2130837850);
     if (localObject2 != null)
     {
       if (l == 1L) {
@@ -148,7 +148,7 @@ public class ForwardTroopListAdapter
       if (!this.jdField_a_of_type_Boolean) {
         break label342;
       }
-      ((ImageView)localObject1).setOnClickListener(new fcw(this));
+      ((ImageView)localObject1).setOnClickListener(new eyi(this));
     }
     for (;;)
     {

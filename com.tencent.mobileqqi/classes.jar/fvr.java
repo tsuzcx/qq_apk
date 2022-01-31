@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
-import com.tencent.mobileqq.filemanager.data.RecentFileAdapter;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
 public class fvr
-  implements DialogInterface.OnDismissListener
+  extends fvj
 {
-  public fvr(FMRecentFileActivity paramFMRecentFileActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public fvr(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    this.a.a.a(Integer.valueOf(-1));
-    FMRecentFileActivity.a(this.a);
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateRefuseByPC";
   }
 }
 

@@ -1,22 +1,43 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.pic.PicBusiManager;
-import com.tencent.mobileqq.pic.PicReq;
-import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.troop.widget.TroopAvatarBigPhotoAdapter;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class grr
-  extends AsyncTask
+  implements ActionSheet.OnButtonClickListener
 {
-  public grr(GroupPicUploadProcessor paramGroupPicUploadProcessor, PicReq paramPicReq) {}
+  String jdField_a_of_type_JavaLangString = (String)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.getItem(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Int);
   
-  protected Void a(Void... paramVarArgs)
+  public grr(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, boolean paramBoolean, URLDrawable paramURLDrawable, ActionSheet paramActionSheet) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    PicBusiManager.a(this.jdField_a_of_type_ComTencentMobileqqPicPicReq, this.jdField_a_of_type_ComTencentMobileqqTransfileGroupPicUploadProcessor.a);
-    return null;
+    if (this.jdField_a_of_type_Boolean) {
+      switch (paramInt)
+      {
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      paramInt = 2;
+      break;
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Int);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Int);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     grr
  * JD-Core Version:    0.7.0.1
  */

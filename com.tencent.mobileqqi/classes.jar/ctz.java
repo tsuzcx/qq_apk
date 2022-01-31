@@ -1,19 +1,25 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.AutoCompleteTextView;
+import com.tencent.mobileqq.activity.LoginActivity;
 
 public class ctz
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public ctz(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public ctz(LoginActivity paramLoginActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a.startAnimation(this.a.b);
+    if (this.a.a.isPopupShowing()) {
+      this.a.a.dismissDropDown();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ctz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,42 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.PttItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter.ViewHolder;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class efh
-  implements Runnable
+  implements View.OnClickListener
 {
-  public efh(PttItemBuilder paramPttItemBuilder, MessageForPtt paramMessageForPtt) {}
+  public efh(SystemMsgListView paramSystemMsgListView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    boolean bool = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("FileTrans", 2, "downloadPtt istroop" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop + " itemType " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.itemType + " uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.uniseq);
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop == 1001) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.subVersion < 3))
+    if (!NetworkUtil.e(SystemMsgListView.a(this.a)))
     {
-      PttItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder).a().b(PttItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.uniseq);
+      QQToast.a(SystemMsgListView.a(this.a), SystemMsgListView.a(this.a).getResources().getString(2131562451), 0).b(this.a.a());
       return;
     }
-    TransferRequest localTransferRequest = new TransferRequest();
-    localTransferRequest.jdField_a_of_type_JavaLangString = PttItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder).getAccount();
-    localTransferRequest.jdField_b_of_type_JavaLangString = PttItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder).jdField_a_of_type_JavaLangString;
-    localTransferRequest.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop;
-    localTransferRequest.jdField_b_of_type_Int = 2;
-    localTransferRequest.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.uniseq;
-    localTransferRequest.jdField_a_of_type_Boolean = false;
-    localTransferRequest.d = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.urlAtServer;
-    localTransferRequest.f = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url;
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.isSendFromOtherTerminal()) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.isSend())) {
-      bool = true;
+    paramView = (SystemMsgListAdapter.ViewHolder)paramView.getTag();
+    SystemMsgListView.a(this.a, (structmsg.StructMsg)paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get(), paramView.c);
+    if (paramView.jdField_a_of_type_Int == -1011) {
+      this.a.a(paramView.jdField_a_of_type_JavaLangString, 0L, null, paramView.jdField_b_of_type_JavaLangString, paramView.jdField_b_of_type_Long, paramView.jdField_a_of_type_Long);
     }
-    localTransferRequest.jdField_b_of_type_Boolean = bool;
-    localTransferRequest.e = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.md5;
-    localTransferRequest.jdField_c_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.groupFileID;
-    localTransferRequest.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.subVersion;
-    localTransferRequest.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt;
-    PttItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder).a().a(localTransferRequest);
+    for (;;)
+    {
+      ReportController.b(this.a.a, "CliOper", "", "", "frd_recommend", "Frd_accept", 0, 0, "1", "", "", "");
+      return;
+      this.a.a(paramView.jdField_a_of_type_JavaLangString, paramView.jdField_b_of_type_Long, 0, null, paramView.jdField_a_of_type_Long);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     efh
  * JD-Core Version:    0.7.0.1
  */

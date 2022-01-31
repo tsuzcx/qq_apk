@@ -27,9 +27,9 @@ import cooperation.qlink.QlinkPluginProxyActivity;
 import cooperation.weiyun.WeiyunHelper;
 import cooperation.weiyun.WeiyunRemoteCommand;
 import cooperation.weiyun.WeiyunRemoteCommand.OnStateChangeListener;
-import fwa;
-import fwb;
-import fwd;
+import fro;
+import frp;
+import frr;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -46,7 +46,7 @@ public class FileAssistantActivity
   TextView jdField_a_of_type_AndroidWidgetTextView;
   FileCategoryAdapter jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter = null;
   XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private WeiyunRemoteCommand.OnStateChangeListener jdField_a_of_type_CooperationWeiyunWeiyunRemoteCommand$OnStateChangeListener = new fwd(this);
+  private WeiyunRemoteCommand.OnStateChangeListener jdField_a_of_type_CooperationWeiyunWeiyunRemoteCommand$OnStateChangeListener = new frr(this);
   private WeiyunRemoteCommand jdField_a_of_type_CooperationWeiyunWeiyunRemoteCommand;
   List jdField_a_of_type_JavaUtilList = new ArrayList();
   private FMObserver b;
@@ -59,8 +59,8 @@ public class FileAssistantActivity
   
   public FileAssistantActivity()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fwa(this);
-    this.jdField_b_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new fwb(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fro(this);
+    this.jdField_b_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new frp(this);
   }
   
   private void g()
@@ -72,12 +72,12 @@ public class FileAssistantActivity
     String str3 = getString(2131558677);
     String str4 = getString(2131558684);
     String str5 = getString(2131558676);
-    a(2130903490, 2130838960, 2, "", 0, false, 0, "video", 1, false);
-    a(2130903488, 2130838587, 0, str1, 0, false, 12, "offline", 2, true);
-    a(2130903505, 2130838960, 1, str5, 0, true, 0, "other", 1, false);
-    a(2130903489, 2130838604, 0, str4, 0, false, 13, "picture", 2, false);
-    a(2130903489, 2130838601, 0, str2, 0, false, 14, "music", 3, false);
-    a(2130903489, 2130838607, 0, str3, 0, false, 15, "other", 4, false);
+    a(2130903492, 2130838962, 2, "", 0, false, 0, "video", 1, false);
+    a(2130903490, 2130838589, 0, str1, 0, false, 12, "offline", 2, true);
+    a(2130903507, 2130838962, 1, str5, 0, true, 0, "other", 1, false);
+    a(2130903491, 2130838606, 0, str4, 0, false, 13, "picture", 2, false);
+    a(2130903491, 2130838603, 0, str2, 0, false, 14, "music", 3, false);
+    a(2130903491, 2130838609, 0, str3, 0, false, 15, "other", 4, false);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter.notifyDataSetChanged();
   }
   
@@ -197,9 +197,9 @@ public class FileAssistantActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903493);
+    setContentView(2130903495);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(a());
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232727));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232730));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter = new FileCategoryAdapter(this, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter);
     l();

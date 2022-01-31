@@ -1,27 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.CircleManager;
+import com.tencent.mobileqq.service.circle.IGroupObserver;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class ezw
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public ezw(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  public ezw(CircleManager paramCircleManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent(this.a, QQBrowserActivity.class);
-    paramDialogInterface.putExtra("uin", this.a.b.a());
-    this.a.startActivity(paramDialogInterface.putExtra("url", "http://mp.imqq.com/user/charge"));
-    this.a.finish();
+    if (this.a.b != null)
+    {
+      Iterator localIterator = this.a.b.iterator();
+      while (localIterator.hasNext()) {
+        ((IGroupObserver)localIterator.next()).a(true, 3);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ezw
  * JD-Core Version:    0.7.0.1
  */

@@ -571,11 +571,11 @@ public final class LocaleString
       } while (localObject1 == null);
       return String.format(paramContext.getString(2131563338), new Object[] { localObject1 });
       if (paramString.equals("邀请加群")) {
-        return paramContext.getString(2131563376);
+        return paramContext.getString(2131563404);
       }
       str = paramString;
     } while (!paramString.startsWith("[公告]"));
-    return paramString.replaceFirst("\\[公告]", paramContext.getString(2131563377));
+    return paramString.replaceFirst("\\[公告]", paramContext.getString(2131563405));
   }
   
   public static String t(Context paramContext, String paramString)

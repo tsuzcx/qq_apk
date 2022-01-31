@@ -22,7 +22,7 @@ import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.mobileqq.utils.StartupTracker;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XBaseAdapter;
-import ebf;
+import dvo;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONException;
@@ -40,7 +40,7 @@ public class ChatAdapter1
   SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   public ItemBuilderFactory a;
   public QQAppInterface a;
-  ebf jdField_a_of_type_Ebf = new ebf(this, null);
+  dvo jdField_a_of_type_Dvo = new dvo(this, null);
   CharSequence jdField_a_of_type_JavaLangCharSequence = null;
   List jdField_a_of_type_JavaUtilList = new ArrayList();
   
@@ -304,7 +304,7 @@ public class ChatAdapter1
         localChatMessage1.mNeedTimeStamp = true;
       }
     }
-    paramView = localChatItemBuilder.a(paramInt, this.jdField_a_of_type_JavaUtilList.size(), localChatMessage1, paramView, paramViewGroup, this.jdField_a_of_type_Ebf);
+    paramView = localChatItemBuilder.a(paramInt, this.jdField_a_of_type_JavaUtilList.size(), localChatMessage1, paramView, paramViewGroup, this.jdField_a_of_type_Dvo);
     paramView.setTag(2131230770, localChatMessage1);
     StartupTracker.a("AIO_ChatAdapter_getView", null);
     return paramView;

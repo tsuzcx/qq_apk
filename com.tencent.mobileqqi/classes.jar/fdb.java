@@ -1,49 +1,111 @@
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.adapter.TroopListAdapter2;
-import com.tencent.mobileqq.adapter.TroopListAdapter2.TroopListItem;
-import com.tencent.mobileqq.adapter.TroopListAdapter2.TroopListViewItemTag;
+import com.rookery.translate.tencent.TranslateRespWrapperFYJ;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.app.I18nTranslatorHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.model.FriendManager;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class fdb
-  implements View.OnLongClickListener
+  implements Callable
 {
-  public fdb(TroopListAdapter2 paramTroopListAdapter2) {}
+  Long jdField_a_of_type_JavaLangLong;
+  String jdField_a_of_type_JavaLangString;
+  List jdField_a_of_type_JavaUtilList;
   
-  public boolean onLongClick(View paramView)
+  public fdb(I18nTranslatorHandler paramI18nTranslatorHandler, String paramString, Long paramLong, List paramList)
   {
-    paramView = paramView.getTag();
-    if (!(paramView instanceof TroopListAdapter2.TroopListViewItemTag)) {}
-    Object localObject;
-    do
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangLong = paramLong;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public Boolean a()
+  {
+    j = 0;
+    HttpUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppI18nTranslatorHandler.a.getApplication());
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = new StringBuilder("https://macqq.translator.qq.com/translate");
+    for (;;)
     {
-      do
+      try
       {
-        return false;
-        paramView = (TroopListAdapter2.TroopListViewItemTag)paramView;
-      } while ((paramView.a == null) || (paramView.a.a == null));
-      localObject = paramView.a.a;
-    } while (localObject == null);
-    boolean bool = ((FriendManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).h(((TroopInfo)localObject).troopuin);
-    if (bool) {}
-    for (paramView = this.a.jdField_a_of_type_AndroidContentContext.getString(2131560396);; paramView = this.a.jdField_a_of_type_AndroidContentContext.getString(2131560395))
-    {
-      QQCustomDialog localQQCustomDialog = DialogUtil.c(this.a.jdField_a_of_type_AndroidContentContext, 230, null, null, 2131561746, 2131561875, null, null);
-      localQQCustomDialog.setTitle(paramView);
-      localQQCustomDialog.setMessage(paramView);
-      localQQCustomDialog.setDividerGone();
-      paramView = new fdc(this, bool, (TroopInfo)localObject);
-      localObject = new fdd(this);
-      localQQCustomDialog.setPositiveButton(2131562539, paramView);
-      localQQCustomDialog.setNegativeButton(2131561746, (DialogInterface.OnClickListener)localObject);
-      localQQCustomDialog.show();
-      return false;
+        ((StringBuilder)localObject).append("?");
+        ((StringBuilder)localObject).append("platform=android");
+        ((StringBuilder)localObject).append("&uin=" + this.jdField_a_of_type_ComTencentMobileqqAppI18nTranslatorHandler.a.a());
+        ((StringBuilder)localObject).append("&skey=" + URLEncoder.encode(this.jdField_a_of_type_ComTencentMobileqqAppI18nTranslatorHandler.a.d(), "utf-8"));
+        ((StringBuilder)localObject).append("&source=auto");
+        ((StringBuilder)localObject).append("&target=" + I18nTranslatorHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppI18nTranslatorHandler, this.jdField_a_of_type_JavaLangString));
+        if (this.jdField_a_of_type_JavaUtilList != null)
+        {
+          i = 0;
+          if (i < this.jdField_a_of_type_JavaUtilList.size())
+          {
+            ((StringBuilder)localObject).append("&source_text=" + URLEncoder.encode((String)this.jdField_a_of_type_JavaUtilList.get(i), "utf-8"));
+            i += 1;
+            continue;
+          }
+        }
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      catch (Exception localException2)
+      {
+        String str = "https://macqq.translator.qq.com/translate";
+        continue;
+        boolean bool = false;
+        int i = j;
+        continue;
+      }
+      try
+      {
+        localObject = new JSONArray(I18nTranslatorHandler.b(this.jdField_a_of_type_ComTencentMobileqqAppI18nTranslatorHandler, (String)localObject));
+        if (((JSONArray)localObject).getJSONObject(0).getInt("ret") == 0)
+        {
+          bool = true;
+          i = j;
+          if (i < ((JSONArray)localObject).length())
+          {
+            localArrayList.add(((JSONArray)localObject).getJSONObject(i).getString("target_text"));
+            i += 1;
+            continue;
+          }
+          if (bool)
+          {
+            localObject = new TranslateRespWrapperFYJ();
+            ((TranslateRespWrapperFYJ)localObject).jdField_a_of_type_JavaLangLong = this.jdField_a_of_type_JavaLangLong;
+            ((TranslateRespWrapperFYJ)localObject).jdField_a_of_type_JavaUtilList = localArrayList;
+            this.jdField_a_of_type_ComTencentMobileqqAppI18nTranslatorHandler.a(80002, bool, localObject);
+          }
+          return Boolean.valueOf(bool);
+        }
+      }
+      catch (IOException localIOException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Translate", 2, "Request fail IOException");
+        }
+        return Boolean.FALSE;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Translate", 2, "Request fail OutOfMemoryError");
+        }
+        return Boolean.FALSE;
+      }
+      catch (Exception localException1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Translate", 2, "Request fail Exception");
+        }
+        localException1.printStackTrace();
+        return Boolean.FALSE;
+      }
     }
   }
 }

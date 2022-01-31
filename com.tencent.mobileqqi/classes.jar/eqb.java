@@ -1,25 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.activity.phone.PhoneFrame;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
+import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
 
 public class eqb
-  implements View.OnClickListener
+  extends TroopMemberListActivity.ViewHolder
 {
-  public eqb(PhoneFrameActivity paramPhoneFrameActivity) {}
+  public CheckBox a;
   
-  public void onClick(View paramView)
-  {
-    paramView = this.a.a.a();
-    if ((paramView != null) && (paramView.u == 11))
-    {
-      ForwardOperations.a(this.a, false, "shareToQQ", paramView.a);
-      com.tencent.mobileqq.app.PhoneContactManagerImp.c = false;
-    }
-    this.a.setResult(1);
-    this.a.finish();
-  }
+  private eqb(FriendListInnerFrame paramFriendListInnerFrame) {}
 }
 
 

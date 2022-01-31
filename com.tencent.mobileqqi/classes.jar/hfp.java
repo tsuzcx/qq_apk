@@ -1,38 +1,52 @@
-import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.File;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.CameraUtil;
+import com.tencent.mobileqq.widget.CameraFrameLayout;
+import com.tencent.mobileqq.widget.CameraFrameLayoutProxy;
+import com.tencent.mobileqq.widget.CameraFrameLayoutProxy.OnDoubleClick;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.permission.PermissionManager;
 
 public class hfp
-  implements Runnable
+  extends CameraFrameLayoutProxy.OnDoubleClick
 {
-  public hfp(AntiFraudConfigFileUtil paramAntiFraudConfigFileUtil, String paramString1, String paramString2, String paramString3) {}
-  
-  public void run()
+  public hfp(CameraFrameLayoutProxy paramCameraFrameLayoutProxy)
   {
-    String str1 = AntiFraudConfigFileUtil.a(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil, this.jdField_a_of_type_JavaLangString);
-    File localFile = new File(str1);
-    Object localObject = localFile.getParent();
-    localObject = new File((String)localObject + "/download" + this.jdField_a_of_type_JavaLangString + ".xml");
-    if (((File)localObject).exists()) {
-      ((File)localObject).delete();
-    }
-    if (HttpDownloadUtil.a(null, this.b, (File)localObject))
+    super(paramCameraFrameLayoutProxy);
+  }
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    paramMotionEvent = (BaseActivity)CameraFrameLayoutProxy.a(this.a);
+    Object localObject = (QQAppInterface)paramMotionEvent.getAppRuntime();
+    if (!paramMotionEvent.permissionManager.checkPermission("android.permission.CAMERA"))
     {
-      String str2 = SecUtil.a(((File)localObject).getAbsolutePath());
-      if (this.c.equalsIgnoreCase(str2)) {}
+      localObject = new PermissionsDialog();
+      localhfq = new hfq(this, paramMotionEvent);
+      ((PermissionsDialog)localObject).a(paramMotionEvent, new String[] { "android.permission.CAMERA" }, localhfq);
     }
-    else
+    while ((!CameraUtil.a((QQAppInterface)localObject, CameraFrameLayoutProxy.a(this.a))) || (!CameraUtil.b((QQAppInterface)localObject)) || ((CameraFrameLayoutProxy.a(this.a) != null) && (!CameraFrameLayoutProxy.a(this.a).a())))
     {
-      return;
+      hfq localhfq;
+      return false;
     }
-    if (((File)localObject).renameTo(localFile))
+    boolean bool = CameraUtil.a((QQAppInterface)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraFrameLayoutProxy", 2, "onDoubleTap isOpen:" + bool);
+    }
+    if (bool)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil.a(this.jdField_a_of_type_JavaLangString, System.currentTimeMillis());
-      AntiFraudConfigFileUtil.a(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil, str1);
-      return;
+      ReportController.b((QQAppInterface)localObject, "CliOper", "", "", "background", "bkground_shut", 0, 0, "0", "", "", "");
+      CameraUtil.b((QQAppInterface)localObject);
+      return false;
     }
-    ((File)localObject).delete();
+    ReportController.b((QQAppInterface)localObject, "CliOper", "", "", "background", "bkground_open", 0, 0, "", "", "", "");
+    CameraUtil.a((QQAppInterface)localObject);
+    CameraFrameLayoutProxy.a(this.a).setDoubleClickFlag(true);
+    return false;
   }
 }
 

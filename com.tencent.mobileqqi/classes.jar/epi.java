@@ -1,16 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
 
 public class epi
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public epi(ContactListView paramContactListView) {}
+  public epi(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    ContactListView.a(this.a, null);
-  }
+  public void run() {}
 }
 
 

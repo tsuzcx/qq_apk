@@ -1,25 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.widget.ActionSheet;
+import android.content.Context;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.statistics.MainAcitivityReportHelper;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-public class gki
-  implements View.OnClickListener
+public final class gki
+  extends AsyncTask
 {
-  public gki(IosTimepicker paramIosTimepicker) {}
+  public gki(Context paramContext, long paramLong, String paramString) {}
   
-  public void onClick(View paramView)
+  protected Void a(Void... paramVarArgs)
   {
-    if ((IosTimepicker.a(this.a) != null) && (IosTimepicker.a(this.a).isShowing()))
+    paramVarArgs = MainAcitivityReportHelper.b(this.jdField_a_of_type_AndroidContentContext);
+    HashMap localHashMap = new HashMap();
+    int i;
+    if (this.jdField_a_of_type_Long < 500L) {
+      i = MainAcitivityReportHelper.a();
+    }
+    for (;;)
     {
-      IosTimepicker.a(this.a).dismiss();
-      IosTimepicker.a(this.a, null);
+      localHashMap.put("param_FailCode", String.valueOf(i));
+      StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_JavaLangString, paramVarArgs, false, this.jdField_a_of_type_Long, 0L, localHashMap, "");
+      return null;
+      if (this.jdField_a_of_type_Long < 1000L) {
+        i = MainAcitivityReportHelper.a() + 1;
+      } else if (this.jdField_a_of_type_Long < 2000L) {
+        i = MainAcitivityReportHelper.a() + 2;
+      } else if (this.jdField_a_of_type_Long < 3000L) {
+        i = MainAcitivityReportHelper.a() + 3;
+      } else if (this.jdField_a_of_type_Long < 5000L) {
+        i = MainAcitivityReportHelper.a() + 4;
+      } else if (this.jdField_a_of_type_Long < 7000L) {
+        i = MainAcitivityReportHelper.a() + 5;
+      } else if (this.jdField_a_of_type_Long < 10000L) {
+        i = MainAcitivityReportHelper.a() + 6;
+      } else {
+        i = MainAcitivityReportHelper.a() + 7;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gki
  * JD-Core Version:    0.7.0.1
  */

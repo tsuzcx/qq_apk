@@ -1,21 +1,35 @@
-import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
-import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.AntiFraudGetConfigObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class hbg
-  implements Runnable
+  extends AntiFraudGetConfigObserver
 {
-  public hbg(VideoPlayLogic paramVideoPlayLogic, CharSequence paramCharSequence1, CharSequence paramCharSequence2) {}
+  public hbg(AntiFraudConfigFileUtil paramAntiFraudConfigFileUtil) {}
   
-  public void run()
+  protected void a(int paramInt, Bundle paramBundle)
   {
-    if (VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic) != null) {
-      VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).a(this.jdField_a_of_type_JavaLangCharSequence, this.b);
+    QQAppInterface localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (localQQAppInterface != null) {
+      localQQAppInterface.c(AntiFraudConfigFileUtil.a(this.a));
     }
+    if (paramInt != 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AntiFraudGetConfigObserver", 2, "invalid notification type for onGetUinSafetyWordingConfig:" + Integer.toString(paramInt));
+      }
+      return;
+    }
+    ThreadManager.a(new hbh(this, paramBundle.getString("config_name"), paramBundle.getInt("effect_time", 0), paramBundle.getString("md5"), paramBundle.getString("download_url")));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hbg
  * JD-Core Version:    0.7.0.1
  */

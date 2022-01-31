@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
-public class ddh
-  implements DialogInterface.OnClickListener
+class ddh
+  implements Runnable
 {
-  public ddh(NotificationActivity paramNotificationActivity) {}
+  ddh(dde paramdde) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.finish();
+    this.a.a.o();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ddh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,29 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import java.util.TimerTask;
+import com.tencent.lbsapi.QLBSNotification;
+import com.tencent.lbsapi.QLBSService;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.log.ReportLog;
+import com.tencent.qphone.base.util.QLog;
 
 public class ffr
-  extends TimerTask
+  implements QLBSNotification
 {
-  public ffr(DataLineHandler paramDataLineHandler) {}
+  public ffr(QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onLocationNotification(int paramInt)
   {
-    this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("LBS", 2, "onLocationNotification:" + paramInt);
+    }
+    if (paramInt == 1) {
+      this.a.jdField_a_of_type_ArrayOfByte = this.a.jdField_a_of_type_ComTencentLbsapiQLBSService.getDeviceData();
+    }
+    this.a.jdField_a_of_type_ComTencentLbsapiQLBSService.stopLocation();
+    synchronized (this.a.jdField_a_of_type_ComTencentLbsapiQLBSService)
+    {
+      this.a.jdField_a_of_type_ComTencentLbsapiQLBSService.notifyAll();
+      ReportLog.a("LBS", "onLocationNotification result:" + paramInt);
+      return;
+    }
   }
 }
 

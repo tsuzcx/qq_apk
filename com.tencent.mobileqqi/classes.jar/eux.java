@@ -1,15 +1,15 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.RecentMemberInnerFrame;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import android.media.SoundPool;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
-public class eux
-  extends FacePreloadBaseAdapter.ViewHolder
+class eux
+  implements Runnable
 {
-  public CheckBox a;
-  public TextView a;
+  eux(euw parameuw) {}
   
-  private eux(RecentMemberInnerFrame paramRecentMemberInnerFrame) {}
+  public void run()
+  {
+    VoipDialInterfaceActivity.a(this.a.a).play(VoipDialInterfaceActivity.b(this.a.a), 1.0F, 1.0F, 0, 0, 1.0F);
+  }
 }
 
 

@@ -1,36 +1,21 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.qphone.base.util.QLog;
 
 public class erw
-  implements View.OnClickListener
+  implements Runnable
 {
-  public erw(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public erw(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.c.setClickable(false);
-    if (this.a.getIntent().getBooleanExtra("PhotoConst.IS_SEND_FILESIZE_LIMIT", false))
-    {
-      paramView = PhotoPreviewActivity.a(this.a).iterator();
-      for (long l = 0L; paramView.hasNext(); l += FileUtils.a((String)paramView.next())) {}
-      if (l > 5242880L) {}
-      for (int i = 1; (FileManagerUtil.a()) && (i != 0); i = 0)
-      {
-        FMDialogUtil.a(this.a, 2131558759, 2131558756, new erx(this));
-        return;
-      }
-      PhotoPreviewActivity.b(this.a);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberListInnerFrame", 2, "read troop members from database before updating data from server");
     }
-    PhotoPreviewActivity.b(this.a);
+    Object localObject = TroopMemberListInnerFrame.a(this.a, this.a.b);
+    localObject = this.a.a.obtainMessage(1, localObject);
+    this.a.a.sendMessage((Message)localObject);
   }
 }
 

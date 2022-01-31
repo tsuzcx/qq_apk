@@ -1,31 +1,22 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class edp
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public edp(FileItemBuilder paramFileItemBuilder, MessageForFile paramMessageForFile, BaseChatItemLayout paramBaseChatItemLayout, edq paramedq, ActionSheet paramActionSheet) {}
+  public edp(SearchResultDialog paramSearchResultDialog) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    paramView = FileItemBuilder.g(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop);
-    if (paramView != null) {
-      FileManagerUtil.a(FileItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder), paramView, FileItemBuilder.h(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder), false);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Edq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status, false);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+    int i = ((Integer)paramView.getTag(-1)).intValue();
+    SearchResultDialog.a(this.a).a(SearchResultDialog.b(this.a), paramView, i, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     edp
  * JD-Core Version:    0.7.0.1
  */

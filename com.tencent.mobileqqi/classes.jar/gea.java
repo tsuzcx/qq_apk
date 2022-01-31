@@ -1,30 +1,83 @@
-import com.tencent.mobileqq.jsbridge.WebBridge.JsBridgeListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.KeyguardManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pic.Logger;
+import com.tencent.mobileqq.pic.PicPreDownloader;
 
 public class gea
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public gea(WebBridge.JsBridgeListener paramJsBridgeListener, String paramString, WebView paramWebView) {}
+  private String a;
   
-  public void run()
+  public gea(String paramString)
   {
-    try
+    this.a = paramString;
+  }
+  
+  public boolean a(Context paramContext)
+  {
+    return ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
+  }
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    boolean bool = true;
+    paramIntent = paramIntent.getAction();
+    if ("android.intent.action.SCREEN_ON".equals(paramIntent))
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("responseId", this.jdField_a_of_type_ComTencentMobileqqJsbridgeWebBridge$JsBridgeListener.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("responseData", new JSONObject("{'result':-1,'message':'" + this.jdField_a_of_type_JavaLangString + "'}"));
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:qqJSBridge.setMessage('" + localJSONObject.toString() + "');");
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("BaseWebActivity.WebBridge", 2, "WebBridge onComplete Exception:" + localJSONException.getMessage());
+      PicPreDownloader.a(PicPreDownloader.a());
+      if (!a(paramContext))
+      {
+        PicPreDownloader.b(bool);
+        label36:
+        Logger.a("PIC_TAG_PRELOAD", "onReceive", "isScreenOn:" + PicPreDownloader.a() + ",lastScreenOnState:" + PicPreDownloader.b());
+        if (PicPreDownloader.b() != PicPreDownloader.a()) {
+          break label138;
+        }
       }
-      localJSONException.printStackTrace();
+    }
+    for (;;)
+    {
+      return;
+      bool = false;
+      break;
+      if ("android.intent.action.SCREEN_OFF".equals(paramIntent))
+      {
+        PicPreDownloader.a(PicPreDownloader.a());
+        PicPreDownloader.b(false);
+        break label36;
+      }
+      if (!"android.intent.action.USER_PRESENT".equals(paramIntent)) {
+        break label36;
+      }
+      PicPreDownloader.a(PicPreDownloader.a());
+      PicPreDownloader.b(true);
+      break label36;
+      try
+      {
+        label138:
+        paramContext = (QQAppInterface)BaseApplicationImpl.a.getAppRuntime(this.a);
+        if (paramContext == null) {
+          continue;
+        }
+        paramContext = paramContext.a();
+        if (paramContext == null) {
+          continue;
+        }
+        paramContext.d();
+        PicPreDownloader.a(paramContext);
+        return;
+      }
+      catch (Exception paramContext)
+      {
+        for (;;)
+        {
+          paramContext = null;
+        }
+      }
     }
   }
 }

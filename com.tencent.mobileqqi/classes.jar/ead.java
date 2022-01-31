@@ -1,42 +1,30 @@
-import android.graphics.BitmapFactory;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
-import mqq.observer.ServerNotifyObserver;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.transfile.TransFileController.OnCancelListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ead
-  extends ServerNotifyObserver
+  implements TransFileController.OnCancelListener
 {
-  public ead(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public ead(PicItemBuilder paramPicItemBuilder) {}
   
-  public void onReceiveVerifyCode(String paramString1, int paramInt, String paramString2, byte[] paramArrayOfByte)
+  public void a(ArrayList paramArrayList)
   {
-    this.a.b = false;
-    if (this.a.jdField_a_of_type_Boolean)
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
     {
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-      Toast.makeText(this.a, this.a.getString(2131563159), 0).show();
+      MessageRecord localMessageRecord = (MessageRecord)paramArrayList.next();
+      PicItemBuilder.a(this.a).a().a(localMessageRecord, false);
+      if (QLog.isColorLevel()) {
+        QLog.d("cancelpic", 2, "remove pic:" + localMessageRecord.uniseq);
+      }
     }
-    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setKey(paramString1);
-    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setSeq(paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    if ((this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString() != null) && (this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().length() > 4)) {
-      VerifyCodeActivity.a(this.a, true);
-    }
-    if (paramArrayOfByte != null)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length));
-      this.a.a(false);
-      return;
-    }
-    Toast.makeText(this.a, this.a.getString(2131561431), 1).show();
-  }
-  
-  public void onVerifyClose()
-  {
-    this.a.f();
+    ((ChatActivity)PicItemBuilder.a(this.a)).a(196612);
   }
 }
 

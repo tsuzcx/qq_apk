@@ -1,37 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.Banner;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.ADView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundActivity;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class ess
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public ess(BannerManager paramBannerManager) {}
+  public ess(QvipSpecialSoundActivity paramQvipSpecialSoundActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    BannerManager.a(this.a).getSharedPreferences("mobileQQi", 0).edit().putBoolean("push_banner_display" + BannerManager.a(this.a).b.getAccount(), false).commit();
-    paramView = BannerManager.a(this.a)[14];
-    if ((paramView != null) && (paramView.a != null))
-    {
-      paramView = (ADView)paramView.a.findViewById(2131232085);
-      if (paramView != null) {
-        paramView.a();
-      }
-    }
-    this.a.a(14, 0);
-    this.a.a(null);
-    this.a.b = false;
+    paramDialogInterface.dismiss();
+    VipUtils.b(this.a, 3, "mvip.gongneng.mobileqq.tiexintixing.ringandroid");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ess
  * JD-Core Version:    0.7.0.1
  */

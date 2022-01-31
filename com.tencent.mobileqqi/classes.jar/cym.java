@@ -1,22 +1,29 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import java.util.List;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class cym
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public cym(LebaListMgrActivity paramLebaListMgrActivity) {}
+  public cym(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    LebaShowListManager.a().a(this.a, this.a.b);
-    List localList = LebaShowListManager.a().a();
-    this.a.runOnUiThread(new cyn(this, localList));
+    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131561654), "qqsetting_lock_screen_whenexit_key", paramBoolean);
+    paramCompoundButton = this.a.b;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "0X80040D9", "0X80040D9", 0, i, "", "", "", "");
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cym
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MsgProxy;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.debug.DebugActivity;
 
 public class fnp
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public fnp(MsgProxy paramMsgProxy, boolean paramBoolean) {}
+  private fnp(DebugActivity paramDebugActivity) {}
   
-  public void run()
-  {
-    StatisticCollector localStatisticCollector = StatisticCollector.a(BaseApplication.getContext());
-    String str = MsgProxy.f(this.jdField_a_of_type_ComTencentMobileqqAppMessageMsgProxy).a();
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localStatisticCollector.a(str, "aio_break_point", bool, 0L, 0L, new HashMap(), "");
-      return;
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

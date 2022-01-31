@@ -1,13 +1,15 @@
-import com.tencent.widget.Gallery;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class iaw
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public iaw(Gallery paramGallery) {}
+  public iaw(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Gallery.a(this.a);
+    this.a.finish();
   }
 }
 

@@ -20,7 +20,7 @@ public abstract class RecentItemBaseBuilder
 {
   public static final String a = "tag_recent_item_menu_item";
   public static final int[] a;
-  public static final int[] b = { 2130837896, 2130837903, 2130837892, 2130837892, 2130837900, 2130837906 };
+  public static final int[] b = { 2130837898, 2130837905, 2130837894, 2130837894, 2130837902, 2130837908 };
   public static final int c = -1;
   public static final int d = -2;
   public static final int e = -3;
@@ -71,12 +71,12 @@ public abstract class RecentItemBaseBuilder
     }
     LinearLayout localLinearLayout = new LinearLayout(paramContext);
     localLinearLayout.setOrientation(0);
-    int n = paramContext.getResources().getDimensionPixelSize(2131427620);
-    int i1 = paramContext.getResources().getDimensionPixelSize(2131427619);
+    int n = paramContext.getResources().getDimensionPixelSize(2131427623);
+    int i1 = paramContext.getResources().getDimensionPixelSize(2131427622);
     int m = 0;
     while (m < paramInt)
     {
-      ImageView localImageView = (ImageView)LayoutInflater.from(paramContext).inflate(2130903928, null);
+      ImageView localImageView = (ImageView)LayoutInflater.from(paramContext).inflate(2130903930, null);
       localLinearLayout.addView(localImageView, new LinearLayout.LayoutParams(n, i1));
       if ((paramArrayOfImageView != null) && (m < paramArrayOfImageView.length)) {
         paramArrayOfImageView[m] = localImageView;
@@ -102,7 +102,7 @@ public abstract class RecentItemBaseBuilder
     LinearLayout localLinearLayout = new LinearLayout(paramContext);
     localLinearLayout.setOrientation(0);
     localLinearLayout.addView(paramView1, new LinearLayout.LayoutParams(-1, -2));
-    localLinearLayout.addView(paramView2, new LinearLayout.LayoutParams(paramContext.getResources().getDimensionPixelSize(2131427620), -2));
+    localLinearLayout.addView(paramView2, new LinearLayout.LayoutParams(paramContext.getResources().getDimensionPixelSize(2131427623), -2));
     if (QLog.isDevelopLevel()) {
       QLog.i("Q.recent", 4, "createListItemView, cost = " + (System.currentTimeMillis() - l));
     }
@@ -134,7 +134,7 @@ public abstract class RecentItemBaseBuilder
           n = m;
           if ((i1 & 0xF00) == 256)
           {
-            a(paramRecentItemBaseHolder.jdField_b_of_type_ArrayOfAndroidWidgetImageView[0], paramInt, b[1], jdField_a_of_type_ArrayOfInt[1], 2130837895, paramOnClickListener);
+            a(paramRecentItemBaseHolder.jdField_b_of_type_ArrayOfAndroidWidgetImageView[0], paramInt, b[1], jdField_a_of_type_ArrayOfInt[1], 2130837897, paramOnClickListener);
             n = 1;
           }
         }
@@ -150,7 +150,7 @@ public abstract class RecentItemBaseBuilder
           if (i3 != 4096) {
             break label441;
           }
-          a(paramRecentItemBaseHolder.jdField_b_of_type_ArrayOfAndroidWidgetImageView[n], paramInt, b[2], jdField_a_of_type_ArrayOfInt[2], 2130837895, paramOnClickListener);
+          a(paramRecentItemBaseHolder.jdField_b_of_type_ArrayOfAndroidWidgetImageView[n], paramInt, b[2], jdField_a_of_type_ArrayOfInt[2], 2130837897, paramOnClickListener);
           m = n + 1;
         }
       }
@@ -164,13 +164,13 @@ public abstract class RecentItemBaseBuilder
           if (i3 != 32) {
             break label489;
           }
-          a(paramRecentItemBaseHolder.jdField_b_of_type_ArrayOfAndroidWidgetImageView[m], paramInt, b[4], jdField_a_of_type_ArrayOfInt[4], 2130837895, paramOnClickListener);
+          a(paramRecentItemBaseHolder.jdField_b_of_type_ArrayOfAndroidWidgetImageView[m], paramInt, b[4], jdField_a_of_type_ArrayOfInt[4], 2130837897, paramOnClickListener);
           n = m + 1;
         }
       }
       label285:
       if ((n < i2) && (paramRecentItemBaseHolder.jdField_b_of_type_ArrayOfAndroidWidgetImageView[n] != null) && ((i1 & 0xF) == 1)) {
-        a(paramRecentItemBaseHolder.jdField_b_of_type_ArrayOfAndroidWidgetImageView[n], paramInt, b[0], jdField_a_of_type_ArrayOfInt[0], 2130837897, paramOnClickListener);
+        a(paramRecentItemBaseHolder.jdField_b_of_type_ArrayOfAndroidWidgetImageView[n], paramInt, b[0], jdField_a_of_type_ArrayOfInt[0], 2130837899, paramOnClickListener);
       }
       for (m = n + 1;; m = n)
       {
@@ -194,7 +194,7 @@ public abstract class RecentItemBaseBuilder
             if (i3 != 8192) {
               break;
             }
-            a(paramRecentItemBaseHolder.jdField_b_of_type_ArrayOfAndroidWidgetImageView[n], paramInt, b[3], jdField_a_of_type_ArrayOfInt[3], 2130837895, paramOnClickListener);
+            a(paramRecentItemBaseHolder.jdField_b_of_type_ArrayOfAndroidWidgetImageView[n], paramInt, b[3], jdField_a_of_type_ArrayOfInt[3], 2130837897, paramOnClickListener);
             m = n + 1;
             break;
             label489:
@@ -202,12 +202,12 @@ public abstract class RecentItemBaseBuilder
             if (i3 != 16) {
               break label285;
             }
-            a(paramRecentItemBaseHolder.jdField_b_of_type_ArrayOfAndroidWidgetImageView[m], paramInt, b[5], jdField_a_of_type_ArrayOfInt[5], 2130837895, paramOnClickListener);
+            a(paramRecentItemBaseHolder.jdField_b_of_type_ArrayOfAndroidWidgetImageView[m], paramInt, b[5], jdField_a_of_type_ArrayOfInt[5], 2130837897, paramOnClickListener);
             n = m + 1;
             break label285;
           }
         }
-        m = paramContext.getResources().getDimensionPixelSize(2131427620) * m;
+        m = paramContext.getResources().getDimensionPixelSize(2131427623) * m;
         paramContext = (LinearLayout.LayoutParams)paramRecentItemBaseHolder.jdField_b_of_type_AndroidViewView.getLayoutParams();
         if ((paramContext != null) && (paramContext.width != m)) {
           paramContext.width = m;

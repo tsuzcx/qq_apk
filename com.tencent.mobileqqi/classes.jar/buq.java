@@ -1,17 +1,27 @@
-import com.tencent.biz.common.util.LoadedBack;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.CardObserver;
 
-class buq
-  implements LoadedBack
+public class buq
+  extends CardObserver
 {
-  buq(bup parambup) {}
+  public buq(AddRequestActivity paramAddRequestActivity) {}
   
-  public void a(int paramInt) {}
-  
-  public void b(int paramInt) {}
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (!AddRequestActivity.a(this.a).equals(paramString)) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.a.a(2130837960, this.a.getString(2131562776));
+      return;
+    }
+    this.a.a(2130837949, this.a.getString(2131562773));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     buq
  * JD-Core Version:    0.7.0.1
  */

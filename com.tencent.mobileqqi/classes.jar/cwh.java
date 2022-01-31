@@ -1,201 +1,54 @@
-import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.database.Cursor;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.HelloListActivity;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ConversationFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.international.LocaleUtil;
-import com.tencent.mobileqq.utils.MsgUtils;
-import com.tencent.mobileqq.utils.TimeFormatterUtils;
-import com.tencent.widget.XCursorAdapter;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
 
 public class cwh
-  extends XCursorAdapter
+  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  protected LayoutInflater a;
-  private HashMap jdField_a_of_type_JavaUtilHashMap;
-  private Drawable b;
-  private Drawable c;
+  public cwh(ModifyFriendInfoActivity paramModifyFriendInfoActivity) {}
   
-  public cwh(HelloListActivity paramHelloListActivity, Cursor paramCursor)
+  public void onClick(View paramView)
   {
-    super(paramHelloListActivity, paramCursor);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramHelloListActivity.getSystemService("layout_inflater"));
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    b();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839634);
-    this.b = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839632);
-    this.c = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839636);
-  }
-  
-  private String a(String paramString, long paramLong)
-  {
-    Object localObject = (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(paramString + "_" + LocaleUtil.a());
-    if ((localObject == null) || (!a()))
+    int i = paramView.getId();
+    if (2131230940 == i)
     {
-      localObject = new HashMap();
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString + "_" + LocaleUtil.a(), localObject);
+      paramView = new ProfileActivity.AllInOne(this.a.jdField_a_of_type_JavaLangString, 1);
+      paramView.g = this.a.jdField_b_of_type_JavaLangString;
+      ProfileActivity.a(this.a, paramView);
     }
-    for (paramString = (String)localObject;; paramString = (String)localObject)
+    do
     {
-      localObject = TimeFormatterUtils.a(1000L * paramLong, false);
-      paramString.put(paramLong + "", localObject);
-      paramString = (String)localObject;
-      String str;
-      do
+      return;
+      if (2131231928 == i)
       {
-        return paramString;
-        str = (String)((HashMap)localObject).get(paramLong + "");
-        paramString = str;
-      } while (str != null);
-      ((HashMap)localObject).clear();
-    }
-  }
-  
-  private boolean a()
-  {
-    if (System.currentTimeMillis() >= this.jdField_a_of_type_Long)
-    {
-      b();
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      return false;
-    }
-    return true;
-  }
-  
-  private void b()
-  {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.add(5, 1);
-    localCalendar.set(10, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    this.jdField_a_of_type_Long = localCalendar.getTimeInMillis();
-  }
-  
-  public View a(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
-  {
-    return this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903247, paramViewGroup, false);
-  }
-  
-  public void a(Cursor paramCursor)
-  {
-    if (HelloListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityHelloListActivity).a() == -1)
-    {
-      super.a(paramCursor);
-      notifyDataSetChanged();
-    }
-  }
-  
-  public void a(View paramView, Context paramContext, Cursor paramCursor)
-  {
-    String str = paramCursor.getString(paramCursor.getColumnIndex("senderuin"));
-    paramContext = (cwi)paramView.getTag();
-    if (paramContext == null)
-    {
-      paramContext = new cwi(null);
-      paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131231770));
-      paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231771));
-      paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231090));
-      paramContext.b = ((TextView)paramView.findViewById(2131231772));
-      paramContext.c = ((TextView)paramView.findViewById(2131231769));
-      paramContext.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131231773));
-      paramView.setTag(paramContext);
-      paramContext.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(HelloListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityHelloListActivity));
-      paramContext.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0);
-    }
-    for (paramView = paramContext;; paramView = paramContext)
-    {
-      QQMessageFacade.Message localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityHelloListActivity.b.a().a(str, 1001);
-      paramContext = a(str, paramCursor.getLong(paramCursor.getColumnIndex("time")));
-      paramView.c.setText(paramContext);
-      int i;
-      if (paramCursor.getInt(paramCursor.getColumnIndex("issend")) == 1)
-      {
-        i = 1;
-        paramContext = paramCursor.getString(paramCursor.getColumnIndex("friendnick"));
-        if ((paramContext != null) && (!paramContext.equals("")) && (!str.equals(paramContext))) {
-          break label532;
+        paramView = new Intent(this.a, EditActivity.class);
+        paramView.putExtra("title", 2131562429).putExtra("limit", 96).putExtra("canPostNull", true).putExtra("hint", this.a.getResources().getString(2131562022)).putExtra("multiLine", false);
+        if ((this.a.jdField_b_of_type_AndroidWidgetTextView.getText() != null) && (this.a.jdField_b_of_type_AndroidWidgetTextView.getText().length() > 0)) {
+          paramView.putExtra("current", this.a.jdField_b_of_type_AndroidWidgetTextView.getText());
         }
-        if (!HelloListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityHelloListActivity).containsKey(str)) {
-          HelloListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityHelloListActivity).a(str);
-        }
-        paramContext = str;
+        this.a.startActivityForResult(paramView, 1000);
+        return;
       }
-      label532:
-      for (;;)
+      if (2131231931 == i)
       {
-        paramCursor = paramCursor.getString(paramCursor.getColumnIndex("pyFaceUrl"));
-        HelloListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityHelloListActivity).put(str, paramCursor);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramContext);
-        int j = this.jdField_a_of_type_ComTencentMobileqqActivityHelloListActivity.b.a().a(str, 1001);
-        if ((i == 0) && (j > 0))
-        {
-          paramView.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setVisibility(0);
-          if (j > 99) {
-            paramView.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setText("99+");
-          }
-        }
-        for (;;)
-        {
-          paramView.b.setText(localMessage.msg);
-          MsgUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityHelloListActivity.b, localMessage, paramView.b, 1001, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.c, this.b);
-          paramCursor = this.jdField_a_of_type_ComTencentMobileqqActivityHelloListActivity.b.b(str);
-          if (paramCursor != null) {
-            paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(paramCursor);
-          }
-          paramCursor = new ProfileActivity.AllInOne(str, -1);
-          paramCursor.g = paramContext;
-          paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(2130838008, paramCursor);
-          paramView.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(paramCursor);
-          paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityHelloListActivity);
-          return;
-          i = 0;
-          break;
-          paramView.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setText(String.valueOf(j));
-          continue;
-          paramView.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setVisibility(8);
-        }
+        paramView = new Intent(this.a, MoveToGroupActivity.class).putExtra("friendUin", this.a.jdField_a_of_type_JavaLangString).putExtra("mgid", (byte)this.a.jdField_a_of_type_Int);
+        this.a.startActivityForResult(paramView, 0);
+        return;
       }
-    }
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    a().moveToPosition(paramInt);
-    return Long.valueOf(a().getString(a().getColumnIndex("senderuin"))).longValue();
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    if (HelloListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityHelloListActivity).a() == -1) {
-      super.notifyDataSetChanged();
-    }
-  }
-  
-  public void notifyDataSetInvalidated()
-  {
-    if (HelloListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityHelloListActivity).a() == -1) {
-      super.notifyDataSetInvalidated();
-    }
+    } while (2131231934 != i);
+    paramView = new Intent(this.a, ChatActivity.class);
+    paramView.putExtra("uin", this.a.jdField_a_of_type_JavaLangString);
+    paramView.putExtra("uinname", this.a.jdField_b_of_type_JavaLangString);
+    paramView.putExtra("uintype", 0);
+    this.a.startActivity(paramView.addCategory("android.intent.category.CHAT").addFlags(536870912));
   }
 }
 

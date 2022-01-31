@@ -1,32 +1,25 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class cnx
-  extends Handler
+class cnx
+  implements ActionSheet.OnButtonClickListener
 {
-  public cnx(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  cnx(cnw paramcnw, FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo, ActionSheet paramActionSheet) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramMessage.what)
+    switch (paramInt)
     {
     }
-    do
+    for (;;)
     {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
-      if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing())) {
-        DiscussionInfoCardActivity.a(this.a).dismiss();
-      }
-      paramMessage = new Intent();
-      paramMessage.putExtra("isNeedFinish", true);
-      this.a.setResult(-1, paramMessage);
-      this.a.finish();
-      return;
-    } while ((DiscussionInfoCardActivity.a(this.a) == null) || (!DiscussionInfoCardActivity.a(this.a).isShowing()) || (this.a.isFinishing()));
-    DiscussionInfoCardActivity.a(this.a).dismiss();
+      this.jdField_a_of_type_Cnw.a.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+    }
   }
 }
 

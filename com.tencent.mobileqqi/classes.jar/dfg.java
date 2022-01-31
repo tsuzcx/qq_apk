@@ -1,14 +1,25 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.PortraitImageview;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.RegisterBaseActivity;
 
 public class dfg
   implements Runnable
 {
-  public dfg(PortraitImageview paramPortraitImageview, Bitmap paramBitmap) {}
+  public dfg(RegisterBaseActivity paramRegisterBaseActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    try
+    {
+      if ((this.a.a != null) && (this.a.a.isShowing())) {
+        this.a.a.dismiss();
+      }
+      this.a.a = null;
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

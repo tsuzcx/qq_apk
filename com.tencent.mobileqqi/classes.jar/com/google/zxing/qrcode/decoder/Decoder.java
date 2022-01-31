@@ -6,10 +6,10 @@ import com.google.zxing.common.DecoderResult;
 import com.google.zxing.common.reedsolomon.GenericGF;
 import com.google.zxing.common.reedsolomon.ReedSolomonDecoder;
 import com.google.zxing.common.reedsolomon.ReedSolomonException;
-import fi;
-import fj;
-import fu;
-import fv;
+import fq;
+import fr;
+import gc;
+import gd;
 import java.util.Map;
 
 public final class Decoder
@@ -52,10 +52,10 @@ public final class Decoder
   
   public DecoderResult a(BitMatrix paramBitMatrix, Map paramMap)
   {
-    Object localObject1 = new fi(paramBitMatrix);
-    paramBitMatrix = ((fi)localObject1).a();
-    ErrorCorrectionLevel localErrorCorrectionLevel = ((fi)localObject1).a().a();
-    localObject1 = fj.a(((fi)localObject1).a(), paramBitMatrix, localErrorCorrectionLevel);
+    Object localObject1 = new fq(paramBitMatrix);
+    paramBitMatrix = ((fq)localObject1).a();
+    ErrorCorrectionLevel localErrorCorrectionLevel = ((fq)localObject1).a().a();
+    localObject1 = fr.a(((fq)localObject1).a(), paramBitMatrix, localErrorCorrectionLevel);
     int k = localObject1.length;
     int i = 0;
     int j = 0;
@@ -83,7 +83,7 @@ public final class Decoder
       }
       j += 1;
     }
-    return fu.a(arrayOfByte1, paramBitMatrix, localErrorCorrectionLevel, paramMap);
+    return gc.a(arrayOfByte1, paramBitMatrix, localErrorCorrectionLevel, paramMap);
   }
   
   public DecoderResult a(boolean[][] paramArrayOfBoolean)

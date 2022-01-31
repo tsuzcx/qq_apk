@@ -140,14 +140,14 @@ public class RecentItemTroopMsgData
   
   public void b(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    int i = 2131362110;
+    int i = 2131362120;
     if ((a().msg instanceof TroopSpecialAttentionMsg))
     {
       paramQQAppInterface = (TroopSpecialAttentionMsg)a().msg;
       if (paramQQAppInterface != null)
       {
         this.jdField_c_of_type_JavaLangCharSequence = paramQQAppInterface.jdField_c_of_type_JavaLangString;
-        i = 2131362110;
+        i = 2131362120;
       }
     }
     for (;;)

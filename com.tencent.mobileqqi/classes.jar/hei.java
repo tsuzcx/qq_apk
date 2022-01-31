@@ -1,78 +1,65 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.troopshare.TroopShareUtility;
+import android.media.MediaPlayer;
+import android.os.Handler;
+import com.tencent.mobileqq.utils.VoicePlayer;
+import com.tencent.mobileqq.utils.VoicePlayer.VoicePlayerListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class hei
-  extends BaseAdapter
+  implements Runnable
 {
-  private hei(TroopShareUtility paramTroopShareUtility) {}
+  int jdField_a_of_type_Int = 0;
   
-  public int getCount()
+  public hei(VoicePlayer paramVoicePlayer) {}
+  
+  public void run()
   {
-    if (TroopShareUtility.a(this.a).a) {
-      return 6;
+    if ((VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == 4) || (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == 5) || (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == 6) || (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == 8)) {
+      this.jdField_a_of_type_Int = 0;
     }
-    return 5;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = LayoutInflater.from(TroopShareUtility.a(this.a)).inflate(2130904028, null);
-    }
-    int i;
-    int j;
-    switch (paramInt)
+    do
     {
-    default: 
-      i = 2131561882;
-      j = 2130837749;
-      paramInt = 2131561884;
+      return;
+      if (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == 3)
+      {
+        this.jdField_a_of_type_Int = VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer).getCurrentPosition();
+        return;
+      }
+    } while (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == null);
+    int k = VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer).getDuration();
+    int i = VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer).getCurrentPosition();
+    if (i < this.jdField_a_of_type_Int) {
+      i = this.jdField_a_of_type_Int;
     }
     for (;;)
     {
-      paramView = (ImageView)paramViewGroup.findViewById(2131232543);
-      TextView localTextView = (TextView)paramViewGroup.findViewById(2131232544);
-      paramView.setImageResource(j);
-      localTextView.setText(i);
-      paramViewGroup.setContentDescription(TroopShareUtility.a(this.a).getString(paramInt));
-      return paramViewGroup;
-      i = 2131561882;
-      j = 2130837749;
-      paramInt = 2131561884;
-      continue;
-      i = 2131561882;
-      j = 2130837749;
-      paramInt = 2131561884;
-      continue;
-      i = 2131561870;
-      j = 2130839425;
-      paramInt = 2131562913;
-      continue;
-      i = 2131562715;
-      j = 2130837751;
-      paramInt = 2131562915;
-      continue;
-      i = 2131560516;
-      j = 2130838356;
-      paramInt = 2131560493;
+      int j = k;
+      if (this.jdField_a_of_type_Int != 0)
+      {
+        j = k;
+        if (this.jdField_a_of_type_Int == i)
+        {
+          j = k;
+          if (this.jdField_a_of_type_Int > k - 200)
+          {
+            QLog.d("Q.profilecard.VoicePlayer", 2, "change duration from " + i + " to " + i);
+            j = i;
+          }
+        }
+      }
+      if (i > this.jdField_a_of_type_Int) {
+        this.jdField_a_of_type_Int = i;
+      }
+      Iterator localIterator = VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer).iterator();
+      while (localIterator.hasNext()) {
+        ((VoicePlayer.VoicePlayerListener)localIterator.next()).a(VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer), j, i);
+      }
+      if (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == null) {
+        break;
+      }
+      VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer).postDelayed(this, 50L);
+      return;
     }
   }
 }

@@ -1,50 +1,24 @@
-import com.tencent.mobileqq.app.BizTroopHandler;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.NearbyOpenTroop;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
+import java.util.Queue;
 
 public class gzb
-  extends MessageObserver
+  implements Animation.AnimationListener
 {
-  public gzb(NearbyOpenTroop paramNearbyOpenTroop) {}
+  public gzb(MessageSubtitleView paramMessageSubtitleView) {}
   
-  protected void a(boolean paramBoolean, String[] paramArrayOfString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int k = 0;
-    int j = k;
-    int i;
-    if (paramArrayOfString != null) {
-      i = 0;
-    }
-    for (;;)
-    {
-      j = k;
-      if (i < paramArrayOfString.length)
-      {
-        if (paramArrayOfString[i].equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString)) {
-          j = 1;
-        }
-      }
-      else
-      {
-        if (j != 0)
-        {
-          if (!this.a.jdField_a_of_type_ComTencentMobileqqAppBizTroopHandler.a(this.a.jdField_a_of_type_JavaLangString, true))
-          {
-            NearbyOpenTroop.b(this.a);
-            if (QLog.isColorLevel()) {
-              QLog.d("EnterTroopTipsMsg", 2, "显示拉群活动失败，直接生成tips");
-            }
-            NearbyOpenTroop.a(this.a);
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.a.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
-        }
-        return;
-      }
-      i += 1;
+    if ((MessageSubtitleView.a(this.a, paramAnimation)) && (!this.a.a.isEmpty())) {
+      MessageSubtitleView.a(this.a).post(MessageSubtitleView.a(this.a));
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,12 +1,15 @@
-import com.tencent.mobileqq.adapter.TroopListAdapter2.TroopListItemWithMask;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.MQPIntChkHandler;
 
 public class fdh
-  implements Comparator
+  implements DialogInterface.OnClickListener
 {
-  public int a(TroopListAdapter2.TroopListItemWithMask paramTroopListItemWithMask1, TroopListAdapter2.TroopListItemWithMask paramTroopListItemWithMask2)
+  public fdh(MQPIntChkHandler paramMQPIntChkHandler, int paramInt) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return paramTroopListItemWithMask1.a - paramTroopListItemWithMask2.a;
+    MQPIntChkHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMQPIntChkHandler, paramDialogInterface, paramInt, this.jdField_a_of_type_Int);
   }
 }
 

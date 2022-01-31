@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.CloudFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
+import com.tencent.qphone.base.util.QLog;
 
 public class fuh
-  implements View.OnClickListener
+  extends FMObserver
 {
-  public fuh(CloudFileBrowserActivity paramCloudFileBrowserActivity) {}
+  public fuh(FileManagerRSCenter paramFileManagerRSCenter) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    CloudFileBrowserActivity.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("FileManagerRSCenter<FileAssistant>", 2, "recive TransferEnd, rmove task[" + String.valueOf(paramLong2) + "]!");
+    }
+    this.a.a(paramLong2);
   }
 }
 

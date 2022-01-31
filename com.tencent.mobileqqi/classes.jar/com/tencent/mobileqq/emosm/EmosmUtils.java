@@ -364,7 +364,7 @@ public class EmosmUtils
   public static String getEmoticonPackageFolder(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AppConstants.aF);
+    localStringBuilder.append(AppConstants.aJ);
     localStringBuilder.append(paramString + File.separator);
     return localStringBuilder.toString();
   }
@@ -372,7 +372,7 @@ public class EmosmUtils
   public static String getEmoticonPreviewPath(String paramString1, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AppConstants.aF);
+    localStringBuilder.append(AppConstants.aJ);
     localStringBuilder.append(paramString1 + File.separator + paramString2 + "_thu.png");
     return localStringBuilder.toString();
   }
@@ -564,7 +564,7 @@ public class EmosmUtils
   public static String getMagicfaceFolderPath(String paramString1, String paramString2)
   {
     paramString2 = new StringBuilder();
-    paramString2.append(AppConstants.aF);
+    paramString2.append(AppConstants.aJ);
     paramString2.append(paramString1 + File.separator);
     return paramString2.toString();
   }
@@ -589,7 +589,7 @@ public class EmosmUtils
   public static String getQFaceMaterialFolderPath(String paramString, boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AppConstants.aG);
+    localStringBuilder.append(AppConstants.aK);
     localStringBuilder.append(paramString + File.separator);
     if (paramBoolean) {
       localStringBuilder.append("sc_200" + File.separator);

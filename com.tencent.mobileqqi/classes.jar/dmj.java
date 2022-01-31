@@ -1,15 +1,21 @@
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SubAccountSettingActivity;
+import com.tencent.mobileqq.activity.SubaccountUgActivity;
 
-public class dmj
+class dmj
   implements DialogInterface.OnClickListener
 {
-  public dmj(RegisterSendUpSms paramRegisterSendUpSms) {}
+  dmj(dmi paramdmi) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    this.a.a.a().setTitle("");
+    paramDialogInterface = new Intent(this.a.a.a(), SubaccountUgActivity.class);
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

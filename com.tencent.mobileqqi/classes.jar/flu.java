@@ -1,30 +1,32 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.Messenger;
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import java.util.List;
 
 public class flu
-  implements ServiceConnection
+  implements IphonePickerView.PickerViewAdapter
 {
-  public flu(TroopQZoneUploadAlbumHandler paramTroopQZoneUploadAlbumHandler) {}
+  public flu(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public int a()
   {
-    QLog.d("UploadPhoto", 2, "onServiceConnected()...");
-    this.a.jdField_a_of_type_AndroidOsMessenger = new Messenger(paramIBinder);
-    this.a.jdField_b_of_type_AndroidOsMessenger = new Messenger(this.a.jdField_a_of_type_AndroidOsHandler);
-    TroopQZoneUploadAlbumHandler.a(this.a, this.a.jdField_b_of_type_Int);
+    return this.a.h;
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public int a(int paramInt)
   {
-    QLog.d("UploadPhoto", 2, "onServiceDisconnected()...");
-    this.a.jdField_a_of_type_AndroidOsMessenger = null;
-    TroopQZoneUploadAlbumHandler.a(this.a, false);
-    this.a.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    if (this.a.a[paramInt] != null) {
+      return ((List)this.a.a[paramInt]).size();
+    }
+    return 0;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    if (this.a.a[paramInt1] != null) {
+      return ((BaseAddress)((List)this.a.a[paramInt1]).get(paramInt2)).a;
+    }
+    return "";
   }
 }
 

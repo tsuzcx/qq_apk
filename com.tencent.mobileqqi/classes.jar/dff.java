@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.PortraitImageview;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class dff
-  implements Runnable
+class dff
+  implements DialogInterface.OnClickListener
 {
-  public dff(PortraitImageview paramPortraitImageview) {}
+  dff(dfe paramdfe) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.postInvalidate();
+    paramDialogInterface.dismiss();
   }
 }
 

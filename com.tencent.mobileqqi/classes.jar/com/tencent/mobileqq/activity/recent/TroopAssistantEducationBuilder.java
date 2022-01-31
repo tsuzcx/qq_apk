@@ -15,12 +15,12 @@ public class TroopAssistantEducationBuilder
   {
     paramObject = paramView;
     if (paramView == null) {
-      paramObject = View.inflate(paramContext, 2130904021, null);
+      paramObject = View.inflate(paramContext, 2130904023, null);
     }
-    paramDrawable = paramObject.findViewById(2131234596);
+    paramDrawable = paramObject.findViewById(2131234598);
     paramDrawable.setTag(-1, Integer.valueOf(paramInt));
     paramDrawable.setOnClickListener(paramOnClickListener);
-    paramDrawable = paramObject.findViewById(2131234597);
+    paramDrawable = paramObject.findViewById(2131234599);
     paramDrawable.setTag(-1, Integer.valueOf(paramInt));
     paramDrawable.setOnClickListener(paramOnClickListener);
     paramObject.setTag(-1, Integer.valueOf(paramInt));

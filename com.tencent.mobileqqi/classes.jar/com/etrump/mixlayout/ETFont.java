@@ -1,12 +1,12 @@
 package com.etrump.mixlayout;
 
-import fe;
+import fm;
 
 public class ETFont
 {
   private float jdField_a_of_type_Float;
   public int a;
-  private fe jdField_a_of_type_Fe;
+  private fm jdField_a_of_type_Fm;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
@@ -28,7 +28,7 @@ public class ETFont
     this.jdField_b_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
     this.d = false;
-    this.jdField_a_of_type_Fe = new fe(-16777216, 0.0F, 0.0F);
+    this.jdField_a_of_type_Fm = new fm(-16777216, 0.0F, 0.0F);
   }
   
   public static boolean a(ETFont paramETFont)
@@ -58,7 +58,7 @@ public class ETFont
     if (paramETFont.d())
     {
       j = i | ET_FontStyle.ET_Shadow.getValue();
-      localETEngine.a(paramETFont.jdField_a_of_type_Fe.jdField_a_of_type_Int, paramETFont.jdField_a_of_type_Fe.jdField_a_of_type_Float, paramETFont.jdField_a_of_type_Fe.jdField_b_of_type_Float);
+      localETEngine.a(paramETFont.jdField_a_of_type_Fm.jdField_a_of_type_Int, paramETFont.jdField_a_of_type_Fm.jdField_a_of_type_Float, paramETFont.jdField_a_of_type_Fm.jdField_b_of_type_Float);
     }
     for (;;)
     {
@@ -123,11 +123,11 @@ public class ETFont
   public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
   {
     this.d = paramBoolean;
-    if ((this.d) && (this.jdField_a_of_type_Fe != null))
+    if ((this.d) && (this.jdField_a_of_type_Fm != null))
     {
-      this.jdField_a_of_type_Fe.jdField_a_of_type_Int = paramInt1;
-      this.jdField_a_of_type_Fe.jdField_a_of_type_Float = paramInt2;
-      this.jdField_a_of_type_Fe.jdField_b_of_type_Float = paramInt3;
+      this.jdField_a_of_type_Fm.jdField_a_of_type_Int = paramInt1;
+      this.jdField_a_of_type_Fm.jdField_a_of_type_Float = paramInt2;
+      this.jdField_a_of_type_Fm.jdField_b_of_type_Float = paramInt3;
     }
   }
   

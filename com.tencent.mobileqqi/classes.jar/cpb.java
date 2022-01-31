@@ -1,21 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DoodleActivity;
-import com.tencent.mobileqq.widget.DoodlePicView;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 
 public class cpb
-  implements View.OnClickListener
+  extends Handler
 {
-  public cpb(DoodleActivity paramDoodleActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.c();
-  }
+  public cpb(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     cpb
  * JD-Core Version:    0.7.0.1
  */

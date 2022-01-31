@@ -1,20 +1,19 @@
-import android.app.Dialog;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
 
-public class ctb
+class ctb
   implements Animation.AnimationListener
 {
-  public ctb(ForwardRecentActivity paramForwardRecentActivity) {}
+  ctb(cta paramcta) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.jdField_a_of_type_AndroidAppDialog.show();
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.a.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.a.a.jdField_a_of_type_AndroidViewView.setAnimation(null);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout.invalidate();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -23,7 +22,7 @@ public class ctb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ctb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ShortcutGuideDialogActivity;
+import com.tencent.mobileqq.utils.QQUtils;
 
 public class dih
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public dih(QQMapActivity paramQQMapActivity) {}
+  public dih(ShortcutGuideDialogActivity paramShortcutGuideDialogActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.onBackPressed();
-    this.a.c();
+    QQUtils.a(this.a.b, ShortcutGuideDialogActivity.a(this.a), ShortcutGuideDialogActivity.b(this.a), this.a.d(), new Handler(), 500, "1");
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dih
  * JD-Core Version:    0.7.0.1
  */

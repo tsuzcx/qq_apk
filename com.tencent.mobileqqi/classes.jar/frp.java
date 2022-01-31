@@ -1,28 +1,30 @@
-import android.net.Uri;
-import android.provider.ContactsContract.Data;
+import com.tencent.mobileqq.filemanager.activity.FileAssistantActivity;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
 public class frp
+  extends FMObserver
 {
-  public static final int a = 0;
-  public static final Uri a;
-  public static final String a = "raw_contact_id=?";
-  public static final String[] a;
-  public static final int b = 1;
-  public static final String b = "mimetype = ?";
-  public static final String[] b = { "raw_contact_id", "data1" };
-  public static final int c = 2;
-  public static final int d = 0;
-  public static final int e = 1;
+  public frp(FileAssistantActivity paramFileAssistantActivity) {}
   
-  static
+  protected void a(boolean paramBoolean)
   {
-    jdField_a_of_type_AndroidNetUri = ContactsContract.Data.CONTENT_URI;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "_id", "mimetype", "data1" };
+    if (FileAssistantActivity.a(this.a)) {
+      return;
+    }
+    this.a.runOnUiThread(new frq(this, paramBoolean));
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    if (!FileAssistantActivity.a(this.a)) {
+      FMToastUtil.a(paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     frp
  * JD-Core Version:    0.7.0.1
  */

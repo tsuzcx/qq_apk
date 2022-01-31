@@ -1,85 +1,69 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
 
 public class fdn
-  extends DefaultHandler
+  extends FriendListObserver
 {
-  private static final String jdField_a_of_type_JavaLangString = "SAXForHandler";
-  private int jdField_a_of_type_Int = 0;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList;
+  public fdn(MessageHandler paramMessageHandler) {}
   
-  public int a()
+  protected void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.MessageHandler", 2, "onUpdateAnswerAddedFriend isSuccess = " + paramBoolean + ", uin = " + paramString + ", flag = " + paramInt);
+    }
+    if (paramBoolean) {
+      this.a.a.a().o();
+    }
   }
   
-  public ArrayList a()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.MessageHandler", 2, "onUpdateFriendList isSuccess = " + paramBoolean1 + ", isComplete = " + paramBoolean2);
+    }
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a.a().o();
+    }
   }
   
-  public List a()
+  protected void b(boolean paramBoolean, Bundle paramBundle)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    paramArrayOfChar = paramArrayOfChar.toString();
-    QLog.d("SAXForHandler", 4, "characters: " + paramArrayOfChar);
-  }
-  
-  public void endDocument()
-  {
-    QLog.d("SAXForHandler", 4, "endDocument");
-    super.endDocument();
-  }
-  
-  public void endElement(String paramString1, String paramString2, String paramString3)
-  {
-    QLog.d("SAXForHandler", 4, "endElement uri:" + paramString1 + " localName:" + paramString2 + " qName:" + paramString3);
-  }
-  
-  public void startDocument()
-  {
-    QLog.d("SAXForHandler", 4, "startDocument");
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    int j = 0;
-    int i = 0;
-    QLog.d("SAXForHandler", 4, "startElement: uri:" + paramString1 + " localName:" + paramString2 + " qName:" + paramString3);
-    if ("config".equals(paramString2)) {
-      while (i < paramAttributes.getLength())
-      {
-        this.jdField_a_of_type_Int = Integer.valueOf(paramAttributes.getValue(i)).intValue();
-        QLog.d("SAXForHandler", 4, "startElement: localName:" + paramString2 + " value: " + this.jdField_a_of_type_Int);
-        i += 1;
+    if ((paramBundle == null) || (!paramBoolean)) {
+      return;
+    }
+    String str = paramBundle.getString("uin");
+    int i = paramBundle.getInt("resultCode");
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdateAddFriend isSuccess = ");
+      if (i != 0) {
+        break label141;
       }
     }
-    if ("Elem".equals(paramString2))
+    label141:
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      i = j;
-      while (i < paramAttributes.getLength())
-      {
-        paramString1 = paramAttributes.getValue(i);
-        paramString3 = paramAttributes.getLocalName(i);
-        QLog.d("SAXForHandler", 4, "startElement: localName:" + paramString2 + "name: " + paramString3 + " url: " + paramString1);
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramString1);
-        i += 1;
+      QLog.d("Q.msg.MessageHandler", 2, paramBoolean + ", uin = " + str);
+      int j = paramBundle.getInt("source_id");
+      paramBoolean = paramBundle.getBoolean("contact_bothway");
+      int k = paramBundle.getInt("friend_setting");
+      if ((i != 0) || (!AutoRemarkActivity.a(k, j, paramBoolean)) || (str == null) || (str.length() <= 4)) {
+        break;
       }
+      this.a.a.a().o();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fdn
  * JD-Core Version:    0.7.0.1
  */

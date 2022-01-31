@@ -2,7 +2,7 @@ package com.tencent.mobileqq.transfile;
 
 import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
 import com.tencent.qphone.base.remote.FromServiceMsg;
-import grz;
+import gns;
 
 public class ProtoReqManager$ProtoResp
 {
@@ -12,7 +12,7 @@ public class ProtoReqManager$ProtoResp
   public ProtoReqManager.ProtoReq a;
   public FromServiceMsg a;
   boolean a;
-  public grz[] a;
+  public gns[] a;
   
   public ProtoReqManager$ProtoResp()
   {

@@ -1,37 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.QZoneManager.FeedType;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.DataLineMsgSet;
 
 public class fjr
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public fjr(QQAppInterface paramQQAppInterface) {}
+  public fjr(QQMessageFacade paramQQMessageFacade, DataLineMsgSet paramDataLineMsgSet) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    int i;
-    if (paramIntent.getAction().equals("com.tencent.qzone.cleanunreadcount"))
-    {
-      i = paramIntent.getIntExtra("clean_unread_feed_type", -1);
-      paramContext = (QZoneManagerImp)this.a.getManager(9);
-      if (paramContext != null)
-      {
-        if (i != 0) {
-          break label62;
-        }
-        if (paramContext.a(QZoneManager.FeedType.friendSpace) > 0) {
-          paramContext.a(QZoneManager.FeedType.friendSpace, 0, 0L, null);
-        }
-      }
-    }
-    label62:
-    while ((i != 1) || (paramContext.a(QZoneManager.FeedType.mySpacefeed) <= 0)) {
-      return;
-    }
-    paramContext.a(QZoneManager.FeedType.mySpacefeed, 0, 0L, null);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet);
   }
 }
 

@@ -1,12 +1,24 @@
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.widget.ClearableEditText.OnTextClearedListener;
+import com.tencent.mobileqq.activity.HelloListActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class cpz
-  implements ClearableEditText.OnTextClearedListener
+  extends FriendListObserver
 {
-  public cpz(EditInfoActivity paramEditInfoActivity) {}
+  public cpz(HelloListActivity paramHelloListActivity) {}
   
-  public void a() {}
+  protected void a(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.a(0);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.a(0);
+    }
+  }
 }
 
 

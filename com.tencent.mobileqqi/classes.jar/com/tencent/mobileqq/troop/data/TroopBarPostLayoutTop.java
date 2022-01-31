@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.data.TroopBarAbsDataEntity;
 import com.tencent.mobileqq.data.TroopBarPageEntity;
 import com.tencent.mobileqq.data.TroopBarPageEntity.Recommend;
-import gzw;
+import gvp;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -23,7 +23,7 @@ public class TroopBarPostLayoutTop
   extends TroopBarPostAbsLayout
   implements View.OnClickListener
 {
-  protected static final int a = 2130903451;
+  protected static final int a = 2130903453;
   protected View a;
   protected ArrayList a = null;
   protected int b = 0;
@@ -43,8 +43,8 @@ public class TroopBarPostLayoutTop
   {
     if (paramView == null)
     {
-      paramView = paramLayoutInflater.inflate(2130903451, null);
-      paramLayoutInflater = (gzw)a(paramView);
+      paramView = paramLayoutInflater.inflate(2130903453, null);
+      paramLayoutInflater = (gvp)a(paramView);
       paramView.setTag(paramLayoutInflater);
     }
     for (;;)
@@ -57,7 +57,7 @@ public class TroopBarPostLayoutTop
       float f = paramActivity.getResources().getDisplayMetrics().density;
       a(paramLayoutInflater.a, paramActivity, f);
       return paramView;
-      paramLayoutInflater = (gzw)paramView.getTag();
+      paramLayoutInflater = (gvp)paramView.getTag();
     }
     paramLayoutInflater.b.setVisibility(8);
     return paramView;
@@ -77,25 +77,25 @@ public class TroopBarPostLayoutTop
     localTextView.setTextAppearance(paramActivity, 2131624076);
     localTextView.setCompoundDrawablesWithIntrinsicBounds(paramDrawable, null, null, null);
     localTextView.setIncludeFontPadding(false);
-    localTextView.setCompoundDrawablePadding(paramActivity.getResources().getDimensionPixelSize(2131427555));
+    localTextView.setCompoundDrawablePadding(paramActivity.getResources().getDimensionPixelSize(2131427558));
     localTextView.setTag(paramRecommend);
     localTextView.setOnClickListener(this);
     localTextView.setSingleLine(true);
     localTextView.setEllipsize(TextUtils.TruncateAt.END);
-    localTextView.setBackgroundDrawable(paramActivity.getResources().getDrawable(2130838510));
+    localTextView.setBackgroundDrawable(paramActivity.getResources().getDrawable(2130838512));
     localTextView.setText(paramRecommend.title);
     return localTextView;
   }
   
   public TroopBarPostAbsLayout.AbsItemViewHolder a(View paramView)
   {
-    return new gzw(this, paramView);
+    return new gvp(this, paramView);
   }
   
   protected void a(LinearLayout paramLinearLayout, Activity paramActivity, float paramFloat)
   {
     paramLinearLayout.removeAllViews();
-    int k = paramActivity.getResources().getColor(2131361919);
+    int k = paramActivity.getResources().getColor(2131361929);
     int m = this.a.size();
     Iterator localIterator = this.a.iterator();
     int i = 0;

@@ -1,20 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
+import com.tencent.mobileqq.magicface.view.MagicfaceView.SurfaceCreateListener;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 
 public class gbd
-  implements Runnable
+  implements MagicfaceView.SurfaceCreateListener
 {
-  public gbd(UniformDownloadMgr paramUniformDownloadMgr, String paramString, Bundle paramBundle) {}
+  public gbd(MagicfaceViewController paramMagicfaceViewController, Emoticon paramEmoticon, int paramInt, String paramString) {}
   
-  public void run()
+  public void a()
   {
-    UniformDownloadMgr.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr);
+    MagicfaceViewController.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gbd
  * JD-Core Version:    0.7.0.1
  */

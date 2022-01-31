@@ -11,8 +11,8 @@ import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
-import fwy;
-import fxa;
+import fsm;
+import fso;
 
 public class UniformDownloadActivity
   extends BaseActivity
@@ -46,27 +46,27 @@ public class UniformDownloadActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130903510);
-    paramBundle = (TextView)findViewById(2131232775);
-    TextView localTextView = (TextView)findViewById(2131232776);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232768));
+    super.setContentView(2130903512);
+    paramBundle = (TextView)findViewById(2131232778);
+    TextView localTextView = (TextView)findViewById(2131232779);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232771));
     if (localTextView != null)
     {
       if (getIntent().getLongExtra(c, 0L) == 1L) {
         localTextView.setText(2131562563);
       }
-      localTextView.setOnClickListener(new fwy(this));
+      localTextView.setOnClickListener(new fsm(this));
     }
     if (paramBundle != null) {
-      paramBundle.setOnClickListener(new fxa(this));
+      paramBundle.setOnClickListener(new fso(this));
     }
     paramBundle = getIntent();
     this.g = paramBundle.getStringExtra(b);
     this.h = paramBundle.getStringExtra(d);
     this.jdField_a_of_type_Long = paramBundle.getLongExtra(e, 0L);
-    paramBundle = (TextView)findViewById(2131232771);
-    localTextView = (TextView)findViewById(2131232772);
-    ImageView localImageView = (ImageView)findViewById(2131232769);
+    paramBundle = (TextView)findViewById(2131232774);
+    localTextView = (TextView)findViewById(2131232775);
+    ImageView localImageView = (ImageView)findViewById(2131232772);
     paramBundle.setText(this.h);
     localTextView.setText(FileUtil.a(this.jdField_a_of_type_Long));
     int i = FileManagerUtil.b(this.h);
@@ -76,7 +76,7 @@ public class UniformDownloadActivity
     for (;;)
     {
       return true;
-      localImageView.setImageResource(2130838623);
+      localImageView.setImageResource(2130838625);
     }
   }
 }

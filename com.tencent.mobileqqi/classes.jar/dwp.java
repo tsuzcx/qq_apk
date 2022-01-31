@@ -1,24 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class dwp
-  implements DialogInterface.OnDismissListener
+public final class dwp
+  implements Parcelable.Creator
 {
-  public dwp(TroopMemberListActivity paramTroopMemberListActivity, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public SessionInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.findViewById(2131234620).getHandler().postDelayed(new dwq(this), 150L);
+    return new SessionInfo(paramParcel);
+  }
+  
+  public SessionInfo[] a(int paramInt)
+  {
+    return new SessionInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dwp
  * JD-Core Version:    0.7.0.1
  */

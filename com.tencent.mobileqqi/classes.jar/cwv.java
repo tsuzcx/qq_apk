@@ -1,16 +1,19 @@
-import com.tencent.mobileqq.activity.HornPublishActivity;
-import com.tencent.mobileqq.app.NearHornHandler;
+import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import java.util.ArrayList;
 
 public class cwv
   implements Runnable
 {
-  public cwv(HornPublishActivity paramHornPublishActivity, String paramString) {}
+  public cwv(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.jdField_a_of_type_JavaLangString);
-    }
+    this.a.c();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a());
+    this.a.a.a(this.a.jdField_b_of_type_JavaLangString, this.a.c, localArrayList);
   }
 }
 

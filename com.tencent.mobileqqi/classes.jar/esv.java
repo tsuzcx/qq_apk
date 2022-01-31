@@ -1,28 +1,20 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.util.VersionUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundActivity;
 
 public class esv
-  implements View.OnClickListener
 {
-  public esv(BannerManager paramBannerManager) {}
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public String a;
+  public TextView b;
   
-  public void onClick(View paramView)
-  {
-    if (VersionUtils.e())
-    {
-      BannerManager.a(this.a).startActivity(new Intent("android.settings.SETTINGS"));
-      return;
-    }
-    BannerManager.a(this.a).startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
-  }
+  private esv(QvipSpecialSoundActivity paramQvipSpecialSoundActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     esv
  * JD-Core Version:    0.7.0.1
  */

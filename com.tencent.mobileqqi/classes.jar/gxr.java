@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateAvatarActivity;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class gxr
-  implements View.OnClickListener
+class gxr
+  implements DialogInterface.OnClickListener
 {
-  public gxr(TroopCreateAvatarActivity paramTroopCreateAvatarActivity) {}
+  gxr(gxq paramgxq) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.f();
+    paramDialogInterface.dismiss();
   }
 }
 

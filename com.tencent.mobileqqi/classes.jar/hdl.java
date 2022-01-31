@@ -1,23 +1,17 @@
-import com.tencent.mobileqq.troop.widget.NearbyTroopsMapView;
-import com.tencent.tencentmap.mapsdk.map.ItemizedOverlay;
-import com.tencent.tencentmap.mapsdk.map.ItemizedOverlay.OnFocusChangeListener;
-import com.tencent.tencentmap.mapsdk.map.OverlayItem;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.QQCustomSingleChoiceDialog;
 
 public class hdl
-  implements ItemizedOverlay.OnFocusChangeListener
 {
-  public hdl(NearbyTroopsMapView paramNearbyTroopsMapView) {}
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onFocusChanged(ItemizedOverlay paramItemizedOverlay, OverlayItem paramOverlayItem)
-  {
-    if (paramOverlayItem == null) {
-      NearbyTroopsMapView.a(this.a, false);
-    }
-  }
+  private hdl(QQCustomSingleChoiceDialog paramQQCustomSingleChoiceDialog) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hdl
  * JD-Core Version:    0.7.0.1
  */

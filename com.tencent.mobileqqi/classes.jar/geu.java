@@ -1,15 +1,23 @@
-import com.tencent.mobileqq.magicface.magicfaceaction.Action;
-import java.util.TimerTask;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.profile.view.CircularProgressBar;
 
 public class geu
-  extends TimerTask
+  extends Handler
 {
-  public geu(Action paramAction) {}
+  public geu(CircularProgressBar paramCircularProgressBar) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a();
-    this.a.b();
+    this.a.invalidate();
+    if (CircularProgressBar.a(this.a))
+    {
+      CircularProgressBar.a(this.a, CircularProgressBar.a(this.a));
+      if (CircularProgressBar.b(this.a) > 360) {
+        CircularProgressBar.b(this.a, 0);
+      }
+      CircularProgressBar.a(this.a).sendEmptyMessageDelayed(0, CircularProgressBar.c(this.a));
+    }
   }
 }
 

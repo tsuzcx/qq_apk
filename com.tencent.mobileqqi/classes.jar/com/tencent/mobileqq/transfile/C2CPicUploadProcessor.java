@@ -39,11 +39,11 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.wstt.SSCM.SSCM;
-import grd;
-import gre;
-import grf;
-import grg;
-import gsg;
+import gmw;
+import gmx;
+import gmy;
+import gmz;
+import gnz;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.RandomAccessFile;
@@ -62,7 +62,7 @@ public class C2CPicUploadProcessor
 {
   public static final String U = "C2CPicUploadProcessor";
   private static final boolean j = false;
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new grg(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new gmz(this);
   private Transaction jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = null;
   private int aH = 0;
   boolean i = false;
@@ -349,7 +349,7 @@ public class C2CPicUploadProcessor
   
   private void u()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new grd(this));
+    this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new gmw(this));
   }
   
   private void v()
@@ -799,8 +799,8 @@ public class C2CPicUploadProcessor
       return;
       this.jdField_b_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo.a();
       byte[] arrayOfByte = HexUtil.a(this.T);
-      gre localgre = new gre(this, SystemClock.uptimeMillis());
-      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 1, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.g, (int)this.jdField_g_of_type_Long, arrayOfByte, this.jdField_a_of_type_ArrayOfByte, localgre);
+      gmx localgmx = new gmx(this, SystemClock.uptimeMillis());
+      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 1, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.g, (int)this.jdField_g_of_type_Long, arrayOfByte, this.jdField_a_of_type_ArrayOfByte, localgmx);
       k = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().submitTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
       if (QLog.isColorLevel()) {
         QLog.d("C2CPicUploadProcessor", 2, "<BDH_LOG> Transaction submit RetCode:" + k + " T_ID:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId() + " UniSeq:" + this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Long + " MD5:" + this.jdField_c_of_type_JavaLangString + " uuid:" + this.S + " Path:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.filePath + " Cmd:" + 1);
@@ -1018,7 +1018,7 @@ public class C2CPicUploadProcessor
       this.J = "";
       this.jdField_a_of_type_ComTencentWsttSSCMSSCM.a();
       v();
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new grf(this));
+      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new gmy(this));
     }
     return 0;
   }

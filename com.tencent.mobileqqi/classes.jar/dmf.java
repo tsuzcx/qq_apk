@@ -1,16 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SubAccountMessageActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 
 public class dmf
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public dmf(RegisterSendUpSms paramRegisterSendUpSms) {}
+  public dmf(SubAccountMessageActivity paramSubAccountMessageActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RegisterSendUpSms.a(this.a, this.a.getString(2131562642));
-    RegisterSendUpSms.a(this.a);
+    paramDialogInterface = new Intent(this.a, SubLoginActivity.class);
+    this.a.startActivity(paramDialogInterface);
+    this.a.f();
+    this.a.finish();
   }
 }
 

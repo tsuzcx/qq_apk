@@ -23,9 +23,9 @@ import com.tencent.mobileqq.activity.aio.AudioPlayer;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.emosm.EmosmUtils;
 import com.tencent.mobileqq.statistics.ReportController;
-import fsr;
-import fss;
-import fst;
+import foe;
+import fof;
+import fog;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,10 +43,10 @@ public class EmoticonLinearLayout
   private AudioPlayer jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer;
   private EmoticonCallback jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback;
   private EmoticonInfo jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo;
-  EmoticonLinearLayout.DataObserver jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$DataObserver = new fsr(this);
+  EmoticonLinearLayout.DataObserver jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$DataObserver = new foe(this);
   public EmoticonLinearLayout.EmoticonAdapter a;
-  private fst jdField_a_of_type_Fst;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new fss(this);
+  private fog jdField_a_of_type_Fog;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new fof(this);
   public List a;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
@@ -257,8 +257,8 @@ public class EmoticonLinearLayout
     for (;;)
     {
       return true;
-      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Fst != null)) {
-        removeCallbacks(this.jdField_a_of_type_Fst);
+      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Fog != null)) {
+        removeCallbacks(this.jdField_a_of_type_Fog);
       }
       if ((this.jdField_a_of_type_AndroidViewView != null) && (!this.jdField_a_of_type_Boolean)) {
         a(this.jdField_a_of_type_AndroidViewView);
@@ -271,19 +271,19 @@ public class EmoticonLinearLayout
       this.jdField_a_of_type_AndroidViewView = a(paramMotionEvent.getX(), paramMotionEvent.getY());
       if (this.jdField_a_of_type_AndroidViewView != null)
       {
-        if (this.jdField_a_of_type_Fst == null) {
-          this.jdField_a_of_type_Fst = new fst(this);
+        if (this.jdField_a_of_type_Fog == null) {
+          this.jdField_a_of_type_Fog = new fog(this);
         }
-        this.jdField_a_of_type_Fst.a();
-        postDelayed(this.jdField_a_of_type_Fst, ViewConfiguration.getLongPressTimeout());
+        this.jdField_a_of_type_Fog.a();
+        postDelayed(this.jdField_a_of_type_Fog, ViewConfiguration.getLongPressTimeout());
         paramMotionEvent = (EmoticonInfo)this.jdField_a_of_type_AndroidViewView.getTag();
         if ((paramMotionEvent != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback != null) && ("delete".equals(paramMotionEvent.a)))
         {
           this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback.a();
           continue;
           setPressed(false);
-          if (this.jdField_a_of_type_Fst != null) {
-            removeCallbacks(this.jdField_a_of_type_Fst);
+          if (this.jdField_a_of_type_Fog != null) {
+            removeCallbacks(this.jdField_a_of_type_Fog);
           }
           removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
           b();

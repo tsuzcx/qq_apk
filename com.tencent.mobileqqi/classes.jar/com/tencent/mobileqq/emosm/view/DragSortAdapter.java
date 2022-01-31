@@ -38,8 +38,8 @@ public class DragSortAdapter
 {
   private Handler handler;
   private LruCache mCache = new LruCache(30);
-  protected Context mContext;
-  protected List mData;
+  public Context mContext;
+  public List mData;
   private Drawable mDefaultIcon;
   private EmoticonWording mEmoticonWording;
   private boolean mIsEdited;
@@ -138,18 +138,18 @@ public class DragSortAdapter
   {
     paramViewGroup = paramView;
     if (paramView == null) {
-      paramViewGroup = View.inflate(this.mContext, 2130903231, null);
+      paramViewGroup = View.inflate(this.mContext, 2130903233, null);
     }
     paramViewGroup.setVisibility(0);
     ImageView localImageView1 = (ImageView)paramViewGroup.findViewById(2131231102);
-    ImageView localImageView2 = (ImageView)paramViewGroup.findViewById(2131231692);
+    ImageView localImageView2 = (ImageView)paramViewGroup.findViewById(2131231694);
     ImageView localImageView3 = (ImageView)paramViewGroup.findViewById(2131230761);
-    ImageView localImageView4 = (ImageView)paramViewGroup.findViewById(2131231693);
+    ImageView localImageView4 = (ImageView)paramViewGroup.findViewById(2131231695);
     View localView1 = paramViewGroup.findViewById(2131230987);
     EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.mData.get(paramInt);
-    View localView2 = paramViewGroup.findViewById(2131231697);
-    Object localObject = (Button)paramViewGroup.findViewById(2131231648);
-    ProgressCircle localProgressCircle = (ProgressCircle)paramViewGroup.findViewById(2131231698);
+    View localView2 = paramViewGroup.findViewById(2131231699);
+    Object localObject = (Button)paramViewGroup.findViewById(2131231649);
+    ProgressCircle localProgressCircle = (ProgressCircle)paramViewGroup.findViewById(2131231700);
     paramView = this.mEmoticonWording.a(localEmoticonPackage.wordingId, localEmoticonPackage.expiretime);
     if (localEmoticonPackage.valid)
     {
@@ -188,7 +188,7 @@ public class DragSortAdapter
           }
           localImageView2.setVisibility(8);
           localImageView3.setVisibility(8);
-          ((TextView)paramViewGroup.findViewById(2131231695)).setText(localEmoticonPackage.name);
+          ((TextView)paramViewGroup.findViewById(2131231697)).setText(localEmoticonPackage.name);
           localImageView1.setImageDrawable(getEPIcon(localEmoticonPackage));
           paramView = (ImageView)paramViewGroup.findViewById(2131231103);
           if (localEmoticonPackage.hasSound != true) {
@@ -200,7 +200,7 @@ public class DragSortAdapter
     }
     for (;;)
     {
-      paramView = (TextView)paramViewGroup.findViewById(2131231696);
+      paramView = (TextView)paramViewGroup.findViewById(2131231698);
       long l = new Date().getTime() / 1000L;
       if ((localEmoticonPackage.expiretime <= l) || ((localEmoticonPackage.expiretime - l) / 86400L >= 1L)) {
         break label793;
@@ -256,13 +256,13 @@ public class DragSortAdapter
       boolean bool = getSelectStatus(paramInt);
       localImageView2.setVisibility(0);
       if (bool) {
-        localImageView2.setImageResource(2130840215);
+        localImageView2.setImageResource(2130840217);
       }
       for (;;)
       {
         localImageView3.setVisibility(0);
         break;
-        localImageView2.setImageResource(2130840216);
+        localImageView2.setImageResource(2130840218);
       }
       label784:
       paramView.setVisibility(8);

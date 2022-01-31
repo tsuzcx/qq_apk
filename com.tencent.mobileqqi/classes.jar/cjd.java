@@ -1,18 +1,26 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.DoodleActivity;
 
 public class cjd
-  implements IIconListener
+  implements View.OnClickListener
 {
-  public cjd(ChatSettingActivity paramChatSettingActivity) {}
+  public cjd(DoodleActivity paramDoodleActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_AndroidWidgetTextView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.b == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
-      ChatSettingActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus, this.a.jdField_a_of_type_AndroidWidgetTextView);
+    if ((this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0) || (this.a.b.getVisibility() == 0))
+    {
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.a.b.setVisibility(8);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+      return;
     }
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839725);
+    this.a.c.setVisibility(0);
   }
 }
 

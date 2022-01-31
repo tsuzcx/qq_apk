@@ -1,40 +1,14 @@
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundActivity;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.mobileqq.activity.voip.VoipTencentPayActivity;
+import java.util.TimerTask;
 
-public class exd
-  implements QvipSpecialSoundManager.CallBack
+class exd
+  extends TimerTask
 {
-  public exd(QvipSpecialSoundActivity paramQvipSpecialSoundActivity, String paramString) {}
+  exd(exc paramexc) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity.a = ((List)QvipSpecialSoundManager.a.get(this.jdField_a_of_type_JavaLangString));
-        QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("SpecialSoundActivity", 2, "special sound cofing is empty.");
-      }
-      QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity, this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity.getString(2131562063));
-    }
+    this.a.a.d();
   }
 }
 

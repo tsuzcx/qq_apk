@@ -1,19 +1,20 @@
-import android.media.SoundPool;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import com.tencent.mobileqq.app.CircleManager;
+import com.tencent.mobileqq.data.CircleGroup;
+import java.util.Comparator;
 
-class ezr
-  implements Runnable
+public class ezr
+  implements Comparator
 {
-  ezr(ezq paramezq) {}
+  public ezr(CircleManager paramCircleManager) {}
   
-  public void run()
+  public int a(CircleGroup paramCircleGroup1, CircleGroup paramCircleGroup2)
   {
-    VoipDialInterfaceActivity.a(this.a.a).play(VoipDialInterfaceActivity.d(this.a.a), 1.0F, 1.0F, 0, 0, 1.0F);
+    return paramCircleGroup1.showIndex - paramCircleGroup2.showIndex;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ezr
  * JD-Core Version:    0.7.0.1
  */

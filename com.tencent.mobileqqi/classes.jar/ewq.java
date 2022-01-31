@@ -1,35 +1,20 @@
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareActivity;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.voip.VoipHistoryActivity;
+import com.tencent.mobileqq.widget.PinnedDividerListView;
+import com.tencent.widget.AdapterView.AdapterContextMenuInfo;
 
 public class ewq
-  implements QvipSpecialSoundManager.CallBack
+  implements MenuItem.OnMenuItemClickListener
 {
-  public ewq(QvipSpecialCareActivity paramQvipSpecialCareActivity) {}
+  public ewq(VoipHistoryActivity paramVoipHistoryActivity) {}
   
-  public void a(boolean paramBoolean)
+  public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        QvipSpecialCareActivity.a(this.a);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        QvipSpecialCareActivity.a(this.a);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QvipSpecialCareActivity", 2, "loadSpecialSoundConfig fail.");
-      }
-    }
+    paramMenuItem = (AdapterView.AdapterContextMenuInfo)paramMenuItem.getMenuInfo();
+    this.a.b(((ViewGroup)VoipHistoryActivity.a(this.a).getChildAt(paramMenuItem.a)).getChildAt(0));
+    return true;
   }
 }
 

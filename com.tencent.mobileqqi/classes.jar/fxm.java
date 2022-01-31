@@ -1,19 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.fileviewer.base.BaseFileViewerActivity;
-import com.tencent.mobileqq.filemanager.activity.fileviewer.base.BaseFileViewerController;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
-public class fxm
-  implements AdapterView.OnItemSelectedListener
+public final class fxm
+  implements Parcelable.Creator
 {
-  public fxm(BaseFileViewerController paramBaseFileViewerController) {}
-  
-  public void a(AdapterView paramAdapterView) {}
-  
-  public void a_(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public FileInfo a(Parcel paramParcel)
   {
-    this.a.a.a(paramAdapterView, paramView, paramInt, paramLong);
+    return new FileInfo(paramParcel, null);
+  }
+  
+  public FileInfo[] a(int paramInt)
+  {
+    return new FileInfo[paramInt];
   }
 }
 

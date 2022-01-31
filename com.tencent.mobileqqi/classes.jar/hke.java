@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.widget.ContainerView;
-import com.tencent.widget.ScrollView;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.open.downloadnew.MyAppApi;
 
-public class hke
+public final class hke
   implements Runnable
 {
-  public hke(ContainerView paramContainerView, int paramInt) {}
+  public hke(Activity paramActivity, Bundle paramBundle) {}
   
   public void run()
   {
-    ContainerView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView).b(0, this.jdField_a_of_type_Int);
+    MyAppApi.a().a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.jdField_a_of_type_AndroidOsBundle, false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hke
  * JD-Core Version:    0.7.0.1
  */

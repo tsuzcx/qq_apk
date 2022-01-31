@@ -1,60 +1,51 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.FriendListHandler;
+import com.dataline.util.WaitEvent;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class fjq
-  extends Handler
+  implements Runnable
 {
-  public fjq(QQAppInterface paramQQAppInterface, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public fjq(QQMessageFacade paramQQMessageFacade, DataLineMsgRecord paramDataLineMsgRecord, WaitEvent paramWaitEvent) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    EntityManager localEntityManager = QQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade).a().createEntityManager();
+    try
     {
-    }
-    do
-    {
-      return;
-      paramMessage = (QQAppInterface)((WeakReference)paramMessage.obj).get();
-      if (paramMessage != null) {
-        break;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time == 0L) {
+        this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time = MessageCache.a();
       }
-    } while (!QLog.isColorLevel());
-    QLog.d(QQAppInterface.jdField_a_of_type_JavaLangString, 2, "getOnlineFriend app is null");
-    return;
-    long l1 = QQAppInterface.bg;
-    long l2 = SystemClock.uptimeMillis();
-    long l3 = l2 - this.a.b;
-    if ((!"0".equals(paramMessage.a())) && (l3 > QQAppInterface.bg))
-    {
+      if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgseq == 0L) {
+        this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgseq = ((int)this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time);
+      }
+      RecentUserProxy localRecentUserProxy = QQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade).a().a();
+      RecentUser localRecentUser = localRecentUserProxy.a(String.valueOf(AppConstants.P), 6000);
+      localRecentUser.type = 6000;
+      localRecentUser.lastmsgtime = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time;
+      localRecentUserProxy.a(localRecentUser);
+      QQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, localEntityManager);
+      long l = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgId;
+      QQMessageFacade.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade);
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.notifyObservers(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
+      this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
+      localEntityManager.a();
       if (QLog.isColorLevel()) {
-        QLog.d(QQAppInterface.jdField_a_of_type_JavaLangString, 2, "getOnlineFriend");
+        QLog.d("Q.msg.QQMessageFacade", 2, "mr.msgId: " + l);
       }
-      this.a.b = l2;
-      FriendListHandler localFriendListHandler = (FriendListHandler)paramMessage.a(1);
-      if (localFriendListHandler != null) {
-        localFriendListHandler.d(paramMessage.a(), (byte)0);
-      }
-    }
-    if (l3 < QQAppInterface.bg) {
-      l1 = QQAppInterface.bg - l3;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(QQAppInterface.jdField_a_of_type_JavaLangString, 2, "getOnlineFriend send next msg " + l1);
-      }
-      paramMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, new WeakReference(paramMessage));
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, l1);
       return;
+    }
+    finally
+    {
+      localEntityManager.a();
     }
   }
 }

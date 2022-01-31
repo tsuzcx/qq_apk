@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.qphone.base.util.QLog;
-import wifiphoto.WifiPhotoDataCenter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ffk
-  extends Thread
+  implements Runnable
 {
-  public ffk(DataLineHandler paramDataLineHandler) {}
+  public ffk(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    DataLineHandler.a.a(true);
-    if (QLog.isColorLevel()) {
-      QLog.d("wifiphoto", 2, "openWifiPhoto begin sendWifiPhotoBasicInfo");
-    }
-    DataLineHandler.b(this.a);
-    DataLineHandler.c(this.a);
+    QQToast.a(QQAppInterface.c(this.a).getApplicationContext(), 2131562935, 3000).a();
   }
 }
 

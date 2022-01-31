@@ -10,9 +10,9 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.theme.NightModeLogic;
 import com.tencent.qphone.base.util.QLog;
-import dto;
-import dtp;
-import dtr;
+import dnx;
+import dny;
+import doa;
 
 public class ThemeSwitchDlgActivity
   extends BaseActivity
@@ -29,8 +29,8 @@ public class ThemeSwitchDlgActivity
     }
     if (this.jdField_a_of_type_AndroidAppDialog == null)
     {
-      this.jdField_a_of_type_AndroidAppDialog = a(2131563150, 2131562472, 2131561746, 2131562899, new dto(this), new dtp(this));
-      this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new dtr(this));
+      this.jdField_a_of_type_AndroidAppDialog = a(2131563150, 2131562472, 2131561746, 2131562899, new dnx(this), new dny(this));
+      this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new doa(this));
     }
     this.jdField_a_of_type_AndroidAppDialog.show();
   }

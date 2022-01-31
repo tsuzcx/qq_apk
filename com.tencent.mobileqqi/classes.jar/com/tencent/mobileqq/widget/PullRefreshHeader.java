@@ -74,7 +74,7 @@ public class PullRefreshHeader
     switch (paramInt)
     {
     default: 
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839643);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839645);
     }
     for (;;)
     {
@@ -89,17 +89,17 @@ public class PullRefreshHeader
       this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       return;
-      localDrawable = getResources().getDrawable(2130839645);
+      localDrawable = getResources().getDrawable(2130839647);
       str = getResources().getString(2131563136);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839647);
+      continue;
+      localDrawable = getResources().getDrawable(2130839645);
+      str = getResources().getString(2131562097);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839645);
       continue;
-      localDrawable = getResources().getDrawable(2130839643);
+      localDrawable = getResources().getDrawable(2130839646);
       str = getResources().getString(2131562097);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839643);
-      continue;
-      localDrawable = getResources().getDrawable(2130839644);
-      str = getResources().getString(2131562097);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839643);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839645);
     }
   }
   
@@ -114,7 +114,7 @@ public class PullRefreshHeader
   
   public boolean a()
   {
-    return this.jdField_a_of_type_AndroidWidgetImageView.getDrawable().getConstantState().equals(getResources().getDrawable(2130839645).getConstantState());
+    return this.jdField_a_of_type_AndroidWidgetImageView.getDrawable().getConstantState().equals(getResources().getDrawable(2130839647).getConstantState());
   }
   
   public void b(long paramLong)
@@ -130,7 +130,7 @@ public class PullRefreshHeader
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839641);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839643);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(2131562673);
     d(paramLong);
   }
@@ -141,9 +141,9 @@ public class PullRefreshHeader
   {
     super.onFinishInflate();
     this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131231066));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131232080));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232081));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232082));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131232083));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232084));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232085));
     c(0L);
   }
 }

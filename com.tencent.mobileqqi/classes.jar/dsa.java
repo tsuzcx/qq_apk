@@ -1,22 +1,12 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SubAccountSettingActivity;
-import com.tencent.mobileqq.activity.SubaccountUgActivity;
 
 class dsa
   implements DialogInterface.OnClickListener
 {
   dsa(drz paramdrz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.a().setTitle("");
-    paramDialogInterface = new Intent(this.a.a.a(), SubaccountUgActivity.class);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

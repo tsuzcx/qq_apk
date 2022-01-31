@@ -1,20 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 
 public class gbc
   implements Runnable
 {
-  public gbc(UniformDownloadMgr paramUniformDownloadMgr, String paramString, Bundle paramBundle) {}
+  public gbc(MagicfaceViewController paramMagicfaceViewController) {}
   
   public void run()
   {
-    UniformDownloadMgr.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr);
+    MagicfaceViewController.a(this.a).p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gbc
  * JD-Core Version:    0.7.0.1
  */

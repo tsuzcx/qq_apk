@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.qphone.base.util.QLog;
 
 public class fty
-  extends FMObserver
+  implements Runnable
 {
-  public fty(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
+  public fty(FileTransferHandler paramFileTransferHandler, long paramLong, boolean paramBoolean, String paramString) {}
   
-  protected void a(String paramString1, String paramString2, Integer paramInteger, String paramString3, boolean paramBoolean)
+  public void run()
   {
-    super.a(paramString1, paramString2, paramInteger, paramString3, paramBoolean);
+    QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Long + "]  handle query onlinefile upload progress resp. sucess =" + this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
   }
 }
 

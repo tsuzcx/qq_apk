@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.phone.TosActivity;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.mobileqq.data.CircleBuddy;
 
 public class eqm
-  implements View.OnLongClickListener
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public eqm(TosActivity paramTosActivity) {}
-  
-  public boolean onLongClick(View paramView)
-  {
-    return true;
-  }
+  public CheckBox a;
+  public TextView a;
+  public CircleBuddy a;
 }
 
 

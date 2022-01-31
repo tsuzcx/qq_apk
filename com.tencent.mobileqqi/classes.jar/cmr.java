@@ -1,23 +1,17 @@
-import com.tencent.mobileqq.activity.DetailProfileActivity;
-import com.tencent.mobileqq.richstatus.IStatusListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class cmr
-  implements IStatusListener
+  extends FriendListObserver
 {
-  public cmr(DetailProfileActivity paramDetailProfileActivity) {}
+  public cmr(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void a(int paramInt, RichStatus paramRichStatus)
+  protected void a(String paramString, boolean paramBoolean)
   {
-    if (paramInt == -1) {
-      this.a.a(2131561424, 1);
+    if (paramBoolean) {
+      ForwardRecentActivity.b(this.a);
     }
-    this.a.a();
   }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 

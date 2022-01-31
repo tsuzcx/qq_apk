@@ -1,78 +1,51 @@
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.av.ui.VideoInviteLock;
-import com.tencent.av.widget.shimmer.ShimmerTextView;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.biz.qrcode.CodeMaskManager;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class blf
-  implements View.OnTouchListener
+  extends Thread
 {
-  public blf(VideoInviteLock paramVideoInviteLock) {}
+  public blf(CodeMaskManager paramCodeMaskManager, SharedPreferences paramSharedPreferences, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    switch (paramMotionEvent.getAction())
+    localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    localEditor.putLong("updateTemplate2", System.currentTimeMillis());
+    Object localObject = "http://qm.qq.com/cgi-bin/tpl?v=1&os=a&resx=" + this.jdField_a_of_type_Int + "&resy=" + this.b + "&t=" + this.c;
+    try
     {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.j = ((int)paramMotionEvent.getRawX());
-      this.a.i();
-      continue;
-      int i = (int)paramMotionEvent.getRawX() - this.a.j;
-      if (i > 2)
-      {
-        this.a.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(4);
-        this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(4);
+      String str = HttpUtil.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.jdField_a_of_type_AndroidAppActivity, (String)localObject, "GET", null, null);
+      if (QLog.isColorLevel()) {
+        QLog.d("QRHttpUtil", 2, "open :" + (String)localObject + ", result: " + str);
       }
-      paramView = this.a.jdField_a_of_type_AndroidGraphicsRect;
-      paramView.left += i;
-      paramView = this.a.jdField_a_of_type_AndroidGraphicsRect;
-      paramView.right = (i + paramView.right);
-      if (this.a.jdField_a_of_type_AndroidGraphicsRect.right >= this.a.l)
+      localObject = new JSONObject(str);
+      if (((JSONObject)localObject).getInt("r") == 0)
       {
-        this.a.jdField_a_of_type_AndroidGraphicsRect.right = this.a.l;
-        this.a.jdField_a_of_type_AndroidGraphicsRect.left = (this.a.jdField_a_of_type_AndroidGraphicsRect.right - this.a.jdField_b_of_type_AndroidWidgetImageView.getWidth());
-      }
-      if (this.a.jdField_a_of_type_AndroidGraphicsRect.left <= this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getLeft() + this.a.m)
-      {
-        this.a.jdField_a_of_type_AndroidGraphicsRect.left = (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getLeft() + this.a.m);
-        this.a.jdField_a_of_type_AndroidGraphicsRect.right = (this.a.jdField_a_of_type_AndroidGraphicsRect.left + this.a.jdField_b_of_type_AndroidWidgetImageView.getWidth());
-      }
-      this.a.jdField_b_of_type_AndroidWidgetImageView.layout(this.a.jdField_a_of_type_AndroidGraphicsRect.left, this.a.jdField_b_of_type_AndroidGraphicsRect.top, this.a.jdField_a_of_type_AndroidGraphicsRect.right, this.a.jdField_b_of_type_AndroidGraphicsRect.bottom);
-      this.a.jdField_d_of_type_AndroidWidgetImageView.layout(this.a.jdField_a_of_type_AndroidGraphicsRect.left - this.a.m, this.a.jdField_c_of_type_AndroidGraphicsRect.top, this.a.jdField_c_of_type_AndroidGraphicsRect.right, this.a.jdField_c_of_type_AndroidGraphicsRect.bottom);
-      this.a.j = ((int)paramMotionEvent.getRawX());
-      continue;
-      if (this.a.jdField_a_of_type_AndroidGraphicsRect.right == this.a.l)
-      {
-        if (this.a.jdField_b_of_type_Boolean) {
-          ReportController.b(null, "CliOper", "", "", "0X8004201", "0X8004201", 0, 0, Integer.toString(this.a.jdField_d_of_type_Int), Integer.toString(this.a.f), "", "");
-        }
-        for (;;)
+        localObject = ((JSONObject)localObject).getJSONArray("tpls");
+        if (((JSONArray)localObject).length() > 0)
         {
-          this.a.c();
-          break;
-          ReportController.b(null, "CliOper", "", "", "0X8004205", "0X8004205", 0, 0, Integer.toString(this.a.jdField_d_of_type_Int), Integer.toString(this.a.f), "", "");
-        }
-      }
-      if (this.a.jdField_a_of_type_AndroidGraphicsRect.right < this.a.l)
-      {
-        this.a.jdField_b_of_type_AndroidWidgetImageView.layout(this.a.jdField_b_of_type_AndroidGraphicsRect.left, this.a.jdField_b_of_type_AndroidGraphicsRect.top, this.a.jdField_b_of_type_AndroidGraphicsRect.right, this.a.jdField_b_of_type_AndroidGraphicsRect.bottom);
-        this.a.jdField_d_of_type_AndroidWidgetImageView.layout(this.a.jdField_c_of_type_AndroidGraphicsRect.left, this.a.jdField_c_of_type_AndroidGraphicsRect.top, this.a.jdField_c_of_type_AndroidGraphicsRect.right, this.a.jdField_c_of_type_AndroidGraphicsRect.bottom);
-        this.a.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(0);
-        this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-        if (this.a.jdField_b_of_type_Boolean) {
-          ReportController.b(null, "CliOper", "", "", "0X800439E", "0X800439E", 0, 0, Integer.toString(this.a.jdField_d_of_type_Int), Integer.toString(this.a.f), "", "");
-        } else {
-          ReportController.b(null, "CliOper", "", "", "0X80043FD", "0X80043FD", 0, 0, Integer.toString(this.a.jdField_d_of_type_Int), Integer.toString(this.a.f), "", "");
+          this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.jdField_a_of_type_AndroidOsHandler.post(new blg(this, (JSONArray)localObject));
+          localEditor.putString("tpl_json", str);
         }
       }
     }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("QRHttpUtil", 2, localException.getMessage());
+        }
+        localEditor.putLong("updateTemplate2", 0L);
+      }
+    }
+    localEditor.commit();
+    this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.jdField_a_of_type_JavaLangThread = null;
   }
 }
 

@@ -7,8 +7,8 @@ import android.util.Pair;
 import com.tencent.mobileqq.app.DiscussionHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import hek;
-import hel;
+import had;
+import hae;
 import java.util.ArrayList;
 
 public class FaceDecodeTask
@@ -19,7 +19,7 @@ public class FaceDecodeTask
   private static Object jdField_a_of_type_JavaLangObject = new Object();
   private static final String jdField_a_of_type_JavaLangString = "Q.qqhead.FaceDecodeTask";
   private static ArrayList jdField_a_of_type_JavaUtilArrayList;
-  private static hel[] jdField_a_of_type_ArrayOfHel;
+  private static hae[] jdField_a_of_type_ArrayOfHae;
   public static final int b = 4;
   public static final int c = 11;
   public static final int d = 101;
@@ -52,22 +52,22 @@ public class FaceDecodeTask
         if (jdField_a_of_type_AndroidOsHandler != null) {
           jdField_a_of_type_AndroidOsHandler.removeMessages(e);
         }
-        if (jdField_a_of_type_ArrayOfHel != null)
+        if (jdField_a_of_type_ArrayOfHae != null)
         {
           i = 0;
-          if (i < jdField_a_of_type_ArrayOfHel.length)
+          if (i < jdField_a_of_type_ArrayOfHae.length)
           {
-            if (jdField_a_of_type_ArrayOfHel[i] == null) {
+            if (jdField_a_of_type_ArrayOfHae[i] == null) {
               break label107;
             }
-            jdField_a_of_type_ArrayOfHel[i].a();
+            jdField_a_of_type_ArrayOfHae[i].a();
             break label107;
           }
         }
         synchronized (jdField_a_of_type_JavaUtilArrayList)
         {
           jdField_a_of_type_JavaUtilArrayList.notifyAll();
-          jdField_a_of_type_ArrayOfHel = null;
+          jdField_a_of_type_ArrayOfHae = null;
           jdField_a_of_type_AndroidOsLooper = null;
           jdField_a_of_type_AndroidOsHandler = null;
           return;
@@ -91,20 +91,20 @@ public class FaceDecodeTask
   
   private static void b()
   {
-    if (jdField_a_of_type_ArrayOfHel == null) {
+    if (jdField_a_of_type_ArrayOfHae == null) {
       synchronized (jdField_a_of_type_JavaLangObject)
       {
-        if (jdField_a_of_type_ArrayOfHel == null)
+        if (jdField_a_of_type_ArrayOfHae == null)
         {
           jdField_a_of_type_AndroidOsLooper = Looper.getMainLooper();
-          jdField_a_of_type_AndroidOsHandler = new hek(jdField_a_of_type_AndroidOsLooper);
+          jdField_a_of_type_AndroidOsHandler = new had(jdField_a_of_type_AndroidOsLooper);
           jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-          jdField_a_of_type_ArrayOfHel = new hel[f];
+          jdField_a_of_type_ArrayOfHae = new hae[f];
           int i = 0;
-          while (i < jdField_a_of_type_ArrayOfHel.length)
+          while (i < jdField_a_of_type_ArrayOfHae.length)
           {
-            jdField_a_of_type_ArrayOfHel[i] = new hel(null);
-            jdField_a_of_type_ArrayOfHel[i].start();
+            jdField_a_of_type_ArrayOfHae[i] = new hae(null);
+            jdField_a_of_type_ArrayOfHae[i].start();
             i += 1;
           }
         }

@@ -24,9 +24,9 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper.LocalConfig;
-import goc;
-import god;
-import goe;
+import gjt;
+import gju;
+import gjv;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -48,7 +48,7 @@ public class QZoneShareAlbumAssistantManager
   QZoneShareAlbumAssistantData jdField_a_of_type_ComTencentMobileqqSharealbumQZoneShareAlbumAssistantData;
   private QZoneShareAlbumAssistantManager.onShareAlbumResultListener jdField_a_of_type_ComTencentMobileqqSharealbumQZoneShareAlbumAssistantManager$onShareAlbumResultListener;
   QZoneShareAlbumAssistantTabData jdField_a_of_type_ComTencentMobileqqSharealbumQZoneShareAlbumAssistantTabData;
-  private Comparator jdField_a_of_type_JavaUtilComparator = new goc(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new gjt(this);
   private List jdField_a_of_type_JavaUtilList;
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();
   private String jdField_b_of_type_JavaLangString;
@@ -832,7 +832,7 @@ public class QZoneShareAlbumAssistantManager
     }
     n(paramQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqSharealbumQZoneShareAlbumAssistantManager$onShareAlbumResultListener = paramonShareAlbumResultListener;
-    ThreadManager.a(new goe(this, paramQQAppInterface));
+    ThreadManager.a(new gjv(this, paramQQAppInterface));
   }
   
   public void a(String paramString)
@@ -1045,7 +1045,7 @@ public class QZoneShareAlbumAssistantManager
         }
         e(paramQQAppInterface);
       }
-      ThreadManager.a(new god(this, paramQQAppInterface));
+      ThreadManager.a(new gju(this, paramQQAppInterface));
       return;
     }
     if (QLog.isColorLevel()) {

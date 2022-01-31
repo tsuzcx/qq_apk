@@ -22,6 +22,19 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import cmf;
+import cmg;
+import cmh;
+import cmi;
+import cmj;
+import cmk;
+import cml;
+import cmm;
+import cmn;
+import cmo;
+import cmp;
+import cmq;
+import cmr;
 import com.tencent.biz.common.util.OpenIdObserver;
 import com.tencent.biz.common.util.Util;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -55,19 +68,6 @@ import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.XListView;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
-import css;
-import cst;
-import csu;
-import csv;
-import csw;
-import csx;
-import csy;
-import csz;
-import cta;
-import ctb;
-import ctc;
-import ctd;
-import cte;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -105,16 +105,16 @@ public class ForwardRecentActivity
   public Uri a;
   public Bundle a;
   public Handler a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new csz(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new cmm(this);
   View jdField_a_of_type_AndroidViewView;
   public LinearLayout a;
   public RelativeLayout a;
   protected OpenIdObserver a;
   private ForwardOperations jdField_a_of_type_ComTencentMobileqqActivityForwardOperations;
   private ForwardRecentListAdapter jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentListAdapter;
-  private AutomatorObserver jdField_a_of_type_ComTencentMobileqqAppAutomatorObserver = new csu(this);
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cte(this);
-  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new cst(this);
+  private AutomatorObserver jdField_a_of_type_ComTencentMobileqqAppAutomatorObserver = new cmh(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cmr(this);
+  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new cmg(this);
   protected QQCustomDialog a;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   private List jdField_a_of_type_JavaUtilList;
@@ -152,7 +152,7 @@ public class ForwardRecentActivity
     this.jdField_c_of_type_Boolean = false;
     this.n = true;
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-    this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver = new csw(this);
+    this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver = new cmj(this);
   }
   
   private List a(List paramList)
@@ -293,7 +293,7 @@ public class ForwardRecentActivity
       return;
     }
     Contacts.a += 1;
-    this.jdField_a_of_type_AndroidAppDialog = new cta(this, this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations);
+    this.jdField_a_of_type_AndroidAppDialog = new cmn(this, this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations);
     this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(true);
     paramInt = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
     TranslateAnimation localTranslateAnimation1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -paramInt);
@@ -301,9 +301,9 @@ public class ForwardRecentActivity
     localTranslateAnimation1.setFillAfter(true);
     TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(0.0F, 0.0F, -paramInt, 0.0F);
     localTranslateAnimation2.setDuration(200L);
-    localTranslateAnimation1.setAnimationListener(new ctb(this));
-    localTranslateAnimation2.setAnimationListener(new ctc(this, paramInt));
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new ctd(this, paramInt, localTranslateAnimation2));
+    localTranslateAnimation1.setAnimationListener(new cmo(this));
+    localTranslateAnimation2.setAnimationListener(new cmp(this, paramInt));
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new cmq(this, paramInt, localTranslateAnimation2));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localTranslateAnimation1);
     ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004049", "0X8004049", 0, 0, "", "", "", "");
   }
@@ -337,23 +337,23 @@ public class ForwardRecentActivity
     paramTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131231199));
     paramTextView = LayoutInflater.from(a());
-    Object localObject = paramTextView.inflate(2130903942, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-    ((View)localObject).findViewById(2131233084).setVisibility(8);
-    localObject = (EditText)((View)localObject).findViewById(2131233085);
+    Object localObject = paramTextView.inflate(2130903944, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    ((View)localObject).findViewById(2131233086).setVisibility(8);
+    localObject = (EditText)((View)localObject).findViewById(2131233087);
     ((EditText)localObject).setFocusable(false);
     ((EditText)localObject).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     ((EditText)localObject).setCursorVisible(false);
-    this.jdField_g_of_type_AndroidViewView = paramTextView.inflate(2130903235, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    this.jdField_g_of_type_AndroidViewView = paramTextView.inflate(2130903237, this.jdField_a_of_type_ComTencentWidgetXListView, false);
     this.jdField_a_of_type_ComTencentWidgetXListView.a(this.jdField_g_of_type_AndroidViewView);
     paramTextView = paramTextView.inflate(2130903140, null);
     ((TextView)paramTextView.findViewById(2131231386)).setText(2131562725);
     this.jdField_a_of_type_ComTencentWidgetXListView.a(paramTextView);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231712);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231716);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231718);
-    this.jdField_d_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231710);
-    this.jdField_e_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231714);
-    this.jdField_f_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231720);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231714);
+    this.jdField_b_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231718);
+    this.jdField_c_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231720);
+    this.jdField_d_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231712);
+    this.jdField_e_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231716);
+    this.jdField_f_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231722);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_c_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -457,12 +457,12 @@ public class ForwardRecentActivity
   
   private void e()
   {
-    View localView = getLayoutInflater().inflate(2130903927, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-    ((ImageView)localView.findViewById(2131230940)).setBackgroundResource(2130838588);
+    View localView = getLayoutInflater().inflate(2130903929, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    ((ImageView)localView.findViewById(2131230940)).setBackgroundResource(2130838590);
     TextView localTextView = (TextView)localView.findViewById(16908308);
     localTextView.setText(getString(2131559075));
     localTextView.setContentDescription("我的电脑");
-    localView.setOnClickListener(new csx(this));
+    localView.setOnClickListener(new cmk(this));
     this.jdField_a_of_type_ComTencentWidgetXListView.a(localView);
   }
   
@@ -473,8 +473,8 @@ public class ForwardRecentActivity
       this.jdField_a_of_type_JavaUtilList = a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a());
       if (this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentListAdapter == null)
       {
-        csy localcsy = new csy(this);
-        this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentListAdapter = new ForwardRecentListAdapter(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, null, 2130903927, this.jdField_a_of_type_JavaUtilList, localcsy, null);
+        cml localcml = new cml(this);
+        this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentListAdapter = new ForwardRecentListAdapter(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, null, 2130903929, this.jdField_a_of_type_JavaUtilList, localcml, null);
         this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentListAdapter.a(false);
         this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentListAdapter);
       }
@@ -513,9 +513,9 @@ public class ForwardRecentActivity
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131560539);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131560595);
-    csv localcsv = new csv(this);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131561746, localcsv);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131560540, localcsv);
+    cmi localcmi = new cmi(this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131561746, localcmi);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131560540, localcmi);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   
@@ -614,7 +614,7 @@ public class ForwardRecentActivity
     this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
     this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorObserver);
-    f(2130903237);
+    f(2130903239);
     TextView localTextView = (TextView)findViewById(2131231376);
     a(localTextView);
     Object localObject1 = getIntent();
@@ -834,7 +834,7 @@ public class ForwardRecentActivity
           {
             this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a(2131560596);
             this.jdField_a_of_type_AndroidOsHandler = new Handler();
-            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new css(this), 3000L);
+            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new cmf(this), 3000L);
             this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver);
             this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().d(paramBundle);
             break label993;
@@ -897,7 +897,7 @@ public class ForwardRecentActivity
   {
     paramMenu.clear();
     MenuItem localMenuItem = paramMenu.add(0, 0, 0, getString(2131562830));
-    localMenuItem.setIcon(2130839696);
+    localMenuItem.setIcon(2130839698);
     MenuItemCompat.setShowAsAction(localMenuItem, 1);
     return super.onPrepareOptionsMenu(paramMenu);
   }

@@ -1,71 +1,28 @@
-import com.tencent.mobileqq.activity.messagesearch.MessageResultAdapter;
-import com.tencent.mobileqq.activity.messagesearch.MessageResultAdapter.LOAD_TYPE;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatHistorySearchData;
-import com.tencent.mobileqq.utils.HistoryChatMsgSearchKeyUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Intent;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class eny
-  implements Runnable
+  implements View.OnClickListener
 {
-  public eny(MessageResultAdapter paramMessageResultAdapter, String paramString, MessageResultAdapter.LOAD_TYPE paramLOAD_TYPE) {}
+  public eny(BannerManager paramBannerManager) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(MessageResultAdapter.b(), 2, "loadMessageResult, run(), keyword = " + this.jdField_a_of_type_JavaLangString + ", loadType = " + this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter$LOAD_TYPE.ordinal());
-    }
-    ??? = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter$LOAD_TYPE == MessageResultAdapter.LOAD_TYPE.LOAD_REFRESH)
-    {
-      ??? = MessageResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter).a().a(MessageResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter), this.jdField_a_of_type_JavaLangString);
-      HistoryChatMsgSearchKeyUtil.a(MessageResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter).a(), this.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      ArrayList localArrayList = new ArrayList();
-      ChatHistorySearchData localChatHistorySearchData = MessageResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter, (ChatHistorySearchData)???, localArrayList);
-      if (QLog.isColorLevel()) {
-        QLog.i(MessageResultAdapter.b(), 2, "loadMessageResult, get: messageItems[] = " + localArrayList);
-      }
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.jdField_a_of_type_JavaLangObject)
-      {
-        if (MessageResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter) == this.jdField_a_of_type_JavaLangString)
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter$LOAD_TYPE != MessageResultAdapter.LOAD_TYPE.LOAD_REFRESH) {
-            break label241;
-          }
-          MessageResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter, localArrayList);
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = localChatHistorySearchData;
-          MessageResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter).sendEmptyMessage(2);
-        }
-        label241:
-        do
-        {
-          do
-          {
-            return;
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter$LOAD_TYPE != MessageResultAdapter.LOAD_TYPE.LOAD_MORE) {
-              break;
-            }
-            ??? = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData;
-            break;
-          } while (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter$LOAD_TYPE != MessageResultAdapter.LOAD_TYPE.LOAD_MORE);
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = localChatHistorySearchData;
-        } while (localArrayList.size() <= 0);
-        MessageResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter).addAll(localArrayList);
-        MessageResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter).sendEmptyMessage(2);
-      }
-    }
+    paramView = new Intent(BannerManager.a(this.a), TroopAssisSettingActivity.class);
+    BannerManager.a(this.a).startActivityForResult(paramView, 9001);
+    BannerManager.a(this.a).sendEmptyMessageDelayed(1, 1000L);
+    ReportController.b(BannerManager.a(this.a).b, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_setmsg", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eny
  * JD-Core Version:    0.7.0.1
  */

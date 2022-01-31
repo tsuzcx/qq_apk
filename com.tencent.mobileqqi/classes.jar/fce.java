@@ -1,29 +1,31 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.dataline.activities.LiteAdvanceActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.adapter.BuddyListAdapter;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
 
 public class fce
-  implements View.OnClickListener
+  extends fcu
 {
-  public fce(BuddyListAdapter paramBuddyListAdapter, Friends paramFriends) {}
+  private String a;
   
-  public void onClick(View paramView)
+  public fce()
   {
-    if (AppConstants.P.equals(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin))
-    {
-      BuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter).startActivity(new Intent(BuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter), LiteAdvanceActivity.class));
-      return;
-    }
-    paramView = new ProfileActivity.AllInOne(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin, 1);
-    paramView.f = 59;
-    ProfileActivity.a(BuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter), paramView);
+    this.jdField_a_of_type_JavaLangString = null;
+  }
+  
+  protected void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  protected void b(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    CoreService.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.e();
+  }
+  
+  protected void d(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, this.jdField_a_of_type_JavaLangString);
   }
 }
 

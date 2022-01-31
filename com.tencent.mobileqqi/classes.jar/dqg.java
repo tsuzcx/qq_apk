@@ -1,26 +1,22 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.SplashActivityCore;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberCardActivity;
+import com.tencent.mobileqq.data.TroopMemberCard;
 
-class dqg
-  implements MediaPlayer.OnErrorListener
+public class dqg
+  implements View.OnClickListener
 {
-  dqg(dqc paramdqc) {}
+  public dqg(TroopMemberCardActivity paramTroopMemberCardActivity) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Splash.testCanPlayMp4", 4, "onError");
-    }
-    this.a.a.handler.sendEmptyMessage(5);
-    return false;
+    this.a.a(this.a.c, this.a.d, this.a.e, this.a.a.isFriend);
+    this.a.f("Clk_head");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dqg
  * JD-Core Version:    0.7.0.1
  */

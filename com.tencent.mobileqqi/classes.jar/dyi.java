@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.aio.item.DetectableAnimationDrawable;
 
 public class dyi
-  implements View.OnClickListener
+  implements Runnable
 {
-  public dyi(TroopRequestActivity paramTroopRequestActivity) {}
+  public dyi(DetectableAnimationDrawable paramDetectableAnimationDrawable) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.d();
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dyi
  * JD-Core Version:    0.7.0.1
  */

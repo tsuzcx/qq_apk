@@ -1,19 +1,21 @@
-class fgc
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.RoamInfoListWrapper;
+import java.util.ArrayList;
+
+public final class fgc
+  implements Parcelable.Creator
 {
-  public int a;
-  public String a;
-  public String b = "";
-  public String c = "0";
-  
-  fgc()
+  public RoamInfoListWrapper a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
+    RoamInfoListWrapper localRoamInfoListWrapper = new RoamInfoListWrapper();
+    localRoamInfoListWrapper.a = paramParcel.readArrayList(ArrayList.class.getClassLoader());
+    return localRoamInfoListWrapper;
   }
   
-  public String toString()
+  public RoamInfoListWrapper[] a(int paramInt)
   {
-    return "DPCXMLParseInfo: key=" + this.jdField_a_of_type_JavaLangString + ",value=" + this.b + ",weight=" + this.jdField_a_of_type_Int + ",taskId=" + this.c;
+    return new RoamInfoListWrapper[paramInt];
   }
 }
 

@@ -17,14 +17,14 @@ import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
-import gpa;
+import gkt;
 
 public class StructMsgClickHandler
   implements StructMsgOnClickListener
 {
   private static ActionSheet a;
-  protected Context a;
-  protected QQAppInterface a;
+  public Context a;
+  public QQAppInterface a;
   
   public StructMsgClickHandler(View paramView)
   {
@@ -49,7 +49,7 @@ public class StructMsgClickHandler
       jdField_a_of_type_ComTencentWidgetActionSheet.a(2131561879, 1);
       jdField_a_of_type_ComTencentWidgetActionSheet.d(2131561746);
       jdField_a_of_type_ComTencentWidgetActionSheet.a(String.format(paramContext.getString(2131561729), new Object[] { paramString }));
-      jdField_a_of_type_ComTencentWidgetActionSheet.a(new gpa(paramString, paramContext));
+      jdField_a_of_type_ComTencentWidgetActionSheet.a(new gkt(paramString, paramContext));
     }
     if (!jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
       jdField_a_of_type_ComTencentWidgetActionSheet.show();

@@ -3497,7 +3497,7 @@ Please try again"</string>
     <string name="APKTOOL_DUPLICATE_string_0x7f0d0d9a">Copy Link</string>
     <string name="APKTOOL_DUPLICATE_string_0x7f0d0d9b">Copy Link</string>
     <string name="APKTOOL_DUPLICATE_string_0x7f0d0d9c">Copy Link button</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d0d9d">Copyright © 2009-2018 Tencent. All Rights Reserved.</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d0d9d">Copyright © 2009-2020 Tencent. All Rights Reserved.</string>
     <string name="APKTOOL_DUPLICATE_string_0x7f0d0d9e">Country</string>
     <string name="APKTOOL_DUPLICATE_string_0x7f0d0d9f">Create a Group</string>
     <string name="APKTOOL_DUPLICATE_string_0x7f0d0da0">Create a Group</string>
@@ -4968,7 +4968,7 @@ but he is not in your contact list."</string>
     <string name="APKTOOL_DUPLICATE_string_0x7f0d1353">Delete account</string>
     <string name="APKTOOL_DUPLICATE_string_0x7f0d1354">We see that you are currently in the EU. In order for us to optimize and customize our services and offerings to you, please confirm that you are primarily located in the EU ：</string>
     <string name="APKTOOL_DUPLICATE_string_0x7f0d1355">"As you are under the age of 16, you will need your parent or guardian’s consent to use QQi. 
-Details can be found at: https://sqimg.qq.com/qq_product_operations/i18n/parentalPermission.html"</string>
+Details can be found at: http://ti.qq.com/adyen/index.html"</string>
     <string name="APKTOOL_DUPLICATE_string_0x7f0d1356">Yes, I am primarily located in the EU.</string>
     <string name="APKTOOL_DUPLICATE_string_0x7f0d1357">No, I am not primarily located in the EU.</string>
     <string name="APKTOOL_DUPLICATE_string_0x7f0d1358">Please enter the date of birth：</string>
@@ -4983,74 +4983,108 @@ Details can be found at: https://sqimg.qq.com/qq_product_operations/i18n/parenta
     <string name="APKTOOL_DUPLICATE_string_0x7f0d1361">According to EU rules, this number can not be registered for the time being</string>
     <string name="APKTOOL_DUPLICATE_string_0x7f0d1362">We collect your mobile number in order to register you to use our services in accordance with the terms of our Privacy Policy</string>
     <string name="APKTOOL_DUPLICATE_string_0x7f0d1363">Access Link</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1364">·</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1365">|</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1366">Voip calling</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1367">Voip payment</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1368">comment(s)</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d136a">Wi-Fi</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d136b">4G</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d136c">3G</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d136d">2G</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d136e">The system is busy, please try again later</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1370">Group System Message</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1371">[Announcement]</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1372">Group Info</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1373">File Manager</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1374">Notice</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1375">Settings</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1376">OK</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1377">"Backup process can't change Album and you can change the settings after cancellation"</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1378">"Haven't selected Album that needs to be backed up"</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1379">"WiFi network isn't connected"</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d137a">%1$d pieces to be backed up</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d137b">%2$d photos in %1$d Album is waiting for backup</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d137c">"After WiFi network is connected, 
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1364">You are 16 years old and need to re-agreed with our privacy policy before you can continue to use</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1365">Permission application</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1366">Permission application</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1367">Seting</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1368">Cancel</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1369">Know</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d136a">Seting</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d136b">Cancel</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d136c">Permission application</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d136d">"QQ需要下列权限才能正常使用 
+存储权限：
+缓存信息，降低流量消耗；
+手机/电话权限：
+校验IMEI和IMSI码，防止账号被盗；
+相机与麦克风权限：
+发送语音/图片消息时使用；
+地理位置权限：
+使用附近的人和发送定位时使用。
+"</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d136e">Permission application: In order that you can use the service of QQ International normally, please allow the permission to access your</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d136f">Permission application: In order that you can use QQ International services normally with guaranteed account operation and safety, please allow the permission to access your storage during the system authorization step.</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1370">Storage permission</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1371">Call permission</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1372">Location permission</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1373">Microphone permission</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1374">Camera permission</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1375">Contacts permission</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1376">Calendar permission</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1377">Permission application: In order that you can use the service of QQ International normally, please allow the permission to access your Camera and Microphone permission.</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1378">Permission application: In order that you can use the service of QQ International normally, please allow the permission to access your Camera and Location permission..</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1379">Agree</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d137a">Not now</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d137b">Service Agreement and Privacy Policy</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d137c">Please make sure to read carefully and understand fully the contents of the Service Agreement and Privacy Policy, including but not limited to: we need to collect your device info, operation log and other personal info in order to provide you with instant messaging, content sharing and other services. You can view, change and delete your personal info and manage your permissions in the Settings. You can read the Service Agreement, Privacy Policy and Permission Use Rules to learn more details. If you agree, please click Agree to accept our services.</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d137d">·</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d137e">|</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1382">Voip calling</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1383">Voip payment</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1384">comment(s)</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1386">Wi-Fi</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1387">4G</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1388">3G</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1389">2G</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d138a">The system is busy, please try again later</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d138c">Group System Message</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d138d">[Announcement]</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d138e">Group Info</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d138f">File Manager</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1390">Notice</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1391">Settings</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1392">OK</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1393">"Backup process can't change Album and you can change the settings after cancellation"</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1394">"Haven't selected Album that needs to be backed up"</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1395">"WiFi network isn't connected"</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1396">%1$d pieces to be backed up</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1397">%2$d photos in %1$d Album is waiting for backup</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1398">"After WiFi network is connected, 
  backup is automatically restored"</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d137d">Album backup settings</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d137e">Backup completed and succeeded in backing up %1$d piece</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d137f">Electricity volume is lower than 15%</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1380">Have succeeded in backing up %1$d pieces. %2$d pieces to be backed up</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1381">Immediately upgrade</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1382">Insufficient power and please charge immediately</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1383">No need now</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1384">Photo backup canceled</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1385">Please connect WiFi</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1386">Please select Album</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1387">Scanning</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1388">Select by clicking on upper right corner</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1389">The Album to be backed up has been renamed, moved or deleted. Please reset</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d138a">The current system version is too low. Please view backed photos with Android of 2.2 or higher version.</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d138b">"Viewing backed-up photos need installation of Tencent Cloud, 
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d1399">Album backup settings</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d139a">Backup completed and succeeded in backing up %1$d piece</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d139b">Electricity volume is lower than 15%</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d139c">Have succeeded in backing up %1$d pieces. %2$d pieces to be backed up</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d139d">Immediately upgrade</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d139e">Insufficient power and please charge immediately</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d139f">No need now</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13a0">Photo backup canceled</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13a1">Please connect WiFi</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13a2">Please select Album</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13a3">Scanning</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13a4">Select by clicking on upper right corner</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13a5">The Album to be backed up has been renamed, moved or deleted. Please reset</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13a6">The current system version is too low. Please view backed photos with Android of 2.2 or higher version.</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13a7">"Viewing backed-up photos need installation of Tencent Cloud, 
  Install?"</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d138c">Viewing backed-up photos need installation of newest version of Tencent Cloud. Upgrade?</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d138d">You have %d new photos and have go on backing up?</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d138e">You have no photos that need to be backed up</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d138f">Your cloud capacity is insufficient</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1390">Install</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1391">Screenshots</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1392">208463722612629</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1393">"`~!@#$%^*()_+-={}|[],.?/0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLIMNOPQRSTUVWXYZ&amp;&lt;>'"</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1394">简体中文</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1395">English</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1396">繁體中文</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1397">日本語</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1398">한국어</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d1399">Deutsch</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d139a">Français</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d139b">Español</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d139c">Sound</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d139d">Vibration</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d139e">Speaker</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d139f">Autoreceive</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d13a0">Autoreply</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d13a1">Share Your Location</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d13a2">chat_send_msg_on_enter</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d13a3">Show Icon in System Tray</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d13a4">Receive Push Notification</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d13a5">Receive QQ Push Notifications</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d13a6">Notifications Display the Content of the Message</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d13a7">Qzone</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d13a8">Notification Time</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d13a9">QzoneMyfeedsShowPush</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13a8">Viewing backed-up photos need installation of newest version of Tencent Cloud. Upgrade?</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13a9">You have %d new photos and have go on backing up?</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13aa">You have no photos that need to be backed up</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13ab">Your cloud capacity is insufficient</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13ac">Install</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13ad">Screenshots</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13ae">208463722612629</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13af">"`~!@#$%^*()_+-={}|[],.?/0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLIMNOPQRSTUVWXYZ&amp;&lt;>'"</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13b0">简体中文</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13b1">English</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13b2">繁體中文</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13b3">日本語</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13b4">한국어</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13b5">Deutsch</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13b6">Français</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13b7">Español</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13b8">Sound</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13b9">Vibration</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13ba">Speaker</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13bb">Autoreceive</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13bc">Autoreply</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13bd">Share Your Location</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13be">chat_send_msg_on_enter</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13bf">Show Icon in System Tray</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13c0">Receive Push Notification</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13c1">Receive QQ Push Notifications</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13c2">Notifications Display the Content of the Message</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13c3">Qzone</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13c4">Notification Time</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d13c5">QzoneMyfeedsShowPush</string>
 </resources>

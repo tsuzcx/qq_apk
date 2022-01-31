@@ -1,36 +1,36 @@
-import android.os.AsyncTask;
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.model.TroopInfoManager;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
-class bty
-  extends AsyncTask
+public class bty
+  implements View.OnClickListener
 {
-  bty(btx parambtx, TroopInfoManager paramTroopInfoManager, Bundle paramBundle, String paramString) {}
+  public bty(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString1, int paramInt, String paramString2) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager.a();
-    return null;
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    paramVoid = this.jdField_a_of_type_AndroidOsBundle;
-    if ((this.jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager.a(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager.b())) {}
-    for (boolean bool = true;; bool = false)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.getText().toString().length() > 30)
     {
-      paramVoid.putBoolean("ret", bool);
-      TroopMemberApiService.a(this.jdField_a_of_type_Btx.a, 12, this.jdField_a_of_type_AndroidOsBundle);
+      paramView = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 2131624405);
+      paramView.setContentView(2130903942);
+      ((TextView)paramView.findViewById(2131231029)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131563294));
+      ((ProgressBar)paramView.findViewById(2131231028)).setVisibility(8);
+      ((ImageView)paramView.findViewById(2131234123)).setImageResource(2130837961);
+      paramView.show();
       return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.getText().toString(), false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(this.jdField_a_of_type_JavaLangString, AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity), true, this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.getText().toString(), this.jdField_a_of_type_Int, this.b, null);
   }
-  
-  protected void onCancelled() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bty
  * JD-Core Version:    0.7.0.1
  */

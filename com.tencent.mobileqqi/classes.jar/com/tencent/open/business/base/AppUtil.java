@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.StartAppCheckHandler;
+import com.tencent.mobileqq.utils.FileProvider7Helper;
 import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.base.ImageUtil;
 import com.tencent.open.base.LogUtility;
@@ -232,10 +233,7 @@ public class AppUtil
       }
       if (new File(paramString).exists())
       {
-        Intent localIntent = new Intent("android.intent.action.VIEW");
-        localIntent.setFlags(268435456);
-        localIntent.setDataAndType(Uri.fromFile(new File(paramString)), "application/vnd.android.package-archive");
-        paramContext.startActivity(localIntent);
+        paramContext.startActivity(FileProvider7Helper.openApkIntent(paramContext, paramString));
         return true;
       }
     }

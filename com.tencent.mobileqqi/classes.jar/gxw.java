@@ -1,45 +1,52 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.FriendsManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.model.FriendManager;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-public class gxw
-  extends TroopObserver
+public final class gxw
+  implements Runnable
 {
-  public gxw(TroopCreateLogicActivity paramTroopCreateLogicActivity) {}
-  
-  protected void a(long paramLong, int paramInt1, boolean paramBoolean, String paramString, int paramInt2, int paramInt3)
+  public void run()
   {
-    this.a.b.c(this.a.a);
-    if (paramInt1 == 0)
+    File[] arrayOfFile;
+    do
     {
-      Object localObject2 = (FriendManager)this.a.b.getManager(8);
-      localObject1 = null;
-      if (localObject2 != null) {
-        localObject1 = ((FriendManager)localObject2).a(Long.toString(paramLong));
-      }
-      if (localObject1 != null)
+      try
       {
-        ((TroopInfo)localObject1).troopLat = paramInt2;
-        ((TroopInfo)localObject1).troopLon = paramInt3;
-        localObject2 = (FriendsManagerImp)this.a.b.getManager(8);
-        if (localObject2 != null) {
-          ((FriendsManagerImp)localObject2).b((TroopInfo)localObject1);
+        Thread.sleep(3000L);
+        File localFile = new File(AppConstants.av);
+        if (!localFile.isDirectory()) {
+          return;
         }
       }
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
+        return;
+      }
+      arrayOfFile = localInterruptedException.listFiles(new gxx(this));
+    } while ((arrayOfFile == null) || (arrayOfFile.length < 100));
+    Object localObject = new ArrayList(arrayOfFile.length);
+    int j = arrayOfFile.length;
+    int i = 0;
+    while (i < j)
+    {
+      ((List)localObject).add(Long.valueOf(arrayOfFile[i].lastModified()));
+      i += 1;
     }
-    Object localObject1 = new Intent();
-    ((Intent)localObject1).putExtra("troopUin", paramLong);
-    ((Intent)localObject1).putExtra("errCode", paramInt1);
-    ((Intent)localObject1).putExtra("isClear", paramBoolean);
-    ((Intent)localObject1).putExtra("location", paramString);
-    ((Intent)localObject1).putExtra("lat", paramInt2);
-    ((Intent)localObject1).putExtra("lon", paramInt3);
-    this.a.setResult(-1, (Intent)localObject1);
-    this.a.finish();
+    Collections.sort((List)localObject);
+    long l = ((Long)((List)localObject).get(((List)localObject).size() - 100)).longValue();
+    j = arrayOfFile.length;
+    i = 0;
+    while (i < j)
+    {
+      localObject = arrayOfFile[i];
+      if (((File)localObject).lastModified() < l) {
+        ((File)localObject).deleteOnExit();
+      }
+      i += 1;
+    }
   }
 }
 

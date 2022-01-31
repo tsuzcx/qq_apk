@@ -36,7 +36,6 @@ import QQService.ReqOffFilePack;
 import QQService.ReqTmpChatPicDownload;
 import QQService.StreamData;
 import QQService.StreamInfo;
-import SharpSvrPack.MultiVideoMsg;
 import VideoSvrPack.VideoCallMsg;
 import android.os.Bundle;
 import android.os.RemoteException;
@@ -570,21 +569,6 @@ public class MessageFactorySender
     paramUniPacket.setServantName("MultiVideo");
     paramUniPacket.setFuncName("MultiVideos2cack");
     paramToServiceMsg = paramToServiceMsg.extraData;
-    MultiVideoMsg localMultiVideoMsg = new MultiVideoMsg();
-    localMultiVideoMsg.ver = paramToServiceMsg.getByte("ver");
-    localMultiVideoMsg.type = paramToServiceMsg.getByte("type");
-    localMultiVideoMsg.csCmd = paramToServiceMsg.getShort("cscmd");
-    localMultiVideoMsg.subCmd = paramToServiceMsg.getShort("subcmd");
-    localMultiVideoMsg.from_uin = a(String.valueOf(paramToServiceMsg.getLong("from_uin")));
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(Long.valueOf(paramToServiceMsg.getLong("to_uin")));
-    localMultiVideoMsg.to_uin = localArrayList;
-    localMultiVideoMsg.msg_time = paramToServiceMsg.getLong("msg_time");
-    localMultiVideoMsg.msg_type = paramToServiceMsg.getLong("msg_type");
-    localMultiVideoMsg.msg_seq = paramToServiceMsg.getLong("msg_seq");
-    localMultiVideoMsg.msg_uid = paramToServiceMsg.getLong("msg_uid");
-    localMultiVideoMsg.video_buff = paramToServiceMsg.getByteArray("video_buff");
-    paramUniPacket.put("MultiVideoMsg", localMultiVideoMsg);
     return true;
   }
   

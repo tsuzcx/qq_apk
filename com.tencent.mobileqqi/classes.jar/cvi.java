@@ -1,23 +1,35 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class cvi
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public cvi(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public cvi(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ((paramIntent != null) && (paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
-      this.a.finish();
+    try
+    {
+      if ((LoginVerifyCodeActivity.a(this.a) != null) && (LoginVerifyCodeActivity.a(this.a).isShowing()))
+      {
+        LoginVerifyCodeActivity.a(this.a).dismiss();
+        LoginVerifyCodeActivity.a(this.a).cancel();
+      }
+      LoginVerifyCodeActivity.a(this.a, null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cvi
  * JD-Core Version:    0.7.0.1
  */

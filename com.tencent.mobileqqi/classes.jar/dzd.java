@@ -1,21 +1,17 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
 
 public class dzd
-  implements View.OnClickListener
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public dzd(TroopTransferActivity paramTroopTransferActivity) {}
+  public TextView b;
   
-  public void onClick(View paramView)
-  {
-    this.a.a.dismiss();
-  }
+  public dzd(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dzd
  * JD-Core Version:    0.7.0.1
  */

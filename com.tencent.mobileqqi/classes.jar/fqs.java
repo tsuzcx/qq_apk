@@ -1,36 +1,30 @@
-import android.view.View;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import com.tencent.mobileqq.filemanager.activity.FMCloudActivity;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import java.util.List;
 
 public class fqs
-  implements AdapterView.OnItemSelectedListener
+  extends FMObserver
 {
-  public fqs(IphonePickerView paramIphonePickerView) {}
+  public fqs(FMCloudActivity paramFMCloudActivity) {}
   
-  public void a(AdapterView paramAdapterView) {}
-  
-  public void a_(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void a(List paramList)
   {
-    IphonePickerView.a(this.a, paramView, 1);
-    if ((paramView != null) && (paramView.getTag() != null))
-    {
-      int i = Integer.parseInt(paramView.getTag().toString());
-      int j = paramAdapterView.getChildCount();
-      paramInt = 0;
-      while (paramInt < j)
-      {
-        if (i != paramInt) {
-          IphonePickerView.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
-        }
-        paramInt += 1;
-      }
-    }
+    super.a(paramList);
+    FMCloudActivity.a(this.a, paramList);
+    FMCloudActivity.a(this.a);
+  }
+  
+  protected void c(int paramInt, String paramString)
+  {
+    super.c(paramInt, paramString);
+    FMCloudActivity.a(this.a);
+    FMToastUtil.a(2131562097);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fqs
  * JD-Core Version:    0.7.0.1
  */

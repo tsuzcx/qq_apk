@@ -24,9 +24,9 @@ import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.XListView;
-import gwz;
-import gxc;
-import gxd;
+import gss;
+import gsv;
+import gsw;
 import java.util.ArrayList;
 
 public class TroopBarPublishBarSelectActivity
@@ -61,8 +61,8 @@ public class TroopBarPublishBarSelectActivity
     this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidOsHandler = new gxc(this);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new gxd(this);
+    this.jdField_a_of_type_AndroidOsHandler = new gsv(this);
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new gsw(this);
   }
   
   public void a(int paramInt)
@@ -106,7 +106,7 @@ public class TroopBarPublishBarSelectActivity
   
   public void a(boolean paramBoolean)
   {
-    TextView localTextView = (TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131232081);
+    TextView localTextView = (TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131232084);
     if (paramBoolean)
     {
       localTextView.setText(getString(2131559301));
@@ -121,7 +121,7 @@ public class TroopBarPublishBarSelectActivity
     if (paramBoolean) {
       if ((this.l != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837854);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837856);
         this.l.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
         ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
       }
@@ -136,11 +136,11 @@ public class TroopBarPublishBarSelectActivity
   
   protected void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this).inflate(2130903323, this.jdField_a_of_type_ComTencentWidgetXListView, false));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this).inflate(2130903325, this.jdField_a_of_type_ComTencentWidgetXListView, false));
     Contacts.OverScrollViewTag localOverScrollViewTag = new Contacts.OverScrollViewTag();
     this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.setTag(localOverScrollViewTag);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new gwz(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new gss(this));
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
@@ -152,14 +152,14 @@ public class TroopBarPublishBarSelectActivity
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-8355712);
     this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130837729);
-    int i = paramBundle.getDimensionPixelSize(2131427568);
+    int i = paramBundle.getDimensionPixelSize(2131427571);
     this.jdField_a_of_type_AndroidWidgetTextView.setPadding(i, 0, i, 0);
-    i = paramBundle.getDimensionPixelSize(2131427567);
+    i = paramBundle.getDimensionPixelSize(2131427570);
     this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(new AbsListView.LayoutParams(-1, i));
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130903323, null);
-    ImageView localImageView = (ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131232080);
-    TextView localTextView1 = (TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131232081);
-    TextView localTextView2 = (TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131232082);
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130903325, null);
+    ImageView localImageView = (ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131232083);
+    TextView localTextView1 = (TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131232084);
+    TextView localTextView2 = (TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131232085);
     ProgressBar localProgressBar = (ProgressBar)this.jdField_b_of_type_AndroidViewView.findViewById(2131231066);
     localTextView1.setTextColor(-8355712);
     localTextView1.setText(2131563139);
@@ -167,7 +167,7 @@ public class TroopBarPublishBarSelectActivity
     localImageView.setVisibility(8);
     localProgressBar.setVisibility(8);
     this.jdField_a_of_type_ComTencentWidgetXListView = new XListView(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130837850);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130837852);
     this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130837729);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     this.jdField_a_of_type_ComTencentWidgetXListView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));

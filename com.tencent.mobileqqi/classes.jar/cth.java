@@ -1,22 +1,27 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import android.view.View;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
+import mqq.app.permission.PermissionItem;
+import mqq.app.permission.PermissionManager;
 
-class cth
-  implements Runnable
+public class cth
+  implements PermissionDialogCallback
 {
-  cth(ctg paramctg) {}
+  public cth(LoginActivity paramLoginActivity, View paramView) {}
   
-  public void run()
+  public void a()
   {
-    if (this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null) {
-      this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.g(this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-    }
-    this.a.a.a.a(2131562281, 1);
+    LoginActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity, this.jdField_a_of_type_AndroidViewView);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.WRITE_EXTERNAL_STORAGE", 300) }).request(new cti(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     cth
  * JD-Core Version:    0.7.0.1
  */

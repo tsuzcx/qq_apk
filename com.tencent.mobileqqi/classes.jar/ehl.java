@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.language.SelectLanguageActivity;
 
 public class ehl
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public ehl(AIOImageListScene paramAIOImageListScene) {}
+  public ehl(SelectLanguageActivity paramSelectLanguageActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    AIOImageListScene.a(this.a, null);
+    SelectLanguageActivity.a(this.a, 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ehl
  * JD-Core Version:    0.7.0.1
  */

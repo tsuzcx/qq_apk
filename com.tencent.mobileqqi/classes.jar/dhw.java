@@ -1,30 +1,28 @@
-import com.tencent.mobileqq.activity.QQLSUnlockActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SetTroopAdminsActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
 public class dhw
-  extends Thread
+  implements View.OnClickListener
 {
-  public dhw(QQLSUnlockActivity paramQQLSUnlockActivity) {}
+  public dhw(SetTroopAdminsActivity paramSetTroopAdminsActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
+    if ((SetTroopAdminsActivity.a(this.a) > 0) && (SetTroopAdminsActivity.a(this.a) <= SetTroopAdminsActivity.a(this.a).size() - 1))
     {
-      wait(1500L);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQLSActivity", 2, " QQLSUnlockActivity finish");
-      }
-      this.a.finish();
+      QQToast.a(this.a, 1, String.format(this.a.getString(2131562353), new Object[] { Integer.valueOf(SetTroopAdminsActivity.a(this.a)) }), 0).b(this.a.d());
       return;
     }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
-    }
-    finally {}
+    paramView = new Intent(this.a, TroopMemberListActivity.class);
+    paramView.putExtra("troop_code", SetTroopAdminsActivity.a(this.a));
+    paramView.putExtra("troop_uin", SetTroopAdminsActivity.b(this.a));
+    paramView.putExtra("mode", 1);
+    this.a.startActivityForResult(paramView, 0);
   }
 }
 

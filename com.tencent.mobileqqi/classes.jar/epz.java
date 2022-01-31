@@ -1,33 +1,24 @@
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
-import java.lang.ref.WeakReference;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
 
 public class epz
   extends Handler
 {
-  private WeakReference a;
-  
-  public epz(DialogBaseActivity paramDialogBaseActivity)
-  {
-    this.a = new WeakReference(paramDialogBaseActivity);
-  }
+  public epz(FriendListInnerFrame paramFriendListInnerFrame) {}
   
   public void handleMessage(Message paramMessage)
   {
-    DialogBaseActivity localDialogBaseActivity = (DialogBaseActivity)this.a.get();
-    if (localDialogBaseActivity == null) {
-      return;
-    }
     switch (paramMessage.what)
     {
     default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
+      return;
     case 1: 
-      localDialogBaseActivity.a(paramMessage.arg1);
+      this.a.a.setPadding(0, 0, 40, 0);
       return;
     }
-    localDialogBaseActivity.finish();
+    this.a.a.setPadding(0, 0, 0, 0);
   }
 }
 

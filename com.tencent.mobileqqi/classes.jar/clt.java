@@ -1,36 +1,23 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class clt
+class clt
   implements Runnable
 {
-  public clt(Conversation paramConversation) {}
+  clt(clr paramclr, URLDrawable paramURLDrawable) {}
   
   public void run()
   {
-    Object localObject = this.a.a.a();
-    localObject = this.a.a.b((String)localObject);
-    if ((localObject != ImageUtil.a()) && (this.a.X == 4096))
+    if ((this.jdField_a_of_type_Clr.a != null) && (this.jdField_a_of_type_Clr.a.isShowing()))
     {
-      if (!Conversation.d(this.a)) {
-        break label80;
-      }
-      this.a.b(3500L);
-    }
-    for (;;)
-    {
-      this.a.b(new clu(this, (Drawable)localObject));
-      return;
-      label80:
-      this.a.b(4500L);
+      this.jdField_a_of_type_Clr.a.setPreviewImage(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new clu(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     clt
  * JD-Core Version:    0.7.0.1
  */

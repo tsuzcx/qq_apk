@@ -1,29 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.mqsafeedit.libsafeedit;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.richstatus.IStatusListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class czm
-  implements View.OnClickListener
+  implements IStatusListener
 {
-  public czm(LoginActivity paramLoginActivity) {}
+  public czm(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, RichStatus paramRichStatus) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if ((this.a.b != null) && (this.a.b.isShown())) {
-      this.a.b.setVisibility(8);
+    PermisionPrivacyActivity.a(this.a, this.a.d.a(), paramBoolean);
+  }
+  
+  public void b(int paramInt, boolean paramBoolean)
+  {
+    if (paramInt == -1) {
+      PermisionPrivacyActivity.a(this.a, 2131562080);
     }
-    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText("");
-    libsafeedit.clearPassBuffer();
+    PermisionPrivacyActivity.a(this.a, this.a.d.a(), PermisionPrivacyActivity.a(this.a).b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     czm
  * JD-Core Version:    0.7.0.1
  */

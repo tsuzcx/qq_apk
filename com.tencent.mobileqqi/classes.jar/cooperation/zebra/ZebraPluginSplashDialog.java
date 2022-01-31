@@ -9,8 +9,8 @@ public class ZebraPluginSplashDialog
   public ZebraPluginSplashDialog(Context paramContext, int paramInt)
   {
     super(paramContext, 2131624477);
-    setContentView(2130904074);
-    paramContext = findViewById(2131234859);
+    setContentView(2130904076);
+    paramContext = findViewById(2131234861);
     if (paramContext != null) {
       paramContext.getLayoutParams().height = a(getContext());
     }

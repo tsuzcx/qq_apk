@@ -27,9 +27,9 @@ import com.tencent.mobileqq.widget.AntiphingToast;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import fdi;
-import fdj;
-import fdk;
+import eyu;
+import eyv;
+import eyw;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -180,7 +180,7 @@ public class AntiphingHandler
     }
   }
   
-  private boolean a(String paramString, fdk paramfdk)
+  private boolean a(String paramString, eyw parameyw)
   {
     if (paramString == null) {
       return false;
@@ -233,13 +233,13 @@ public class AntiphingHandler
         } while (localObject == null);
         if (((String)localObject).equalsIgnoreCase(str))
         {
-          paramfdk.jdField_a_of_type_JavaLangString = ((String)localObject);
-          paramfdk.jdField_a_of_type_Int = 1;
+          parameyw.jdField_a_of_type_JavaLangString = ((String)localObject);
+          parameyw.jdField_a_of_type_Int = 1;
           return true;
         }
       } while ((i != 1) || (!str.contains((CharSequence)localObject)));
-      paramfdk.jdField_a_of_type_JavaLangString = ((String)localObject);
-      paramfdk.jdField_a_of_type_Int = 2;
+      parameyw.jdField_a_of_type_JavaLangString = ((String)localObject);
+      parameyw.jdField_a_of_type_Int = 2;
       return true;
     }
   }
@@ -329,11 +329,11 @@ public class AntiphingHandler
       }
     }
     label121:
-    for (Object localObject2 = null;; localObject2 = new fdj(this))
+    for (Object localObject2 = null;; localObject2 = new eyv(this))
     {
       DialogUtil.a(localActivity, 230, paramString1, paramString2, paramString3, paramString4, (DialogInterface.OnClickListener)localObject1, (DialogInterface.OnClickListener)localObject2).show();
       return;
-      localObject1 = new fdi(this);
+      localObject1 = new eyu(this);
       break;
     }
   }
@@ -392,15 +392,15 @@ public class AntiphingHandler
         a(this.jdField_d_of_type_JavaLangString, 2, "Already Shown Tips!!");
       }
     }
-    fdk localfdk;
+    eyw localeyw;
     do
     {
       return false;
       if (QLog.isColorLevel()) {
         a(this.jdField_d_of_type_JavaLangString, 2, "Js is call back!");
       }
-      localfdk = new fdk(this);
-      if (a(paramString1, localfdk)) {
+      localeyw = new eyw(this);
+      if (a(paramString1, localeyw)) {
         break;
       }
     } while (!QLog.isColorLevel());
@@ -408,12 +408,12 @@ public class AntiphingHandler
     return false;
     try
     {
-      long l = Long.parseLong(localfdk.jdField_a_of_type_JavaLangString);
+      long l = Long.parseLong(localeyw.jdField_a_of_type_JavaLangString);
       int i = Integer.parseInt(paramString3);
       int j = Integer.parseInt(paramString4);
       int k = Integer.parseInt(paramString5);
       int m = Integer.parseInt(paramString6);
-      a(i, j, k, m, paramString2, Long.valueOf(l), localfdk.jdField_a_of_type_Int);
+      a(i, j, k, m, paramString2, Long.valueOf(l), localeyw.jdField_a_of_type_Int);
       return true;
     }
     catch (Exception paramString1) {}

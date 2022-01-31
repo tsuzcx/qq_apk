@@ -1,34 +1,24 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import java.util.Comparator;
 
 public class chr
-  implements View.OnClickListener
+  implements Comparator
 {
-  public chr(ChatHistory paramChatHistory) {}
+  public chr(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void onClick(View paramView)
+  public int a(DiscussionMemberInfo paramDiscussionMemberInfo1, DiscussionMemberInfo paramDiscussionMemberInfo2)
   {
-    if (NetworkUtil.e(BaseApplication.getContext()))
-    {
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.a.b.setVisibility(8);
-      if (this.a.jdField_a_of_type_Int == 0) {
-        this.a.i();
-      }
-      return;
+    if ((paramDiscussionMemberInfo1 != null) && (paramDiscussionMemberInfo2 != null)) {
+      return paramDiscussionMemberInfo1.discussionUin.compareTo(paramDiscussionMemberInfo2.discussionUin);
     }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (paramDiscussionMemberInfo1 != null) {
+      return 1;
     }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.a.b.setVisibility(0);
-    this.a.c.setText(this.a.getString(2131562452));
+    if (paramDiscussionMemberInfo2 != null) {
+      return -1;
+    }
+    return 0;
   }
 }
 

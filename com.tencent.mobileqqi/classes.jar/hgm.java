@@ -1,19 +1,29 @@
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.widget.DropdownView;
 
 public class hgm
   implements View.OnClickListener
 {
-  public hgm(QQCustomDialog paramQQCustomDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  public hgm(DropdownView paramDropdownView) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, 0);
+    this.a.jdField_a_of_type_Hgp.clearFocus();
+    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Hgp.getWindowToken(), 0);
+    if ((this.a.jdField_a_of_type_Hgp.getAdapter() != null) && (this.a.jdField_a_of_type_Hgp.getAdapter().getCount() > 0))
+    {
+      if ((((ImageView)paramView).getDrawable() == this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) && (!this.a.jdField_a_of_type_Boolean)) {
+        DropdownView.a(this.a).postDelayed(new hgn(this, paramView), 250L);
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    else {
+      return;
+    }
+    this.a.jdField_a_of_type_Hgp.dismissDropDown();
   }
 }
 

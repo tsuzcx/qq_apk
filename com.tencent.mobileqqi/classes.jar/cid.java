@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.proxy.ProxyObserver;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class cid
-  extends ProxyObserver
 {
-  public cid(ChatHistory paramChatHistory) {}
+  public String a;
+  public short a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void b()
-  {
-    this.a.runOnUiThread(new cie(this));
-  }
+  private cid(DiscussionMemberActivity paramDiscussionMemberActivity) {}
 }
 
 

@@ -1,32 +1,20 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.webviewplugin.QzonePlugin;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
-import com.tencent.smtt.sdk.WebView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
 public class bux
-  implements Runnable
+  implements View.OnClickListener
 {
-  public bux(QzonePlugin paramQzonePlugin) {}
+  public bux(AddRequestActivity paramAddRequestActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QzonePlugin.a(this.a) != null)
-    {
-      String str = QzonePlugin.a(this.a);
-      if (this.a.mRuntime.a().getIntent().getExtras().getString("url") != null) {
-        str = this.a.mRuntime.a().getIntent().getExtras().getString("url");
-      }
-      QzonePlugin.a(this.a).loadData(new String(str).replaceAll("#", "%23").replaceAll("%", "%25").replaceAll("'", "%27"), "text/html", "utf-8");
-      ((QQBrowserActivity)this.a.mRuntime.a()).a(false);
-    }
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bux
  * JD-Core Version:    0.7.0.1
  */

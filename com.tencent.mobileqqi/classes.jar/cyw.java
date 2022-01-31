@@ -1,57 +1,39 @@
-import android.widget.AutoCompleteTextView;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mqsafeedit.libsafeedit;
-import com.tencent.mobileqq.widget.ClearableEditText.OnTextClearedListener;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.util.Collection;
-import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.mobileqq.activity.PeopleAroundBaseActivity;
+import com.tencent.mobileqq.adapter.PeopleAroundAdapter.ViewHolder;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.widget.XListView;
 
 public class cyw
-  implements ClearableEditText.OnTextClearedListener
+  implements IIconListener
 {
-  public cyw(LoginActivity paramLoginActivity) {}
+  public cyw(PeopleAroundBaseActivity paramPeopleAroundBaseActivity) {}
   
-  public void a()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    
-    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.size() <= 0) || (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView == null) || (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText() == null) || (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString() == null)) {}
-    label70:
-    Object localObject;
-    label128:
-    do
+    if ((paramBitmap != null) && (paramInt2 == 200))
     {
-      return;
-      int i = 0;
-      SimpleAccount localSimpleAccount;
-      if (i < this.a.jdField_a_of_type_JavaUtilList.size())
+      int i = this.a.a.getChildCount();
+      paramInt2 = 0;
+      while (paramInt2 < i)
       {
-        localObject = this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString();
-        localSimpleAccount = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(i);
-        if (localSimpleAccount != null) {
-          break label128;
+        paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
+        if ((paramBitmap != null) && ((paramBitmap instanceof PeopleAroundAdapter.ViewHolder)))
+        {
+          paramBitmap = (PeopleAroundAdapter.ViewHolder)paramBitmap;
+          if ((paramBitmap.a == paramInt1) && (paramBitmap.c != null)) {
+            PeopleAroundBaseActivity.a(this.a, paramBitmap.c, paramInt1);
+          }
         }
+        paramInt2 += 1;
       }
-      while (!((String)localObject).equals(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.b(localSimpleAccount.getUin())))
-      {
-        i += 1;
-        break label70;
-        break;
-      }
-      this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.updateSubAccountLogin(localSimpleAccount.getUin(), false);
-      this.a.jdField_b_of_type_JavaLangString = null;
-      this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().refreAccountList();
-      localObject = this.a.getAppRuntime().getApplication().getAllAccounts();
-    } while ((localObject == null) || (this.a.jdField_a_of_type_JavaUtilList == null));
-    this.a.jdField_a_of_type_JavaUtilList.clear();
-    this.a.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cyw
  * JD-Core Version:    0.7.0.1
  */

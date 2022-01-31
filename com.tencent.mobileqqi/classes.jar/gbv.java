@@ -1,34 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
-import com.tencent.qphone.base.util.QLog;
-import com.weiyun.sdk.IWyFileSystem.IWyCallback;
-import com.weiyun.sdk.IWyFileSystem.WyErrorStatus;
+import com.tencent.mobileqq.maproam.activity.RoamingActivity;
+import com.tencent.mobileqq.maproam.widget.RoamSearchDialog.OnRoamResultObserver;
+import java.util.List;
 
 public class gbv
-  implements IWyFileSystem.IWyCallback
+  implements RoamSearchDialog.OnRoamResultObserver
 {
-  public gbv(WeiYunLogicCenter paramWeiYunLogicCenter) {}
+  public gbv(RoamingActivity paramRoamingActivity) {}
   
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "getPreviewUrl onSucceed.");
-    }
-    this.a.a.a().a(true, 40, new Object[] { paramString });
-  }
+  public void a(int paramInt, String paramString) {}
   
-  public void onFailed(IWyFileSystem.WyErrorStatus paramWyErrorStatus)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getPreviewUrl onFailed: errcode[" + paramWyErrorStatus.errorCode + "], errmsg[" + paramWyErrorStatus.errorMsg + "]");
-    }
-    this.a.a.a().a(false, 40, new Object[] { Integer.valueOf(paramWyErrorStatus.errorCode), paramWyErrorStatus.errorMsg });
-  }
+  public void a(int paramInt, List paramList) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gbv
  * JD-Core Version:    0.7.0.1
  */

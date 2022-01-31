@@ -1,51 +1,16 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.StrangerManageActivity;
-import com.tencent.mobileqq.activity.StrangerManageActivity.StrangeManagerListAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Stranger;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.ArrayList;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class dqk
-  extends FriendListObserver
+class dqk
+  implements View.OnClickListener
 {
-  public dqk(StrangerManageActivity paramStrangerManageActivity) {}
+  dqk(dqh paramdqh, Dialog paramDialog) {}
   
-  protected void a(String paramString)
+  public void onClick(View paramView)
   {
-    if (this.a.b.a().equals(paramString)) {
-      return;
-    }
-    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-    if (i >= 0)
-    {
-      if (TextUtils.equals(((Stranger)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).uin, paramString)) {
-        this.a.jdField_a_of_type_JavaUtilArrayList.remove(i);
-      }
-    }
-    else
-    {
-      EntityManager localEntityManager = this.a.b.a().createEntityManager();
-      paramString = (Stranger)localEntityManager.a(Stranger.class, paramString);
-      if (paramString != null) {
-        localEntityManager.b(paramString);
-      }
-      paramString = StrangerManageActivity.c(this.a);
-      if (this.a.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-        break label155;
-      }
-    }
-    label155:
-    for (boolean bool = true;; bool = false)
-    {
-      paramString.setEnabled(bool);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityStrangerManageActivity$StrangeManagerListAdapter.notifyDataSetChanged();
-      return;
-      i -= 1;
-      break;
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
   }
 }

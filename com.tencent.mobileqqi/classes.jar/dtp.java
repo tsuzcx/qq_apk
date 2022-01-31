@@ -1,28 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ThemeSwitchDlgActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.theme.NightModeLogic;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class dtp
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  public dtp(ThemeSwitchDlgActivity paramThemeSwitchDlgActivity) {}
+  private dtp(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    ThemeSwitchDlgActivity.a(this.a, true);
-    ThemeSwitchDlgActivity.a(this.a, new NightModeLogic(this.a.getAppRuntime(), this.a));
-    ThemeSwitchDlgActivity.a(this.a).registerModeCallback(new dtq(this));
-    if ((ThemeSwitchDlgActivity.a(this.a) != null) && (ThemeSwitchDlgActivity.a(this.a).isShowing()))
-    {
-      ThemeSwitchDlgActivity.a(this.a).dismiss();
-      ThemeSwitchDlgActivity.a(this.a, null);
-    }
-    ThemeSwitchDlgActivity.a(this.a).setupNightTheme();
-    ReportController.b(ThemeSwitchDlgActivity.a(this.a), "CliOper", "", "", "Setting_tab", "Night_mode_us", 0, 0, "1", "", "", "");
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.a(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

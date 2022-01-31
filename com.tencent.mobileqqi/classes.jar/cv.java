@@ -1,30 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.dataline.mpfile.LiteMpFileDownloadActivity;
+import com.dataline.activities.LiteWifiphotoActivity;
 
 public class cv
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public cv(LiteMpFileDownloadActivity paramLiteMpFileDownloadActivity) {}
+  public cv(LiteWifiphotoActivity paramLiteWifiphotoActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (paramIntent == null) {}
-    do
-    {
-      do
-      {
-        return;
-        paramContext = paramIntent.getAction();
-      } while (paramContext == null);
-      if (paramContext.equals("com.dataline.mpfile.download_progress"))
-      {
-        this.a.a();
-        return;
-      }
-    } while (!paramContext.equals("com.dataline.mpfile.download_completed"));
-    this.a.a();
+    LiteWifiphotoActivity.a(this.a);
   }
 }
 

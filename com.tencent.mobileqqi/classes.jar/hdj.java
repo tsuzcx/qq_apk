@@ -1,52 +1,68 @@
-import android.graphics.Point;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troop.widget.NearbyTroopsMapView;
-import com.tencent.mobileqq.troop.widget.NearbyTroopsMapView.NearbyTroopsMapViewObserver;
-import com.tencent.tencentmap.mapsdk.map.GeoPoint;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.QQCustomSingleChoiceDialog;
 
 public class hdj
-  extends Handler
+  extends BaseAdapter
 {
-  public hdj(NearbyTroopsMapView paramNearbyTroopsMapView) {}
+  public hdj(QQCustomSingleChoiceDialog paramQQCustomSingleChoiceDialog) {}
   
-  public void handleMessage(Message paramMessage)
+  public int getCount()
   {
-    if (paramMessage == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (paramMessage.what != 3) {
-          break;
-        }
-      } while (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapViewOverlayItem == null);
-      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapViewOverlayItem);
-      return;
-    } while ((paramMessage.obj == null) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapView$NearbyTroopsMapViewObserver == null));
-    switch (paramMessage.arg1)
-    {
-    default: 
-      return;
-    case 0: 
-      paramMessage = (GeoPoint)paramMessage.obj;
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapView$NearbyTroopsMapViewObserver.a(paramMessage);
-      return;
-    case 1: 
-      paramMessage = (GeoPoint)paramMessage.obj;
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapView$NearbyTroopsMapViewObserver.b(paramMessage);
-      return;
+    if (this.a.jdField_a_of_type_ArrayOfJavaLangCharSequence != null) {
+      return this.a.jdField_a_of_type_ArrayOfJavaLangCharSequence.length;
     }
-    paramMessage = (Point)paramMessage.obj;
-    int i = paramMessage.x;
-    int j = paramMessage.y;
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapView$NearbyTroopsMapViewObserver.b(i, j);
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (this.a.inflater == null) {
+      this.a.inflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
+    }
+    paramViewGroup = paramView;
+    if (paramView == null)
+    {
+      paramViewGroup = this.a.inflater.inflate(2130903164, null);
+      paramView = new hdl(this.a, null);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131231474));
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131231475));
+      paramViewGroup.setTag(paramView);
+    }
+    paramView = (hdl)paramViewGroup.getTag();
+    if (paramView.jdField_a_of_type_AndroidWidgetTextView != null)
+    {
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_a_of_type_ArrayOfJavaLangCharSequence[paramInt]);
+      if (this.a.jdField_a_of_type_Int == paramInt) {
+        paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+      }
+    }
+    else
+    {
+      return paramViewGroup;
+    }
+    paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+    return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hdj
  * JD-Core Version:    0.7.0.1
  */

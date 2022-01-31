@@ -1,26 +1,29 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.automator.step.CheckFriendsLastLoginInfo;
+import com.tencent.mobileqq.app.ConditionSearchManager.ISearchListener;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import java.util.List;
 
 public class fly
-  extends FriendListObserver
+  implements ConditionSearchManager.ISearchListener
 {
-  private fly(CheckFriendsLastLoginInfo paramCheckFriendsLastLoginInfo) {}
+  public fly(SearchResultActivity paramSearchResultActivity) {}
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(boolean paramBoolean1, List paramList, boolean paramBoolean2)
   {
-    int i = 0;
-    if (!paramBoolean1) {
-      this.a.a(6);
-    }
-    for (;;)
+    if (!paramBoolean1)
     {
-      if (i != 0) {
-        this.a.a(7);
-      }
+      this.a.b = 3;
+      this.a.jdField_a_of_type_Fma.notifyDataSetChanged();
       return;
-      if (paramBoolean2) {
-        i = 1;
-      }
+    }
+    if ((paramList != null) && (!paramList.isEmpty())) {
+      this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
+    paramList = this.a;
+    if (paramBoolean2) {}
+    for (int i = 1;; i = 0)
+    {
+      paramList.b = i;
+      break;
     }
   }
 }

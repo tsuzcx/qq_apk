@@ -1,19 +1,31 @@
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.app.NotificationManager;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class fdr
   implements Runnable
 {
-  public fdr(BaseActivity paramBaseActivity) {}
+  public fdr(MessageHandler paramMessageHandler, NotificationManager paramNotificationManager) {}
   
   public void run()
   {
-    if (BaseActivity.a() == null)
+    try
     {
-      fdu localfdu = new fdu(null);
-      SensorManager localSensorManager = (SensorManager)this.a.getSystemService("sensor");
-      localSensorManager.registerListener(localfdu, localSensorManager.getDefaultSensor(1), 0);
-      BaseActivity.a(localfdu);
+      Thread.sleep(5000L);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("Q.msg.MessageHandler", 4, "PConline time expired cancel now");
+      }
+      this.jdField_a_of_type_AndroidAppNotificationManager.cancel(MessageHandler.bO);
+      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, false);
+      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, null);
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.MessageHandler", 2, "PConline thread Interrupt");
+      }
+      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, null);
     }
   }
 }

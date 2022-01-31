@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.CirclePageIndicator.SavedState;
+import cooperation.qlink.QQProxyForQlink.Listener;
 
-public final class ian
-  implements Parcelable.Creator
+public class ian
+  implements Runnable
 {
-  public CirclePageIndicator.SavedState a(Parcel paramParcel)
-  {
-    return new CirclePageIndicator.SavedState(paramParcel, null);
-  }
+  public ian(QQProxyForQlink.Listener paramListener, Object paramObject) {}
   
-  public CirclePageIndicator.SavedState[] a(int paramInt)
+  public void run()
   {
-    return new CirclePageIndicator.SavedState[paramInt];
+    QQProxyForQlink.Listener.a(this.jdField_a_of_type_CooperationQlinkQQProxyForQlink$Listener, this.jdField_a_of_type_JavaLangObject);
   }
 }
 

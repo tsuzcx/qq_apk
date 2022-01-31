@@ -8,11 +8,11 @@ import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Environment;
 import android.text.TextUtils;
-import bnm;
-import bnn;
-import bno;
-import bnp;
-import bnq;
+import bhi;
+import bhj;
+import bhk;
+import bhl;
+import bhm;
 import com.tencent.biz.AuthorizeConfig;
 import com.tencent.biz.common.download.OfflineDownloader;
 import com.tencent.biz.common.util.LoadedBack;
@@ -580,7 +580,7 @@ public class HtmlOffline
       a(str, 4, 0L, OfflineDownloader.a(paramContext), "lixian_cover");
       return;
     }
-    new bnm(paramContext, paramString, paramAsyncCallBack).start();
+    new bhi(paramContext, paramString, paramAsyncCallBack).start();
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2)
@@ -588,7 +588,7 @@ public class HtmlOffline
     if ((paramContext == null) || (TextUtils.isEmpty(paramString1))) {
       return;
     }
-    a(paramContext, paramString1, paramString2, true, new bnn());
+    a(paramContext, paramString1, paramString2, true, new bhj());
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, int paramInt, LoadedBack paramLoadedBack)
@@ -639,7 +639,7 @@ public class HtmlOffline
       return;
     }
     a(paramString1);
-    OfflineDownloader.a(paramContext, paramString2, paramInt, paramString1, i + paramString1 + ".zip", new bnq(System.currentTimeMillis(), paramContext, paramString1, paramLoadedBack));
+    OfflineDownloader.a(paramContext, paramString2, paramInt, paramString1, i + paramString1 + ".zip", new bhm(System.currentTimeMillis(), paramContext, paramString1, paramLoadedBack));
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, LoadedBack paramLoadedBack)
@@ -734,7 +734,7 @@ public class HtmlOffline
       return;
     }
     a(paramString1);
-    new bno(paramInt, paramString1, paramContext, paramString2, paramLoadedBack, paramBoolean).start();
+    new bhk(paramInt, paramString1, paramContext, paramString2, paramLoadedBack, paramBoolean).start();
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, LoadedCallBack paramLoadedCallBack)
@@ -994,7 +994,7 @@ public class HtmlOffline
     }
     for (;;)
     {
-      new bnp(a(paramString1), paramContext, paramString1, paramString2, paramLoadedCallBack).start();
+      new bhl(a(paramString1), paramContext, paramString1, paramString2, paramLoadedCallBack).start();
       return;
     }
   }

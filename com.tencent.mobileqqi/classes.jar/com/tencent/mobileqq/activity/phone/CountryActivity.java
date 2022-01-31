@@ -19,12 +19,12 @@ import com.tencent.mobileqq.widget.FakeTextView;
 import com.tencent.mobileqq.widget.IndexView;
 import com.tencent.mobileqq.widget.IndexView.OnIndexChangedListener;
 import com.tencent.mobileqq.widget.PinnedDividerListView;
-import epo;
-import epp;
-import epq;
-import epr;
-import eps;
-import epu;
+import ela;
+import elb;
+import elc;
+import eld;
+import ele;
+import elg;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -42,8 +42,8 @@ public class CountryActivity
   TextView jdField_a_of_type_AndroidWidgetTextView;
   IndexView jdField_a_of_type_ComTencentMobileqqWidgetIndexView;
   private PinnedDividerListView jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView;
-  private epq jdField_a_of_type_Epq;
-  public epu a;
+  private elc jdField_a_of_type_Elc;
+  public elg a;
   public ArrayList a;
   public LinkedHashMap a;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
@@ -55,46 +55,46 @@ public class CountryActivity
     this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   }
   
-  public static void a(View paramView, epr paramepr)
+  public static void a(View paramView, eld parameld)
   {
-    paramView = (eps)paramView.getTag();
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramepr.b);
-    paramView.b.setText("+" + paramepr.c);
-    paramView.jdField_a_of_type_Epr = paramepr;
+    paramView = (ele)paramView.getTag();
+    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(parameld.b);
+    paramView.b.setText("+" + parameld.c);
+    paramView.jdField_a_of_type_Eld = parameld;
   }
   
   private static View b(LayoutInflater paramLayoutInflater, boolean paramBoolean)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130903306, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2130903308, null);
     if (paramBoolean) {
       paramLayoutInflater.setPadding(paramLayoutInflater.getPaddingLeft(), paramLayoutInflater.getPaddingTop(), (int)DisplayUtils.a(BaseApplicationImpl.a, 40.0F), paramLayoutInflater.getPaddingBottom());
     }
-    eps localeps = new eps(null);
-    localeps.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131232034));
-    localeps.b = ((TextView)paramLayoutInflater.findViewById(2131232013));
-    paramLayoutInflater.setTag(localeps);
+    ele localele = new ele(null);
+    localele.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131232037));
+    localele.b = ((TextView)paramLayoutInflater.findViewById(2131232016));
+    paramLayoutInflater.setTag(localele);
     return paramLayoutInflater;
   }
   
   private void d()
   {
-    this.jdField_a_of_type_Epu = new epu(this, this);
-    this.jdField_a_of_type_Epu.setCanceledOnTouchOutside(true);
-    this.jdField_a_of_type_Epu.show();
-    this.jdField_a_of_type_Epu.setOnDismissListener(new epp(this));
+    this.jdField_a_of_type_Elg = new elg(this, this);
+    this.jdField_a_of_type_Elg.setCanceledOnTouchOutside(true);
+    this.jdField_a_of_type_Elg.show();
+    this.jdField_a_of_type_Elg.setOnDismissListener(new elb(this));
   }
   
   public void a(View paramView)
   {
-    paramView = (eps)paramView.getTag();
-    if (paramView.jdField_a_of_type_Epr != null)
+    paramView = (ele)paramView.getTag();
+    if (paramView.jdField_a_of_type_Eld != null)
     {
-      if ((this.jdField_a_of_type_Epu != null) && (this.jdField_a_of_type_Epu.isShowing())) {
-        this.jdField_a_of_type_Epu.dismiss();
+      if ((this.jdField_a_of_type_Elg != null) && (this.jdField_a_of_type_Elg.isShowing())) {
+        this.jdField_a_of_type_Elg.dismiss();
       }
       Intent localIntent = new Intent();
-      localIntent.putExtra("k_name", paramView.jdField_a_of_type_Epr.b);
-      localIntent.putExtra("k_code", paramView.jdField_a_of_type_Epr.c);
+      localIntent.putExtra("k_name", paramView.jdField_a_of_type_Eld.b);
+      localIntent.putExtra("k_code", paramView.jdField_a_of_type_Eld.c);
       setResult(-1, localIntent);
       finish();
     }
@@ -115,7 +115,7 @@ public class CountryActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903304);
+    setContentView(2130903306);
     this.jdField_a_of_type_ArrayOfJavaLangString = getResources().getStringArray(2131689519);
     paramBundle = this.jdField_a_of_type_ArrayOfJavaLangString;
     Object localObject1 = getResources().getStringArray(2131689518);
@@ -139,22 +139,22 @@ public class CountryActivity
     paramBundle = "#";
     j = arrayOfString.length;
     i = 0;
-    epr localepr;
+    eld localeld;
     if (i < j)
     {
-      localepr = new epr(arrayOfString[i]);
-      localObject1 = localepr.a;
+      localeld = new eld(arrayOfString[i]);
+      localObject1 = localeld.a;
       if (paramBundle.equals(localObject1)) {
         break label630;
       }
-      ((ArrayList)localObject2).add(new epr((String)localObject1));
+      ((ArrayList)localObject2).add(new eld((String)localObject1));
       paramBundle = (Bundle)localObject1;
     }
     label625:
     label630:
     for (;;)
     {
-      ((ArrayList)localObject2).add(localepr);
+      ((ArrayList)localObject2).add(localeld);
       this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject1, Integer.valueOf(((Integer)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject1)).intValue() + 1));
       i += 1;
       break;
@@ -178,17 +178,17 @@ public class CountryActivity
         this.k.setText(2131561692);
         this.jdField_a_of_type_AndroidViewView = new FakeTextView(this);
         this.b = new FakeTextView(this);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)findViewById(2131232033));
-        this.c = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2130903942, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)findViewById(2131232036));
+        this.c = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2130903944, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false);
         this.c.setPadding(0, 0, 40, 0);
-        this.c.findViewById(2131233084).setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.c.findViewById(2131233085));
+        this.c.findViewById(2131233086).setVisibility(8);
+        this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.c.findViewById(2131233087));
         this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(false);
         this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
         this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
-        this.jdField_a_of_type_Epq = new epq(this, null);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Epq);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)findViewById(2131232027));
+        this.jdField_a_of_type_Elc = new elc(this, null);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Elc);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)findViewById(2131232030));
         this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setIndex(this.jdField_a_of_type_ArrayOfJavaLangString, true);
         this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131230734));
         this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setTextView(this.jdField_a_of_type_AndroidWidgetTextView);
@@ -203,10 +203,10 @@ public class CountryActivity
   {
     if (paramView == this.jdField_a_of_type_AndroidWidgetEditText)
     {
-      this.jdField_a_of_type_Epu = new epu(this, this);
-      this.jdField_a_of_type_Epu.setCanceledOnTouchOutside(true);
-      this.jdField_a_of_type_Epu.show();
-      this.jdField_a_of_type_Epu.setOnDismissListener(new epo(this));
+      this.jdField_a_of_type_Elg = new elg(this, this);
+      this.jdField_a_of_type_Elg.setCanceledOnTouchOutside(true);
+      this.jdField_a_of_type_Elg.show();
+      this.jdField_a_of_type_Elg.setOnDismissListener(new ela(this));
       return;
     }
     a(paramView);
@@ -228,7 +228,7 @@ public class CountryActivity
   {
     paramMenu.clear();
     MenuItem localMenuItem = paramMenu.add(0, 0, 0, getString(2131562830));
-    localMenuItem.setIcon(2130839696);
+    localMenuItem.setIcon(2130839698);
     MenuItemCompat.setShowAsAction(localMenuItem, 1);
     return super.onPrepareOptionsMenu(paramMenu);
   }

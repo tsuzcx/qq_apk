@@ -1,24 +1,23 @@
-import com.tencent.mobileqq.transfile.OldHttpEngine;
-import com.tencent.mobileqq.transfile.OldHttpEngine.OldHttpCommunicatorListner;
-import java.util.TimerTask;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.widget.ImageView;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
+import com.tencent.mobileqq.troop.activity.TroopBarCommentActivity;
 
 public class grx
-  extends TimerTask
+  implements Runnable
 {
-  public grx(OldHttpEngine.OldHttpCommunicatorListner paramOldHttpCommunicatorListner) {}
+  public grx(TroopBarCommentActivity paramTroopBarCommentActivity) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine.c(this.a.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+    this.a.b = false;
+    this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839370);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.a.getString(2131558490));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     grx
  * JD-Core Version:    0.7.0.1
  */

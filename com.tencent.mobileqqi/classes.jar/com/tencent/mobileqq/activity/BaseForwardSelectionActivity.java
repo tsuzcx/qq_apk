@@ -7,10 +7,10 @@ import com.tencent.mobileqq.app.BaseActivity;
 public class BaseForwardSelectionActivity
   extends BaseActivity
 {
-  protected ForwardOperations a;
-  protected boolean a;
+  public ForwardOperations a;
+  public boolean a;
   
-  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if ((paramInt2 == -1) && (paramInt1 == 20001))
     {

@@ -1,21 +1,63 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.magicface.view.MagicfaceContainerView;
+import com.tencent.mobileqq.magicface.view.MagicfaceContainerView.MagicfaceGestureListener;
 
 public class gar
-  extends fzv
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public gar(OnlineFileSessionWorker paramOnlineFileSessionWorker)
+  public gar(MagicfaceContainerView paramMagicfaceContainerView) {}
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    super(paramOnlineFileSessionWorker);
+    if (MagicfaceContainerView.a(this.a) != null) {
+      MagicfaceContainerView.a(this.a).a(5);
+    }
+    return false;
   }
   
-  protected String a()
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    return "StateUploadoneWhenPause";
+    if (paramMotionEvent1.getX() - paramMotionEvent2.getX() > 150.0F) {
+      if (MagicfaceContainerView.a(this.a) != null) {
+        MagicfaceContainerView.a(this.a).a(0);
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return false;
+          if (paramMotionEvent1.getX() - paramMotionEvent2.getX() >= -150.0F) {
+            break;
+          }
+        } while (MagicfaceContainerView.a(this.a) == null);
+        MagicfaceContainerView.a(this.a).a(1);
+        return false;
+        if (paramMotionEvent1.getY() - paramMotionEvent2.getY() <= 150.0F) {
+          break;
+        }
+      } while (MagicfaceContainerView.a(this.a) == null);
+      MagicfaceContainerView.a(this.a).a(2);
+      return false;
+    } while ((paramMotionEvent1.getY() - paramMotionEvent2.getY() >= -150.0F) || (MagicfaceContainerView.a(this.a) == null));
+    MagicfaceContainerView.a(this.a).a(3);
+    return false;
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    if (MagicfaceContainerView.a(this.a) != null) {
+      MagicfaceContainerView.a(this.a).a(4);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gar
  * JD-Core Version:    0.7.0.1
  */

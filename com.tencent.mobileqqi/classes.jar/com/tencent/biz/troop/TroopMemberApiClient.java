@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
-import btk;
-import btl;
+import bnj;
+import bnk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BizTroopObserver;
 import com.tencent.mobileqq.app.TroopObserver;
@@ -25,7 +25,7 @@ public class TroopMemberApiClient
 {
   private static TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = null;
   static final String jdField_a_of_type_JavaLangString = "com.tencent.biz.troop.TroopMemberApiClient";
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new btk(this);
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new bnj(this);
   public final Messenger a;
   public BizTroopObserver a;
   public List a;
@@ -37,7 +37,7 @@ public class TroopMemberApiClient
   
   private TroopMemberApiClient()
   {
-    this.jdField_a_of_type_AndroidOsMessenger = new Messenger(new btl(this));
+    this.jdField_a_of_type_AndroidOsMessenger = new Messenger(new bnk(this));
     this.jdField_b_of_type_AndroidOsMessenger = null;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_b_of_type_JavaUtilList = new ArrayList();

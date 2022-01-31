@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.servlet.QZoneServlet;
-import com.tencent.mobileqq.utils.ReflectedMethods;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.transfile.OldHttpEngine;
+import com.tencent.mobileqq.transfile.OldHttpEngine.OldHttpCommunicatorListner;
 import java.util.TimerTask;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class gnq
   extends TimerTask
 {
-  private gnq(QZoneServlet paramQZoneServlet) {}
+  public gnq(OldHttpEngine.OldHttpCommunicatorListner paramOldHttpCommunicatorListner) {}
   
   public void run()
   {
-    AppRuntime localAppRuntime = this.a.getAppRuntime();
-    this.a.a = ReflectedMethods.a(BaseApplication.getContext(), "QZONE_UNREAD");
-    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), QZoneServlet.class);
-    localNewIntent.setAction("QZone_Get_Unread");
-    localNewIntent.putExtra("bNotWorkInBackGround", true);
-    localAppRuntime.startServlet(localNewIntent);
+    if (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine.c(this.a.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
   }
 }
 

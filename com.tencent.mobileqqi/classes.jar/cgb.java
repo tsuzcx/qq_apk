@@ -1,23 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.os.Handler.Callback;
+import com.tencent.mobileqq.activity.DetailProfileActivity;
 
-public final class cgb
+public class cgb
   implements DialogInterface.OnClickListener
 {
-  public cgb(Handler.Callback paramCallback) {}
+  public cgb(DetailProfileActivity paramDetailProfileActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.a != null) {
-      this.a.handleMessage(null);
-    }
-    paramDialogInterface.dismiss();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cgb
  * JD-Core Version:    0.7.0.1
  */

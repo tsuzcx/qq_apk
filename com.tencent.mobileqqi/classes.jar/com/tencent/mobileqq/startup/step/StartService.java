@@ -32,7 +32,7 @@ public class StartService
         }
         Automator localAutomator1 = localQQAppInterface.a;
         Automator localAutomator2 = localQQAppInterface.a;
-        if (this.w == 18)
+        if (this.x == 19)
         {
           localObject = "{[10,11,13],16,19,20,21}";
           localAutomator1.a(StepFactory.a(localAutomator2, (String)localObject));

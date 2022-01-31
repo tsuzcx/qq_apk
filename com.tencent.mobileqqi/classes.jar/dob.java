@@ -1,20 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
 
 public class dob
-  implements DialogInterface.OnDismissListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public dob(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  public dob(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.finish();
+    switch (paramCompoundButton.getId())
+    {
+    default: 
+      return;
+    }
+    TroopAssistantManager.a().a(this.a.b, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dob
  * JD-Core Version:    0.7.0.1
  */

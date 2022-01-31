@@ -1,24 +1,16 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.maproam.activity.RoamingActivity;
-import com.tencent.mobileqq.maproam.activity.RoamingActivity.GetAddressTaskListener;
-import com.tencent.mobileqq.maproam.widget.RoamLocalSearchBar;
+import com.tencent.mobileqq.remind.RemindJavascriptInterface;
+import com.tencent.mobileqq.remind.widget.IosTimepicker.OnTimePickerSelectListener;
 
 public class gfy
-  implements RoamingActivity.GetAddressTaskListener
+  implements IosTimepicker.OnTimePickerSelectListener
 {
-  public gfy(RoamingActivity paramRoamingActivity) {}
+  public gfy(RemindJavascriptInterface paramRemindJavascriptInterface) {}
   
-  public void a(String paramString)
-  {
-    this.a.b.startAnimation(this.a.c);
-    if ((paramString != null) && (paramString.length() > 0)) {
-      this.a.a.a(paramString);
-    }
-  }
+  public void a(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gfy
  * JD-Core Version:    0.7.0.1
  */

@@ -275,11 +275,11 @@ public class ThemeJsPlugin
           do
           {
             return;
-            if (paramString2.startsWith(AppConstants.bb)) {
+            if (paramString2.startsWith(AppConstants.bf)) {
               break;
             }
           } while (!QLog.isColorLevel());
-          QLog.d("ThemeJsPlugin", 2, "not download theme file message" + AppConstants.bb);
+          QLog.d("ThemeJsPlugin", 2, "not download theme file message" + AppConstants.bf);
           return;
           if (paramInt != 2002) {
             break;

@@ -6,6 +6,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.SearchEvent;
 import android.view.View;
 import android.view.Window.Callback;
 import android.view.WindowManager.LayoutParams;
@@ -113,6 +114,11 @@ class ActionBarActivityDelegateICS$WindowCallbackWrapper
     return this.mWrapped.onSearchRequested();
   }
   
+  public boolean onSearchRequested(SearchEvent paramSearchEvent)
+  {
+    return false;
+  }
+  
   public void onWindowAttributesChanged(WindowManager.LayoutParams paramLayoutParams)
   {
     this.mWrapped.onWindowAttributesChanged(paramLayoutParams);
@@ -126,6 +132,11 @@ class ActionBarActivityDelegateICS$WindowCallbackWrapper
   public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback)
   {
     return this.mWrapped.onWindowStartingActionMode(paramCallback);
+  }
+  
+  public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback, int paramInt)
+  {
+    return null;
   }
 }
 

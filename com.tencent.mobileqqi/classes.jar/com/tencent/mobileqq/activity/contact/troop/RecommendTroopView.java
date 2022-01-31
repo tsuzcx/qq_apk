@@ -38,13 +38,13 @@ import com.tencent.mobileqq.widget.ShaderAnimLayout;
 import com.tencent.mobileqq.widget.SlideDetectListView;
 import com.tencent.mobileqq.widget.SlideDetectListView.OnSlideListener;
 import com.tencent.util.WeakReferenceHandler;
-import elb;
-import elc;
-import eld;
-import elf;
-import elg;
-import elh;
-import eli;
+import efy;
+import efz;
+import ega;
+import egc;
+import egd;
+import ege;
+import egf;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Observable;
@@ -61,11 +61,11 @@ public class RecommendTroopView
   Button jdField_a_of_type_AndroidWidgetButton;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new elb(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new efy(this);
   public RecommendTroopInfo a;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   public SlideDetectListView a;
-  public eli a;
+  public egf a;
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   public List a;
   public RelativeLayout b;
@@ -202,14 +202,14 @@ public class RecommendTroopView
   
   private boolean c()
   {
-    a(2130903441);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232603));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131232606));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232604));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232605));
+    a(2130903443);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232606));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131232609));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232607));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232608));
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setTranscriptMode(0);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232608));
-    this.jdField_a_of_type_Eli = new eli(this, a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232611));
+    this.jdField_a_of_type_Egf = new egf(this, a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     return true;
   }
@@ -221,7 +221,7 @@ public class RecommendTroopView
       a();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a(new elc(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a(new efz(this));
   }
   
   private void n()
@@ -244,7 +244,7 @@ public class RecommendTroopView
     if (localObject != null) {}
     for (localObject = ((RecommendTroopManagerImp)localObject).a();; localObject = null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a(new eld(this, (List)localObject));
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a(new ega(this, (List)localObject));
       this.f = false;
       return;
     }
@@ -268,25 +268,25 @@ public class RecommendTroopView
   
   public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
   {
-    if ((paramSlideDetectListView != this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView) || (paramInt < 0) || (paramInt >= this.jdField_a_of_type_Eli.getCount())) {}
+    if ((paramSlideDetectListView != this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView) || (paramInt < 0) || (paramInt >= this.jdField_a_of_type_Egf.getCount())) {}
     do
     {
       return;
-      this.jdField_a_of_type_Eli.a = paramInt;
-      View localView = paramView.findViewById(2131232311);
+      this.jdField_a_of_type_Egf.a = paramInt;
+      View localView = paramView.findViewById(2131232314);
       if (localView != null)
       {
-        Button localButton = (Button)localView.findViewById(2131232455);
+        Button localButton = (Button)localView.findViewById(2131232458);
         localButton.setTag(Integer.valueOf(paramInt));
         localButton.setOnClickListener(this);
         ((ShaderAnimLayout)localView).a();
         paramSlideDetectListView.setDeleteAreaWidth(localView.getLayoutParams().width);
       }
-      paramSlideDetectListView = paramView.findViewById(2131232453);
+      paramSlideDetectListView = paramView.findViewById(2131232456);
       if (paramSlideDetectListView != null) {
         paramSlideDetectListView.setVisibility(4);
       }
-      paramSlideDetectListView = paramView.findViewById(2131232454);
+      paramSlideDetectListView = paramView.findViewById(2131232457);
     } while (paramSlideDetectListView == null);
     paramSlideDetectListView.setVisibility(4);
   }
@@ -299,9 +299,9 @@ public class RecommendTroopView
     for (;;)
     {
       return true;
-      if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String)) && (this.jdField_a_of_type_Eli != null))
+      if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String)) && (this.jdField_a_of_type_Egf != null))
       {
-        this.jdField_a_of_type_Eli.a(String.valueOf(paramMessage.arg1), String.valueOf(paramMessage.obj));
+        this.jdField_a_of_type_Egf.a(String.valueOf(paramMessage.arg1), String.valueOf(paramMessage.obj));
         continue;
         a();
       }
@@ -328,19 +328,19 @@ public class RecommendTroopView
     Object localObject;
     if (paramSlideDetectListView == this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView)
     {
-      this.jdField_a_of_type_Eli.a = paramInt;
-      this.jdField_a_of_type_Eli.a = -1;
-      paramSlideDetectListView = paramView.findViewById(2131232311);
+      this.jdField_a_of_type_Egf.a = paramInt;
+      this.jdField_a_of_type_Egf.a = -1;
+      paramSlideDetectListView = paramView.findViewById(2131232314);
       if (paramSlideDetectListView != null)
       {
         ((ShaderAnimLayout)paramSlideDetectListView).d();
-        paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131232455);
+        paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131232458);
         paramSlideDetectListView.setTag(null);
         paramSlideDetectListView.setOnClickListener(null);
       }
-      paramSlideDetectListView = paramView.findViewById(2131232453);
-      paramView = paramView.findViewById(2131232454);
-      localObject = this.jdField_a_of_type_Eli.a(paramInt);
+      paramSlideDetectListView = paramView.findViewById(2131232456);
+      paramView = paramView.findViewById(2131232457);
+      localObject = this.jdField_a_of_type_Egf.a(paramInt);
       if (!((RecommendTroopMsg)localObject).isTroop()) {
         break label186;
       }
@@ -359,15 +359,15 @@ public class RecommendTroopView
     while ((!((RecommendTroopMsg)localObject).isBusiness()) || (paramSlideDetectListView == null))
     {
       FriendManager localFriendManager;
-      paramView.postDelayed(new elf(this, paramView), 300L);
+      paramView.postDelayed(new egc(this, paramView), 300L);
       do
       {
         return;
       } while (paramSlideDetectListView == null);
-      paramSlideDetectListView.postDelayed(new elg(this, paramSlideDetectListView), 300L);
+      paramSlideDetectListView.postDelayed(new egd(this, paramSlideDetectListView), 300L);
       return;
     }
-    paramSlideDetectListView.postDelayed(new elh(this, paramSlideDetectListView), 300L);
+    paramSlideDetectListView.postDelayed(new ege(this, paramSlideDetectListView), 300L);
   }
   
   protected void e()
@@ -390,8 +390,8 @@ public class RecommendTroopView
     b(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this);
     GroupCatalogTool.a(a()).a();
-    if (this.jdField_a_of_type_Eli != null) {
-      this.jdField_a_of_type_Eli.b();
+    if (this.jdField_a_of_type_Egf != null) {
+      this.jdField_a_of_type_Egf.b();
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(getClass());
   }
@@ -478,11 +478,11 @@ public class RecommendTroopView
       TroopQQBrowserHelper.a(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a());
       return;
       this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b();
-      this.jdField_a_of_type_Eli.a = -1;
+      this.jdField_a_of_type_Egf.a = -1;
       paramView = (Button)paramView;
     } while (paramView.getTag() == null);
     int i = ((Integer)paramView.getTag()).intValue();
-    paramView = this.jdField_a_of_type_Eli.a(i);
+    paramView = this.jdField_a_of_type_Egf.a(i);
     Object localObject2;
     if (paramView != null)
     {

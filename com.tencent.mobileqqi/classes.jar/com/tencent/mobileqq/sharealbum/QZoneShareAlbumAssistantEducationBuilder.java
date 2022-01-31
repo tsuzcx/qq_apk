@@ -16,9 +16,9 @@ public class QZoneShareAlbumAssistantEducationBuilder
   {
     paramObject = paramView;
     if (paramView == null) {
-      paramObject = View.inflate(paramContext, 2130903864, null);
+      paramObject = View.inflate(paramContext, 2130903866, null);
     }
-    paramDrawable = paramObject.findViewById(2131234174);
+    paramDrawable = paramObject.findViewById(2131234176);
     paramDrawable.setTag(-1, Integer.valueOf(paramInt));
     paramDrawable.setOnClickListener(paramOnClickListener);
     paramObject.setTag(-1, Integer.valueOf(paramInt));

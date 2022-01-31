@@ -24,7 +24,7 @@ import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import hav;
+import gwo;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -45,7 +45,7 @@ public class TroopMessageProcessor
   public static final String c = "Q.msg.TroopMessageProcessor";
   public static final int d = 3;
   public static final int e = 4;
-  public Comparator b = new hav(this);
+  public Comparator b = new gwo(this);
   
   public TroopMessageProcessor(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {

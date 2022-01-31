@@ -1,6 +1,6 @@
 package com.google.zxing.common.reedsolomon;
 
-import fh;
+import fp;
 
 public final class GenericGF
 {
@@ -13,11 +13,11 @@ public final class GenericGF
   public static final GenericGF f = new GenericGF(301, 256);
   public static final GenericGF g = f;
   public static final GenericGF h = jdField_c_of_type_ComGoogleZxingCommonReedsolomonGenericGF;
-  private fh jdField_a_of_type_Fh;
+  private fp jdField_a_of_type_Fp;
   private boolean jdField_a_of_type_Boolean = false;
   private int[] jdField_a_of_type_ArrayOfInt;
   private final int jdField_b_of_type_Int;
-  private fh jdField_b_of_type_Fh;
+  private fp jdField_b_of_type_Fp;
   private int[] jdField_b_of_type_ArrayOfInt;
   private final int c;
   
@@ -64,8 +64,8 @@ public final class GenericGF
       this.jdField_b_of_type_ArrayOfInt[this.jdField_a_of_type_ArrayOfInt[i]] = i;
       i += 1;
     }
-    this.jdField_a_of_type_Fh = new fh(this, new int[] { 0 });
-    this.jdField_b_of_type_Fh = new fh(this, new int[] { 1 });
+    this.jdField_a_of_type_Fp = new fp(this, new int[] { 0 });
+    this.jdField_b_of_type_Fp = new fp(this, new int[] { 1 });
     this.jdField_a_of_type_Boolean = true;
   }
   
@@ -87,24 +87,24 @@ public final class GenericGF
     return this.jdField_a_of_type_ArrayOfInt[paramInt];
   }
   
-  public fh a()
+  public fp a()
   {
     b();
-    return this.jdField_a_of_type_Fh;
+    return this.jdField_a_of_type_Fp;
   }
   
-  public fh a(int paramInt1, int paramInt2)
+  public fp a(int paramInt1, int paramInt2)
   {
     b();
     if (paramInt1 < 0) {
       throw new IllegalArgumentException();
     }
     if (paramInt2 == 0) {
-      return this.jdField_a_of_type_Fh;
+      return this.jdField_a_of_type_Fp;
     }
     int[] arrayOfInt = new int[paramInt1 + 1];
     arrayOfInt[0] = paramInt2;
-    return new fh(this, arrayOfInt);
+    return new fp(this, arrayOfInt);
   }
   
   public int b(int paramInt)
@@ -125,10 +125,10 @@ public final class GenericGF
     return this.jdField_a_of_type_ArrayOfInt[((this.jdField_b_of_type_ArrayOfInt[paramInt1] + this.jdField_b_of_type_ArrayOfInt[paramInt2]) % (this.jdField_b_of_type_Int - 1))];
   }
   
-  fh b()
+  fp b()
   {
     b();
-    return this.jdField_b_of_type_Fh;
+    return this.jdField_b_of_type_Fp;
   }
   
   public int c(int paramInt)

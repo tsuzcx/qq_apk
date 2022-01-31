@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import protocol.KQQConfig.GetResourceRespInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.PrivacyPolicyHelper;
 
-public class feu
-  implements Runnable
+public final class feu
+  implements DialogInterface.OnClickListener
 {
-  public feu(ConfigHandler paramConfigHandler, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer);
+    PrivacyPolicyHelper.a("1");
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

@@ -1,51 +1,66 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import org.json.JSONObject;
+import SummaryCard.RespSearch;
+import SummaryCard.SearchInfo;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.eqq.EnterpriseDetailActivity;
+import com.tencent.mobileqq.activity.AddContactsActivity;
+import com.tencent.mobileqq.activity.AddFriendActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.international.ServerPushStringMap;
+import java.util.ArrayList;
 
 public class bth
-  extends Thread
+  extends FriendListObserver
 {
-  public bth(ScannerActivity paramScannerActivity) {}
+  public bth(AddContactsActivity paramAddContactsActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, Object paramObject, int paramInt, String paramString)
   {
-    SharedPreferences.Editor localEditor = this.a.a.edit();
-    localEditor.putLong("lastCheckOrientation", System.currentTimeMillis());
-    localEditor.commit();
-    Object localObject = "http://qm.qq.com/cgi-bin/check_orientation?product=" + Build.PRODUCT + "&os=" + Build.VERSION.RELEASE;
-    try
+    this.a.b(this.a.a);
+    this.a.b();
+    if ((!paramBoolean) || (paramInt != 0))
     {
-      String str = HttpUtil.a(this.a, (String)localObject, "GET", null, null);
-      QLog.d("QRHttpUtil", 2, "open :" + (String)localObject + ", result: " + str);
-      localObject = new JSONObject(str);
-      if (((JSONObject)localObject).getInt("r") == 0)
+      if (!TextUtils.isEmpty(paramString))
       {
-        if (((JSONObject)localObject).getInt("orientation") == 1)
+        paramObject = (Integer)ServerPushStringMap.getInstance().get(paramString);
+        if (paramObject != null)
         {
-          localEditor.putBoolean("needLandScape", true);
-          localEditor.commit();
+          paramObject = this.a.getString(paramObject.intValue());
+          this.a.a(paramObject);
+          return;
         }
+        this.a.a(paramString);
+        return;
       }
-      else {
-        throw new IOException();
-      }
+      this.a.a(this.a.getString(2131562510));
+      return;
     }
-    catch (Exception localException)
+    paramString = (RespSearch)paramObject;
+    if ((paramString.vRecords == null) || (paramString.vRecords.isEmpty()))
     {
-      localEditor.putLong("lastCheckOrientation", 0L);
-      localEditor.commit();
+      this.a.a(this.a.getString(2131563023));
+      return;
     }
+    if (paramString.vRecords.size() == 1)
+    {
+      paramObject = (SearchInfo)paramString.vRecords.get(0);
+      if (paramObject.bIsEnterpriseQQ == 0)
+      {
+        AddFriendActivity.a(this.a, (SearchInfo)paramString.vRecords.get(0), this.a.b.a(), paramString.vSecureSig);
+        return;
+      }
+      paramString = new Intent(this.a, EnterpriseDetailActivity.class);
+      paramString.putExtra("uin", String.valueOf(paramObject.lUIN));
+      this.a.startActivity(paramString);
+      return;
+    }
+    this.a.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bth
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,30 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.activity.book.BookEditText;
-import com.tencent.mobileqq.text.QQText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.util.EUCountryUtils;
+import mqq.app.MobileQQ;
 
 public class ehw
-  implements InputFilter
+  implements DialogInterface.OnClickListener
 {
-  public ehw(BookEditText paramBookEditText) {}
+  public ehw(MainAssistObserver paramMainAssistObserver) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(paramSpanned.toString());
-    if (this.a.a(paramCharSequence.toString()) == 0) {
-      BookEditText.a(this.a);
+    if (paramDialogInterface != null)
+    {
+      paramDialogInterface.dismiss();
+      EUCountryUtils.c(this.a.a.b.a());
+      EUCountryUtils.c(this.a.a.b.getApplication().getProperty(this.a.a.b.a()));
+      this.a.a(this.a.a, this.a.a.b, true);
     }
-    while (!QQText.a(paramCharSequence.toString())) {
-      return paramCharSequence.subSequence(paramInt1, paramInt2 - paramInt1);
-    }
-    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ehw
  * JD-Core Version:    0.7.0.1
  */

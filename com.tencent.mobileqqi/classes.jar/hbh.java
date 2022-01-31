@@ -1,29 +1,26 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
+import com.tencent.mobileqq.utils.SecUtil;
 
-public class hbh
-  implements TroopMemberApiClient.Callback
+class hbh
+  implements Runnable
 {
-  public hbh(VideoPlayLogic paramVideoPlayLogic) {}
+  hbh(hbg paramhbg, String paramString1, int paramInt, String paramString2, String paramString3) {}
   
-  public void a(Bundle paramBundle)
+  public void run()
   {
-    if (paramBundle.getBoolean("ret"))
+    this.jdField_a_of_type_Hbg.a.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    String str = SecUtil.a(AntiFraudConfigFileUtil.a(this.jdField_a_of_type_Hbg.a, this.jdField_a_of_type_JavaLangString));
+    if (!this.b.equalsIgnoreCase(str))
     {
-      VideoPlayLogic.b(this.a);
+      AntiFraudConfigFileUtil.a(this.jdField_a_of_type_Hbg.a, this.jdField_a_of_type_JavaLangString, this.b, this.c);
       return;
     }
-    if ((VideoPlayLogic.a(this.a) != null) && (VideoPlayLogic.a(this.a).isShowing() == true)) {
-      VideoPlayLogic.a(this.a).dismiss();
-    }
-    this.a.a(VideoPlayLogic.a(this.a));
+    this.jdField_a_of_type_Hbg.a.a(this.jdField_a_of_type_JavaLangString, System.currentTimeMillis());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hbh
  * JD-Core Version:    0.7.0.1
  */

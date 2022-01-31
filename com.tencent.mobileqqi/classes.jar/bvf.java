@@ -1,46 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class bvf
-  implements BusinessObserver
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public bvf(Share paramShare) {}
+  public bvf(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (!paramBoolean) {}
-    byte[] arrayOfByte;
-    do
-    {
-      return;
-      arrayOfByte = paramBundle.getByteArray("data");
-    } while (arrayOfByte == null);
-    paramBundle = new GetAppInfoProto.GetAppinfoResponse();
-    try
-    {
-      paramBundle.mergeFrom(arrayOfByte);
-      ThreadManager.a(new bvg(this, paramBundle));
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(Share.b(), 2, localInvalidProtocolBufferMicroException.getMessage());
-        }
-      }
-    }
+    AssistantSettingActivity.c(this.a).setContentDescription(this.a.getString(2131231141));
+    SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131563451), "qqsetting_auto_receive_magic_face_key", paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bvf
  * JD-Core Version:    0.7.0.1
  */

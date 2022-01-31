@@ -1,20 +1,14 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.mobileqq.app.TroopObserver;
 
-class erx
-  implements FMDialogUtil.FMDialogInterface
+public class erx
+  extends TroopObserver
 {
-  erx(erw paramerw) {}
+  public erx(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  public void a()
+  protected void a(boolean paramBoolean)
   {
-    PhotoPreviewActivity.b(this.a.a);
-  }
-  
-  public void b()
-  {
-    this.a.a.c.setClickable(true);
+    new Thread(new ery(this)).start();
   }
 }
 

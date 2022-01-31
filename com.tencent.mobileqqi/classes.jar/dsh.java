@@ -1,34 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.SubAccountSettingActivity;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.subaccount.SubAccountDataControll;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import java.util.ArrayList;
 
 class dsh
-  implements ActionSheet.OnButtonClickListener
+  implements DialogInterface.OnClickListener
 {
-  dsh(dsg paramdsg, ActionSheet paramActionSheet) {}
+  dsh(dsf paramdsf) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    paramView = "";
-    if (SubAccountSettingActivity.a(this.jdField_a_of_type_Dsg.a) != null) {
-      paramView = SubAccountSettingActivity.a(this.jdField_a_of_type_Dsg.a).subuin;
-    }
-    ReportController.b(this.jdField_a_of_type_Dsg.a.b, "CliOper", "", paramView, "Bind_account", "Clean_msg_tipslist", 0, 0, "", "", "", "");
-    if (SubAccountSettingActivity.a(this.jdField_a_of_type_Dsg.a) != null)
-    {
-      SubAccountDataControll.a().a(this.jdField_a_of_type_Dsg.a.b, SubAccountSettingActivity.a(this.jdField_a_of_type_Dsg.a).subuin);
-      this.jdField_a_of_type_Dsg.a.b(this.jdField_a_of_type_Dsg.a.getString(2131561834));
-    }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    paramDialogInterface = new ArrayList();
+    paramDialogInterface.add(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ATroopMember.a);
+    this.a.jdField_a_of_type_Dsd.a.i = this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ATroopMember.a;
+    ((TroopHandler)this.a.jdField_a_of_type_Dsd.a.b.a(19)).a(TroopMemberListActivity.a(this.a.jdField_a_of_type_Dsd.a), paramDialogInterface);
+    this.a.jdField_a_of_type_Dsd.a.e();
+    this.a.jdField_a_of_type_Dsd.a.a.show();
   }
 }
 

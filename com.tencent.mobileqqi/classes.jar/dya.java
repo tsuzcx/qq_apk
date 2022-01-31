@@ -1,26 +1,18 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
 
 public class dya
-  implements TextWatcher
+  implements Runnable
 {
-  private dya(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public dya(PressToSpeakPanel paramPressToSpeakPanel) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.d(paramEditable);
+    this.a.c();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dya
  * JD-Core Version:    0.7.0.1
  */

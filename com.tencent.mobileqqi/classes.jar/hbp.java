@@ -1,29 +1,20 @@
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
+import android.text.TextUtils.TruncateAt;
+import android.widget.Button;
 
-public class hbp
-  extends AsyncTask
+public final class hbp
+  implements Runnable
 {
-  private RollangleImageView b;
+  public hbp(Button paramButton) {}
   
-  public hbp(RollangleImageView paramRollangleImageView) {}
-  
-  protected Bitmap a(Boolean... paramVarArgs)
+  public void run()
   {
-    return RollangleImageView.a(this.a, paramVarArgs[0].booleanValue());
-  }
-  
-  protected void a(Bitmap paramBitmap)
-  {
-    if (paramBitmap != null) {
-      this.a.setImageBitmap(paramBitmap);
-    }
+    this.a.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+    this.a.setMarqueeRepeatLimit(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hbp
  * JD-Core Version:    0.7.0.1
  */

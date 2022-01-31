@@ -1,21 +1,21 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.ActivityChatItemBuilder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
 
 public class edj
-  extends AbstractChatItemBuilder.ViewHolder
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public edj(SearchResultDialog paramSearchResultDialog) {}
   
-  public edj(ActivityChatItemBuilder paramActivityChatItemBuilder) {}
+  public void onClick(View paramView)
+  {
+    SearchResultDialog.a(this.a).setText("");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     edj
  * JD-Core Version:    0.7.0.1
  */

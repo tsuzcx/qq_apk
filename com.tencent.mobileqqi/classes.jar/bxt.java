@@ -1,53 +1,38 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class bxt
   implements View.OnClickListener
 {
-  public bxt(AccountManageActivity paramAccountManageActivity) {}
+  public bxt(ChatActivity paramChatActivity) {}
   
   public void onClick(View paramView)
   {
-    View localView = AccountManageActivity.a(this.a, paramView);
-    if (this.a.a == null)
-    {
-      this.a.a = paramView;
-      this.a.a(paramView, 2130968586, 2);
-      localObject = localView.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.c(this.a) * 75.0F));
-      localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      paramView.setContentDescription(this.a.getString(2131562854));
-      return;
+    ReportController.b(this.a.b, "CliOper", "", "", "Free_call", "Clk_free_call_tips", 0, 0, "", "", "", "");
+    ChatActivityFacade.d(this.a.b, this.a.a.jdField_a_of_type_JavaLangString);
+    ChatActivity.a(this.a);
+    paramView = null;
+    String str = null;
+    if (this.a.a.jdField_a_of_type_Int == 1006) {
+      str = this.a.a.jdField_a_of_type_JavaLangString;
     }
-    if (this.a.a == paramView)
+    for (;;)
     {
-      this.a.a(this.a.a, 2130968585, 3);
-      localObject = localView.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.d(this.a) * 40.0F));
-      localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.a.a = null;
-      paramView.setContentDescription(this.a.getString(2131558457));
+      ChatActivityUtils.a(this.a.b, this.a, this.a.a.jdField_a_of_type_Int, paramView, this.a.a.d, str, true, this.a.a.b, true, true, null, "");
+      ReportController.b(this.a.b, "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "8", "", "", "");
       return;
+      paramView = this.a.a.jdField_a_of_type_JavaLangString;
     }
-    this.a.a(this.a.a, 2130968585, 3);
-    Object localObject = AccountManageActivity.a(this.a, this.a.a);
-    ViewGroup.LayoutParams localLayoutParams = ((View)localObject).getLayoutParams();
-    localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.e(this.a) * 40.0F));
-    ((View)localObject).setLayoutParams(localLayoutParams);
-    this.a.a(paramView, 2130968586, 2);
-    localObject = localView.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject).width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.f(this.a) * 75.0F));
-    localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    paramView.setContentDescription(this.a.getString(2131562854));
-    this.a.a.setContentDescription(this.a.getString(2131558457));
-    this.a.a = paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bxt
  * JD-Core Version:    0.7.0.1
  */

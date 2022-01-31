@@ -1,28 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.pic.ReportInfo;
-
-public final class gik
-  implements Parcelable.Creator
+class gik
+  implements Runnable
 {
-  public ReportInfo a(Parcel paramParcel)
-  {
-    ReportInfo localReportInfo = new ReportInfo();
-    localReportInfo.e = paramParcel.readInt();
-    localReportInfo.f = paramParcel.readInt();
-    localReportInfo.g = paramParcel.readInt();
-    localReportInfo.j = paramParcel.readInt();
-    localReportInfo.h = paramParcel.readInt();
-    localReportInfo.i = paramParcel.readInt();
-    localReportInfo.a = paramParcel.readLong();
-    localReportInfo.b = paramParcel.readLong();
-    localReportInfo.c = paramParcel.readLong();
-    return localReportInfo;
-  }
+  gik(gii paramgii, long paramLong1, long paramLong2, long paramLong3) {}
   
-  public ReportInfo[] a(int paramInt)
+  public void run()
   {
-    return new ReportInfo[paramInt];
+    this.jdField_a_of_type_Gii.b(this.jdField_a_of_type_Long, this.b, this.c);
   }
 }
 

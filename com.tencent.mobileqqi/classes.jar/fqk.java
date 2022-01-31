@@ -1,28 +1,35 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.LBSObserver;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class fqk
-  extends LBSObserver
+  implements ActionSheet.OnButtonClickListener
 {
-  public fqk(LocationSelectActivity paramLocationSelectActivity) {}
+  public fqk(FMActivity paramFMActivity, ActionSheet paramActionSheet) {}
   
-  protected void a(boolean paramBoolean, String[] paramArrayOfString)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) > 1200L)
+    switch (paramInt)
     {
-      this.a.a(paramBoolean, paramArrayOfString);
-      return;
     }
-    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1000);
-    localMessage.obj = new Object[] { Boolean.valueOf(paramBoolean), paramArrayOfString };
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1200L);
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.b.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_Long)) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
+      }
+      FMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fqk
  * JD-Core Version:    0.7.0.1
  */

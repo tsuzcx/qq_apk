@@ -1,17 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
-import com.tencent.mobileqq.filemanager.data.RecentFileAdapter;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import com.tencent.qphone.base.util.QLog;
 
 public class fvs
-  implements DialogInterface.OnCancelListener
+  extends fvb
 {
-  public fvs(FMRecentFileActivity paramFMRecentFileActivity) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public fvs(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    this.a.a.a(Integer.valueOf(-1));
-    FMRecentFileActivity.a(this.a);
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateRefuseByPCWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.a == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "]. recvOnLineFile entity is null");
+      return;
+    }
+    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 6);
+    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 6);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateRefuseByPC)");
+    this.jdField_a_of_type_Fvb = new fvr(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
   }
 }
 

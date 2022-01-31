@@ -5,12 +5,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.qphone.base.util.QLog;
-import ihw;
+import idc;
 
 public class RecvMsg
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new ihw();
+  public static final Parcelable.Creator CREATOR = new idc();
   public static final String SSOSEQ_KEY = "_ssoSeqKey";
   private static final String tag = "RecvMsg";
   public Bundle extraData = new Bundle();

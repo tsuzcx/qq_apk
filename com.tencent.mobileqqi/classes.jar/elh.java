@@ -1,14 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 
 public class elh
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public elh(RecommendTroopView paramRecommendTroopView, View paramView) {}
+  public elh(DialogBaseActivity paramDialogBaseActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.a.finish();
   }
 }
 

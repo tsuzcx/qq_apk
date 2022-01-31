@@ -1,59 +1,68 @@
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import mqq.observer.BusinessObserver;
 
 public class djx
-  extends WtloginObserver
+  implements BusinessObserver
 {
-  public djx(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public djx(SplashActivity paramSplashActivity) {}
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a.isFinishing()) {}
-    do
+    QLog.d("SplashActivity", 2, "success:" + String.valueOf(paramBoolean));
+    if (!paramBoolean) {}
+    for (;;)
     {
       return;
-      if ((paramInt == 0) && (paramDevlockInfo != null))
+      if (paramBoolean) {}
+      try
       {
-        if (QLog.isColorLevel())
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
         {
-          QLog.d("QQSetting2Activity", 2, "OnCheckDevLockStatus ret = " + paramInt);
-          QLog.d("QQSetting2Activity", 2, "DevlockInfo devSetup:" + paramDevlockInfo.DevSetup + " countryCode:" + paramDevlockInfo.CountryCode + " mobile:" + paramDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + paramDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount + " AllowSet:" + paramDevlockInfo.AllowSet);
-          QLog.d("QQSetting2Activity", 2, "DevlockInfo.ProtectIntro:" + paramDevlockInfo.ProtectIntro + "  info.MbGuideType:" + paramDevlockInfo.MbGuideType);
-          QLog.d("QQSetting2Activity", 2, "DevlockInfo.MbGuideMsg:" + paramDevlockInfo.MbGuideMsg);
-          QLog.d("QQSetting2Activity", 2, "DevlockInfo.MbGuideInfoType:" + paramDevlockInfo.MbGuideInfoType);
-          QLog.d("QQSetting2Activity", 2, "DevlockInfo.MbGuideInfo:" + paramDevlockInfo.MbGuideInfo);
+          mobileqq_mp.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
+          localGetPublicAccountDetailInfoResponse.mergeFrom(paramBundle);
+          if ((localGetPublicAccountDetailInfoResponse.ret_info.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0))
+          {
+            if ((this.a.a == null) || ((this.a.a != null) && (localGetPublicAccountDetailInfoResponse.seqno.has()) && (localGetPublicAccountDetailInfoResponse.seqno.get() != this.a.a.seqno)))
+            {
+              SplashActivity.a(this.a, localGetPublicAccountDetailInfoResponse);
+              new AccountDetail(SplashActivity.a(this.a));
+              paramBundle = this.a.getSharedPreferences(this.a.b.a(), 0);
+              if ((paramBundle != null) && (paramBundle.getBoolean("qqi_public_account_first_login", true)))
+              {
+                SplashActivity.d(this.a);
+                paramBundle.edit().putBoolean("qqi_public_account_first_login", false).commit();
+              }
+            }
+          }
+          else {
+            SplashActivity.e(this.a);
+          }
         }
-        this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = paramDevlockInfo;
-        this.a.a(this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo);
-        return;
+        else
+        {
+          SplashActivity.e(this.a);
+          return;
+        }
       }
-      if (QLog.isColorLevel())
-      {
-        QLog.d("QQSetting2Activity", 2, "OnCheckDevLockStatus ret = " + paramInt);
-        if (paramErrMsg != null) {
-          QLog.d("QQSetting2Activity", 2, "OnCheckDevLockStatus errMsg:" + paramErrMsg.getMessage());
-        }
-        if (paramDevlockInfo == null) {
-          QLog.d("QQSetting2Activity", 2, "OnCheckDevLockStatus DevlockInfo is null");
-        }
-      }
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setClickable(true);
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-    } while (!this.a.isResume());
-    paramWUserSigInfo = this.a.getString(2131562073);
-    QQToast.a(this.a.getApplicationContext(), paramWUserSigInfo, 0).b(this.a.d());
+      catch (Exception paramBundle) {}
+    }
+    SplashActivity.e(this.a);
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     djx
  * JD-Core Version:    0.7.0.1
  */

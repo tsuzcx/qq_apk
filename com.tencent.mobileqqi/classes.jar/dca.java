@@ -1,28 +1,44 @@
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.widget.XEditTextEx;
 
 public class dca
-  extends FriendListObserver
+  extends Handler
 {
-  public dca(MoveToGroupActivity paramMoveToGroupActivity) {}
-  
-  protected void a(String paramString, byte paramByte1, byte paramByte2)
+  public dca(QQLSActivity paramQQLSActivity, Looper paramLooper)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    MoveToGroupActivity.a(this.a);
-    if (paramString == null) {
-      QQToast.a(this.a, this.a.getString(2131562081), 0).b(this.a.d());
-    }
-    for (;;)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      MoveToGroupActivity.b(this.a);
-      this.a.b(MoveToGroupActivity.a(this.a));
+    default: 
+    case 0: 
+      do
+      {
+        return;
+      } while (QQLSActivity.b(this.a));
+      if (hasMessages(0)) {
+        removeMessages(0);
+      }
+      QQLSActivity.c(this.a);
+      if (QQLSActivity.a(this.a) != null) {
+        ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(QQLSActivity.a(this.a).getWindowToken(), 0);
+      }
+      Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131563331), 0).show();
       return;
-      QQToast.a(this.a, 2, this.a.getString(2131562990), 0).b(this.a.d());
+    case 1: 
+      this.a.b();
+      this.a.finish();
+      return;
     }
+    this.a.finish();
   }
 }
 

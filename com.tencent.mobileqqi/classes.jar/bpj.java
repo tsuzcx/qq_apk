@@ -1,15 +1,37 @@
-import com.tencent.biz.game.SensorAPIJavaScript;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.biz.common.util.ImageUtil;
+import com.tencent.biz.webviewplugin.Share;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class bpj
-  implements Runnable
+  extends Handler
 {
-  public bpj(SensorAPIJavaScript paramSensorAPIJavaScript) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public void run()
+  public bpj(Share paramShare) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.setResult(4660);
-    this.a.a.finish();
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while ((!(paramMessage.obj instanceof Bitmap)) || (this.jdField_a_of_type_Boolean));
+      paramMessage = ImageUtil.a((Bitmap)paramMessage.obj, (int)(34.0F * this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_Float));
+      this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.f.setVisibility(8);
+      this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramMessage);
+    } while (!QLog.isColorLevel());
+    QLog.d(Share.b(), 2, "QQBrowserActivity VISIBLE -----------------------");
   }
 }
 

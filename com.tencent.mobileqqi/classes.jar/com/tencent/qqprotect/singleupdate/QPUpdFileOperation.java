@@ -38,33 +38,33 @@ public class QPUpdFileOperation
     ZipInputStream localZipInputStream = new ZipInputStream(new BufferedInputStream(paramString1));
     for (;;)
     {
-      Object localObject1;
+      Object localObject2;
       try
       {
-        localObject1 = localZipInputStream.getNextEntry();
+        Object localObject1 = localZipInputStream.getNextEntry();
         if (localObject1 == null) {
           break;
         }
-        Object localObject2 = ((ZipEntry)localObject1).getName();
+        localObject2 = ((ZipEntry)localObject1).getName();
         if ((localObject2 == null) || (((String)localObject2).contains("../"))) {
           continue;
         }
-        localObject2 = new byte[2048];
-        localObject1 = new BufferedOutputStream(new FileOutputStream(paramString2 + "/" + ((ZipEntry)localObject1).getName()), 2048);
-        int i = localZipInputStream.read((byte[])localObject2, 0, 2048);
+        localObject1 = new byte[2048];
+        localObject2 = new BufferedOutputStream(new FileOutputStream(paramString2 + "/" + (String)localObject2), 2048);
+        int i = localZipInputStream.read((byte[])localObject1, 0, 2048);
         if (i != -1)
         {
-          ((BufferedOutputStream)localObject1).write((byte[])localObject2, 0, i);
+          ((BufferedOutputStream)localObject2).write((byte[])localObject1, 0, i);
           continue;
         }
-        ((BufferedOutputStream)localObject1).flush();
+        ((BufferedOutputStream)localObject2).flush();
       }
       finally
       {
         paramString1.close();
         localZipInputStream.close();
       }
-      ((BufferedOutputStream)localObject1).close();
+      ((BufferedOutputStream)localObject2).close();
     }
     paramString1.close();
     localZipInputStream.close();

@@ -7,8 +7,8 @@ import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
-import fyr;
-import fys;
+import fuf;
+import fug;
 import java.util.HashMap;
 import java.util.Observable;
 
@@ -22,7 +22,7 @@ public class FileManagerNotifyCenter
   
   public FileManagerNotifyCenter(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new fyr(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new fuf(this, Looper.getMainLooper());
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     paramQQAppInterface.a(getClass(), this.jdField_a_of_type_AndroidOsHandler);
   }
@@ -138,7 +138,7 @@ public class FileManagerNotifyCenter
   public void a(FileManagerEntity paramFileManagerEntity, int paramInt, String paramString)
   {
     b(paramFileManagerEntity, paramInt, paramString);
-    new Thread(new fys(this, paramFileManagerEntity, paramInt)).run();
+    new Thread(new fug(this, paramFileManagerEntity, paramInt)).run();
   }
   
   public void a(boolean paramBoolean, int paramInt, Object paramObject)

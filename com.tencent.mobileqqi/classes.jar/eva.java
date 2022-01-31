@@ -1,14 +1,15 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
-import com.tencent.mobileqq.data.CircleBuddy;
+import android.media.SoundPool;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
-public class eva
-  extends FacePreloadBaseAdapter.ViewHolder
+class eva
+  implements Runnable
 {
-  public CheckBox a;
-  public TextView a;
-  public CircleBuddy a;
+  eva(euz parameuz) {}
+  
+  public void run()
+  {
+    VoipDialInterfaceActivity.a(this.a.a).play(VoipDialInterfaceActivity.c(this.a.a), 1.0F, 1.0F, 0, 0, 1.0F);
+  }
 }
 
 

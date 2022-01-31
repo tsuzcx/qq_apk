@@ -1,16 +1,37 @@
-import com.tencent.av.VideoController;
+import android.app.Dialog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import com.tencent.biz.PoiMapActivity;
 
 public class bgt
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public int a;
+  public bgt(PoiMapActivity paramPoiMapActivity, TranslateAnimation paramTranslateAnimation1, Dialog paramDialog, int paramInt, TranslateAnimation paramTranslateAnimation2) {}
   
-  public bgt(VideoController paramVideoController) {}
-  
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentAvVideoController.h(this.jdField_a_of_type_Int);
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
+    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
+    {
+      this.jdField_a_of_type_AndroidAppDialog.show();
+      localLayoutParams.height = (this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getHeight() + this.jdField_a_of_type_Int);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.setLayoutParams(localLayoutParams);
+      return;
+      if (paramAnimation == this.b) {
+        localLayoutParams.height = (this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getHeight() - this.jdField_a_of_type_Int);
+      }
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

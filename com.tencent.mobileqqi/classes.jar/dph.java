@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SplashActivity;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
-public class dph
-  implements View.OnClickListener
+class dph
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public dph(SplashActivity paramSplashActivity) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public void onClick(View paramView)
-  {
-    this.a.g();
-  }
+  private dph(dpg paramdpg) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dph
  * JD-Core Version:    0.7.0.1
  */

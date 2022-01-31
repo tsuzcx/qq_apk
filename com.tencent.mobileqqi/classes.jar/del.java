@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.activity.PeopleAroundBaseActivity;
+import QQService.SvcDevLoginInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import java.util.ArrayList;
 
 public class del
-  implements Runnable
+  implements View.OnClickListener
 {
-  public del(PeopleAroundBaseActivity paramPeopleAroundBaseActivity) {}
+  public del(RecentLoginDevActivity paramRecentLoginDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.h();
+    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramView.stDeviceItemDes);
+    RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, paramView.strDeviceName, localArrayList, RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity), this.jdField_a_of_type_Int);
   }
 }
 

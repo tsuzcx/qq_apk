@@ -1,18 +1,13 @@
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
 
-public class fyt
-  extends FMObserver
+class fyt
+  implements Runnable
 {
-  public fyt(FileManagerRSCenter paramFileManagerRSCenter) {}
+  fyt(fys paramfys, String paramString, long paramLong1, long paramLong2) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FileManagerRSCenter<FileAssistant>", 2, "recive TransferEnd, rmove task[" + String.valueOf(paramLong2) + "]!");
-    }
-    this.a.a(paramLong2);
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Fys.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
   }
 }
 

@@ -1,20 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DoodleActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 
 public class cpi
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public cpi(DoodleActivity paramDoodleActivity) {}
+  public cpi(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.finish();
+    this.a.c();
+    GesturePWDUtils.setGestureUnlockFailedType(this.a, 1);
+    StatisticCollector.a(this.a.getBaseContext()).a(this.a.b, this.a.b.a(), "Gesture_pwd", "click_wrong_pwd", 0, 1, "0", null, null, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     cpi
  * JD-Core Version:    0.7.0.1
  */

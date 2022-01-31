@@ -1,27 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.DataTag;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.utils.BubbleContextMenu;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 
 public class cnn
-  implements DialogInterface.OnClickListener
+  implements View.OnLongClickListener
 {
-  public cnn(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new cno(this);
+  private DataTag jdField_a_of_type_ComTencentMobileqqProfileDataTag;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public cnn(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  
+  public boolean onLongClick(View paramView)
   {
-    if (NetworkUtil.e(this.a.a()))
-    {
-      ReportController.b(this.a.b, "CliOper", "", "", "0X80040EA", "0X80040EA", 0, 0, "", "", "", "");
-      DiscussionInfoCardActivity.a(this.a).d(Long.valueOf(DiscussionInfoCardActivity.a(this.a)).longValue());
-      this.a.a(this.a.getString(2131562648));
-      DiscussionInfoCardActivity.a(this.a).show();
-      return;
+    if ((paramView == null) || (!(paramView.getTag() instanceof DataTag))) {
+      return false;
     }
-    this.a.a(1, this.a.getString(2131562488));
+    Object localObject = (DataTag)paramView.getTag();
+    switch (((DataTag)localObject).C)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      if (ProfileActivity.AllInOne.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqProfileDataTag = ((DataTag)localObject);
+        localObject = new QQCustomMenu();
+        ((QQCustomMenu)localObject).a(2131234879, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getString(2131561879));
+        FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, BubbleContextMenu.a(paramView, (QQCustomMenu)localObject, this.jdField_a_of_type_AndroidViewView$OnClickListener, null));
+        continue;
+        this.jdField_a_of_type_ComTencentMobileqqProfileDataTag = ((DataTag)localObject);
+        localObject = new QQCustomMenu();
+        ((QQCustomMenu)localObject).a(2131234879, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getString(2131561879));
+        FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, BubbleContextMenu.a(paramView, (QQCustomMenu)localObject, this.jdField_a_of_type_AndroidViewView$OnClickListener, null));
+      }
+    }
   }
 }
 

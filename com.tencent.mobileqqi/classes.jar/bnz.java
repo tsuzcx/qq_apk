@@ -1,18 +1,33 @@
+import android.content.res.Resources;
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.common.util.OfflineSecurity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.ui.CustomMenuBar;
 
-public final class bnz
-  implements Runnable
+public class bnz
+  implements View.OnTouchListener
 {
-  public bnz(String paramString1, String paramString2) {}
+  public bnz(CustomMenuBar paramCustomMenuBar, ImageView paramImageView, TextView paramTextView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool = OfflineSecurity.a(this.a, this.b);
-    Message localMessage = OfflineSecurity.a.obtainMessage();
-    localMessage.obj = Boolean.valueOf(bool);
-    OfflineSecurity.a.sendMessage(localMessage);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b)
+      {
+        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
+        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidViewView.setVisibility(4);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838493);
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131362043));
+      }
+    }
   }
 }
 

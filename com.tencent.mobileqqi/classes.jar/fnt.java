@@ -1,48 +1,53 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.message.OfflineFileMessageProcessor;
-import com.tencent.mobileqq.filemanager.app.FileTransferObserver;
-import com.tencent.mobileqq.filemanager.data.FMTransC2CMsgInfo;
-import com.tencent.mobileqq.service.message.MessageProtoCodec;
-import com.tencent.mobileqq.service.message.MessageUtils;
-import com.tencent.mobileqq.service.message.TransMsgContext;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
+import com.tencent.mobileqq.emoticon.EPJsonTask;
+import com.tencent.mobileqq.emoticon.EmoticonController;
+import com.tencent.mobileqq.emoticon.EmoticonController.ProgressHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class fnt
-  implements fni
+  implements Runnable
 {
-  public fnt(OfflineFileMessageProcessor paramOfflineFileMessageProcessor, String paramString, FMTransC2CMsgInfo paramFMTransC2CMsgInfo, int paramInt1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3) {}
+  public fnt(EmoticonController paramEmoticonController, int paramInt) {}
   
-  public ToServiceMsg a()
+  public void run()
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageOfflineFileMessageProcessor.a.a("MessageSvc.PbSendMsg");
-    localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putLong("msgsize", 0L);
-    localToServiceMsg.extraData.putLong("uniseq", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.uniseq);
-    localToServiceMsg.extraData.putInt("SEND_MSG_CMD_MSG_TYPE", 1);
-    localToServiceMsg.extraData.putString("uuid", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.uuid);
-    localToServiceMsg.extraData.putByte("cmd", (byte)0);
-    localToServiceMsg.extraData.putByte("keyType", (byte)0);
-    localToServiceMsg.extraData.putInt("busiType", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.busiType);
-    localToServiceMsg.extraData.putString("toUin", this.jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putLong("queueSeq", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.queueSeq);
-    localToServiceMsg.extraData.putLong("sessionid", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.sessionId);
-    localToServiceMsg.extraData.putInt("random", MessageUtils.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgUid));
-    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgSeq));
-    localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 13);
-    localToServiceMsg.extraData.putInt("transC2CCmd", this.jdField_a_of_type_Int);
-    TransMsgContext localTransMsgContext = new TransMsgContext();
-    localTransMsgContext.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.subCmd;
-    localTransMsgContext.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    localToServiceMsg.putWupBuffer(MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOfflineFileMessageProcessor.a, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_ArrayOfByte, this.jdField_b_of_type_Int, this.c, localTransMsgContext, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgSeq, MessageUtils.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgUid)).toByteArray());
-    localToServiceMsg.extraData.putLong(FileTransferObserver.class.getName(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.observerSeq);
-    return localToServiceMsg;
+    EmoticonController.ProgressHandler localProgressHandler;
+    synchronized (this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonController.e)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonController.e.size() == 0) {
+        return;
+      }
+      localProgressHandler = (EmoticonController.ProgressHandler)this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonController.e.remove(0);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonController.f.add(localProgressHandler);
+      ??? = new EPJsonTask(localProgressHandler.a, EmoticonController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonController));
+      ((EPJsonTask)???).a(localProgressHandler);
+      ((EPJsonTask)???).a(this.jdField_a_of_type_Int);
+    }
+    try
+    {
+      ((EPJsonTask)???).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.emoji.EmosmDetailActivity", 2, "startDownloadEmosmJson|json is loading");
+      }
+      EmoticonController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonController, this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonController.f, localProgressHandler);
+      return;
+      localObject1 = finally;
+      throw localObject1;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.emoji.EmoDown", 2, "downloadEmosmJson Exception|" + localException.toString());
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     fnt
  * JD-Core Version:    0.7.0.1
  */

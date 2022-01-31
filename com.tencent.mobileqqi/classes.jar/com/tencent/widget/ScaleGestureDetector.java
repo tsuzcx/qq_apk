@@ -1,7 +1,6 @@
 package com.tencent.widget;
 
 import android.content.Context;
-import android.util.FloatMath;
 import android.view.MotionEvent;
 import com.tencent.qphone.base.util.QLog;
 
@@ -318,7 +317,7 @@ public class ScaleGestureDetector
     {
       float f1 = this.f;
       float f2 = this.g;
-      this.h = FloatMath.sqrt(f1 * f1 + f2 * f2);
+      this.h = ((float)Math.sqrt(f1 * f1 + f2 * f2));
     }
     return this.h;
   }
@@ -339,7 +338,7 @@ public class ScaleGestureDetector
     {
       float f1 = this.d;
       float f2 = this.e;
-      this.i = FloatMath.sqrt(f1 * f1 + f2 * f2);
+      this.i = ((float)Math.sqrt(f1 * f1 + f2 * f2));
     }
     return this.i;
   }

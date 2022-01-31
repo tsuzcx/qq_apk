@@ -137,7 +137,7 @@ public class ShareSelectionRecentAdapter
       localObject2 = new QQServiceEntry.Tag();
     }
     localView.setTag(2131230985, null);
-    localView.setTag(2131233143, Integer.valueOf(paramInt));
+    localView.setTag(2131233145, Integer.valueOf(paramInt));
     switch (paramInt)
     {
     default: 
@@ -170,7 +170,7 @@ public class ShareSelectionRecentAdapter
         localImageView.setFocusable(false);
         localImageView.setEnabled(false);
         localImageView.setLongClickable(false);
-        localView.setBackgroundResource(2130837848);
+        localView.setBackgroundResource(2130837850);
         return localView;
         paramView = this.jdField_a_of_type_ComTencentMobileqqModelFriendManager.c(str);
         if (paramView != null) {

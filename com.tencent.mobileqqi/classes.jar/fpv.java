@@ -1,35 +1,20 @@
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.CloudFileBrowserActivity;
 
 public class fpv
-  implements IphonePickerView.PickerViewAdapter
+  implements View.OnClickListener
 {
-  public fpv(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  public fpv(CloudFileBrowserActivity paramCloudFileBrowserActivity) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    if (this.a.c == 0) {
-      return ConditionSearchFriendActivity.b.length;
-    }
-    return ConditionSearchFriendActivity.a.length;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    if (this.a.c == 0) {
-      return ConditionSearchFriendActivity.b[paramInt2];
-    }
-    return ConditionSearchFriendActivity.a[paramInt2];
+    CloudFileBrowserActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fpv
  * JD-Core Version:    0.7.0.1
  */

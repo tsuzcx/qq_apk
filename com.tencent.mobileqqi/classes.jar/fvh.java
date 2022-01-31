@@ -1,13 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FMOfflineFileActivity;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import com.tencent.qphone.base.util.QLog;
 
 public class fvh
-  implements View.OnClickListener
+  extends fvb
 {
-  public fvh(FMOfflineFileActivity paramFMOfflineFileActivity) {}
+  public fvh(OnlineFileSessionWorker paramOnlineFileSessionWorker)
+  {
+    super(paramOnlineFileSessionWorker);
+  }
   
-  public void onClick(View paramView) {}
+  protected String a()
+  {
+    return "StateChangeToOffWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.a == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "]. recvOnLineFile entity is null");
+      return;
+    }
+    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 9, 11);
+    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 9, 14);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateUploadingWhenRecv)");
+    this.jdField_a_of_type_Fvb = new fwd(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+  }
 }
 
 

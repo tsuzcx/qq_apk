@@ -1,25 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.TimerTask;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.international.activity.FeedbackActivity;
 
 public class fzh
-  extends TimerTask
+  implements View.OnClickListener
 {
-  public fzh(OnlineFileSessionWorker paramOnlineFileSessionWorker) {}
+  public fzh(FeedbackActivity paramFeedbackActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] state:" + OnlineFileSessionWorker.a(this.a).a() + " WaitSenderReplayOnRecvTimer time out!!!!!!!");
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 42, new Object[] { Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) });
-    this.a.b();
+    paramView = FeedbackActivity.a(this.a).getEditableText().toString().trim();
+    if (TextUtils.isEmpty(paramView)) {
+      return;
+    }
+    FeedbackActivity.b(this.a);
+    paramView.trim();
+    FeedbackActivity.a(this.a, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fzh
  * JD-Core Version:    0.7.0.1
  */

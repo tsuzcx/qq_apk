@@ -1,35 +1,30 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager.MagicfaceSensorOperation;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class gal
-  extends fzn
+  implements MagicfaceActionManager.MagicfaceSensorOperation
 {
-  public gal(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  public gal(MagicfaceActionManager paramMagicfaceActionManager) {}
   
-  protected String a()
+  public void a()
   {
-    return "StateSenderCancelSendWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.a == null)
+    if (this.a.c == 1)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "]. recvOnLineFile entity is null");
+      ReportController.b(MagicfaceActionManager.a(this.a).b, "CliOper", "", "", "MbJieshou", "MbWanchengXiaochu", 0, 0, MagicfaceActionManager.a(this.a).epId, "", "", "");
       return;
     }
-    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 8);
-    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 8);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateSenderCancelSend)");
-    this.jdField_a_of_type_Fzn = new gak(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+    MagicfaceActionManager.a(this.a, System.currentTimeMillis());
+    ReportController.b(MagicfaceActionManager.a(this.a).b, "CliOper", "", "", "MbFasong", "MbZhudongChaozuo", 0, 0, MagicfaceActionManager.a(this.a).epId, "", "", "");
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gal
  * JD-Core Version:    0.7.0.1
  */

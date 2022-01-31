@@ -67,7 +67,7 @@ public class URLDrawableHelper
       {
         for (;;)
         {
-          jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130837853);
+          jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130837855);
           h = localContext.getResources().getDisplayMetrics().densityDpi;
           f = 40;
           g = 100;
@@ -176,7 +176,7 @@ public class URLDrawableHelper
       }
       paramString.setAutoDownload(true);
     }
-    boolean bool3 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131563423), "qqsetting_auto_receive_pic_key", true);
+    boolean bool3 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131563451), "qqsetting_auto_receive_pic_key", true);
     boolean bool1 = bool2;
     if (NetworkUtil.b(BaseApplication.getContext()) != 1) {
       if (!bool3) {
@@ -586,7 +586,7 @@ public class URLDrawableHelper
   public static boolean a(Context paramContext)
   {
     boolean bool1 = NetworkUtil.c(BaseApplication.getContext());
-    boolean bool2 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131563423), "qqsetting_auto_receive_pic_key", true);
+    boolean bool2 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131563451), "qqsetting_auto_receive_pic_key", true);
     return (bool1) && (!bool2);
   }
   

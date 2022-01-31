@@ -1,28 +1,47 @@
+import android.graphics.Bitmap;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.maproam.widget.RoamLocalSearchBar;
-import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.jsbridge.JsBridge;
+import com.tencent.mobileqq.richstatus.ActionUrlActivity;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
+import com.tencent.widget.ProtectedWebView;
 
 public class ggm
-  implements Animation.AnimationListener
+  extends WebViewClient
 {
-  public ggm(RoamLocalSearchBar paramRoamLocalSearchBar, View paramView1, View paramView2) {}
+  private ggm(ActionUrlActivity paramActionUrlActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamLocalSearchBar.a.show();
-    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
-    this.b.setVisibility(8);
+    ActionUrlActivity.a(this.a).setVisibility(8);
+    super.onPageFinished(paramWebView, paramString);
+    this.a.d();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    ActionUrlActivity.a(this.a).setVisibility(0);
+    ActionUrlActivity.a(this.a).setVisibility(8);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    ActionUrlActivity.a(this.a).clearView();
+    ActionUrlActivity.a(this.a).setVisibility(8);
+    ActionUrlActivity.a(this.a).setVisibility(0);
+    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    return ActionUrlActivity.a(this.a).a(paramWebView, paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     ggm
  * JD-Core Version:    0.7.0.1
  */

@@ -18,8 +18,8 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.ClearableEditText;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import daq;
-import dar;
+import cuz;
+import cva;
 import mqq.observer.WtloginObserver;
 
 public class LoginPhoneNumActivity2
@@ -29,12 +29,12 @@ public class LoginPhoneNumActivity2
   public static final int a = 1;
   private static final String jdField_a_of_type_JavaLangString = "LoginPhoneNumActivity";
   public static final int b = 2014;
-  Handler jdField_a_of_type_AndroidOsHandler = new daq(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new cuz(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
   private OpenSDKAppInterface jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new dar(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new cva(this);
   private int c;
   
   private String a(String paramString)
@@ -122,12 +122,12 @@ public class LoginPhoneNumActivity2
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232994));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232997));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131561809) + "+" + this.d);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232014));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232017));
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232995));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232998));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -211,7 +211,7 @@ public class LoginPhoneNumActivity2
     {
     default: 
       return;
-    case 2131232994: 
+    case 2131232997: 
       startActivityForResult(new Intent(this, CountryActivity.class), 1);
       return;
     }
@@ -221,7 +221,7 @@ public class LoginPhoneNumActivity2
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)c(2130903587));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)c(2130903589));
     setTitle(2131562351);
     this.jdField_c_of_type_Int = getIntent().getIntExtra("key_req_src", -1);
     this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface = ((OpenSDKAppInterface)getAppRuntime());

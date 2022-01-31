@@ -1,55 +1,25 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SubAccountBindObserver;
-import com.tencent.mobileqq.subaccount.SubAccountProtocManager;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
 
 public class gpr
-  extends SubAccountBindObserver
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public gpr(SubAccountProtocManager paramSubAccountProtocManager) {}
+  public gpr(NearbyTroopsActivity paramNearbyTroopsActivity) {}
   
-  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if ((!SubAccountProtocManager.a(this.a)) && (SubAccountProtocManager.a(this.a) != null)) {
-      SubAccountProtocManager.a(this.a).postDelayed(SubAccountProtocManager.a(this.a), 100L);
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null) || (this.a.a == null)) {}
+    while (paramMotionEvent2.getY() - paramMotionEvent1.getY() >= 0.0F) {
+      return false;
     }
-    synchronized (SubAccountProtocManager.c())
-    {
-      SubAccountProtocManager.c(this.a, false);
-      SubAccountProtocManager.d(this.a, true);
-      if ((paramSubAccountBackProtocData != null) && (paramSubAccountBackProtocData.b)) {
-        SubAccountProtocManager.a(this.a).e(false);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.subaccount.SubAccountProtocManager", 2, "onGetBindSubAccount:");
-      }
-      return;
-    }
-  }
-  
-  protected void b(boolean paramBoolean, SubAccountBackProtocData arg2)
-  {
-    synchronized ()
-    {
-      SubAccountProtocManager.a(this.a, false);
-      return;
-    }
-  }
-  
-  protected void c(boolean paramBoolean, SubAccountBackProtocData arg2)
-  {
-    synchronized ()
-    {
-      SubAccountProtocManager.b(this.a, false);
-      return;
-    }
+    this.a.b(false);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     gpr
  * JD-Core Version:    0.7.0.1
  */

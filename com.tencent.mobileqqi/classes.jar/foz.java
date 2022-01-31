@@ -1,22 +1,24 @@
-import android.content.ContentValues;
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.emoticonview.HorizonEmoticonTabs;
 
 public class foz
   implements Runnable
 {
-  public foz(DataLineMsgProxy paramDataLineMsgProxy, long paramLong) {}
+  public foz(HorizonEmoticonTabs paramHorizonEmoticonTabs, int paramInt, Drawable paramDrawable) {}
   
   public void run()
   {
-    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_Long);
-    if (localDataLineMsgRecord != null)
-    {
-      localDataLineMsgRecord.issuc = false;
-      ContentValues localContentValues = new ContentValues();
-      localContentValues.put("issuc", Boolean.valueOf(false));
-      this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(DataLineMsgRecord.tableName(), localContentValues, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
+    Object localObject = HorizonEmoticonTabs.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizonEmoticonTabs).getChildAt(this.jdField_a_of_type_Int);
+    if (localObject == null) {
+      return;
     }
+    localObject = (ImageView)((View)localObject).findViewById(2131231655);
+    ((ImageView)localObject).setAdjustViewBounds(false);
+    ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    ((ImageView)localObject).invalidate();
   }
 }
 

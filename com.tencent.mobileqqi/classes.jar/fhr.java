@@ -1,15 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import java.io.File;
+import java.util.Comparator;
 
-public class fhr
-  implements View.OnClickListener
+class fhr
+  implements Comparator
 {
-  public fhr(IphoneTitleBarActivity paramIphoneTitleBarActivity) {}
+  fhr(fhq paramfhq) {}
   
-  public void onClick(View paramView)
+  public int a(File paramFile1, File paramFile2)
   {
-    this.a.b();
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
+    }
+    return 0;
   }
 }
 

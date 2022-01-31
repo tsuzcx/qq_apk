@@ -1,20 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.richstatus.SameStatusActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.message.SystemMessageProcessor;
+import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
 
 public class glx
-  implements Runnable
+  extends Handler
 {
-  public glx(SameStatusActivity paramSameStatusActivity) {}
-  
-  public void run()
+  public glx(GroupSystemMsgController paramGroupSystemMsgController, Looper paramLooper)
   {
-    this.a.b.c(false, false);
-    this.a.finish();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((GroupSystemMsgController.a(this.a)) && (GroupSystemMsgController.a(this.a) != null))
+    {
+      GroupSystemMsgController.a(this.a, false);
+      GroupSystemMsgController.a(this.a).a().a(3);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     glx
  * JD-Core Version:    0.7.0.1
  */

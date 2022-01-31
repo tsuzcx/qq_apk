@@ -17,7 +17,7 @@ import android.widget.EditText;
 import com.tencent.mobileqq.utils.kapalaiadapter.sdcardmountinforutil.SDCardMountInforUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
-import hix;
+import heq;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ public class KapalaiAdapterUtil
   
   public static KapalaiAdapterUtil a()
   {
-    return hix.a;
+    return heq.a;
   }
   
   private Camera b()
@@ -373,149 +373,156 @@ public class KapalaiAdapterUtil
     //   240: aload_3
     //   241: invokevirtual 283	android/app/Notification$Builder:setTicker	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
     //   244: astore_1
-    //   245: ldc 144
-    //   247: invokestatic 103	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   250: ldc 146
-    //   252: iconst_1
-    //   253: anewarray 76	java/lang/Class
-    //   256: dup
-    //   257: iconst_0
-    //   258: getstatic 82	java/lang/Integer:TYPE	Ljava/lang/Class;
-    //   261: aastore
-    //   262: invokevirtual 149	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   265: astore 11
-    //   267: aload 11
-    //   269: ifnull +21 -> 290
-    //   272: aload 11
-    //   274: aload_1
-    //   275: iconst_1
-    //   276: anewarray 4	java/lang/Object
-    //   279: dup
-    //   280: iconst_0
-    //   281: iconst_1
-    //   282: invokestatic 90	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   285: aastore
-    //   286: invokevirtual 96	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   289: pop
-    //   290: invokestatic 177	com/tencent/qphone/base/util/BaseApplication:getContext	()Landroid/content/Context;
-    //   293: aload 7
-    //   295: invokestatic 243	com/tencent/mobileqq/util/NotifyLightUtil:a	(Landroid/content/Context;Lcom/tencent/common/app/AppInterface;)Z
-    //   298: ifeq +40 -> 338
-    //   301: invokestatic 249	java/util/Calendar:getInstance	()Ljava/util/Calendar;
-    //   304: bipush 11
-    //   306: invokevirtual 253	java/util/Calendar:get	(I)I
-    //   309: istore 9
-    //   311: iload 9
-    //   313: bipush 23
-    //   315: if_icmpge +10 -> 325
-    //   318: iload 9
-    //   320: bipush 8
-    //   322: if_icmpge +73 -> 395
-    //   325: aload_1
-    //   326: ldc 254
-    //   328: sipush 2000
-    //   331: sipush 2000
-    //   334: invokevirtual 287	android/app/Notification$Builder:setLights	(III)Landroid/app/Notification$Builder;
-    //   337: pop
-    //   338: iload 6
-    //   340: ifeq +58 -> 398
-    //   343: aload_2
-    //   344: ifnull +9 -> 353
-    //   347: aload_1
-    //   348: aload_2
-    //   349: invokevirtual 291	android/app/Notification$Builder:setLargeIcon	(Landroid/graphics/Bitmap;)Landroid/app/Notification$Builder;
-    //   352: pop
-    //   353: aload_1
-    //   354: aload 4
-    //   356: invokevirtual 294	android/app/Notification$Builder:setContentTitle	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
-    //   359: aload 5
-    //   361: invokevirtual 297	android/app/Notification$Builder:setContentText	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
-    //   364: aload 10
-    //   366: invokevirtual 301	android/app/Notification$Builder:setContentIntent	(Landroid/app/PendingIntent;)Landroid/app/Notification$Builder;
-    //   369: pop
-    //   370: getstatic 126	android/os/Build$VERSION:SDK_INT	I
-    //   373: bipush 16
-    //   375: if_icmplt +53 -> 428
-    //   378: aload_1
-    //   379: invokevirtual 153	android/app/Notification$Builder:build	()Landroid/app/Notification;
-    //   382: astore_1
-    //   383: aload_1
-    //   384: areturn
-    //   385: astore 11
-    //   387: aload 11
-    //   389: invokevirtual 62	java/lang/Exception:printStackTrace	()V
-    //   392: goto -102 -> 290
-    //   395: goto -70 -> 325
-    //   398: aload_1
-    //   399: aload 4
-    //   401: invokevirtual 294	android/app/Notification$Builder:setContentTitle	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
-    //   404: aload 5
-    //   406: invokevirtual 297	android/app/Notification$Builder:setContentText	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
-    //   409: aload 10
-    //   411: invokevirtual 301	android/app/Notification$Builder:setContentIntent	(Landroid/app/PendingIntent;)Landroid/app/Notification$Builder;
-    //   414: pop
-    //   415: aload_2
-    //   416: ifnull -46 -> 370
-    //   419: aload_1
-    //   420: aload_2
-    //   421: invokevirtual 291	android/app/Notification$Builder:setLargeIcon	(Landroid/graphics/Bitmap;)Landroid/app/Notification$Builder;
-    //   424: pop
-    //   425: goto -55 -> 370
-    //   428: getstatic 126	android/os/Build$VERSION:SDK_INT	I
-    //   431: bipush 16
-    //   433: if_icmpge +16 -> 449
-    //   436: getstatic 126	android/os/Build$VERSION:SDK_INT	I
-    //   439: bipush 11
-    //   441: if_icmplt +8 -> 449
-    //   444: aload_1
-    //   445: invokevirtual 156	android/app/Notification$Builder:getNotification	()Landroid/app/Notification;
-    //   448: areturn
-    //   449: new 128	android/app/Notification
-    //   452: dup
-    //   453: iload 8
-    //   455: aload_3
-    //   456: invokestatic 134	java/lang/System:currentTimeMillis	()J
-    //   459: invokespecial 137	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
-    //   462: astore_1
-    //   463: aload_1
-    //   464: areturn
-    //   465: astore_1
-    //   466: invokestatic 161	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   469: ifeq +14 -> 483
-    //   472: ldc_w 303
-    //   475: iconst_2
-    //   476: aload_1
-    //   477: invokevirtual 167	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   480: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   483: new 128	android/app/Notification
-    //   486: dup
-    //   487: iload 8
-    //   489: aload_3
-    //   490: invokestatic 134	java/lang/System:currentTimeMillis	()J
-    //   493: invokespecial 137	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
-    //   496: areturn
+    //   245: getstatic 126	android/os/Build$VERSION:SDK_INT	I
+    //   248: bipush 21
+    //   250: if_icmplt +9 -> 259
+    //   253: aload_1
+    //   254: iconst_1
+    //   255: invokevirtual 286	android/app/Notification$Builder:setVisibility	(I)Landroid/app/Notification$Builder;
+    //   258: pop
+    //   259: ldc 144
+    //   261: invokestatic 103	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   264: ldc 146
+    //   266: iconst_1
+    //   267: anewarray 76	java/lang/Class
+    //   270: dup
+    //   271: iconst_0
+    //   272: getstatic 82	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   275: aastore
+    //   276: invokevirtual 149	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   279: astore 11
+    //   281: aload 11
+    //   283: ifnull +21 -> 304
+    //   286: aload 11
+    //   288: aload_1
+    //   289: iconst_1
+    //   290: anewarray 4	java/lang/Object
+    //   293: dup
+    //   294: iconst_0
+    //   295: iconst_1
+    //   296: invokestatic 90	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   299: aastore
+    //   300: invokevirtual 96	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   303: pop
+    //   304: invokestatic 177	com/tencent/qphone/base/util/BaseApplication:getContext	()Landroid/content/Context;
+    //   307: aload 7
+    //   309: invokestatic 243	com/tencent/mobileqq/util/NotifyLightUtil:a	(Landroid/content/Context;Lcom/tencent/common/app/AppInterface;)Z
+    //   312: ifeq +40 -> 352
+    //   315: invokestatic 249	java/util/Calendar:getInstance	()Ljava/util/Calendar;
+    //   318: bipush 11
+    //   320: invokevirtual 253	java/util/Calendar:get	(I)I
+    //   323: istore 9
+    //   325: iload 9
+    //   327: bipush 23
+    //   329: if_icmpge +10 -> 339
+    //   332: iload 9
+    //   334: bipush 8
+    //   336: if_icmpge +73 -> 409
+    //   339: aload_1
+    //   340: ldc 254
+    //   342: sipush 2000
+    //   345: sipush 2000
+    //   348: invokevirtual 290	android/app/Notification$Builder:setLights	(III)Landroid/app/Notification$Builder;
+    //   351: pop
+    //   352: iload 6
+    //   354: ifeq +58 -> 412
+    //   357: aload_2
+    //   358: ifnull +9 -> 367
+    //   361: aload_1
+    //   362: aload_2
+    //   363: invokevirtual 294	android/app/Notification$Builder:setLargeIcon	(Landroid/graphics/Bitmap;)Landroid/app/Notification$Builder;
+    //   366: pop
+    //   367: aload_1
+    //   368: aload 4
+    //   370: invokevirtual 297	android/app/Notification$Builder:setContentTitle	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+    //   373: aload 5
+    //   375: invokevirtual 300	android/app/Notification$Builder:setContentText	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+    //   378: aload 10
+    //   380: invokevirtual 304	android/app/Notification$Builder:setContentIntent	(Landroid/app/PendingIntent;)Landroid/app/Notification$Builder;
+    //   383: pop
+    //   384: getstatic 126	android/os/Build$VERSION:SDK_INT	I
+    //   387: bipush 16
+    //   389: if_icmplt +53 -> 442
+    //   392: aload_1
+    //   393: invokevirtual 153	android/app/Notification$Builder:build	()Landroid/app/Notification;
+    //   396: astore_1
+    //   397: aload_1
+    //   398: areturn
+    //   399: astore 11
+    //   401: aload 11
+    //   403: invokevirtual 62	java/lang/Exception:printStackTrace	()V
+    //   406: goto -102 -> 304
+    //   409: goto -70 -> 339
+    //   412: aload_1
+    //   413: aload 4
+    //   415: invokevirtual 297	android/app/Notification$Builder:setContentTitle	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+    //   418: aload 5
+    //   420: invokevirtual 300	android/app/Notification$Builder:setContentText	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+    //   423: aload 10
+    //   425: invokevirtual 304	android/app/Notification$Builder:setContentIntent	(Landroid/app/PendingIntent;)Landroid/app/Notification$Builder;
+    //   428: pop
+    //   429: aload_2
+    //   430: ifnull -46 -> 384
+    //   433: aload_1
+    //   434: aload_2
+    //   435: invokevirtual 294	android/app/Notification$Builder:setLargeIcon	(Landroid/graphics/Bitmap;)Landroid/app/Notification$Builder;
+    //   438: pop
+    //   439: goto -55 -> 384
+    //   442: getstatic 126	android/os/Build$VERSION:SDK_INT	I
+    //   445: bipush 16
+    //   447: if_icmpge +16 -> 463
+    //   450: getstatic 126	android/os/Build$VERSION:SDK_INT	I
+    //   453: bipush 11
+    //   455: if_icmplt +8 -> 463
+    //   458: aload_1
+    //   459: invokevirtual 156	android/app/Notification$Builder:getNotification	()Landroid/app/Notification;
+    //   462: areturn
+    //   463: new 128	android/app/Notification
+    //   466: dup
+    //   467: iload 8
+    //   469: aload_3
+    //   470: invokestatic 134	java/lang/System:currentTimeMillis	()J
+    //   473: invokespecial 137	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
+    //   476: astore_1
+    //   477: aload_1
+    //   478: areturn
+    //   479: astore_1
+    //   480: invokestatic 161	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   483: ifeq +14 -> 497
+    //   486: ldc_w 306
+    //   489: iconst_2
+    //   490: aload_1
+    //   491: invokevirtual 167	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   494: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   497: new 128	android/app/Notification
+    //   500: dup
+    //   501: iload 8
+    //   503: aload_3
+    //   504: invokestatic 134	java/lang/System:currentTimeMillis	()J
+    //   507: invokespecial 137	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
+    //   510: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	497	0	this	KapalaiAdapterUtil
-    //   0	497	1	paramIntent	Intent
-    //   0	497	2	paramBitmap	Bitmap
-    //   0	497	3	paramString1	String
-    //   0	497	4	paramString2	String
-    //   0	497	5	paramString3	String
-    //   0	497	6	paramBoolean	boolean
-    //   0	497	7	paramQQAppInterface	com.tencent.mobileqq.app.QQAppInterface
-    //   50	438	8	i	int
-    //   46	277	9	j	int
-    //   10	400	10	localPendingIntent	android.app.PendingIntent
-    //   265	8	11	localMethod	Method
-    //   385	3	11	localException	Exception
+    //   0	511	0	this	KapalaiAdapterUtil
+    //   0	511	1	paramIntent	Intent
+    //   0	511	2	paramBitmap	Bitmap
+    //   0	511	3	paramString1	String
+    //   0	511	4	paramString2	String
+    //   0	511	5	paramString3	String
+    //   0	511	6	paramBoolean	boolean
+    //   0	511	7	paramQQAppInterface	com.tencent.mobileqq.app.QQAppInterface
+    //   50	452	8	i	int
+    //   46	291	9	j	int
+    //   10	414	10	localPendingIntent	android.app.PendingIntent
+    //   279	8	11	localMethod	Method
+    //   399	3	11	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   245	267	385	java/lang/Exception
-    //   272	290	385	java/lang/Exception
-    //   370	383	465	java/lang/Exception
-    //   428	449	465	java/lang/Exception
-    //   449	463	465	java/lang/Exception
+    //   259	281	399	java/lang/Exception
+    //   286	304	399	java/lang/Exception
+    //   384	397	479	java/lang/Exception
+    //   442	463	479	java/lang/Exception
+    //   463	477	479	java/lang/Exception
   }
   
   public Intent a(Intent paramIntent)
@@ -608,7 +615,9 @@ public class KapalaiAdapterUtil
   
   public void a(Window paramWindow)
   {
-    paramWindow.setType(2004);
+    if (Build.VERSION.SDK_INT < 21) {
+      paramWindow.setType(2004);
+    }
   }
   
   public void a(WindowManager.LayoutParams paramLayoutParams)

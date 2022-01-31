@@ -1,33 +1,28 @@
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
 
 public class cbz
-  implements Runnable
+  implements AbsListView.OnScrollListener
 {
-  public cbz(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  public cbz(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    try
+    this.a.v = paramInt;
+    if (paramInt == 0)
     {
-      if ((AuthDevVerifyCodeActivity.a(this.a) == null) && (!this.a.isFinishing()))
-      {
-        AuthDevVerifyCodeActivity.a(this.a, new QQProgressDialog(this.a.a(), this.a.d()));
-        AuthDevVerifyCodeActivity.a(this.a).b(2131562645);
-        AuthDevVerifyCodeActivity.a(this.a).c(true);
-      }
-      if ((AuthDevVerifyCodeActivity.a(this.a) != null) && (!AuthDevVerifyCodeActivity.a(this.a).isShowing())) {
-        AuthDevVerifyCodeActivity.a(this.a).show();
-      }
+      AbstractGifImage.resumeAll();
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+    if ((this.a.a != null) && (this.a.a.c == 1) && (!this.a.a.a)) {
+      this.a.a.b();
     }
+    AbstractGifImage.pauseAll();
   }
 }
 

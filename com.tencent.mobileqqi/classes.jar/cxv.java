@@ -1,26 +1,15 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.observer.QZoneObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
-public class cxv
-  extends QZoneObserver
+class cxv
+  implements DialogInterface.OnDismissListener
 {
-  public cxv(Leba paramLeba) {}
+  cxv(cxu paramcxu) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.leba", 2, "on Get QZone Count:" + paramBoolean1 + ",HasNew:" + paramBoolean2);
-    }
-    if (paramBoolean1)
-    {
-      this.a.a.notifyDataSetChanged();
-      Leba.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.lebatab.leba", 2, "onGetQZoneFeedCountFin. notifyData.");
-      }
-    }
+    this.a.a.c();
   }
 }
 

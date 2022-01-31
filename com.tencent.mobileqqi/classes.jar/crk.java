@@ -1,13 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EmosmDetailActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
 
 public class crk
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public crk(EmosmDetailActivity paramEmosmDetailActivity) {}
+  public crk(LbsBaseActivity paramLbsBaseActivity, Runnable paramRunnable) {}
   
-  public void onClick(View paramView) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.jdField_a_of_type_JavaLangRunnable.run();
+  }
 }
 
 

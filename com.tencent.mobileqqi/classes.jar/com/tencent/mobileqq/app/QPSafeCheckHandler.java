@@ -21,7 +21,7 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import fjl;
+import ffa;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.MessageDigest;
@@ -135,7 +135,7 @@ public class QPSafeCheckHandler
     if (i >= 1) {
       return;
     }
-    new fjl(this, paramArrayOfByte).start();
+    new ffa(this, paramArrayOfByte).start();
   }
   
   public void b(safecheckPB.ReqMQScanRequest paramReqMQScanRequest, safecheckPB.RspMQScanReport paramRspMQScanReport)

@@ -1,22 +1,25 @@
-import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class enj
-  implements Runnable
+class enj
+  implements FMDialogUtil.FMDialogInterface
 {
-  public enj(MainAssistObserver paramMainAssistObserver) {}
+  enj(eni parameni) {}
   
-  public void run()
+  public void a()
   {
-    if ((!BaseApplicationImpl.a(BaseApplicationImpl.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) && (MainAssistObserver.a(this.a) < 5)) {
-      BaseApplicationImpl.jdField_a_of_type_AndroidOsHandler.postDelayed(MainAssistObserver.a(this.a), MainAssistObserver.b(this.a) * 30000);
-    }
+    PhotoPreviewActivity.b(this.a.a);
+  }
+  
+  public void b()
+  {
+    this.a.a.c.setClickable(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     enj
  * JD-Core Version:    0.7.0.1
  */

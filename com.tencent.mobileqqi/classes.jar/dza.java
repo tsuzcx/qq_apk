@@ -1,38 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.app.Activity;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.Window;
-import android.view.animation.TranslateAnimation;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class dza
-  implements DialogInterface.OnDismissListener
+  extends ClickableSpan
 {
-  public dza(TroopTransferActivity paramTroopTransferActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
+  public dza(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    try
+    String str;
+    if ((GrayTipsItemBuilder.l(this.a) instanceof Activity))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.a.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.a.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-      paramDialogInterface = (InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.getSystemService("input_method");
-      if (paramDialogInterface != null) {
-        paramDialogInterface.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.getWindow().peekDecorView().getWindowToken(), 0);
+      if (GrayTipsItemBuilder.n(this.a).jdField_a_of_type_Int != 1006) {
+        break label153;
       }
-      return;
+      str = GrayTipsItemBuilder.o(this.a).jdField_a_of_type_JavaLangString;
+      paramView = null;
     }
-    catch (Exception paramDialogInterface)
+    for (;;)
     {
-      paramDialogInterface.printStackTrace();
+      ChatActivityUtils.a(GrayTipsItemBuilder.g(this.a), (Activity)GrayTipsItemBuilder.m(this.a), GrayTipsItemBuilder.q(this.a).jdField_a_of_type_Int, paramView, GrayTipsItemBuilder.r(this.a).d, str, true, GrayTipsItemBuilder.s(this.a).b, true, true, null, null);
+      str = ChatActivityUtils.a(GrayTipsItemBuilder.t(this.a).jdField_a_of_type_Int);
+      paramView = str;
+      if (str == null) {
+        paramView = "";
+      }
+      ReportController.b(GrayTipsItemBuilder.h(this.a), "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "12", paramView, "", "");
+      return;
+      label153:
+      paramView = GrayTipsItemBuilder.p(this.a).jdField_a_of_type_JavaLangString;
+      str = null;
     }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(26, 144, 240));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dza
  * JD-Core Version:    0.7.0.1
  */

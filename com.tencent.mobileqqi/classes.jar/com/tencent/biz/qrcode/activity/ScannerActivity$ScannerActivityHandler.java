@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.widget.TextView;
-import bti;
+import bnh;
 import com.google.zxing.Result;
 import com.tencent.biz.qrcode.CameraManager;
 import com.tencent.mobileqq.utils.DialogUtil;
@@ -56,7 +56,7 @@ public final class ScannerActivity$ScannerActivityHandler
           ((ScannerActivity)localObject).jdField_a_of_type_AndroidViewView.setVisibility(8);
           paramMessage = DialogUtil.a((Context)localObject, 230);
           paramMessage.setMessage(2131560498);
-          localObject = new bti(this, (ScannerActivity)localObject);
+          localObject = new bnh(this, (ScannerActivity)localObject);
           paramMessage.setPositiveButton(2131562539, (DialogInterface.OnClickListener)localObject);
           paramMessage.setOnCancelListener((DialogInterface.OnCancelListener)localObject);
           paramMessage.show();

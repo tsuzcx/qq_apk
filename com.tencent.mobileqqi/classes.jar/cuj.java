@@ -1,24 +1,27 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.activity.FriendProfileImageModel;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class cuj
-  implements AdapterView.OnItemSelectedListener
+  extends Handler
 {
-  public cuj(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public cuj(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void a(AdapterView paramAdapterView) {}
-  
-  public void a_(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramView == null) {
-      return;
+    switch (paramMessage.what)
+    {
     }
-    this.a.jdField_a_of_type_AndroidViewView = paramView;
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(paramInt);
-    this.a.a(paramAdapterView, paramInt);
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.LoginInfoActivity", 2, "handleMessage.msg.arg1=" + paramMessage.arg1);
+      }
+    } while (LoginInfoActivity.a(this.a) == null);
+    LoginInfoActivity.a(this.a).DevSetup = paramMessage.arg1;
+    LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
   }
 }
 

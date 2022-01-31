@@ -1,18 +1,21 @@
-import com.tencent.litetransfersdk.LiteTransferListenerCallback;
+import android.widget.CursorAdapter;
+import com.tencent.mobileqq.activity.BaseSystemActivity;
 
 public class bwq
   implements Runnable
 {
-  public bwq(LiteTransferListenerCallback paramLiteTransferListenerCallback, long paramLong, String paramString) {}
+  public bwq(BaseSystemActivity paramBaseSystemActivity) {}
   
   public void run()
   {
-    LiteTransferListenerCallback.access$400(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferListenerCallback, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
+    if (this.a.a.getCursor() != null) {
+      this.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bwq
  * JD-Core Version:    0.7.0.1
  */

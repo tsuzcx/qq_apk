@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/main" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:qzone="http://schemas.android.com/apk/res/com.tencent.mobileqqi">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
-        <com.qzone.widget.QZonePullToRefreshListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207fc" android:scrollbarStyle="insideOverlay" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b4f" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0a0017" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" />
-    </FrameLayout>
-    <include android:layout_alignParentBottom="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0302d3" />
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c29" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c2a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02079f" android:layout_centerInParent="true" />
-        <TextView android:textSize="14.0sp" android:textColor="#ffc3c7c9" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c2b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d09f7" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f080c2a" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-</RelativeLayout>
+<LinearLayout android:gravity="top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c5d" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <LinearLayout android:gravity="top" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.qzone.widget.textwidget.CellTextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0174" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00a3" android:ellipsize="end" android:gravity="top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c5e" android:layout_width="174.0dip" android:layout_height="wrap_content" android:text="飛翔的小球球" android:singleLine="true" />
+            <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0171" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00a7" android:ellipsize="end" android:gravity="center|left|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080cdf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d053d" android:singleLine="true" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0193" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00b1" android:ellipsize="none" android:gravity="left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c5f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" android:singleLine="true" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0173" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00a4" android:ellipsize="none" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080ce0" android:paddingLeft="14.0dip" android:paddingTop="2.0dip" android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b018f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:minWidth="30.0dip" android:singleLine="true" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207ac" android:drawablePadding="6.0dip" />
+</LinearLayout>

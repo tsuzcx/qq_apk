@@ -1,28 +1,18 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.MessageObserver;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.service.message.MessageCache;
 
 public class ffl
-  extends MessageObserver
+  extends BroadcastReceiver
 {
-  public ffl(DataLineHandler paramDataLineHandler) {}
+  public ffl(QQAppInterface paramQQAppInterface) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt1 == 1) {
-      if (this.a.b())
-      {
-        this.a.a(true);
-        DataLineHandler.a(this.a, MessageCache.a());
-        this.a.a.a().f();
-      }
+    if ((paramIntent != null) && ("com.tencent.qqhead.getheadreq".equals(paramIntent.getAction()))) {
+      QQAppInterface.a(this.a, paramContext, paramIntent);
     }
-    while (paramInt1 != 0) {
-      return;
-    }
-    this.a.b(false);
   }
 }
 

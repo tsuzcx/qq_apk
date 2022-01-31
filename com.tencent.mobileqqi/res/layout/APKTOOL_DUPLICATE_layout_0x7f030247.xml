@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02088b" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:focusable="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqqi">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/qq_setting_sync_msg_switch" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00d3" formItem:bgType="APKTOOL_DUPLICATE_id_0x7f080020" formItem:switchText="@string/APKTOOL_DUPLICATE_string_0x7f0d11ff" formItem:switchChecked="true" />
-        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/delRecentList" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="APKTOOL_DUPLICATE_id_0x7f080012" formItem:leftText="@string/APKTOOL_DUPLICATE_string_0x7f0d0d64" formItem:leftTextColor="APKTOOL_DUPLICATE_id_0x7f080023" />
-        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/delChatHistory" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="APKTOOL_DUPLICATE_id_0x7f080012" formItem:leftText="@string/APKTOOL_DUPLICATE_string_0x7f0d0d62" formItem:leftTextColor="APKTOOL_DUPLICATE_id_0x7f080023" />
-        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/del_off_line_data" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="APKTOOL_DUPLICATE_id_0x7f080021" formItem:leftText="@string/APKTOOL_DUPLICATE_string_0x7f0d0d61" formItem:leftTextColor="APKTOOL_DUPLICATE_id_0x7f080023" />
-    </LinearLayout>
-</com.tencent.mobileqq.widget.BounceScrollView>
+<LinearLayout style="@style/APKTOOL_DUPLICATE_style_0x7f0e0245"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08095d" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020621" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0246" />
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08095e" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0ca5" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0247" />
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08095f" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0248" />
+</LinearLayout>

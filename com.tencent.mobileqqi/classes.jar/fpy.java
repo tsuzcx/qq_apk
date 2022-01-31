@@ -1,38 +1,45 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.CloudFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.ImageFileAdapter.ViewHolder;
+import com.tencent.mobileqq.filemanager.data.OfflineFileAdapter.CloudFileItemHolder;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileAdapter.WeiYunFileItemHolder;
+import com.tencent.qphone.base.util.QLog;
 
 public class fpy
-  extends Handler
+  implements View.OnClickListener
 {
-  public fpy(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  public fpy(CloudFileBrowserActivity paramCloudFileBrowserActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (paramMessage.what == 1000) {
-      if ((this.a.h == 1) || (this.a.h == 2))
-      {
-        this.a.e();
-        QQToast.a(this.a, 2131562108, 0).b(this.a.d());
+    int i;
+    if (this.a.a == 9L)
+    {
+      i = ((OfflineFileAdapter.CloudFileItemHolder)paramView.getTag()).a;
+      if (i == -1) {
+        break label81;
       }
+      CloudFileBrowserActivity.a(this.a, i);
     }
-    while ((paramMessage.what != 1001) || (!this.a.c)) {
+    label81:
+    while (!QLog.isColorLevel())
+    {
       return;
+      if (this.a.a == 10L)
+      {
+        i = ((ImageFileAdapter.ViewHolder)paramView.getTag()).a;
+        break;
+      }
+      i = ((WeiYunFileAdapter.WeiYunFileItemHolder)paramView.getTag()).a;
+      break;
     }
-    Object localObject = (Object[])paramMessage.obj;
-    paramMessage = (String[])localObject[0];
-    localObject = (String)localObject[1];
-    Intent localIntent = new Intent();
-    localIntent.putExtra("param_location", paramMessage);
-    localIntent.putExtra("param_location_param", (String)localObject);
-    this.a.doOnActivityResult(1000, -1, localIntent);
+    QLog.d(CloudFileBrowserActivity.b, 2, "get position err, bug");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fpy
  * JD-Core Version:    0.7.0.1
  */

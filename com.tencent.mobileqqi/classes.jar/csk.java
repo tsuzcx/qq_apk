@@ -1,21 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.activity.Leba;
 
-public class csk
-  implements DialogInterface.OnClickListener
+class csk
+  implements Runnable
 {
-  public csk(ForwardOperations paramForwardOperations) {}
+  csk(csj paramcsj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a.finish();
+    Leba.b(this.a.a.a.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     csk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class cnp
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public cnp(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public cnp(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ReportController.b(this.a.b, "P_CliOper", "Grp_discuss", "", "0X80040ED", "0X80040ED", 0, 0, "", "", "", "");
-    this.a.f();
+    FriendProfileImageActivity.a(this.a);
   }
 }
 

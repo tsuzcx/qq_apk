@@ -1,18 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.ThemeSwitchDlgActivity;
+import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
 
-public class dtr
-  implements DialogInterface.OnDismissListener
+class dtr
+  implements Runnable
 {
-  public dtr(ThemeSwitchDlgActivity paramThemeSwitchDlgActivity) {}
+  dtr(dtq paramdtq) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (ThemeSwitchDlgActivity.a(this.a)) {
-      return;
-    }
-    this.a.finish();
+    this.a.a.notifyDataSetChanged();
   }
 }
 

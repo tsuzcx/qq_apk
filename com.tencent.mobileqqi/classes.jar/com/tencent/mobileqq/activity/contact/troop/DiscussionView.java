@@ -25,8 +25,8 @@ import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
 import com.tencent.widget.XListView;
-import ekr;
-import eks;
+import efo;
+import efp;
 
 public class DiscussionView
   extends BaseTroopView
@@ -40,7 +40,7 @@ public class DiscussionView
   public DiscussionListAdapter2 a;
   private PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
   public XListView a;
-  private eks jdField_a_of_type_Eks = new eks(this, null);
+  private efp jdField_a_of_type_Efp = new efp(this, null);
   public boolean c = false;
   View e;
   
@@ -76,18 +76,19 @@ public class DiscussionView
   
   private void k()
   {
-    this.e = findViewById(2131232306);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.e.findViewById(2131232308));
+    this.e = findViewById(2131232309);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.e.findViewById(2131232311));
+    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
     this.e.setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232309));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232312));
     LayoutInflater localLayoutInflater = LayoutInflater.from(a());
-    Object localObject = localLayoutInflater.inflate(2130903942, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-    ((View)localObject).findViewById(2131233084).setVisibility(8);
-    localObject = (EditText)((View)localObject).findViewById(2131233085);
+    Object localObject = localLayoutInflater.inflate(2130903944, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    ((View)localObject).findViewById(2131233086).setVisibility(8);
+    localObject = (EditText)((View)localObject).findViewById(2131233087);
     ((EditText)localObject).setFocusableInTouchMode(false);
     ((EditText)localObject).setOnClickListener(this);
     ((EditText)localObject).setCursorVisible(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)localLayoutInflater.inflate(2130903323, this.jdField_a_of_type_ComTencentWidgetXListView, false));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)localLayoutInflater.inflate(2130903325, this.jdField_a_of_type_ComTencentWidgetXListView, false));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(this);
     this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130837729);
@@ -110,7 +111,7 @@ public class DiscussionView
   
   protected Dialog a()
   {
-    return new ekr(this, a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a());
+    return new efo(this, a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a());
   }
   
   public void a()
@@ -132,11 +133,11 @@ public class DiscussionView
   protected void a(Intent paramIntent, BaseTroopView.ITroopContext paramITroopContext)
   {
     super.a(paramIntent, paramITroopContext);
-    a(2130903368);
+    a(2130903370);
     k();
     this.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2 = new DiscussionListAdapter2(a(), this, this.jdField_a_of_type_ComTencentWidgetXListView, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2);
-    a(this.jdField_a_of_type_Eks);
+    a(this.jdField_a_of_type_Efp);
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a())
     {
       this.jdField_a_of_type_Int = 7;
@@ -197,7 +198,7 @@ public class DiscussionView
   protected void h()
   {
     super.h();
-    b(this.jdField_a_of_type_Eks);
+    b(this.jdField_a_of_type_Efp);
     this.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.a();
   }
   
@@ -207,7 +208,7 @@ public class DiscussionView
     {
     default: 
       return;
-    case 2131233085: 
+    case 2131233087: 
       j();
       return;
     }

@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.app.message.SubAccountMessageProcessor;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Comparator;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
 
 public class fof
-  implements Comparator
+  implements Runnable
 {
-  public fof(SubAccountMessageProcessor paramSubAccountMessageProcessor) {}
+  public fof(EmoticonLinearLayout paramEmoticonLinearLayout) {}
   
-  public int a(msg_comm.Msg paramMsg1, msg_comm.Msg paramMsg2)
+  public void run()
   {
-    return ((msg_comm.MsgHead)paramMsg1.msg_head.get()).msg_time.get() - ((msg_comm.MsgHead)paramMsg2.msg_head.get()).msg_time.get();
+    if (EmoticonLinearLayout.a(this.a) != null)
+    {
+      EmoticonLinearLayout.a(this.a).a();
+      this.a.postDelayed(this, 100L);
+    }
   }
 }
 

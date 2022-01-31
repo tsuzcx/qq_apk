@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager.MagicfaceCloseListener;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.profile.view.ProfileSocialView;
+import java.util.HashMap;
 
-public class gfg
-  implements MagicfaceActionManager.MagicfaceCloseListener
+class gfg
+  implements Runnable
 {
-  public gfg(MagicfaceViewController paramMagicfaceViewController, MagicfaceActionManager paramMagicfaceActionManager) {}
+  gfg(gff paramgff, Bitmap paramBitmap) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.e();
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_Gff.a.a.get("map_key_face");
+    if (localImageView != null) {
+      localImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
   }
 }
 

@@ -50,8 +50,6 @@ import android.util.Pair;
 import com.dataline.activities.LiteActivity;
 import com.etrump.mixlayout.FontManager;
 import com.rookery.translate.tencent.TencentTranslator;
-import com.tencent.av.gaudio.GAudioNotifyCenter;
-import com.tencent.av.utils.PhoneStatusTools;
 import com.tencent.biz.eqq.CrmUtils;
 import com.tencent.biz.pubaccount.assistant.PubAccountAssistantManager;
 import com.tencent.common.app.AppInterface;
@@ -226,20 +224,20 @@ import cooperation.plugin.IPluginManager;
 import cooperation.qlink.QQProxyForQlink;
 import cooperation.qlink.QQServiceForQlink;
 import cooperation.qlink.QlinkServiceManager;
-import fjm;
-import fjo;
-import fjp;
-import fjq;
-import fjr;
-import fjs;
-import fjt;
-import fju;
-import fjv;
-import fjw;
-import fjx;
-import fjy;
-import fjz;
-import fkd;
+import ffb;
+import ffd;
+import ffe;
+import fff;
+import ffg;
+import ffh;
+import ffi;
+import ffj;
+import ffk;
+import ffl;
+import ffm;
+import ffn;
+import ffo;
+import ffs;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
@@ -315,7 +313,6 @@ public class QQAppInterface
   public static final int a = 1;
   static final long jdField_a_of_type_Long = 2000L;
   private static final Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config;
-  public static final String a;
   private static final int[] jdField_a_of_type_ArrayOfInt = { 16, 8, 17, 26, 25, 23, 24, 41, 44 };
   public static final long[] a;
   public static final int aA = 15;
@@ -370,7 +367,7 @@ public class QQAppInterface
   public static final int az = 14;
   public static final byte b = 2;
   public static final int b = 2;
-  public static final String b = "com.tencent.mobileqq.intent.logout";
+  public static final String b;
   private static final long[] jdField_b_of_type_ArrayOfLong;
   public static final int ba = 41;
   public static final int bb = 42;
@@ -391,6 +388,7 @@ public class QQAppInterface
   public static final byte c = 3;
   public static final int c = 3;
   private static final long jdField_c_of_type_Long = 86400000L;
+  public static final String c = "com.tencent.mobileqq.intent.logout";
   public static boolean c = false;
   public static final byte d = 3;
   public static final int d = 4;
@@ -427,30 +425,26 @@ public class QQAppInterface
   public static final int r = 15;
   private static final String r = "com.tencent.qqhead.getheadresp";
   public static final int s = 16;
-  private static final String s = "tencent.av.v2q.StartVideoChat";
+  private static final String s = "com.tencent.mobileqqi:video";
   public static final int t = 17;
-  private static final String t = "tencent.av.v2q.StopVideoChat";
+  private static final String t = "notification";
   public static final int u = 18;
-  private static final String u = "tencent.av.v2q.AvSwitch";
   public static final int v = 19;
-  private static final String v = "com.tencent.mobileqqi:video";
   public static final int w = 20;
-  private static final String w = "notification";
   public static final int x = 21;
   public static final int y = 22;
   public static final int z = 23;
   private LBSInfo jdField_a_of_type_NearbyGroupLBSInfo;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new fjw(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ffl(this);
   public Intent a;
   SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = null;
   public Handler a;
   private MQLruCache jdField_a_of_type_AndroidSupportV4UtilMQLruCache = BaseApplicationImpl.jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
-  private GAudioNotifyCenter jdField_a_of_type_ComTencentAvGaudioGAudioNotifyCenter;
   QLBSNotification jdField_a_of_type_ComTencentLbsapiQLBSNotification;
   public QLBSService a;
   private QvipSpecialSoundManager jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager = null;
   private CheckPttListener jdField_a_of_type_ComTencentMobileqqAppCheckPttListener;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new fjy(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ffn(this);
   private MessageHandler jdField_a_of_type_ComTencentMobileqqAppMessageHandler;
   private MsgTabUnreadListener jdField_a_of_type_ComTencentMobileqqAppMsgTabUnreadListener = null;
   private QQGAudioMsgHandler jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler;
@@ -473,7 +467,7 @@ public class QQAppInterface
   private OnlineFileSessionCenter jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionCenter;
   private PrivacyInfoUtil jdField_a_of_type_ComTencentMobileqqFilemanagerUtilPrivacyInfoUtil;
   private HwEngine jdField_a_of_type_ComTencentMobileqqHighwayHwEngine;
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new fjm(this);
+  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new ffb(this);
   private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
   private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
   private PicPreDownloader jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader;
@@ -501,9 +495,9 @@ public class QQAppInterface
   public int ae;
   public int ah = 0;
   public long b;
-  private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = new fjz(this);
+  private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = new ffo(this);
   private Intent jdField_b_of_type_AndroidContentIntent = null;
-  private Handler jdField_b_of_type_AndroidOsHandler = new fjx(this, Looper.getMainLooper());
+  private Handler jdField_b_of_type_AndroidOsHandler = new ffm(this, Looper.getMainLooper());
   private Object jdField_b_of_type_JavaLangObject = new Object();
   private ArrayList jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   private HashMap jdField_b_of_type_JavaUtilHashMap;
@@ -514,19 +508,19 @@ public class QQAppInterface
   public int be;
   public int bf;
   private final int bp = 990;
-  private BroadcastReceiver jdField_c_of_type_AndroidContentBroadcastReceiver = new fjr(this);
+  private BroadcastReceiver jdField_c_of_type_AndroidContentBroadcastReceiver = new ffg(this);
   private Object jdField_c_of_type_JavaLangObject = new Object();
   private HashMap jdField_c_of_type_JavaUtilHashMap = new HashMap();
   List jdField_c_of_type_JavaUtilList = new Vector();
   private byte[] jdField_c_of_type_ArrayOfByte;
   private volatile long[] jdField_c_of_type_ArrayOfLong = new long[2];
   private long jdField_d_of_type_Long = 31L;
-  private BroadcastReceiver jdField_d_of_type_AndroidContentBroadcastReceiver = new fjs(this);
+  private BroadcastReceiver jdField_d_of_type_AndroidContentBroadcastReceiver = new ffh(this);
   private Object jdField_d_of_type_JavaLangObject = new Object();
   private List jdField_d_of_type_JavaUtilList = new ArrayList();
   public boolean d;
   private long jdField_e_of_type_Long = -1L;
-  private BroadcastReceiver jdField_e_of_type_AndroidContentBroadcastReceiver = new fju(this);
+  private BroadcastReceiver jdField_e_of_type_AndroidContentBroadcastReceiver = new ffj(this);
   public boolean e;
   private long jdField_f_of_type_Long = 0L;
   boolean jdField_f_of_type_Boolean;
@@ -535,13 +529,12 @@ public class QQAppInterface
   public volatile boolean h = false;
   public boolean i = false;
   public boolean j = false;
-  public boolean k = false;
-  private boolean jdField_l_of_type_Boolean;
-  private volatile boolean m = false;
+  private boolean k = false;
+  private volatile boolean jdField_l_of_type_Boolean;
   
   static
   {
-    jdField_a_of_type_JavaLangString = QQAppInterface.class.getSimpleName();
+    jdField_b_of_type_JavaLangString = QQAppInterface.class.getSimpleName();
     jdField_a_of_type_AndroidGraphicsBitmap$Config = Bitmap.Config.ARGB_8888;
     jdField_b_of_type_ArrayOfLong = new long[] { 100L, 200L, 200L, 100L };
     jdField_a_of_type_ArrayOfLong = new long[] { 100L, 400L, 100L, 400L, 100L, 400L };
@@ -551,15 +544,15 @@ public class QQAppInterface
   public QQAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
     super(paramBaseApplicationImpl, paramString);
-    this.l = false;
     this.jdField_a_of_type_AndroidContentIntent = null;
     this.jdField_d_of_type_Boolean = true;
+    this.l = false;
     this.jdField_e_of_type_Boolean = false;
     this.jdField_g_of_type_Boolean = true;
     this.jdField_a_of_type_JavaUtilSet = new HashSet();
     this.jdField_a_of_type_ArrayOfByte = null;
     this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidOsHandler = new fjq(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new fff(this, Looper.getMainLooper());
     this.jdField_g_of_type_Long = 60000L;
   }
   
@@ -675,7 +668,7 @@ public class QQAppInterface
         Object localObject = SubAccountAssistantImpl.a().a(this);
         String str = SubAccountAssistantImpl.a().a();
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "onDestroy subAccount = " + (String)localObject + ";subAccountA2 is null =" + TextUtils.isEmpty(str));
+          QLog.d(jdField_b_of_type_JavaLangString, 2, "onDestroy subAccount = " + (String)localObject + ";subAccountA2 is null =" + TextUtils.isEmpty(str));
         }
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
@@ -700,15 +693,6 @@ public class QQAppInterface
   private void P()
   {
     IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("tencent.video.v2q.AddMsgSig");
-    localIntentFilter.addAction("tencent.video.v2q.AddContactsToDiscuss");
-    localIntentFilter.addAction("tencent.video.v2q.AddContactsFromC2C");
-    localIntentFilter.addAction("tencent.video.v2q.AddVideoMsg");
-    localIntentFilter.addAction("tencent.video.v2q.VideoFlowSize");
-    localIntentFilter.addAction("tencent.av.v2q.MultiVideo");
-    localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
-    localIntentFilter.addAction("tencent.av.v2q.StopVideoChat");
-    localIntentFilter.addAction("tencent.av.v2q.AvSwitch");
     synchronized (this.jdField_b_of_type_AndroidContentBroadcastReceiver)
     {
       this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.registerReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
@@ -753,7 +737,7 @@ public class QQAppInterface
   private void T()
   {
     ReportController.a(this, false);
-    a(new fjt(this));
+    a(new ffi(this));
     Object localObject = (GameCenterManagerImp)getManager(11);
     if (localObject != null) {
       ((GameCenterManagerImp)localObject).c();
@@ -762,13 +746,13 @@ public class QQAppInterface
     if (localObject != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "onstart.test if get qzone unread.");
+        QLog.d(jdField_b_of_type_JavaLangString, 2, "onstart.test if get qzone unread.");
       }
       ((QZoneManager)localObject).a(1);
     }
     e(false);
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "zsw subaccount onStart start get sub msg");
+      QLog.d(jdField_b_of_type_JavaLangString, 2, "zsw subaccount onStart start get sub msg");
     }
   }
   
@@ -776,7 +760,7 @@ public class QQAppInterface
   {
     ReportController.a(this);
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "zsw subaccount onStop stop get sub msg ");
+      QLog.d(jdField_b_of_type_JavaLangString, 2, "zsw subaccount onStop stop get sub msg ");
     }
     u();
   }
@@ -797,7 +781,7 @@ public class QQAppInterface
       if (String.valueOf(AppConstants.V).equals(paramString))
       {
         paramString = paramContext.getString(2131562371);
-        paramContext = new Intent(paramContext, HelloListActivity.class).putExtra(HelloListActivity.jdField_a_of_type_JavaLangString, HelloListActivity.c);
+        paramContext = new Intent(paramContext, HelloListActivity.class).putExtra(HelloListActivity.a, HelloListActivity.c);
       }
       else if (String.valueOf(AppConstants.Z).equals(paramString))
       {
@@ -955,7 +939,7 @@ public class QQAppInterface
             localObject2 = (FriendListHandler)a(1);
             a(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
             if (QLog.isColorLevel()) {
-              QLog.d(jdField_a_of_type_JavaLangString + "_friendListObserver", 2, "addObserver");
+              QLog.d(jdField_b_of_type_JavaLangString + "_friendListObserver", 2, "addObserver");
             }
             ((FriendListHandler)localObject2).a(paramMessage.frienduin);
             localObject2 = localObject1;
@@ -981,7 +965,7 @@ public class QQAppInterface
   {
     StringBuilder localStringBuilder = new StringBuilder(256);
     if (SystemUtil.a()) {
-      localStringBuilder.append(AppConstants.ay);
+      localStringBuilder.append(AppConstants.aC);
     }
     for (;;)
     {
@@ -990,7 +974,7 @@ public class QQAppInterface
       localStringBuilder.append(MD5.toMD5(str + paramString));
       localStringBuilder.append(".png");
       return localStringBuilder.toString();
-      localStringBuilder.append(SystemUtil.jdField_a_of_type_JavaLangString + "head/_hd/");
+      localStringBuilder.append(SystemUtil.a + "head/_hd/");
     }
   }
   
@@ -1074,13 +1058,13 @@ public class QQAppInterface
   private void a(Intent paramIntent, String paramString1, String paramString2, String paramString3, int paramInt, Bitmap paramBitmap, String paramString4)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "showNotification. cmd=" + paramString4 + ", ticker=" + Utils.a(paramString1) + ",msgShow:" + Utils.a(paramString3) + ", bitmap=" + paramBitmap);
+      QLog.d(jdField_b_of_type_JavaLangString, 2, "showNotification. cmd=" + paramString4 + ", ticker=" + Utils.a(paramString1) + ",msgShow:" + Utils.a(paramString3) + ", bitmap=" + paramBitmap);
     }
     Bitmap localBitmap = paramBitmap;
     if (paramBitmap == null) {}
     try
     {
-      localBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getResources(), 2130838016);
+      localBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getResources(), 2130838018);
       if (localBitmap != null)
       {
         paramBitmap = new ToServiceMsg("mobileqq.service", a(), paramString4);
@@ -1273,7 +1257,7 @@ public class QQAppInterface
         ((ArrayList)localObject2).add(new Wifi(localSosoWifi.jdField_a_of_type_Long, (short)localSosoWifi.jdField_a_of_type_Int));
       }
     }
-    return new LBSInfo((GPS)localObject1, (ArrayList)localObject2, localArrayList, new Attr(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute.jdField_a_of_type_JavaLangString, paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute.b, paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute.c));
+    return new LBSInfo((GPS)localObject1, (ArrayList)localObject2, localArrayList, new Attr(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute.a, paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute.jdField_b_of_type_JavaLangString, paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute.c));
   }
   
   private Intent b(Context paramContext, QQMessageFacade.Message paramMessage, boolean paramBoolean)
@@ -1428,7 +1412,7 @@ public class QQAppInterface
       bool1 = bool2;
       label269:
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "canVibrator: " + paramBoolean + " canPlaySound: " + bool1 + " uri: " + paramMessage);
+        QLog.d(jdField_b_of_type_JavaLangString, 2, "canVibrator: " + paramBoolean + " canPlaySound: " + bool1 + " uri: " + paramMessage);
       }
       if ((paramBoolean) && (localObject1 != null)) {
         ((Vibrator)localObject1).vibrate(jdField_b_of_type_ArrayOfLong, -1);
@@ -1650,7 +1634,7 @@ public class QQAppInterface
                 this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager = new QvipSpecialSoundManager(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getApplicationContext(), this);
               }
               i2 = i1;
-              a(new fjo(this, (String)localObject2, (File)localObject3));
+              a(new ffd(this, (String)localObject2, (File)localObject3));
             }
             continue;
           }
@@ -1732,20 +1716,20 @@ public class QQAppInterface
   private String i()
   {
     // Byte code:
-    //   0: ldc_w 1764
+    //   0: ldc_w 1740
     //   3: astore 4
     //   5: aload_0
-    //   6: getfield 584	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   9: invokevirtual 1768	com/tencent/common/app/BaseApplicationImpl:getPackageManager	()Landroid/content/pm/PackageManager;
+    //   6: getfield 575	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   9: invokevirtual 1744	com/tencent/common/app/BaseApplicationImpl:getPackageManager	()Landroid/content/pm/PackageManager;
     //   12: astore_3
     //   13: aload 4
     //   15: astore_2
     //   16: aload_3
     //   17: aload_0
-    //   18: getfield 584	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   21: invokevirtual 1771	com/tencent/common/app/BaseApplicationImpl:getPackageName	()Ljava/lang/String;
+    //   18: getfield 575	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   21: invokevirtual 1747	com/tencent/common/app/BaseApplicationImpl:getPackageName	()Ljava/lang/String;
     //   24: iconst_0
-    //   25: invokevirtual 1777	android/content/pm/PackageManager:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
+    //   25: invokevirtual 1753	android/content/pm/PackageManager:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
     //   28: astore 5
     //   30: aload 4
     //   32: astore_3
@@ -1756,12 +1740,12 @@ public class QQAppInterface
     //   41: aload 4
     //   43: astore_3
     //   44: aload 5
-    //   46: getfield 1782	android/content/pm/PackageInfo:versionName	Ljava/lang/String;
+    //   46: getfield 1758	android/content/pm/PackageInfo:versionName	Ljava/lang/String;
     //   49: ifnull +85 -> 134
     //   52: aload 4
     //   54: astore_2
     //   55: aload 5
-    //   57: getfield 1782	android/content/pm/PackageInfo:versionName	Ljava/lang/String;
+    //   57: getfield 1758	android/content/pm/PackageInfo:versionName	Ljava/lang/String;
     //   60: astore 4
     //   62: aload 4
     //   64: astore_3
@@ -1770,8 +1754,8 @@ public class QQAppInterface
     //   70: aload 4
     //   72: astore_2
     //   73: aload 4
-    //   75: ldc_w 1784
-    //   78: invokevirtual 1788	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   75: ldc_w 1760
+    //   78: invokevirtual 1764	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   81: astore 5
     //   83: iconst_3
     //   84: istore_1
@@ -1785,14 +1769,14 @@ public class QQAppInterface
     //   95: if_icmple +39 -> 134
     //   98: aload 4
     //   100: astore_2
-    //   101: new 647	java/lang/StringBuilder
+    //   101: new 638	java/lang/StringBuilder
     //   104: dup
-    //   105: invokespecial 648	java/lang/StringBuilder:<init>	()V
+    //   105: invokespecial 639	java/lang/StringBuilder:<init>	()V
     //   108: aload 4
-    //   110: invokevirtual 654	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   113: ldc_w 1790
-    //   116: invokevirtual 654	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   119: invokevirtual 668	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   110: invokevirtual 645	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: ldc_w 1766
+    //   116: invokevirtual 645	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   119: invokevirtual 659	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   122: astore 4
     //   124: iload_1
     //   125: iconst_1
@@ -1826,7 +1810,7 @@ public class QQAppInterface
   
   private boolean w()
   {
-    return SettingCloneUtil.readValue(a(), null, a().getString(2131563427), "qqsetting_notify_icon_key", false);
+    return SettingCloneUtil.readValue(a(), null, a().getString(2131563455), "qqsetting_notify_icon_key", false);
   }
   
   private boolean x()
@@ -1859,13 +1843,13 @@ public class QQAppInterface
   public void B()
   {
     ISecureModuleService localISecureModuleService = a();
-    if (localISecureModuleService.register(new ProductInfo(6, i(), Integer.parseInt("6600"), 201, null, getAccount())) == 0)
+    if (localISecureModuleService.register(new ProductInfo(6, i(), Integer.parseInt("6602"), 201, null, getAccount())) == 0)
     {
       if (QLog.isColorLevel()) {
         QLog.d("security_scan", 2, "Start Security Scan");
       }
       if (this.jdField_a_of_type_ComTencentSecuremoduleServiceCloudScanListener == null) {
-        this.jdField_a_of_type_ComTencentSecuremoduleServiceCloudScanListener = new fjp(this);
+        this.jdField_a_of_type_ComTencentSecuremoduleServiceCloudScanListener = new ffe(this);
       }
       localISecureModuleService.registerCloudScanListener(a(), this.jdField_a_of_type_ComTencentSecuremoduleServiceCloudScanListener);
       localISecureModuleService.cloudScan();
@@ -1887,7 +1871,7 @@ public class QQAppInterface
   {
     long l2 = 0L;
     long l1;
-    if ((!this.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) && (this.k))
+    if ((!this.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) && (this.j))
     {
       l1 = l2;
       if (this.jdField_b_of_type_Long != 0L)
@@ -1903,7 +1887,7 @@ public class QQAppInterface
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "onResume send msg " + l1);
+        QLog.d(jdField_b_of_type_JavaLangString, 2, "onResume send msg " + l1);
       }
       Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, new WeakReference(this));
       this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, l1);
@@ -1985,7 +1969,7 @@ public class QQAppInterface
       Object localObject1;
       return;
     }
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "onX2Mobile app = null,maybe not QQ process");
+    QLog.d(jdField_b_of_type_JavaLangString, 2, "onX2Mobile app = null,maybe not QQ process");
   }
   
   public void J()
@@ -1998,7 +1982,7 @@ public class QQAppInterface
     while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "onX2Wifi app = null,maybe not QQ process");
+    QLog.d(jdField_b_of_type_JavaLangString, 2, "onX2Wifi app = null,maybe not QQ process");
   }
   
   public int a()
@@ -2358,7 +2342,7 @@ public class QQAppInterface
       if (localSetting2 == null)
       {
         localSetting1 = localSetting2;
-        if (!this.l)
+        if (!this.k)
         {
           localSetting1 = localSetting2;
           if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))
@@ -2408,14 +2392,6 @@ public class QQAppInterface
       paramString = ImageUtil.a();
     }
     return Pair.create(Boolean.valueOf(bool), paramString);
-  }
-  
-  public GAudioNotifyCenter a()
-  {
-    if (this.jdField_a_of_type_ComTencentAvGaudioGAudioNotifyCenter == null) {
-      this.jdField_a_of_type_ComTencentAvGaudioGAudioNotifyCenter = new GAudioNotifyCenter(this);
-    }
-    return this.jdField_a_of_type_ComTencentAvGaudioGAudioNotifyCenter;
   }
   
   public BusinessHandler a(int paramInt)
@@ -2557,29 +2533,29 @@ public class QQAppInterface
     //   2: iload_1
     //   3: iconst_4
     //   4: if_icmpne +24 -> 28
-    //   7: new 647	java/lang/StringBuilder
+    //   7: new 638	java/lang/StringBuilder
     //   10: dup
-    //   11: invokespecial 648	java/lang/StringBuilder:<init>	()V
-    //   14: ldc_w 2028
-    //   17: invokevirtual 654	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11: invokespecial 639	java/lang/StringBuilder:<init>	()V
+    //   14: ldc_w 2007
+    //   17: invokevirtual 645	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   20: aload_2
-    //   21: invokevirtual 654	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: invokevirtual 668	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   21: invokevirtual 645	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: invokevirtual 659	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   27: astore_3
     //   28: aload_0
-    //   29: invokevirtual 935	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
-    //   32: invokevirtual 2209	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   29: invokevirtual 911	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
+    //   32: invokevirtual 2182	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   35: astore_2
     //   36: aload_2
-    //   37: ldc_w 1296
+    //   37: ldc_w 1273
     //   40: aload_3
-    //   41: invokevirtual 2116	com/tencent/mobileqq/persistence/EntityManager:a	(Ljava/lang/Class;Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
-    //   44: checkcast 1296	com/tencent/mobileqq/data/Setting
+    //   41: invokevirtual 2095	com/tencent/mobileqq/persistence/EntityManager:a	(Ljava/lang/Class;Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
+    //   44: checkcast 1273	com/tencent/mobileqq/data/Setting
     //   47: astore_3
     //   48: aload_2
     //   49: ifnull +7 -> 56
     //   52: aload_2
-    //   53: invokevirtual 2210	com/tencent/mobileqq/persistence/EntityManager:a	()V
+    //   53: invokevirtual 2183	com/tencent/mobileqq/persistence/EntityManager:a	()V
     //   56: aload_3
     //   57: areturn
     //   58: astore_2
@@ -2588,7 +2564,7 @@ public class QQAppInterface
     //   61: aload_2
     //   62: ifnull +30 -> 92
     //   65: aload_2
-    //   66: invokevirtual 2210	com/tencent/mobileqq/persistence/EntityManager:a	()V
+    //   66: invokevirtual 2183	com/tencent/mobileqq/persistence/EntityManager:a	()V
     //   69: aconst_null
     //   70: areturn
     //   71: astore_3
@@ -2597,7 +2573,7 @@ public class QQAppInterface
     //   74: aload_2
     //   75: ifnull +7 -> 82
     //   78: aload_2
-    //   79: invokevirtual 2210	com/tencent/mobileqq/persistence/EntityManager:a	()V
+    //   79: invokevirtual 2183	com/tencent/mobileqq/persistence/EntityManager:a	()V
     //   82: aload_3
     //   83: athrow
     //   84: astore_3
@@ -2840,7 +2816,7 @@ public class QQAppInterface
     localObject = new StringBuilder(256);
     if (paramInt == 4) {
       if (SystemUtil.a()) {
-        ((StringBuilder)localObject).append(AppConstants.az);
+        ((StringBuilder)localObject).append(AppConstants.aD);
       }
     }
     for (;;)
@@ -2851,12 +2827,12 @@ public class QQAppInterface
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append(".png");
       return ((StringBuilder)localObject).toString();
-      ((StringBuilder)localObject).append(SystemUtil.jdField_a_of_type_JavaLangString + "head/_thd/");
+      ((StringBuilder)localObject).append(SystemUtil.a + "head/_thd/");
       continue;
       if (SystemUtil.a()) {
-        ((StringBuilder)localObject).append(AppConstants.ay);
+        ((StringBuilder)localObject).append(AppConstants.aC);
       } else {
-        ((StringBuilder)localObject).append(SystemUtil.jdField_a_of_type_JavaLangString + "head/_hd/");
+        ((StringBuilder)localObject).append(SystemUtil.a + "head/_hd/");
       }
     }
   }
@@ -2899,13 +2875,13 @@ public class QQAppInterface
       {
         localStringBuilder.append((String)paramConfigType.get(paramString));
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
+          QLog.d(jdField_b_of_type_JavaLangString, 2, localStringBuilder.toString());
         }
         return (String)paramConfigType.get(paramString);
       }
       localStringBuilder.append("null");
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
+        QLog.d(jdField_b_of_type_JavaLangString, 2, localStringBuilder.toString());
       }
       return null;
     }
@@ -2918,7 +2894,7 @@ public class QQAppInterface
       }
       localStringBuilder.append("null, configText is null");
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
+        QLog.d(jdField_b_of_type_JavaLangString, 2, localStringBuilder.toString());
       }
       return null;
     }
@@ -2926,15 +2902,15 @@ public class QQAppInterface
     {
       localObject = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<ServerConfig>" + (String)localObject + "</ServerConfig>";
       XMLReader localXMLReader = SAXParserFactory.newInstance().newSAXParser().getXMLReader();
-      fkd localfkd = new fkd(this);
-      localXMLReader.setContentHandler(localfkd);
+      ffs localffs = new ffs(this);
+      localXMLReader.setContentHandler(localffs);
       localXMLReader.parse(new InputSource(new ByteArrayInputStream(((String)localObject).getBytes("UTF-8"))));
-      localObject = localfkd.a();
+      localObject = localffs.a();
       this.jdField_b_of_type_JavaUtilHashtable.put(paramConfigType, localObject);
       this.jdField_c_of_type_JavaUtilHashMap.put(paramConfigType, Long.valueOf(l1));
       localStringBuilder.append((String)((HashMap)localObject).get(paramString));
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
+        QLog.d(jdField_b_of_type_JavaLangString, 2, localStringBuilder.toString());
       }
       paramConfigType = (String)((HashMap)localObject).get(paramString);
       return paramConfigType;
@@ -2943,7 +2919,7 @@ public class QQAppInterface
     {
       localStringBuilder.append("null. Exception: ");
       if (QLog.isColorLevel()) {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString(), paramConfigType);
+        QLog.e(jdField_b_of_type_JavaLangString, 2, localStringBuilder.toString(), paramConfigType);
       }
     }
     return null;
@@ -2965,63 +2941,63 @@ public class QQAppInterface
     //   1: astore 6
     //   3: aconst_null
     //   4: astore 4
-    //   6: new 349	java/util/HashMap
+    //   6: new 342	java/util/HashMap
     //   9: dup
-    //   10: invokespecial 514	java/util/HashMap:<init>	()V
+    //   10: invokespecial 505	java/util/HashMap:<init>	()V
     //   13: astore 7
     //   15: aload_0
-    //   16: getfield 584	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   19: invokevirtual 2424	com/tencent/common/app/BaseApplicationImpl:getContentResolver	()Landroid/content/ContentResolver;
-    //   22: new 647	java/lang/StringBuilder
+    //   16: getfield 575	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   19: invokevirtual 2397	com/tencent/common/app/BaseApplicationImpl:getContentResolver	()Landroid/content/ContentResolver;
+    //   22: new 638	java/lang/StringBuilder
     //   25: dup
-    //   26: invokespecial 648	java/lang/StringBuilder:<init>	()V
-    //   29: ldc_w 2426
-    //   32: invokevirtual 654	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: invokespecial 639	java/lang/StringBuilder:<init>	()V
+    //   29: ldc_w 2399
+    //   32: invokevirtual 645	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: aload_0
-    //   36: invokevirtual 854	com/tencent/mobileqq/app/QQAppInterface:a	()Ljava/lang/String;
-    //   39: invokevirtual 654	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: invokevirtual 668	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   45: invokestatic 2429	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   36: invokevirtual 830	com/tencent/mobileqq/app/QQAppInterface:a	()Ljava/lang/String;
+    //   39: invokevirtual 645	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: invokevirtual 659	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   45: invokestatic 2402	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   48: iconst_1
-    //   49: anewarray 776	java/lang/String
+    //   49: anewarray 751	java/lang/String
     //   52: dup
     //   53: iconst_0
-    //   54: ldc_w 2431
+    //   54: ldc_w 2404
     //   57: aastore
     //   58: aconst_null
     //   59: aconst_null
     //   60: aconst_null
-    //   61: invokevirtual 2437	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   61: invokevirtual 2410	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   64: astore_3
     //   65: aload_3
     //   66: astore 4
     //   68: aload 4
     //   70: ifnull +133 -> 203
     //   73: aload 4
-    //   75: invokeinterface 2442 1 0
+    //   75: invokeinterface 2415 1 0
     //   80: ifle +123 -> 203
     //   83: aload 4
-    //   85: ldc_w 2431
-    //   88: invokeinterface 2445 2 0
+    //   85: ldc_w 2404
+    //   88: invokeinterface 2418 2 0
     //   93: istore_2
-    //   94: new 388	java/util/ArrayList
+    //   94: new 381	java/util/ArrayList
     //   97: dup
-    //   98: invokespecial 389	java/util/ArrayList:<init>	()V
+    //   98: invokespecial 382	java/util/ArrayList:<init>	()V
     //   101: astore 5
     //   103: aload 5
     //   105: astore_3
     //   106: aload 4
-    //   108: invokeinterface 2448 1 0
+    //   108: invokeinterface 2421 1 0
     //   113: ifeq +92 -> 205
     //   116: aload 4
     //   118: iload_2
-    //   119: invokeinterface 2449 2 0
+    //   119: invokeinterface 2422 2 0
     //   124: astore_3
     //   125: aload_3
     //   126: ifnull -23 -> 103
     //   129: aload 5
     //   131: aload_3
-    //   132: invokevirtual 1081	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   132: invokevirtual 1058	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   135: pop
     //   136: goto -33 -> 103
     //   139: astore_3
@@ -3032,25 +3008,25 @@ public class QQAppInterface
     //   146: aload 4
     //   148: ifnull +460 -> 608
     //   151: aload 4
-    //   153: invokeinterface 2452 1 0
+    //   153: invokeinterface 2425 1 0
     //   158: iload_1
     //   159: bipush 254
     //   161: if_icmpne +77 -> 238
     //   164: aload_3
     //   165: ifnull +35 -> 200
     //   168: aload_3
-    //   169: invokevirtual 1060	java/util/ArrayList:size	()I
+    //   169: invokevirtual 1037	java/util/ArrayList:size	()I
     //   172: ifle +28 -> 200
     //   175: aload 7
     //   177: bipush 254
-    //   179: invokestatic 1307	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   179: invokestatic 1284	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   182: aload_3
     //   183: aload_3
-    //   184: invokevirtual 1060	java/util/ArrayList:size	()I
-    //   187: anewarray 776	java/lang/String
-    //   190: invokevirtual 2456	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
-    //   193: checkcast 2458	[Ljava/lang/String;
-    //   196: invokevirtual 2035	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   184: invokevirtual 1037	java/util/ArrayList:size	()I
+    //   187: anewarray 751	java/lang/String
+    //   190: invokevirtual 2429	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
+    //   193: checkcast 2431	[Ljava/lang/String;
+    //   196: invokevirtual 2014	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   199: pop
     //   200: aload 7
     //   202: areturn
@@ -3061,51 +3037,51 @@ public class QQAppInterface
     //   208: aload 4
     //   210: ifnull +398 -> 608
     //   213: aload 4
-    //   215: invokeinterface 2452 1 0
+    //   215: invokeinterface 2425 1 0
     //   220: goto -62 -> 158
     //   223: astore_3
     //   224: aload 4
     //   226: ifnull +10 -> 236
     //   229: aload 4
-    //   231: invokeinterface 2452 1 0
+    //   231: invokeinterface 2425 1 0
     //   236: aload_3
     //   237: athrow
     //   238: aload_3
     //   239: ifnull +357 -> 596
     //   242: aload_0
     //   243: aload_3
-    //   244: invokevirtual 2461	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/util/List;)Ljava/util/Map;
+    //   244: invokevirtual 2434	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/util/List;)Ljava/util/Map;
     //   247: astore 8
     //   249: aload 8
     //   251: ifnull +316 -> 567
-    //   254: new 388	java/util/ArrayList
+    //   254: new 381	java/util/ArrayList
     //   257: dup
-    //   258: invokespecial 389	java/util/ArrayList:<init>	()V
+    //   258: invokespecial 382	java/util/ArrayList:<init>	()V
     //   261: astore 6
-    //   263: new 388	java/util/ArrayList
+    //   263: new 381	java/util/ArrayList
     //   266: dup
-    //   267: invokespecial 389	java/util/ArrayList:<init>	()V
+    //   267: invokespecial 382	java/util/ArrayList:<init>	()V
     //   270: astore 4
-    //   272: new 388	java/util/ArrayList
+    //   272: new 381	java/util/ArrayList
     //   275: dup
-    //   276: invokespecial 389	java/util/ArrayList:<init>	()V
+    //   276: invokespecial 382	java/util/ArrayList:<init>	()V
     //   279: astore 5
     //   281: iconst_0
     //   282: istore_2
     //   283: iload_2
     //   284: aload_3
-    //   285: invokevirtual 1060	java/util/ArrayList:size	()I
+    //   285: invokevirtual 1037	java/util/ArrayList:size	()I
     //   288: if_icmpge +130 -> 418
     //   291: aload_3
     //   292: iload_2
-    //   293: invokevirtual 1064	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   296: checkcast 776	java/lang/String
+    //   293: invokevirtual 1041	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   296: checkcast 751	java/lang/String
     //   299: astore 9
     //   301: aload 8
     //   303: aload 9
-    //   305: invokeinterface 2464 2 0
-    //   310: checkcast 1233	java/lang/Integer
-    //   313: invokevirtual 2048	java/lang/Integer:intValue	()I
+    //   305: invokeinterface 2437 2 0
+    //   310: checkcast 1210	java/lang/Integer
+    //   313: invokevirtual 2027	java/lang/Integer:intValue	()I
     //   316: tableswitch	default:+32 -> 348, 1:+39->355, 2:+60->376, 3:+32->348, 4:+81->397
     //   349: iconst_1
     //   350: iadd
@@ -3119,7 +3095,7 @@ public class QQAppInterface
     //   362: if_icmpne -14 -> 348
     //   365: aload 6
     //   367: aload 9
-    //   369: invokevirtual 1081	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   369: invokevirtual 1058	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   372: pop
     //   373: goto -25 -> 348
     //   376: iload_1
@@ -3130,7 +3106,7 @@ public class QQAppInterface
     //   383: if_icmpne -35 -> 348
     //   386: aload 4
     //   388: aload 9
-    //   390: invokevirtual 1081	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   390: invokevirtual 1058	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   393: pop
     //   394: goto -46 -> 348
     //   397: iload_1
@@ -3141,7 +3117,7 @@ public class QQAppInterface
     //   404: if_icmpne -56 -> 348
     //   407: aload 5
     //   409: aload 9
-    //   411: invokevirtual 1081	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   411: invokevirtual 1058	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   414: pop
     //   415: goto -67 -> 348
     //   418: aload 6
@@ -3149,7 +3125,7 @@ public class QQAppInterface
     //   421: aload_3
     //   422: ifnull +44 -> 466
     //   425: aload_3
-    //   426: invokevirtual 1060	java/util/ArrayList:size	()I
+    //   426: invokevirtual 1037	java/util/ArrayList:size	()I
     //   429: ifle +37 -> 466
     //   432: iload_1
     //   433: iconst_m1
@@ -3159,19 +3135,19 @@ public class QQAppInterface
     //   439: if_icmpne +27 -> 466
     //   442: aload 7
     //   444: iconst_1
-    //   445: invokestatic 1307	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   445: invokestatic 1284	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   448: aload_3
     //   449: aload_3
-    //   450: invokevirtual 1060	java/util/ArrayList:size	()I
-    //   453: anewarray 776	java/lang/String
-    //   456: invokevirtual 2456	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
-    //   459: checkcast 2458	[Ljava/lang/String;
-    //   462: invokevirtual 2035	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   450: invokevirtual 1037	java/util/ArrayList:size	()I
+    //   453: anewarray 751	java/lang/String
+    //   456: invokevirtual 2429	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
+    //   459: checkcast 2431	[Ljava/lang/String;
+    //   462: invokevirtual 2014	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   465: pop
     //   466: aload 4
     //   468: ifnull +47 -> 515
     //   471: aload 4
-    //   473: invokevirtual 1060	java/util/ArrayList:size	()I
+    //   473: invokevirtual 1037	java/util/ArrayList:size	()I
     //   476: ifle +39 -> 515
     //   479: iload_1
     //   480: iconst_m1
@@ -3181,19 +3157,19 @@ public class QQAppInterface
     //   486: if_icmpne +29 -> 515
     //   489: aload 7
     //   491: iconst_2
-    //   492: invokestatic 1307	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   492: invokestatic 1284	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   495: aload 4
     //   497: aload 4
-    //   499: invokevirtual 1060	java/util/ArrayList:size	()I
-    //   502: anewarray 776	java/lang/String
-    //   505: invokevirtual 2456	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
-    //   508: checkcast 2458	[Ljava/lang/String;
-    //   511: invokevirtual 2035	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   499: invokevirtual 1037	java/util/ArrayList:size	()I
+    //   502: anewarray 751	java/lang/String
+    //   505: invokevirtual 2429	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
+    //   508: checkcast 2431	[Ljava/lang/String;
+    //   511: invokevirtual 2014	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   514: pop
     //   515: aload 5
     //   517: ifnull +47 -> 564
     //   520: aload 5
-    //   522: invokevirtual 1060	java/util/ArrayList:size	()I
+    //   522: invokevirtual 1037	java/util/ArrayList:size	()I
     //   525: ifle +39 -> 564
     //   528: iload_1
     //   529: iconst_m1
@@ -3203,14 +3179,14 @@ public class QQAppInterface
     //   535: if_icmpne +29 -> 564
     //   538: aload 7
     //   540: iconst_4
-    //   541: invokestatic 1307	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   541: invokestatic 1284	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   544: aload 5
     //   546: aload 5
-    //   548: invokevirtual 1060	java/util/ArrayList:size	()I
-    //   551: anewarray 776	java/lang/String
-    //   554: invokevirtual 2456	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
-    //   557: checkcast 2458	[Ljava/lang/String;
-    //   560: invokevirtual 2035	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   548: invokevirtual 1037	java/util/ArrayList:size	()I
+    //   551: anewarray 751	java/lang/String
+    //   554: invokevirtual 2429	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
+    //   557: checkcast 2431	[Ljava/lang/String;
+    //   560: invokevirtual 2014	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   563: pop
     //   564: aload 7
     //   566: areturn
@@ -3305,7 +3281,7 @@ public class QQAppInterface
         i1 += 1;
       }
     }
-    this.l = true;
+    this.k = true;
     localObject = new IntentFilter();
     ((IntentFilter)localObject).addAction("com.tencent.qqhead.getheadreq");
     a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
@@ -3433,7 +3409,7 @@ public class QQAppInterface
     }
     if ((paramBoolean1) && ((((QQMessageFacade.Message)localObject1).istroop == 6000) || (this.ah == 0) || ((((QQMessageFacade.Message)localObject1).istroop == 1001) && (((QQMessageFacade.Message)localObject1).msgtype == -3001)) || (((QQMessageFacade.Message)localObject1).istroop == 1008)))
     {
-      if (this.m) {
+      if (this.l) {
         break label864;
       }
       b((QQMessageFacade.Message)localObject1, paramBoolean2);
@@ -3630,13 +3606,13 @@ public class QQAppInterface
       localObject1 = a().getString(2131561548);
       label119:
       if ((!((String)localObject1).equals("你的QQ暂不支持查看视频短片，请期待后续版本")) && (!((String)localObject1).equals("[视频]你的QQ暂不支持查看视频短片，请升级到最新版本后查看。"))) {
-        break label2384;
+        break label2374;
       }
     }
     label285:
     label312:
-    label2375:
-    label2384:
+    label2365:
+    label2374:
     for (Object localObject5 = "[视频] 您的QQ版本暂不支持查看视频短片。";; localObject5 = localObject1)
     {
       Object localObject7 = a(a(), paramMessage, true);
@@ -3666,13 +3642,13 @@ public class QQAppInterface
           for (;;)
           {
             if (!ActionMsgUtil.a(paramMessage.msgtype)) {
-              break label2357;
+              break label2347;
             }
             if ((paramMessage.actMsgContentValue == null) || ("".endsWith(paramMessage.actMsgContentValue))) {
               break label1674;
             }
             if (QLog.isColorLevel()) {
-              QLog.d(jdField_a_of_type_JavaLangString, 2, "isShareAppActionMsg+ actionDetailMsg=" + paramMessage.actMsgContentValue);
+              QLog.d(jdField_b_of_type_JavaLangString, 2, "isShareAppActionMsg+ actionDetailMsg=" + paramMessage.actMsgContentValue);
             }
             localObject3 = paramMessage.actMsgContentValue;
             localObject8 = localObject3;
@@ -3767,7 +3743,7 @@ public class QQAppInterface
           {
             localObject1 = (DiscussionHandler)a(6);
             if (localObject1 == null) {
-              break label2375;
+              break label2365;
             }
             localObject1 = ((DiscussionHandler)localObject1).a(paramMessage.frienduin, true);
             break;
@@ -3812,7 +3788,7 @@ public class QQAppInterface
             localObject1 = null;
             localObject4 = localObject5;
             continue;
-            localObject2 = SkinUtils.a(a().getResources().getDrawable(2130838025));
+            localObject2 = SkinUtils.a(a().getResources().getDrawable(2130838027));
             localObject4 = XMLMessageUtils.a(paramMessage);
             if ((localObject4 != null) && (!((PAMessage)localObject4).items.isEmpty()))
             {
@@ -3909,8 +3885,8 @@ public class QQAppInterface
               }
               for (;;)
               {
-                if ((i1 != 0) || (PhoneStatusTools.e(a())) || (!SettingCloneUtil.readValue(a(), a(), null, "qqsetting_msg_lockscreen_key", true))) {
-                  break label2355;
+                if ((i1 != 0) || (!SettingCloneUtil.readValue(a(), a(), null, "qqsetting_msg_lockscreen_key", true))) {
+                  break label2345;
                 }
                 QQLSRecentManager.a().a(this, paramMessage.frienduin, paramMessage.istroop);
                 paramMessage = new Intent(a(), QQLSActivity.class);
@@ -4223,13 +4199,13 @@ public class QQAppInterface
     if (localRoamSettingController != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "getAllGeneralSettings , needTroopSettings=" + paramBoolean);
+        QLog.d(jdField_b_of_type_JavaLangString, 2, "getAllGeneralSettings , needTroopSettings=" + paramBoolean);
       }
       localRoamSettingController.a(paramBoolean, null);
       return true;
     }
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "getAllGeneralSettings roamSettingController is null ");
+      QLog.d(jdField_b_of_type_JavaLangString, 2, "getAllGeneralSettings roamSettingController is null ");
     }
     return false;
   }
@@ -4274,68 +4250,68 @@ public class QQAppInterface
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 3034	com/tencent/mobileqq/app/QQAppInterface:m	()Z
+    //   1: invokevirtual 3004	com/tencent/mobileqq/app/QQAppInterface:m	()Z
     //   4: ifne +5 -> 9
     //   7: aconst_null
     //   8: areturn
     //   9: aload_0
-    //   10: getfield 479	com/tencent/mobileqq/app/QQAppInterface:jdField_d_of_type_JavaLangObject	Ljava/lang/Object;
+    //   10: getfield 470	com/tencent/mobileqq/app/QQAppInterface:jdField_d_of_type_JavaLangObject	Ljava/lang/Object;
     //   13: astore_1
     //   14: aload_1
     //   15: monitorenter
     //   16: aload_0
     //   17: aconst_null
-    //   18: putfield 1285	com/tencent/mobileqq/app/QQAppInterface:jdField_c_of_type_ArrayOfByte	[B
+    //   18: putfield 1262	com/tencent/mobileqq/app/QQAppInterface:jdField_c_of_type_ArrayOfByte	[B
     //   21: iconst_0
-    //   22: putstatic 3036	com/tencent/mobileqq/app/LBSHandler:v	I
+    //   22: putstatic 3006	com/tencent/mobileqq/app/LBSHandler:v	I
     //   25: aload_0
-    //   26: getfield 953	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface	Lcom/tencent/mobileqq/app/soso/SosoInterface;
+    //   26: getfield 929	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface	Lcom/tencent/mobileqq/app/soso/SosoInterface;
     //   29: ifnonnull +22 -> 51
     //   32: aload_0
-    //   33: invokestatic 3041	com/tencent/mobileqq/app/soso/SosoInterface:a	()Lcom/tencent/mobileqq/app/soso/SosoInterface;
-    //   36: putfield 953	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface	Lcom/tencent/mobileqq/app/soso/SosoInterface;
+    //   33: invokestatic 3011	com/tencent/mobileqq/app/soso/SosoInterface:a	()Lcom/tencent/mobileqq/app/soso/SosoInterface;
+    //   36: putfield 929	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface	Lcom/tencent/mobileqq/app/soso/SosoInterface;
     //   39: aload_0
-    //   40: new 3043	fka
+    //   40: new 3013	ffp
     //   43: dup
     //   44: aload_0
-    //   45: invokespecial 3044	fka:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
-    //   48: putfield 947	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener	Lcom/tencent/mobileqq/app/soso/SosoInterface$OnLocationListener;
-    //   51: invokestatic 645	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   45: invokespecial 3014	ffp:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   48: putfield 923	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener	Lcom/tencent/mobileqq/app/soso/SosoInterface$OnLocationListener;
+    //   51: invokestatic 636	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   54: ifeq +13 -> 67
-    //   57: ldc_w 3046
+    //   57: ldc_w 3016
     //   60: iconst_2
-    //   61: ldc_w 3048
-    //   64: invokestatic 671	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   67: new 604	android/os/Handler
+    //   61: ldc_w 3018
+    //   64: invokestatic 662	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   67: new 595	android/os/Handler
     //   70: dup
-    //   71: invokestatic 432	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   74: invokespecial 3051	android/os/Handler:<init>	(Landroid/os/Looper;)V
-    //   77: new 3053	fkb
+    //   71: invokestatic 425	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   74: invokespecial 3021	android/os/Handler:<init>	(Landroid/os/Looper;)V
+    //   77: new 3023	ffq
     //   80: dup
     //   81: aload_0
-    //   82: invokespecial 3054	fkb:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
-    //   85: invokevirtual 3058	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   82: invokespecial 3024	ffq:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   85: invokevirtual 3028	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   88: pop
     //   89: aload_0
-    //   90: getfield 953	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface	Lcom/tencent/mobileqq/app/soso/SosoInterface;
+    //   90: getfield 929	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface	Lcom/tencent/mobileqq/app/soso/SosoInterface;
     //   93: astore_2
     //   94: aload_2
     //   95: monitorenter
-    //   96: getstatic 3036	com/tencent/mobileqq/app/LBSHandler:v	I
+    //   96: getstatic 3006	com/tencent/mobileqq/app/LBSHandler:v	I
     //   99: ifne +20 -> 119
     //   102: aload_0
-    //   103: getfield 950	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo	Lcom/tencent/mobileqq/app/soso/SosoInterface$SosoLbsInfo;
+    //   103: getfield 926	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo	Lcom/tencent/mobileqq/app/soso/SosoInterface$SosoLbsInfo;
     //   106: ifnonnull +13 -> 119
     //   109: aload_0
-    //   110: getfield 953	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface	Lcom/tencent/mobileqq/app/soso/SosoInterface;
-    //   113: ldc2_w 3059
-    //   116: invokevirtual 3063	java/lang/Object:wait	(J)V
+    //   110: getfield 929	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface	Lcom/tencent/mobileqq/app/soso/SosoInterface;
+    //   113: ldc2_w 3029
+    //   116: invokevirtual 3033	java/lang/Object:wait	(J)V
     //   119: aload_2
     //   120: monitorexit
     //   121: aload_1
     //   122: monitorexit
     //   123: aload_0
-    //   124: getfield 1285	com/tencent/mobileqq/app/QQAppInterface:jdField_c_of_type_ArrayOfByte	[B
+    //   124: getfield 1262	com/tencent/mobileqq/app/QQAppInterface:jdField_c_of_type_ArrayOfByte	[B
     //   127: areturn
     //   128: astore_3
     //   129: aload_2
@@ -4344,7 +4320,7 @@ public class QQAppInterface
     //   132: athrow
     //   133: astore_2
     //   134: bipush 245
-    //   136: putstatic 3036	com/tencent/mobileqq/app/LBSHandler:v	I
+    //   136: putstatic 3006	com/tencent/mobileqq/app/LBSHandler:v	I
     //   139: goto -18 -> 121
     //   142: astore_2
     //   143: aload_1
@@ -4457,7 +4433,7 @@ public class QQAppInterface
   
   public Bitmap b(Bitmap paramBitmap)
   {
-    Bitmap localBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getResources(), 2130840233);
+    Bitmap localBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getResources(), 2130840235);
     if (localBitmap != null) {
       new Canvas(paramBitmap).drawBitmap(localBitmap, paramBitmap.getWidth() - localBitmap.getWidth() - 1, paramBitmap.getHeight() - localBitmap.getHeight() - 1, new Paint());
     }
@@ -4502,7 +4478,7 @@ public class QQAppInterface
   
   public String b()
   {
-    return "6.0.1";
+    return "6.0.2";
   }
   
   public String b(int paramInt, String paramString)
@@ -4511,7 +4487,7 @@ public class QQAppInterface
     Object localObject;
     if (SystemUtil.a())
     {
-      localStringBuilder.append(AppConstants.ay);
+      localStringBuilder.append(AppConstants.aC);
       localObject = a(paramInt, paramString);
       switch (((Integer)localObject[0]).intValue())
       {
@@ -4524,7 +4500,7 @@ public class QQAppInterface
       localStringBuilder.append(MD5.toMD5((String)localObject + paramString));
       localStringBuilder.append(".png");
       return localStringBuilder.toString();
-      localStringBuilder.append(SystemUtil.jdField_a_of_type_JavaLangString + "head/_hd/");
+      localStringBuilder.append(SystemUtil.a + "head/_hd/");
       break;
       localStringBuilder.append("troop_sys_b");
       paramString = (String)localObject[1];
@@ -4557,9 +4533,9 @@ public class QQAppInterface
     Object localObject1 = PreferenceManager.getDefaultSharedPreferences((Context)localObject2);
     try
     {
-      String str1 = ((Context)localObject2).getString(2131563431);
-      String str2 = ((Context)localObject2).getString(2131563428);
-      localObject2 = ((Context)localObject2).getString(2131563429);
+      String str1 = ((Context)localObject2).getString(2131563459);
+      String str2 = ((Context)localObject2).getString(2131563456);
+      localObject2 = ((Context)localObject2).getString(2131563457);
       String str3 = a();
       localObject1 = ((SharedPreferences)localObject1).edit();
       ((SharedPreferences.Editor)localObject1).putBoolean(str1 + str3, false);
@@ -4631,7 +4607,7 @@ public class QQAppInterface
   public void b(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "checkIfNeedSignonNet onNetNeedSignon() called url:" + paramString);
+      QLog.d(jdField_b_of_type_JavaLangString, 2, "checkIfNeedSignonNet onNetNeedSignon() called url:" + paramString);
     }
     Handler localHandler = a(Conversation.class);
     if (localHandler != null)
@@ -4710,7 +4686,7 @@ public class QQAppInterface
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "kickPC get value........... kickpc = " + bool);
+        QLog.d(jdField_b_of_type_JavaLangString, 2, "kickPC get value........... kickpc = " + bool);
       }
       return bool;
       bool = false;
@@ -4761,73 +4737,73 @@ public class QQAppInterface
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 3034	com/tencent/mobileqq/app/QQAppInterface:m	()Z
+    //   1: invokevirtual 3004	com/tencent/mobileqq/app/QQAppInterface:m	()Z
     //   4: ifne +5 -> 9
     //   7: aconst_null
     //   8: areturn
     //   9: aload_0
-    //   10: getfield 477	com/tencent/mobileqq/app/QQAppInterface:jdField_c_of_type_JavaLangObject	Ljava/lang/Object;
+    //   10: getfield 468	com/tencent/mobileqq/app/QQAppInterface:jdField_c_of_type_JavaLangObject	Ljava/lang/Object;
     //   13: astore_1
     //   14: aload_1
     //   15: monitorenter
     //   16: aload_0
-    //   17: getfield 3204	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentLbsapiQLBSService	Lcom/tencent/lbsapi/QLBSService;
+    //   17: getfield 3174	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentLbsapiQLBSService	Lcom/tencent/lbsapi/QLBSService;
     //   20: ifnonnull +41 -> 61
     //   23: aload_0
-    //   24: new 3206	fkc
+    //   24: new 3176	ffr
     //   27: dup
     //   28: aload_0
-    //   29: invokespecial 3207	fkc:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
-    //   32: putfield 3209	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentLbsapiQLBSNotification	Lcom/tencent/lbsapi/QLBSNotification;
+    //   29: invokespecial 3177	ffr:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   32: putfield 3179	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentLbsapiQLBSNotification	Lcom/tencent/lbsapi/QLBSNotification;
     //   35: aload_0
-    //   36: new 3211	com/tencent/lbsapi/QLBSService
+    //   36: new 3181	com/tencent/lbsapi/QLBSService
     //   39: dup
     //   40: aload_0
-    //   41: invokevirtual 903	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   41: invokevirtual 879	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   44: aload_0
-    //   45: getfield 3209	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentLbsapiQLBSNotification	Lcom/tencent/lbsapi/QLBSNotification;
+    //   45: getfield 3179	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentLbsapiQLBSNotification	Lcom/tencent/lbsapi/QLBSNotification;
     //   48: ldc 196
     //   50: ldc 199
-    //   52: ldc_w 3213
-    //   55: invokespecial 3216	com/tencent/lbsapi/QLBSService:<init>	(Landroid/content/Context;Lcom/tencent/lbsapi/QLBSNotification;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   58: putfield 3204	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentLbsapiQLBSService	Lcom/tencent/lbsapi/QLBSService;
-    //   61: invokestatic 645	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   52: ldc_w 3183
+    //   55: invokespecial 3186	com/tencent/lbsapi/QLBSService:<init>	(Landroid/content/Context;Lcom/tencent/lbsapi/QLBSNotification;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   58: putfield 3174	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentLbsapiQLBSService	Lcom/tencent/lbsapi/QLBSService;
+    //   61: invokestatic 636	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   64: ifeq +13 -> 77
-    //   67: ldc_w 3046
+    //   67: ldc_w 3016
     //   70: iconst_2
-    //   71: ldc_w 3218
-    //   74: invokestatic 671	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   77: ldc_w 3046
-    //   80: ldc_w 3220
-    //   83: invokestatic 3225	com/tencent/mobileqq/log/ReportLog:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   71: ldc_w 3188
+    //   74: invokestatic 662	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   77: ldc_w 3016
+    //   80: ldc_w 3190
+    //   83: invokestatic 3195	com/tencent/mobileqq/log/ReportLog:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   86: aload_0
     //   87: aconst_null
-    //   88: putfield 475	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ArrayOfByte	[B
-    //   91: new 604	android/os/Handler
+    //   88: putfield 466	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ArrayOfByte	[B
+    //   91: new 595	android/os/Handler
     //   94: dup
-    //   95: invokestatic 432	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   98: invokespecial 3051	android/os/Handler:<init>	(Landroid/os/Looper;)V
-    //   101: new 3227	fjn
+    //   95: invokestatic 425	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   98: invokespecial 3021	android/os/Handler:<init>	(Landroid/os/Looper;)V
+    //   101: new 3197	ffc
     //   104: dup
     //   105: aload_0
-    //   106: invokespecial 3228	fjn:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
-    //   109: invokevirtual 3058	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   106: invokespecial 3198	ffc:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   109: invokevirtual 3028	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   112: pop
     //   113: aload_0
-    //   114: getfield 3204	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentLbsapiQLBSService	Lcom/tencent/lbsapi/QLBSService;
+    //   114: getfield 3174	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentLbsapiQLBSService	Lcom/tencent/lbsapi/QLBSService;
     //   117: astore_2
     //   118: aload_2
     //   119: monitorenter
     //   120: aload_0
-    //   121: getfield 3204	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentLbsapiQLBSService	Lcom/tencent/lbsapi/QLBSService;
-    //   124: ldc2_w 3059
-    //   127: invokevirtual 3063	java/lang/Object:wait	(J)V
+    //   121: getfield 3174	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ComTencentLbsapiQLBSService	Lcom/tencent/lbsapi/QLBSService;
+    //   124: ldc2_w 3029
+    //   127: invokevirtual 3033	java/lang/Object:wait	(J)V
     //   130: aload_2
     //   131: monitorexit
     //   132: aload_1
     //   133: monitorexit
     //   134: aload_0
-    //   135: getfield 475	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ArrayOfByte	[B
+    //   135: getfield 466	com/tencent/mobileqq/app/QQAppInterface:jdField_a_of_type_ArrayOfByte	[B
     //   138: areturn
     //   139: astore_3
     //   140: aload_2
@@ -4836,7 +4812,7 @@ public class QQAppInterface
     //   143: athrow
     //   144: astore_2
     //   145: aload_2
-    //   146: invokevirtual 3229	java/lang/InterruptedException:printStackTrace	()V
+    //   146: invokevirtual 3199	java/lang/InterruptedException:printStackTrace	()V
     //   149: goto -17 -> 132
     //   152: astore_2
     //   153: aload_1
@@ -4903,7 +4879,7 @@ public class QQAppInterface
   public void c()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "onMessageConnect...");
+      QLog.d(jdField_b_of_type_JavaLangString, 2, "onMessageConnect...");
     }
     this.jdField_e_of_type_Boolean = true;
     if ((this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator == null) || (!d())) {}
@@ -4991,7 +4967,7 @@ public class QQAppInterface
   
   public void c(boolean paramBoolean)
   {
-    this.m = paramBoolean;
+    this.l = paramBoolean;
   }
   
   public void c(boolean paramBoolean1, boolean paramBoolean2)
@@ -5006,20 +4982,6 @@ public class QQAppInterface
   
   public boolean c()
   {
-    if (!this.j) {
-      return false;
-    }
-    Object localObject = ((ActivityManager)a().getSystemService("activity")).getRunningAppProcesses();
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName.equals("com.tencent.mobileqqi:video")) {
-          return true;
-        }
-      }
-    }
-    this.j = false;
     return false;
   }
   
@@ -5035,7 +4997,7 @@ public class QQAppInterface
   {
     boolean bool = SharedPreUtils.a(getApplication().getApplicationContext(), paramString);
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "CNR canAutoLogin autoLogin = " + bool);
+      QLog.d(jdField_b_of_type_JavaLangString, 2, "CNR canAutoLogin autoLogin = " + bool);
     }
     return bool;
   }
@@ -5057,7 +5019,7 @@ public class QQAppInterface
   public void d()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "onConnOpenAndStartGetMsg");
+      QLog.d(jdField_b_of_type_JavaLangString, 2, "onConnOpenAndStartGetMsg");
     }
     LoadingStateManager.a().a(1);
     Handler localHandler = a(Conversation.class);
@@ -5091,7 +5053,7 @@ public class QQAppInterface
   
   public void d(boolean paramBoolean)
   {
-    a().edit().putBoolean(a().getString(2131563425) + a(), paramBoolean).commit();
+    a().edit().putBoolean(a().getString(2131563453) + a(), paramBoolean).commit();
   }
   
   public void d(boolean paramBoolean1, boolean paramBoolean2)
@@ -5132,7 +5094,7 @@ public class QQAppInterface
   
   public void e()
   {
-    BaseApplicationImpl.jdField_a_of_type_AndroidOsHandler.post(new fjv(this));
+    BaseApplicationImpl.jdField_a_of_type_AndroidOsHandler.post(new ffk(this));
   }
   
   public void e(int paramInt)
@@ -5163,10 +5125,10 @@ public class QQAppInterface
   public void e(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "startSubMessageAccountMsg xxxxxxxx zsw 0");
+      QLog.d(jdField_b_of_type_JavaLangString, 2, "startSubMessageAccountMsg xxxxxxxx zsw 0");
     }
     if (((SubAccountGetMessageControll)getManager(29) != null) && (QLog.isColorLevel())) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "startSubMessageAccountMsg xxxxxxxx zsw 1");
+      QLog.d(jdField_b_of_type_JavaLangString, 2, "startSubMessageAccountMsg xxxxxxxx zsw 1");
     }
   }
   
@@ -5180,7 +5142,7 @@ public class QQAppInterface
   
   public boolean e()
   {
-    return SettingCloneUtil.readValue(a(), a(), a().getString(2131563430), "qqsetting_notify_showcontent_key", true);
+    return SettingCloneUtil.readValue(a(), a(), a().getString(2131563458), "qqsetting_notify_showcontent_key", true);
   }
   
   public int f()
@@ -5200,7 +5162,7 @@ public class QQAppInterface
   public void f()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "onConnClose");
+      QLog.d(jdField_b_of_type_JavaLangString, 2, "onConnClose");
     }
     this.jdField_e_of_type_Boolean = false;
     LoadingStateManager.a().a(1);
@@ -5221,7 +5183,7 @@ public class QQAppInterface
   public void f(boolean paramBoolean)
   {
     SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit();
-    localEditor.putBoolean(BaseApplication.getContext().getString(2131563422) + a(), paramBoolean);
+    localEditor.putBoolean(BaseApplication.getContext().getString(2131563450) + a(), paramBoolean);
     localEditor.commit();
   }
   
@@ -5278,7 +5240,7 @@ public class QQAppInterface
   public void g()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "onRecvFistResp");
+      QLog.d(jdField_b_of_type_JavaLangString, 2, "onRecvFistResp");
     }
     Handler localHandler;
     if (!LoadingStateManager.a().d())
@@ -5474,7 +5436,7 @@ public class QQAppInterface
   public void h()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "onConnAllFailed");
+      QLog.d(jdField_b_of_type_JavaLangString, 2, "onConnAllFailed");
     }
     LoadingStateManager.a().a(4);
     Handler localHandler = a(Conversation.class);
@@ -5494,8 +5456,8 @@ public class QQAppInterface
     try
     {
       NotificationManager localNotificationManager = (NotificationManager)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getSystemService("notification");
-      localNotificationManager.cancel(2130838143);
-      localNotificationManager.cancel(2130838142);
+      localNotificationManager.cancel(2130838145);
+      localNotificationManager.cancel(2130838144);
       localNotificationManager.cancel(122);
       label33:
       a(new ToServiceMsg("mobileqq.service", a(), "CMD_STOP_NOTIFIYCATION"));
@@ -5540,8 +5502,8 @@ public class QQAppInterface
     try
     {
       NotificationManager localNotificationManager = (NotificationManager)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getSystemService("notification");
-      localNotificationManager.cancel(2130838143);
-      localNotificationManager.cancel(2130838142);
+      localNotificationManager.cancel(2130838145);
+      localNotificationManager.cancel(2130838144);
       label27:
       a(a());
       return;
@@ -5569,7 +5531,7 @@ public class QQAppInterface
     if (isLogin())
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "kickPC get value in exit........... kickpc = false");
+        QLog.d(jdField_b_of_type_JavaLangString, 2, "kickPC get value in exit........... kickpc = false");
       }
       if (this.jdField_a_of_type_Boolean)
       {
@@ -5624,7 +5586,7 @@ public class QQAppInterface
     LoadingStateManager.a().a();
     N();
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "kickPC in app  do logout");
+      QLog.d(jdField_b_of_type_JavaLangString, 2, "kickPC in app  do logout");
     }
     String str = a();
     if (str != null) {
@@ -5646,9 +5608,8 @@ public class QQAppInterface
     }
     for (;;)
     {
-      ((PushManager)getManager(5)).registProxyMessagePush(a(), this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getPackageName() + ":video", "com.tencent.av.ui.qqi.VChatActivity", new String[] { "VideoSvc.Send", "VideoCCSvc.PutInfo", "SharpSvr.c2sack", "SharpSvr.s2c" });
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "kickPC get value in sendRegisterPush........... kickpc = " + b());
+        QLog.d(jdField_b_of_type_JavaLangString, 2, "kickPC get value in sendRegisterPush........... kickpc = " + b());
       }
       sendOnlineStatus(localStatus, b());
       return;
@@ -5662,17 +5623,15 @@ public class QQAppInterface
   
   public final boolean m()
   {
-    return a().getBoolean(a().getString(2131563425) + a(), false);
+    return a().getBoolean(a().getString(2131563453) + a(), false);
   }
   
   public void n()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "getVideoConfigUpdate");
+      QLog.d(jdField_b_of_type_JavaLangString, 2, "getVideoConfigUpdate");
     }
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, VideoConfigServlet.class);
-    localNewIntent.putExtra("reqType", 11);
-    startServlet(localNewIntent);
+    startServlet(new NewIntent(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, VideoConfigServlet.class));
     R();
   }
   
@@ -5913,7 +5872,7 @@ public class QQAppInterface
   public void setAutoLogin(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "CNR setAutoLogin autoLogin = " + paramBoolean);
+      QLog.d(jdField_b_of_type_JavaLangString, 2, "CNR setAutoLogin autoLogin = " + paramBoolean);
     }
     SharedPreUtils.a(getApplication().getApplicationContext(), h(), paramBoolean);
   }
@@ -5961,13 +5920,13 @@ public class QQAppInterface
   public void u()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "stopSubMessageAccountMsg xxxxxxxx zsw 0");
+      QLog.d(jdField_b_of_type_JavaLangString, 2, "stopSubMessageAccountMsg xxxxxxxx zsw 0");
     }
     SubAccountGetMessageControll localSubAccountGetMessageControll = (SubAccountGetMessageControll)getManager(29);
     if (localSubAccountGetMessageControll != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "stopSubMessageAccountMsg xxxxxxxx zsw 1");
+        QLog.d(jdField_b_of_type_JavaLangString, 2, "stopSubMessageAccountMsg xxxxxxxx zsw 1");
       }
       localSubAccountGetMessageControll.a();
     }
@@ -5998,7 +5957,7 @@ public class QQAppInterface
     for (boolean bool = true;; bool = false)
     {
       if (QLog.isDevelopLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 4, "checkAndGetSelfNickName, [" + str2 + "," + bool + "]");
+        QLog.i(jdField_b_of_type_JavaLangString, 4, "checkAndGetSelfNickName, [" + str2 + "," + bool + "]");
       }
       return bool;
       localObject = ((FriendManager)localObject).c(str1);
@@ -6032,7 +5991,7 @@ public class QQAppInterface
       for (;;)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "userLogoutReleaseData ", localException);
+          QLog.d(jdField_b_of_type_JavaLangString, 2, "userLogoutReleaseData ", localException);
         }
       }
     }
@@ -6050,7 +6009,7 @@ public class QQAppInterface
   
   public boolean v()
   {
-    return PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).getBoolean(BaseApplication.getContext().getString(2131563422) + a(), true);
+    return PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).getBoolean(BaseApplication.getContext().getString(2131563450) + a(), true);
   }
   
   public void w()

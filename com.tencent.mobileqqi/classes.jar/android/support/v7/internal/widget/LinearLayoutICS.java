@@ -128,7 +128,7 @@ public class LinearLayoutICS
     return this.mDividerWidth;
   }
   
-  protected boolean hasSupportDividerBeforeChildAt(int paramInt)
+  public boolean hasSupportDividerBeforeChildAt(int paramInt)
   {
     if (paramInt == 0) {
       if ((this.mShowDividers & 0x1) == 0) {}

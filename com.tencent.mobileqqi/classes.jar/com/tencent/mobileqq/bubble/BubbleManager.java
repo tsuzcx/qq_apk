@@ -25,8 +25,8 @@ import com.tencent.mobileqq.vip.IPCDownloadListener;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
-import fph;
-import fpi;
+import fku;
+import fkv;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -70,13 +70,13 @@ public class BubbleManager
   protected AppInterface a;
   public BubbleManager.BubbleInfoLruCache a;
   public BubbleManager.LruLinkedHashMap a;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new fph(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
+  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new fku(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
   private DownloaderFactory.DownloadConfig jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory$DownloadConfig = null;
   private DownloaderFactory jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory = null;
   public IPCDownloadListener a;
   private Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
   JSONArray jdField_a_of_type_OrgJsonJSONArray = null;
-  DownloadListener b = new fpi(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
+  DownloadListener b = new fkv(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
   
   static
   {
@@ -1210,7 +1210,7 @@ public class BubbleManager
       }
     }
     if (0 == 0) {
-      return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837758);
+      return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837759);
     }
     return null;
   }

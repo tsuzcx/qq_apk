@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 
-public class cfe
+class cfe
   implements Runnable
 {
-  public cfe(ChatActivity paramChatActivity) {}
+  cfe(cfd paramcfd) {}
   
   public void run()
   {
-    QQToast.a(this.a, 2131562218, 1).b(this.a.d());
+    this.a.a.a.a(13, 0);
+    this.a.a.a.a(null);
   }
 }
 

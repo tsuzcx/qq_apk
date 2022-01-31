@@ -48,16 +48,16 @@ public class RecentDefaultItemBuilder
     if (paramViewGroup == null)
     {
       paramOnDragModeChangedListener = new RecentDefaultItemBuilder.RecentItemDefaultHolder();
-      View localView = a(paramContext, 2130903926, paramOnDragModeChangedListener, 2);
+      View localView = a(paramContext, 2130903928, paramOnDragModeChangedListener, 2);
       paramOnDragModeChangedListener.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131230940));
-      paramOnDragModeChangedListener.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131234177));
-      paramOnDragModeChangedListener.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131234178));
-      paramOnDragModeChangedListener.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231881));
-      paramOnDragModeChangedListener.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131234187));
+      paramOnDragModeChangedListener.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131234179));
+      paramOnDragModeChangedListener.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131234180));
+      paramOnDragModeChangedListener.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231883));
+      paramOnDragModeChangedListener.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131234189));
       paramOnDragModeChangedListener.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(16908308));
-      paramOnDragModeChangedListener.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131232900));
-      paramOnDragModeChangedListener.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131232612));
-      paramOnDragModeChangedListener.e = ((TextView)localView.findViewById(2131234181));
+      paramOnDragModeChangedListener.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131232903));
+      paramOnDragModeChangedListener.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131232615));
+      paramOnDragModeChangedListener.e = ((TextView)localView.findViewById(2131234183));
       paramOnDragModeChangedListener.f = ((TextView)localView.findViewById(16908309));
       a(localView, paramOnDragModeChangedListener.jdField_b_of_type_AndroidWidgetTextView, paramContext);
       localView.setTag(paramOnDragModeChangedListener);
@@ -114,15 +114,9 @@ public class RecentDefaultItemBuilder
       if ((i & 0xF00) == 256) {
         this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[1]));
       }
-      j = 0xF000 & i;
-      if (j != 4096) {
-        break label178;
-      }
-      this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[2]));
-      label101:
       j = i & 0xF0;
       if (j != 32) {
-        break label208;
+        break label145;
       }
       this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[4]));
     }
@@ -134,13 +128,7 @@ public class RecentDefaultItemBuilder
       return this.jdField_a_of_type_JavaUtilList;
       this.jdField_a_of_type_JavaUtilList.clear();
       break;
-      label178:
-      if (j != 8192) {
-        break label101;
-      }
-      this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[3]));
-      break label101;
-      label208:
+      label145:
       if (j == 16) {
         this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[5]));
       }
@@ -382,20 +370,20 @@ public class RecentDefaultItemBuilder
         }
         else if (i == 3)
         {
-          i = 2130840212;
+          i = 2130840214;
           if ((paramRecentBaseData instanceof RecentTroopAssistantItem)) {}
           localRecentItemDefaultHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(1);
           j = 3;
         }
         else if (i == 4)
         {
-          i = 2130840211;
+          i = 2130840213;
           localRecentItemDefaultHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0);
           j = 3;
         }
         else
         {
-          i = 2130840211;
+          i = 2130840213;
           localRecentItemDefaultHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0);
           j = 3;
           continue;
@@ -417,19 +405,19 @@ public class RecentDefaultItemBuilder
       return;
     case 1: 
       paramRecentItemDefaultHolder.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramRecentItemDefaultHolder.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130838267);
+      paramRecentItemDefaultHolder.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130838269);
       return;
     case 2: 
       paramRecentItemDefaultHolder.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramRecentItemDefaultHolder.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130838267);
+      paramRecentItemDefaultHolder.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130838269);
       return;
     case 3: 
       paramRecentItemDefaultHolder.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramRecentItemDefaultHolder.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130838268);
+      paramRecentItemDefaultHolder.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130838270);
       return;
     }
     paramRecentItemDefaultHolder.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-    paramRecentItemDefaultHolder.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130837918);
+    paramRecentItemDefaultHolder.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130837920);
   }
 }
 

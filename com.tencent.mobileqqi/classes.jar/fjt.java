@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RecommendTroopManagerImp;
-import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.app.message.SubAccountMessageProcessor;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Comparator;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
 
 public class fjt
-  implements Runnable
+  implements Comparator
 {
-  public fjt(QQAppInterface paramQQAppInterface) {}
+  public fjt(SubAccountMessageProcessor paramSubAccountMessageProcessor) {}
   
-  public void run()
+  public int a(msg_comm.Msg paramMsg1, msg_comm.Msg paramMsg2)
   {
-    Object localObject = (PhoneContactManager)this.a.getManager(10);
-    if (localObject != null) {
-      ((PhoneContactManager)localObject).a(false);
-    }
-    localObject = (RecommendTroopManagerImp)this.a.getManager(19);
-    if (localObject != null) {
-      ((RecommendTroopManagerImp)localObject).a();
-    }
+    return ((msg_comm.MsgHead)paramMsg1.msg_head.get()).msg_time.get() - ((msg_comm.MsgHead)paramMsg2.msg_head.get()).msg_time.get();
   }
 }
 

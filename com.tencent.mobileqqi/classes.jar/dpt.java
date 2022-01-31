@@ -1,32 +1,32 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.ArrayList;
+import mqq.observer.AccountObserver;
 
 public class dpt
-  implements Runnable
+  extends AccountObserver
 {
-  public dpt(SplashActivity paramSplashActivity) {}
+  public dpt(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void run()
+  public void onUpdateSKey(String paramString1, String paramString2)
   {
-    if (!this.a.isResume()) {}
-    do
-    {
-      return;
-      localIntent = this.a.b.a();
-      this.a.b.a(null);
-    } while (localIntent == null);
-    String str = localIntent.getStringExtra("wording");
-    int i = localIntent.getIntExtra("timetowait", 360000);
-    Intent localIntent = new Intent("com.tencent.mobileqq.action.SECURITY_DETECT_PUSH_BANNER");
-    localIntent.putExtra("wording", str);
-    localIntent.putExtra("timetowait", i);
-    SplashActivity.a(this.a, localIntent);
+    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    if (paramString1 == null) {
+      while (i > 0)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b - 1);
+        i -= 1;
+      }
+    }
+    TroopUtils.a(paramString1, this.a.b.a(), this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.d, this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dpt
  * JD-Core Version:    0.7.0.1
  */

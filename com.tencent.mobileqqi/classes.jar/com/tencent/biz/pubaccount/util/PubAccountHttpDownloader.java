@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.util;
 
-import bre;
+import bla;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
@@ -87,7 +87,7 @@ public class PubAccountHttpDownloader
       }
       i += 1;
     }
-    paramOutputStream = new bre(this, paramOutputStream);
+    paramOutputStream = new bla(this, paramOutputStream);
     paramDownloadParams = super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
     if (str != null) {
       a(str, paramOutputStream.a);

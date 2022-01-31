@@ -1,21 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.voip.VoipAddressBookView;
+import android.app.Activity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.adapter.BuddyListAdapter;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class exr
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public exr(VoipAddressBookView paramVoipAddressBookView) {}
+  public exr(BuddyListAdapter paramBuddyListAdapter) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    VoipAddressBookView.l(this.a);
-    this.a.n();
+    if ((BuddyListAdapter.a(this.a) != null) && (BuddyListAdapter.a(this.a).isShowing())) {
+      BuddyListAdapter.a(this.a).dismiss();
+    }
+    GroupManagerActivity.a((Activity)BuddyListAdapter.a(this.a));
+    ReportController.b(BuddyListAdapter.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     exr
  * JD-Core Version:    0.7.0.1
  */

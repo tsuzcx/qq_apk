@@ -1,23 +1,41 @@
-import com.tencent.av.app.GAudioUIObserver;
-import com.tencent.av.gaudio.GaInviteActivity;
+import android.os.Bundle;
+import com.tencent.biz.common.report.BnrReport;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.bnr.BnrReport.BNRConfigMsg;
+import com.tencent.mobileqq.bnr.BnrReport.BNReportConfigRsp;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class bhq
-  extends GAudioUIObserver
+public final class bhq
+  implements BusinessObserver
 {
-  public bhq(GaInviteActivity paramGaInviteActivity) {}
+  public bhq(AppInterface paramAppInterface) {}
   
-  protected void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super.a();
-    this.a.f();
-  }
-  
-  protected void d(long paramLong)
-  {
-    super.c(paramLong);
-    if (this.a.b == paramLong) {
-      this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("BnrReport", 2, "success:" + String.valueOf(paramBoolean));
     }
+    if (paramBoolean) {}
+    try
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        BnrReport.BNRConfigMsg localBNRConfigMsg = new BnrReport.BNRConfigMsg();
+        localBNRConfigMsg.mergeFrom(paramBundle);
+        BnrReport.a((BnrReport.BNReportConfigRsp)localBNRConfigMsg.msg_rsp_body.get());
+        BnrReport.a(this.a, 74);
+      }
+    }
+    catch (Exception paramBundle)
+    {
+      for (;;)
+      {
+        paramBundle.printStackTrace();
+      }
+    }
+    BnrReport.a = false;
   }
 }
 

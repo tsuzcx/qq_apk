@@ -1,37 +1,22 @@
-import com.tencent.open.agent.OpenSdkFriendService;
-import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateCallback;
-import com.tencent.open.agent.datamodel.ImageLoader;
-import com.tencent.open.agent.datamodel.QZonePortraitData;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
 
 public class hnn
   implements Runnable
 {
-  public hnn(OpenSdkFriendService.CheckAvatarUpdateCallback paramCheckAvatarUpdateCallback, int paramInt, JSONArray paramJSONArray) {}
+  public hnn(DownloadManager paramDownloadManager, String paramString) {}
   
   public void run()
   {
-    int i = 0;
-    for (;;)
+    try
     {
-      if (i < this.jdField_a_of_type_Int) {
-        try
-        {
-          String str = this.jdField_a_of_type_OrgJsonJSONArray.getJSONObject(i).getString("openid");
-          str = QZonePortraitData.a(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$CheckAvatarUpdateCallback.a.f, str);
-          ImageLoader.a().a(str);
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
-      }
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().cancelDownloadTask(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    catch (Exception localException)
+    {
+      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "downloadSDKClient>>>", localException);
     }
   }
 }

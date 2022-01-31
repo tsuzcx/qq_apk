@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item type="drawable" name="trans">@color/APKTOOL_DUPLICATE_color_0x7f0a0009</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bbe">@color/APKTOOL_DUPLICATE_color_0x7f0a000b</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bc0">@color/APKTOOL_DUPLICATE_color_0x7f0a000b</item>
     <item type="drawable" name="preview_btn_bg_press">#ff000000</item>
     <item type="drawable" name="chatwindow_btn_press">#9936b5e3</item>
     <item type="drawable" name="setting_line1">#ffc9c9c9</item>
     <item type="drawable" name="pressed_forebground">#4d000000</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bc3">#fff7f7f7</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bc4">#ffdedede</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bc5">#99000000</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bc6">#ff2b86ef</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bc7">#00000000</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bc8">#ffffffff</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bc9">#ff0079ff</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bc5">#fff7f7f7</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bc6">#ffdedede</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bc7">#99000000</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bc8">#ff2b86ef</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bc9">#00000000</item>
     <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bca">#ffffffff</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bcb">#ffdedede</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bcc">#ff0079ff</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bcd">#ffffffff</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bce">#ff000000</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bcf">#7fcccccc</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bd0">#00000000</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bd1">#ffe8e8e8</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bd2">#ffe8e8e8</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bd3">#ffffffff</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bd4">#ff59b2e3</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bd5">#fffffee7</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bd6">#ffc2c8cd</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bd7">#00000000</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bd8">#fff2f2f2</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bd9">#ffdddddd</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bda">#ffeeeeee</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bdb">#ffe8e9e8</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bdc">#ffffffff</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bdd">#b3000000</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bde">#cc000000</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bdf">#ff696969</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020be0">#fff0f0f0</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020be1">#ffe3e3e3</item>
-    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020be2">#ff2b2e35</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bcb">#ff0079ff</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bcc">#ffffffff</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bcd">#ffdedede</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bce">#ff0079ff</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bcf">#ffffffff</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bd0">#ff000000</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bd1">#7fcccccc</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bd2">#00000000</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bd3">#ffe8e8e8</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bd4">#ffe8e8e8</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bd5">#ffffffff</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bd6">#ff59b2e3</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bd7">#fffffee7</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bd8">#ffc2c8cd</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bd9">#00000000</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bda">#fff2f2f2</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bdb">#ffdddddd</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bdc">#ffeeeeee</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bdd">#ffe8e9e8</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bde">#ffffffff</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020bdf">#b3000000</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020be0">#cc000000</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020be1">#ff696969</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020be2">#fff0f0f0</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020be3">#ffe3e3e3</item>
+    <item type="drawable" name="APKTOOL_DUPLICATE_drawable_0x7f020be4">#ff2b2e35</item>
 </resources>

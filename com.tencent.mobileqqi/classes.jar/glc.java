@@ -1,38 +1,21 @@
-import PersonalState.HotRishState;
-import android.os.Handler;
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.StatusObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemCover;
 
 public class glc
-  extends StatusObserver
+  extends URLDrawableDownListener.Adapter
 {
-  public glc(EditActivity paramEditActivity) {}
+  public glc(StructMsgItemCover paramStructMsgItemCover) {}
   
-  protected void a(boolean paramBoolean, ArrayList paramArrayList)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("get_hot_rich_status", 2, "EditActivity.mHotRichStatusObserver.onGetHotStatus, isSuccess:" + paramBoolean);
-    }
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0) && (!EditActivity.c(this.a)))
-    {
-      EditActivity.a(this.a).removeMessages(1);
-      ArrayList localArrayList = new ArrayList();
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext()) {
-        localArrayList.add(Integer.valueOf(((HotRishState)paramArrayList.next()).iActId));
-      }
-      EditActivity.a(this.a).clear();
-      EditActivity.a(this.a).addAll(localArrayList);
-      EditActivity.b(this.a);
-    }
+    paramView.setBackgroundDrawable(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     glc
  * JD-Core Version:    0.7.0.1
  */

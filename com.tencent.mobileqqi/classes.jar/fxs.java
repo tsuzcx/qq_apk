@@ -1,13 +1,13 @@
 import android.widget.ProgressBar;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.filemanager.activity.fileviewer.base.FileViewerImageAdapter;
+import com.tencent.mobileqq.filemanager.data.PreviewImageAdapter;
 
 public class fxs
 {
   public ProgressBar a;
   public URLImageView a;
   
-  public fxs(FileViewerImageAdapter paramFileViewerImageAdapter) {}
+  public fxs(PreviewImageAdapter paramPreviewImageAdapter) {}
 }
 
 

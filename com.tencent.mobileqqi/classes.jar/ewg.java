@@ -1,21 +1,24 @@
-import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame.TroopListAdapter;
-import com.tencent.mobileqq.data.CommonlyUsedTroop;
-import java.util.Comparator;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class ewg
-  implements Comparator
+  implements Runnable
 {
-  private ewg(TroopListInnerFrame.TroopListAdapter paramTroopListAdapter) {}
+  public ewg(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
+  public void run()
   {
-    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
-      return 1;
+    if (VoipDialInterfaceActivity.c(this.a))
+    {
+      VoipDialInterfaceActivity.a(this.a);
+      new String();
+      String str = this.a.a(VoipDialInterfaceActivity.b(this.a) * 1000L);
+      if (VoipDialInterfaceActivity.a(this.a) != null) {
+        VoipDialInterfaceActivity.a(this.a).setText(str);
+      }
     }
-    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
-      return -1;
-    }
-    return 0;
+    this.a.a.postDelayed(this, 1000L);
   }
 }
 

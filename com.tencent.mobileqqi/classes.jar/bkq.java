@@ -1,18 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.VChatActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.pubaccount.assistant.PubAccountAssistantManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.SharedPreferencesHandler;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.Set;
 
 public class bkq
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public bkq(VChatActivity paramVChatActivity) {}
+  public bkq(PubAccountAssistantManager paramPubAccountAssistantManager, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ReportController.b(null, "CliOper", "", "", "AV_module", "AV_module_install", 0, 0, "", "", "", "");
-    paramDialogInterface.dismiss();
-    VChatActivity.a(this.a);
+    synchronized (PubAccountAssistantManager.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantManager))
+    {
+      Object[] arrayOfObject = PubAccountAssistantManager.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantManager).toArray();
+      SharedPreferencesHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit(), "pubaccount_assistant_new_unread_list", arrayOfObject).commit();
+      return;
+    }
   }
 }
 

@@ -1,15 +1,19 @@
-import android.widget.Button;
+import android.app.Dialog;
 import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 
-class duy
-  extends FacePreloadBaseAdapter.ViewHolder
+public class duy
+  implements Runnable
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public duy(VerifyPhoneNumActivity paramVerifyPhoneNumActivity, int paramInt) {}
   
-  private duy(dux paramdux) {}
+  public void run()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.a = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity, 2131624405);
+    this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.a.setContentView(2130903073);
+    ((TextView)this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.a.findViewById(2131231029)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.getString(this.jdField_a_of_type_Int));
+    this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.a.show();
+  }
 }
 
 

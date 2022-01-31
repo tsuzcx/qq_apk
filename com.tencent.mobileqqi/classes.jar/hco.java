@@ -1,41 +1,24 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Point;
-import com.tencent.tencentmap.mapsdk.map.GeoPoint;
-import com.tencent.tencentmap.mapsdk.map.MapView;
-import com.tencent.tencentmap.mapsdk.map.Overlay;
-import com.tencent.tencentmap.mapsdk.map.Projection;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
 
 public class hco
-  extends Overlay
+  implements View.OnClickListener
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private GeoPoint jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint;
+  public hco(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public hco(Bitmap paramBitmap, GeoPoint paramGeoPoint)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint = paramGeoPoint;
-  }
-  
-  public void draw(Canvas paramCanvas, MapView paramMapView)
-  {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint != null))
-    {
-      Point localPoint = paramMapView.getProjection().toPixels(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint, null);
-      localPoint.x -= this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
-      localPoint.y -= this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
-      Paint localPaint = new Paint();
-      localPaint.setAntiAlias(true);
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localPoint.x, localPoint.y, localPaint);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
     }
-    super.draw(paramCanvas, paramMapView);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hco
  * JD-Core Version:    0.7.0.1
  */

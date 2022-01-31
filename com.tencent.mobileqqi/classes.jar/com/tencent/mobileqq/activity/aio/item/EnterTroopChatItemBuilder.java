@@ -22,7 +22,7 @@ import com.tencent.mobileqq.data.MessageForEnterTroop.User;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.util.FaceDrawable;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
-import edl;
+import dyj;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -38,7 +38,7 @@ public class EnterTroopChatItemBuilder
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     int j = 0;
-    paramOnLongClickAndTouchListener = (edl)paramViewHolder;
+    paramOnLongClickAndTouchListener = (dyj)paramViewHolder;
     paramViewHolder = paramView;
     Object localObject1;
     Object localObject2;
@@ -134,7 +134,7 @@ public class EnterTroopChatItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new edl(this);
+    return new dyj(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

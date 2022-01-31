@@ -3,7 +3,7 @@ package com.tencent.mobileqq.app.automator.step;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import fmw;
+import fik;
 import mqq.observer.AccountObserver;
 
 public class RegisterPush
@@ -15,7 +15,7 @@ public class RegisterPush
   {
     if (this.jdField_a_of_type_MqqObserverAccountObserver == null)
     {
-      this.jdField_a_of_type_MqqObserverAccountObserver = new fmw(this, null);
+      this.jdField_a_of_type_MqqObserverAccountObserver = new fik(this, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.registObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
     }
     this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.m();

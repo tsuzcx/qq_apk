@@ -7,7 +7,7 @@ public class AntiFraudGetConfigObserver
 {
   public static final String a = "AntiFraudGetConfigObserver";
   
-  protected void a(int paramInt, Bundle paramBundle) {}
+  public void a(int paramInt, Bundle paramBundle) {}
   
   public void a(int paramInt, boolean paramBoolean, Object paramObject)
   {

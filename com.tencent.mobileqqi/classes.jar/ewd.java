@@ -1,22 +1,15 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.media.SoundPool;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
-public class ewd
-  implements TextWatcher
+class ewd
+  implements Runnable
 {
-  private ewd(SelectMemberActivity paramSelectMemberActivity) {}
+  ewd(ewc paramewc) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    paramEditable = SelectMemberActivity.a(this.a).getText().toString().trim();
-    this.a.b(paramEditable);
+    VoipDialInterfaceActivity.a(this.a.a).play(VoipDialInterfaceActivity.l(this.a.a), 1.0F, 1.0F, 0, 0, 1.0F);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

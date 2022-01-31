@@ -1,38 +1,33 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-public class cdo
-  implements View.OnClickListener
+class cdo
+  implements Runnable
 {
-  public cdo(ChatActivity paramChatActivity) {}
+  cdo(cdn paramcdn, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ReportController.b(this.a.b, "CliOper", "", "", "Free_call", "Clk_free_call_tips", 0, 0, "", "", "", "");
-    ChatActivityFacade.d(this.a.b, this.a.a.jdField_a_of_type_JavaLangString);
-    ChatActivity.a(this.a);
-    paramView = null;
-    String str = null;
-    if (this.a.a.jdField_a_of_type_Int == 1006) {
-      str = this.a.a.jdField_a_of_type_JavaLangString;
-    }
-    for (;;)
+    View localView = this.jdField_a_of_type_Cdn.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ArrayOfAndroidViewView[4];
+    if ((localView != null) && (this.jdField_a_of_type_Cdn.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData != null))
     {
-      ChatActivityUtils.a(this.a.b, this.a, this.a.a.jdField_a_of_type_Int, paramView, this.a.a.d, str, true, this.a.a.b, true, true, null, "from_internal");
-      ReportController.b(this.a.b, "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "8", "", "", "");
-      return;
-      paramView = this.a.a.jdField_a_of_type_JavaLangString;
+      ((TextView)localView.findViewById(2131230941)).setText(this.jdField_a_of_type_Cdn.jdField_a_of_type_JavaLangString);
+      TextView localTextView = (TextView)localView.findViewById(2131231507);
+      localTextView.setText(this.jdField_a_of_type_Cdn.b);
+      localTextView.setMaxLines(3);
+      this.jdField_a_of_type_Cdn.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.a(true);
+      this.jdField_a_of_type_Cdn.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a(true);
+      this.jdField_a_of_type_Cdn.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a(localView, 0, this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Cdn.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a(localView, this.jdField_a_of_type_Cdn.b);
+      localView.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cdo
  * JD-Core Version:    0.7.0.1
  */

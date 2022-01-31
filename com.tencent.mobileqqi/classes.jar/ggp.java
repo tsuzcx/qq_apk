@@ -1,24 +1,12 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
+import android.graphics.Bitmap;
 
-public class ggp
-  implements View.OnTouchListener
+public abstract interface ggp
 {
-  public ggp(RoamSearchDialog paramRoamSearchDialog) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
-  }
+  public abstract void a(String paramString1, String paramString2, Bitmap paramBitmap, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     ggp
  * JD-Core Version:    0.7.0.1
  */

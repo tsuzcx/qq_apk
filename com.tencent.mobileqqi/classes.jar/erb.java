@@ -1,8 +1,24 @@
-import com.tencent.image.URLImageView;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
-public class erb
+class erb
+  implements Runnable
 {
-  URLImageView a;
+  erb(era paramera) {}
+  
+  public void run()
+  {
+    try
+    {
+      if (!this.a.a.isFinishing())
+      {
+        this.a.a.a.dismiss();
+        this.a.a.finish();
+      }
+      return;
+    }
+    catch (Exception localException) {}
+  }
 }
 
 

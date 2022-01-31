@@ -9,7 +9,7 @@ public class TimePickerActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903978);
+    setContentView(2130903980);
   }
   
   protected void onDestroy()

@@ -1,36 +1,34 @@
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.widget.CharJumpAnimView;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.appcenter.QZoneAppCenterActivity;
+import com.tencent.open.base.LogUtility;
+import com.tencent.smtt.sdk.WebView;
 
 public class hka
-  implements Runnable
+  implements View.OnClickListener
 {
-  public hka(CharJumpAnimView paramCharJumpAnimView) {}
+  public hka(QZoneAppCenterActivity paramQZoneAppCenterActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (CharJumpAnimView.a(this.a) == 0L)
+    LogUtility.b("AppViewBaseActivity", "button onClick!!!");
+    if (TextUtils.isEmpty(QZoneAppCenterActivity.a(this.a)))
     {
-      if (CharJumpAnimView.a(this.a) != null) {
-        CharJumpAnimView.a(this.a).onAnimationStart(null);
-      }
-      CharJumpAnimView.a(this.a, System.currentTimeMillis());
-    }
-    this.a.a(CharJumpAnimView.a(this.a), 3500L);
-    this.a.invalidate();
-    if (this.a.a())
-    {
-      this.a.postDelayed(this, 20L);
+      this.a.d();
+      this.a.e = "";
+      this.a.f = "";
+      QZoneAppCenterActivity.a(this.a);
+      QZoneAppCenterActivity.a(this.a).sendEmptyMessage(3);
       return;
     }
-    if (CharJumpAnimView.a(this.a) != null) {
-      CharJumpAnimView.a(this.a).onAnimationEnd(null);
-    }
-    CharJumpAnimView.a(this.a, null);
+    this.a.a.loadUrl("javascript:JsBridge.callback(\"" + QZoneAppCenterActivity.b(this.a) + "\");void(0);");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hka
  * JD-Core Version:    0.7.0.1
  */

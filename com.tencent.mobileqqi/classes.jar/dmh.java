@@ -1,21 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SubAccountSettingActivity;
 
-class dmh
-  implements DialogInterface.OnKeyListener
+public class dmh
+  extends Handler
 {
-  dmh(dmg paramdmg) {}
+  public dmh(SubAccountSettingActivity paramSubAccountSettingActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
+    switch (paramMessage.what)
     {
-      RegisterSendUpSms.b(this.a.a);
-      return true;
+    default: 
+      return;
     }
-    return false;
+    this.a.finish();
   }
 }
 

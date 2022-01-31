@@ -52,10 +52,10 @@ public class ProgressCircle
       this.jdField_a_of_type_AndroidGraphicsRectF.right = (i - this.b / 2);
       this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (j - this.b / 2);
       this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.b);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131362087));
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131362097));
       this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
       paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131362087));
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131362097));
       this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.b * 2);
       this.jdField_a_of_type_AndroidGraphicsRectF.left = this.b;
       this.jdField_a_of_type_AndroidGraphicsRectF.top = this.b;

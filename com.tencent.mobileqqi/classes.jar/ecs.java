@@ -1,68 +1,101 @@
-import android.view.View;
-import android.view.animation.AnimationUtils;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.AnimationPath;
-import com.tencent.mobileqq.activity.aio.anim.AnimationPath.Values;
-import com.tencent.mobileqq.activity.aio.anim.PathAnimation;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.IBinder;
+import android.os.Parcel;
+import android.os.RemoteException;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack;
+import com.tencent.qphone.base.util.QLog;
 
 public class ecs
-  implements Runnable
+  implements IAIOImageProviderCallBack
 {
-  private ecs(PathAnimation paramPathAnimation) {}
+  private IBinder a;
   
-  public void run()
+  public ecs(IBinder paramIBinder)
   {
-    long l3 = AnimationUtils.currentAnimationTimeMillis();
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-    long l2 = -1L;
-    if (localIterator.hasNext())
+    this.a = paramIBinder;
+  }
+  
+  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
     {
-      AnimationPath.Values localValues = (AnimationPath.Values)localIterator.next();
-      long l1;
-      if (l3 < localValues.jdField_a_of_type_Long)
-      {
-        l1 = localValues.jdField_a_of_type_Long - l3;
-        label63:
-        if (l1 < 0L) {
-          break label195;
-        }
-        if (l2 >= 0L) {
-          break label186;
-        }
-        label75:
-        this.a.a(localValues.jdField_a_of_type_AndroidViewView, localValues);
-      }
-      for (;;)
-      {
-        l2 = l1;
-        break;
-        if (!localValues.jdField_a_of_type_Boolean)
-        {
-          l1 = localValues.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAnimationPath.a(localValues, localValues.jdField_a_of_type_AndroidViewView.getWidth(), localValues.jdField_a_of_type_AndroidViewView.getHeight(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getWidth(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getHeight());
-          localValues.jdField_a_of_type_Boolean = true;
-          break label63;
-        }
-        l1 = localValues.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAnimationPath.a(l3 - localValues.jdField_a_of_type_Long, localValues);
-        break label63;
-        label186:
-        l1 = Math.min(l2, l1);
-        break label75;
-        label195:
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.removeViewInLayout(localValues.jdField_a_of_type_AndroidViewView);
-        localIterator.remove();
-        l1 = l2;
-      }
-    }
-    if (l2 >= 0L)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.postDelayed(this, l2);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.invalidate();
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
+      localParcel.writeLong(paramLong1);
+      localParcel.writeInt(paramInt1);
+      localParcel.writeInt(paramInt2);
+      localParcel.writeInt(paramInt3);
+      localParcel.writeLong(paramLong2);
+      this.a.transact(3, localParcel, null, 1);
       return;
     }
-    this.a.d();
+    catch (RemoteException localRemoteException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("IAIOImageProviderCallBack", 2, localRemoteException.getMessage(), localRemoteException);
+      }
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
+      localParcel.writeLong(paramLong);
+      localParcel.writeInt(paramInt1);
+      localParcel.writeInt(paramInt2);
+      localParcel.writeInt(paramInt3);
+      localParcel.writeString(paramString);
+      this.a.transact(1, localParcel, null, 1);
+      return;
+    }
+    catch (RemoteException paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("IAIOImageProviderCallBack", 2, paramString.getMessage(), paramString);
+      }
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public void a(AIOImageData[] paramArrayOfAIOImageData, int paramInt)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
+      localParcel.writeTypedArray(paramArrayOfAIOImageData, 0);
+      localParcel.writeInt(paramInt);
+      this.a.transact(2, localParcel, null, 1);
+      return;
+    }
+    catch (RemoteException paramArrayOfAIOImageData)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("IAIOImageProviderCallBack", 2, paramArrayOfAIOImageData.getMessage(), paramArrayOfAIOImageData);
+      }
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
 }
 

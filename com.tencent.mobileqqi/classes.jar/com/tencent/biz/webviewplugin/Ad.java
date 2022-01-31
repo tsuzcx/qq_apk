@@ -12,13 +12,13 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.animation.TranslateAnimation;
 import android.widget.AbsoluteLayout.LayoutParams;
 import android.widget.ImageView;
-import buh;
-import bui;
-import buj;
-import buk;
-import bul;
-import bum;
-import bun;
+import bog;
+import boh;
+import boi;
+import boj;
+import bok;
+import bol;
+import bom;
 import com.tencent.biz.ProtoServlet;
 import com.tencent.biz.game.SensorAPIJavaScript;
 import com.tencent.biz.pubaccount.CustomWebView;
@@ -55,7 +55,7 @@ public class Ad
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   QQBrowserActivity jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity;
   protected WebViewPluginEngine a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new bum(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new bol(this);
   NewIntent jdField_a_of_type_MqqAppNewIntent;
   BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver;
   public boolean a;
@@ -84,7 +84,7 @@ public class Ad
     this.jdField_b_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = true;
     this.jdField_d_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaLangRunnable = new bun(this);
+    this.jdField_b_of_type_JavaLangRunnable = new bom(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity = paramQQBrowserActivity;
     this.jdField_b_of_type_ComTencentBizPubaccountCustomWebView = paramQQBrowserActivity.a();
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
@@ -129,7 +129,7 @@ public class Ad
     if (str == null) {
       localObject = "";
     }
-    localWebSettings.setUserAgentString((String)localObject + " " + QZoneHelper.a() + " " + "QQ/" + "6.0.1" + "." + "6600");
+    localWebSettings.setUserAgentString((String)localObject + " " + QZoneHelper.a() + " " + "QQ/" + "6.0.2" + "." + "6602");
     localWebSettings.setSaveFormData(false);
     localWebSettings.setSavePassword(false);
     localWebSettings.setBuiltInZoomControls(true);
@@ -169,14 +169,14 @@ public class Ad
     this.jdField_d_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, this.jdField_a_of_type_Int);
     this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setDuration(500L);
     this.jdField_d_of_type_AndroidViewAnimationTranslateAnimation.setDuration(500L);
-    this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new bui(this));
-    this.jdField_d_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new buj(this));
+    this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new boh(this));
+    this.jdField_d_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new boi(this));
     this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, -this.jdField_a_of_type_Int);
     this.jdField_c_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -this.jdField_a_of_type_Int, 0.0F);
     this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(500L);
     this.jdField_c_of_type_AndroidViewAnimationTranslateAnimation.setDuration(500L);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new buk(this));
-    this.jdField_c_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new bul(this));
+    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new boj(this));
+    this.jdField_c_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new bok(this));
   }
   
   public String a()
@@ -257,7 +257,7 @@ public class Ad
     if (this.jdField_a_of_type_MqqAppNewIntent == null)
     {
       this.jdField_a_of_type_MqqAppNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getApplicationContext(), ProtoServlet.class);
-      this.jdField_a_of_type_MqqObserverBusinessObserver = new buh(this);
+      this.jdField_a_of_type_MqqObserverBusinessObserver = new bog(this);
       this.jdField_a_of_type_MqqAppNewIntent.putExtra("cmd", "QQMobileGdtSvr.GetAd");
       this.jdField_a_of_type_MqqAppNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
     }

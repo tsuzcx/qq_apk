@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02015a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="63.5dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080a4c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f080a4d" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080a4d" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a52" android:layout_width="fill_parent" android:layout_height="51.0dip" android:layout_alignParentBottom="true">
-        <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08047a" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200ba" />
-        <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0140" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08047b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="我要发喇叭" />
+    <ImageView android:id="@id/icon" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02021f" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080a4a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_toRightOf="@id/icon" android:layout_centerVertical="true">
+        <TextView android:textColor="#ff000000" android:id="@id/title" android:singleLine="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0244" />
+        <TextView android:textSize="13.0sp" android:textColor="#ff808080" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080a4b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:maxWidth="240.0dip" android:singleLine="true" android:includeFontPadding="false" />
     </LinearLayout>
 </RelativeLayout>

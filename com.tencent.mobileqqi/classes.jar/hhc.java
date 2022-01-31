@@ -1,11 +1,14 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
+import com.tencent.mobileqq.widget.OvalProgress;
 
 public class hhc
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public double a;
+  public double b;
+  public double c;
+  public double d;
+  public double e;
   
-  private hhc(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns) {}
+  public hhc(OvalProgress paramOvalProgress) {}
 }
 
 

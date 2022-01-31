@@ -1,22 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.item.LongMsgItemBuilder;
-import com.tencent.mobileqq.data.MessageForLongMsg;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
 
 public class eel
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public eel(LongMsgItemBuilder paramLongMsgItemBuilder, MessageForLongMsg paramMessageForLongMsg) {}
+  public eel(NewFriendActivity paramNewFriendActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ChatActivityFacade.a(LongMsgItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLongMsgItemBuilder), LongMsgItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLongMsgItemBuilder), LongMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLongMsgItemBuilder), this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongMsg);
+    NewFriendActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     eel
  * JD-Core Version:    0.7.0.1
  */

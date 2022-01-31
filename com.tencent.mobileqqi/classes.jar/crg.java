@@ -1,10 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
 
-public final class crg
-  implements DialogInterface.OnClickListener
+public class crg
+  implements View.OnClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public crg(LbsBaseActivity paramLbsBaseActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
+      LbsBaseActivity.a(this.a).dismiss();
+    }
+  }
 }
 
 

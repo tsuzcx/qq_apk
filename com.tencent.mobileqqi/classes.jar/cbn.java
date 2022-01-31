@@ -1,102 +1,65 @@
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.service.message.MessageCache;
+import java.util.List;
 
 public class cbn
-  extends WtloginObserver
+  implements DialogInterface.OnClickListener
 {
-  public cbn(AuthDevActivity paramAuthDevActivity) {}
+  public cbn(ChatHistory paramChatHistory, String paramString) {}
   
-  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.isFinishing()) {}
-    do
-    {
-      return;
-      AuthDevActivity.a(this.a, true);
-      AuthDevActivity.b(this.a);
-      if (paramInt != 0) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCheckDevLockSms.success");
-      }
-      AuthDevActivity.b(this.a, true);
-      EquipmentLockImpl.a().a(this.a.b, this.a, this.a.b.a(), true);
-      AuthDevActivity.c(this.a, true);
-      AuthDevActivity.a(this.a).setText(this.a.getString(2131561947));
-      AuthDevActivity.a(this.a).setContentDescription(this.a.getString(2131561947));
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131562015), 0).b(this.a.d());
-      AuthDevActivity.c(this.a);
-      paramWUserSigInfo = this.a.b.a(LoginInfoActivity.class);
-    } while (paramWUserSigInfo == null);
-    paramWUserSigInfo.obtainMessage(20140331, 1, 0).sendToTarget();
-    return;
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevActivity", 2, "OnCheckDevLockSms.fail ret=" + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCheckDevLockSms.fail errMsg=" + paramErrMsg.getMessage());
-      }
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a);
+    if ((paramDialogInterface != null) && (!paramDialogInterface.isEmpty())) {
+      if ((1 != this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a) && (3000 != this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a)) {}
     }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.d());
-      return;
-    }
-    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131562567), 0).b(this.a.d());
-  }
-  
-  public void OnCloseDevLock(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
-  {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    AuthDevActivity.a(this.a, true);
-    AuthDevActivity.b(this.a);
-    if (paramInt == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCloseDevLock.success");
-      }
-      AuthDevActivity.b(this.a, false);
-      AuthDevActivity.a(this.a).setVisibility(8);
-      EquipmentLockImpl.a().a(this.a.b, this.a, this.a.b.a(), false);
-      AuthDevActivity.a(this.a).setText(this.a.getString(2131562008));
-      AuthDevActivity.a(this.a).setContentDescription(this.a.getString(2131562008));
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131561950), 0).b(this.a.d());
-      paramWUserSigInfo = this.a.b.a(LoginInfoActivity.class);
-      if (paramWUserSigInfo != null) {
-        paramWUserSigInfo.obtainMessage(20140331, 0, 0).sendToTarget();
-      }
-      AuthDevActivity.a(this.a, null);
-      AuthDevActivity.a(this.a, AuthDevActivity.a(this.a));
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevActivity", 2, "OnCloseDevLock.fail ret=" + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCloseDevLock.fail errMsg=" + paramErrMsg.getMessage());
+    for (long l1 = ((MessageRecord)paramDialogInterface.get(paramDialogInterface.size() - 1)).shmsgseq;; l1 = 0L) {
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.c();
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a);
+        if (this.jdField_a_of_type_JavaLangString != null) {}
+        try
+        {
+          l2 = Long.parseLong(this.jdField_a_of_type_JavaLangString);
+          l1 = Math.max(l2, l1);
+          if (l1 > 0L) {
+            this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a, l1);
+          }
+          paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(Conversation.class);
+          Message localMessage = paramDialogInterface.obtainMessage(1017);
+          localMessage.obj = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_JavaLangString;
+          localMessage.arg1 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a;
+          paramDialogInterface.sendMessage(localMessage);
+          this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_AndroidAppDialog.dismiss();
+          this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.setResult(-1);
+          this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.finish();
+          return;
+          if (((MessageRecord)paramDialogInterface.get(paramDialogInterface.size() - 1)).isSendFromLocal()) {
+            l1 = ((MessageRecord)paramDialogInterface.get(paramDialogInterface.size() - 1)).time + 2L;
+          } else {
+            l1 = ((MessageRecord)paramDialogInterface.get(paramDialogInterface.size() - 1)).time;
+          }
+        }
+        catch (Exception paramDialogInterface)
+        {
+          for (;;)
+          {
+            paramDialogInterface.printStackTrace();
+            long l2 = 0L;
+          }
+        }
       }
     }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.d());
-      return;
-    }
-    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131562039), 0).b(this.a.d());
   }
 }
 

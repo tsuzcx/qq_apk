@@ -1,47 +1,24 @@
-import com.tencent.av.gaudio.GAudioObserver;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
 public class cli
-  extends GAudioObserver
+  implements DialogInterface.OnDismissListener
 {
-  public cli(Conversation paramConversation) {}
+  public cli(ForwardFriendListActivity paramForwardFriendListActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
   
-  protected void a(int paramInt, String paramString1, String paramString2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a(8, paramString1, paramInt);
-    this.a.b(new cll(this));
-  }
-  
-  protected void a(long paramLong1, long paramLong2)
-  {
-    this.a.a(8, Long.toString(paramLong1), 3000);
-    this.a.k();
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    super.a(paramString1, paramString2);
-    this.a.b(new clm(this));
-  }
-  
-  protected void b(long paramLong1, long paramLong2)
-  {
-    if (paramLong2 == Long.valueOf(this.a.a.a()).longValue()) {
-      this.a.b(new clj(this));
-    }
-  }
-  
-  protected void c(long paramLong1, long paramLong2)
-  {
-    if (paramLong2 == Long.valueOf(this.a.a.a()).longValue()) {
-      this.a.b(new clk(this));
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity.a.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity.a.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    ForwardFriendListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cli
  * JD-Core Version:    0.7.0.1
  */

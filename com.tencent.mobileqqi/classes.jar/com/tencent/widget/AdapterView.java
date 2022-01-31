@@ -21,7 +21,7 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Adapter;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
-import iai;
+import hvo;
 import java.lang.reflect.Field;
 
 public abstract class AdapterView
@@ -42,14 +42,14 @@ public abstract class AdapterView
   private View jdField_a_of_type_AndroidViewView;
   AdapterView.OnItemLongClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemLongClickListener;
   AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener;
-  private iai jdField_a_of_type_Iai;
+  private hvo jdField_a_of_type_Hvo;
   private boolean jdField_a_of_type_Boolean;
   @ViewDebug.ExportedProperty(category="list")
   public int aA = -1;
   @ViewDebug.ExportedProperty(category="list")
   public int aB;
   int aC;
-  protected int aE = -1;
+  public int aE = -1;
   @ViewDebug.ExportedProperty(category="scrolling")
   public int ap = 0;
   int aq;
@@ -180,17 +180,17 @@ public abstract class AdapterView
     return bool1;
   }
   
-  void B_()
+  public void B_()
   {
     if (this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener != null)
     {
       if ((!this.o) && (!this.q)) {
         break label78;
       }
-      if (this.jdField_a_of_type_Iai == null) {
-        this.jdField_a_of_type_Iai = new iai(this, null);
+      if (this.jdField_a_of_type_Hvo == null) {
+        this.jdField_a_of_type_Hvo = new hvo(this, null);
       }
-      post(this.jdField_a_of_type_Iai);
+      post(this.jdField_a_of_type_Hvo);
     }
     for (;;)
     {
@@ -280,7 +280,7 @@ public abstract class AdapterView
     return localAdapter.getItem(paramInt);
   }
   
-  boolean a()
+  public boolean a()
   {
     return false;
   }
@@ -410,7 +410,7 @@ public abstract class AdapterView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    removeCallbacks(this.jdField_a_of_type_Iai);
+    removeCallbacks(this.jdField_a_of_type_Hvo);
   }
   
   @SuppressLint({"NewApi"})
@@ -439,7 +439,7 @@ public abstract class AdapterView
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.au = getHeight();
   }

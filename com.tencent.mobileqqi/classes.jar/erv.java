@@ -1,18 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import java.util.LinkedHashMap;
 
 public class erv
-  implements View.OnClickListener
+  extends Handler
 {
-  public erv(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public erv(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      PhotoPreviewActivity.a(this.a, PhotoPreviewActivity.a(this.a), this.a.jdField_a_of_type_Int, PhotoPreviewActivity.a(this.a));
+    switch (paramMessage.what)
+    {
+    default: 
+    case 1: 
+    case 2: 
+      do
+      {
+        return;
+        Object[] arrayOfObject = (Object[])paramMessage.obj;
+        if (arrayOfObject.length == 3)
+        {
+          this.a.jdField_a_of_type_JavaUtilLinkedHashMap = ((LinkedHashMap)arrayOfObject[0]);
+          this.a.jdField_a_of_type_ArrayOfInt = ((int[])arrayOfObject[1]);
+          this.a.jdField_a_of_type_ArrayOfJavaLangString = ((String[])arrayOfObject[2]);
+        }
+        this.a.jdField_a_of_type_Esa.notifyDataSetChanged();
+      } while ((paramMessage.what != 2) && ((paramMessage.what != 1) || (this.a.jdField_a_of_type_Boolean)));
+      this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.k();
+      return;
+    case 3: 
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, 0, 40, 0);
+      return;
     }
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, 0, 0, 0);
   }
 }
 

@@ -1,19 +1,19 @@
-final class fm
-  extends fk
+public class fm
 {
-  private fm()
-  {
-    super(null);
-  }
+  public float a;
+  public int a;
+  public float b;
   
-  boolean a(int paramInt1, int paramInt2)
+  public fm(int paramInt, float paramFloat1, float paramFloat2)
   {
-    return (paramInt1 + paramInt2 & 0x1) == 0;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fm
  * JD-Core Version:    0.7.0.1
  */

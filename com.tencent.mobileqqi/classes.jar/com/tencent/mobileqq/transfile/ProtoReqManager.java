@@ -7,7 +7,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import grz;
+import gns;
 import java.nio.ByteBuffer;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.NewIntent;
@@ -29,18 +29,18 @@ public class ProtoReqManager
   private void a(Intent paramIntent, ProtoReqManager.ProtoResp paramProtoResp)
   {
     int i = paramIntent.getIntExtra("key_runnable_index", 0);
-    paramProtoResp.jdField_a_of_type_ArrayOfGrz[i].jdField_b_of_type_Boolean = true;
-    paramProtoResp.jdField_a_of_type_ArrayOfGrz[i].jdField_c_of_type_Long = System.currentTimeMillis();
+    paramProtoResp.jdField_a_of_type_ArrayOfGns[i].jdField_b_of_type_Boolean = true;
+    paramProtoResp.jdField_a_of_type_ArrayOfGns[i].jdField_c_of_type_Long = System.currentTimeMillis();
   }
   
   private void a(ProtoReqManager.ProtoResp paramProtoResp)
   {
     paramProtoResp.jdField_a_of_type_Boolean = true;
     int i = 0;
-    while (i < paramProtoResp.jdField_a_of_type_ArrayOfGrz.length)
+    while (i < paramProtoResp.jdField_a_of_type_ArrayOfGns.length)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramProtoResp.jdField_a_of_type_ArrayOfGrz[i].jdField_a_of_type_MqqAppNewIntent);
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(paramProtoResp.jdField_a_of_type_ArrayOfGrz[i]);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramProtoResp.jdField_a_of_type_ArrayOfGns[i].jdField_a_of_type_MqqAppNewIntent);
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(paramProtoResp.jdField_a_of_type_ArrayOfGns[i]);
       i += 1;
     }
   }
@@ -48,9 +48,9 @@ public class ProtoReqManager
   private boolean a(ProtoReqManager.ProtoResp paramProtoResp)
   {
     int i = 0;
-    while (i < paramProtoResp.jdField_a_of_type_ArrayOfGrz.length)
+    while (i < paramProtoResp.jdField_a_of_type_ArrayOfGns.length)
     {
-      if ((!paramProtoResp.jdField_a_of_type_ArrayOfGrz[i].jdField_b_of_type_Boolean) && ((paramProtoResp.jdField_a_of_type_ArrayOfGrz[i].jdField_a_of_type_Boolean == true) || (paramProtoResp.jdField_a_of_type_ArrayOfGrz[i].jdField_c_of_type_Boolean == true))) {
+      if ((!paramProtoResp.jdField_a_of_type_ArrayOfGns[i].jdField_b_of_type_Boolean) && ((paramProtoResp.jdField_a_of_type_ArrayOfGns[i].jdField_a_of_type_Boolean == true) || (paramProtoResp.jdField_a_of_type_ArrayOfGns[i].jdField_c_of_type_Boolean == true))) {
         return false;
       }
       i += 1;
@@ -109,7 +109,7 @@ public class ProtoReqManager
       if ((l1 < localProtoReq.e) && (localProtoResp.jdField_a_of_type_Int < localProtoReq.jdField_b_of_type_Int))
       {
         long l2 = localProtoReq.jdField_a_of_type_Int;
-        paramIntent = localProtoResp.jdField_a_of_type_ArrayOfGrz[localProtoResp.jdField_a_of_type_Int];
+        paramIntent = localProtoResp.jdField_a_of_type_ArrayOfGns[localProtoResp.jdField_a_of_type_Int];
         localProtoResp.jdField_a_of_type_Int += 1;
         paramIntent.jdField_a_of_type_Long = (l2 - l1 - 5000L);
         a(paramIntent, 0L);
@@ -145,7 +145,7 @@ public class ProtoReqManager
         paramProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$ProtoResp = localProtoResp;
         localProtoResp.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$ProtoReq = paramProtoReq;
         localProtoResp.jdField_a_of_type_Long = System.currentTimeMillis();
-        localProtoResp.jdField_a_of_type_ArrayOfGrz = new grz[paramProtoReq.jdField_b_of_type_Int];
+        localProtoResp.jdField_a_of_type_ArrayOfGns = new gns[paramProtoReq.jdField_b_of_type_Int];
         byte[] arrayOfByte = paramProtoReq.jdField_a_of_type_ArrayOfByte;
         Object localObject = ByteBuffer.allocate(arrayOfByte.length + 4);
         ((ByteBuffer)localObject).putInt(arrayOfByte.length + 4).put(arrayOfByte);
@@ -158,11 +158,11 @@ public class ProtoReqManager
           if (i >= paramProtoReq.jdField_b_of_type_Int) {
             break;
           }
-          localObject = new grz(this);
-          localProtoResp.jdField_a_of_type_ArrayOfGrz[i] = localObject;
-          ((grz)localObject).jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$ProtoResp = localProtoResp;
-          ((grz)localObject).jdField_a_of_type_MqqAppNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), ProtoServlet.class);
-          localObject = ((grz)localObject).jdField_a_of_type_MqqAppNewIntent;
+          localObject = new gns(this);
+          localProtoResp.jdField_a_of_type_ArrayOfGns[i] = localObject;
+          ((gns)localObject).jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$ProtoResp = localProtoResp;
+          ((gns)localObject).jdField_a_of_type_MqqAppNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), ProtoServlet.class);
+          localObject = ((gns)localObject).jdField_a_of_type_MqqAppNewIntent;
           ((NewIntent)localObject).putExtra("key_body", arrayOfByte);
           ((NewIntent)localObject).putExtra("key_cmd", paramProtoReq.jdField_a_of_type_JavaLangString);
           ((NewIntent)localObject).putExtra("key_runnable_index", i);
@@ -175,8 +175,8 @@ public class ProtoReqManager
           long l1 = paramProtoReq.jdField_a_of_type_Int * j / paramProtoReq.c;
           long l2 = paramProtoReq.jdField_a_of_type_Int;
           long l3 = paramProtoReq.d * j;
-          localProtoResp.jdField_a_of_type_ArrayOfGrz[j].jdField_a_of_type_Long = (l2 - l1 - l3);
-          a(localProtoResp.jdField_a_of_type_ArrayOfGrz[j], l1);
+          localProtoResp.jdField_a_of_type_ArrayOfGns[j].jdField_a_of_type_Long = (l2 - l1 - l3);
+          a(localProtoResp.jdField_a_of_type_ArrayOfGns[j], l1);
           j += 1;
         }
         localProtoResp.jdField_a_of_type_Int = paramProtoReq.c;
@@ -186,10 +186,10 @@ public class ProtoReqManager
     finally {}
   }
   
-  void a(grz paramgrz, long paramLong)
+  void a(gns paramgns, long paramLong)
   {
-    paramgrz.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramgrz, paramLong);
+    paramgns.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramgns, paramLong);
   }
   
   public void a(NewIntent paramNewIntent)

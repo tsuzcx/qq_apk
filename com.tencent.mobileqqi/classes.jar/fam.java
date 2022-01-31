@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import com.tencent.mobileqq.activity.aio.anim.AioAnimationConfigHelper;
+import com.tencent.mobileqq.app.ConfigHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class fam
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public fam(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  public fam(ConfigHandler paramConfigHandler) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    AioAnimationConfigHelper.a().a(this.a.a.getApplication());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fam
  * JD-Core Version:    0.7.0.1
  */

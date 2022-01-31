@@ -1,17 +1,18 @@
 package com.tencent.mobileqq.activity;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.TextView;
-import bxj;
-import bxk;
-import bxl;
-import bxm;
-import bxn;
-import bxo;
+import brl;
+import brm;
+import brn;
+import bro;
+import brp;
+import brq;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.ConfigObserver;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -33,7 +34,7 @@ public class AboutActivity
 {
   public static final String a = "http://www.imqq.com/mobile/privacy/privacy.html?language={language}";
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ConfigObserver jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new bxn(this);
+  private ConfigObserver jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new brp(this);
   private UpgradeDetailWrapper jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper;
   private FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   private Object jdField_a_of_type_JavaLangObject;
@@ -43,10 +44,14 @@ public class AboutActivity
   private TextView jdField_c_of_type_AndroidWidgetTextView;
   private FormSimpleItem jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   public String c;
-  private FormSimpleItem d;
+  private TextView jdField_d_of_type_AndroidWidgetTextView;
+  private FormSimpleItem jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   public String d;
-  private FormSimpleItem e;
-  private FormSimpleItem f;
+  private FormSimpleItem jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+  private String jdField_e_of_type_JavaLangString = "https://www.imqq.com/mobile/privacy/privacy.html?language=ch_simple&lan=cn&lan=cn&lan=cn";
+  private FormSimpleItem jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+  private String jdField_f_of_type_JavaLangString = "https://www.imqq.com/mobile/privacy/privacy.html?language=ch_simple&lan=cn&lan=cn&lan=cn";
+  private FormSimpleItem g;
   
   public AboutActivity()
   {
@@ -84,8 +89,8 @@ public class AboutActivity
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.a(true);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(getString(2131559027));
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130840210));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(new bxl(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130840212));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(new brn(this));
       break;
     }
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setBgType(2);
@@ -106,12 +111,12 @@ public class AboutActivity
       if (paramResourcePluginInfo.isNew != 0) {
         break label133;
       }
-      paramFormSimpleItem.setRightIcon(getResources().getDrawable(2130840210));
+      paramFormSimpleItem.setRightIcon(getResources().getDrawable(2130840212));
     }
     for (;;)
     {
       paramFormSimpleItem.setLeftText(paramResourcePluginInfo.strResName);
-      paramFormSimpleItem.setOnClickListener(new bxm(this, paramResourcePluginInfo, paramFormSimpleItem));
+      paramFormSimpleItem.setOnClickListener(new bro(this, paramResourcePluginInfo, paramFormSimpleItem));
       return;
       if (!paramResourcePluginInfo.strPkgName.equals("com.tx.aboutfunction")) {
         break;
@@ -124,6 +129,15 @@ public class AboutActivity
     }
   }
   
+  private void d()
+  {
+    Intent localIntent = new Intent(this, QQBrowserActivity.class);
+    localIntent.putExtra("portraitOnly", true);
+    localIntent.putExtra("url", this.jdField_f_of_type_JavaLangString).putExtra("bFormatUrl", false);
+    localIntent.putExtra("uin", this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a());
+    startActivity(localIntent);
+  }
+  
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
@@ -132,97 +146,97 @@ public class AboutActivity
     setContentView(2130903063);
     setTitle(2131561574);
     paramBundle = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    ((TextView)findViewById(2131230959)).setText("V 6.0.1.6600");
+    ((TextView)findViewById(2131230959)).setText("V 6.0.2.6602");
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131230967));
     Object localObject = new SpannableString(this.jdField_a_of_type_AndroidWidgetTextView.getText());
     if (LocaleUtil.a(getApplicationContext()) == 2)
     {
       this.jdField_d_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString.replace("{language}", "ch_simple");
-      ((SpannableString)localObject).setSpan(new bxo(this, this.jdField_d_of_type_JavaLangString), 0, this.jdField_a_of_type_AndroidWidgetTextView.getText().length(), 17);
+      ((SpannableString)localObject).setSpan(new brq(this, this.jdField_d_of_type_JavaLangString), 0, this.jdField_a_of_type_AndroidWidgetTextView.getText().length(), 17);
       this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       this.jdField_a_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
       this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131230968));
       localObject = new SpannableString(this.jdField_c_of_type_AndroidWidgetTextView.getText());
       if (LocaleUtil.a(getApplicationContext()) != 2) {
-        break label1308;
+        break label1321;
       }
       this.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString.replace("{language}", "ch_simple");
-      label219:
-      ((SpannableString)localObject).setSpan(new bxo(this, this.jdField_b_of_type_JavaLangString), 0, this.jdField_c_of_type_AndroidWidgetTextView.getText().length(), 17);
+      label223:
+      ((SpannableString)localObject).setSpan(new brq(this, this.jdField_b_of_type_JavaLangString), 0, this.jdField_c_of_type_AndroidWidgetTextView.getText().length(), 17);
       this.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       this.jdField_c_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
       this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131230969));
       localObject = new SpannableString(this.jdField_b_of_type_AndroidWidgetTextView.getText());
       if (LocaleUtil.a(getApplicationContext()) != 2) {
-        break label1521;
+        break label1541;
       }
       this.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString.replace("{language}", "ch_simple");
-      label323:
-      ((SpannableString)localObject).setSpan(new bxo(this, this.jdField_c_of_type_JavaLangString), 0, this.jdField_b_of_type_AndroidWidgetTextView.getText().length(), 17);
+      label329:
+      ((SpannableString)localObject).setSpan(new brq(this, this.jdField_c_of_type_JavaLangString), 0, this.jdField_b_of_type_AndroidWidgetTextView.getText().length(), 17);
       this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       this.jdField_b_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131230960));
       localObject = paramBundle.a("com.tx.aboutfunction");
       this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131230961));
       if (localObject == null) {
-        break label1734;
+        break label1761;
       }
       a(paramBundle, (ResourcePluginInfo)localObject, this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem);
-      label421:
+      label427:
       if ((this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem == null) && (this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.getVisibility() == 0)) {
         this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem;
       }
       localObject = paramBundle.a("com.tx.aboutimage");
       this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131230962));
       if (localObject == null) {
-        break label1746;
+        break label1773;
       }
       a(paramBundle, (ResourcePluginInfo)localObject, this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem);
-      label482:
+      label488:
       this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
       if ((this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem == null) && (this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem.getVisibility() == 0)) {
         this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem;
       }
       localObject = paramBundle.a("com.tx.abouthelp");
-      this.e = ((FormSimpleItem)findViewById(2131230964));
+      this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131230964));
       if (localObject == null) {
-        break label1758;
+        break label1785;
       }
-      a(paramBundle, (ResourcePluginInfo)localObject, this.e);
+      a(paramBundle, (ResourcePluginInfo)localObject, this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem);
     }
     for (;;)
     {
-      if ((this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem == null) && (this.e.getVisibility() == 0)) {
-        this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = this.e;
+      if ((this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem == null) && (this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem.getVisibility() == 0)) {
+        this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem;
       }
-      this.f = ((FormSimpleItem)findViewById(2131230963));
-      this.f.setVisibility(8);
-      this.f.setOnClickListener(new bxj(this));
-      this.f.setVisibility(8);
-      if ((this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem == null) && (this.f.getVisibility() == 0)) {
-        this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = this.f;
+      this.jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131230963));
+      this.jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
+      this.jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(new brl(this));
+      this.jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
+      if ((this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem == null) && (this.jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem.getVisibility() == 0)) {
+        this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = this.jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem;
       }
       a(paramBundle);
       paramBundle = "appid: " + String.valueOf(AppSetting.a) + "\n";
-      paramBundle = paramBundle + "LC: FD0A68FFFF59A54A\n";
-      paramBundle = paramBundle + "buildNum: 6600\n";
+      paramBundle = paramBundle + "LC: CF75553BDA1428DF\n";
+      paramBundle = paramBundle + "buildNum: 6602\n";
       paramBundle = paramBundle + "isDebugVersion: " + String.valueOf(false) + "\n";
-      paramBundle = paramBundle + "subVersion: 6.0.1\n";
+      paramBundle = paramBundle + "subVersion: 6.0.2\n";
       paramBundle = paramBundle + "productID: 130\n";
       paramBundle = paramBundle + "quaAppName: AQQ_2013 4.6\n";
       paramBundle = paramBundle + "supVersion: 2013\n";
-      paramBundle = paramBundle + "revision: 25030\n";
+      paramBundle = paramBundle + "revision: master\n";
       paramBundle = paramBundle + "isSkinEngieAccelerated: " + String.valueOf(AppSetting.d) + "\n";
-      paramBundle = paramBundle + "reportVersionName: 6.0.1.6600\n";
-      paramBundle = paramBundle + "aboutSubVersionName: V 6.0.1.6600\n";
-      paramBundle = paramBundle + "aboutSubVersionLog: 6.0.1.6600.2018-09-26.r25030.YingYongBao\n";
+      paramBundle = paramBundle + "reportVersionName: 6.0.2.6602\n";
+      paramBundle = paramBundle + "aboutSubVersionName: V 6.0.2.6602\n";
+      paramBundle = paramBundle + "aboutSubVersionLog: 6.0.2.6602.2020-04-24.rmaster.YingYongBao\n";
       paramBundle = paramBundle + "isPublicVersion: true\n";
       paramBundle = paramBundle + "versioncode: " + ApkUtils.a(this) + "\n";
       paramBundle = paramBundle + "amem: " + DeviceInfoUtil.d() / 1024L / 1024L + "\n";
       if (QLog.isColorLevel()) {
         QLog.d("script", 2, paramBundle);
       }
-      findViewById(2131230965).setOnClickListener(new bxk(this));
+      findViewById(2131230965).setOnClickListener(new brm(this));
       return true;
       if (LocaleUtil.a(getApplicationContext()) == 3)
       {
@@ -259,86 +273,86 @@ public class AboutActivity
       }
       this.jdField_d_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString.replace("{language}", "Espa");
       break;
-      label1308:
+      label1321:
       if (LocaleUtil.a(getApplicationContext()) == 3)
       {
         this.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString.replace("{language}", "ch_chT");
-        break label219;
+        break label223;
       }
       if (LocaleUtil.a(getApplicationContext()) == 1)
       {
         this.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString.replace("{language}", "English");
-        break label219;
+        break label223;
       }
       if (LocaleUtil.a(getApplicationContext()) == 4)
       {
         this.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString.replace("{language}", "Japanese");
-        break label219;
+        break label223;
       }
       if (LocaleUtil.a(getApplicationContext()) == 5)
       {
         this.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString.replace("{language}", "Korean");
-        break label219;
+        break label223;
       }
       if (LocaleUtil.a(getApplicationContext()) == 6)
       {
         this.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString.replace("{language}", "Deutsch");
-        break label219;
+        break label223;
       }
       if (LocaleUtil.a(getApplicationContext()) == 7)
       {
         this.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString.replace("{language}", "Fran");
-        break label219;
+        break label223;
       }
       if (LocaleUtil.a(getApplicationContext()) != 8) {
-        break label219;
+        break label223;
       }
       this.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString.replace("{language}", "Espa");
-      break label219;
-      label1521:
+      break label223;
+      label1541:
       if (LocaleUtil.a(getApplicationContext()) == 3)
       {
         this.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString.replace("{language}", "ch_chT");
-        break label323;
+        break label329;
       }
       if (LocaleUtil.a(getApplicationContext()) == 1)
       {
         this.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString.replace("{language}", "English");
-        break label323;
+        break label329;
       }
       if (LocaleUtil.a(getApplicationContext()) == 4)
       {
         this.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString.replace("{language}", "Japanese");
-        break label323;
+        break label329;
       }
       if (LocaleUtil.a(getApplicationContext()) == 5)
       {
         this.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString.replace("{language}", "Korean");
-        break label323;
+        break label329;
       }
       if (LocaleUtil.a(getApplicationContext()) == 6)
       {
         this.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString.replace("{language}", "Deutsch");
-        break label323;
+        break label329;
       }
       if (LocaleUtil.a(getApplicationContext()) == 7)
       {
         this.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString.replace("{language}", "Fran");
-        break label323;
+        break label329;
       }
       if (LocaleUtil.a(getApplicationContext()) != 8) {
-        break label323;
+        break label329;
       }
       this.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString.replace("{language}", "Espa");
-      break label323;
-      label1734:
+      break label329;
+      label1761:
       this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
-      break label421;
-      label1746:
+      break label427;
+      label1773:
       this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
-      break label482;
-      label1758:
-      this.e.setVisibility(8);
+      break label488;
+      label1785:
+      this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
     }
   }
   

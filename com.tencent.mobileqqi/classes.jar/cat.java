@@ -1,48 +1,75 @@
-import android.content.Intent;
+import android.content.Context;
+import android.os.Message;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.model.FriendManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.ContactUtils;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
+import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity.PicInfo;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.widget.MyGridView;
 
 public class cat
-  implements View.OnClickListener
+  extends TransProcessorHandler
 {
-  public cat(AddRequestActivity paramAddRequestActivity) {}
+  public cat(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    int i = 0;
-    ReportController.b(this.a.b, "CliOper", "", "", "Verification_msg", "Vfc_answ_clk", 0, 0, "", "", "", "");
-    Object localObject = (FriendManager)this.a.b.getManager(8);
-    boolean bool = ((FriendManager)localObject).b(AddRequestActivity.a(this.a));
-    paramView = new Intent(this.a, ChatActivity.class);
-    paramView.putExtra("uin", AddRequestActivity.a(this.a));
-    if (bool)
-    {
-      localObject = ((FriendManager)localObject).c(AddRequestActivity.a(this.a));
-      if (localObject != null)
-      {
-        paramView.putExtra("cSpecialFlag", ((Friends)localObject).cSpecialFlag);
-        paramView.putExtra("uinname", ContactUtils.a((Friends)localObject));
-      }
-      if (!bool) {
-        break label179;
-      }
-    }
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if (!localFileMsg.e.contains(AppConstants.aW)) {}
+    label305:
     for (;;)
     {
-      paramView.putExtra("uintype", i);
-      this.a.startActivity(paramView);
       return;
-      paramView.putExtra("uinname", this.a.q);
-      break;
-      label179:
-      i = 1022;
+      int i = 1;
+      if (i < this.a.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.getChildCount())
+      {
+        localObject = ((ChatBackgroundSettingActivity.PicInfo)this.a.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.getChildAt(i).getTag()).c;
+        if (!localFileMsg.k.equals(localObject)) {}
+      }
+      for (Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.getChildAt(i);; localObject = null)
+      {
+        if (localObject == null) {
+          break label305;
+        }
+        View localView = ((View)localObject).findViewById(2131231329);
+        ProgressBar localProgressBar = (ProgressBar)((View)localObject).findViewById(2131231330);
+        localObject = (ImageView)((View)localObject).findViewById(2131231328);
+        switch (paramMessage.what)
+        {
+        case 2005: 
+        default: 
+          return;
+        case 2001: 
+          ((ImageView)localObject).setVisibility(8);
+          localView.setVisibility(0);
+          localProgressBar.setMax(100);
+          localProgressBar.setProgress(0);
+          return;
+          i += 1;
+          break;
+        case 2002: 
+          ((ImageView)localObject).setVisibility(8);
+          localView.setVisibility(0);
+          float f = localProgressBar.getMax();
+          localProgressBar.setProgress((int)((float)localFileMsg.d / (float)localFileMsg.a * f));
+          return;
+        case 2003: 
+          ((ImageView)localObject).setVisibility(8);
+          localView.setVisibility(8);
+          return;
+        case 2004: 
+          ((ImageView)localObject).setVisibility(0);
+          localView.setVisibility(8);
+          return;
+        case 2006: 
+          Toast.makeText(this.a.jdField_a_of_type_AndroidAppActivity, this.a.getBaseContext().getString(2131561475), 0).show();
+          return;
+        }
+      }
     }
   }
 }

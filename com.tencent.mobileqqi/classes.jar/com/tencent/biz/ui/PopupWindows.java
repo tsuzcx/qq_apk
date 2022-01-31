@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
-import bug;
+import bof;
 
 public class PopupWindows
 {
@@ -23,7 +23,7 @@ public class PopupWindows
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(paramContext);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchInterceptor(new bug(this));
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchInterceptor(new bof(this));
     this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
   }
   

@@ -6,8 +6,8 @@ import android.os.Build.VERSION;
 import android.os.SystemClock;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import hgj;
-import hgk;
+import hcc;
+import hcd;
 
 public class PerformanceReportUtils
 {
@@ -54,12 +54,12 @@ public class PerformanceReportUtils
   
   public static void a(Context paramContext, String paramString, int paramInt, long paramLong)
   {
-    new hgj(paramInt, paramLong, paramString).execute(new Void[0]);
+    new hcc(paramInt, paramLong, paramString).execute(new Void[0]);
   }
   
   public static void a(String paramString, int paramInt)
   {
-    new hgk(paramString, paramInt).execute(new Void[0]);
+    new hcd(paramString, paramInt).execute(new Void[0]);
   }
   
   public static void a(String paramString, long paramLong)

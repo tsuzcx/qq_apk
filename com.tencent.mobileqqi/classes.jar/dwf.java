@@ -1,32 +1,17 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopMemberCardActivity;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
 
-public class dwf
-  extends Handler
+class dwf
+  implements PermissionDialogCallback
 {
-  public dwf(TroopMemberCardActivity paramTroopMemberCardActivity) {}
+  dwf(dwe paramdwe) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    if (this.a.o != 1)
-    {
-      paramMessage = new Intent();
-      paramMessage.putExtra("finish_chat_setting", true);
-      this.a.a.setResult(-1, paramMessage);
-    }
-    this.a.a.finish();
-  }
+  public void a() {}
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dwf
  * JD-Core Version:    0.7.0.1
  */

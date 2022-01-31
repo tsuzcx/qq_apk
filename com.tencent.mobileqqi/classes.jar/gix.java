@@ -1,85 +1,55 @@
+import android.content.Context;
 import android.os.Handler;
-import com.tencent.mobileqq.profile.ProfileCardBrowserActivity;
-import com.tencent.mobileqq.profile.ProfileCardBrowserActivity.SortComparator;
-import com.tencent.mobileqq.profile.ProfileCardTemplate;
-import com.tencent.mobileqq.profile.ProfileCardTemplateInfo;
-import com.tencent.mobileqq.util.ProfileCardUtil;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.service.gamecenter.AppLaucherHelper;
+import com.tencent.open.business.base.AppUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import mqq.app.NewIntent;
 
 public class gix
-  implements Runnable
+  extends Handler
 {
-  public gix(ProfileCardBrowserActivity paramProfileCardBrowserActivity) {}
-  
-  public void run()
+  public gix(AppLaucherHelper paramAppLaucherHelper, Looper paramLooper, Context paramContext, String paramString1, int paramInt, AppInterface paramAppInterface, String paramString2, String paramString3)
   {
-    int j = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.ProfileCardBrowserActivity", 2, "initTemplateListData start.");
-    }
-    Object localObject2 = null;
-    Object localObject3 = ProfileCardUtil.a(this.a.b, false);
-    Collections.sort((List)localObject3, new ProfileCardBrowserActivity.SortComparator(this.a));
-    Object localObject1 = localObject2;
-    if (localObject3 != null)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      localObject1 = localObject2;
-      if (((ArrayList)localObject3).size() > 0)
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.b = true;
+      if (this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent != null)
       {
-        localObject1 = new ArrayList();
-        i = 0;
-        while (i < ((ArrayList)localObject3).size())
-        {
-          localObject2 = new ProfileCardTemplateInfo();
-          ((ProfileCardTemplateInfo)localObject2).jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate = ((ProfileCardTemplate)((ArrayList)localObject3).get(i));
-          ((ProfileCardTemplateInfo)localObject2).jdField_a_of_type_Int = 0;
-          ((ArrayList)localObject1).add(localObject2);
-          i += 1;
-        }
+        this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+        this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent = null;
       }
+      if (QLog.isColorLevel()) {
+        QLog.d(getClass().getSimpleName(), 2, "lauchApp time out");
+      }
+      paramMessage = AppLaucherHelper.a(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString);
+      AppUtil.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramMessage, this.jdField_a_of_type_Int);
+      AppLaucherHelper.jdField_a_of_type_Boolean = false;
+      return;
     }
-    boolean bool = this.a.a((ArrayList)localObject1);
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.ProfileCardBrowserActivity", 2, "initTemplateListData has user set flag : " + bool);
-    }
-    localObject2 = new ProfileCardTemplate();
-    ((ProfileCardTemplate)localObject2).jdField_a_of_type_Long = 0L;
-    ((ProfileCardTemplate)localObject2).d = "http://imgcache.qq.com/club/mobile/profile/template/default_v_5.jpg";
-    ((ProfileCardTemplate)localObject2).c = "0";
-    ((ProfileCardTemplate)localObject2).e = "";
-    ((ProfileCardTemplate)localObject2).jdField_a_of_type_JavaLangString = this.a.getString(2131561912);
-    localObject3 = new ProfileCardTemplateInfo();
-    ((ProfileCardTemplateInfo)localObject3).jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate = ((ProfileCardTemplate)localObject2);
-    if (!bool) {}
-    for (int i = 4;; i = 2)
+    this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.b = true;
+    if (this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent != null)
     {
-      ((ProfileCardTemplateInfo)localObject3).jdField_a_of_type_Int = i;
-      if ((localObject1 == null) || (((ArrayList)localObject1).size() <= 0)) {
-        break;
-      }
-      this.a.jdField_a_of_type_JavaUtilList.clear();
-      this.a.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject1);
-      if ((!QLog.isColorLevel()) || (this.a.jdField_a_of_type_JavaUtilList == null)) {
-        break;
-      }
-      i = j;
-      while (i < this.a.jdField_a_of_type_JavaUtilList.size())
-      {
-        QLog.d("ProfileCard.ProfileCardBrowserActivity", 2, "initTemplateListData, id : " + ((ProfileCardTemplateInfo)this.a.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate.jdField_a_of_type_Long + ", status : " + ((ProfileCardTemplateInfo)this.a.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int + ", position : " + i);
-        i += 1;
-      }
+      this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+      this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent = null;
     }
-    this.a.jdField_a_of_type_JavaUtilList.add(localObject3);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    AppLaucherHelper.a(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.b, this.c, this.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gix
  * JD-Core Version:    0.7.0.1
  */

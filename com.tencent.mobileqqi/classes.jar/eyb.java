@@ -1,20 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.voip.VoipDetailActivity;
+import com.tencent.mobileqq.adapter.ForwardDiscussionListAdapter;
 
 public class eyb
   implements View.OnClickListener
 {
-  public eyb(VoipDetailActivity paramVoipDetailActivity) {}
+  public eyb(ForwardDiscussionListAdapter paramForwardDiscussionListAdapter) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.b(paramView);
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eyb
  * JD-Core Version:    0.7.0.1
  */

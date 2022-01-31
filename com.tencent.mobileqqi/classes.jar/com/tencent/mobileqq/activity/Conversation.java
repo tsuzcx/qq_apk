@@ -34,36 +34,32 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import ckw;
-import ckx;
-import cky;
-import clc;
-import cld;
-import clf;
-import clg;
-import clh;
-import cli;
-import cln;
-import clo;
-import clp;
-import clq;
-import cls;
-import clt;
-import clv;
-import clw;
-import clx;
-import cly;
-import clz;
-import cma;
-import cmb;
-import cmc;
-import cmg;
-import cmh;
-import cmi;
-import cmj;
-import com.tencent.av.gaudio.GAudioNotifyCenter;
-import com.tencent.av.gaudio.GAudioObserver;
-import com.tencent.av.ui.AVActivity;
+import cep;
+import ceq;
+import cer;
+import cev;
+import cew;
+import cey;
+import cez;
+import cfa;
+import cfb;
+import cfc;
+import cfd;
+import cff;
+import cfg;
+import cfh;
+import cfj;
+import cfk;
+import cfl;
+import cfm;
+import cfn;
+import cfo;
+import cfp;
+import cfq;
+import cfu;
+import cfv;
+import cfw;
+import cfx;
 import com.tencent.biz.pubaccount.assistant.PubAccountAssistantManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -108,7 +104,6 @@ import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
-import com.tencent.mobileqq.data.DiscussionMemberInfo;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.QCallRecent;
 import com.tencent.mobileqq.data.RecentUser;
@@ -248,15 +243,14 @@ public class Conversation
   public int X = 4096;
   public int Y;
   public int Z;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new clo(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new cfc(this);
   public Handler a;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   public TextView a;
-  private cmj jdField_a_of_type_Cmj;
-  private GAudioObserver jdField_a_of_type_ComTencentAvGaudioGAudioObserver = new cli(this);
+  private cfx jdField_a_of_type_Cfx;
   public QQSettingMe a;
   private UpgradeTipsDialog jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog;
   public BannerManager a;
@@ -268,24 +262,24 @@ public class Conversation
   private RecentTroopMenuOption jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption;
   private DragRelativeLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout;
   protected BizTroopObserver a;
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new clc(this);
-  private ConfigObserver jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new cmi(this);
-  private DataLineObserver jdField_a_of_type_ComTencentMobileqqAppDataLineObserver = new clg(this);
-  DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new cld(this);
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cmc(this);
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new cky(this);
-  private SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new clh(this);
-  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new cmg(this);
-  TroopQZoneUploadAlbumObserver jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumObserver = new ckx(this);
-  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new clf(this);
+  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new cev(this);
+  private ConfigObserver jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new cfw(this);
+  private DataLineObserver jdField_a_of_type_ComTencentMobileqqAppDataLineObserver = new cez(this);
+  DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new cew(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cfq(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new cer(this);
+  private SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new cfa(this);
+  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new cfu(this);
+  TroopQZoneUploadAlbumObserver jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumObserver = new ceq(this);
+  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new cey(this);
   private FPSSwipListView jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView;
-  private NewFriendPushListener jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendPushListener = new clx(this);
-  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new cln(this);
-  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new ckw(this);
+  private NewFriendPushListener jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendPushListener = new cfl(this);
+  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new cfb(this);
+  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new cep(this);
   private PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
   private CustomHorizontalLoadingBar jdField_a_of_type_ComTencentWidgetCustomHorizontalLoadingBar;
   protected StringBuilder a;
-  Comparator jdField_a_of_type_JavaUtilComparator = new cly(this);
+  Comparator jdField_a_of_type_JavaUtilComparator = new cfm(this);
   protected List a;
   protected float[] a;
   public TranslateAnimation[] a;
@@ -293,14 +287,14 @@ public class Conversation
   private int ak = -1;
   private int al;
   public long b;
-  private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = new clq(this);
+  private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = new cfd(this);
   private Handler jdField_b_of_type_AndroidOsHandler;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private List jdField_b_of_type_JavaUtilList = new ArrayList(40);
   protected boolean b;
   private long jdField_c_of_type_Long;
-  private BroadcastReceiver jdField_c_of_type_AndroidContentBroadcastReceiver = new cls(this);
-  private Handler jdField_c_of_type_AndroidOsHandler = new clp(this);
+  private BroadcastReceiver jdField_c_of_type_AndroidContentBroadcastReceiver = new cfg(this);
+  private Handler jdField_c_of_type_AndroidOsHandler = new cff(this);
   private long jdField_d_of_type_Long;
   private boolean jdField_e_of_type_Boolean;
   private boolean f = false;
@@ -315,15 +309,15 @@ public class Conversation
     this.jdField_b_of_type_Long = 2000L;
     this.e = false;
     this.d = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new cmh(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new cfv(this);
     this.jdField_a_of_type_ArrayOfFloat = new float[] { 0.0F, 6.0F, 0.0F, -8.0F, 0.0F, 10.0F, 0.0F, -10.0F, 0.0F, 8.0F, 0.0F, -6.0F, 0.0F };
   }
   
   private void A()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout = ((DragRelativeLayout)a().findViewById(2131231910));
-    this.jdField_a_of_type_Cmj = new cmj(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout.a(this.jdField_a_of_type_Cmj, false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout = ((DragRelativeLayout)a().findViewById(2131231913));
+    this.jdField_a_of_type_Cfx = new cfx(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout.a(this.jdField_a_of_type_Cfx, false);
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131231116));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131231421));
@@ -338,8 +332,8 @@ public class Conversation
     }
     this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView = ((FPSSwipListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131231429));
     this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setActTAG("actFPSRecent");
-    this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setContentBackground(2130838136);
-    Object localObject = a().getLayoutInflater().inflate(2130903929, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, false);
+    this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setContentBackground(2130838138);
+    Object localObject = a().getLayoutInflater().inflate(2130903931, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, false);
     this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.a((View)localObject);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentLocalSearchBar = new LocalSearchBar(this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, this.jdField_a_of_type_AndroidWidgetLinearLayout, this.jdField_a_of_type_AndroidWidgetRelativeLayout, a(), this);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager = new BannerManager(a(), this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentCallHelper);
@@ -365,7 +359,7 @@ public class Conversation
     IphoneTitleBarActivity.b(this.jdField_a_of_type_AndroidWidgetImageView);
     this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(a().getString(2131558439));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(a()).inflate(2130903323, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, false));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(a()).inflate(2130903325, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, false));
     this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setOverScrollListener(this);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
@@ -461,9 +455,6 @@ public class Conversation
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver);
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_ComTencentAvGaudioGAudioObserver);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this);
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
@@ -504,10 +495,10 @@ public class Conversation
     }
     BaseActivity localBaseActivity = a();
     this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe = new QQSettingMe(localBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    ViewGroup localViewGroup1 = (ViewGroup)localBaseActivity.findViewById(2131231910);
-    ViewGroup localViewGroup2 = (ViewGroup)LayoutInflater.from(localBaseActivity).inflate(2130903619, null);
+    ViewGroup localViewGroup1 = (ViewGroup)localBaseActivity.findViewById(2131231913);
+    ViewGroup localViewGroup2 = (ViewGroup)LayoutInflater.from(localBaseActivity).inflate(2130903621, null);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame = new DrawerFrame(localBaseActivity, localViewGroup1, this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.a, localViewGroup2);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame.setDrawerCallbacks(new clv(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame.setDrawerCallbacks(new cfj(this));
     jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame);
   }
   
@@ -536,41 +527,6 @@ public class Conversation
   {
     if (!NetworkUtil.e(BaseApplication.getContext())) {
       QQToast.a(BaseApplication.getContext(), 2131562452, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131427376));
-    }
-    while (paramString == null) {
-      return;
-    }
-    Object localObject = (FriendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8);
-    Intent localIntent = new Intent(a(), AVActivity.class);
-    localIntent.addFlags(262144);
-    localIntent.addFlags(268435456);
-    ArrayList localArrayList = ((FriendManager)localObject).a(paramString);
-    if (localArrayList != null)
-    {
-      int i2 = localArrayList.size();
-      localObject = new long[i2];
-      int i1 = 0;
-      while (i1 < i2)
-      {
-        DiscussionMemberInfo localDiscussionMemberInfo = (DiscussionMemberInfo)localArrayList.get(i1);
-        if (localDiscussionMemberInfo != null) {
-          localObject[i1] = Long.valueOf(localDiscussionMemberInfo.memberUin).longValue();
-        }
-        i1 += 1;
-      }
-    }
-    for (;;)
-    {
-      localIntent.putExtra("DiscussUinList", (long[])localObject);
-      localIntent.putExtra("sessionType", 3);
-      localIntent.putExtra("uin", paramString);
-      localIntent.putExtra("uinType", 3000);
-      localIntent.putExtra("Type", 3);
-      localIntent.putExtra("GroupId", paramString);
-      a(localIntent);
-      a().overridePendingTransition(2130968596, 0);
-      return;
-      localObject = null;
     }
   }
   
@@ -627,7 +583,7 @@ public class Conversation
       }
     } while ((ConfigHandler.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) || (ConfigHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0) == null));
     this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog = new UpgradeTipsDialog(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessage, this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog.setOnDismissListener(new clz(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog.setOnDismissListener(new cfn(this));
   }
   
   public static void d(boolean paramBoolean)
@@ -851,20 +807,12 @@ public class Conversation
     x();
     c(800L);
     e(true);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(false);
   }
   
   private void w()
   {
     if (!LoadingStateManager.a().c()) {
       a(false, false);
-    }
-    Handler localHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(GAudioNotifyCenter.class);
-    if (localHandler != null)
-    {
-      Message localMessage = localHandler.obtainMessage(10010);
-      localMessage.obj = Boolean.valueOf(true);
-      localHandler.sendMessage(localMessage);
     }
   }
   
@@ -1205,7 +1153,7 @@ public class Conversation
   {
     if (-1 != this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout.a())
     {
-      this.jdField_a_of_type_Cmj.a(paramInt, paramList);
+      this.jdField_a_of_type_Cfx.a(paramInt, paramList);
       if (this.jdField_b_of_type_AndroidOsHandler != null)
       {
         this.jdField_b_of_type_AndroidOsHandler.removeMessages(10);
@@ -1313,560 +1261,560 @@ public class Conversation
   {
     // Byte code:
     //   0: aload_1
-    //   1: getfield 1234	android/os/Message:what	I
+    //   1: getfield 1144	android/os/Message:what	I
     //   4: ldc 115
     //   6: if_icmpne +13 -> 19
     //   9: aload_0
-    //   10: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   10: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   13: bipush 8
     //   15: iconst_0
-    //   16: invokevirtual 1398	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
+    //   16: invokevirtual 1335	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
     //   19: aload_1
-    //   20: getfield 1234	android/os/Message:what	I
+    //   20: getfield 1144	android/os/Message:what	I
     //   23: ldc 141
     //   25: if_icmpeq +14 -> 39
     //   28: aload_0
-    //   29: getfield 422	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   32: invokevirtual 1401	com/tencent/mobileqq/app/QQAppInterface:isLogin	()Z
+    //   29: getfield 416	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   32: invokevirtual 1338	com/tencent/mobileqq/app/QQAppInterface:isLogin	()Z
     //   35: ifne +4 -> 39
     //   38: return
     //   39: aload_1
-    //   40: getfield 1234	android/os/Message:what	I
+    //   40: getfield 1144	android/os/Message:what	I
     //   43: lookupswitch	default:+297->340, 1009:+298->341, 1010:+576->619, 1014:+1145->1188, 1016:+1151->1194, 1017:+1171->1214, 1019:+1442->1485, 1020:+1183->1226, 1021:+1455->1498, 1022:+1471->1514, 1023:+624->667, 1024:+1486->1529, 1025:+524->567, 1026:+489->532, 1029:+319->362, 1030:+1501->1544, 1031:+1506->1549, 10000:+1188->1231, 10001:+529->572, 10002:+555->598, 1134010:+860->903, 1134011:+879->922, 1134012:+995->1038, 1134013:+1038->1081, 1134014:+1096->1139, 1134015:+957->1000, 1134018:+750->793, 1134019:+779->822, 1134020:+835->878, 1134021:+898->941, 1134022:+916->959, 1134023:+1177->1220, 1134024:+934->977, 11340003:+731->774, 11340004:+841->884, 11340006:+1107->1150, 11340007:+1126->1169
-    //   341: invokestatic 613	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   341: invokestatic 607	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   344: ifeq +12 -> 356
     //   347: ldc 109
     //   349: iconst_2
-    //   350: ldc_w 1403
-    //   353: invokestatic 582	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   350: ldc_w 1340
+    //   353: invokestatic 576	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   356: aload_0
     //   357: lconst_0
-    //   358: invokevirtual 1405	com/tencent/mobileqq/activity/Conversation:a	(J)V
+    //   358: invokevirtual 1342	com/tencent/mobileqq/activity/Conversation:a	(J)V
     //   361: return
-    //   362: invokestatic 511	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   362: invokestatic 505	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   365: ifeq +45 -> 410
     //   368: ldc 109
     //   370: iconst_4
-    //   371: new 513	java/lang/StringBuilder
+    //   371: new 507	java/lang/StringBuilder
     //   374: dup
-    //   375: invokespecial 514	java/lang/StringBuilder:<init>	()V
-    //   378: ldc_w 1407
-    //   381: invokevirtual 520	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   375: invokespecial 508	java/lang/StringBuilder:<init>	()V
+    //   378: ldc_w 1344
+    //   381: invokevirtual 514	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   384: aload_0
-    //   385: getfield 332	com/tencent/mobileqq/activity/Conversation:X	I
-    //   388: invokevirtual 939	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   391: ldc_w 998
-    //   394: invokevirtual 520	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   385: getfield 326	com/tencent/mobileqq/activity/Conversation:X	I
+    //   388: invokevirtual 857	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   391: ldc_w 917
+    //   394: invokevirtual 514	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   397: aload_0
-    //   398: getfield 215	com/tencent/mobileqq/activity/Conversation:e	Z
-    //   401: invokevirtual 523	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   404: invokevirtual 527	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   407: invokestatic 582	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   398: getfield 214	com/tencent/mobileqq/activity/Conversation:e	Z
+    //   401: invokevirtual 517	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   404: invokevirtual 521	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   407: invokestatic 576	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   410: aload_0
-    //   411: getfield 332	com/tencent/mobileqq/activity/Conversation:X	I
+    //   411: getfield 326	com/tencent/mobileqq/activity/Conversation:X	I
     //   414: sipush 4097
     //   417: if_icmpne -379 -> 38
     //   420: aload_0
-    //   421: getfield 403	com/tencent/mobileqq/activity/Conversation:jdField_b_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   421: getfield 397	com/tencent/mobileqq/activity/Conversation:jdField_b_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
     //   424: ifnull -386 -> 38
     //   427: aload_0
-    //   428: getfield 215	com/tencent/mobileqq/activity/Conversation:e	Z
+    //   428: getfield 214	com/tencent/mobileqq/activity/Conversation:e	Z
     //   431: ifeq -393 -> 38
     //   434: aload_0
-    //   435: getfield 584	com/tencent/mobileqq/activity/Conversation:Y	I
+    //   435: getfield 578	com/tencent/mobileqq/activity/Conversation:Y	I
     //   438: ifle +10 -> 448
     //   441: aload_0
-    //   442: getfield 1409	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ArrayOfAndroidViewAnimationTranslateAnimation	[Landroid/view/animation/TranslateAnimation;
+    //   442: getfield 1346	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ArrayOfAndroidViewAnimationTranslateAnimation	[Landroid/view/animation/TranslateAnimation;
     //   445: ifnonnull +9 -> 454
     //   448: aload_0
     //   449: iconst_0
-    //   450: invokevirtual 1410	com/tencent/mobileqq/activity/Conversation:c	(Z)V
+    //   450: invokevirtual 1348	com/tencent/mobileqq/activity/Conversation:c	(Z)V
     //   453: return
     //   454: aload_0
-    //   455: getfield 584	com/tencent/mobileqq/activity/Conversation:Y	I
+    //   455: getfield 578	com/tencent/mobileqq/activity/Conversation:Y	I
     //   458: bipush 6
     //   460: if_icmpge -422 -> 38
-    //   463: invokestatic 511	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   463: invokestatic 505	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   466: ifeq +32 -> 498
     //   469: ldc 109
     //   471: iconst_4
-    //   472: new 513	java/lang/StringBuilder
+    //   472: new 507	java/lang/StringBuilder
     //   475: dup
-    //   476: invokespecial 514	java/lang/StringBuilder:<init>	()V
-    //   479: ldc_w 1412
-    //   482: invokevirtual 520	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   476: invokespecial 508	java/lang/StringBuilder:<init>	()V
+    //   479: ldc_w 1350
+    //   482: invokevirtual 514	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   485: aload_0
-    //   486: getfield 584	com/tencent/mobileqq/activity/Conversation:Y	I
-    //   489: invokevirtual 939	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   492: invokevirtual 527	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   495: invokestatic 582	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   486: getfield 578	com/tencent/mobileqq/activity/Conversation:Y	I
+    //   489: invokevirtual 857	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   492: invokevirtual 521	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   495: invokestatic 576	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   498: aload_0
     //   499: iconst_0
-    //   500: putfield 1414	com/tencent/mobileqq/activity/Conversation:Z	I
+    //   500: putfield 1352	com/tencent/mobileqq/activity/Conversation:Z	I
     //   503: aload_0
-    //   504: getfield 1409	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ArrayOfAndroidViewAnimationTranslateAnimation	[Landroid/view/animation/TranslateAnimation;
+    //   504: getfield 1346	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ArrayOfAndroidViewAnimationTranslateAnimation	[Landroid/view/animation/TranslateAnimation;
     //   507: aload_0
-    //   508: getfield 1414	com/tencent/mobileqq/activity/Conversation:Z	I
+    //   508: getfield 1352	com/tencent/mobileqq/activity/Conversation:Z	I
     //   511: aaload
-    //   512: invokevirtual 1419	android/view/animation/TranslateAnimation:reset	()V
+    //   512: invokevirtual 1357	android/view/animation/TranslateAnimation:reset	()V
     //   515: aload_0
-    //   516: getfield 403	com/tencent/mobileqq/activity/Conversation:jdField_b_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   516: getfield 397	com/tencent/mobileqq/activity/Conversation:jdField_b_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
     //   519: aload_0
-    //   520: getfield 1409	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ArrayOfAndroidViewAnimationTranslateAnimation	[Landroid/view/animation/TranslateAnimation;
+    //   520: getfield 1346	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ArrayOfAndroidViewAnimationTranslateAnimation	[Landroid/view/animation/TranslateAnimation;
     //   523: aload_0
-    //   524: getfield 1414	com/tencent/mobileqq/activity/Conversation:Z	I
+    //   524: getfield 1352	com/tencent/mobileqq/activity/Conversation:Z	I
     //   527: aaload
-    //   528: invokevirtual 1423	android/widget/ImageView:startAnimation	(Landroid/view/animation/Animation;)V
+    //   528: invokevirtual 1361	android/widget/ImageView:startAnimation	(Landroid/view/animation/Animation;)V
     //   531: return
     //   532: aload_0
-    //   533: getfield 586	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   533: getfield 580	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   536: sipush 1026
-    //   539: invokevirtual 811	android/os/Handler:removeMessages	(I)V
+    //   539: invokevirtual 799	android/os/Handler:removeMessages	(I)V
     //   542: aload_0
-    //   543: getfield 745	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame	Lcom/tencent/mobileqq/activity/recent/DrawerFrame;
+    //   543: getfield 733	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame	Lcom/tencent/mobileqq/activity/recent/DrawerFrame;
     //   546: ifnull -508 -> 38
     //   549: aload_0
-    //   550: getfield 745	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame	Lcom/tencent/mobileqq/activity/recent/DrawerFrame;
-    //   553: invokevirtual 990	com/tencent/mobileqq/activity/recent/DrawerFrame:b	()Z
+    //   550: getfield 733	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame	Lcom/tencent/mobileqq/activity/recent/DrawerFrame;
+    //   553: invokevirtual 909	com/tencent/mobileqq/activity/recent/DrawerFrame:b	()Z
     //   556: ifeq -518 -> 38
     //   559: aload_0
-    //   560: getfield 745	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame	Lcom/tencent/mobileqq/activity/recent/DrawerFrame;
-    //   563: invokevirtual 1019	com/tencent/mobileqq/activity/recent/DrawerFrame:d	()V
+    //   560: getfield 733	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame	Lcom/tencent/mobileqq/activity/recent/DrawerFrame;
+    //   563: invokevirtual 938	com/tencent/mobileqq/activity/recent/DrawerFrame:d	()V
     //   566: return
     //   567: aload_0
-    //   568: invokespecial 1424	com/tencent/mobileqq/activity/Conversation:q	()V
+    //   568: invokespecial 1362	com/tencent/mobileqq/activity/Conversation:q	()V
     //   571: return
-    //   572: invokestatic 613	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   572: invokestatic 607	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   575: ifeq +12 -> 587
     //   578: ldc 109
     //   580: iconst_2
-    //   581: ldc_w 1426
-    //   584: invokestatic 582	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   581: ldc_w 1364
+    //   584: invokestatic 576	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   587: aload_0
     //   588: aload_1
-    //   589: invokevirtual 1376	com/tencent/mobileqq/activity/Conversation:b	(Landroid/os/Message;)V
+    //   589: invokevirtual 1310	com/tencent/mobileqq/activity/Conversation:b	(Landroid/os/Message;)V
     //   592: aload_0
     //   593: iconst_1
-    //   594: invokespecial 820	com/tencent/mobileqq/activity/Conversation:e	(Z)V
+    //   594: invokespecial 808	com/tencent/mobileqq/activity/Conversation:e	(Z)V
     //   597: return
-    //   598: invokestatic 613	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   598: invokestatic 607	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   601: ifeq +12 -> 613
     //   604: ldc 109
     //   606: iconst_2
-    //   607: ldc_w 1428
-    //   610: invokestatic 582	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   607: ldc_w 1366
+    //   610: invokestatic 576	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   613: aload_0
     //   614: aload_1
-    //   615: invokevirtual 1376	com/tencent/mobileqq/activity/Conversation:b	(Landroid/os/Message;)V
+    //   615: invokevirtual 1310	com/tencent/mobileqq/activity/Conversation:b	(Landroid/os/Message;)V
     //   618: return
     //   619: aload_0
-    //   620: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
-    //   623: invokevirtual 1429	com/tencent/mobileqq/activity/recent/BannerManager:a	()Z
+    //   620: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   623: invokevirtual 1367	com/tencent/mobileqq/activity/recent/BannerManager:a	()Z
     //   626: ifeq +22 -> 648
     //   629: aload_0
-    //   630: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   630: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   633: bipush 14
     //   635: iconst_2
-    //   636: invokevirtual 1398	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
+    //   636: invokevirtual 1335	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
     //   639: aload_0
-    //   640: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   640: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   643: aload_1
-    //   644: invokevirtual 1431	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
+    //   644: invokevirtual 1369	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
     //   647: return
     //   648: aload_0
-    //   649: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   649: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   652: bipush 14
     //   654: iconst_0
-    //   655: invokevirtual 1398	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
+    //   655: invokevirtual 1335	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
     //   658: aload_0
-    //   659: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   659: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   662: aconst_null
-    //   663: invokevirtual 1431	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
+    //   663: invokevirtual 1369	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
     //   666: return
-    //   667: invokestatic 1436	com/tencent/mobileqq/phonelogin/PhoneNumLoginImpl:a	()Lcom/tencent/mobileqq/phonelogin/PhoneNumLoginImpl;
+    //   667: invokestatic 1374	com/tencent/mobileqq/phonelogin/PhoneNumLoginImpl:a	()Lcom/tencent/mobileqq/phonelogin/PhoneNumLoginImpl;
     //   670: aload_0
-    //   671: getfield 422	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   674: invokevirtual 1438	com/tencent/mobileqq/phonelogin/PhoneNumLoginImpl:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
+    //   671: getfield 416	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   674: invokevirtual 1376	com/tencent/mobileqq/phonelogin/PhoneNumLoginImpl:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
     //   677: ifeq +45 -> 722
     //   680: aload_0
-    //   681: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   681: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   684: bipush 12
-    //   686: invokevirtual 1440	com/tencent/mobileqq/activity/recent/BannerManager:a	(I)I
+    //   686: invokevirtual 1378	com/tencent/mobileqq/activity/recent/BannerManager:a	(I)I
     //   689: iconst_2
     //   690: if_icmpeq -652 -> 38
     //   693: aload_0
-    //   694: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   694: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   697: bipush 12
     //   699: iconst_2
-    //   700: invokevirtual 1398	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
+    //   700: invokevirtual 1335	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
     //   703: aload_0
-    //   704: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   704: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   707: aload_1
-    //   708: invokevirtual 1431	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
-    //   711: invokestatic 1436	com/tencent/mobileqq/phonelogin/PhoneNumLoginImpl:a	()Lcom/tencent/mobileqq/phonelogin/PhoneNumLoginImpl;
+    //   708: invokevirtual 1369	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
+    //   711: invokestatic 1374	com/tencent/mobileqq/phonelogin/PhoneNumLoginImpl:a	()Lcom/tencent/mobileqq/phonelogin/PhoneNumLoginImpl;
     //   714: aload_0
-    //   715: getfield 422	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   718: invokevirtual 1441	com/tencent/mobileqq/phonelogin/PhoneNumLoginImpl:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   715: getfield 416	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   718: invokevirtual 1379	com/tencent/mobileqq/phonelogin/PhoneNumLoginImpl:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
     //   721: return
-    //   722: invokestatic 1436	com/tencent/mobileqq/phonelogin/PhoneNumLoginImpl:a	()Lcom/tencent/mobileqq/phonelogin/PhoneNumLoginImpl;
+    //   722: invokestatic 1374	com/tencent/mobileqq/phonelogin/PhoneNumLoginImpl:a	()Lcom/tencent/mobileqq/phonelogin/PhoneNumLoginImpl;
     //   725: aload_0
-    //   726: getfield 422	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   726: getfield 416	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   729: aload_0
-    //   730: getfield 422	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   733: invokevirtual 605	com/tencent/mobileqq/app/QQAppInterface:a	()Ljava/lang/String;
-    //   736: invokevirtual 1442	com/tencent/mobileqq/phonelogin/PhoneNumLoginImpl:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Z
+    //   730: getfield 416	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   733: invokevirtual 599	com/tencent/mobileqq/app/QQAppInterface:a	()Ljava/lang/String;
+    //   736: invokevirtual 1380	com/tencent/mobileqq/phonelogin/PhoneNumLoginImpl:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Z
     //   739: ifeq -701 -> 38
     //   742: aload_0
-    //   743: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   743: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   746: bipush 12
-    //   748: invokevirtual 1440	com/tencent/mobileqq/activity/recent/BannerManager:a	(I)I
+    //   748: invokevirtual 1378	com/tencent/mobileqq/activity/recent/BannerManager:a	(I)I
     //   751: iconst_2
     //   752: if_icmpne -714 -> 38
     //   755: aload_0
-    //   756: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   756: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   759: bipush 12
     //   761: iconst_0
-    //   762: invokevirtual 1398	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
+    //   762: invokevirtual 1335	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
     //   765: aload_0
-    //   766: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   766: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   769: aload_1
-    //   770: invokevirtual 1431	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
+    //   770: invokevirtual 1369	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
     //   773: return
     //   774: aload_0
-    //   775: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   775: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   778: bipush 8
     //   780: iconst_2
-    //   781: invokevirtual 1398	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
+    //   781: invokevirtual 1335	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
     //   784: aload_0
-    //   785: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   785: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   788: aload_1
-    //   789: invokevirtual 1431	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
+    //   789: invokevirtual 1369	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
     //   792: return
     //   793: aload_0
-    //   794: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   794: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   797: bipush 10
     //   799: iconst_2
-    //   800: invokevirtual 1398	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
+    //   800: invokevirtual 1335	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
     //   803: aload_0
-    //   804: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   804: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   807: bipush 8
     //   809: iconst_0
-    //   810: invokevirtual 1398	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
+    //   810: invokevirtual 1335	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
     //   813: aload_0
-    //   814: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   814: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   817: aload_1
-    //   818: invokevirtual 1431	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
+    //   818: invokevirtual 1369	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
     //   821: return
     //   822: aload_0
-    //   823: getfield 803	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog	Lcom/tencent/mobileqq/activity/UpgradeTipsDialog;
+    //   823: getfield 791	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog	Lcom/tencent/mobileqq/activity/UpgradeTipsDialog;
     //   826: ifnull +15 -> 841
     //   829: aload_0
-    //   830: getfield 803	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog	Lcom/tencent/mobileqq/activity/UpgradeTipsDialog;
-    //   833: invokevirtual 1445	com/tencent/mobileqq/activity/UpgradeTipsDialog:dismiss	()V
+    //   830: getfield 791	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog	Lcom/tencent/mobileqq/activity/UpgradeTipsDialog;
+    //   833: invokevirtual 1383	com/tencent/mobileqq/activity/UpgradeTipsDialog:dismiss	()V
     //   836: aload_0
     //   837: aconst_null
-    //   838: putfield 803	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog	Lcom/tencent/mobileqq/activity/UpgradeTipsDialog;
+    //   838: putfield 791	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog	Lcom/tencent/mobileqq/activity/UpgradeTipsDialog;
     //   841: aload_0
-    //   842: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   842: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   845: bipush 10
     //   847: iconst_0
-    //   848: invokevirtual 1398	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
+    //   848: invokevirtual 1335	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
     //   851: aload_0
-    //   852: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   852: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   855: aload_1
-    //   856: invokevirtual 1431	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
+    //   856: invokevirtual 1369	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
     //   859: return
     //   860: astore 5
     //   862: aload_0
     //   863: aconst_null
-    //   864: putfield 803	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog	Lcom/tencent/mobileqq/activity/UpgradeTipsDialog;
+    //   864: putfield 791	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog	Lcom/tencent/mobileqq/activity/UpgradeTipsDialog;
     //   867: goto -26 -> 841
     //   870: astore_1
     //   871: aload_0
     //   872: aconst_null
-    //   873: putfield 803	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog	Lcom/tencent/mobileqq/activity/UpgradeTipsDialog;
+    //   873: putfield 791	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog	Lcom/tencent/mobileqq/activity/UpgradeTipsDialog;
     //   876: aload_1
     //   877: athrow
     //   878: aload_0
     //   879: aload_1
-    //   880: invokespecial 1447	com/tencent/mobileqq/activity/Conversation:c	(Landroid/os/Message;)V
+    //   880: invokespecial 1385	com/tencent/mobileqq/activity/Conversation:c	(Landroid/os/Message;)V
     //   883: return
     //   884: aload_0
-    //   885: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   885: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   888: bipush 8
     //   890: iconst_0
-    //   891: invokevirtual 1398	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
+    //   891: invokevirtual 1335	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
     //   894: aload_0
-    //   895: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   895: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   898: aload_1
-    //   899: invokevirtual 1431	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
+    //   899: invokevirtual 1369	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
     //   902: return
     //   903: aload_0
-    //   904: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   904: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   907: bipush 16
     //   909: iconst_2
-    //   910: invokevirtual 1398	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
+    //   910: invokevirtual 1335	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
     //   913: aload_0
-    //   914: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   914: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   917: aload_1
-    //   918: invokevirtual 1431	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
+    //   918: invokevirtual 1369	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
     //   921: return
     //   922: aload_0
-    //   923: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   923: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   926: bipush 16
     //   928: iconst_0
-    //   929: invokevirtual 1398	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
+    //   929: invokevirtual 1335	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
     //   932: aload_0
-    //   933: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   933: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   936: aload_1
-    //   937: invokevirtual 1431	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
+    //   937: invokevirtual 1369	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
     //   940: return
     //   941: aload_0
-    //   942: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   942: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   945: iconst_4
     //   946: iconst_2
-    //   947: invokevirtual 1398	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
+    //   947: invokevirtual 1335	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
     //   950: aload_0
-    //   951: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   951: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   954: aload_1
-    //   955: invokevirtual 1431	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
+    //   955: invokevirtual 1369	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
     //   958: return
     //   959: aload_0
-    //   960: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   960: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   963: iconst_4
     //   964: iconst_0
-    //   965: invokevirtual 1398	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
+    //   965: invokevirtual 1335	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
     //   968: aload_0
-    //   969: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   969: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   972: aload_1
-    //   973: invokevirtual 1431	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
+    //   973: invokevirtual 1369	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
     //   976: return
     //   977: aload_1
-    //   978: getfield 1286	android/os/Message:arg1	I
+    //   978: getfield 1216	android/os/Message:arg1	I
     //   981: istore_2
     //   982: aload_0
-    //   983: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   983: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   986: iconst_5
     //   987: iload_2
-    //   988: invokevirtual 1398	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
+    //   988: invokevirtual 1335	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
     //   991: aload_0
-    //   992: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   992: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   995: aload_1
-    //   996: invokevirtual 1431	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
+    //   996: invokevirtual 1369	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
     //   999: return
-    //   1000: invokestatic 613	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1000: invokestatic 607	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1003: ifeq +12 -> 1015
     //   1006: ldc 109
     //   1008: iconst_2
-    //   1009: ldc_w 1449
-    //   1012: invokestatic 582	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1009: ldc_w 1387
+    //   1012: invokestatic 576	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   1015: aload_0
-    //   1016: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   1016: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   1019: bipush 6
     //   1021: iconst_0
-    //   1022: invokevirtual 1398	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
-    //   1025: invokestatic 1008	com/tencent/mobileqq/managers/LoadingStateManager:a	()Lcom/tencent/mobileqq/managers/LoadingStateManager;
+    //   1022: invokevirtual 1335	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
+    //   1025: invokestatic 927	com/tencent/mobileqq/managers/LoadingStateManager:a	()Lcom/tencent/mobileqq/managers/LoadingStateManager;
     //   1028: iconst_0
-    //   1029: invokevirtual 1450	com/tencent/mobileqq/managers/LoadingStateManager:b	(Z)V
+    //   1029: invokevirtual 1388	com/tencent/mobileqq/managers/LoadingStateManager:b	(Z)V
     //   1032: aload_0
     //   1033: aload_1
-    //   1034: invokevirtual 1376	com/tencent/mobileqq/activity/Conversation:b	(Landroid/os/Message;)V
+    //   1034: invokevirtual 1310	com/tencent/mobileqq/activity/Conversation:b	(Landroid/os/Message;)V
     //   1037: return
-    //   1038: invokestatic 613	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1038: invokestatic 607	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1041: ifeq +12 -> 1053
     //   1044: ldc 109
     //   1046: iconst_2
-    //   1047: ldc_w 1452
-    //   1050: invokestatic 582	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1047: ldc_w 1390
+    //   1050: invokestatic 576	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   1053: aload_0
-    //   1054: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   1054: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   1057: bipush 6
     //   1059: iconst_0
-    //   1060: invokevirtual 1398	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
-    //   1063: invokestatic 1008	com/tencent/mobileqq/managers/LoadingStateManager:a	()Lcom/tencent/mobileqq/managers/LoadingStateManager;
+    //   1060: invokevirtual 1335	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
+    //   1063: invokestatic 927	com/tencent/mobileqq/managers/LoadingStateManager:a	()Lcom/tencent/mobileqq/managers/LoadingStateManager;
     //   1066: iconst_0
-    //   1067: invokevirtual 1450	com/tencent/mobileqq/managers/LoadingStateManager:b	(Z)V
+    //   1067: invokevirtual 1388	com/tencent/mobileqq/managers/LoadingStateManager:b	(Z)V
     //   1070: aload_0
     //   1071: aload_1
-    //   1072: invokevirtual 1376	com/tencent/mobileqq/activity/Conversation:b	(Landroid/os/Message;)V
+    //   1072: invokevirtual 1310	com/tencent/mobileqq/activity/Conversation:b	(Landroid/os/Message;)V
     //   1075: aload_0
     //   1076: iconst_1
-    //   1077: invokespecial 820	com/tencent/mobileqq/activity/Conversation:e	(Z)V
+    //   1077: invokespecial 808	com/tencent/mobileqq/activity/Conversation:e	(Z)V
     //   1080: return
-    //   1081: invokestatic 613	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1081: invokestatic 607	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1084: ifeq +12 -> 1096
     //   1087: ldc 109
     //   1089: iconst_2
-    //   1090: ldc_w 1454
-    //   1093: invokestatic 582	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1090: ldc_w 1392
+    //   1093: invokestatic 576	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   1096: aload_0
-    //   1097: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   1097: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   1100: bipush 6
-    //   1102: invokevirtual 994	com/tencent/mobileqq/activity/recent/BannerManager:a	(I)Z
+    //   1102: invokevirtual 913	com/tencent/mobileqq/activity/recent/BannerManager:a	(I)Z
     //   1105: ifne +21 -> 1126
     //   1108: aload_0
-    //   1109: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   1109: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   1112: bipush 6
     //   1114: iconst_2
-    //   1115: invokevirtual 1398	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
+    //   1115: invokevirtual 1335	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
     //   1118: aload_0
-    //   1119: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   1119: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   1122: aload_1
-    //   1123: invokevirtual 1431	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
-    //   1126: invokestatic 1008	com/tencent/mobileqq/managers/LoadingStateManager:a	()Lcom/tencent/mobileqq/managers/LoadingStateManager;
+    //   1123: invokevirtual 1369	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
+    //   1126: invokestatic 927	com/tencent/mobileqq/managers/LoadingStateManager:a	()Lcom/tencent/mobileqq/managers/LoadingStateManager;
     //   1129: iconst_1
-    //   1130: invokevirtual 1450	com/tencent/mobileqq/managers/LoadingStateManager:b	(Z)V
+    //   1130: invokevirtual 1388	com/tencent/mobileqq/managers/LoadingStateManager:b	(Z)V
     //   1133: aload_0
     //   1134: iconst_1
-    //   1135: invokespecial 820	com/tencent/mobileqq/activity/Conversation:e	(Z)V
+    //   1135: invokespecial 808	com/tencent/mobileqq/activity/Conversation:e	(Z)V
     //   1138: return
     //   1139: aload_0
     //   1140: aconst_null
-    //   1141: invokevirtual 1376	com/tencent/mobileqq/activity/Conversation:b	(Landroid/os/Message;)V
+    //   1141: invokevirtual 1310	com/tencent/mobileqq/activity/Conversation:b	(Landroid/os/Message;)V
     //   1144: aload_0
     //   1145: iconst_1
-    //   1146: invokespecial 820	com/tencent/mobileqq/activity/Conversation:e	(Z)V
+    //   1146: invokespecial 808	com/tencent/mobileqq/activity/Conversation:e	(Z)V
     //   1149: return
     //   1150: aload_0
-    //   1151: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   1151: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   1154: bipush 14
     //   1156: iconst_0
-    //   1157: invokevirtual 1398	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
+    //   1157: invokevirtual 1335	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
     //   1160: aload_0
-    //   1161: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   1161: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   1164: aload_1
-    //   1165: invokevirtual 1431	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
+    //   1165: invokevirtual 1369	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
     //   1168: return
     //   1169: aload_0
-    //   1170: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   1170: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   1173: bipush 14
     //   1175: iconst_2
-    //   1176: invokevirtual 1398	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
+    //   1176: invokevirtual 1335	com/tencent/mobileqq/activity/recent/BannerManager:a	(II)V
     //   1179: aload_0
-    //   1180: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   1180: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   1183: aload_1
-    //   1184: invokevirtual 1431	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
+    //   1184: invokevirtual 1369	com/tencent/mobileqq/activity/recent/BannerManager:a	(Landroid/os/Message;)V
     //   1187: return
     //   1188: aload_0
     //   1189: lconst_0
-    //   1190: invokevirtual 1405	com/tencent/mobileqq/activity/Conversation:a	(J)V
+    //   1190: invokevirtual 1342	com/tencent/mobileqq/activity/Conversation:a	(J)V
     //   1193: return
     //   1194: aload_0
     //   1195: iconst_0
-    //   1196: putfield 217	com/tencent/mobileqq/activity/Conversation:f	Z
+    //   1196: putfield 216	com/tencent/mobileqq/activity/Conversation:f	Z
     //   1199: aload_0
-    //   1200: getfield 430	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView	Lcom/tencent/mobileqq/fpsreport/FPSSwipListView;
+    //   1200: getfield 424	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView	Lcom/tencent/mobileqq/fpsreport/FPSSwipListView;
     //   1203: ifnull -1165 -> 38
     //   1206: aload_0
-    //   1207: getfield 430	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView	Lcom/tencent/mobileqq/fpsreport/FPSSwipListView;
-    //   1210: invokevirtual 1456	com/tencent/mobileqq/fpsreport/FPSSwipListView:B	()V
+    //   1207: getfield 424	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView	Lcom/tencent/mobileqq/fpsreport/FPSSwipListView;
+    //   1210: invokevirtual 1394	com/tencent/mobileqq/fpsreport/FPSSwipListView:B	()V
     //   1213: return
     //   1214: aload_0
     //   1215: lconst_0
-    //   1216: invokevirtual 1405	com/tencent/mobileqq/activity/Conversation:a	(J)V
+    //   1216: invokevirtual 1342	com/tencent/mobileqq/activity/Conversation:a	(J)V
     //   1219: return
     //   1220: aload_0
     //   1221: iconst_1
-    //   1222: putfield 238	com/tencent/mobileqq/activity/Conversation:k	Z
+    //   1222: putfield 237	com/tencent/mobileqq/activity/Conversation:k	Z
     //   1225: return
     //   1226: aload_0
-    //   1227: invokespecial 1457	com/tencent/mobileqq/activity/Conversation:B	()V
+    //   1227: invokespecial 1395	com/tencent/mobileqq/activity/Conversation:B	()V
     //   1230: return
-    //   1231: invokestatic 1115	java/lang/System:currentTimeMillis	()J
+    //   1231: invokestatic 1040	java/lang/System:currentTimeMillis	()J
     //   1234: aload_0
-    //   1235: getfield 221	com/tencent/mobileqq/activity/Conversation:d	J
+    //   1235: getfield 220	com/tencent/mobileqq/activity/Conversation:d	J
     //   1238: lsub
-    //   1239: invokestatic 1119	java/lang/Math:abs	(J)J
+    //   1239: invokestatic 1044	java/lang/Math:abs	(J)J
     //   1242: lstore_3
-    //   1243: invokestatic 511	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   1243: invokestatic 505	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   1246: ifeq +48 -> 1294
     //   1249: ldc 109
     //   1251: iconst_4
-    //   1252: new 513	java/lang/StringBuilder
+    //   1252: new 507	java/lang/StringBuilder
     //   1255: dup
-    //   1256: invokespecial 514	java/lang/StringBuilder:<init>	()V
-    //   1259: ldc_w 1459
-    //   1262: invokevirtual 520	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1256: invokespecial 508	java/lang/StringBuilder:<init>	()V
+    //   1259: ldc_w 1397
+    //   1262: invokevirtual 514	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1265: aload_1
-    //   1266: getfield 1286	android/os/Message:arg1	I
-    //   1269: invokevirtual 939	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1272: ldc_w 998
-    //   1275: invokevirtual 520	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1266: getfield 1216	android/os/Message:arg1	I
+    //   1269: invokevirtual 857	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1272: ldc_w 917
+    //   1275: invokevirtual 514	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1278: lload_3
-    //   1279: invokevirtual 1462	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1282: ldc_w 1000
-    //   1285: invokevirtual 520	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1288: invokevirtual 527	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1291: invokestatic 582	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1279: invokevirtual 1400	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1282: ldc_w 919
+    //   1285: invokevirtual 514	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1288: invokevirtual 521	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1291: invokestatic 576	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   1294: aload_1
-    //   1295: getfield 952	android/os/Message:obj	Ljava/lang/Object;
-    //   1298: checkcast 1315	java/util/List
+    //   1295: getfield 870	android/os/Message:obj	Ljava/lang/Object;
+    //   1298: checkcast 1249	java/util/List
     //   1301: astore 5
     //   1303: aload 5
-    //   1305: invokeinterface 1319 1 0
+    //   1305: invokeinterface 1253 1 0
     //   1310: astore 6
     //   1312: aload 6
-    //   1314: invokeinterface 1324 1 0
+    //   1314: invokeinterface 1258 1 0
     //   1319: ifeq +38 -> 1357
     //   1322: aload 6
-    //   1324: invokeinterface 1327 1 0
-    //   1329: checkcast 1097	com/tencent/mobileqq/activity/recent/RecentBaseData
+    //   1324: invokeinterface 1261 1 0
+    //   1329: checkcast 1020	com/tencent/mobileqq/activity/recent/RecentBaseData
     //   1332: astore 7
     //   1334: aload 7
-    //   1336: invokevirtual 1328	com/tencent/mobileqq/activity/recent/RecentBaseData:a	()I
+    //   1336: invokevirtual 1262	com/tencent/mobileqq/activity/recent/RecentBaseData:a	()I
     //   1339: sipush 6000
     //   1342: if_icmpne -30 -> 1312
     //   1345: aload 7
     //   1347: aload_0
-    //   1348: ldc_w 1463
-    //   1351: invokevirtual 1209	com/tencent/mobileqq/activity/Conversation:a	(I)Ljava/lang/String;
-    //   1354: putfield 1465	com/tencent/mobileqq/activity/recent/RecentBaseData:a	Ljava/lang/String;
+    //   1348: ldc_w 1401
+    //   1351: invokevirtual 1118	com/tencent/mobileqq/activity/Conversation:a	(I)Ljava/lang/String;
+    //   1354: putfield 1403	com/tencent/mobileqq/activity/recent/RecentBaseData:a	Ljava/lang/String;
     //   1357: aload_1
-    //   1358: getfield 1289	android/os/Message:arg2	I
+    //   1358: getfield 1219	android/os/Message:arg2	I
     //   1361: iconst_1
     //   1362: if_icmpeq +67 -> 1429
     //   1365: lload_3
     //   1366: aload_0
-    //   1367: getfield 209	com/tencent/mobileqq/activity/Conversation:jdField_b_of_type_Long	J
+    //   1367: getfield 208	com/tencent/mobileqq/activity/Conversation:jdField_b_of_type_Long	J
     //   1370: lcmp
     //   1371: ifge +58 -> 1429
     //   1374: aload_0
     //   1375: aload 5
-    //   1377: putfield 1467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   1380: invokestatic 1470	android/os/Message:obtain	()Landroid/os/Message;
+    //   1377: putfield 1405	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   1380: invokestatic 1408	android/os/Message:obtain	()Landroid/os/Message;
     //   1383: astore_1
     //   1384: aload_1
     //   1385: sipush 10000
-    //   1388: putfield 1234	android/os/Message:what	I
+    //   1388: putfield 1144	android/os/Message:what	I
     //   1391: aload_1
     //   1392: aload_0
-    //   1393: getfield 1467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   1396: putfield 952	android/os/Message:obj	Ljava/lang/Object;
+    //   1393: getfield 1405	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   1396: putfield 870	android/os/Message:obj	Ljava/lang/Object;
     //   1399: aload_1
     //   1400: iconst_0
-    //   1401: putfield 1286	android/os/Message:arg1	I
+    //   1401: putfield 1216	android/os/Message:arg1	I
     //   1404: aload_1
     //   1405: iconst_1
-    //   1406: putfield 1289	android/os/Message:arg2	I
+    //   1406: putfield 1219	android/os/Message:arg2	I
     //   1409: aload_0
-    //   1410: getfield 586	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   1410: getfield 580	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   1413: aload_1
     //   1414: aload_0
-    //   1415: getfield 209	com/tencent/mobileqq/activity/Conversation:jdField_b_of_type_Long	J
+    //   1415: getfield 208	com/tencent/mobileqq/activity/Conversation:jdField_b_of_type_Long	J
     //   1418: lload_3
     //   1419: lsub
-    //   1420: ldc2_w 1471
+    //   1420: ldc2_w 1409
     //   1423: ladd
-    //   1424: invokevirtual 1476	android/os/Handler:sendMessageDelayed	(Landroid/os/Message;J)Z
+    //   1424: invokevirtual 1414	android/os/Handler:sendMessageDelayed	(Landroid/os/Message;J)Z
     //   1427: pop
     //   1428: return
     //   1429: aload_1
-    //   1430: getfield 1289	android/os/Message:arg2	I
+    //   1430: getfield 1219	android/os/Message:arg2	I
     //   1433: iconst_1
     //   1434: if_icmpne +40 -> 1474
     //   1437: aload 5
     //   1439: aload_0
-    //   1440: getfield 1467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   1440: getfield 1405	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   1443: if_acmpne +26 -> 1469
     //   1446: iconst_1
     //   1447: istore_2
@@ -1875,56 +1823,56 @@ public class Conversation
     //   1452: aload_0
     //   1453: iconst_0
     //   1454: aload_0
-    //   1455: getfield 1467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   1458: invokevirtual 1477	com/tencent/mobileqq/activity/Conversation:a	(ILjava/util/List;)V
+    //   1455: getfield 1405	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   1458: invokevirtual 1415	com/tencent/mobileqq/activity/Conversation:a	(ILjava/util/List;)V
     //   1461: aload_0
-    //   1462: invokestatic 1115	java/lang/System:currentTimeMillis	()J
-    //   1465: putfield 221	com/tencent/mobileqq/activity/Conversation:d	J
+    //   1462: invokestatic 1040	java/lang/System:currentTimeMillis	()J
+    //   1465: putfield 220	com/tencent/mobileqq/activity/Conversation:d	J
     //   1468: return
     //   1469: iconst_0
     //   1470: istore_2
     //   1471: goto -23 -> 1448
     //   1474: aload_0
     //   1475: aload 5
-    //   1477: putfield 1467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   1477: putfield 1405	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   1480: iconst_1
     //   1481: istore_2
     //   1482: goto -34 -> 1448
     //   1485: aload_0
     //   1486: iconst_1
     //   1487: aload_1
-    //   1488: getfield 952	android/os/Message:obj	Ljava/lang/Object;
-    //   1491: checkcast 1315	java/util/List
-    //   1494: invokevirtual 1477	com/tencent/mobileqq/activity/Conversation:a	(ILjava/util/List;)V
+    //   1488: getfield 870	android/os/Message:obj	Ljava/lang/Object;
+    //   1491: checkcast 1249	java/util/List
+    //   1494: invokevirtual 1415	com/tencent/mobileqq/activity/Conversation:a	(ILjava/util/List;)V
     //   1497: return
     //   1498: aload_0
-    //   1499: getfield 417	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentRecentCallHelper	Lcom/tencent/mobileqq/activity/recent/RecentCallHelper;
+    //   1499: getfield 411	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentRecentCallHelper	Lcom/tencent/mobileqq/activity/recent/RecentCallHelper;
     //   1502: ifnull -1464 -> 38
     //   1505: aload_0
-    //   1506: getfield 417	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentRecentCallHelper	Lcom/tencent/mobileqq/activity/recent/RecentCallHelper;
+    //   1506: getfield 411	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentRecentCallHelper	Lcom/tencent/mobileqq/activity/recent/RecentCallHelper;
     //   1509: aload_1
-    //   1510: invokevirtual 1478	com/tencent/mobileqq/activity/recent/RecentCallHelper:a	(Landroid/os/Message;)V
+    //   1510: invokevirtual 1416	com/tencent/mobileqq/activity/recent/RecentCallHelper:a	(Landroid/os/Message;)V
     //   1513: return
     //   1514: aload_0
-    //   1515: getfield 417	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentRecentCallHelper	Lcom/tencent/mobileqq/activity/recent/RecentCallHelper;
+    //   1515: getfield 411	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentRecentCallHelper	Lcom/tencent/mobileqq/activity/recent/RecentCallHelper;
     //   1518: ifnull -1480 -> 38
     //   1521: aload_0
-    //   1522: getfield 417	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentRecentCallHelper	Lcom/tencent/mobileqq/activity/recent/RecentCallHelper;
-    //   1525: invokevirtual 1479	com/tencent/mobileqq/activity/recent/RecentCallHelper:f	()V
+    //   1522: getfield 411	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentRecentCallHelper	Lcom/tencent/mobileqq/activity/recent/RecentCallHelper;
+    //   1525: invokevirtual 1417	com/tencent/mobileqq/activity/recent/RecentCallHelper:f	()V
     //   1528: return
     //   1529: aload_0
-    //   1530: getfield 422	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1530: getfield 416	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1533: ifnull -1495 -> 38
     //   1536: aload_0
-    //   1537: getfield 422	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1540: invokevirtual 1371	com/tencent/mobileqq/app/QQAppInterface:C	()V
+    //   1537: getfield 416	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1540: invokevirtual 1305	com/tencent/mobileqq/app/QQAppInterface:C	()V
     //   1543: return
     //   1544: aload_0
-    //   1545: invokespecial 1480	com/tencent/mobileqq/activity/Conversation:C	()V
+    //   1545: invokespecial 1418	com/tencent/mobileqq/activity/Conversation:C	()V
     //   1548: return
-    //   1549: getstatic 1482	com/tencent/mobileqq/activity/recent/DrawerFrame:d	I
+    //   1549: getstatic 1420	com/tencent/mobileqq/activity/recent/DrawerFrame:d	I
     //   1552: ifle -1514 -> 38
-    //   1555: invokestatic 1484	com/tencent/mobileqq/activity/Conversation:o	()V
+    //   1555: invokestatic 1422	com/tencent/mobileqq/activity/Conversation:o	()V
     //   1558: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1977,95 +1925,89 @@ public class Conversation
     }
     for (;;)
     {
-      if (localObject2 != null)
+      for (;;)
       {
-        int i1 = ((QCallRecent)localObject2).type;
-        paramRecentBaseData = null;
-        str1 = null;
-        if (i1 == 1006) {
-          str1 = ((QCallRecent)localObject2).uin;
-        }
+        int i1;
         String str2;
-        for (;;)
+        if (localObject2 != null)
         {
-          str2 = ((QCallRecent)localObject2).troopUin;
-          if ((paramView == null) || (paramView.getId() != 2131232931)) {
-            break label341;
+          i1 = ((QCallRecent)localObject2).type;
+          paramRecentBaseData = null;
+          str1 = null;
+          if (i1 == 1006) {
+            str1 = ((QCallRecent)localObject2).uin;
           }
-          paramView = new Intent(a(), QCallDetailActivity.class);
-          paramView.putExtra("uin", ((QCallRecent)localObject2).uin);
-          paramView.putExtra("troop_uin", ((QCallRecent)localObject2).troopUin);
-          paramView.putExtra("uintype", i1);
-          paramView.putExtra("uinname", paramString);
-          a(paramView);
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Tc_msg_info", 0, 0, "", "", "", "");
+          for (;;)
+          {
+            str2 = ((QCallRecent)localObject2).troopUin;
+            if ((paramView == null) || (paramView.getId() != 2131232934)) {
+              break label341;
+            }
+            paramView = new Intent(a(), QCallDetailActivity.class);
+            paramView.putExtra("uin", ((QCallRecent)localObject2).uin);
+            paramView.putExtra("troop_uin", ((QCallRecent)localObject2).troopUin);
+            paramView.putExtra("uintype", i1);
+            paramView.putExtra("uinname", paramString);
+            a(paramView);
+            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Tc_msg_info", 0, 0, "", "", "", "");
+            return;
+            str1 = "0";
+            localObject2 = localObject1;
+            localObject1 = str1;
+            break;
+            str1 = "1";
+            localObject2 = localObject1;
+            localObject1 = str1;
+            break;
+            str1 = "2";
+            localObject2 = localObject1;
+            localObject1 = str1;
+            break;
+            paramRecentBaseData = ((QCallRecent)localObject2).uin;
+          }
+          label341:
+          paramBoolean = true;
+          if (((QCallRecent)localObject2).isVideo()) {
+            paramBoolean = false;
+          }
+          if (((QCallRecent)localObject2).type != 3000) {}
+        }
+        try
+        {
+          Long.parseLong(paramRecentBaseData);
+          label371:
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004066", "0X8004066", 0, 0, "", "", "", "");
           return;
-          str1 = "0";
-          localObject2 = localObject1;
-          localObject1 = str1;
-          break;
-          str1 = "1";
-          localObject2 = localObject1;
-          localObject1 = str1;
-          break;
-          str1 = "2";
-          localObject2 = localObject1;
-          localObject1 = str1;
-          break;
-          paramRecentBaseData = ((QCallRecent)localObject2).uin;
-        }
-        label341:
-        paramBoolean = true;
-        if (((QCallRecent)localObject2).isVideo()) {
-          paramBoolean = false;
-        }
-        if (((QCallRecent)localObject2).type == 3000) {
-          try
-          {
-            l1 = Long.parseLong(paramRecentBaseData);
-            long l2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l1);
-            if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l1)) || (l2 == 0L))
-            {
-              ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(), paramRecentBaseData, true, true, null);
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004066", "0X8004066", 0, 0, "", "", "", "");
-              return;
-            }
-          }
-          catch (NumberFormatException paramView)
-          {
-            for (;;)
-            {
-              long l1 = 0L;
-              continue;
-              a(paramRecentBaseData);
-            }
-          }
-        }
-        ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(), i1, paramRecentBaseData, paramString, str1, paramBoolean, str2, true, true, null, "from_internal");
-        paramRecentBaseData = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        if (((QCallRecent)localObject2).isVideo())
-        {
-          paramView = "1";
-          ReportController.b(paramRecentBaseData, "CliOper", "", "", "Two_call", "Tc_msg_launch", 0, 0, paramView, (String)localObject1, "", "");
+          ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(), i1, paramRecentBaseData, paramString, str1, paramBoolean, str2, true, true, null, "");
           paramRecentBaseData = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          if (!((QCallRecent)localObject2).isMissedCall()) {
-            break label605;
+          if (((QCallRecent)localObject2).isVideo())
+          {
+            paramView = "1";
+            ReportController.b(paramRecentBaseData, "CliOper", "", "", "Two_call", "Tc_msg_launch", 0, 0, paramView, (String)localObject1, "", "");
+            paramRecentBaseData = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+            if (!((QCallRecent)localObject2).isMissedCall()) {
+              break label537;
+            }
           }
-        }
-        label605:
-        for (paramView = "0";; paramView = "1")
-        {
-          ReportController.b(paramRecentBaseData, "CliOper", "", "", "Msg_tab", "Call_history_dtl", 0, 0, paramView, "", "", "");
+          label537:
+          for (paramView = "0";; paramView = "1")
+          {
+            ReportController.b(paramRecentBaseData, "CliOper", "", "", "Msg_tab", "Call_history_dtl", 0, 0, paramView, "", "", "");
+            return;
+            paramView = "0";
+            break;
+          }
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.i("Q.recent", 2, "onRecentBaseDataClick|call is null, data = " + paramRecentBaseData);
           return;
-          paramView = "0";
-          break;
+        }
+        catch (NumberFormatException paramView)
+        {
+          break label371;
         }
       }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("Q.recent", 2, "onRecentBaseDataClick|call is null, data = " + paramRecentBaseData);
-      return;
       localObject1 = "99";
       localObject2 = null;
     }
@@ -2229,7 +2171,7 @@ public class Conversation
             }
             for (paramString1 = null;; paramString1 = paramString1.troopUin)
             {
-              ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(), i1, paramString2, str, (String)localObject, true, paramString1, true, true, null, "from_internal");
+              ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(), i1, paramString2, str, (String)localObject, true, paramString1, true, true, null, "");
               return;
               ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800416A", "0X800416A", 0, 0, "2", "", paramString2, "");
               break;
@@ -2362,7 +2304,7 @@ public class Conversation
         this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.notifyDataSetChanged();
       }
       a(0L);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new cma(this), 1000L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new cfo(this), 1000L);
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(1031);
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame.b())) {
         this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.a();
@@ -2425,29 +2367,17 @@ public class Conversation
   public boolean a(Menu paramMenu)
   {
     paramMenu.clear();
-    Object localObject = a();
-    if ((localObject != null) && ((localObject instanceof SplashActivity))) {}
-    for (boolean bool = ((SplashActivity)localObject).c();; bool = false)
+    BaseActivity localBaseActivity = a();
+    if ((localBaseActivity != null) && ((localBaseActivity instanceof SplashActivity))) {}
+    for (boolean bool = ((SplashActivity)localBaseActivity).c();; bool = false)
     {
-      localObject = paramMenu.add(0, 1, 0, a().getString(2131562415));
-      if (bool)
-      {
-        i1 = 2130837913;
-        ((MenuItem)localObject).setIcon(i1);
-        MenuItemCompat.setShowAsAction((MenuItem)localObject, 2);
-        paramMenu = paramMenu.add(0, 4, 0, a().getString(2131562830));
-        if (!bool) {
-          break label128;
-        }
-      }
-      label128:
-      for (int i1 = 2130839695;; i1 = 2130839692)
+      paramMenu = paramMenu.add(0, 4, 0, a().getString(2131562830));
+      if (bool) {}
+      for (int i1 = 2130839697;; i1 = 2130839694)
       {
         paramMenu.setIcon(i1);
         MenuItemCompat.setShowAsAction(paramMenu, 1);
         return true;
-        i1 = 2130837912;
-        break;
       }
     }
   }
@@ -2578,185 +2508,185 @@ public class Conversation
   protected void b(boolean paramBoolean)
   {
     // Byte code:
-    //   0: invokestatic 511	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   0: invokestatic 505	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   3: ifeq +48 -> 51
     //   6: ldc 109
     //   8: iconst_4
-    //   9: new 513	java/lang/StringBuilder
+    //   9: new 507	java/lang/StringBuilder
     //   12: dup
-    //   13: invokespecial 514	java/lang/StringBuilder:<init>	()V
-    //   16: ldc_w 1783
-    //   19: invokevirtual 520	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13: invokespecial 508	java/lang/StringBuilder:<init>	()V
+    //   16: ldc_w 1710
+    //   19: invokevirtual 514	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   22: iload_1
-    //   23: invokevirtual 523	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   26: ldc_w 998
-    //   29: invokevirtual 520	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: invokevirtual 517	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   26: ldc_w 917
+    //   29: invokevirtual 514	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   32: aload_0
-    //   33: getfield 234	com/tencent/mobileqq/activity/Conversation:i	Z
-    //   36: invokevirtual 523	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   39: ldc_w 1000
-    //   42: invokevirtual 520	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   45: invokevirtual 527	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   48: invokestatic 530	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   33: getfield 233	com/tencent/mobileqq/activity/Conversation:i	Z
+    //   36: invokevirtual 517	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   39: ldc_w 919
+    //   42: invokevirtual 514	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: invokevirtual 521	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   48: invokestatic 524	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   51: aload_0
-    //   52: getfield 570	com/tencent/mobileqq/activity/Conversation:jdField_b_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   52: getfield 564	com/tencent/mobileqq/activity/Conversation:jdField_b_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   55: ifnonnull +18 -> 73
     //   58: aload_0
-    //   59: new 572	android/os/Handler
+    //   59: new 566	android/os/Handler
     //   62: dup
-    //   63: invokestatic 1788	com/tencent/mobileqq/app/ThreadManager:b	()Landroid/os/Looper;
+    //   63: invokestatic 1715	com/tencent/mobileqq/app/ThreadManager:b	()Landroid/os/Looper;
     //   66: aload_0
-    //   67: invokespecial 1791	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
-    //   70: putfield 570	com/tencent/mobileqq/activity/Conversation:jdField_b_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   67: invokespecial 1718	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
+    //   70: putfield 564	com/tencent/mobileqq/activity/Conversation:jdField_b_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   73: iload_1
     //   74: ifeq +21 -> 95
     //   77: aload_0
-    //   78: getfield 755	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe	Lcom/tencent/mobileqq/activity/QQSettingMe;
+    //   78: getfield 743	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe	Lcom/tencent/mobileqq/activity/QQSettingMe;
     //   81: ifnull +14 -> 95
     //   84: aload_0
-    //   85: getfield 755	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe	Lcom/tencent/mobileqq/activity/QQSettingMe;
+    //   85: getfield 743	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe	Lcom/tencent/mobileqq/activity/QQSettingMe;
     //   88: aload_0
-    //   89: getfield 422	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   92: invokevirtual 1792	com/tencent/mobileqq/activity/QQSettingMe:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   89: getfield 416	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   92: invokevirtual 1719	com/tencent/mobileqq/activity/QQSettingMe:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
     //   95: aload_0
-    //   96: invokespecial 1794	com/tencent/mobileqq/activity/Conversation:D	()V
+    //   96: invokespecial 1721	com/tencent/mobileqq/activity/Conversation:D	()V
     //   99: iload_1
     //   100: ifeq +264 -> 364
-    //   103: invokestatic 1008	com/tencent/mobileqq/managers/LoadingStateManager:a	()Lcom/tencent/mobileqq/managers/LoadingStateManager;
-    //   106: invokevirtual 1795	com/tencent/mobileqq/managers/LoadingStateManager:a	()V
-    //   109: invokestatic 487	com/tencent/mobileqq/activity/recent/RecentDataListManager:a	()Lcom/tencent/mobileqq/activity/recent/RecentDataListManager;
-    //   112: invokevirtual 1661	com/tencent/mobileqq/activity/recent/RecentDataListManager:a	()V
+    //   103: invokestatic 927	com/tencent/mobileqq/managers/LoadingStateManager:a	()Lcom/tencent/mobileqq/managers/LoadingStateManager;
+    //   106: invokevirtual 1722	com/tencent/mobileqq/managers/LoadingStateManager:a	()V
+    //   109: invokestatic 481	com/tencent/mobileqq/activity/recent/RecentDataListManager:a	()Lcom/tencent/mobileqq/activity/recent/RecentDataListManager;
+    //   112: invokevirtual 1591	com/tencent/mobileqq/activity/recent/RecentDataListManager:a	()V
     //   115: aload_0
-    //   116: getfield 217	com/tencent/mobileqq/activity/Conversation:f	Z
+    //   116: getfield 216	com/tencent/mobileqq/activity/Conversation:f	Z
     //   119: ifeq +22 -> 141
     //   122: aload_0
-    //   123: getfield 430	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView	Lcom/tencent/mobileqq/fpsreport/FPSSwipListView;
+    //   123: getfield 424	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView	Lcom/tencent/mobileqq/fpsreport/FPSSwipListView;
     //   126: ifnull +15 -> 141
     //   129: aload_0
     //   130: iconst_0
-    //   131: putfield 217	com/tencent/mobileqq/activity/Conversation:f	Z
+    //   131: putfield 216	com/tencent/mobileqq/activity/Conversation:f	Z
     //   134: aload_0
-    //   135: getfield 430	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView	Lcom/tencent/mobileqq/fpsreport/FPSSwipListView;
-    //   138: invokevirtual 1796	com/tencent/mobileqq/fpsreport/FPSSwipListView:C	()V
+    //   135: getfield 424	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView	Lcom/tencent/mobileqq/fpsreport/FPSSwipListView;
+    //   138: invokevirtual 1723	com/tencent/mobileqq/fpsreport/FPSSwipListView:C	()V
     //   141: aload_0
-    //   142: getfield 803	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog	Lcom/tencent/mobileqq/activity/UpgradeTipsDialog;
+    //   142: getfield 791	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog	Lcom/tencent/mobileqq/activity/UpgradeTipsDialog;
     //   145: ifnull +15 -> 160
     //   148: aload_0
-    //   149: getfield 803	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog	Lcom/tencent/mobileqq/activity/UpgradeTipsDialog;
-    //   152: invokevirtual 1445	com/tencent/mobileqq/activity/UpgradeTipsDialog:dismiss	()V
+    //   149: getfield 791	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog	Lcom/tencent/mobileqq/activity/UpgradeTipsDialog;
+    //   152: invokevirtual 1383	com/tencent/mobileqq/activity/UpgradeTipsDialog:dismiss	()V
     //   155: aload_0
     //   156: aconst_null
-    //   157: putfield 803	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog	Lcom/tencent/mobileqq/activity/UpgradeTipsDialog;
+    //   157: putfield 791	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog	Lcom/tencent/mobileqq/activity/UpgradeTipsDialog;
     //   160: aload_0
-    //   161: getfield 460	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentLocalSearchBar	Lcom/tencent/mobileqq/activity/recent/LocalSearchBar;
+    //   161: getfield 454	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentLocalSearchBar	Lcom/tencent/mobileqq/activity/recent/LocalSearchBar;
     //   164: ifnull +14 -> 178
     //   167: aload_0
-    //   168: getfield 460	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentLocalSearchBar	Lcom/tencent/mobileqq/activity/recent/LocalSearchBar;
+    //   168: getfield 454	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentLocalSearchBar	Lcom/tencent/mobileqq/activity/recent/LocalSearchBar;
     //   171: aload_0
-    //   172: getfield 422	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   175: invokevirtual 1797	com/tencent/mobileqq/activity/recent/LocalSearchBar:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   172: getfield 416	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   175: invokevirtual 1724	com/tencent/mobileqq/activity/recent/LocalSearchBar:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
     //   178: aload_0
-    //   179: getfield 1301	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption	Lcom/tencent/mobileqq/activity/recent/RecentTroopMenuOption;
+    //   179: getfield 1235	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption	Lcom/tencent/mobileqq/activity/recent/RecentTroopMenuOption;
     //   182: ifnull +14 -> 196
     //   185: aload_0
-    //   186: getfield 1301	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption	Lcom/tencent/mobileqq/activity/recent/RecentTroopMenuOption;
+    //   186: getfield 1235	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption	Lcom/tencent/mobileqq/activity/recent/RecentTroopMenuOption;
     //   189: aload_0
-    //   190: getfield 422	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   193: invokevirtual 1798	com/tencent/mobileqq/activity/recent/RecentTroopMenuOption:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   190: getfield 416	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   193: invokevirtual 1725	com/tencent/mobileqq/activity/recent/RecentTroopMenuOption:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
     //   196: aload_0
-    //   197: getfield 474	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter	Lcom/tencent/mobileqq/activity/recent/RecentAdapter;
+    //   197: getfield 468	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter	Lcom/tencent/mobileqq/activity/recent/RecentAdapter;
     //   200: ifnull +47 -> 247
     //   203: aload_0
-    //   204: getfield 474	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter	Lcom/tencent/mobileqq/activity/recent/RecentAdapter;
+    //   204: getfield 468	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter	Lcom/tencent/mobileqq/activity/recent/RecentAdapter;
     //   207: aload_0
-    //   208: getfield 422	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   211: invokevirtual 1799	com/tencent/mobileqq/activity/recent/RecentAdapter:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   208: getfield 416	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   211: invokevirtual 1726	com/tencent/mobileqq/activity/recent/RecentAdapter:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
     //   214: aload_0
-    //   215: getfield 570	com/tencent/mobileqq/activity/Conversation:jdField_b_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   215: getfield 564	com/tencent/mobileqq/activity/Conversation:jdField_b_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   218: ifnull +29 -> 247
-    //   221: invokestatic 613	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   221: invokestatic 607	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   224: ifeq +12 -> 236
     //   227: ldc 109
     //   229: iconst_2
-    //   230: ldc_w 1801
-    //   233: invokestatic 582	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   230: ldc_w 1728
+    //   233: invokestatic 576	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   236: aload_0
     //   237: iconst_1
     //   238: bipush 10
     //   240: lconst_0
-    //   241: invokestatic 1026	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   244: invokevirtual 1029	com/tencent/mobileqq/activity/Conversation:a	(IILjava/lang/Object;)V
+    //   241: invokestatic 948	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   244: invokevirtual 951	com/tencent/mobileqq/activity/Conversation:a	(IILjava/lang/Object;)V
     //   247: aload_0
-    //   248: getfield 417	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentRecentCallHelper	Lcom/tencent/mobileqq/activity/recent/RecentCallHelper;
+    //   248: getfield 411	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentRecentCallHelper	Lcom/tencent/mobileqq/activity/recent/RecentCallHelper;
     //   251: ifnull +60 -> 311
     //   254: aload_0
-    //   255: getfield 417	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentRecentCallHelper	Lcom/tencent/mobileqq/activity/recent/RecentCallHelper;
+    //   255: getfield 411	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentRecentCallHelper	Lcom/tencent/mobileqq/activity/recent/RecentCallHelper;
     //   258: aload_0
-    //   259: getfield 422	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   262: invokevirtual 1802	com/tencent/mobileqq/activity/recent/RecentCallHelper:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   259: getfield 416	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   262: invokevirtual 1729	com/tencent/mobileqq/activity/recent/RecentCallHelper:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
     //   265: aload_0
-    //   266: getfield 570	com/tencent/mobileqq/activity/Conversation:jdField_b_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   266: getfield 564	com/tencent/mobileqq/activity/Conversation:jdField_b_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   269: ifnull +42 -> 311
-    //   272: invokestatic 613	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   272: invokestatic 607	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   275: ifeq +12 -> 287
     //   278: ldc 109
     //   280: iconst_2
-    //   281: ldc_w 1801
-    //   284: invokestatic 582	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   287: invokestatic 1470	android/os/Message:obtain	()Landroid/os/Message;
+    //   281: ldc_w 1728
+    //   284: invokestatic 576	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   287: invokestatic 1408	android/os/Message:obtain	()Landroid/os/Message;
     //   290: astore_2
     //   291: aload_2
     //   292: bipush 16
-    //   294: putfield 1234	android/os/Message:what	I
+    //   294: putfield 1144	android/os/Message:what	I
     //   297: aload_2
     //   298: iconst_1
-    //   299: putfield 1286	android/os/Message:arg1	I
+    //   299: putfield 1216	android/os/Message:arg1	I
     //   302: aload_0
-    //   303: getfield 570	com/tencent/mobileqq/activity/Conversation:jdField_b_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   303: getfield 564	com/tencent/mobileqq/activity/Conversation:jdField_b_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   306: aload_2
-    //   307: invokevirtual 1161	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
+    //   307: invokevirtual 1223	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   310: pop
     //   311: aload_0
-    //   312: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   312: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
     //   315: ifnull +10 -> 325
     //   318: aload_0
-    //   319: getfield 467	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
-    //   322: invokevirtual 1803	com/tencent/mobileqq/activity/recent/BannerManager:d	()V
+    //   319: getfield 461	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager	Lcom/tencent/mobileqq/activity/recent/BannerManager;
+    //   322: invokevirtual 1730	com/tencent/mobileqq/activity/recent/BannerManager:d	()V
     //   325: aload_0
-    //   326: getfield 234	com/tencent/mobileqq/activity/Conversation:i	Z
+    //   326: getfield 233	com/tencent/mobileqq/activity/Conversation:i	Z
     //   329: ifeq +13 -> 342
     //   332: aload_0
-    //   333: getfield 570	com/tencent/mobileqq/activity/Conversation:jdField_b_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   333: getfield 564	com/tencent/mobileqq/activity/Conversation:jdField_b_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   336: bipush 12
-    //   338: invokevirtual 576	android/os/Handler:sendEmptyMessage	(I)Z
+    //   338: invokevirtual 570	android/os/Handler:sendEmptyMessage	(I)Z
     //   341: pop
     //   342: aload_0
     //   343: sipush 4096
-    //   346: putfield 332	com/tencent/mobileqq/activity/Conversation:X	I
+    //   346: putfield 326	com/tencent/mobileqq/activity/Conversation:X	I
     //   349: aload_0
-    //   350: invokevirtual 410	com/tencent/mobileqq/activity/Conversation:l	()V
+    //   350: invokevirtual 404	com/tencent/mobileqq/activity/Conversation:l	()V
     //   353: aload_0
     //   354: sipush 1010
-    //   357: ldc2_w 1601
+    //   357: ldc2_w 1531
     //   360: iconst_1
-    //   361: invokespecial 566	com/tencent/mobileqq/activity/Conversation:a	(IJZ)V
+    //   361: invokespecial 560	com/tencent/mobileqq/activity/Conversation:a	(IJZ)V
     //   364: aload_0
     //   365: sipush 10001
-    //   368: ldc2_w 587
+    //   368: ldc2_w 581
     //   371: iconst_0
-    //   372: invokespecial 566	com/tencent/mobileqq/activity/Conversation:a	(IJZ)V
+    //   372: invokespecial 560	com/tencent/mobileqq/activity/Conversation:a	(IJZ)V
     //   375: aload_0
-    //   376: invokevirtual 1805	com/tencent/mobileqq/activity/Conversation:h	()V
+    //   376: invokevirtual 1732	com/tencent/mobileqq/activity/Conversation:h	()V
     //   379: return
     //   380: astore_2
     //   381: aload_0
     //   382: aconst_null
-    //   383: putfield 803	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog	Lcom/tencent/mobileqq/activity/UpgradeTipsDialog;
+    //   383: putfield 791	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog	Lcom/tencent/mobileqq/activity/UpgradeTipsDialog;
     //   386: goto -226 -> 160
     //   389: astore_2
     //   390: aload_0
     //   391: aconst_null
-    //   392: putfield 803	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog	Lcom/tencent/mobileqq/activity/UpgradeTipsDialog;
+    //   392: putfield 791	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog	Lcom/tencent/mobileqq/activity/UpgradeTipsDialog;
     //   395: aload_2
     //   396: athrow
     // Local variable table:
@@ -2811,7 +2741,7 @@ public class Conversation
     }
     if (this.jdField_a_of_type_ArrayOfAndroidViewAnimationTranslateAnimation == null)
     {
-      localObject = new clw(this);
+      localObject = new cfk(this);
       this.jdField_a_of_type_ArrayOfAndroidViewAnimationTranslateAnimation = new TranslateAnimation[this.jdField_a_of_type_ArrayOfFloat.length - 1];
       int i1 = 0;
       if (i1 < this.jdField_a_of_type_ArrayOfAndroidViewAnimationTranslateAnimation.length)
@@ -2959,8 +2889,8 @@ public class Conversation
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 422	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   6: invokevirtual 1401	com/tencent/mobileqq/app/QQAppInterface:isLogin	()Z
+    //   3: getfield 416	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   6: invokevirtual 1338	com/tencent/mobileqq/app/QQAppInterface:isLogin	()Z
     //   9: istore_1
     //   10: iload_1
     //   11: ifne +6 -> 17
@@ -2968,85 +2898,55 @@ public class Conversation
     //   15: monitorexit
     //   16: return
     //   17: aload_0
-    //   18: getfield 422	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   21: invokevirtual 724	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   18: getfield 416	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   21: invokevirtual 710	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
     //   24: aload_0
-    //   25: invokevirtual 1896	com/tencent/mobileqq/app/message/QQMessageFacade:addObserver	(Ljava/util/Observer;)V
+    //   25: invokevirtual 1823	com/tencent/mobileqq/app/message/QQMessageFacade:addObserver	(Ljava/util/Observer;)V
     //   28: aload_0
-    //   29: getfield 422	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   29: getfield 416	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   32: bipush 36
-    //   34: invokevirtual 647	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   37: checkcast 733	com/tencent/mobileqq/qcall/QCallFacade
+    //   34: invokevirtual 641	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   37: checkcast 721	com/tencent/mobileqq/qcall/QCallFacade
     //   40: astore_2
     //   41: aload_2
     //   42: ifnull +8 -> 50
     //   45: aload_2
     //   46: aload_0
-    //   47: invokevirtual 1897	com/tencent/mobileqq/qcall/QCallFacade:addObserver	(Ljava/util/Observer;)V
+    //   47: invokevirtual 1824	com/tencent/mobileqq/qcall/QCallFacade:addObserver	(Ljava/util/Observer;)V
     //   50: aload_0
     //   51: iconst_1
-    //   52: invokespecial 820	com/tencent/mobileqq/activity/Conversation:e	(Z)V
+    //   52: invokespecial 808	com/tencent/mobileqq/activity/Conversation:e	(Z)V
     //   55: aload_0
-    //   56: getfield 422	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   59: ldc_w 718
-    //   62: invokevirtual 1148	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/lang/Class;)Landroid/os/Handler;
-    //   65: astore_2
-    //   66: aload_2
-    //   67: ifnull +11 -> 78
-    //   70: aload_2
-    //   71: sipush 10002
-    //   74: invokevirtual 576	android/os/Handler:sendEmptyMessage	(I)Z
-    //   77: pop
-    //   78: aload_0
-    //   79: getfield 422	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   82: invokevirtual 1900	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/QQGAudioMsgHandler;
-    //   85: invokevirtual 1903	com/tencent/mobileqq/app/QQGAudioMsgHandler:a	()V
-    //   88: aload_0
-    //   89: getfield 422	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   92: invokevirtual 716	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/av/gaudio/GAudioNotifyCenter;
-    //   95: aload_0
-    //   96: getfield 310	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentAvGaudioGAudioObserver	Lcom/tencent/av/gaudio/GAudioObserver;
-    //   99: invokevirtual 1904	com/tencent/av/gaudio/GAudioNotifyCenter:addObserver	(Ljava/util/Observer;)V
-    //   102: aload_0
-    //   103: getfield 234	com/tencent/mobileqq/activity/Conversation:i	Z
-    //   106: ifeq +8 -> 114
-    //   109: aload_0
-    //   110: lconst_0
-    //   111: invokevirtual 1405	com/tencent/mobileqq/activity/Conversation:a	(J)V
-    //   114: aload_0
-    //   115: getfield 422	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   118: bipush 32
-    //   120: invokevirtual 647	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   123: checkcast 1885	com/tencent/mobileqq/app/NewFriendManager
-    //   126: astore_2
-    //   127: aload_2
-    //   128: ifnull -114 -> 14
-    //   131: aload_2
-    //   132: aload_0
-    //   133: getfield 345	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendPushListener	Lcom/tencent/mobileqq/newfriend/NewFriendPushListener;
-    //   136: invokevirtual 1888	com/tencent/mobileqq/app/NewFriendManager:a	(Lcom/tencent/mobileqq/newfriend/NewFriendPushListener;)V
-    //   139: goto -125 -> 14
-    //   142: astore_2
-    //   143: aload_0
-    //   144: monitorexit
-    //   145: aload_2
-    //   146: athrow
+    //   56: getfield 416	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   59: bipush 32
+    //   61: invokevirtual 641	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   64: checkcast 1812	com/tencent/mobileqq/app/NewFriendManager
+    //   67: astore_2
+    //   68: aload_2
+    //   69: ifnull -55 -> 14
+    //   72: aload_2
+    //   73: aload_0
+    //   74: getfield 339	com/tencent/mobileqq/activity/Conversation:jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendPushListener	Lcom/tencent/mobileqq/newfriend/NewFriendPushListener;
+    //   77: invokevirtual 1815	com/tencent/mobileqq/app/NewFriendManager:a	(Lcom/tencent/mobileqq/newfriend/NewFriendPushListener;)V
+    //   80: goto -66 -> 14
+    //   83: astore_2
+    //   84: aload_0
+    //   85: monitorexit
+    //   86: aload_2
+    //   87: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	147	0	this	Conversation
+    //   0	88	0	this	Conversation
     //   9	2	1	bool	boolean
-    //   40	92	2	localObject1	Object
-    //   142	4	2	localObject2	Object
+    //   40	33	2	localObject1	Object
+    //   83	4	2	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   2	10	142	finally
-    //   17	41	142	finally
-    //   45	50	142	finally
-    //   50	66	142	finally
-    //   70	78	142	finally
-    //   78	114	142	finally
-    //   114	127	142	finally
-    //   131	139	142	finally
+    //   2	10	83	finally
+    //   17	41	83	finally
+    //   45	50	83	finally
+    //   50	68	83	finally
+    //   72	80	83	finally
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -3270,7 +3170,7 @@ public class Conversation
             }
             FileUtils.d(paramMessage);
             paramMessage = (Message)localObject1;
-            b(new cmb(this, paramMessage));
+            b(new cfp(this, paramMessage));
           }
           catch (Exception paramMessage) {}
           if (!QLog.isColorLevel()) {
@@ -3413,7 +3313,7 @@ public class Conversation
   
   public void l()
   {
-    ThreadManager.a().post(new clt(this));
+    ThreadManager.a().post(new cfh(this));
   }
   
   public void m()

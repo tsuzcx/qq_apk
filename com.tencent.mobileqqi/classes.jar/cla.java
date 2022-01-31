@@ -1,26 +1,28 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EmosmDetailActivity;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-class cla
-  implements Runnable
+public class cla
+  implements View.OnClickListener
 {
-  cla(cky paramcky, boolean paramBoolean) {}
+  public cla(EmosmDetailActivity paramEmosmDetailActivity, Context paramContext) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Conversation.a(this.jdField_a_of_type_Cky.a, 800L);
-    PullRefreshHeader localPullRefreshHeader = Conversation.a(this.jdField_a_of_type_Cky.a);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 0;; i = 2)
-    {
-      localPullRefreshHeader.a(i);
-      return;
-    }
+    EmosmDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, MarketFaceItemBuilder.a.frienduin, "ep_mall", "Clk_collect", 0);
+    paramView = new QQProgressDialog(this.jdField_a_of_type_AndroidContentContext);
+    paramView.a(this.jdField_a_of_type_AndroidContentContext.getString(2131561618));
+    paramView.show();
+    EmosmDetailActivity.a(6, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.jdField_b_of_type_AndroidWidgetImageView, paramView, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cla
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ import android.text.Spanned;
 import android.text.style.CharacterStyle;
 import com.tencent.mobileqq.text.QQText.EmotcationSpan;
 import com.tencent.mobileqq.text.QQText.LinkSpan;
-import fc;
-import fd;
+import fk;
+import fl;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -220,8 +220,8 @@ public class ETLayout
   {
     Spanned localSpanned = (Spanned)this.jdField_a_of_type_JavaLangCharSequence;
     CharacterStyle[] arrayOfCharacterStyle = (CharacterStyle[])localSpanned.getSpans(0, localSpanned.length(), CharacterStyle.class);
-    fd[] arrayOffd = new fd[arrayOfCharacterStyle.length];
-    if ((arrayOffd == null) || (arrayOffd.length == 0))
+    fl[] arrayOffl = new fl[arrayOfCharacterStyle.length];
+    if ((arrayOffl == null) || (arrayOffl.length == 0))
     {
       a(this.jdField_a_of_type_JavaLangCharSequence.toString(), 0, this.jdField_a_of_type_JavaLangCharSequence.length(), this.jdField_a_of_type_ComEtrumpMixlayoutETFont, false);
       return;
@@ -229,13 +229,13 @@ public class ETLayout
     int i = 0;
     while (i < arrayOfCharacterStyle.length)
     {
-      arrayOffd[i] = new fd();
-      arrayOffd[i].jdField_a_of_type_Int = localSpanned.getSpanStart(arrayOfCharacterStyle[i]);
-      arrayOffd[i].jdField_b_of_type_Int = localSpanned.getSpanEnd(arrayOfCharacterStyle[i]);
-      arrayOffd[i].jdField_a_of_type_AndroidTextStyleCharacterStyle = arrayOfCharacterStyle[i];
+      arrayOffl[i] = new fl();
+      arrayOffl[i].jdField_a_of_type_Int = localSpanned.getSpanStart(arrayOfCharacterStyle[i]);
+      arrayOffl[i].jdField_b_of_type_Int = localSpanned.getSpanEnd(arrayOfCharacterStyle[i]);
+      arrayOffl[i].jdField_a_of_type_AndroidTextStyleCharacterStyle = arrayOfCharacterStyle[i];
       i += 1;
     }
-    Arrays.sort(arrayOffd, new fc());
+    Arrays.sort(arrayOffl, new fk());
     int j = 0;
     i = 0;
     label169:
@@ -243,14 +243,14 @@ public class ETLayout
     int k;
     if (j < arrayOfCharacterStyle.length)
     {
-      m = arrayOffd[j].jdField_a_of_type_Int;
-      k = arrayOffd[j].jdField_b_of_type_Int;
+      m = arrayOffl[j].jdField_a_of_type_Int;
+      k = arrayOffl[j].jdField_b_of_type_Int;
       if (m - i > 0) {
         a(a(this.jdField_a_of_type_JavaLangCharSequence, i, m).toString(), i, m, this.jdField_a_of_type_ComEtrumpMixlayoutETFont, false);
       }
       if (k - m > 0)
       {
-        if (!(arrayOffd[j].jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof QQText.LinkSpan)) {
+        if (!(arrayOffl[j].jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof QQText.LinkSpan)) {
           break label346;
         }
         a(a(this.jdField_a_of_type_JavaLangCharSequence, m, k).toString(), m, k, this.jdField_b_of_type_ComEtrumpMixlayoutETFont, true);
@@ -266,8 +266,8 @@ public class ETLayout
       break label169;
       break;
       label346:
-      if ((arrayOffd[j].jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof QQText.EmotcationSpan)) {
-        a((QQText.EmotcationSpan)arrayOffd[j].jdField_a_of_type_AndroidTextStyleCharacterStyle, m, k, false);
+      if ((arrayOffl[j].jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof QQText.EmotcationSpan)) {
+        a((QQText.EmotcationSpan)arrayOffl[j].jdField_a_of_type_AndroidTextStyleCharacterStyle, m, k, false);
       }
     }
   }

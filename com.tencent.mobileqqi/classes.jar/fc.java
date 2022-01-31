@@ -1,24 +1,23 @@
-import java.util.Comparator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.dataline.util.file.SendInfo;
 
-public class fc
-  implements Comparator
+public final class fc
+  implements Parcelable.Creator
 {
-  public int a(fd paramfd1, fd paramfd2)
+  public SendInfo a(Parcel paramParcel)
   {
-    if (paramfd1.a != paramfd2.a) {
-      if (paramfd1.a <= paramfd2.a) {}
-    }
-    while (paramfd1.b > paramfd2.b)
-    {
-      return 1;
-      return -1;
-    }
-    return -1;
+    return new SendInfo(paramParcel, null);
+  }
+  
+  public SendInfo[] a(int paramInt)
+  {
+    return new SendInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     fc
  * JD-Core Version:    0.7.0.1
  */

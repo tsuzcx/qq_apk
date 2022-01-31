@@ -1,41 +1,17 @@
-import android.os.Process;
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
+import java.io.File;
+import java.util.Comparator;
 
-public class fht
-  extends fhi
+class fht
+  implements Comparator
 {
-  protected void a()
-  {
-    this.jdField_a_of_type_Long += 1L;
-    this.b += 1L;
-    if (this.jdField_a_of_type_Long >= fhd.a().a(this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(Process.myPid())) / 12000L) {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(7, null);
-    }
-    while (this.b != 1L) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.f();
-  }
+  fht(fhq paramfhq) {}
   
-  protected void a(String paramString)
+  public int a(File paramFile1, File paramFile2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(3, paramString);
-  }
-  
-  protected void b()
-  {
-    if (this.jdField_a_of_type_Long > 2L) {
-      this.jdField_a_of_type_Long -= 2L;
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
     }
-  }
-  
-  protected void b(String paramString)
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
-    CoreService.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.d();
+    return 0;
   }
 }
 

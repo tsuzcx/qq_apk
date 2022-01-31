@@ -1,10 +1,15 @@
+import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
 
 public class eps
 {
+  public ImageView a;
   public TextView a;
-  public epr a;
-  public TextView b;
+  public String a;
+  boolean jdField_a_of_type_Boolean;
+  
+  eps(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
 }
 
 

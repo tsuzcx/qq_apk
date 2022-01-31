@@ -31,9 +31,9 @@ public class PadQQCheckBox
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.P);
     this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(1, true);
     this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(0);
-    LayoutInflater.from(paramContext).inflate(2130903295, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131232005));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232006));
+    LayoutInflater.from(paramContext).inflate(2130903297, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131232008));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232009));
     setChecked(this.jdField_a_of_type_Boolean);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
     paramAttributeSet.recycle();
@@ -59,13 +59,13 @@ public class PadQQCheckBox
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838109);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838111);
     }
     for (;;)
     {
       refreshDrawableState();
       return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838107);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838109);
     }
   }
 }

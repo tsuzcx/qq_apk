@@ -24,8 +24,8 @@ public abstract class AbsStructMsgTextElement
   protected boolean b = false;
   protected String h;
   protected String i;
-  protected String j;
-  protected String k;
+  public String j;
+  public String k;
   
   public AbsStructMsgTextElement()
   {
@@ -39,7 +39,7 @@ public abstract class AbsStructMsgTextElement
     this.k = paramString1;
   }
   
-  protected TextUtils.TruncateAt a()
+  public TextUtils.TruncateAt a()
   {
     return TextUtils.TruncateAt.END;
   }
@@ -283,7 +283,7 @@ public abstract class AbsStructMsgTextElement
     this.h = paramString;
   }
   
-  protected abstract int c();
+  public abstract int c();
   
   public void c(String paramString)
   {

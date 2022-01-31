@@ -1,15 +1,17 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils;
+import java.io.File;
 
-public class ecc
-  implements Runnable
+public final class ecc
+  implements DialogInterface.OnClickListener
 {
-  public ecc(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt) {}
+  public ecc(Activity paramActivity, File paramFile1, File paramFile2) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(2, 300, new Object[] { this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, Integer.valueOf(this.jdField_a_of_type_Int) });
+    AIOGalleryUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaIoFile, this.b);
   }
 }
 

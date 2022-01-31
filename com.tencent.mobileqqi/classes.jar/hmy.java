@@ -1,17 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityActivity;
-import org.json.JSONObject;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.StaticAnalyz;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
 
 public class hmy
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public hmy(AuthorityActivity paramAuthorityActivity, int paramInt, JSONObject paramJSONObject) {}
+  public hmy(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
+    try
+    {
+      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+      if (localTMAssistantDownloadTaskInfo != null)
+      {
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k = localTMAssistantDownloadTaskInfo.mSavePath;
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.e(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(4, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+      }
+      StaticAnalyz.a("300", this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b);
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.c(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+      return;
+    }
+    catch (Exception localException)
+    {
+      LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
+    }
   }
 }
 

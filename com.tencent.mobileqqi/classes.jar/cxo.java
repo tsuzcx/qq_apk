@@ -1,24 +1,25 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.LbsBaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class cxo
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public cxo(LbsBaseActivity paramLbsBaseActivity) {}
+  public cxo(NotificationActivity paramNotificationActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((LbsBaseActivity.b(this.a) != null) && (LbsBaseActivity.b(this.a).isShowing())) {
-      LbsBaseActivity.b(this.a).dismiss();
-    }
-    this.a.a();
+    paramDialogInterface = "http://aq.qq.com/007?from=andapp&account=" + NotificationActivity.a(this.a);
+    Intent localIntent = new Intent(this.a.a(), QQBrowserActivity.class);
+    this.a.startActivity(localIntent.putExtra("url", paramDialogInterface));
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     cxo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,24 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.ForwardImageProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
 
 public class grq
-  extends TransProcessorHandler
+  implements AdapterView.OnItemLongClickListener
 {
-  public grq(ForwardImageProcessor paramForwardImageProcessor) {}
+  public grq(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int i = paramMessage.what;
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((i == 2002) || ((ForwardImageProcessor.a(this.a).equals(localFileMsg.m)) && (localFileMsg.e == 1) && (i != 2002)))
-    {
-      if ((localFileMsg.o == null) || (!localFileMsg.o.equals(ForwardImageProcessor.b(this.a)))) {
-        return;
-      }
-      switch (i)
-      {
-      }
+    if (this.a.c) {
+      TroopAvatarWallPreviewActivity.a(this.a);
     }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      ForwardImageProcessor.a(this.a);
-      continue;
-      if (FileUtils.b(ForwardImageProcessor.c(this.a)))
-      {
-        ForwardImageProcessor.a(this.a).a().b(this);
-        ForwardImageProcessor.b(this.a);
-      }
-      else
-      {
-        ForwardImageProcessor.a(this.a);
-      }
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     grq
  * JD-Core Version:    0.7.0.1
  */

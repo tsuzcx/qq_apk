@@ -1,20 +1,18 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.mobileqq.activity.TroopDisbandActivity.MemberGridAdapter;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class dpd
+  extends FriendListObserver
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
-  ShaderAnimLayout jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout;
-  TextView b;
-  TextView c;
+  public dpd(TroopDisbandActivity paramTroopDisbandActivity) {}
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (this.a.a != null) && (this.a.a.a(paramString))) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
 }
 
 

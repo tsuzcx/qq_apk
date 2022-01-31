@@ -1,37 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.webviewplugin.SosoPlugin;
-import com.tencent.mobileqq.transfile.SosoSrvAddrProvider;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class bvi
-  extends BroadcastReceiver
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public bvi(SosoPlugin paramSosoPlugin) {}
+  public bvi(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int i = paramIntent.getIntExtra("com.tencent.receiver.soso.type", SosoSrvAddrProvider.a);
-    if (i == SosoSrvAddrProvider.a)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(SosoPlugin.a(this.a), 2, "soso receiver ACTION_SOSO_TYPE_UPDATE");
-      }
-      SosoSrvAddrProvider.a().c();
-    }
-    while (i != SosoSrvAddrProvider.b) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(SosoPlugin.b(this.a), 2, "soso receiver ACTION_SOSO_TYPE_CLEAR");
-    }
-    SosoSrvAddrProvider.a().a();
+    AssistantSettingActivity.e(this.a).setContentDescription("联系人列表按字母排列");
+    SettingCloneUtil.writeValue(this.a, this.a.b.a(), null, "qqsetting_msg_lockscreen_key", paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bvi
  * JD-Core Version:    0.7.0.1
  */

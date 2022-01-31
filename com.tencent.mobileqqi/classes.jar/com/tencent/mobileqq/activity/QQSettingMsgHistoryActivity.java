@@ -40,14 +40,14 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.CacheManager;
 import cooperation.qqfav.QfavHelper;
 import cooperation.qzone.QZoneHelper;
-import djm;
-import djn;
-import djp;
-import djq;
-import djs;
-import djt;
-import djv;
-import djw;
+import ddv;
+import ddw;
+import ddy;
+import ddz;
+import deb;
+import dec;
+import dee;
+import def;
 import java.io.File;
 import java.util.Vector;
 import mqq.app.MobileQQ;
@@ -64,7 +64,7 @@ public class QQSettingMsgHistoryActivity
   private long jdField_a_of_type_Long = 0L;
   public Handler a;
   private View jdField_a_of_type_AndroidViewView;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new djw(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new def(this);
   private StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   public QQProgressDialog a;
@@ -80,7 +80,7 @@ public class QQSettingMsgHistoryActivity
   
   public QQSettingMsgHistoryActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new djm(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ddv(this);
   }
   
   private void b(String paramString)
@@ -172,7 +172,7 @@ public class QQSettingMsgHistoryActivity
     b(AppConstants.an + "temp" + "/");
     b(CardHandler.jdField_a_of_type_JavaLangString + "temp" + "/");
     b(CardHandler.jdField_a_of_type_JavaLangString + "HDAvatar" + "/");
-    b(AppConstants.bg);
+    b(AppConstants.bk);
     b(CardHandler.jdField_a_of_type_JavaLangString + "voice" + "/");
   }
   
@@ -204,19 +204,19 @@ public class QQSettingMsgHistoryActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903623);
+    setContentView(2130903625);
     setTitle(2131562217);
     this.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a();
     setVolumeControlStream(3);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131233120));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131233122));
     paramBundle = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
     if (this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.f() == 1) {}
     for (boolean bool = true;; bool = false)
     {
       paramBundle.setChecked(bool);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131233121);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131233122);
-      this.c = findViewById(2131233123);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131233123);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131233124);
+      this.c = findViewById(2131233125);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
@@ -346,22 +346,22 @@ public class QQSettingMsgHistoryActivity
     {
     default: 
       return;
-    case 2131233121: 
+    case 2131233123: 
       paramView = DialogUtil.c(this, 230, null, null, 2131561746, 2131562539, null, null);
       paramView.setMessage(getString(2131561824));
       paramView.setDividerGone();
-      localObject1 = new djn(this);
-      localObject2 = new djp(this);
+      localObject1 = new ddw(this);
+      localObject2 = new ddy(this);
       paramView.setPositiveButton(2131562539, (DialogInterface.OnClickListener)localObject1);
       paramView.setNegativeButton(2131561746, (DialogInterface.OnClickListener)localObject2);
       paramView.show();
       return;
-    case 2131233122: 
+    case 2131233124: 
       paramView = DialogUtil.c(this, 230, null, null, 2131561746, 2131562539, null, null);
       paramView.setMessage(getString(2131561667));
       paramView.setDividerGone();
-      localObject1 = new djq(this);
-      localObject2 = new djs(this);
+      localObject1 = new ddz(this);
+      localObject2 = new deb(this);
       paramView.setPositiveButton(2131562539, (DialogInterface.OnClickListener)localObject1);
       paramView.setNegativeButton(2131561746, (DialogInterface.OnClickListener)localObject2);
       paramView.show();
@@ -370,8 +370,8 @@ public class QQSettingMsgHistoryActivity
     paramView = DialogUtil.c(this, 230, null, null, 2131561746, 2131562539, null, null);
     paramView.setMessage(getString(2131560603));
     paramView.setDividerGone();
-    Object localObject1 = new djt(this);
-    Object localObject2 = new djv(this);
+    Object localObject1 = new dec(this);
+    Object localObject2 = new dee(this);
     paramView.setPositiveButton(2131562539, (DialogInterface.OnClickListener)localObject1);
     paramView.setNegativeButton(2131561746, (DialogInterface.OnClickListener)localObject2);
     paramView.show();

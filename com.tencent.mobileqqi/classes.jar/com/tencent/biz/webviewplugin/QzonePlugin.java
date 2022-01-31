@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import buw;
-import bux;
+import bov;
+import bow;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
@@ -24,7 +24,7 @@ public class QzonePlugin
   
   private void a()
   {
-    new Handler().post(new bux(this));
+    new Handler().post(new bow(this));
   }
   
   private void a(byte[] paramArrayOfByte)
@@ -33,7 +33,7 @@ public class QzonePlugin
     while ((this.c != null) && (this.b != null) && (this.b.equals(this.c))) {
       return;
     }
-    new Handler().post(new buw(this, paramArrayOfByte));
+    new Handler().post(new bov(this, paramArrayOfByte));
     this.b = this.c;
   }
   

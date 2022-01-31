@@ -44,8 +44,8 @@ public class StructMsgItemLayout2
     Resources localResources = paramContext.getResources();
     TextViewWrapLayout localTextViewWrapLayout = new TextViewWrapLayout(paramContext);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    int m = localResources.getDimensionPixelSize(2131427485);
-    int n = localResources.getDimensionPixelSize(2131427486);
+    int m = localResources.getDimensionPixelSize(2131427488);
+    int n = localResources.getDimensionPixelSize(2131427489);
     int i = AIOUtils.a(5.0F, localResources);
     if (a(1)) {}
     for (int j = a(paramContext) + i;; j = i)
@@ -57,7 +57,7 @@ public class StructMsgItemLayout2
       localTextViewWrapLayout.setPadding(m, j, n, k);
       localTextViewWrapLayout.setLayoutParams(localLayoutParams);
       if (!TextUtils.isEmpty(this.c)) {
-        localTextViewWrapLayout.setBackgroundResource(2130837875);
+        localTextViewWrapLayout.setBackgroundResource(2130837877);
       }
       b(localTextViewWrapLayout);
       return localTextViewWrapLayout;

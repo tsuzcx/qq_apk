@@ -1,21 +1,21 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.CircleBuddy;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.ConfigObserver;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class eii
+  extends ConfigObserver
 {
-  public int a;
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public CircleBuddy a;
-  public Button b;
-  public TextView b;
+  public eii(MainAssistObserver paramMainAssistObserver) {}
+  
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  {
+    MainAssistObserver.a(this.a, paramUpgradeDetailWrapper);
+    this.a.g();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eii
  * JD-Core Version:    0.7.0.1
  */

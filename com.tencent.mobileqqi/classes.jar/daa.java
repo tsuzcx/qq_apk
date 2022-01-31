@@ -1,27 +1,48 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class daa
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public daa(LoginInfoActivity paramLoginInfoActivity) {}
+  public daa(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
+    paramDialogInterface = ProfileCardMoreActivity.a(this.a).getInputValue();
+    if (!paramDialogInterface.equals(this.a.jdField_a_of_type_JavaLangString))
     {
+      if (!NetworkUtil.e(BaseApplication.getContext())) {
+        break label133;
+      }
+      if (paramDialogInterface.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h)) {
+        break label122;
+      }
+      FriendListHandler localFriendListHandler = (FriendListHandler)this.a.b.a(1);
+      if (localFriendListHandler != null)
+      {
+        localFriendListHandler.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, paramDialogInterface);
+        ProfileCardMoreActivity.a(this.a, ProfileCardMoreActivity.a(this.a) | 0x1);
+        this.a.b(paramDialogInterface);
+      }
     }
-    do
+    else
     {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.LoginInfoActivity", 2, "handleMessage.msg.arg1=" + paramMessage.arg1);
-      }
-    } while (LoginInfoActivity.a(this.a) == null);
-    LoginInfoActivity.a(this.a).DevSetup = paramMessage.arg1;
-    LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
+    }
+    this.a.a(2131562435, 1);
+    return;
+    label122:
+    this.a.a(2131562516, 0);
+    return;
+    label133:
+    this.a.a(2131562445, 1);
   }
 }
 

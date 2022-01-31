@@ -1,25 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.StrangerManageActivity;
 
 public class dla
-  extends Handler
+  implements View.OnClickListener
 {
-  public dla(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public dla(StrangerManageActivity paramStrangerManageActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.finish();
+    this.a.b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dla
  * JD-Core Version:    0.7.0.1
  */

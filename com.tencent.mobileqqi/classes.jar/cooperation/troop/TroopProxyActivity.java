@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pluginsdk.PluginUtils;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import cooperation.plugin.IPluginManager;
 import cooperation.plugin.IPluginManager.PluginParams;
-import iie;
+import idk;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -34,11 +34,11 @@ public class TroopProxyActivity
   
   public static Dialog a(Activity paramActivity)
   {
-    if (!PluginUtils.isPluginInstalled(paramActivity, "troop_plugin.apk", "25030"))
+    if (!PluginUtils.isPluginInstalled(paramActivity, "troop_plugin.apk", "master"))
     {
       QQProgressDialog localQQProgressDialog = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131427376));
       localQQProgressDialog.a(paramActivity.getString(2131559634));
-      localQQProgressDialog.setOnDismissListener(new iie());
+      localQQProgressDialog.setOnDismissListener(new idk());
       return localQQProgressDialog;
     }
     try

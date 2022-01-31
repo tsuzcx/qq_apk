@@ -1,20 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.EmosmDetailActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class ckm
-  implements DialogInterface.OnCancelListener
+  extends EmoticonPackageDownloadListener
 {
-  public ckm(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
+  public ckm(EmosmDetailActivity paramEmosmDetailActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onJsonComplete(EmoticonPackage paramEmoticonPackage, int paramInt)
   {
-    this.a.finish();
+    if ((Long.parseLong(paramEmoticonPackage.epId) == Long.parseLong(EmosmDetailActivity.a(this.a))) && (paramInt == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.EmosmDetailActivity", 2, "json is complete,result ok: " + EmosmDetailActivity.a(this.a));
+      }
+      this.a.b.getPreferences().edit().putInt("emosm_json_last_download_timestamp", (int)(System.currentTimeMillis() / 1000L)).commit();
+      this.a.runOnUiThread(new ckn(this, paramEmoticonPackage));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ckm
  * JD-Core Version:    0.7.0.1
  */

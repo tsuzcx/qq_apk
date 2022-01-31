@@ -27,7 +27,7 @@ public class LocalBilldDownloader
   
   public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    paramURLDrawableHandler = new File(AppConstants.aJ);
+    paramURLDrawableHandler = new File(AppConstants.aN);
     if (!paramURLDrawableHandler.exists()) {
       paramURLDrawableHandler.mkdirs();
     }

@@ -36,7 +36,7 @@ public class FormSimpleItem
   private int m;
   private int n;
   private int o;
-  private int p = getResources().getDimensionPixelSize(2131427599);
+  private int p = getResources().getDimensionPixelSize(2131427602);
   private int q;
   private int r;
   private int s;
@@ -50,12 +50,12 @@ public class FormSimpleItem
   public FormSimpleItem(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    int i1 = getResources().getDimensionPixelSize(2131427598);
+    int i1 = getResources().getDimensionPixelSize(2131427601);
     this.q = ((int)(getResources().getDisplayMetrics().density * 175.0F + 0.5D));
     this.r = ((int)(getResources().getDisplayMetrics().density * 35.0F + 0.5D));
     this.s = ((int)(getResources().getDisplayMetrics().density * 15.0F + 0.5D));
     this.t = ((int)(getResources().getDisplayMetrics().density * 260.0F + 0.5D));
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837803);
+    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837804);
     this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = null;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.A);
     this.o = paramContext.getDimensionPixelSize(3, i1);
@@ -82,13 +82,13 @@ public class FormSimpleItem
     switch (paramInt)
     {
     default: 
-      return paramResources.getColorStateList(2131362070);
+      return paramResources.getColorStateList(2131362080);
     case 0: 
-      return paramResources.getColorStateList(2131362070);
+      return paramResources.getColorStateList(2131362080);
     case 2: 
-      return paramResources.getColorStateList(2131362099);
+      return paramResources.getColorStateList(2131362109);
     }
-    return paramResources.getColorStateList(2131362073);
+    return paramResources.getColorStateList(2131362083);
   }
   
   public static Drawable a(Resources paramResources, int paramInt)
@@ -96,15 +96,15 @@ public class FormSimpleItem
     switch (paramInt)
     {
     default: 
-      return paramResources.getDrawable(2130837875);
+      return paramResources.getDrawable(2130837877);
     case 0: 
-      return paramResources.getDrawable(2130837875);
+      return paramResources.getDrawable(2130837877);
     case 1: 
-      return paramResources.getDrawable(2130837880);
+      return paramResources.getDrawable(2130837882);
     case 2: 
-      return paramResources.getDrawable(2130837879);
+      return paramResources.getDrawable(2130837881);
     }
-    return paramResources.getDrawable(2130837877);
+    return paramResources.getDrawable(2130837879);
   }
   
   private void a()
@@ -140,8 +140,8 @@ public class FormSimpleItem
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.leftMargin = this.p;
-    localLayoutParams.topMargin = getResources().getDimensionPixelSize(2131427600);
-    localLayoutParams.bottomMargin = getResources().getDimensionPixelSize(2131427601);
+    localLayoutParams.topMargin = getResources().getDimensionPixelSize(2131427603);
+    localLayoutParams.bottomMargin = getResources().getDimensionPixelSize(2131427604);
     localLayoutParams.addRule(9);
     localLayoutParams.addRule(12);
     addView(this.jdField_c_of_type_AndroidWidgetTextView, localLayoutParams);
@@ -304,7 +304,7 @@ public class FormSimpleItem
     {
       this.jdField_c_of_type_AndroidWidgetTextView.setText(paramCharSequence);
       this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(paramCharSequence);
-      setCustomHeight(getResources().getDimensionPixelSize(2131427602));
+      setCustomHeight(getResources().getDimensionPixelSize(2131427605));
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
     }
   }

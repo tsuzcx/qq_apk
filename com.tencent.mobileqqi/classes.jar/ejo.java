@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
 
 public class ejo
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ejo(NewFriendActivity paramNewFriendActivity) {}
+  public ejo(MessageSearchDialog paramMessageSearchDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    NewFriendActivity.b(this.a);
+    this.a.dismiss();
   }
 }
 

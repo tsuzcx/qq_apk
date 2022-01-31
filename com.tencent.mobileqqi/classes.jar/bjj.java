@@ -1,14 +1,13 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
-public class bjj
+class bjj
   implements Runnable
 {
-  public bjj(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  bjj(bji parambji, String paramString1, String paramString2) {}
   
   public void run()
   {
-    this.a.a.a(new Object[] { Integer.valueOf(102) });
+    this.jdField_a_of_type_Bji.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.b });
   }
 }
 

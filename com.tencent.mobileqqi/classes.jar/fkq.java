@@ -1,39 +1,42 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.SVIPHandler;
-import com.tencent.mobileqq.app.SVIPHandler.OrderListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.WeakHashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.proxy.TroopInfoProxy;
+import com.tencent.mobileqq.data.TroopInfo;
 
-public class fkq
-  extends Handler
+public final class fkq
+  implements Parcelable.Creator
 {
-  public fkq(SVIPHandler paramSVIPHandler, Looper paramLooper)
+  public TroopInfoProxy a(Parcel paramParcel)
   {
-    super(paramLooper);
+    TroopInfo localTroopInfo = new TroopInfo();
+    localTroopInfo.uin = paramParcel.readString();
+    localTroopInfo.timeSec = paramParcel.readLong();
+    localTroopInfo.troopuin = paramParcel.readString();
+    localTroopInfo.troopcode = paramParcel.readString();
+    localTroopInfo.troopowneruin = paramParcel.readString();
+    localTroopInfo.troopname = paramParcel.readString();
+    localTroopInfo.troopface = ((short)paramParcel.readInt());
+    localTroopInfo.troopmemo = paramParcel.readString();
+    localTroopInfo.fingertroopmemo = paramParcel.readString();
+    localTroopInfo.troopmask = paramParcel.readInt();
+    localTroopInfo.trooptype = paramParcel.readInt();
+    localTroopInfo.troopCreateTime = paramParcel.readLong();
+    localTroopInfo.dwGroupFlag = paramParcel.readLong();
+    localTroopInfo.troopmask = paramParcel.readInt();
+    localTroopInfo.cGroupOption = ((short)paramParcel.readInt());
+    localTroopInfo.wMemberMax = paramParcel.readInt();
+    localTroopInfo.wSpecialClass = paramParcel.readInt();
+    localTroopInfo.cGroupLevel = ((short)paramParcel.readInt());
+    localTroopInfo.wMemberNum = paramParcel.readInt();
+    localTroopInfo.Administrator = paramParcel.readString();
+    localTroopInfo.dwGroupClassExt = paramParcel.readLong();
+    localTroopInfo.dwGroupFlagExt = paramParcel.readLong();
+    return new TroopInfoProxy(localTroopInfo);
   }
   
-  public void handleMessage(Message paramMessage)
+  public TroopInfoProxy[] a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    synchronized (this.a.a)
-    {
-      SVIPHandler.OrderListener localOrderListener = (SVIPHandler.OrderListener)this.a.a.remove(Integer.valueOf(paramMessage.arg1));
-      if (QLog.isColorLevel()) {
-        QLog.d("vip", 2, "Order buble id timeout");
-      }
-      if (localOrderListener != null)
-      {
-        SVIPHandler.a(this.a, true);
-        localOrderListener.a(-1, paramMessage.arg2, null, null, null, null);
-      }
-      return;
-    }
+    return new TroopInfoProxy[paramInt];
   }
 }
 

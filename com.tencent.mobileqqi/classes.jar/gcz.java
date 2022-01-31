@@ -1,105 +1,64 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader.IUniformDownloaderListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
 
 public class gcz
-  implements UniformDownloader.IUniformDownloaderListener
+  extends BroadcastReceiver
 {
-  public gcz(UniformDownloader paramUniformDownloader) {}
+  public gcz(MusicGeneQQBrowserActivity paramMusicGeneQQBrowserActivity) {}
   
-  public void a(int paramInt, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    boolean bool = this.a.c();
-    QLog.i(UniformDownloader.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadStart. start:" + bool + "progress:" + paramInt);
-    if (bool) {}
-    for (;;)
+    if (paramIntent == null) {}
+    do
     {
-      return;
-      this.a.a(true);
-      Iterator localIterator = UniformDownloader.a(this.a).iterator();
-      while (localIterator.hasNext())
+      do
       {
-        UniformDownloader.IUniformDownloaderListener localIUniformDownloaderListener = (UniformDownloader.IUniformDownloaderListener)localIterator.next();
-        if (localIUniformDownloaderListener != null) {
-          localIUniformDownloaderListener.a(paramInt, paramBundle);
+        do
+        {
+          do
+          {
+            return;
+            paramContext = paramIntent.getAction();
+            String str1;
+            String str2;
+            String str3;
+            if ("BROAD_CAST_SHARE_MUSIC_GENE".equals(paramContext))
+            {
+              paramContext = paramIntent.getStringExtra("BUNDLE_KEY_TITLE");
+              str1 = paramIntent.getStringExtra("BUNDLE_KEY_DESC");
+              str2 = paramIntent.getStringExtra("BUDNLE_KEY_IMG_URL");
+              str3 = paramIntent.getStringExtra("BUNDLE_KEY_SRC");
+              paramIntent = paramIntent.getStringExtra("BUNDLE_KEY_ICON_URL");
+              MusicGeneQQBrowserActivity.a(this.a, str2, str3, "", str1, paramContext, paramIntent, 1101244924L);
+              return;
+            }
+            if ("BROAD_CAST_SHARE_SONG".equals(paramContext))
+            {
+              paramContext = paramIntent.getStringExtra("BUNDLE_KEY_TITLE");
+              str1 = paramIntent.getStringExtra("BUNDLE_KEY_DESC");
+              str2 = paramIntent.getStringExtra("BUDNLE_KEY_IMG_URL");
+              str3 = paramIntent.getStringExtra("BUNDLE_KEY_SRC");
+              String str4 = paramIntent.getStringExtra("BUNDLE_KEY_AUDIO_URL");
+              paramIntent = paramIntent.getStringExtra("BUNDLE_KEY_ICON_URL");
+              MusicGeneQQBrowserActivity.a(this.a, str2, str3, str4, str1, paramContext, paramIntent, 1101244924L);
+              return;
+            }
+          } while (!"BROAD_CAST_UPDATE_TITLE".equals(paramContext));
+          paramContext = paramIntent.getStringExtra("BUNDLE_KEY_URL");
+        } while (paramContext == null);
+        if (!paramContext.contains("http://y.qq.com/m/gene/play.html")) {
+          break;
         }
-      }
-    }
-  }
-  
-  public void a(int paramInt, String paramString, Bundle paramBundle)
-  {
-    QLog.i(UniformDownloader.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadFailed. errcode:" + paramInt + "errStr:" + paramString);
-    Iterator localIterator = UniformDownloader.a(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      UniformDownloader.IUniformDownloaderListener localIUniformDownloaderListener = (UniformDownloader.IUniformDownloaderListener)localIterator.next();
-      if (localIUniformDownloaderListener != null) {
-        localIUniformDownloaderListener.a(paramInt, paramString, paramBundle);
-      }
-    }
-  }
-  
-  public void a(String paramString, long paramLong, Bundle paramBundle)
-  {
-    QLog.i(UniformDownloader.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadSucess. filePath:" + paramString);
-    paramBundle = new Bundle();
-    paramBundle.putInt("_CB_SID", UniformDownloader.a(this.a));
-    paramBundle.putString("_CB_URL", UniformDownloader.a(this.a));
-    Iterator localIterator = UniformDownloader.a(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      UniformDownloader.IUniformDownloaderListener localIUniformDownloaderListener = (UniformDownloader.IUniformDownloaderListener)localIterator.next();
-      if (localIUniformDownloaderListener != null) {
-        localIUniformDownloaderListener.a(paramString, paramLong, paramBundle);
-      }
-    }
-  }
-  
-  public void b(int paramInt, Bundle paramBundle)
-  {
-    QLog.i(UniformDownloader.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadResume. progress:" + paramInt);
-    Iterator localIterator = UniformDownloader.a(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      UniformDownloader.IUniformDownloaderListener localIUniformDownloaderListener = (UniformDownloader.IUniformDownloaderListener)localIterator.next();
-      if (localIUniformDownloaderListener != null) {
-        localIUniformDownloaderListener.b(paramInt, paramBundle);
-      }
-    }
-  }
-  
-  public void c(int paramInt, Bundle paramBundle)
-  {
-    Iterator localIterator = UniformDownloader.a(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      UniformDownloader.IUniformDownloaderListener localIUniformDownloaderListener = (UniformDownloader.IUniformDownloaderListener)localIterator.next();
-      if (localIUniformDownloaderListener != null) {
-        localIUniformDownloaderListener.c(paramInt, paramBundle);
-      }
-    }
-  }
-  
-  public void d(int paramInt, Bundle paramBundle)
-  {
-    QLog.i(UniformDownloader.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadPause. progress:" + paramInt);
-    Iterator localIterator = UniformDownloader.a(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      UniformDownloader.IUniformDownloaderListener localIUniformDownloaderListener = (UniformDownloader.IUniformDownloaderListener)localIterator.next();
-      if (localIUniformDownloaderListener != null) {
-        localIUniformDownloaderListener.d(paramInt, paramBundle);
-      }
-    }
+      } while (!MusicGeneQQBrowserActivity.a(this.a));
+      return;
+    } while (!MusicGeneQQBrowserActivity.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gcz
  * JD-Core Version:    0.7.0.1
  */

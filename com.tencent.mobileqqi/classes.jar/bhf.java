@@ -1,8 +1,24 @@
+import android.widget.ImageView;
+import com.tencent.biz.PoiMapActivity.ShopListAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+
 public class bhf
+  implements URLDrawable.URLDrawableListener
 {
-  public int a;
-  public int b;
-  public int c;
+  public bhf(PoiMapActivity.ShopListAdapter paramShopListAdapter, ImageView paramImageView) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+  }
 }
 
 

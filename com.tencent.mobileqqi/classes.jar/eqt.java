@@ -1,12 +1,19 @@
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
+
 public class eqt
+  implements Runnable
 {
-  public int a;
-  public byte[] a;
-  public int b;
+  public eqt(SelectMemberActivity paramSelectMemberActivity) {}
   
-  private eqt(int paramInt)
+  public void run()
   {
-    this.a = new byte[paramInt];
+    Object localObject = ((SelectMemberInnerFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).a();
+    localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1000, localObject);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
   }
 }
 

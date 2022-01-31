@@ -1,31 +1,48 @@
-import android.app.NotificationManager;
-import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.automator.step.GetTroopAssisMsg;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MsgAutoMonitorUtil;
 
 public class fif
-  implements Runnable
+  extends MessageObserver
 {
-  public fif(MessageHandler paramMessageHandler, NotificationManager paramNotificationManager) {}
+  private fif(GetTroopAssisMsg paramGetTroopAssisMsg) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    try
-    {
-      Thread.sleep(5000L);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.msg.MessageHandler", 4, "PConline time expired cancel now");
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "onGetAllProxyMsgFin:" + paramBoolean + ", timeoutFlag=" + paramLong1 + ", type=" + paramLong2);
+    }
+    if (paramLong2 == 1L) {
+      if ((!paramBoolean) || (paramLong1 == 8L) || (paramLong1 == 4L)) {
+        break label95;
       }
-      this.jdField_a_of_type_AndroidAppNotificationManager.cancel(MessageHandler.bL);
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, false);
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, null);
+    }
+    label95:
+    for (int i = 1; i == 0; i = 0)
+    {
+      this.a.a(6);
       return;
     }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "PConline thread Interrupt");
-      }
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, null);
+    this.a.a(7);
+  }
+  
+  protected void a(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "on GetTroopMsg Fin:" + paramBoolean);
+    }
+    MsgAutoMonitorUtil.a().h();
+    this.a.a(7);
+  }
+  
+  protected void f(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "on RegisterProxy Fin:" + paramBoolean);
+    }
+    if (!paramBoolean) {
+      this.a.a(6);
     }
   }
 }

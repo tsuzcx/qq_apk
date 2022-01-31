@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
 
 public class epy
-  implements DialogInterface.OnKeyListener
+  extends TroopMemberListActivity.ViewHolder
 {
-  public epy(DialogBaseActivity paramDialogBaseActivity) {}
+  public CheckBox a;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    return paramInt == 4;
-  }
+  private epy(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
 }
 
 

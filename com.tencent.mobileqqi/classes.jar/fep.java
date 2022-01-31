@@ -1,22 +1,25 @@
-import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.app.NewFriendManager;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.conditionsearch.data.AddressHelper;
+import com.tencent.mobileqq.data.RecommendContact;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.Vector;
 
 public class fep
   implements Runnable
 {
-  public fep(ConditionSearchManager paramConditionSearchManager, File paramFile) {}
+  public fep(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
   public void run()
   {
-    long l = System.currentTimeMillis();
-    ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager, AddressHelper.a(ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager), this.jdField_a_of_type_JavaIoFile));
     if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "updateLocal | doParse cost " + (System.currentTimeMillis() - l) / 1000L + " seconds");
+      QLog.d("PhoneContact", 2, "deleteRecommendList ");
     }
-    ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager).runOnUiThread(new feq(this));
+    PhoneContactManagerImp.a(this.a).a(RecommendContact.class);
+    this.a.a.clear();
+    this.a.i();
+    ((NewFriendManager)PhoneContactManagerImp.a(this.a).getManager(32)).d();
   }
 }
 

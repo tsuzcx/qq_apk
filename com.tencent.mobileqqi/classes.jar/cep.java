@@ -1,54 +1,46 @@
-import android.app.Dialog;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class cep
-  extends CardObserver
+  extends TransProcessorHandler
 {
-  public cep(ChatActivity paramChatActivity) {}
+  public cep(Conversation paramConversation) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
+    int j = 0;
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if ((Conversation.a(this.a) == null) || (localFileMsg == null) || (TextUtils.isEmpty(localFileMsg.m))) {}
+    do
     {
-      if ((paramBoolean) && (this.a.a.jdField_a_of_type_JavaLangString != null) && (paramObject != null) && (this.a.a.jdField_a_of_type_JavaLangString.equals(paramObject.uin)) && ((this.a.a.jdField_a_of_type_Int == 1001) || (this.a.a.jdField_a_of_type_Int == 1003)) && (paramObject != null) && (paramObject.strCertificationInfo != null) && (!paramObject.strCertificationInfo.equals(""))) {
-        ChatActivityFacade.d(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a);
-      }
-      if ((paramBoolean) && (paramObject != null)) {}
-      switch (this.a.a.jdField_a_of_type_Int)
+      int k;
+      int i;
+      do
       {
-      default: 
-        if ((this.a.a.jdField_a_of_type_JavaLangString != null) && (this.a.a.jdField_a_of_type_JavaLangString.equals(paramObject.uin)))
-        {
-          this.a.h();
-          this.a.jdField_b_of_type_AndroidWidgetTextView.setText(this.a.a.d);
-          if (3000 == this.a.a.jdField_a_of_type_Int) {
-            ChatActivity.a(this.a, this.a.a.d, this.a.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_AndroidWidgetTextView);
-          }
-        }
         return;
-      }
-      this.a.b(false);
-      return;
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((this.a.c != null) && (this.a.c.isShowing())) {
-      this.a.dismissDialog(231);
-    }
-    if (paramBoolean)
-    {
-      this.a.showDialog(232);
-      return;
-    }
-    this.a.showDialog(233);
+        k = paramMessage.what;
+        if (localFileMsg.e != 1)
+        {
+          i = j;
+          if (localFileMsg.e != 2) {}
+        }
+        else if ((k != 1001) && (k != 1002) && (k != 1000) && (k != 1005))
+        {
+          i = j;
+          if (k != 1003) {}
+        }
+        else
+        {
+          i = 1;
+        }
+      } while ((i == 0) && (((k != 1003) && (k != 2003)) || ((localFileMsg.e != 2) && (!Conversation.a(this.a)))));
+      this.a.a(8, localFileMsg.m, -2147483648);
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.recent", 2, "refresh recent, from_transferListener2");
   }
 }
 

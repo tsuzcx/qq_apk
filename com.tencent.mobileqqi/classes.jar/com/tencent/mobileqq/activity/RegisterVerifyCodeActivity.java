@@ -14,12 +14,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.utils.SMSBodyObserver;
-import com.tencent.mobileqq.app.utils.SmsContent;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
-import dmp;
-import dmq;
-import dmr;
+import dgy;
+import dgz;
+import dha;
 import mqq.manager.AccountManager;
 import mqq.observer.AccountObserver;
 
@@ -33,9 +32,8 @@ public class RegisterVerifyCodeActivity
   private Button jdField_a_of_type_AndroidWidgetButton;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private SmsContent jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new dmp(this);
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new dmq(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new dgy(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new dgz(this);
   private int c;
   private int h = 60;
   
@@ -75,14 +73,14 @@ public class RegisterVerifyCodeActivity
   
   private void e()
   {
-    ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232961)).setText(getString(2131563062, new Object[] { this.jdField_c_of_type_JavaLangString }));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232963));
+    ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232964)).setText(getString(2131563062, new Object[] { this.jdField_c_of_type_JavaLangString }));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232966));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131562863) + "(" + this.jdField_c_of_type_Int + ")");
     this.jdField_b_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232995));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232998));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232014));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232017));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
   }
   
@@ -151,7 +149,7 @@ public class RegisterVerifyCodeActivity
   
   public void handleMessage(String paramString1, String paramString2)
   {
-    runOnUiThread(new dmr(this, paramString1, paramString2));
+    runOnUiThread(new dha(this, paramString1, paramString2));
   }
   
   public void onClick(View paramView)
@@ -165,7 +163,7 @@ public class RegisterVerifyCodeActivity
     {
     default: 
       return;
-    case 2131232963: 
+    case 2131232966: 
       f();
       return;
     }
@@ -175,25 +173,19 @@ public class RegisterVerifyCodeActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)c(2130903655));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)c(2130903657));
     setTitle(2131562240);
     this.jdField_c_of_type_JavaLangString = getIntent().getStringExtra("phonenum");
     this.d = getIntent().getStringExtra("key");
     this.e = getIntent().getStringExtra("key_register_now_account");
     this.g = getIntent().getIntExtra("eu_birthday_bundle", 0);
     e();
-    this.jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent = new SmsContent(null);
-    this.jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent.a(this, this);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
     g();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent.a();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent = null;
   }
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}

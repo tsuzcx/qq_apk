@@ -38,16 +38,16 @@ public class RecentCallItemBuilder
     if (paramViewGroup == null)
     {
       paramViewGroup = new RecentCallItemBuilder.RecentCallItemBuilderViewHolder();
-      paramView = a(paramContext, 2130903562, paramViewGroup, 1);
+      paramView = a(paramContext, 2130903564, paramViewGroup, 1);
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramView.findViewById(2131230987));
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131230940));
-      paramViewGroup.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232928));
+      paramViewGroup.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232931));
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231395));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232929));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232930));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232932));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232933));
       paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(16908309));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232931));
-      paramViewGroup.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232932));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232934));
+      paramViewGroup.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232935));
       paramView.setTag(paramViewGroup);
     }
     for (;;)
@@ -157,7 +157,7 @@ public class RecentCallItemBuilder
       if (m == 0)
       {
         j = paramRecentBaseData.A;
-        i = 2130838731;
+        i = 2130838733;
       }
       for (;;)
       {
@@ -166,7 +166,7 @@ public class RecentCallItemBuilder
         {
           k = i;
           if (m != 3) {
-            k = 2130838736;
+            k = 2130838738;
           }
         }
         if (k == 0)
@@ -176,7 +176,7 @@ public class RecentCallItemBuilder
           if (m != 0) {
             break label672;
           }
-          i = 2131362116;
+          i = 2131362126;
           label203:
           paramDrawable = paramRecentBaseData.a;
           localObject = localRecentCallItemBuilderViewHolder.jdField_a_of_type_AndroidWidgetTextView.getText();
@@ -250,26 +250,26 @@ public class RecentCallItemBuilder
             return;
             if (m <= 1)
             {
-              i = 2130838720;
+              i = 2130838722;
               j = 0;
               break;
             }
             if (m <= 2)
             {
-              i = 2130838725;
+              i = 2130838727;
               j = 0;
               break;
             }
             if (m > 3) {
               break label762;
             }
-            i = 2130838723;
+            i = 2130838725;
             j = 0;
             break;
             localRecentCallItemBuilderViewHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
             localRecentCallItemBuilderViewHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(k);
             break label194;
-            i = 2131362072;
+            i = 2131362082;
             break label203;
             paramDrawable = " (" + j + ")";
             break label366;
@@ -309,13 +309,13 @@ public class RecentCallItemBuilder
     {
       paramRecentCallItemBuilderViewHolder.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
       return;
-      i = 2130838714;
+      i = 2130838716;
       continue;
-      i = 2130838717;
+      i = 2130838719;
       continue;
-      i = 2130838733;
+      i = 2130838735;
       continue;
-      i = 2130838711;
+      i = 2130838713;
     }
     paramRecentCallItemBuilderViewHolder.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
     paramRecentCallItemBuilderViewHolder.jdField_d_of_type_AndroidWidgetImageView.setImageResource(i);

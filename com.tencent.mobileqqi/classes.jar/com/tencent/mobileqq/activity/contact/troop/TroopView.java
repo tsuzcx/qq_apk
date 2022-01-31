@@ -32,12 +32,12 @@ import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.mobileqq.widget.SlideDetectListView;
 import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
-import elt;
-import elu;
-import elv;
-import elw;
-import elx;
-import ely;
+import egq;
+import egr;
+import egs;
+import egt;
+import egu;
+import egv;
 
 public class TroopView
   extends BaseTroopView
@@ -49,12 +49,12 @@ public class TroopView
   static final int jdField_e_of_type_Int = 1000;
   TextView jdField_a_of_type_AndroidWidgetTextView = null;
   public TroopListAdapter2 a;
-  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new elv(this);
+  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new egs(this);
   private PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
   public SlideDetectListView a;
-  private elw jdField_a_of_type_Elw = new elw(this, null);
-  private elx jdField_a_of_type_Elx = new elx(this, null);
-  private ely jdField_a_of_type_Ely = new ely(this, null);
+  private egt jdField_a_of_type_Egt = new egt(this, null);
+  private egu jdField_a_of_type_Egu = new egu(this, null);
+  private egv jdField_a_of_type_Egv = new egv(this, null);
   int b;
   public boolean c = false;
   private View jdField_e_of_type_AndroidViewView;
@@ -152,21 +152,21 @@ public class TroopView
   
   private void k()
   {
-    this.b = getResources().getDimensionPixelSize(2131427610);
+    this.b = getResources().getDimensionPixelSize(2131427613);
   }
   
   private void l()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232648));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232651));
     LayoutInflater localLayoutInflater = LayoutInflater.from(a());
-    this.e = localLayoutInflater.inflate(2130903942, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, false);
-    this.e.findViewById(2131233084).setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232379));
-    EditText localEditText = (EditText)this.e.findViewById(2131233085);
+    this.e = localLayoutInflater.inflate(2130903944, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, false);
+    this.e.findViewById(2131233086).setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232382));
+    EditText localEditText = (EditText)this.e.findViewById(2131233087);
     localEditText.setFocusableInTouchMode(false);
     localEditText.setOnClickListener(this);
     localEditText.setCursorVisible(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)localLayoutInflater.inflate(2130903323, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, false));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)localLayoutInflater.inflate(2130903325, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, false));
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setTranscriptMode(0);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setContentBackground(2130837729);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
@@ -182,7 +182,7 @@ public class TroopView
   
   protected Dialog a()
   {
-    return new elu(this, a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a());
+    return new egr(this, a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a());
   }
   
   public void a()
@@ -200,13 +200,13 @@ public class TroopView
   protected void a(Intent paramIntent, BaseTroopView.ITroopContext paramITroopContext)
   {
     super.a(paramIntent, paramITroopContext);
-    a(2130903458);
+    a(2130903460);
     l();
     k();
-    a(this.jdField_a_of_type_Elw);
-    a(this.jdField_a_of_type_Elx);
+    a(this.jdField_a_of_type_Egt);
+    a(this.jdField_a_of_type_Egu);
     a(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
-    a(this.jdField_a_of_type_Ely);
+    a(this.jdField_a_of_type_Egv);
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a())
     {
       this.jdField_a_of_type_Int = 6;
@@ -321,7 +321,7 @@ public class TroopView
     {
       this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2 = new TroopListAdapter2(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, i, false);
       this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnScrollGroupFloatingListener(new elt(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnScrollGroupFloatingListener(new egq(this));
       this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2.notifyDataSetChanged();
       return;
     }
@@ -340,10 +340,10 @@ public class TroopView
     if (this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2 != null) {
       this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2.b();
     }
-    b(this.jdField_a_of_type_Elw);
-    b(this.jdField_a_of_type_Elx);
+    b(this.jdField_a_of_type_Egt);
+    b(this.jdField_a_of_type_Egu);
     b(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
-    b(this.jdField_a_of_type_Ely);
+    b(this.jdField_a_of_type_Egv);
     if (this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2 != null) {
       this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2.b();
     }

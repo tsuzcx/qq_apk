@@ -1,47 +1,19 @@
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.util.FetchBuddyAndTroopNameHelper;
-import com.tencent.mobileqq.util.FetchInfoListManager.FetchInfoListener;
-import com.tencent.mobileqq.util.FetchInfoReq;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.utils.kapalaiadapter.sdcardmountinforutil.SDCardMountInforUtil;
 
 public class hes
-  implements FetchInfoListManager.FetchInfoListener
+  extends BroadcastReceiver
 {
-  public hes(FetchBuddyAndTroopNameHelper paramFetchBuddyAndTroopNameHelper) {}
+  public hes(SDCardMountInforUtil paramSDCardMountInforUtil) {}
   
-  public void a(FetchInfoReq paramFetchInfoReq)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramFetchInfoReq == null) || (!paramFetchInfoReq.a())) {}
-    TroopHandler localTroopHandler;
-    do
-    {
-      do
-      {
-        return;
-        localObject = (FriendListHandler)FetchBuddyAndTroopNameHelper.a(this.a).a(1);
-        localTroopHandler = (TroopHandler)FetchBuddyAndTroopNameHelper.a(this.a).a(19);
-      } while ((localObject == null) || (localTroopHandler == null));
-      if (QLog.isColorLevel()) {
-        QLog.d(FetchBuddyAndTroopNameHelper.a(), 2, StringUtil.a(new Object[] { "fetchInfo()", paramFetchInfoReq.toString() }));
-      }
-      if (paramFetchInfoReq.f == 2)
-      {
-        localTroopHandler.j(paramFetchInfoReq.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      if (paramFetchInfoReq.f == 1)
-      {
-        ((FriendListHandler)localObject).a(paramFetchInfoReq.jdField_a_of_type_JavaLangString);
-        return;
-      }
-    } while (paramFetchInfoReq.f != 3);
-    Object localObject = new ArrayList();
-    ((ArrayList)localObject).add(paramFetchInfoReq.jdField_a_of_type_JavaLangString);
-    localTroopHandler.a(paramFetchInfoReq.b, (String)paramFetchInfoReq.jdField_a_of_type_JavaLangObject, (ArrayList)localObject);
+    paramContext = paramIntent.getAction();
+    if (("android.intent.action.MEDIA_MOUNTED".equals(paramContext)) || ("android.intent.action.MEDIA_SCANNER_STARTED".equals(paramContext)) || ("android.intent.action.MEDIA_SCANNER_FINISHED".equals(paramContext)) || ("android.intent.action.MEDIA_REMOVED".equals(paramContext)) || ("android.intent.action.MEDIA_UNMOUNTED".equals(paramContext)) || ("android.intent.action.MEDIA_BAD_REMOVAL".equals(paramContext))) {
+      SDCardMountInforUtil.a(this.a, SDCardMountInforUtil.a(this.a));
+    }
   }
 }
 

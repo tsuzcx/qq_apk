@@ -1,15 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.galleryactivity.AbstractImageListScene;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
 
 public class bwb
-  implements View.OnClickListener
+  extends Handler
 {
-  public bwb(AbstractImageListScene paramAbstractImageListScene) {}
+  public bwb(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.m();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.g();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131563125);
+    }
+    this.a.a(paramMessage, 1);
   }
 }
 

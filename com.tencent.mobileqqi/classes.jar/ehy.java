@@ -1,31 +1,22 @@
-import com.tencent.mobileqq.activity.contact.CircleMemberListActivity;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.mobileqq.app.CircleManager;
-import com.tencent.mobileqq.service.circle.IGroupObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
 public class ehy
-  implements IGroupObserver
+  implements DialogInterface.OnClickListener
 {
-  public ehy(CircleMemberListActivity paramCircleMemberListActivity) {}
+  public ehy(MainAssistObserver paramMainAssistObserver) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 2) {
-      CircleMemberListActivity.a(this.a);
-    }
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(this.a.b, this.a.jdField_a_of_type_JavaUtilArrayList, false);
-      this.a.jdField_a_of_type_Eih.notifyDataSetChanged();
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.isShowing())) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.a(this.a.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(-1000, 1));
-      }
-    }
+    paramDialogInterface.dismiss();
+    this.a.a(this.a.a, this.a.a.b, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ehy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollGroupFloatingListener;
-import com.tencent.widget.AbsListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class ewf
-  extends SlideDetectListView.OnScrollGroupFloatingListener
+  implements DialogInterface.OnClickListener
 {
-  public ewf(TroopListInnerFrame paramTroopListInnerFrame) {}
+  public ewf(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (TroopListInnerFrame.a(this.a) != null) {
-      TroopListInnerFrame.a(this.a, paramInt1);
+    paramDialogInterface.dismiss();
+    if (Build.VERSION.SDK_INT > 10)
+    {
+      this.a.startActivity(new Intent("android.settings.SETTINGS"));
+      return;
     }
+    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
   }
 }
 

@@ -1,21 +1,20 @@
-import android.database.DataSetObserver;
-import com.tencent.widget.XCursorAdapter;
+import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
+import cooperation.qzone.ServerSetting;
+import cooperation.qzone.widget.RadioPreference;
 
 public class ica
-  extends DataSetObserver
+  implements Preference.OnPreferenceClickListener
 {
-  private ica(XCursorAdapter paramXCursorAdapter) {}
+  public ica(ServerSetting paramServerSetting) {}
   
-  public void onChanged()
+  public boolean onPreferenceClick(Preference paramPreference)
   {
-    this.a.a = true;
-    this.a.notifyDataSetChanged();
-  }
-  
-  public void onInvalidated()
-  {
-    this.a.a = false;
-    this.a.notifyDataSetInvalidated();
+    ServerSetting.a(this.a);
+    ((RadioPreference)paramPreference).a(true);
+    paramPreference = ((RadioPreference)paramPreference).getKey();
+    ServerSetting.a(this.a, paramPreference, 0);
+    return false;
   }
 }
 

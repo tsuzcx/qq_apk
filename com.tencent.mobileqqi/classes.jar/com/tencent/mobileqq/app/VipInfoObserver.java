@@ -27,7 +27,7 @@ public class VipInfoObserver
     }
   }
   
-  protected void a(boolean paramBoolean, int paramInt) {}
+  public void a(boolean paramBoolean, int paramInt) {}
 }
 
 

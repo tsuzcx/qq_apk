@@ -1,16 +1,34 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.utils.PhoneStatusMonitor;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class bgl
-  implements Runnable
+  implements AbsListView.OnScrollListener
 {
-  public bgl(VideoController paramVideoController) {}
+  public bgl(PoiMapActivity paramPoiMapActivity) {}
   
-  public void run()
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener = new bgq(this.a);
-    this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor = new PhoneStatusMonitor(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener);
+    if ((paramInt == 0) && (paramAbsListView.r() == paramAbsListView.a() - 1))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("PoiMapActivity", 4, "onScrollStateChanged");
+      }
+      if ((!this.a.f) && (this.a.jdField_d_of_type_Boolean))
+      {
+        this.a.f = true;
+        paramAbsListView = this.a;
+        paramAbsListView.i += 1;
+        if (QLog.isDevelopLevel()) {
+          QLog.i("PoiMapActivity", 4, "onScrollStateChanged mSearchPage:" + this.a.i);
+        }
+        this.a.a(this.a.jdField_d_of_type_Int, this.a.e, this.a.c, "", this.a.i, 20);
+      }
+    }
   }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

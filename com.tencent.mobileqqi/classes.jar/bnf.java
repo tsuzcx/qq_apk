@@ -1,65 +1,40 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.biz.PoiMapActivity.POI;
-import com.tencent.biz.PoiMapActivity.PoiItemAdapter;
-import com.tencent.biz.coupon.CouponActivity;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
 
-public class bnf
-  implements View.OnClickListener
+class bnf
+  implements DialogInterface.OnClickListener
 {
-  public bnf(PoiMapActivity.PoiItemAdapter paramPoiItemAdapter, PoiMapActivity.POI paramPOI) {}
+  bnf(bnd parambnd, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPoiMapActivity$POI.d))
-    {
-      paramView = this.jdField_a_of_type_ComTencentBizPoiMapActivity$POI.e;
-      localObject = new Intent(this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiItemAdapter.a, CouponActivity.class);
-      ((Intent)localObject).putExtra("url", paramView);
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiItemAdapter.a.startActivity((Intent)localObject);
-      if ((this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiItemAdapter.a.a != null) && (this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiItemAdapter.a.f < this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiItemAdapter.a.a.length))
-      {
-        localObject = "";
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPoiMapActivity$POI.d))
-        {
-          paramView = (View)localObject;
-          if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPoiMapActivity$POI.e)) {}
-        }
-        else
-        {
-          if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPoiMapActivity$POI.d)) {
-            break label222;
-          }
-        }
-      }
+    paramDialogInterface = this.jdField_a_of_type_JavaLangString.toLowerCase();
+    if (paramDialogInterface.startsWith("www.")) {
+      paramDialogInterface = "http://" + this.jdField_a_of_type_JavaLangString;
     }
-    label222:
-    for (paramView = this.jdField_a_of_type_ComTencentBizPoiMapActivity$POI.d;; paramView = this.jdField_a_of_type_ComTencentBizPoiMapActivity$POI.e)
+    for (;;)
     {
-      Uri localUri = Uri.parse(paramView);
-      paramView = (View)localObject;
-      if (localUri != null)
-      {
-        paramView = (View)localObject;
-        if (localUri.isHierarchical()) {
-          paramView = localUri.getQueryParameter("shop_id");
-        }
+      Intent localIntent = new Intent(this.jdField_a_of_type_Bnd.a, QQBrowserDelegationActivity.class);
+      localIntent.putExtra("url", paramDialogInterface);
+      localIntent.putExtra("param_force_internal_browser", true);
+      localIntent.putExtra("key_isReadModeEnabled", true);
+      localIntent.putExtra("injectrecommend", false);
+      this.jdField_a_of_type_Bnd.a.startActivity(localIntent);
+      if (this.jdField_a_of_type_Bnd.a.l) {
+        this.jdField_a_of_type_Bnd.a.finish();
       }
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPoiMapActivity$POI.d)) {
-        break label233;
-      }
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiItemAdapter.a.a("share_locate", "click_share_tuan", this.jdField_a_of_type_ComTencentBizPoiMapActivity$POI.c, paramView, "0");
       return;
-      paramView = this.jdField_a_of_type_ComTencentBizPoiMapActivity$POI.d;
-      break;
+      if (paramDialogInterface.startsWith("https:")) {
+        paramDialogInterface = "https" + this.jdField_a_of_type_JavaLangString.substring(5);
+      } else if (paramDialogInterface.startsWith("http:")) {
+        paramDialogInterface = "http" + this.jdField_a_of_type_JavaLangString.substring(4);
+      } else {
+        paramDialogInterface = this.jdField_a_of_type_JavaLangString;
+      }
     }
-    label233:
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiItemAdapter.a.a("share_locate", "click_quan", this.jdField_a_of_type_ComTencentBizPoiMapActivity$POI.c, paramView, "0");
   }
 }
 

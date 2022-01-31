@@ -1,37 +1,15 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class bjy
-  implements Runnable
+  implements View.OnClickListener
 {
-  public bjy(MultiVideoCtrlLayerUI paramMultiVideoCtrlLayerUI) {}
+  public bjy(AccountDetailActivity paramAccountDetailActivity, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiVideoCtrlLayerUI", 2, "PressCameraBtnRunnable");
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
-    {
-      if (!this.a.jdField_a_of_type_ComTencentAvVideoController.h()) {
-        break label85;
-      }
-      this.a.z();
-    }
-    for (;;)
-    {
-      if (!this.a.h) {
-        this.a.h = true;
-      }
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(102) });
-      return;
-      label85:
-      if (QLog.isColorLevel()) {
-        QLog.e("MultiVideoCtrlLayerUI", 2, "onEnterRoomSuc-->go on stage fail,can not find the session");
-      }
-    }
+    AccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity, this.jdField_a_of_type_JavaLangString);
   }
 }
 

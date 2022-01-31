@@ -23,7 +23,7 @@ public class ActivityLauncher
       ((StringBuilder)localObject1).append("openStandaloneZebra").append(", activity = ").append(paramActivity);
       QLog.i("Q.zebra.", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject1 = AppConstants.bm;
+    Object localObject1 = AppConstants.bq;
     try
     {
       localObject2 = new File((String)localObject1);

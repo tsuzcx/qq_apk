@@ -12,7 +12,7 @@ public class PluginBaseActivity
     return this;
   }
   
-  protected boolean a()
+  public boolean a()
   {
     return false;
   }
@@ -22,7 +22,7 @@ public class PluginBaseActivity
     return getResources().getDimensionPixelSize(2131427376);
   }
   
-  protected String c()
+  public String c()
   {
     return getString(2131561692);
   }

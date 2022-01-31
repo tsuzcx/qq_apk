@@ -1,53 +1,37 @@
-import android.app.Dialog;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.RecentEmotionData;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.util.ArrayList;
+import java.util.List;
 
-public class bzz
-  implements View.OnClickListener
+public final class bzz
+  extends AsyncTask
 {
-  public bzz(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString) {}
+  public bzz(QQAppInterface paramQQAppInterface, String paramString) {}
   
-  public void onClick(View paramView)
+  protected Void a(Void... paramVarArgs)
   {
-    if (AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).getText().toString().length() > 30)
-    {
-      paramView = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 2131624405);
-      paramView.setContentView(2130903940);
-      ((TextView)paramView.findViewById(2131231029)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131563294));
-      ((ProgressBar)paramView.findViewById(2131231028)).setVisibility(8);
-      ((ImageView)paramView.findViewById(2131234121)).setImageResource(2130837959);
-      paramView.show();
-      return;
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+    List localList = localEntityManager.a(RecentEmotionData.class, false, null, null, null, null, null, null);
+    paramVarArgs = localList;
+    if (localList == null) {
+      paramVarArgs = new ArrayList();
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).getText().toString(), true);
-    if (NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))
-    {
-      ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.b.a(19)).a(this.jdField_a_of_type_JavaLangString, AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).getText().toString(), this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getIntent().getIntExtra("stat_option", 0));
-      if ("d2g".equals(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getIntent().getStringExtra("jump_from"))) {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.b, "P_CliOper", "Grp_discuss", "", "discuss_set", "send_ask", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.b(2131562875);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.show();
-      return;
+    if (ChatActivityFacade.a(paramVarArgs, 3, 0, this.jdField_a_of_type_JavaLangString) < 0) {
+      ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localEntityManager, 3, 0, this.jdField_a_of_type_JavaLangString, paramVarArgs);
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1, 2131562449, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.d());
+    localEntityManager.a();
+    return null;
   }
+  
+  protected void a(Void paramVoid) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bzz
  * JD-Core Version:    0.7.0.1
  */

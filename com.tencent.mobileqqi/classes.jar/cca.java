@@ -1,29 +1,28 @@
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class cca
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public cca(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  public cca(ChatHistory paramChatHistory, MessageRecord paramMessageRecord, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      if ((AuthDevVerifyCodeActivity.a(this.a) != null) && (AuthDevVerifyCodeActivity.a(this.a).isShowing()))
-      {
-        AuthDevVerifyCodeActivity.a(this.a).dismiss();
-        AuthDevVerifyCodeActivity.a(this.a).cancel();
-      }
-      AuthDevVerifyCodeActivity.a(this.a, null);
-      return;
     }
-    catch (Throwable localThrowable)
+    for (;;)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      paramView = ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory).obtainMessage(1);
+      ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory).sendMessageDelayed(paramView, 800L);
+      Utils.executeAsyncTaskOnThreadPool(new ccb(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
     }
   }
 }

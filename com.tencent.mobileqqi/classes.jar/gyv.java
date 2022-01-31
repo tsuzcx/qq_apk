@@ -1,17 +1,27 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.troop.activity.TroopNewcomerNoticeActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import com.tencent.mobileqq.troop.widget.MediaControllerX.MediaPlayerControlX;
 
 public class gyv
-  implements Runnable
+  extends Handler
 {
-  public gyv(TroopNewcomerNoticeActivity paramTroopNewcomerNoticeActivity) {}
+  public gyv(MediaControllerX paramMediaControllerX) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    BaseApplicationImpl.getContext().getSharedPreferences("troop_new_guid", 0).edit().putBoolean(this.a.c, false).commit();
+    switch (paramMessage.what)
+    {
+    }
+    int i;
+    do
+    {
+      return;
+      this.a.c();
+      return;
+      i = MediaControllerX.a(this.a);
+    } while ((MediaControllerX.b(this.a)) || (!MediaControllerX.a(this.a)) || (!MediaControllerX.a(this.a).a()));
+    sendMessageDelayed(obtainMessage(2), 1000 - i % 1000);
   }
 }
 

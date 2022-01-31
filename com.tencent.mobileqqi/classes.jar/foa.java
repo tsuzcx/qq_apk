@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.BigEmoticonViewBinder;
+import com.tencent.mobileqq.model.EmoticonManager;
 
-class foa
+public class foa
+  implements Runnable
 {
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  public foa(BigEmoticonViewBinder paramBigEmoticonViewBinder) {}
   
-  public foa(MessageRecord paramMessageRecord, boolean paramBoolean1, boolean paramBoolean2)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
+    ((EmoticonManager)BigEmoticonViewBinder.a(this.a).getManager(12)).a(this.a.a.epId, Boolean.valueOf(true));
   }
 }
 

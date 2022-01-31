@@ -1,10 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/title" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0230" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08076c" android:visibility="gone" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0233" />
-    <LinearLayout android:id="@id/content" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0237">
-        <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e0241" />
-        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080312" style="@style/APKTOOL_DUPLICATE_style_0x7f0e023b" />
-    </LinearLayout>
-</RelativeLayout>
+<Button android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d10d2" style="@style/APKTOOL_DUPLICATE_style_0x7f0e018b"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -13,12 +13,12 @@ public abstract class Entity
   long _id = -1L;
   int _status = 1000;
   
-  protected boolean entityByCursor(Cursor paramCursor)
+  public boolean entityByCursor(Cursor paramCursor)
   {
     return false;
   }
   
-  protected Class getClassForTable()
+  public Class getClassForTable()
   {
     return getClass();
   }
@@ -38,9 +38,9 @@ public abstract class Entity
     return getClass().getSimpleName();
   }
   
-  protected void postRead() {}
+  public void postRead() {}
   
-  protected void postwrite() {}
+  public void postwrite() {}
   
   public void prewrite() {}
   

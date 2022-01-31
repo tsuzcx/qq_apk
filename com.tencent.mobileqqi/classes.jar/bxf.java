@@ -1,13 +1,15 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.activity.ChatActivity;
 
 public class bxf
-  implements Runnable
+  implements MessageQueue.IdleHandler
 {
-  public bxf(LiteTransferWrapper paramLiteTransferWrapper, int paramInt) {}
+  public bxf(ChatActivity paramChatActivity) {}
   
-  public void run()
+  public boolean queueIdle()
   {
-    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.CancelAllToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_Int);
+    ChatActivity.b(this.a);
+    return false;
   }
 }
 

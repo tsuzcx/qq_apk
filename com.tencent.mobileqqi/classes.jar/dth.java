@@ -1,30 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.SubaccountUgActivity;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class dth
-  implements ActionSheet.OnButtonClickListener
+  implements DialogInterface.OnClickListener
 {
-  dth(dtg paramdtg, ActionSheet paramActionSheet) {}
+  dth(dtg paramdtg, QQCustomDialog paramQQCustomDialog) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      do
-      {
-        return;
-      } while (!this.jdField_a_of_type_Dtg.jdField_a_of_type_ComTencentMobileqqActivitySubaccountUgActivity.f());
-      this.jdField_a_of_type_Dtg.jdField_a_of_type_ComTencentMobileqqActivitySubaccountUgActivity.d();
-      this.jdField_a_of_type_Dtg.jdField_a_of_type_ComTencentMobileqqActivitySubaccountUgActivity.e = true;
-      SubAccountAssistantManager.a().a(this.jdField_a_of_type_Dtg.jdField_a_of_type_ComTencentMobileqqActivitySubaccountUgActivity.b, this.jdField_a_of_type_Dtg.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
   }
 }
 

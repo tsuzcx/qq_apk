@@ -1,33 +1,19 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.equipmentlock.EquipLockWebImpl;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
 
 public class ftt
-  extends FriendListObserver
+  implements Runnable
 {
-  public ftt(EquipLockWebImpl paramEquipLockWebImpl) {}
+  public ftt(FMObserver paramFMObserver, ThumbnailInfo paramThumbnailInfo) {}
   
-  protected void b(boolean paramBoolean, ArrayList paramArrayList)
+  public void run()
   {
-    if (paramBoolean) {
-      EquipmentLockImpl.a().a(paramArrayList);
-    }
-    for (;;)
-    {
-      EquipLockWebImpl.a(this.a, false);
-      EquipLockWebImpl.b(this.a, false);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EquipLockWebImpl", 2, "error, fetch recommend list !");
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataThumbnailInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ftt
  * JD-Core Version:    0.7.0.1
  */

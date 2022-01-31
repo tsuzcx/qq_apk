@@ -19,12 +19,12 @@ import com.tencent.mobileqq.model.FriendManager;
 import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.remote.SimpleAccount;
-import dqs;
-import dqt;
-import dqv;
-import dqz;
-import drc;
-import drd;
+import dlb;
+import dlc;
+import dle;
+import dli;
+import dll;
+import dlm;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -39,19 +39,19 @@ public class SubAccountBindActivity
   private static final String jdField_a_of_type_JavaLangString = "Q.subaccount.SubAccountBindActivity";
   public static final int b = 1990;
   public static final int c = 2001;
-  Handler jdField_a_of_type_AndroidOsHandler = new dqs(this);
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new dqz(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new dlb(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new dli(this);
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new drd(this);
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new dqt(this);
-  SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new dqv(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dlm(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new dlc(this);
+  SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new dle(this);
   private List jdField_a_of_type_JavaUtilList;
   View.OnClickListener b;
   private boolean c = false;
   
   public SubAccountBindActivity()
   {
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new drc(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new dll(this);
   }
   
   private void h()
@@ -132,7 +132,7 @@ public class SubAccountBindActivity
         break;
         localView = getLayoutInflater().inflate(2130903068, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
         if (i == 0) {
-          localView.setBackgroundResource(2130837880);
+          localView.setBackgroundResource(2130837882);
         }
         localView.setTag(Integer.valueOf(i));
         ((ImageView)localView.findViewById(2131230940)).setScaleType(ImageView.ScaleType.FIT_CENTER);
@@ -214,7 +214,7 @@ public class SubAccountBindActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903999);
+    setContentView(2130904001);
     setTitle(2131561706);
     j(2130837729);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131231007));

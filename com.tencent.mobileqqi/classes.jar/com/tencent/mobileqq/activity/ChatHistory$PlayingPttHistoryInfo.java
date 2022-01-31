@@ -91,7 +91,7 @@ public class ChatHistory$PlayingPttHistoryInfo
       if ((localObject1 != null) && (((Button)localObject1).getTag().equals(this.jdField_a_of_type_JavaLangObject)))
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.stop();
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getResources().getDrawable(2130839780);
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getResources().getDrawable(2130839782);
         ((Drawable)localObject2).setBounds(0, 0, ((Drawable)localObject2).getMinimumWidth(), ((Drawable)localObject2).getMinimumHeight());
         ((Button)localObject1).setCompoundDrawables((Drawable)localObject2, null, null, null);
       }

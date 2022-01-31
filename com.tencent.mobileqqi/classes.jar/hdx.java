@@ -1,54 +1,33 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.troop.widget.VideoViewX;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.QQUtils;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class hdx
-  implements AudioManager.OnAudioFocusChangeListener
+public final class hdx
+  implements Runnable
 {
-  public hdx(VideoViewX paramVideoViewX) {}
+  public hdx(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2) {}
   
-  public void onAudioFocusChange(int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    String str1 = null;
+    if (QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), new String[] { this.jdField_a_of_type_JavaLangString })) {
+      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131561614);
+    }
+    for (String str2 = "0";; str2 = "1")
     {
-    case 0: 
-    default: 
-    case -2: 
-    case -1: 
-    case -3: 
-      do
-      {
-        return;
-        if (this.a.a())
-        {
-          this.a.c = true;
-          this.a.b();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(VideoViewX.a(this.a), 2, "onAudioFocusChange,loss focus");
-        }
-        this.a.b = false;
-        return;
-      } while ((this.a.a()) && (!QLog.isColorLevel()));
-      QLog.d(VideoViewX.a(this.a), 2, "onAudioFocusChange,temporarily lost audio focus");
+      if (str1 != null) {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 2, str1, 0).b(this.jdField_a_of_type_Int);
+      }
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Fast_launch", "Fast_launch_creat", 0, 0, this.b, str2, "", "");
       return;
     }
-    if (VideoViewX.a(this.a) != null) {
-      VideoViewX.a(this.a).setVolume(1.0F, 1.0F);
-    }
-    if ((!this.a.a()) && (this.a.c)) {
-      this.a.a();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(VideoViewX.a(this.a), 2, "onAudioFocusChange,gain focus");
-    }
-    this.a.b = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hdx
  * JD-Core Version:    0.7.0.1
  */

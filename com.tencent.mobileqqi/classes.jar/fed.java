@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.app.CircleManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.observer.AccountObserver;
+import com.tencent.mobileqq.app.MessageHandler;
+import java.util.ArrayList;
 
 public class fed
-  extends AccountObserver
 {
-  public fed(CircleManager paramCircleManager) {}
+  String jdField_a_of_type_JavaLangString = "";
+  ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
+  boolean c = false;
+  boolean d = false;
+  boolean e = false;
   
-  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
-  {
-    CircleManager.a(this.a).a(new fee(this));
-  }
+  public fed(MessageHandler paramMessageHandler) {}
 }
 
 

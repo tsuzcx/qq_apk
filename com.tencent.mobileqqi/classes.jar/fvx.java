@@ -1,27 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.RecentFileAdapter.ItemHolder;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import com.tencent.qphone.base.util.QLog;
 
 public class fvx
-  implements View.OnClickListener
+  extends fvb
 {
-  public fvx(FMRecentFileActivity paramFMRecentFileActivity) {}
-  
-  public void onClick(View paramView)
+  public fvx(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    paramView = (RecentFileAdapter.ItemHolder)paramView.getTag();
-    fvy localfvy = new fvy(this, paramView);
-    fvz localfvz = new fvz(this);
-    if ((paramView.a.nOpType == 1) || (paramView.a.nOpType == 5) || (paramView.a.nOpType == 8))
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateSaveToWeiYunByPCWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.a == null)
     {
-      DialogUtil.a(this.a.a(), 230, this.a.getString(2131558690), this.a.getString(2131558688), 2131561746, 2131562539, localfvy, localfvz).show();
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "]. recvOnLineFile entity is null");
       return;
     }
-    DialogUtil.a(this.a.a(), 230, this.a.getString(2131558689), this.a.getString(2131558687), 2131561746, 2131562539, localfvy, localfvz).show();
+    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 7);
+    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 7);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateSaveToWeiYunByPC)");
+    this.jdField_a_of_type_Fvb = new fvv(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
   }
 }
 

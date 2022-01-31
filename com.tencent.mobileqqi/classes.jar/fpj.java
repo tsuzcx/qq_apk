@@ -1,18 +1,20 @@
-import java.util.concurrent.ThreadFactory;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
 
-public final class fpj
-  implements ThreadFactory
+public class fpj
+  extends Handler
 {
-  public Thread newThread(Runnable paramRunnable)
+  public fpj(EquipmentLockImpl paramEquipmentLockImpl) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    paramRunnable = new Thread("Bubble_Animation");
-    if (paramRunnable.isDaemon()) {
-      paramRunnable.setDaemon(false);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    if (paramRunnable.getPriority() != 5) {
-      paramRunnable.setPriority(5);
-    }
-    return paramRunnable;
+    this.a.b();
   }
 }
 

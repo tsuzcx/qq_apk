@@ -33,14 +33,14 @@ public class TroopAssistantEmptyItemBuilder
       paramDrawable = null;
       if (!"TroopAssistantEmptyItemBuilder".equals(paramDrawable))
       {
-        paramView = View.inflate(paramContext, 2130904019, null);
+        paramView = View.inflate(paramContext, 2130904021, null);
         paramView.setTag("TroopAssistantEmptyItemBuilder");
         paramDrawable = paramContext.getResources();
-        this.b = paramDrawable.getDimensionPixelSize(2131427449);
-        this.a = paramDrawable.getDimensionPixelSize(2131427450);
-        this.l = paramDrawable.getDimensionPixelSize(2131427451);
-        i = paramDrawable.getDimensionPixelSize(2131427528);
-        this.m = (paramDrawable.getDimensionPixelSize(2131427529) + i);
+        this.b = paramDrawable.getDimensionPixelSize(2131427452);
+        this.a = paramDrawable.getDimensionPixelSize(2131427453);
+        this.l = paramDrawable.getDimensionPixelSize(2131427454);
+        i = paramDrawable.getDimensionPixelSize(2131427531);
+        this.m = (paramDrawable.getDimensionPixelSize(2131427532) + i);
       }
       i = paramViewGroup.getMeasuredHeight() - this.a - this.b - 10 - this.m;
       if (i <= this.l) {
@@ -54,7 +54,7 @@ public class TroopAssistantEmptyItemBuilder
       if ((paramObject instanceof Integer))
       {
         paramObject = (Integer)paramObject;
-        paramDrawable = (TextView)paramView.findViewById(2131234590);
+        paramDrawable = (TextView)paramView.findViewById(2131234592);
         if (paramObject.intValue() != 4) {
           break label219;
         }

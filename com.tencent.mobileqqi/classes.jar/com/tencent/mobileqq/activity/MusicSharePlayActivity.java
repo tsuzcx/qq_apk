@@ -14,7 +14,7 @@ import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.music.QQPlayerService;
 import com.tencent.mobileqq.music.SongInfo;
-import dcc;
+import cwl;
 
 public class MusicSharePlayActivity
   extends IphoneTitleBarActivity
@@ -22,7 +22,7 @@ public class MusicSharePlayActivity
 {
   public static final int a = 1;
   public static final int b = 2;
-  private Handler jdField_a_of_type_AndroidOsHandler = new dcc(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new cwl(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -41,7 +41,7 @@ public class MusicSharePlayActivity
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(((SongInfo)localObject).b);
       this.jdField_b_of_type_AndroidWidgetTextView.setText(((SongInfo)localObject).c);
-      Drawable localDrawable = getResources().getDrawable(2130840243);
+      Drawable localDrawable = getResources().getDrawable(2130840245);
       localObject = URLDrawable.getDrawable(((SongInfo)localObject).d, localDrawable, localDrawable);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
     }
@@ -54,16 +54,16 @@ public class MusicSharePlayActivity
   
   void c()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231949));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231950));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231951));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131231952));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231952));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231953));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231954));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131231955));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131231952)
+    if (paramView.getId() == 2131231955)
     {
       QQPlayerService.c(getApplicationContext());
       finish();
@@ -73,7 +73,7 @@ public class MusicSharePlayActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903287);
+    setContentView(2130903289);
     setTitle(2131562287);
     h(2131560958);
     c();

@@ -1,28 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.SetTroopAdminsActivity;
-import com.tencent.mobileqq.activity.SetTroopAdminsActivity.TroopAdmin;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SubaccountUgActivity;
 
 class dnu
-  implements ActionSheet.OnButtonClickListener
+  implements DialogInterface.OnClickListener
 {
-  dnu(dnt paramdnt, ActionSheet paramActionSheet) {}
+  dnu(dns paramdns) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    SetTroopAdminsActivity.a(this.jdField_a_of_type_Dnt.jdField_a_of_type_Dns.a, 2131561762);
-    SetTroopAdminsActivity.a(this.jdField_a_of_type_Dnt.jdField_a_of_type_Dns.a).put(this.jdField_a_of_type_Dnt.jdField_a_of_type_ComTencentMobileqqActivitySetTroopAdminsActivity$TroopAdmin.a, this.jdField_a_of_type_Dnt.jdField_a_of_type_ComTencentMobileqqActivitySetTroopAdminsActivity$TroopAdmin);
-    ((TroopHandler)this.jdField_a_of_type_Dnt.jdField_a_of_type_Dns.a.b.a(19)).a((byte)0, SetTroopAdminsActivity.a(this.jdField_a_of_type_Dnt.jdField_a_of_type_Dns.a), this.jdField_a_of_type_Dnt.jdField_a_of_type_ComTencentMobileqqActivitySetTroopAdminsActivity$TroopAdmin.a);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    paramDialogInterface = new Intent(this.a.a.a(), SubaccountUgActivity.class);
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

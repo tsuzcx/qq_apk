@@ -3,7 +3,7 @@ package com.tencent.mobileqq.fpsreport;
 import android.view.animation.AnimationUtils;
 import com.tencent.mobileqq.utils.PerformanceReportUtils;
 import com.tencent.qphone.base.util.QLog;
-import gdq;
+import fze;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class FPSCalculator
@@ -25,7 +25,7 @@ public class FPSCalculator
     if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() < 1) {
       return;
     }
-    new gdq(this).execute(new Void[0]);
+    new fze(this).execute(new Void[0]);
   }
   
   public void a(int paramInt)

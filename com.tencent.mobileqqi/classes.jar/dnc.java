@@ -1,16 +1,23 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
-import tencent.im.kqq.searchgroup.SearchGroup.GroupInfo;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
 
 public class dnc
-  extends FacePreloadBaseAdapter.ViewHolder
+  extends MessageObserver
 {
-  public ImageView a;
-  public TextView a;
-  public SearchGroup.GroupInfo a;
-  public TextView b;
-  public TextView c;
+  public dnc(SubLoginActivity paramSubLoginActivity) {}
+  
+  public void a(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
+  {
+    paramString = this.a.getString(2131562520);
+    if (paramSubAccountBackProtocData.p == 0) {}
+    for (int i = 2131563288;; i = 2131563291)
+    {
+      paramSubAccountBackProtocData = this.a.getString(i);
+      this.a.a(paramString, paramSubAccountBackProtocData, this.a.getString(2131562543), new dnd(this));
+      return;
+    }
+  }
 }
 
 

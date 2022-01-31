@@ -35,8 +35,8 @@ public final class ViewfinderView
     this.jdField_c_of_type_Long = 0L;
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
     this.jdField_a_of_type_Int = 2130706432;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = super.getResources().getDrawable(2130838494);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = super.getResources().getDrawable(2130838504);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = super.getResources().getDrawable(2130838496);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = super.getResources().getDrawable(2130838506);
     if (SkinUtils.a(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable) != null) {
       this.jdField_c_of_type_Int = SkinUtils.a(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable).getHeight();
     }

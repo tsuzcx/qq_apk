@@ -1,16 +1,15 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.ui.VideoLayerUI;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.LoginManagerActivity;
 
 public class blm
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public blm(VideoLayerUI paramVideoLayerUI) {}
+  public blm(LoginManagerActivity paramLoginManagerActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str = this.a.a.a().a;
-    this.a.a.d(str);
+    this.a.a();
   }
 }
 

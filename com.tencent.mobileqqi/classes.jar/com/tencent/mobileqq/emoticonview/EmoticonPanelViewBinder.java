@@ -75,10 +75,10 @@ public abstract class EmoticonPanelViewBinder
         QLog.d("EmoticonPanelViewBinder", 2, "[Performance] createEmoticonPanelView, type=" + paramInt + ",duration=" + (System.currentTimeMillis() - l));
       }
       return localObject;
-      localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903232, null);
+      localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903234, null);
       try
       {
-        ((ImageView)((View)localObject).findViewById(2131231700)).setImageResource(2130837629);
+        ((ImageView)((View)localObject).findViewById(2131231702)).setImageResource(2130837629);
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
@@ -87,13 +87,13 @@ public abstract class EmoticonPanelViewBinder
         }
       }
       continue;
-      localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903663, null);
+      localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903665, null);
       continue;
-      localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903664, null);
+      localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903666, null);
       continue;
-      localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903212, null);
+      localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903213, null);
       continue;
-      localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903660, null);
+      localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903662, null);
       continue;
       localObject = new GridView(this.jdField_a_of_type_AndroidContentContext);
     }

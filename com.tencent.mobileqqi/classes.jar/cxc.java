@@ -1,19 +1,16 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.mobileqq.activity.IndividuationSetActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
 
-class cxc
+public class cxc
   implements Runnable
 {
-  cxc(cxb paramcxb, Bitmap paramBitmap) {}
+  public cxc(MySelfTroopMemberCard paramMySelfTroopMemberCard, String paramString) {}
   
   public void run()
   {
-    BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    int i = this.jdField_a_of_type_Cxb.a.getResources().getDimensionPixelSize(2131427609);
-    IndividuationSetActivity.a(this.jdField_a_of_type_Cxb.a).setRightIcon(localBitmapDrawable, i, i);
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.e = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.e);
   }
 }
 

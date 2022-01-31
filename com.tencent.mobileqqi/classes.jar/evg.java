@@ -1,12 +1,15 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.media.SoundPool;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
-public class evg
-  extends FriendListObserver
+class evg
+  implements Runnable
 {
-  public evg(SelectMemberActivity paramSelectMemberActivity) {}
+  evg(evf paramevf) {}
   
-  protected void a(boolean paramBoolean, String paramString) {}
+  public void run()
+  {
+    VoipDialInterfaceActivity.a(this.a.a).play(VoipDialInterfaceActivity.e(this.a.a), 1.0F, 1.0F, 0, 0, 1.0F);
+  }
 }
 
 

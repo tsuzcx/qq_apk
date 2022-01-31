@@ -1,27 +1,28 @@
-import com.tencent.mobileqq.data.SubAccountMessage;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountAssistantCache;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountMessageData;
-import java.util.Comparator;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
 
 public class gpv
-  implements Comparator
+  implements View.OnClickListener
 {
-  private gpv(SubAccountAssistantCache paramSubAccountAssistantCache) {}
+  public gpv(NearbyTroopsActivity paramNearbyTroopsActivity) {}
   
-  public int a(SubAccountMessageData paramSubAccountMessageData1, SubAccountMessageData paramSubAccountMessageData2)
+  public void onClick(View paramView)
   {
-    if ((paramSubAccountMessageData1 != null) && (paramSubAccountMessageData1.a() != null) && (paramSubAccountMessageData2 != null) && (paramSubAccountMessageData2.a() != null)) {
-      return (int)(paramSubAccountMessageData2.a().time - paramSubAccountMessageData1.a().time);
-    }
-    if ((paramSubAccountMessageData2 == null) || (paramSubAccountMessageData2.a() == null)) {
-      return -1;
-    }
-    return 1;
+    paramView = new Intent(paramView.getContext(), QQBrowserActivity.class);
+    paramView.putExtra("url", this.a.a);
+    paramView.putExtra("hide_operation_bar", true);
+    paramView.putExtra("hide_more_button", true);
+    this.a.startActivity(paramView);
+    ReportController.b(this.a.b, "P_CliOper", "Grp_nearby", "", "hot", "Clk", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     gpv
  * JD-Core Version:    0.7.0.1
  */

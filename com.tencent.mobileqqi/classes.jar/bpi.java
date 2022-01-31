@@ -1,17 +1,15 @@
-import android.media.SoundPool;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.webviewplugin.Share;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
 
-public class bpi
+class bpi
   implements Runnable
 {
-  public bpi(SensorAPIJavaScript paramSensorAPIJavaScript, int paramInt, String paramString) {}
+  bpi(bph parambph, GetAppInfoProto.GetAppinfoResponse paramGetAppinfoResponse) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a != null) && (this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.play(this.jdField_a_of_type_Int, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SensorApi", 2, "play failure url=" + this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_Bph.a.a(this.jdField_a_of_type_Bph.a.a.getApplicationContext(), this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse);
   }
 }
 

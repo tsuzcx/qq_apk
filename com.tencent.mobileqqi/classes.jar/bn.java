@@ -10,6 +10,8 @@ import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticAssist;
 import mqq.app.MobileQQ;
+import mqq.app.permission.PermissionItem;
+import mqq.app.permission.PermissionManager;
 
 public class bn
   implements AdapterView.OnItemClickListener
@@ -22,21 +24,41 @@ public class bn
     {
     default: 
       return;
-    case 2130837772: 
+    case 2130837773: 
+      if ((!this.a.permissionManager.checkPermission("android.permission.CAMERA")) || (!this.a.permissionManager.checkPermission("android.permission.WRITE_EXTERNAL_STORAGE")))
+      {
+        this.a.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.CAMERA", 200), PermissionItem.init("android.permission.WRITE_EXTERNAL_STORAGE", 300) }).requests(new bo(this));
+        return;
+      }
       StatisticAssist.a(this.a.b.getApplication().getApplicationContext(), this.a.b.a(), "dl_cktkphoto");
       this.a.d_();
       ReportController.b(this.a.b, "CliOper", "", "", "0X800407A", "0X800407A", 0, 0, "", "", "", "");
       return;
-    case 2130837777: 
+    case 2130837778: 
+      if (!this.a.permissionManager.checkPermission("android.permission.WRITE_EXTERNAL_STORAGE"))
+      {
+        this.a.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.WRITE_EXTERNAL_STORAGE", 300) }).request(new bq(this));
+        return;
+      }
       StatisticAssist.a(this.a.b.getApplication().getApplicationContext(), this.a.b.a(), "dl_ckpic");
       this.a.b();
       ReportController.b(this.a.b, "CliOper", "", "", "0X8004079", "0X8004079", 0, 0, "", "", "", "");
       return;
-    case 2130837781: 
+    case 2130837782: 
+      if (!this.a.permissionManager.checkPermission("android.permission.WRITE_EXTERNAL_STORAGE"))
+      {
+        this.a.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.WRITE_EXTERNAL_STORAGE", 300) }).request(new bs(this));
+        return;
+      }
       StatisticAssist.a(this.a.b.getApplication().getApplicationContext(), this.a.b.a(), "dl_ckvideo");
       paramAdapterView = new Intent(this.a.getApplicationContext(), LiteVideoActivity.class);
       this.a.startActivityForResult(paramAdapterView, 1);
       ReportController.b(this.a.b, "CliOper", "", "", "0X8004086", "0X8004086", 0, 0, "", "", "", "");
+      return;
+    }
+    if (!this.a.permissionManager.checkPermission("android.permission.WRITE_EXTERNAL_STORAGE"))
+    {
+      this.a.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.WRITE_EXTERNAL_STORAGE", 300) }).request(new bu(this));
       return;
     }
     StatisticAssist.a(this.a.b.getApplication().getApplicationContext(), this.a.b.a(), "dl_ckfile");

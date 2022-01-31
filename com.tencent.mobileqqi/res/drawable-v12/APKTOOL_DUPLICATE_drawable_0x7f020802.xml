@@ -5,14 +5,14 @@
         <shape>
             <solid android:color="#ff0079ff" />
             <stroke android:width="1.0dip" android:color="#ff0079ff" />
-            <corners android:topLeftRadius="0.0px" android:topRightRadius="5.0dip" android:bottomLeftRadius="0.0px" android:bottomRightRadius="5.0dip" />
+            <corners android:topLeftRadius="5.0dip" android:topRightRadius="0.0px" android:bottomLeftRadius="5.0dip" android:bottomRightRadius="0.0px" />
         </shape>
     </item>
     <item android:state_selected="true">
         <shape>
             <solid android:color="#ff0079ff" />
             <stroke android:width="1.0dip" android:color="#ff0079ff" />
-            <corners android:topLeftRadius="0.0px" android:topRightRadius="5.0dip" android:bottomLeftRadius="0.0px" android:bottomRightRadius="5.0dip" />
+            <corners android:topLeftRadius="5.0dip" android:topRightRadius="0.0px" android:bottomLeftRadius="5.0dip" android:bottomRightRadius="0.0px" />
         </shape>
     </item>
     <item>
@@ -21,14 +21,14 @@
                 <shape>
                     <solid android:color="@color/APKTOOL_DUPLICATE_color_0x7f0a0020" />
                     <stroke android:width="1.0dip" android:color="#ff0079ff" />
-                    <corners android:topLeftRadius="0.0px" android:topRightRadius="5.0dip" android:bottomLeftRadius="0.0px" android:bottomRightRadius="5.0dip" />
+                    <corners android:topLeftRadius="5.0dip" android:topRightRadius="0.0px" android:bottomLeftRadius="5.0dip" android:bottomRightRadius="0.0px" />
                 </shape>
             </item>
-            <item android:left="1.0dip" android:top="1.0dip" android:right="1.0dip" android:bottom="1.0dip">
+            <item android:left="1.0dip" android:top="1.0dip" android:bottom="1.0dip">
                 <shape>
                     <solid android:color="@color/APKTOOL_DUPLICATE_color_0x7f0a0020" />
                     <stroke android:width="1.0dip" android:color="@color/APKTOOL_DUPLICATE_color_0x7f0a0020" />
-                    <corners android:topLeftRadius="0.0px" android:topRightRadius="5.0dip" android:bottomLeftRadius="0.0px" android:bottomRightRadius="5.0dip" />
+                    <corners android:topLeftRadius="5.0dip" android:topRightRadius="0.0px" android:bottomLeftRadius="5.0dip" android:bottomRightRadius="0.0px" />
                 </shape>
             </item>
         </layer-list>

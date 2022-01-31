@@ -410,12 +410,12 @@ public class SendMessageHandler
     //   118: iadd
     //   119: putfield 78	com/tencent/mobileqq/utils/SendMessageHandler:i	I
     //   122: aload_0
-    //   123: new 281	hik
+    //   123: new 281	hed
     //   126: dup
     //   127: aload_0
     //   128: lload_3
     //   129: aload 5
-    //   131: invokespecial 284	hik:<init>	(Lcom/tencent/mobileqq/utils/SendMessageHandler;JLjava/lang/String;)V
+    //   131: invokespecial 284	hed:<init>	(Lcom/tencent/mobileqq/utils/SendMessageHandler;JLjava/lang/String;)V
     //   134: lload_1
     //   135: invokevirtual 288	com/tencent/mobileqq/utils/SendMessageHandler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   138: pop

@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.phone.BindNumberBusinessActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.RecentCallHelper;
 
 public class eov
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public eov(BindNumberBusinessActivity paramBindNumberBusinessActivity) {}
+  public eov(RecentCallHelper paramRecentCallHelper) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.a = null;
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eov
  * JD-Core Version:    0.7.0.1
  */

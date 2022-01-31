@@ -1,41 +1,69 @@
 import android.os.Bundle;
-import com.tencent.biz.common.report.BnrReport;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.bnr.BnrReport.BNRConfigMsg;
-import com.tencent.mobileqq.bnr.BnrReport.BNReportConfigRsp;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.app.TroopObserver;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.ArrayList;
 
-public final class bnu
-  implements BusinessObserver
+public class bnu
+  extends TroopObserver
 {
-  public bnu(AppInterface paramAppInterface) {}
+  public bnu(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  protected void a(int paramInt, byte paramByte)
   {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 5);
+    localBundle.putBoolean("isSuccess", false);
+    localBundle.putSerializable("data", new Object[] { Integer.valueOf(paramInt), Byte.valueOf(paramByte) });
+    TroopMemberApiService.a(this.a, 3, localBundle);
+  }
+  
+  protected void a(int paramInt, byte paramByte, String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 5);
+    localBundle.putBoolean("isSuccess", true);
+    localBundle.putSerializable("data", new Object[] { Integer.valueOf(paramInt), Byte.valueOf(paramByte), paramString });
+    TroopMemberApiService.a(this.a, 3, localBundle);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 4);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putSerializable("data", null);
+    TroopMemberApiService.a(this.a, 3, localBundle);
     if (QLog.isColorLevel()) {
-      QLog.d("BnrReport", 2, "success:" + String.valueOf(paramBoolean));
+      QLog.d("troopMember", 2, "get member list from server successful in qq process");
     }
-    if (paramBoolean) {}
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        BnrReport.BNRConfigMsg localBNRConfigMsg = new BnrReport.BNRConfigMsg();
-        localBNRConfigMsg.mergeFrom(paramBundle);
-        BnrReport.a((BnrReport.BNReportConfigRsp)localBNRConfigMsg.msg_rsp_body.get());
-        BnrReport.a(this.a, 74);
-      }
-    }
-    catch (Exception paramBundle)
-    {
-      for (;;)
-      {
-        paramBundle.printStackTrace();
-      }
-    }
-    BnrReport.a = false;
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 40);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putSerializable("data", Integer.valueOf(paramInt));
+    TroopMemberApiService.a(this.a, 3, localBundle);
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, ArrayList paramArrayList)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 43);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putSerializable("data", new Object[] { Integer.valueOf(paramInt), paramArrayList });
+    TroopMemberApiService.a(this.a, 3, localBundle);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, int paramInt, long[] paramArrayOfLong)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 44);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putSerializable("data", new Object[] { paramString, Integer.valueOf(paramInt), paramArrayOfLong });
+    TroopMemberApiService.a(this.a, 3, localBundle);
   }
 }
 

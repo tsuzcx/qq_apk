@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.phone.BindNumberBusinessActivity;
 
-public final class ekh
-  implements Runnable
+public class ekh
+  implements DialogInterface.OnDismissListener
 {
-  public ekh(QQAppInterface paramQQAppInterface) {}
+  public ekh(BindNumberBusinessActivity paramBindNumberBusinessActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    FriendSystemMsgController.a().c(this.a);
+    this.a.a = null;
   }
 }
 

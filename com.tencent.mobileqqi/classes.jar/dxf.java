@@ -1,20 +1,28 @@
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.aio.anim.BubbleAnimation;
 
 public class dxf
-  implements View.OnClickListener
+  extends View
 {
-  public dxf(TroopMemberListActivity paramTroopMemberListActivity) {}
-  
-  public void onClick(View paramView)
+  public dxf(BubbleAnimation paramBubbleAnimation, Context paramContext)
   {
-    this.a.finish();
+    super(paramContext);
+  }
+  
+  protected boolean verifyDrawable(Drawable paramDrawable)
+  {
+    if ((BubbleAnimation.a(this.a).a()) && (BubbleAnimation.b(this.a).a())) {
+      BubbleAnimation.a(this.a).post(new dxg(this));
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dxf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,45 @@
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.SubAccountMessageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
+import com.tencent.widget.OverScrollViewListener;
 
 public class dme
-  implements Runnable
+  implements OverScrollViewListener
 {
-  public dme(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  public dme(SubAccountMessageActivity paramSubAccountMessageActivity) {}
   
-  public void run()
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    try
+    if (this.a.b.r())
     {
-      if ((RegisterQQNumberActivity.a(this.a) != null) && (RegisterQQNumberActivity.a(this.a).isShowing()))
-      {
-        RegisterQQNumberActivity.a(this.a).dismiss();
-        RegisterQQNumberActivity.a(this.a).cancel();
-      }
-      RegisterQQNumberActivity.a(this.a, null);
+      SubAccountMessageActivity.a(this.a).a();
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    SubAccountMessageActivity.a(this.a).c(0L);
   }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.b.r()) {
+      return true;
+    }
+    SubAccountMessageActivity.a(this.a).a(0L);
+    SubAccountMessageActivity.b(this.a, true);
+    SubAccountMessageActivity.a(this.a, true);
+    return true;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.b.r()) {
+      return;
+    }
+    SubAccountMessageActivity.a(this.a).b(0L);
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

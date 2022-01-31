@@ -1,37 +1,29 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.contact.CircleMemberListActivity;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
 
 public class edb
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public edb(PressToSpeakPanel paramPressToSpeakPanel, int paramInt, double paramDouble) {}
+  public edb(CircleMemberListActivity paramCircleMemberListActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int i = AudioPanel.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel.a(i);
-    if (PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel) == 1) {
-      PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).setText(BaseApplication.getContext().getResources().getString(2131558880));
-    }
-    for (;;)
-    {
-      PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel, this.jdField_a_of_type_Double);
-      return;
-      if (PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel) == 2) {
-        PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).setText(BaseApplication.getContext().getResources().getString(2131558881));
-      } else {
-        PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).setText(AudioPanel.a(this.jdField_a_of_type_Double));
-      }
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.show();
+    this.a.jdField_a_of_type_AndroidViewView.setAnimation(null);
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     edb
  * JD-Core Version:    0.7.0.1
  */

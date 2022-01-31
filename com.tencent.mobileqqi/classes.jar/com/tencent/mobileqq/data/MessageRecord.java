@@ -266,7 +266,7 @@ public class MessageRecord
     return localStringBuilder.toString();
   }
   
-  protected Class getClassForTable()
+  public Class getClassForTable()
   {
     return MessageRecord.class;
   }
@@ -371,7 +371,7 @@ public class MessageRecord
     return (this.istroop == 0) || (this.istroop == 1) || (this.istroop == 3000);
   }
   
-  protected void postRead()
+  public void postRead()
   {
     try
     {
@@ -388,7 +388,7 @@ public class MessageRecord
   
   protected void postwrite() {}
   
-  protected void prewrite()
+  public void prewrite()
   {
     if (this.msg != null) {}
     try

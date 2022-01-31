@@ -8,7 +8,7 @@ import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import gdk;
+import fyy;
 import mqq.app.MobileQQ;
 
 public class UniformDownloaderGen
@@ -71,7 +71,7 @@ public class UniformDownloaderGen
       QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] runWorker. before worker be stoped");
       localUniformDownloaderGenWorker.a();
     }
-    localUniformDownloaderGenWorker = new UniformDownloaderGenWorker(this.jdField_c_of_type_Long, UniformDownloadMgr.a().a(), this.jdField_c_of_type_JavaLangString, this.b, new gdk(this));
+    localUniformDownloaderGenWorker = new UniformDownloaderGenWorker(this.jdField_c_of_type_Long, UniformDownloadMgr.a().a(), this.jdField_c_of_type_JavaLangString, this.b, new fyy(this));
     a(localUniformDownloaderGenWorker);
     QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] runWorker. start ,mTempStrFilePath=" + this.f);
     return localUniformDownloaderGenWorker.a(this.f, paramLong);

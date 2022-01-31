@@ -1,37 +1,115 @@
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView.DisplayRuleDef;
+import com.tencent.mobileqq.activity.contact.troop.DiscussionView;
+import com.tencent.mobileqq.adapter.DiscussionListAdapter2;
+import com.tencent.mobileqq.app.DiscussionObserver;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
 
 public class efp
-  implements AnyScaleTypeImageView.DisplayRuleDef
+  extends DiscussionObserver
 {
-  public efp(RichStatItemBuilder paramRichStatItemBuilder) {}
+  private efp(DiscussionView paramDiscussionView) {}
   
-  public Matrix getMatrix(Drawable paramDrawable, int paramInt1, int paramInt2)
+  protected void a()
   {
-    Matrix localMatrix = new Matrix();
-    if (paramDrawable == null) {
-      return localMatrix;
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.a();
     }
-    int i = paramDrawable.getIntrinsicWidth();
-    int j = paramDrawable.getIntrinsicHeight();
-    float f2;
-    if (i * paramInt2 > paramInt1 * j) {
-      f2 = paramInt2 / j;
-    }
-    for (float f1 = (paramInt1 - i * f2) * 0.5F;; f1 = 0.0F)
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    if (this.a.c)
     {
-      localMatrix.setScale(f2, f2);
-      localMatrix.postTranslate((int)(f1 + 0.5F), (int)(0.0F + 0.5F));
-      return localMatrix;
-      f2 = paramInt1 / i;
+      this.a.c = false;
+      if (paramBoolean)
+      {
+        DiscussionView.a(this.a).a(0);
+        this.a.a(100, 800L);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentWidgetXListView.B();
+    this.a.b(2131562097);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, ArrayList paramArrayList)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    }
+  }
+  
+  protected void b()
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, Long paramLong)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    }
+  }
+  
+  protected void d(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     efp
  * JD-Core Version:    0.7.0.1
  */

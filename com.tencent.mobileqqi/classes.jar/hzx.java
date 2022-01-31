@@ -1,44 +1,12 @@
-import android.view.View;
-import android.widget.ListAdapter;
-import com.tencent.widget.AbsListView;
+import cooperation.plugin.IPluginManager.PluginParams;
 
-public class hzx
-  extends iab
-  implements Runnable
+class hzx
 {
-  public int a;
+  public IPluginManager.PluginParams a;
   
-  private hzx(AbsListView paramAbsListView)
-  {
-    super(paramAbsListView, null);
-  }
+  hzx(hzv paramhzv) {}
   
-  public void run()
-  {
-    if (this.jdField_a_of_type_ComTencentWidgetAbsListView.p) {}
-    ListAdapter localListAdapter;
-    int i;
-    boolean bool;
-    View localView;
-    do
-    {
-      do
-      {
-        return;
-        localListAdapter = this.jdField_a_of_type_ComTencentWidgetAbsListView.a;
-        i = this.jdField_a_of_type_Int;
-        bool = AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, i, this.jdField_a_of_type_ComTencentWidgetAbsListView.a.getCount());
-      } while ((localListAdapter == null) || ((!bool) && (!AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView))) || (!a()));
-      localView = this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(i - this.jdField_a_of_type_ComTencentWidgetAbsListView.ap);
-    } while ((localView == null) && (!AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView)));
-    AbsListView localAbsListView = this.jdField_a_of_type_ComTencentWidgetAbsListView;
-    if (bool) {}
-    for (long l = localListAdapter.getItemId(i);; l = 0L)
-    {
-      localAbsListView.a(localView, i, l);
-      return;
-    }
-  }
+  public void a() {}
 }
 
 

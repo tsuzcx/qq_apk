@@ -1,18 +1,31 @@
-import com.tencent.mobileqq.activity.voip.VoipTencentPayActivity;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-class fbu
-  implements Runnable
+public class fbu
+  extends Handler
 {
-  fbu(fbt paramfbt) {}
+  private WeakReference a;
   
-  public void run()
+  private fbu(Looper paramLooper, Handler.Callback paramCallback)
   {
-    this.a.a.finish();
+    super(paramLooper);
+    this.a = new WeakReference(paramCallback);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    if (localCallback != null) {
+      localCallback.handleMessage(paramMessage);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fbu
  * JD-Core Version:    0.7.0.1
  */

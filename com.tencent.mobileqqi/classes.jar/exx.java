@@ -1,71 +1,38 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.voip.VoipAddressBookView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog.HistoryListChangeListener;
+import com.tencent.mobileqq.adapter.ContactsSearchResultAdapter;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.app.SearchHistoryManager;
+import com.tencent.mobileqq.search.ContactSearchableSearchHistory;
+import com.tencent.mobileqq.search.IContactSearchable;
 
 public class exx
-  extends ContactBindObserver
+  implements View.OnClickListener
 {
-  private exx(VoipAddressBookView paramVoipAddressBookView) {}
+  public exx(ContactsSearchResultAdapter paramContactsSearchResultAdapter, IContactSearchable paramIContactSearchable) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    int i = VoipAddressBookView.a(this.a).b();
-    if (!paramBoolean1)
+    if ((this.jdField_a_of_type_ComTencentMobileqqSearchIContactSearchable instanceof ContactSearchableSearchHistory))
     {
-      VoipAddressBookView.a(this.a);
-      VoipAddressBookView.b(this.a);
-      if (((i == 0) || (i == 4)) && (this.a.j == 0)) {
-        VoipAddressBookView.a(this.a, 2131562782, 3000L);
-      }
-    }
-    do
-    {
-      return;
-      VoipAddressBookView.a(this.a).setEnabled(true);
-      if (i == 4)
+      paramView = (SearchHistoryManager)ContactsSearchResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter).getManager(50);
+      ContactSearchableSearchHistory localContactSearchableSearchHistory = (ContactSearchableSearchHistory)this.jdField_a_of_type_ComTencentMobileqqSearchIContactSearchable;
+      if (paramView != null)
       {
-        if (VoipAddressBookView.b(this.a).d())
-        {
-          VoipAddressBookView.a(this.a).a(new exy(this));
-          return;
-        }
-        VoipAddressBookView.c(this.a);
-        this.a.a.sendEmptyMessageDelayed(1, 0L);
-        return;
+        paramView.a(localContactSearchableSearchHistory.e());
+        this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqSearchIContactSearchable);
+        this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.notifyDataSetChanged();
       }
-    } while (!VoipAddressBookView.d(this.a).i());
-    VoipAddressBookView.a(this.a, 2131562875, 0L, false);
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if ((!paramBoolean) || (!NetworkUtil.e(this.a.getContext())))
-    {
-      VoipAddressBookView.d(this.a);
-      VoipAddressBookView.e(this.a);
-    }
-  }
-  
-  protected void c(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
-    {
-      VoipAddressBookView.f(this.a);
-      VoipAddressBookView.a(this.a, true);
-      if (!paramBoolean2) {
-        VoipAddressBookView.g(this.a);
+      if ((this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.getCount() == 0) && (ContactsSearchResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter) != null)) {
+        ContactsSearchResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter).a();
       }
-      return;
     }
-    VoipAddressBookView.h(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     exx
  * JD-Core Version:    0.7.0.1
  */

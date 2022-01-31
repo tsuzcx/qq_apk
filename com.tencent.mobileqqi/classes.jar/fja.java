@@ -1,30 +1,18 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.app.message.C2CMessageProcessor;
+import com.tencent.mobileqq.data.MessageRecord;
 import java.util.Comparator;
 
 public class fja
   implements Comparator
 {
-  public fja(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public fja(C2CMessageProcessor paramC2CMessageProcessor) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    Object localObject2 = paramPhoneContact1.pinyinFirst;
-    String str = paramPhoneContact2.pinyinFirst;
-    Object localObject1 = localObject2;
-    if (((String)localObject2).endsWith("#")) {
-      localObject1 = "Za";
+    if (paramMessageRecord1.time > paramMessageRecord2.time) {
+      return 1;
     }
-    localObject2 = str;
-    if (str.endsWith("#")) {
-      localObject2 = "Za";
-    }
-    int j = ((String)localObject1).compareTo((String)localObject2);
-    int i = j;
-    if (j == 0) {
-      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
-    }
-    return i;
+    return -1;
   }
 }
 

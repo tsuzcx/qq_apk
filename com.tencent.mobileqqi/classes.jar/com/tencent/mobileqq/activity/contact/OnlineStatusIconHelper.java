@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.AssetManager;
 import com.tencent.common.app.BaseApplicationImpl;
-import eij;
+import edg;
 import java.util.HashMap;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -39,8 +39,8 @@ public class OnlineStatusIconHelper
     try
     {
       SAXParser localSAXParser = SAXParserFactory.newInstance().newSAXParser();
-      eij localeij = new eij(this);
-      localSAXParser.parse(paramContext.getAssets().open("online_status_icon_config.xml"), localeij);
+      edg localedg = new edg(this);
+      localSAXParser.parse(paramContext.getAssets().open("online_status_icon_config.xml"), localedg);
       return;
     }
     catch (Exception paramContext) {}

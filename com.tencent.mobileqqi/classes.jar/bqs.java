@@ -1,24 +1,18 @@
-import com.tencent.biz.pubaccount.assistant.PubAccountAssistantActivity;
-import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.litetransfersdk.LiteTransferListenerCallback;
 
 public class bqs
-  extends MessageObserver
+  implements Runnable
 {
-  public bqs(PubAccountAssistantActivity paramPubAccountAssistantActivity) {}
+  public bqs(LiteTransferListenerCallback paramLiteTransferListenerCallback, long paramLong, String paramString) {}
   
-  protected void a()
+  public void run()
   {
-    this.a.b();
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    this.a.b();
+    LiteTransferListenerCallback.access$400(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferListenerCallback, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bqs
  * JD-Core Version:    0.7.0.1
  */

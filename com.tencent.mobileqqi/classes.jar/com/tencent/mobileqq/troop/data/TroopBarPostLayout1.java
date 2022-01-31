@@ -17,13 +17,13 @@ import com.tencent.mobileqq.data.TroopBarPageEntity;
 import com.tencent.mobileqq.data.TroopBarPostEntity;
 import com.tencent.mobileqq.data.TroopBarUserEntity;
 import com.tencent.mobileqq.troop.utils.TroopBarUtils;
-import gzn;
+import gvg;
 
 public class TroopBarPostLayout1
   extends TroopBarPostAbsLayout
   implements View.OnClickListener
 {
-  protected static final int a = 2130903403;
+  protected static final int a = 2130903405;
   
   public static final boolean a(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
@@ -37,56 +37,56 @@ public class TroopBarPostLayout1
   
   public View a(Activity paramActivity, LayoutInflater paramLayoutInflater, View paramView, TroopBarAbsDataEntity paramTroopBarAbsDataEntity)
   {
-    gzn localgzn;
+    gvg localgvg;
     if (paramView == null)
     {
-      paramView = paramLayoutInflater.inflate(2130903403, null);
-      localgzn = (gzn)a(paramView);
-      paramView.setTag(localgzn);
+      paramView = paramLayoutInflater.inflate(2130903405, null);
+      localgvg = (gvg)a(paramView);
+      paramView.setTag(localgvg);
     }
     for (;;)
     {
       paramTroopBarAbsDataEntity = (TroopBarPostEntity)paramTroopBarAbsDataEntity;
-      localgzn.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopBarAbsDataEntity.title);
+      localgvg.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopBarAbsDataEntity.title);
       paramActivity = paramActivity.getResources();
-      TroopBarUtils.a(paramActivity, paramLayoutInflater, localgzn.jdField_b_of_type_AndroidWidgetLinearLayout, paramTroopBarAbsDataEntity.getIconListEntitys());
+      TroopBarUtils.a(paramActivity, paramLayoutInflater, localgvg.jdField_b_of_type_AndroidWidgetLinearLayout, paramTroopBarAbsDataEntity.getIconListEntitys());
       TroopBarUserEntity localTroopBarUserEntity = paramTroopBarAbsDataEntity.getUsers();
       int i;
       if (localTroopBarUserEntity != null)
       {
-        localgzn.jdField_b_of_type_AndroidWidgetTextView.setText(localTroopBarUserEntity.nickName);
-        TroopBarUtils.a(paramActivity, paramLayoutInflater, localgzn.jdField_c_of_type_AndroidWidgetLinearLayout, localTroopBarUserEntity.getIconListEntitys());
+        localgvg.jdField_b_of_type_AndroidWidgetTextView.setText(localTroopBarUserEntity.nickName);
+        TroopBarUtils.a(paramActivity, paramLayoutInflater, localgvg.jdField_c_of_type_AndroidWidgetLinearLayout, localTroopBarUserEntity.getIconListEntitys());
         if (localTroopBarUserEntity.gender != 1) {
           break label319;
         }
-        i = 2130838067;
+        i = 2130838069;
         label121:
-        localgzn.jdField_a_of_type_AndroidWidgetImageView.setImageResource(i);
+        localgvg.jdField_a_of_type_AndroidWidgetImageView.setImageResource(i);
         if (localTroopBarUserEntity.gender != 1) {
           break label326;
         }
-        localgzn.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramActivity.getString(2131560707));
+        localgvg.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramActivity.getString(2131560707));
         if (TextUtils.isEmpty(TroopBarPageEntity.sUserLevelSmallIconPrefix)) {}
       }
       try
       {
-        localgzn.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter);
+        localgvg.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter);
         paramLayoutInflater = TroopBarPageEntity.sUserLevelSmallIconPrefix + String.valueOf(localTroopBarUserEntity.level) + ".png";
-        localgzn.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(URLDrawable.getDrawable(paramLayoutInflater, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable));
-        localgzn.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(paramActivity.getString(2131560709));
+        localgvg.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(URLDrawable.getDrawable(paramLayoutInflater, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable));
+        localgvg.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(paramActivity.getString(2131560709));
         label239:
-        localgzn.jdField_c_of_type_AndroidWidgetTextView.setText(TroopBarUtils.a(paramTroopBarAbsDataEntity.time));
-        localgzn.d.setText(paramActivity.getString(2131560692, new Object[] { TroopBarUtils.a(paramTroopBarAbsDataEntity.total_comment) }));
-        localgzn.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(2131230861, paramTroopBarAbsDataEntity);
-        localgzn.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+        localgvg.jdField_c_of_type_AndroidWidgetTextView.setText(TroopBarUtils.a(paramTroopBarAbsDataEntity.time));
+        localgvg.d.setText(paramActivity.getString(2131560692, new Object[] { TroopBarUtils.a(paramTroopBarAbsDataEntity.total_comment) }));
+        localgvg.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(2131230861, paramTroopBarAbsDataEntity);
+        localgvg.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
         return paramView;
-        localgzn = (gzn)paramView.getTag();
+        localgvg = (gvg)paramView.getTag();
         continue;
         label319:
-        i = 2130838066;
+        i = 2130838068;
         break label121;
         label326:
-        localgzn.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramActivity.getString(2131560708));
+        localgvg.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramActivity.getString(2131560708));
       }
       catch (Exception paramLayoutInflater)
       {
@@ -97,7 +97,7 @@ public class TroopBarPostLayout1
   
   public TroopBarPostAbsLayout.AbsItemViewHolder a(View paramView)
   {
-    return new gzn(this, paramView);
+    return new gvg(this, paramView);
   }
   
   public void onClick(View paramView)

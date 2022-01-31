@@ -1,38 +1,26 @@
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.PASingleItemBuilder;
 
 public class eaa
-  extends WebChromeClient
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  private eaa(UpgradeDetailActivity paramUpgradeDetailActivity) {}
+  public int a;
+  public long a;
+  public Object a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
-  {
-    super.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
-    paramGeolocationPermissionsCallback.invoke(paramString, true, false);
-  }
-  
-  public void onProgressChanged(WebView paramWebView, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onProgressChanged: " + paramInt + "%");
-    }
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onReceivedTitle:" + paramString);
-    }
-    this.a.setTitle(paramString);
-  }
+  public eaa(PASingleItemBuilder paramPASingleItemBuilder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eaa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,26 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class bvb
-  implements Runnable
+public class bvb
+  implements View.OnClickListener
 {
-  bvb(bva parambva, String paramString1, String paramString2, String paramString3, String paramString4, Bitmap paramBitmap) {}
+  public bvb(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Bva.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.isResume()) && (!this.jdField_a_of_type_Bva.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.isFinishing()))
-    {
-      if ((this.jdField_a_of_type_Bva.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_Bva.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.jdField_a_of_type_Bva.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      }
-      this.jdField_a_of_type_Bva.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(this.jdField_a_of_type_Bva.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
+    paramView = new Intent(this.a, ChatBackgroundSettingActivity.class);
+    paramView.putExtra("bg_replace_entrance", 8);
+    this.a.startActivity(paramView);
+    ReportController.b(this.a.b, "CliOper", "", "", "Trends_tab", "Enter_background", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bvb
  * JD-Core Version:    0.7.0.1
  */

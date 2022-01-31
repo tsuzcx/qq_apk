@@ -1,30 +1,29 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.TextSignatureItemBuilder;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
+import com.tencent.mobileqq.data.RecommendTroopMsg;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class egg
-  extends AbstractChatItemBuilder.ViewHolder
+class egg
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public ViewGroup a;
-  public ImageView a;
-  AnyScaleTypeImageView jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView;
-  public String a;
-  public TextView b;
-  public String b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  egg(egf paramegf, RecommendTroopMsg paramRecommendTroopMsg) {}
   
-  public egg(TextSignatureItemBuilder paramTextSignatureItemBuilder) {}
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataRecommendTroopMsg.isTroop()) {
+      RecommendTroopView.a(this.jdField_a_of_type_Egf.a, this.jdField_a_of_type_ComTencentMobileqqDataRecommendTroopMsg.troop, this.jdField_a_of_type_ComTencentMobileqqDataRecommendTroopMsg.isRead);
+    }
+    while (!this.jdField_a_of_type_ComTencentMobileqqDataRecommendTroopMsg.isBusiness()) {
+      return;
+    }
+    RecommendTroopView.a(this.jdField_a_of_type_Egf.a, this.jdField_a_of_type_ComTencentMobileqqDataRecommendTroopMsg.rtbItem);
+    ReportController.b(this.jdField_a_of_type_Egf.a.a, "CliOper", "", "", "Grp_recommend", "Clk_grp_recommend", 0, 0, "", "", "", "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     egg
  * JD-Core Version:    0.7.0.1
  */

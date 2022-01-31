@@ -1,16 +1,20 @@
-import com.tencent.mobileqq.remind.RemindJavascriptInterface;
-import com.tencent.mobileqq.remind.widget.IosTimepicker.OnTimePickerSelectListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.MainAcitivityReportHelper;
+import java.util.TimerTask;
 
 public class gkh
-  implements IosTimepicker.OnTimePickerSelectListener
+  extends TimerTask
 {
-  public gkh(RemindJavascriptInterface paramRemindJavascriptInterface) {}
+  public gkh(MainAcitivityReportHelper paramMainAcitivityReportHelper, QQAppInterface paramQQAppInterface) {}
   
-  public void a(long paramLong) {}
+  public void run()
+  {
+    MainAcitivityReportHelper.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gkh
  * JD-Core Version:    0.7.0.1
  */

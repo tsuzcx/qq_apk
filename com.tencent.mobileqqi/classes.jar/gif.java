@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.pic.CompressInfo;
+import PersonalState.UserProfile;
+import com.tencent.mobileqq.richstatus.StatusManager;
+import java.util.Comparator;
 
-public final class gif
-  implements Parcelable.Creator
+public class gif
+  implements Comparator
 {
-  public CompressInfo a(Parcel paramParcel)
-  {
-    return new CompressInfo(paramParcel, null);
-  }
+  public gif(StatusManager paramStatusManager) {}
   
-  public CompressInfo[] a(int paramInt)
+  public int a(UserProfile paramUserProfile1, UserProfile paramUserProfile2)
   {
-    return new CompressInfo[paramInt];
+    return (int)(paramUserProfile2.richTime - paramUserProfile1.richTime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gif
  * JD-Core Version:    0.7.0.1
  */

@@ -28,9 +28,9 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
-import efr;
-import efs;
-import eft;
+import eap;
+import eaq;
+import ear;
 
 public class ShakeItemBuilder
   extends BaseBubbleBuilder
@@ -40,7 +40,7 @@ public class ShakeItemBuilder
   public ShakeItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new efr(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new eap(this);
   }
   
   public int a(ChatMessage paramChatMessage)
@@ -63,7 +63,7 @@ public class ShakeItemBuilder
       ((LinearLayout.LayoutParams)localObject).gravity = 16;
       paramViewHolder.addView(paramView, (ViewGroup.LayoutParams)localObject);
       localObject = new TextView(paramBaseChatItemLayout);
-      ((TextView)localObject).setTextColor(paramBaseChatItemLayout.getResources().getColorStateList(2131362077));
+      ((TextView)localObject).setTextColor(paramBaseChatItemLayout.getResources().getColorStateList(2131362087));
       ((TextView)localObject).setMaxWidth(BaseChatItemLayout.g);
       ((TextView)localObject).setId(2131231227);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
@@ -76,13 +76,13 @@ public class ShakeItemBuilder
     int k = BaseChatItemLayout.p;
     int j = BaseChatItemLayout.q;
     int i = BaseChatItemLayout.p;
-    localHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838675);
+    localHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838677);
     if (paramChatMessage.isSend())
     {
       k = BaseChatItemLayout.q;
       j = BaseChatItemLayout.p;
       i = BaseChatItemLayout.q;
-      localHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838676);
+      localHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838678);
     }
     localHolder.jdField_a_of_type_AndroidWidgetImageView.setPadding(i, 0, 0, 0);
     localHolder.jdField_a_of_type_AndroidWidgetTextView.setPadding(k, BaseChatItemLayout.n, j, BaseChatItemLayout.o);
@@ -146,7 +146,7 @@ public class ShakeItemBuilder
     String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131562859);
     String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131561439);
     if (paramView.isSendFromLocal()) {
-      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new efs(this, paramView), new eft(this)).show();
+      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new eaq(this, paramView), new ear(this)).show();
     }
   }
   
@@ -158,18 +158,18 @@ public class ShakeItemBuilder
       paramView = paramView.getResources();
       if (paramChatMessage.isSend())
       {
-        paramViewHolder = paramView.getColorStateList(2131362080);
+        paramViewHolder = paramView.getColorStateList(2131362090);
         localHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramViewHolder);
         if (!paramChatMessage.isSend()) {
           break label86;
         }
       }
       label86:
-      for (paramViewHolder = paramView.getColorStateList(2131362079);; paramViewHolder = paramView.getColorStateList(2131362078))
+      for (paramViewHolder = paramView.getColorStateList(2131362089);; paramViewHolder = paramView.getColorStateList(2131362088))
       {
         localHolder.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramViewHolder);
         return;
-        paramViewHolder = paramView.getColorStateList(2131362077);
+        paramViewHolder = paramView.getColorStateList(2131362087);
         break;
       }
     }
@@ -178,7 +178,7 @@ public class ShakeItemBuilder
     }
     while (paramBubbleInfo.c == 0)
     {
-      localHolder.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramView.getResources().getColorStateList(2131362078));
+      localHolder.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramView.getResources().getColorStateList(2131362088));
       return;
       localHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramBubbleInfo.b);
     }

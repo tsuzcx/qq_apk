@@ -1,17 +1,21 @@
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
 
-class dtb
+public class dtb
   implements Runnable
 {
-  dtb(dsz paramdsz) {}
+  public dtb(TroopTransferActivity paramTroopTransferActivity) {}
   
   public void run()
   {
-    String str = SubLoginActivity.a(this.a.a).getText().toString();
-    if ((str != null) && (str.equals("!@#ewaGbhkc$!!="))) {
-      SubLoginActivity.a(this.a.a).setText("");
+    try
+    {
+      if (this.a.a != null) {
+        this.a.a.notifyDataSetChanged();
+      }
+      return;
     }
+    catch (Throwable localThrowable) {}
   }
 }
 

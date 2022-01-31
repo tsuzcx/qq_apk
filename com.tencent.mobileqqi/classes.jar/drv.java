@@ -1,45 +1,51 @@
+import android.os.Handler;
 import android.view.View;
-import com.tencent.mobileqq.activity.SubAccountMessageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class drv
-  implements OverScrollViewListener
+  implements Animation.AnimationListener
 {
-  public drv(SubAccountMessageActivity paramSubAccountMessageActivity) {}
+  public static final String a = "right";
+  public static final int b = 0;
+  public static final String b = "left";
+  public static final int c = 1;
+  public static final int d = 2;
+  public static final int e = 3;
+  public static final int f = 4;
+  public static final int g = 5;
+  public static final int h = 6;
+  int jdField_a_of_type_Int = -1;
+  View jdField_a_of_type_AndroidViewView;
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public drv(TroopMemberListActivity paramTroopMemberListActivity, View paramView, int paramInt)
   {
-    if (this.a.b.r())
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.postDelayed(new drw(this), 0L);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
     {
-      SubAccountMessageActivity.a(this.a).a();
-      return;
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
     }
-    SubAccountMessageActivity.a(this.a).c(0L);
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    if (this.a.b.r()) {
-      return true;
+    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
+    {
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
     }
-    SubAccountMessageActivity.a(this.a).a(0L);
-    SubAccountMessageActivity.b(this.a, true);
-    SubAccountMessageActivity.a(this.a, true);
-    return true;
   }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    if (this.a.b.r()) {
-      return;
-    }
-    SubAccountMessageActivity.a(this.a).b(0L);
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

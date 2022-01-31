@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import cki;
+import ceb;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import java.util.ArrayList;
 
@@ -21,7 +21,7 @@ public class ChatTextSizeSettingActivity
   public static final String b = "chat_text_size_type";
   public static final int c = 2;
   public static final int d = 3;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new cki(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ceb(this);
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private ArrayList b = new ArrayList();

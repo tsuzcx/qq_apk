@@ -6,8 +6,8 @@ import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnErrorListener;
 import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
-import hip;
-import hiq;
+import hei;
+import hej;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -30,7 +30,7 @@ public class VoicePlayer
   private Context jdField_a_of_type_AndroidContentContext;
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new hip(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new hei(this);
   private String jdField_a_of_type_JavaLangString;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_a_of_type_Boolean = false;
@@ -209,7 +209,7 @@ public class VoicePlayer
       if (this.jdField_a_of_type_AndroidOsHandler != null)
       {
         this.n = 7;
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new hiq(this), 500L);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new hej(this), 500L);
         return;
       }
       a(false);

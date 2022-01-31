@@ -51,10 +51,10 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import hcp;
-import hcr;
-import hcs;
-import hct;
+import gyi;
+import gyk;
+import gyl;
+import gym;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -134,7 +134,7 @@ public class AvatarWallAdapter
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = null;
     this.jdField_g_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilObserver = new hcp(this);
+    this.jdField_a_of_type_JavaUtilObserver = new gyi(this);
     this.jdField_b_of_type_AndroidOsHandler = paramHandler;
     this.jdField_a_of_type_MqqUtilWeakReference = paramWeakReference;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
@@ -224,7 +224,7 @@ public class AvatarWallAdapter
   public int a()
   {
     if ((this.jdField_a_of_type_MqqUtilWeakReference != null) && (this.jdField_a_of_type_MqqUtilWeakReference.get() != null)) {
-      return ((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getResources().getDimensionPixelSize(2131427554);
+      return ((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getResources().getDimensionPixelSize(2131427557);
     }
     return 0;
   }
@@ -372,10 +372,10 @@ public class AvatarWallAdapter
     while (paramInt1 > 0)
     {
       localObject = this.jdField_a_of_type_AndroidOsHandler;
-      hcr localhcr = new hcr(this, paramInt2);
+      gyk localgyk = new gyk(this, paramInt2);
       int i1 = m;
       m = i1 + 1;
-      ((Handler)localObject).postDelayed(localhcr, i1 * 10);
+      ((Handler)localObject).postDelayed(localgyk, i1 * 10);
       paramInt1 -= 1;
     }
   }
@@ -445,7 +445,7 @@ public class AvatarWallAdapter
   
   public void a(GridView paramGridView)
   {
-    paramGridView.setOnItemClickListener(new hcs(this));
+    paramGridView.setOnItemClickListener(new gyl(this));
   }
   
   public void a(AvatarWallAdapter.AddButtonStatusListener paramAddButtonStatusListener)
@@ -529,7 +529,7 @@ public class AvatarWallAdapter
           this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this.jdField_g_of_type_JavaLangString, 4, true);
         }
       }
-      paramContext.setImageResource(2130838406);
+      paramContext.setImageResource(2130838408);
       return;
     }
     paramContext.setImageDrawable(URLDrawable.getDrawable(paramString));
@@ -833,7 +833,7 @@ public class AvatarWallAdapter
         }
       }
     }
-    localActionSheet.a(new hct(this, paramActivity, localActionSheet));
+    localActionSheet.a(new gym(this, paramActivity, localActionSheet));
     localActionSheet.show();
   }
   
@@ -1370,7 +1370,7 @@ public class AvatarWallAdapter
         do
         {
           return paramView;
-          paramViewGroup = LayoutInflater.from(paramViewGroup).inflate(2130903362, null);
+          paramViewGroup = LayoutInflater.from(paramViewGroup).inflate(2130903364, null);
           localAvatarInfo = (AvatarWallAdapter.AvatarInfo)getItem(paramInt);
           paramView = paramViewGroup;
         } while (localAvatarInfo == null);
@@ -1386,8 +1386,8 @@ public class AvatarWallAdapter
         if (paramViewGroup.getTag() == null)
         {
           localViewHolder = new AvatarWallAdapter.ViewHolder(this);
-          localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131231599));
-          localViewHolder.b = ((ImageView)paramViewGroup.findViewById(2131232290));
+          localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131231600));
+          localViewHolder.b = ((ImageView)paramViewGroup.findViewById(2131232293));
           localViewHolder.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramViewGroup.findViewById(2131230757));
           localViewHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewGroup.findViewById(2131231016));
           FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();

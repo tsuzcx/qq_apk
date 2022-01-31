@@ -1,43 +1,24 @@
-import com.rookery.translate.tencent.TencentTranslator;
-import com.rookery.translate.type.Language;
-import com.rookery.translate.type.TranslateError;
-import com.rookery.translate.type.TranslateWithTimeCallback;
-import com.tencent.mobileqq.app.I18nTranslatorObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.InputStream;
+import java.util.zip.GZIPInputStream;
+import org.apache.http.HttpEntity;
+import org.apache.http.entity.HttpEntityWrapper;
 
 public class bfz
-  extends I18nTranslatorObserver
+  extends HttpEntityWrapper
 {
-  public bfz(TencentTranslator paramTencentTranslator, Long paramLong, TranslateWithTimeCallback paramTranslateWithTimeCallback) {}
-  
-  protected void a(int paramInt, boolean paramBoolean, Long paramLong, List paramList)
+  public bfz(HttpEntity paramHttpEntity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Translator", 2, "startTime:" + paramLong + " request_time:" + this.jdField_a_of_type_JavaLangLong);
-    }
-    if (!paramLong.equals(this.jdField_a_of_type_JavaLangLong)) {}
-    for (;;)
-    {
-      return;
-      if (!paramBoolean)
-      {
-        this.jdField_a_of_type_ComRookeryTranslateTypeTranslateWithTimeCallback.a(new TranslateError("error"), this.jdField_a_of_type_JavaLangLong);
-        if (QLog.isColorLevel()) {
-          QLog.e("Translator", 2, " [onFailure][TencentTranslateClient] Throwable:error");
-        }
-      }
-      while (TencentTranslator.a(this.jdField_a_of_type_ComRookeryTranslateTencentTencentTranslator) != null)
-      {
-        TencentTranslator.a(this.jdField_a_of_type_ComRookeryTranslateTencentTencentTranslator).c(this);
-        return;
-        paramLong = new ArrayList();
-        paramLong.add(Language.AUTO_DETECT);
-        this.jdField_a_of_type_ComRookeryTranslateTypeTranslateWithTimeCallback.a(paramLong, paramList, this.jdField_a_of_type_JavaLangLong);
-      }
-    }
+    super(paramHttpEntity);
+  }
+  
+  public InputStream getContent()
+  {
+    return new GZIPInputStream(this.wrappedEntity.getContent());
+  }
+  
+  public long getContentLength()
+  {
+    return -1L;
   }
 }
 

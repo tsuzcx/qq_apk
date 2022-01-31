@@ -8,8 +8,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import com.tencent.tencentmap.mapsdk.map.GeoPoint;
 import com.tencent.tencentmap.mapsdk.map.MapView;
-import hlh;
-import hli;
+import hhd;
+import hhe;
 
 @SuppressLint({"HandlerLeak"})
 public class QQMapView
@@ -31,8 +31,8 @@ public class QQMapView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new hlh(this);
-    this.jdField_a_of_type_JavaLangThread = new hli(this, "qqmapview_calculate_position");
+    this.jdField_a_of_type_AndroidOsHandler = new hhd(this);
+    this.jdField_a_of_type_JavaLangThread = new hhe(this, "qqmapview_calculate_position");
     this.jdField_a_of_type_JavaLangThread.setPriority(10);
     this.jdField_a_of_type_JavaLangThread.start();
   }

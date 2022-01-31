@@ -1,29 +1,23 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.activity.photo.AlbumListActivity;
-import com.tencent.widget.XListView;
-import java.util.List;
+import com.tencent.mobileqq.activity.selectmember.RenMaiQuanTeamListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.app.CircleManager;
+import com.tencent.mobileqq.service.circle.IGroupObserver;
 
 public class eqn
-  extends AsyncTask
+  implements IGroupObserver
 {
-  public eqn(AlbumListActivity paramAlbumListActivity) {}
+  public eqn(RenMaiQuanTeamListInnerFrame paramRenMaiQuanTeamListInnerFrame) {}
   
-  protected List a(Object... paramVarArgs)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    return this.a.a();
-  }
-  
-  protected void a(List paramList)
-  {
-    AlbumListActivity.b(this.a);
-    AlbumListActivity.a(this.a, paramList);
-  }
-  
-  protected void onPreExecute()
-  {
-    super.onPreExecute();
-    this.a.a.setEmptyView(null);
-    AlbumListActivity.a(this.a);
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(this.a.jdField_a_of_type_JavaUtilArrayList);
+      RenMaiQuanTeamListInnerFrame.a(this.a).notifyDataSetChanged();
+    }
+    if (paramInt == 2) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.k();
+    }
   }
 }
 

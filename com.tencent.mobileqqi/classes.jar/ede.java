@@ -1,26 +1,43 @@
+import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.contact.CircleMemberListActivity;
+import com.tencent.mobileqq.data.CircleBuddy;
+import java.util.ArrayList;
 
 public class ede
-  implements Runnable
+  extends BaseAdapter
 {
-  public ede(PressToSpeakPanel paramPressToSpeakPanel, String paramString) {}
+  private ede(CircleMemberListActivity paramCircleMemberListActivity) {}
   
-  public void run()
+  public int getCount()
   {
-    ListenPanel localListenPanel = (ListenPanel)PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).findViewById(2131232850);
-    localListenPanel.setVisibility(0);
-    localListenPanel.setAudioPath(this.jdField_a_of_type_JavaLangString, PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel));
-    localListenPanel.setJumpSource(ListenPanel.c);
-    PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).setStatus(4);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel.setVisibility(8);
+    return this.a.a.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = this.a.a();
+    }
+    this.a.a(paramViewGroup, (CircleBuddy)this.a.a.get(paramInt));
+    return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ede
  * JD-Core Version:    0.7.0.1
  */

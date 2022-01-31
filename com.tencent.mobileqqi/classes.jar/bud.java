@@ -1,20 +1,24 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.biz.ui.CustomMenuBar;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class bud
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public bud(CustomMenuBar paramCustomMenuBar) {}
+  public bud(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.b = false;
-    this.a.a.setVisibility(4);
+    ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 2);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bud
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,32 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopNotificationHelper;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class cct
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public cct(ChatActivity paramChatActivity) {}
+  public cct(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((this.a.a.jdField_a_of_type_Int == 1) && (BaseApplicationImpl.getContext().getSharedPreferences("troop_new_guid", 0).getBoolean(this.a.a.jdField_a_of_type_JavaLangString, false))) {}
-    try
-    {
-      long l1 = Long.parseLong(this.a.a.jdField_a_of_type_JavaLangString);
-      long l2 = Long.parseLong(this.a.b.a());
-      TroopNotificationHelper.a(this.a.b, 0, l1, l1, l2, "", (int)System.currentTimeMillis(), "OidbSvc.0x852_48", (short)34, true);
+    if (ChatSettingActivity.a(this.a) == paramBoolean) {
       return;
     }
-    catch (Exception localException) {}
+    if (paramBoolean) {
+      ReportController.b(this.a.b, "CliOper", "", "", "0X80040EE", "0X80040EE", 0, 0, "2", "1", "", "");
+    }
+    for (;;)
+    {
+      ChatSettingActivity.a(this.a);
+      return;
+      ReportController.b(this.a.b, "CliOper", "", "", "0X80040EE", "0X80040EE", 0, 0, "2", "0", "", "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cct
  * JD-Core Version:    0.7.0.1
  */

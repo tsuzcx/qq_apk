@@ -1,14 +1,12 @@
 package com.dataline.activities;
 
-import android.content.ContentResolver;
 import android.content.Intent;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.DataLineHandler.EFILETYPE;
-import java.io.File;
+import com.tencent.mobileqq.utils.FileProvider7Helper;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -23,27 +21,7 @@ public class LiteActivity$LiteJumpAction
   
   private String a(Uri paramUri)
   {
-    String str = paramUri.getScheme();
-    if (str.equals("file")) {
-      return new File(paramUri.getPath()).getAbsolutePath();
-    }
-    if (str.equals("content")) {
-      try
-      {
-        paramUri = this.b.getContentResolver().query(paramUri, new String[] { "_data" }, null, null, null);
-        int i = paramUri.getColumnIndexOrThrow("_data");
-        paramUri.moveToFirst();
-        str = paramUri.getString(i);
-        paramUri.close();
-        return str;
-      }
-      catch (Exception paramUri)
-      {
-        paramUri.printStackTrace();
-        return null;
-      }
-    }
-    return null;
+    return FileProvider7Helper.getRealPathFromContentURI(this.a.getApplicationContext(), paramUri);
   }
   
   private void a(ArrayList paramArrayList, boolean paramBoolean)

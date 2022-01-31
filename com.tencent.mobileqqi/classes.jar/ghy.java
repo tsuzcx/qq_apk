@@ -1,51 +1,60 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
-import com.tencent.mobileqq.newfriend.TroopSystemMessage;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsgAction;
-import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
+import com.tencent.mobileqq.richstatus.StatusJsHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
 public class ghy
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  public ghy(TroopSystemMessage paramTroopSystemMessage) {}
+  public ghy(StatusJsHandler paramStatusJsHandler) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (!NetworkUtil.e(TroopSystemMessage.a(this.a).getApplication())) {
+    BaseActivity localBaseActivity = (BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localBaseActivity == null) || (localBaseActivity.isFinishing())) {
       return;
     }
-    int i = TroopSystemMessage.a(this.a).structMsg.msg.group_inviter_role.get();
-    int j = ((structmsg.SystemMsgAction)TroopSystemMessage.a(this.a).structMsg.msg.actions.get(0)).action_info.type.get();
-    if (j == 11) {
-      ReportController.b(TroopSystemMessage.a(this.a), "P_CliOper", "Grp_contacts", "", "Grp_ask", "Admin_Clk_oneblue_agree", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    if (!paramBoolean) {
+      this.a.a(2131560545);
     }
     for (;;)
     {
-      this.a.b = false;
-      if (((i == 2) || (i == 3)) && (j == 11)) {
-        this.a.b = true;
-      }
-      TroopSystemMessage.a(this.a).a(this.a.a);
-      TroopSystemMessage.a(this.a).a().a().c();
-      ((FriendListHandler)TroopSystemMessage.a(this.a).a(1)).a(String.valueOf(TroopSystemMessage.a(this.a).structMsg.req_uin.get()));
-      TroopSystemMessage.a(this.a, 0, (structmsg.StructMsg)TroopSystemMessage.a(this.a).structMsg.get());
+      this.a.a(this.a.c, "false");
       return;
-      if (j == 12) {
-        ReportController.b(TroopSystemMessage.a(this.a), "P_CliOper", "Grp_contacts", "", "Grp_ask", "Admin_Clk_oneblue_refuse", 0, 0, "", "", "", "");
+      if (paramBoolean) {}
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          mobileqq_mp.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
+          localGetPublicAccountDetailInfoResponse.mergeFrom(paramBundle);
+          if ((localGetPublicAccountDetailInfoResponse.ret_info.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0))
+          {
+            if ((this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null)) {
+              continue;
+            }
+            paramBundle = new AccountDetail(localGetPublicAccountDetailInfoResponse);
+            this.a.a(localBaseActivity, paramBundle);
+            StatusJsHandler.a(this.a, localBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+            return;
+          }
+          this.a.a(2131560545);
+          continue;
+        }
+        this.a.a(2131560545);
       }
+      catch (Exception paramBundle) {}
+      this.a.a(2131560545);
     }
   }
 }

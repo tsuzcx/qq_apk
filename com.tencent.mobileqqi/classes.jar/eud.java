@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.mobileqq.app.NearFieldDiscussHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import tencent.im.nearfield_discuss.nearfield_discuss.LBSInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class eud
-  implements Runnable
+  implements View.OnClickListener
 {
-  public eud(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public eud(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    nearfield_discuss.LBSInfo localLBSInfo = CreateFaceToFaceDiscussionActivity.a(this.a);
-    ((NearFieldDiscussHandler)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(40)).b(this.a.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.jdField_b_of_type_Int, localLBSInfo);
-    this.a.jdField_a_of_type_Boolean = true;
+    this.a.k();
   }
 }
 

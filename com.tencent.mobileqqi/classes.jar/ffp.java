@@ -1,16 +1,31 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
-import com.tencent.mobileqq.app.DataLineHandler;
-import java.util.List;
-import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MsgHeader;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class ffp
-  implements Runnable
+  implements SosoInterface.OnLocationListener
 {
-  public ffp(DataLineHandler paramDataLineHandler, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List paramList) {}
+  public ffp(QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo, byte[] paramArrayOfByte, SosoInterface paramSosoInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.onFileOperate0x211(this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0x7SubMsgType0x7$MsgBody$MsgHeader, this.jdField_a_of_type_JavaUtilList);
+    if (QLog.isColorLevel()) {
+      QLog.d("LBS", 2, "onLocationFinish result:" + paramInt);
+    }
+    com.tencent.mobileqq.app.LBSHandler.v = paramInt;
+    paramSosoInterface = QQAppInterface.a(this.a);
+    if (paramInt == 0) {}
+    try
+    {
+      QQAppInterface.a(this.a, paramArrayOfByte);
+      QQAppInterface.a(this.a, paramSosoLbsInfo);
+      QQAppInterface.a(this.a, QQAppInterface.a(paramSosoLbsInfo));
+      QQAppInterface.a(this.a).notifyAll();
+      return;
+    }
+    finally {}
   }
 }
 

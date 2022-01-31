@@ -2,7 +2,6 @@ package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.av.gaudio.GAudioNotifyCenter;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.activity.recent.TimeManager;
 import com.tencent.mobileqq.app.AppConstants;
@@ -68,7 +67,7 @@ public class RecentCallItem
     if ((paramQQAppInterface == null) || (paramContext == null)) {
       return;
     }
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.uin;
+    String str = this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.uin;
     FriendManager localFriendManager = (FriendManager)paramQQAppInterface.getManager(8);
     Friends localFriends;
     if (localFriendManager == null) {
@@ -79,7 +78,7 @@ public class RecentCallItem
     switch (this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.type)
     {
     default: 
-      this.jdField_a_of_type_JavaLangString = ContactUtils.b(paramQQAppInterface, str2, true);
+      this.jdField_a_of_type_JavaLangString = ContactUtils.b(paramQQAppInterface, str, true);
     case 1008: 
     case 1006: 
     case 1021: 
@@ -99,13 +98,13 @@ public class RecentCallItem
       {
         this.jdField_b_of_type_JavaLangCharSequence = this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.lastCallMsg;
         if (localFriends == null) {
-          break label1174;
+          break label1148;
         }
         i = localFriends.getNetWorkType();
         label225:
         this.y = i;
         if (this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.type != 3000) {
-          break label1226;
+          break label1200;
         }
         switch (this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.getState(paramQQAppInterface))
         {
@@ -128,39 +127,39 @@ public class RecentCallItem
           }
           i = this.F & 0xFFFF0FFF;
           if (!this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.isVideo()) {
-            break label1271;
+            break label1245;
           }
           i |= 0x3000;
           label487:
           this.F = i;
           paramQQAppInterface = new StringBuilder();
           if ((!this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.isMissedCall()) || (this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.isSend())) {
-            break label1280;
+            break label1254;
           }
           paramQQAppInterface.append(paramContext.getString(2131559000, new Object[] { this.jdField_a_of_type_JavaLangString }));
           label542:
           if (!this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.isVideo()) {
-            break label1342;
+            break label1316;
           }
           paramQQAppInterface.append(paramContext.getString(2131559003));
           label563:
           this.c = paramQQAppInterface.toString();
           return;
-          localFriends = localFriendManager.c(str2);
+          localFriends = localFriendManager.c(str);
           break label46;
           localObject3 = (PublicAccountDataManager)paramQQAppInterface.getManager(51);
           localObject1 = localObject2;
           if (localObject3 != null) {
-            localObject1 = ((PublicAccountDataManager)localObject3).a(str2);
+            localObject1 = ((PublicAccountDataManager)localObject3).a(str);
           }
           if (localObject1 != null)
           {
             this.jdField_a_of_type_JavaLangString = ((PublicAccountInfo)localObject1).name;
             continue;
-            localObject2 = ContactUtils.d(paramQQAppInterface, str2);
+            localObject2 = ContactUtils.d(paramQQAppInterface, str);
             localObject3 = (PhoneContactManager)paramQQAppInterface.getManager(10);
             if (localObject3 != null) {
-              localObject1 = ((PhoneContactManager)localObject3).f(str2);
+              localObject1 = ((PhoneContactManager)localObject3).f(str);
             }
             if (localObject1 != null)
             {
@@ -172,42 +171,42 @@ public class RecentCallItem
             }
             else
             {
-              this.jdField_a_of_type_JavaLangString = str2;
+              this.jdField_a_of_type_JavaLangString = str;
               continue;
               localObject1 = (CircleManager)paramQQAppInterface.getManager(33);
-              localObject2 = ((CircleManager)localObject1).a(str2);
+              localObject2 = ((CircleManager)localObject1).a(str);
               if ((localObject1 != null) && (localObject2 != null))
               {
                 this.jdField_a_of_type_JavaLangString = ((CircleManager)localObject1).a((CircleBuddy)localObject2);
               }
               else
               {
-                this.jdField_a_of_type_JavaLangString = ContactUtils.b(paramQQAppInterface, str2, true);
+                this.jdField_a_of_type_JavaLangString = ContactUtils.b(paramQQAppInterface, str, true);
                 continue;
-                if (AppConstants.U.equals(str2))
+                if (AppConstants.U.equals(str))
                 {
                   this.jdField_a_of_type_JavaLangString = paramContext.getString(2131562249);
                 }
-                else if (AppConstants.W.equals(str2))
+                else if (AppConstants.W.equals(str))
                 {
                   this.jdField_a_of_type_JavaLangString = paramContext.getString(2131562677);
                 }
-                else if (AppConstants.V.equals(str2))
+                else if (AppConstants.V.equals(str))
                 {
                   this.jdField_a_of_type_JavaLangString = paramContext.getString(2131562371);
                 }
-                else if (AppConstants.N.equals(str2))
+                else if (AppConstants.N.equals(str))
                 {
                   this.jdField_a_of_type_JavaLangString = paramContext.getString(2131562365);
                 }
-                else if (AppConstants.S.equals(str2))
+                else if (AppConstants.S.equals(str))
                 {
                   this.jdField_a_of_type_JavaLangString = paramContext.getString(2131563212);
                 }
                 else if (this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.type == 1000)
                 {
                   if (localFriendManager != null) {
-                    this.jdField_a_of_type_JavaLangString = ContactUtils.a(paramQQAppInterface, str2, localFriendManager.g(this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.troopUin), this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.troopUin, true);
+                    this.jdField_a_of_type_JavaLangString = ContactUtils.a(paramQQAppInterface, str, localFriendManager.g(this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.troopUin), this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.troopUin, true);
                   }
                 }
                 else
@@ -218,9 +217,9 @@ public class RecentCallItem
                     }
                   }
                   label966:
-                  for (this.jdField_a_of_type_JavaLangString = ((String)localObject1); (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_JavaLangString.equals(str2)); this.jdField_a_of_type_JavaLangString = "")
+                  for (this.jdField_a_of_type_JavaLangString = ((String)localObject1); (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_JavaLangString.equals(str)); this.jdField_a_of_type_JavaLangString = "")
                   {
-                    this.jdField_a_of_type_JavaLangString = ContactUtils.b(paramQQAppInterface, str2, true);
+                    this.jdField_a_of_type_JavaLangString = ContactUtils.b(paramQQAppInterface, str, true);
                     break;
                     localObject1 = localFriends.name;
                     break label966;
@@ -234,39 +233,25 @@ public class RecentCallItem
         }
       }
     }
-    this.jdField_a_of_type_JavaLangString = ContactUtils.b(paramQQAppInterface, str2);
+    this.jdField_a_of_type_JavaLangString = ContactUtils.b(paramQQAppInterface, str);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       localObject1 = localObject3;
       if (localFriendManager != null) {
-        localObject1 = localFriendManager.a(str2);
+        localObject1 = localFriendManager.a(str);
       }
       this.jdField_a_of_type_JavaLangString = ContactUtils.a(paramContext, (DiscussionInfo)localObject1);
     }
     if (localFriendManager != null)
     {
-      i = localFriendManager.c(str2);
+      i = localFriendManager.c(str);
       if (i <= 0) {}
     }
-    label1174:
-    label1226:
-    label1271:
-    String str1;
-    for (localObject1 = "(" + i + ")";; str1 = "")
+    for (localObject1 = "(" + i + ")";; localObject1 = "")
     {
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject1);
-        try
-        {
-          this.jdField_b_of_type_Long = paramQQAppInterface.a().a(Long.parseLong(str2));
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          localNumberFormatException.printStackTrace();
-        }
-      }
+      this.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject1);
       break;
+      label1148:
       i = 0;
       break label225;
       i = 3;
@@ -282,6 +267,7 @@ public class RecentCallItem
       break label282;
       i = 2;
       break label282;
+      label1200:
       if ((this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.isMissedCall()) && (!this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.isSend()))
       {
         i = 0;
@@ -294,9 +280,10 @@ public class RecentCallItem
       }
       i = 1;
       break label282;
+      label1245:
       i |= 0x4000;
       break label487;
-      label1280:
+      label1254:
       if (this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.isSend())
       {
         paramQQAppInterface.append(paramContext.getString(2131559001, new Object[] { this.jdField_a_of_type_JavaLangString }));
@@ -304,7 +291,7 @@ public class RecentCallItem
       }
       paramQQAppInterface.append(paramContext.getString(2131559002, new Object[] { this.jdField_a_of_type_JavaLangString }));
       break label542;
-      label1342:
+      label1316:
       paramQQAppInterface.append(paramContext.getString(2131559004));
       break label563;
     }

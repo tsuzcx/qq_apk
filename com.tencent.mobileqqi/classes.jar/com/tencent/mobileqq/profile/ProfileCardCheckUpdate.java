@@ -15,7 +15,7 @@ import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.pb.profilecard.SummaryCardUpdate.SUpdateReq;
 import com.tencent.pb.profilecard.SummaryCardUpdate.SUpdateRsp;
 import com.tencent.qphone.base.util.QLog;
-import gjc;
+import get;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -58,7 +58,7 @@ public class ProfileCardCheckUpdate
     ((SummaryCardUpdate.SUpdateReq)localObject2).uin.set(this.a.getLongAccountUin());
     localObject1 = ((SharedPreferences)localObject1).getString("cardTemplateVersion", "0");
     ((SummaryCardUpdate.SUpdateReq)localObject2).version.set((String)localObject1);
-    ((SummaryCardUpdate.SUpdateReq)localObject2).client_version.set("6.0.1");
+    ((SummaryCardUpdate.SUpdateReq)localObject2).client_version.set("6.0.2");
     ((SummaryCardUpdate.SUpdateReq)localObject2).platform.set(109);
     localObject2 = ((SummaryCardUpdate.SUpdateReq)localObject2).toByteArray();
     int i = localObject2.length;
@@ -68,7 +68,7 @@ public class ProfileCardCheckUpdate
     System.arraycopy(localObject2, 0, arrayOfByte, 4, i);
     localReqItem.vecParam = arrayOfByte;
     if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.ProfileCardCheckUpdate", 2, "getCheckUpdateItemData uin=" + this.a.getLongAccountUin() + ",version=" + (String)localObject1 + ",client_version=" + "6.0.1" + ",dataLen=" + j);
+      QLog.d("ProfileCard.ProfileCardCheckUpdate", 2, "getCheckUpdateItemData uin=" + this.a.getLongAccountUin() + ",version=" + (String)localObject1 + ",client_version=" + "6.0.2" + ",dataLen=" + j);
     }
     return localReqItem;
   }
@@ -135,7 +135,7 @@ public class ProfileCardCheckUpdate
   
   public void a(String paramString1, String paramString2)
   {
-    ThreadManager.a(new gjc(this, paramString1, paramString2));
+    ThreadManager.a(new get(this, paramString1, paramString2));
   }
   
   public boolean a()

@@ -22,13 +22,13 @@ import com.tencent.mobileqq.data.CircleGroup;
 import com.tencent.mobileqq.service.circle.IGroupObserver;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.widget.XListView;
-import eiy;
-import eiz;
-import eja;
-import ejb;
-import ejc;
-import ejd;
-import eje;
+import edv;
+import edw;
+import edx;
+import edy;
+import edz;
+import eea;
+import eeb;
 import java.util.ArrayList;
 
 public class CircleGroupListView
@@ -39,9 +39,9 @@ public class CircleGroupListView
   private ForwardOperations jdField_a_of_type_ComTencentMobileqqActivityForwardOperations;
   public SearchResultDialog a;
   public CircleManager a;
-  IGroupObserver jdField_a_of_type_ComTencentMobileqqServiceCircleIGroupObserver = new eiy(this);
+  IGroupObserver jdField_a_of_type_ComTencentMobileqqServiceCircleIGroupObserver = new edv(this);
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  public ejd a;
+  public eea a;
   public ArrayList a;
   private View d;
   
@@ -73,8 +73,8 @@ public class CircleGroupListView
     }
     for (;;)
     {
-      this.jdField_a_of_type_Ejd = new ejd(this, null);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ejd);
+      this.jdField_a_of_type_Eea = new eea(this, null);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Eea);
       return;
       bool = false;
       break;
@@ -96,7 +96,7 @@ public class CircleGroupListView
       return;
     }
     Contacts.jdField_a_of_type_Int += 1;
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog = new eiz(this, getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog = new edw(this, getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.setCanceledOnTouchOutside(true);
     paramInt = this.jdField_a_of_type_AndroidViewView.getHeight();
     TranslateAnimation localTranslateAnimation1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -paramInt);
@@ -104,9 +104,9 @@ public class CircleGroupListView
     localTranslateAnimation1.setFillAfter(true);
     TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(0.0F, 0.0F, -paramInt, 0.0F);
     localTranslateAnimation2.setDuration(200L);
-    localTranslateAnimation1.setAnimationListener(new eja(this));
-    localTranslateAnimation2.setAnimationListener(new ejb(this, paramInt));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.setOnDismissListener(new ejc(this, paramInt, localTranslateAnimation2));
+    localTranslateAnimation1.setAnimationListener(new edx(this));
+    localTranslateAnimation2.setAnimationListener(new edy(this, paramInt));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.setOnDismissListener(new edz(this, paramInt, localTranslateAnimation2));
     this.b.startAnimation(localTranslateAnimation1);
   }
   
@@ -135,32 +135,32 @@ public class CircleGroupListView
   
   private void j()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232903));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232906));
     this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(null);
-    this.d = findViewById(2131232904);
-    View localView = ((Activity)getContext()).getLayoutInflater().inflate(2130903942, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-    localView.findViewById(2131233084).setVisibility(8);
-    EditText localEditText = (EditText)localView.findViewById(2131233085);
+    this.d = findViewById(2131232907);
+    View localView = ((Activity)getContext()).getLayoutInflater().inflate(2130903944, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    localView.findViewById(2131233086).setVisibility(8);
+    EditText localEditText = (EditText)localView.findViewById(2131233087);
     localEditText.setFocusableInTouchMode(false);
     localEditText.setOnClickListener(this);
     localEditText.setCursorVisible(false);
-    ((TextView)localView.findViewById(2131234396)).setText(2131562831);
+    ((TextView)localView.findViewById(2131234398)).setText(2131562831);
     this.jdField_a_of_type_ComTencentWidgetXListView.a(localView);
   }
   
   public View a()
   {
-    View localView = ((Activity)getContext()).getLayoutInflater().inflate(2130903553, null);
-    localView.setId(2130903553);
-    eje localeje = new eje(null);
-    localeje.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131230940));
-    localeje.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231395));
-    localeje.b = ((TextView)localView.findViewById(2131231396));
-    Button localButton = (Button)localView.findViewById(2131232032);
-    localButton.setBackgroundResource(2130837803);
+    View localView = ((Activity)getContext()).getLayoutInflater().inflate(2130903555, null);
+    localView.setId(2130903555);
+    eeb localeeb = new eeb(null);
+    localeeb.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131230940));
+    localeeb.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231395));
+    localeeb.b = ((TextView)localView.findViewById(2131231396));
+    Button localButton = (Button)localView.findViewById(2131232035);
+    localButton.setBackgroundResource(2130837804);
     localButton.setVisibility(0);
     localButton.setClickable(false);
-    localView.setTag(localeje);
+    localView.setTag(localeeb);
     localView.setOnClickListener(this);
     return localView;
   }
@@ -168,21 +168,21 @@ public class CircleGroupListView
   protected void a(Intent paramIntent, BaseNewFriendView.INewFriendContext paramINewFriendContext)
   {
     super.a(paramIntent, paramINewFriendContext);
-    a(2130903552);
+    a(2130903554);
     j();
     a();
   }
   
   public void a(View paramView, CircleGroup paramCircleGroup)
   {
-    eje localeje = (eje)paramView.getTag();
-    localeje.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(paramCircleGroup.groupId));
-    localeje.jdField_a_of_type_AndroidWidgetTextView.setText(paramCircleGroup.groupName);
-    localeje.b.setText(getResources().getString(2131558935, new Object[] { Integer.valueOf(paramCircleGroup.buddyCount) }));
-    localeje.jdField_a_of_type_Int = paramCircleGroup.groupId;
-    localeje.jdField_a_of_type_JavaLangString = paramCircleGroup.groupName;
+    eeb localeeb = (eeb)paramView.getTag();
+    localeeb.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(paramCircleGroup.groupId));
+    localeeb.jdField_a_of_type_AndroidWidgetTextView.setText(paramCircleGroup.groupName);
+    localeeb.b.setText(getResources().getString(2131558935, new Object[] { Integer.valueOf(paramCircleGroup.buddyCount) }));
+    localeeb.jdField_a_of_type_Int = paramCircleGroup.groupId;
+    localeeb.jdField_a_of_type_JavaLangString = paramCircleGroup.groupName;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(getResources().getString(2131558936, new Object[] { localeje.jdField_a_of_type_JavaLangString }));
+    localStringBuilder.append(getResources().getString(2131558936, new Object[] { localeeb.jdField_a_of_type_JavaLangString }));
     localStringBuilder.append(getResources().getString(2131558937, new Object[] { Integer.valueOf(paramCircleGroup.buddyCount) }));
     localStringBuilder.append(getContext().getResources().getString(2131558938));
     paramView.setContentDescription(localStringBuilder.toString());
@@ -204,11 +204,11 @@ public class CircleGroupListView
   
   public void onClick(View paramView)
   {
-    eje localeje;
+    eeb localeeb;
     switch (paramView.getId())
     {
     default: 
-      localeje = (eje)paramView.getTag();
+      localeeb = (eeb)paramView.getTag();
       paramView = this.jdField_a_of_type_AndroidContentIntent;
       if (paramView == null) {
         paramView = new Intent();
@@ -218,11 +218,11 @@ public class CircleGroupListView
     for (;;)
     {
       paramView.setClass(getContext(), CircleMemberListActivity.class);
-      paramView.putExtra("k_group_id", localeje.jdField_a_of_type_Int);
-      paramView.putExtra("k_group_name", localeje.jdField_a_of_type_JavaLangString);
+      paramView.putExtra("k_group_id", localeeb.jdField_a_of_type_Int);
+      paramView.putExtra("k_group_name", localeeb.jdField_a_of_type_JavaLangString);
       if (this.jdField_a_of_type_Boolean)
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Network_circle", "Forward_circle_grp", 0, 0, localeje.jdField_a_of_type_Int - 1 + "", "", "", "");
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Network_circle", "Forward_circle_grp", 0, 0, localeeb.jdField_a_of_type_Int - 1 + "", "", "", "");
         b(paramView, 20000);
         return;
         if (this.jdField_a_of_type_Boolean)
@@ -234,7 +234,7 @@ public class CircleGroupListView
         c(13);
         return;
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Network_circle", "Circle_list_exp", 0, 0, localeje.jdField_a_of_type_Int - 1 + "", "", "", "");
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Network_circle", "Circle_list_exp", 0, 0, localeeb.jdField_a_of_type_Int - 1 + "", "", "", "");
       a(paramView);
       return;
     }

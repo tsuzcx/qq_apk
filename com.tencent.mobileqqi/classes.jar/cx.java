@@ -1,32 +1,30 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.dataline.mpfile.LiteMpFileDownloadActivity;
-import com.dataline.mpfile.LiteMpFileFileDetailActivity;
-import com.dataline.mpfile.MpfileTaskInfo;
-import com.dataline.mpfile.MpfileTaskListAdapter.ItemHolder;
+import com.dataline.mpfile.LiteMpFileActionListActivity;
+import com.dataline.mpfile.MpFileConstant;
+import com.dataline.util.DatalineMathUtil;
 
 public class cx
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public cx(LiteMpFileDownloadActivity paramLiteMpFileDownloadActivity) {}
+  public cx(LiteMpFileActionListActivity paramLiteMpFileActionListActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramView = (MpfileTaskListAdapter.ItemHolder)paramView.getTag();
-    if (paramView != null)
+    if (paramIntent != null)
     {
-      Object localObject = paramView.a;
-      if (localObject != null)
+      paramContext = paramIntent.getAction();
+      if ((paramContext != null) && (paramContext.equals(MpFileConstant.d)))
       {
-        paramView = new Bundle();
-        paramView.putString("fileId", ((MpfileTaskInfo)localObject).c);
-        paramView.putString("name", ((MpfileTaskInfo)localObject).d);
-        paramView.putLong("size", ((MpfileTaskInfo)localObject).b);
-        localObject = new Intent(this.a, LiteMpFileFileDetailActivity.class);
-        ((Intent)localObject).putExtras(paramView);
-        this.a.startActivity((Intent)localObject);
+        paramContext = paramIntent.getExtras();
+        paramIntent = DatalineMathUtil.a(paramContext.getLong("ip"));
+        int i = paramContext.getInt("port");
+        LiteMpFileActionListActivity.jdField_a_of_type_JavaLangString = paramIntent;
+        LiteMpFileActionListActivity.jdField_a_of_type_Int = i;
+        LiteMpFileActionListActivity.a(this.a, String.format("http://%s:%d/qqmpfile/?action=fileList&offset=0&limit=100", new Object[] { LiteMpFileActionListActivity.jdField_a_of_type_JavaLangString, Integer.valueOf(LiteMpFileActionListActivity.jdField_a_of_type_Int) }));
+        LiteMpFileActionListActivity.a(this.a);
       }
     }
   }

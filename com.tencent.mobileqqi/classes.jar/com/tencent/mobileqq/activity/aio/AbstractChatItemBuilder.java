@@ -16,10 +16,10 @@ import com.tencent.mobileqq.utils.TimeFormatterUtils;
 public abstract class AbstractChatItemBuilder
   implements ChatItemBuilder
 {
-  protected Context a;
-  protected BaseAdapter a;
-  protected SessionInfo a;
-  protected QQAppInterface a;
+  public Context a;
+  public BaseAdapter a;
+  public SessionInfo a;
+  public QQAppInterface a;
   
   public AbstractChatItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
@@ -53,8 +53,8 @@ public abstract class AbstractChatItemBuilder
         ((TextView)localObject).setGravity(17);
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
         localLayoutParams.gravity = 1;
-        localLayoutParams.topMargin = localContext.getResources().getDimensionPixelOffset(2131427469);
-        localLayoutParams.bottomMargin = localContext.getResources().getDimensionPixelOffset(2131427470);
+        localLayoutParams.topMargin = localContext.getResources().getDimensionPixelOffset(2131427472);
+        localLayoutParams.bottomMargin = localContext.getResources().getDimensionPixelOffset(2131427473);
         ((ViewGroup)paramViewGroup).addView((View)localObject, 0, localLayoutParams);
         paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject);
         ((TextView)localObject).setTag(Long.valueOf(0L));
@@ -97,9 +97,9 @@ public abstract class AbstractChatItemBuilder
     }
   }
   
-  protected abstract View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener);
+  public abstract View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener);
   
-  protected abstract AbstractChatItemBuilder.ViewHolder a();
+  public abstract AbstractChatItemBuilder.ViewHolder a();
 }
 
 

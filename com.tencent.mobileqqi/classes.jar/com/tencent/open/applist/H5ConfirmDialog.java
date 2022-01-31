@@ -4,8 +4,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.widget.Button;
 import android.widget.CheckBox;
-import hpg;
-import hph;
+import hlc;
+import hld;
 
 public class H5ConfirmDialog
 {
@@ -20,12 +20,12 @@ public class H5ConfirmDialog
   {
     this.context = paramContext;
     this.dialog = new Dialog(this.context, 2131624152);
-    this.dialog.setContentView(2130903327);
-    this.confirm_btn = ((Button)this.dialog.findViewById(2131232100));
-    this.cancel_btn = ((Button)this.dialog.findViewById(2131232099));
-    this.createIcon_cb = ((CheckBox)this.dialog.findViewById(2131232098));
-    this.confirm_btn.setOnClickListener(new hpg(this));
-    this.cancel_btn.setOnClickListener(new hph(this));
+    this.dialog.setContentView(2130903329);
+    this.confirm_btn = ((Button)this.dialog.findViewById(2131232103));
+    this.cancel_btn = ((Button)this.dialog.findViewById(2131232102));
+    this.createIcon_cb = ((CheckBox)this.dialog.findViewById(2131232101));
+    this.confirm_btn.setOnClickListener(new hlc(this));
+    this.cancel_btn.setOnClickListener(new hld(this));
   }
   
   public void dismiss()

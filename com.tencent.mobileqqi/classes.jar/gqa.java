@@ -1,30 +1,35 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
+import com.tencent.map.lbsapi.api.SOSOMapLBSApi;
+import com.tencent.map.lbsapi.api.SOSOMapLBSApiListener;
+import com.tencent.map.lbsapi.api.SOSOMapLBSApiResult;
+import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
+import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity.UIHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class gqa
-  extends Handler
+  extends SOSOMapLBSApiListener
 {
-  public gqa(FriendSystemMsgController paramFriendSystemMsgController, Looper paramLooper)
+  public gqa(NearbyTroopsActivity paramNearbyTroopsActivity, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super(paramLooper);
+    super(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onLocationUpdate(SOSOMapLBSApiResult paramSOSOMapLBSApiResult)
   {
-    if ((FriendSystemMsgController.a(this.a)) && (FriendSystemMsgController.a(this.a) != null))
-    {
-      FriendSystemMsgController.a(this.a, false);
-      FriendSystemMsgController.a(this.a).a().a(2);
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyTroopsActivity", 2, "onLocationUpdate()");
     }
+    if (paramSOSOMapLBSApiResult == null) {
+      return;
+    }
+    SOSOMapLBSApi.getInstance().removeLocationUpdate();
+    this.a.d = ((int)(paramSOSOMapLBSApiResult.Latitude * 1000000.0D));
+    this.a.e = ((int)(paramSOSOMapLBSApiResult.Longitude * 1000000.0D));
+    this.a.a.sendEmptyMessage(5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     gqa
  * JD-Core Version:    0.7.0.1
  */

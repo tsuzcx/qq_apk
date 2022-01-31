@@ -1,15 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.SnapScreenActivity;
 
 public class din
   implements View.OnClickListener
 {
-  public din(QQMapActivity paramQQMapActivity) {}
+  public din(SnapScreenActivity paramSnapScreenActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.r();
+    this.a.a.a(true);
   }
 }
 

@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.eqq.EnterpriseDetailActivity;
-import org.json.JSONArray;
+import com.tencent.biz.webviewplugin.Ad;
 
 public class bom
-  implements View.OnClickListener
+  implements Runnable
 {
-  public bom(EnterpriseDetailActivity paramEnterpriseDetailActivity, JSONArray paramJSONArray) {}
+  public bom(Ad paramAd) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a(0, this.jdField_a_of_type_OrgJsonJSONArray);
+    this.a.g();
   }
 }
 

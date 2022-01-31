@@ -1,40 +1,20 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+
 public class bvv
+  implements View.OnClickListener
 {
-  private static final String c = bvv.class.getName();
-  String a;
-  String b;
+  public bvv(AuthDevActivity paramAuthDevActivity) {}
   
-  public String a()
+  public void onClick(View paramView)
   {
-    return this.a;
-  }
-  
-  public void a(String paramString)
-  {
-    this.a = paramString;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public void b(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" apn = " + this.a);
-    localStringBuilder.append(" name = " + this.b);
-    return localStringBuilder.toString();
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bvv
  * JD-Core Version:    0.7.0.1
  */

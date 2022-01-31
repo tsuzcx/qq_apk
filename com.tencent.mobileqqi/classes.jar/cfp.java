@@ -1,19 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
-class cfp
-  implements DialogInterface.OnDismissListener
+public class cfp
+  implements Runnable
 {
-  cfp(cfn paramcfn) {}
+  public cfp(Conversation paramConversation, String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    MsgProxyUtils.b(this.a.a.b, this.a.a.a.jdField_a_of_type_JavaLangString, this.a.a.a.jdField_a_of_type_Int);
-    ChatActivity.a(this.a.a).notifyDataSetChanged();
+    ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), -1, 1, null, this.jdField_a_of_type_JavaLangString, true, true, null);
   }
 }
 

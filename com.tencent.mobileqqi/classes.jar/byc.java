@@ -1,56 +1,40 @@
-import android.content.res.Resources;
-import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.AIOTipsController;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class byc
   implements View.OnClickListener
 {
-  public byc(AccountManageActivity paramAccountManageActivity) {}
+  public byc(ChatActivity paramChatActivity) {}
   
   public void onClick(View paramView)
   {
-    if (!this.a.d) {
+    if ((this.a.a.jdField_a_of_type_Int == 1008) || (CrmUtils.a(this.a.b, this.a.a.jdField_a_of_type_JavaLangString)))
+    {
+      ChatActivity.a(this.a).a();
+      ChatActivity.b(this.a, false);
+      this.a.e();
+      ReportController.b(this.a.b, "P_CliOper", "Pb_account_lifeservice", this.a.b.getAccount(), "mp_msg_zhushou_5", "share_succ", 0, 0, "", "", "", "");
       return;
     }
-    paramView = this.a;
-    boolean bool;
-    if (!this.a.c)
-    {
-      bool = true;
-      paramView.c = bool;
-      if (!this.a.c) {
-        break label187;
-      }
-      AccountManageActivity.a(this.a).setVisibility(8);
-      AccountManageActivity.b(this.a).setVisibility(0);
-      AccountManageActivity.c(this.a).setText(2131561977);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131362099));
-    }
-    for (;;)
-    {
-      this.a.b();
-      this.a.a(this.a.c);
-      this.a.d = false;
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new byd(this), 400L);
-      ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Clk_acc_edit", 0, 0, "", "", "", "");
-      return;
-      bool = false;
-      break;
-      label187:
-      AccountManageActivity.d(this.a).setVisibility(0);
-      AccountManageActivity.e(this.a).setVisibility(8);
-      AccountManageActivity.f(this.a).setText(2131562001);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131362073));
-    }
+    this.a.b.a(this.a.a.jdField_a_of_type_JavaLangString, Integer.valueOf(4));
+    ChatActivity.a(this.a).a();
+    ChatActivity.c(this.a, false);
+    TroopAssistantManager.a().a(this.a.b, this.a.a.jdField_a_of_type_JavaLangString);
+    QQToast.a(this.a, 2, 2131563074, 0).b(this.a.d());
+    ReportController.b(this.a.b, "P_CliOper", "Grp_msg", "", "AIOchat", "Clk_setmsg", 0, 0, this.a.a.jdField_a_of_type_JavaLangString, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     byc
  * JD-Core Version:    0.7.0.1
  */

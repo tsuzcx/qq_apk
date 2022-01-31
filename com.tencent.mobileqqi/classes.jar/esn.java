@@ -1,48 +1,27 @@
-import android.content.ComponentName;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MusicSharePlayActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialCarePersonActivity;
+import com.tencent.mobileqq.app.QvipSpecialCareObserver;
 
 public class esn
-  implements View.OnClickListener
+  extends QvipSpecialCareObserver
 {
-  public esn(BannerManager paramBannerManager) {}
+  public esn(QvipSpecialCarePersonActivity paramQvipSpecialCarePersonActivity) {}
   
-  public void onClick(View paramView)
+  public void a(Object paramObject)
   {
-    paramView = QQPlayerService.a();
-    int i;
-    if (paramView != null)
-    {
-      BannerManager.a(this.a).startActivity(paramView);
-      paramView = paramView.getComponent().getClassName();
-      if (!paramView.equals(MusicSharePlayActivity.class.getName())) {
-        break label92;
-      }
-      i = 0;
+    if (paramObject != null) {
+      QvipSpecialCarePersonActivity.b(this.a);
     }
-    for (;;)
+    switch (((Integer)paramObject).intValue())
     {
-      ReportController.b(BannerManager.a(this.a).b, "CliOper", "", "", "Msg_tab", "Mt_music_tips", 0, 0, "" + i, "", "", "");
+    default: 
       return;
-      label92:
-      if (paramView.equals(MusicGeneQQBrowserActivity.class.getName())) {
-        i = 1;
-      } else {
-        i = -1;
-      }
     }
+    QvipSpecialCarePersonActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     esn
  * JD-Core Version:    0.7.0.1
  */

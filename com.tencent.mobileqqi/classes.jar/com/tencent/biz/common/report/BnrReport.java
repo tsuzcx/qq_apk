@@ -11,7 +11,7 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.SparseIntArray;
-import bnu;
+import bhq;
 import com.tencent.biz.ProtoServlet;
 import com.tencent.biz.common.util.Util;
 import com.tencent.common.app.AppInterface;
@@ -682,7 +682,7 @@ public class BnrReport
         localObject = a((String)localObject);
       } while (localObject == null);
       localNewIntent.putExtra("data", ((BnrReport.BNRConfigMsg)localObject).toByteArray());
-      localNewIntent.setObserver(new bnu(paramAppInterface));
+      localNewIntent.setObserver(new bhq(paramAppInterface));
       paramAppInterface.startServlet(localNewIntent);
     } while (!QLog.isDevelopLevel());
     QLog.d("BnrReport", 4, "sendGetReportConfig exit");

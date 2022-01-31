@@ -9,7 +9,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.RelativeLayout;
-import hlg;
+import hhc;
 
 public class OvalProgress
   extends RelativeLayout
@@ -23,7 +23,7 @@ public class OvalProgress
   public float a;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private hlg jdField_a_of_type_Hlg;
+  private hhc jdField_a_of_type_Hhc;
   private boolean jdField_a_of_type_Boolean = false;
   private float jdField_b_of_type_Float = -1.0F;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
@@ -62,8 +62,8 @@ public class OvalProgress
       return 0.0D;
     }
     int j = 90;
-    if (this.jdField_a_of_type_Hlg.jdField_a_of_type_Double > 0.0D) {}
-    for (int i = (int)(1.0D * paramDouble * 90 / this.jdField_a_of_type_Hlg.jdField_a_of_type_Double);; i = 0)
+    if (this.jdField_a_of_type_Hhc.jdField_a_of_type_Double > 0.0D) {}
+    for (int i = (int)(1.0D * paramDouble * 90 / this.jdField_a_of_type_Hhc.jdField_a_of_type_Double);; i = 0)
     {
       if (i > 90) {
         i = j;
@@ -71,7 +71,7 @@ public class OvalProgress
       for (;;)
       {
         paramCanvas.drawArc(this.jdField_g_of_type_AndroidGraphicsRectF, 180.0F, i, false, this.jdField_d_of_type_AndroidGraphicsPaint);
-        return paramDouble - this.jdField_a_of_type_Hlg.jdField_a_of_type_Double;
+        return paramDouble - this.jdField_a_of_type_Hhc.jdField_a_of_type_Double;
       }
     }
   }
@@ -179,15 +179,15 @@ public class OvalProgress
         this.jdField_b_of_type_Float = ((float)(f2 + d1));
         this.jdField_c_of_type_Float = ((float)(f3 - d1));
       }
-    } while (this.jdField_a_of_type_Hlg != null);
+    } while (this.jdField_a_of_type_Hhc != null);
     double d1 = (j - 2) * 3.141592653589793D;
     double d2 = f1 * 2.0F + d1;
-    this.jdField_a_of_type_Hlg = new hlg(this);
-    this.jdField_a_of_type_Hlg.jdField_a_of_type_Double = (0.25D * d1 / d2);
-    this.jdField_a_of_type_Hlg.b = (f1 * 1.0D / d2);
-    this.jdField_a_of_type_Hlg.c = (d1 * 0.5D / d2);
-    this.jdField_a_of_type_Hlg.d = (f1 * 1.0D / d2);
-    this.jdField_a_of_type_Hlg.e = (d1 * 0.25D / d2);
+    this.jdField_a_of_type_Hhc = new hhc(this);
+    this.jdField_a_of_type_Hhc.jdField_a_of_type_Double = (0.25D * d1 / d2);
+    this.jdField_a_of_type_Hhc.b = (f1 * 1.0D / d2);
+    this.jdField_a_of_type_Hhc.c = (d1 * 0.5D / d2);
+    this.jdField_a_of_type_Hhc.d = (f1 * 1.0D / d2);
+    this.jdField_a_of_type_Hhc.e = (d1 * 0.25D / d2);
     return true;
   }
   
@@ -198,8 +198,8 @@ public class OvalProgress
     if (paramDouble <= 0.0D) {
       return 0.0D;
     }
-    if (this.jdField_a_of_type_Hlg.b > 0.0D) {
-      d1 = paramDouble / this.jdField_a_of_type_Hlg.b;
+    if (this.jdField_a_of_type_Hhc.b > 0.0D) {
+      d1 = paramDouble / this.jdField_a_of_type_Hhc.b;
     }
     if (d1 > 1.0D) {
       d1 = d2;
@@ -208,7 +208,7 @@ public class OvalProgress
     {
       float f1 = (float)(d1 * (this.jdField_e_of_type_AndroidGraphicsRectF.right - this.jdField_e_of_type_AndroidGraphicsRectF.left));
       paramCanvas.drawRect(this.jdField_e_of_type_AndroidGraphicsRectF.left, this.jdField_e_of_type_AndroidGraphicsRectF.top, this.jdField_e_of_type_AndroidGraphicsRectF.left + f1, this.jdField_e_of_type_AndroidGraphicsRectF.bottom, this.jdField_b_of_type_AndroidGraphicsPaint);
-      return paramDouble - this.jdField_a_of_type_Hlg.b;
+      return paramDouble - this.jdField_a_of_type_Hhc.b;
     }
   }
   
@@ -218,8 +218,8 @@ public class OvalProgress
       return 0.0D;
     }
     int j = 180;
-    if (this.jdField_a_of_type_Hlg.c > 0.0D) {}
-    for (int i = (int)(1.0D * paramDouble * '´' / this.jdField_a_of_type_Hlg.c);; i = 0)
+    if (this.jdField_a_of_type_Hhc.c > 0.0D) {}
+    for (int i = (int)(1.0D * paramDouble * '´' / this.jdField_a_of_type_Hhc.c);; i = 0)
     {
       if (i > 180) {
         i = j;
@@ -227,7 +227,7 @@ public class OvalProgress
       for (;;)
       {
         paramCanvas.drawArc(this.h, 270.0F, i, false, this.jdField_d_of_type_AndroidGraphicsPaint);
-        return paramDouble - this.jdField_a_of_type_Hlg.c;
+        return paramDouble - this.jdField_a_of_type_Hhc.c;
       }
     }
   }
@@ -238,8 +238,8 @@ public class OvalProgress
     if (paramDouble <= 0.0D) {
       return 0.0D;
     }
-    if (this.jdField_a_of_type_Hlg.d > 0.0D) {
-      d1 = paramDouble / this.jdField_a_of_type_Hlg.d;
+    if (this.jdField_a_of_type_Hhc.d > 0.0D) {
+      d1 = paramDouble / this.jdField_a_of_type_Hhc.d;
     }
     double d2 = d1;
     if (d1 > 1.0D) {
@@ -247,7 +247,7 @@ public class OvalProgress
     }
     float f1 = (float)((1.0D - d2) * (this.jdField_f_of_type_AndroidGraphicsRectF.right - this.jdField_f_of_type_AndroidGraphicsRectF.left));
     paramCanvas.drawRect(this.jdField_f_of_type_AndroidGraphicsRectF.left + f1, this.jdField_f_of_type_AndroidGraphicsRectF.top, this.jdField_f_of_type_AndroidGraphicsRectF.right, this.jdField_f_of_type_AndroidGraphicsRectF.bottom, this.jdField_b_of_type_AndroidGraphicsPaint);
-    return paramDouble - this.jdField_a_of_type_Hlg.d;
+    return paramDouble - this.jdField_a_of_type_Hhc.d;
   }
   
   private double e(Canvas paramCanvas, double paramDouble)
@@ -257,8 +257,8 @@ public class OvalProgress
     }
     int j = 90;
     int i;
-    if (this.jdField_a_of_type_Hlg.e > 0.0D) {
-      if (paramDouble > this.jdField_a_of_type_Hlg.e * 0.99D) {
+    if (this.jdField_a_of_type_Hhc.e > 0.0D) {
+      if (paramDouble > this.jdField_a_of_type_Hhc.e * 0.99D) {
         i = 90;
       }
     }
@@ -270,8 +270,8 @@ public class OvalProgress
       for (;;)
       {
         paramCanvas.drawArc(this.jdField_g_of_type_AndroidGraphicsRectF, 90.0F, i, false, this.jdField_d_of_type_AndroidGraphicsPaint);
-        return paramDouble - this.jdField_a_of_type_Hlg.e;
-        i = (int)(1.0D * paramDouble * 90 / this.jdField_a_of_type_Hlg.e);
+        return paramDouble - this.jdField_a_of_type_Hhc.e;
+        i = (int)(1.0D * paramDouble * 90 / this.jdField_a_of_type_Hhc.e);
         break;
       }
       i = 0;

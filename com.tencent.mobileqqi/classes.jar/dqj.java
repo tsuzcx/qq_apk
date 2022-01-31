@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.data.Stranger;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public final class dqj
-  implements Comparator
+class dqj
+  implements DialogInterface.OnClickListener
 {
-  public int a(Stranger paramStranger1, Stranger paramStranger2)
+  dqj(dqh paramdqh, QQCustomDialog paramQQCustomDialog) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramStranger1.loginId > paramStranger2.loginId) {
-      return 1;
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
     }
-    if (paramStranger1.loginId < paramStranger2.loginId) {
-      return -1;
-    }
-    return 0;
   }
 }
 

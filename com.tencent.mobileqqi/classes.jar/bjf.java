@@ -1,13 +1,15 @@
-import com.tencent.av.ui.AVActivity;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class bjf
   implements Runnable
 {
-  public bjf(AVActivity paramAVActivity) {}
+  public bjf(SensorAPIJavaScript paramSensorAPIJavaScript) {}
   
   public void run()
   {
-    this.a.g = true;
+    this.a.a.setResult(4660);
+    this.a.a.finish();
   }
 }
 

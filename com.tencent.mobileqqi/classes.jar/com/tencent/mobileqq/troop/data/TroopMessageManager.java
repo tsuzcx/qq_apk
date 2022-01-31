@@ -32,7 +32,7 @@ import com.tencent.mobileqq.troop.utils.TroopNotificationHelper;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import hat;
+import gwm;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -281,7 +281,7 @@ public class TroopMessageManager
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b.put(MsgProxyUtils.a(paramString, paramInt), Boolean.valueOf(true));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new hat(this, paramString, paramInt, paramLong2, paramRefreshMessageContext, paramBoolean));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new gwm(this, paramString, paramInt, paramLong2, paramRefreshMessageContext, paramBoolean));
   }
   
   public void a(String paramString1, int paramInt, String paramString2, String paramString3, long paramLong)

@@ -1,20 +1,21 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class bpp
-  implements Runnable
+  implements MediaPlayer.OnCompletionListener
 {
-  public bpp(AccountDetailActivity paramAccountDetailActivity, int paramInt) {}
+  public bpp(BaseApplicationImpl paramBaseApplicationImpl) {}
   
-  public void run()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.b > 0) {
-      AccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity, this.jdField_a_of_type_Int);
-    }
+    paramMediaPlayer.release();
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bpp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
-import com.tencent.mobileqq.troop.widget.MediaControllerX.MediaPlayerControlX;
+import android.content.Context;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
+import java.lang.ref.SoftReference;
+import java.util.TimerTask;
 
 public class hdc
-  extends Handler
+  extends TimerTask
 {
-  public hdc(MediaControllerX paramMediaControllerX) {}
+  public hdc(QQCustomDialogWtihInput paramQQCustomDialogWtihInput) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
+    Context localContext = (Context)QQCustomDialogWtihInput.a(this.a).get();
+    if (localContext != null) {
+      ((InputMethodManager)localContext.getSystemService("input_method")).toggleSoftInput(0, 2);
     }
-    int i;
-    do
-    {
-      return;
-      this.a.c();
-      return;
-      i = MediaControllerX.a(this.a);
-    } while ((MediaControllerX.b(this.a)) || (!MediaControllerX.a(this.a)) || (!MediaControllerX.a(this.a).a()));
-    sendMessageDelayed(obtainMessage(2), 1000 - i % 1000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hdc
  * JD-Core Version:    0.7.0.1
  */

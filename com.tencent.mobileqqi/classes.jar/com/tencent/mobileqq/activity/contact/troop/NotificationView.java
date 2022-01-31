@@ -61,13 +61,13 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.XListView;
-import eku;
-import ekv;
-import ekw;
-import ekx;
-import eky;
-import ekz;
-import ela;
+import efr;
+import efs;
+import eft;
+import efu;
+import efv;
+import efw;
+import efx;
 import java.util.ArrayList;
 import java.util.List;
 import tencent.mobileim.structmsg.structmsg.GroupInfo;
@@ -101,17 +101,17 @@ public class NotificationView
   private Context jdField_a_of_type_AndroidContentContext;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   public Handler a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ekv(this);
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new ekx(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new efs(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new efu(this);
   private NotificationAdapter jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationAdapter;
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new ekw(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new eft(this);
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
   public QQProgressDialog a;
-  private SlideDetectListView.OnScrollToTopListener jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnScrollToTopListener = new eky(this);
+  private SlideDetectListView.OnScrollToTopListener jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnScrollToTopListener = new efv(this);
   private SlideDetectListView jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
   public final long b;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new ela(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new efx(this);
   private boolean c;
   private boolean d;
   public View e;
@@ -131,7 +131,7 @@ public class NotificationView
     this.jdField_a_of_type_Long = 1000L;
     this.jdField_b_of_type_Long = 500L;
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new eku(this);
+    this.jdField_a_of_type_AndroidOsHandler = new efr(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
@@ -306,9 +306,9 @@ public class NotificationView
   
   private void o()
   {
-    a(2130903399);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232467));
-    this.e = findViewById(2131232468);
+    a(2130903401);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232470));
+    this.e = findViewById(2131232471);
     q();
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this);
@@ -337,7 +337,7 @@ public class NotificationView
   private void q()
   {
     if (this.f == null) {
-      this.f = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903632, null);
+      this.f = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903634, null);
     }
     if (this.f.getParent() == null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b(this.f);
@@ -380,7 +380,7 @@ public class NotificationView
   private void t()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new ekz(this));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new efw(this));
     }
     if (QLog.isColorLevel()) {
       QLog.i("NotificationView", 2, "sendReadConfirm is end!");
@@ -573,7 +573,7 @@ public class NotificationView
           if (localStructMsg.msg.group_info.group_auth_type.get() == 2)
           {
             paramViewHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-            paramViewHolder.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130838179);
+            paramViewHolder.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130838181);
             str = localStructMsg.msg.group_info.msg_alert.get();
             paramViewHolder.jdField_c_of_type_AndroidWidgetTextView.setTextAppearance(this.jdField_a_of_type_AndroidContentContext, 2131624126);
             if ((TextUtils.isEmpty(str)) || ((paramViewHolder.jdField_a_of_type_Int != 1) && (paramViewHolder.jdField_a_of_type_Int != 22))) {
@@ -602,7 +602,7 @@ public class NotificationView
             paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
             paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setText(((structmsg.SystemMsgAction)((List)localObject).get(0)).name.get());
             paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setTextAppearance(this.jdField_a_of_type_AndroidContentContext, 2131624323);
-            paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130837821);
+            paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130837823);
             paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setContentDescription(paramViewHolder.jdField_a_of_type_AndroidWidgetButton.getText() + "");
             paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setTag(paramViewHolder);
             paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
@@ -632,7 +632,7 @@ public class NotificationView
       if (localStructMsg.msg.group_info.group_auth_type.get() == 1)
       {
         paramViewHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        paramViewHolder.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130838355);
+        paramViewHolder.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130838357);
         break label272;
       }
       paramViewHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -685,7 +685,7 @@ public class NotificationView
           {
             paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setText(((structmsg.SystemMsgAction)((List)localObject).get(1)).name.get());
             paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setTextAppearance(this.jdField_a_of_type_AndroidContentContext, 2131624323);
-            paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130837821);
+            paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130837823);
           }
           for (;;)
           {
@@ -695,7 +695,7 @@ public class NotificationView
             break;
             paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setText(((structmsg.SystemMsgAction)((List)localObject).get(0)).name.get());
             paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setTextAppearance(this.jdField_a_of_type_AndroidContentContext, 2131624335);
-            paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130837819);
+            paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130837821);
           }
         }
         paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(null);
@@ -731,7 +731,7 @@ public class NotificationView
     NotificationAdapter.ViewHolder localViewHolder = (NotificationAdapter.ViewHolder)paramView.getTag();
     if ((localViewHolder != null) && ((localViewHolder instanceof NotificationAdapter.ViewHolder)))
     {
-      paramView = (ShaderAnimLayout)paramView.findViewById(2131232465);
+      paramView = (ShaderAnimLayout)paramView.findViewById(2131232468);
       if (paramView != null) {
         break label38;
       }
@@ -741,7 +741,7 @@ public class NotificationView
     do
     {
       return;
-      localButton = (Button)paramView.findViewById(2131232466);
+      localButton = (Button)paramView.findViewById(2131232469);
     } while (localButton == null);
     paramSlideDetectListView.setDeleteAreaWidth(paramView.getLayoutParams().width);
     paramView.a();
@@ -791,11 +791,11 @@ public class NotificationView
   
   public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
   {
-    paramSlideDetectListView = (ShaderAnimLayout)paramView.findViewById(2131232465);
+    paramSlideDetectListView = (ShaderAnimLayout)paramView.findViewById(2131232468);
     if (paramSlideDetectListView != null)
     {
       paramSlideDetectListView.d();
-      paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131232466);
+      paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131232469);
       if (paramSlideDetectListView != null) {
         paramSlideDetectListView.setTag(null);
       }

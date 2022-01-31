@@ -1,39 +1,23 @@
-import java.io.File;
-import java.io.FilenameFilter;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.dataline.util.file.DLFileInfo;
 
-class fa
-  implements FilenameFilter
+public final class fa
+  implements Parcelable.Creator
 {
-  fa(ez paramez) {}
-  
-  public boolean accept(File paramFile, String paramString)
+  public DLFileInfo a(Parcel paramParcel)
   {
-    ey localey;
-    if (paramString.endsWith(".ttf"))
-    {
-      paramString = paramFile.getAbsolutePath() + File.separatorChar + paramString;
-      localey = new ey();
-      if (localey == null) {}
-    }
-    try
-    {
-      paramFile = paramFile.getAbsolutePath().split(File.separator);
-      localey.jdField_a_of_type_Long = Long.parseLong(paramFile[(paramFile.length - 1)]);
-      localey.jdField_a_of_type_JavaLangString = paramString;
-      this.a.a.add(localey);
-      label90:
-      return false;
-    }
-    catch (Exception paramFile)
-    {
-      break label90;
-    }
+    return new DLFileInfo(paramParcel, null);
+  }
+  
+  public DLFileInfo[] a(int paramInt)
+  {
+    return new DLFileInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     fa
  * JD-Core Version:    0.7.0.1
  */

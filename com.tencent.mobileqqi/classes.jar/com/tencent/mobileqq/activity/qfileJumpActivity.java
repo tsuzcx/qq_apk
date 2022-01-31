@@ -7,8 +7,8 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import ese;
-import esf;
+import enq;
+import enr;
 
 public class qfileJumpActivity
   extends BaseActivity
@@ -47,12 +47,12 @@ public class qfileJumpActivity
   
   private void e()
   {
-    new Handler().postDelayed(new ese(this), 10L);
+    new Handler().postDelayed(new enq(this), 10L);
   }
   
   private void f()
   {
-    new Handler().postDelayed(new esf(this), 10L);
+    new Handler().postDelayed(new enr(this), 10L);
   }
   
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)

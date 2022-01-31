@@ -19,7 +19,7 @@ import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.troop.utils.AvatarTroopUtil;
 import com.tencent.mobileqq.widget.ImageProgressCircle;
 import com.tencent.qphone.base.util.QLog;
-import hdp;
+import gzi;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -46,7 +46,7 @@ public class TroopAvatarBigPhotoAdapter
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131427390));
+    this.jdField_a_of_type_Int = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131427393));
   }
   
   public void a()
@@ -101,7 +101,7 @@ public class TroopAvatarBigPhotoAdapter
           if (((localSetting != null) && (localSetting.bHeadType != 0)) || (str == null) || (!str.equals("-5"))) {
             break label328;
           }
-          localURLImageView.setImageResource(2130838406);
+          localURLImageView.setImageResource(2130838408);
           return;
         }
         catch (MalformedURLException paramViewHolder) {}
@@ -138,7 +138,7 @@ public class TroopAvatarBigPhotoAdapter
       label328:
       localURLImageView.setImageDrawable(URLDrawable.getDrawable((URL)localObject1, URLDrawableHelper.d, null, true));
       a(paramViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-      localURLImageView.setURLDrawableDownListener(new hdp(this, paramViewHolder));
+      localURLImageView.setURLDrawableDownListener(new gzi(this, paramViewHolder));
       return;
     }
   }
@@ -192,7 +192,7 @@ public class TroopAvatarBigPhotoAdapter
   {
     View localView = paramView;
     if (paramView == null) {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130903249, null);
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130903251, null);
     }
     if (localView.getTag() == null)
     {

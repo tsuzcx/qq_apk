@@ -1,18 +1,13 @@
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
 
 public class gwq
   implements Runnable
 {
-  public gwq(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public gwq(TroopNoticeJsHandler paramTroopNoticeJsHandler, String paramString) {}
   
   public void run()
   {
-    if (this.a.a == null) {
-      this.a.a = new QQProgressDialog(this.a, this.a.d());
-    }
-    this.a.a.b(2131560736);
-    this.a.a.show();
+    this.jdField_a_of_type_ComTencentMobileqqTroopJspTroopNoticeJsHandler.c(this.jdField_a_of_type_JavaLangString);
   }
 }
 

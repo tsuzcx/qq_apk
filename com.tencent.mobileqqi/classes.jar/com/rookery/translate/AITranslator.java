@@ -2,7 +2,7 @@ package com.rookery.translate;
 
 import android.content.Context;
 import android.util.Pair;
-import bfv;
+import bgd;
 import com.rookery.asyncHttpClient.AsyncHttpClient;
 import com.rookery.translate.tencent.TencentTranslator;
 import com.rookery.translate.type.Language;
@@ -180,7 +180,7 @@ public class AITranslator
       if (!this.jdField_a_of_type_JavaUtilList.contains(str))
       {
         this.jdField_a_of_type_JavaUtilList.add(str);
-        TencentTranslator.a(paramQQAppInterface).a(paramContext, paramList2, paramLanguage, null, Long.valueOf(l), new bfv(this, str, paramLong, paramContext, paramHolder, paramString, paramLanguage, paramTranslateCallback, paramList1, paramList2, paramInt));
+        TencentTranslator.a(paramQQAppInterface).a(paramContext, paramList2, paramLanguage, null, Long.valueOf(l), new bgd(this, str, paramLong, paramContext, paramHolder, paramString, paramLanguage, paramTranslateCallback, paramList1, paramList2, paramInt));
       }
       return;
     }

@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
+import com.tencent.mobileqq.data.MessageForText;
 
 public class ebc
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ebc(BaseBubbleBuilder paramBaseBubbleBuilder, BaseBubbleBuilder.ViewHolder paramViewHolder, ChatMessage paramChatMessage) {}
+  public ebc(TextItemBuilder paramTextItemBuilder, MessageForText paramMessageForText) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo);
+    ChatActivityFacade.a(TextItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder), TextItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder), TextItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder), this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.uniseq);
   }
 }
 

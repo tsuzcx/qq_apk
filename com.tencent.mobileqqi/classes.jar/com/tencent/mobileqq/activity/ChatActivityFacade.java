@@ -20,15 +20,14 @@ import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
-import cfs;
-import cft;
-import cfu;
-import cfv;
-import cfw;
-import cfy;
-import cfz;
+import bzz;
+import caa;
+import cab;
+import cac;
+import cad;
+import caf;
+import cag;
 import com.qq.taf.jce.JceOutputStream;
-import com.tencent.av.gaudio.GAudioNotifyCenter;
 import com.tencent.biz.common.util.SubString;
 import com.tencent.biz.eqq.CrmUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -137,7 +136,7 @@ public class ChatActivityFacade
   public static final int a = 3478;
   public static long a = 0L;
   private static Time jdField_a_of_type_AndroidTextFormatTime;
-  private static cfz jdField_a_of_type_Cfz = new cfz();
+  private static cag jdField_a_of_type_Cag = new cag();
   private static final String jdField_a_of_type_JavaLangString = ChatActivityFacade.class.getSimpleName();
   private static HashMap jdField_a_of_type_JavaUtilHashMap;
   private static final short jdField_a_of_type_Short = 8;
@@ -774,7 +773,7 @@ public class ChatActivityFacade
   
   public static void a(Context paramContext, QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    paramQQAppInterface = new cfw(paramContext, paramQQAppInterface, paramChatMessage);
+    paramQQAppInterface = new cad(paramContext, paramQQAppInterface, paramChatMessage);
     paramChatMessage = (InputMethodManager)paramContext.getSystemService("input_method");
     boolean bool = paramChatMessage.isActive();
     if (((paramContext instanceof Activity)) && (bool)) {
@@ -792,178 +791,542 @@ public class ChatActivityFacade
     }
   }
   
+  /* Error */
   public static void a(ChatActivity paramChatActivity, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, List paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VoiceTipMsg", 2, "showDiscChatFreqCallBarIfNeeded() =====>");
-    }
-    String str1 = "";
-    if (paramList != null) {}
-    for (;;)
-    {
-      int j;
-      int k;
-      try
-      {
-        if (paramSessionInfo.jdField_a_of_type_Int != 3000)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("VoiceTipMsg", 2, "showDiscChatFreqCallBarIfNeeded() <=====, step is:" + "curType != disscusion");
-          }
-          return;
-        }
-        if (paramList.size() < 10)
-        {
-          paramChatActivity = "msgList size < 10, size = " + paramList.size();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("VoiceTipMsg", 2, "showDiscChatFreqCallBarIfNeeded() <=====, step is:" + paramChatActivity);
-          return;
-        }
-        long l1 = Long.valueOf(paramSessionInfo.jdField_a_of_type_JavaLangString).longValue();
-        if (paramQQAppInterface.a().a(l1))
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("VoiceTipMsg", 2, "showDiscChatFreqCallBarIfNeeded() <=====, step is:" + "current discussion is on voice chating");
-          return;
-        }
-        paramSessionInfo = "voice_disc_chat_freq_bar_show_count" + paramQQAppInterface.a();
-        SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("free_call", 0);
-        int m = localSharedPreferences.getInt(paramSessionInfo, 0);
-        if (m >= 3)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("VoiceTipMsg", 2, "showDiscChatFreqCallBarIfNeeded() <=====, step is:" + "show times >= 3,just return");
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("VoiceTipMsg", 2, "discChatFreqBarShowCount : " + m);
-        }
-        l1 = MessageCache.a() * 1000L;
-        jdField_a_of_type_AndroidTextFormatTime.set(l1);
-        i = jdField_a_of_type_AndroidTextFormatTime.year;
-        j = jdField_a_of_type_AndroidTextFormatTime.month;
-        k = jdField_a_of_type_AndroidTextFormatTime.monthDay;
-        jdField_a_of_type_AndroidTextFormatTime.set(0, 0, 20, k, j, i);
-        long l2 = jdField_a_of_type_AndroidTextFormatTime.toMillis(false);
-        jdField_a_of_type_AndroidTextFormatTime.set(0, 0, 23, k, j, i);
-        long l3 = jdField_a_of_type_AndroidTextFormatTime.toMillis(false);
-        if ((l1 < l2) || (l1 > l3))
-        {
-          paramChatActivity = "current time not in " + 20 + "-" + 23;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("VoiceTipMsg", 2, "showDiscChatFreqCallBarIfNeeded() <=====, step is:" + paramChatActivity);
-          return;
-        }
-        String str2 = "voice_disc_chat_freq_bar_show_time" + paramQQAppInterface.a();
-        Object localObject1 = localSharedPreferences.getString(str2, null);
-        Object localObject2;
-        if (QLog.isColorLevel())
-        {
-          localObject2 = i + "-" + j + "-" + k;
-          QLog.d("VoiceTipMsg", 2, "currDate is:" + (String)localObject2 + ",curr hour is:" + jdField_a_of_type_AndroidTextFormatTime.hour + ",discPttFreqTipMsgInsertTime is:" + (String)localObject1);
-        }
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          jdField_a_of_type_AndroidTextFormatTime.set(Long.parseLong((String)localObject1));
-          int n = jdField_a_of_type_AndroidTextFormatTime.year;
-          int i1 = jdField_a_of_type_AndroidTextFormatTime.month;
-          int i2 = jdField_a_of_type_AndroidTextFormatTime.monthDay;
-          if ((i == n) && (j == i1) && (k == i2))
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("VoiceTipMsg", 2, "showDiscChatFreqCallBarIfNeeded() <=====, step is:" + "already show discuss ppt frequent bar this day");
-            return;
-          }
-        }
-        localObject1 = localSharedPreferences.getString("start_group_audio_time" + paramQQAppInterface.a(), null);
-        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (l1 - Long.parseLong((String)localObject1) <= 600000L))
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("VoiceTipMsg", 2, "showDiscChatFreqCallBarIfNeeded() <=====, step is:" + "has startGroupAudio in less 10 mins, just return");
-          return;
-        }
-        l2 = (l1 - 600000L) / 1000L;
-        j = paramList.size();
-        i = 0;
-        localObject1 = new HashSet();
-        k = j - 1;
-        if (k >= 0)
-        {
-          localObject2 = (ChatMessage)paramList.get(k);
-          j = i;
-          if (((ChatMessage)localObject2).time < l2) {
-            break label1201;
-          }
-          j = i;
-          if (!MsgProxyUtils.f(((ChatMessage)localObject2).msgtype)) {
-            break label1201;
-          }
-          j = i;
-          if (((ChatMessage)localObject2).extraflag != 0) {
-            break label1201;
-          }
-          j = i + 1;
-          ((HashSet)localObject1).add(((ChatMessage)localObject2).senderuin);
-          break label1201;
-        }
-        j = ((HashSet)localObject1).size();
-        if (QLog.isColorLevel()) {
-          QLog.d("VoiceTipMsg", 2, "basicMsgNum : " + i + ", msgUinNum : " + j);
-        }
-        if ((i < 10) || (j < 2)) {
-          break label1195;
-        }
-        if (paramChatActivity.d())
-        {
-          i = m + 1;
-          paramChatActivity = localSharedPreferences.edit();
-          paramChatActivity.putString(str2, String.valueOf(l1)).putInt(paramSessionInfo, i);
-          paramChatActivity.commit();
-          paramChatActivity = "show discuss chat frequent bar success, discChatFreqBarShowCount=" + i;
-        }
-      }
-      finally
-      {
-        paramQQAppInterface = str1;
-        if (QLog.isColorLevel()) {
-          QLog.d("VoiceTipMsg", 2, "showDiscChatFreqCallBarIfNeeded() <=====, step is:" + paramQQAppInterface);
-        }
-      }
-      try
-      {
-        ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8003EFF", "0X8003EFF", 0, 0, "", "", "", "");
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("VoiceTipMsg", 2, "showDiscChatFreqCallBarIfNeeded() <=====, step is:" + paramChatActivity);
-        return;
-      }
-      finally
-      {
-        paramQQAppInterface = paramChatActivity;
-        paramChatActivity = paramSessionInfo;
-      }
-      paramChatActivity = "show discuss chat frequent bar not allowed";
-      continue;
-      label1195:
-      paramChatActivity = "";
-      continue;
-      label1201:
-      k -= 1;
-      int i = j;
-    }
+    // Byte code:
+    //   0: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +13 -> 16
+    //   6: ldc_w 793
+    //   9: iconst_2
+    //   10: ldc_w 795
+    //   13: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   16: ldc 99
+    //   18: astore 17
+    //   20: aload_3
+    //   21: ifnull +13 -> 34
+    //   24: aload_2
+    //   25: getfield 318	com/tencent/mobileqq/activity/aio/SessionInfo:jdField_a_of_type_Int	I
+    //   28: sipush 3000
+    //   31: if_icmpeq +39 -> 70
+    //   34: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   37: ifeq +32 -> 69
+    //   40: ldc_w 793
+    //   43: iconst_2
+    //   44: new 72	java/lang/StringBuilder
+    //   47: dup
+    //   48: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   51: ldc_w 797
+    //   54: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: ldc_w 799
+    //   60: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   66: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   69: return
+    //   70: aload_3
+    //   71: invokeinterface 291 1 0
+    //   76: bipush 10
+    //   78: if_icmpge +63 -> 141
+    //   81: new 72	java/lang/StringBuilder
+    //   84: dup
+    //   85: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   88: ldc_w 801
+    //   91: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   94: aload_3
+    //   95: invokeinterface 291 1 0
+    //   100: invokevirtual 145	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   103: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   106: astore_0
+    //   107: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   110: ifeq -41 -> 69
+    //   113: ldc_w 793
+    //   116: iconst_2
+    //   117: new 72	java/lang/StringBuilder
+    //   120: dup
+    //   121: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   124: ldc_w 797
+    //   127: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   130: aload_0
+    //   131: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   134: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   137: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   140: return
+    //   141: aload_2
+    //   142: getfield 316	com/tencent/mobileqq/activity/aio/SessionInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   145: invokestatic 337	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
+    //   148: invokevirtual 340	java/lang/Long:longValue	()J
+    //   151: pop2
+    //   152: new 72	java/lang/StringBuilder
+    //   155: dup
+    //   156: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   159: ldc_w 803
+    //   162: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   165: aload_1
+    //   166: invokevirtual 70	com/tencent/mobileqq/app/QQAppInterface:a	()Ljava/lang/String;
+    //   169: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   172: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   175: astore_2
+    //   176: invokestatic 151	com/tencent/qphone/base/util/BaseApplication:getContext	()Landroid/content/Context;
+    //   179: ldc 153
+    //   181: iconst_0
+    //   182: invokevirtual 159	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   185: astore 19
+    //   187: aload 19
+    //   189: aload_2
+    //   190: iconst_0
+    //   191: invokeinterface 807 3 0
+    //   196: istore 7
+    //   198: iload 7
+    //   200: iconst_3
+    //   201: if_icmplt +39 -> 240
+    //   204: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   207: ifeq -138 -> 69
+    //   210: ldc_w 793
+    //   213: iconst_2
+    //   214: new 72	java/lang/StringBuilder
+    //   217: dup
+    //   218: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   221: ldc_w 797
+    //   224: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   227: ldc_w 809
+    //   230: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   233: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   236: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   239: return
+    //   240: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   243: ifeq +31 -> 274
+    //   246: ldc_w 793
+    //   249: iconst_2
+    //   250: new 72	java/lang/StringBuilder
+    //   253: dup
+    //   254: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   257: ldc_w 811
+    //   260: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   263: iload 7
+    //   265: invokevirtual 145	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   268: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   271: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   274: invokestatic 181	com/tencent/mobileqq/service/message/MessageCache:a	()J
+    //   277: ldc2_w 182
+    //   280: lmul
+    //   281: lstore 11
+    //   283: getstatic 41	com/tencent/mobileqq/activity/ChatActivityFacade:jdField_a_of_type_AndroidTextFormatTime	Landroid/text/format/Time;
+    //   286: lload 11
+    //   288: invokevirtual 205	android/text/format/Time:set	(J)V
+    //   291: getstatic 41	com/tencent/mobileqq/activity/ChatActivityFacade:jdField_a_of_type_AndroidTextFormatTime	Landroid/text/format/Time;
+    //   294: getfield 208	android/text/format/Time:year	I
+    //   297: istore 4
+    //   299: getstatic 41	com/tencent/mobileqq/activity/ChatActivityFacade:jdField_a_of_type_AndroidTextFormatTime	Landroid/text/format/Time;
+    //   302: getfield 211	android/text/format/Time:month	I
+    //   305: istore 5
+    //   307: getstatic 41	com/tencent/mobileqq/activity/ChatActivityFacade:jdField_a_of_type_AndroidTextFormatTime	Landroid/text/format/Time;
+    //   310: getfield 214	android/text/format/Time:monthDay	I
+    //   313: istore 6
+    //   315: getstatic 41	com/tencent/mobileqq/activity/ChatActivityFacade:jdField_a_of_type_AndroidTextFormatTime	Landroid/text/format/Time;
+    //   318: iconst_0
+    //   319: iconst_0
+    //   320: bipush 20
+    //   322: iload 6
+    //   324: iload 5
+    //   326: iload 4
+    //   328: invokevirtual 303	android/text/format/Time:set	(IIIIII)V
+    //   331: getstatic 41	com/tencent/mobileqq/activity/ChatActivityFacade:jdField_a_of_type_AndroidTextFormatTime	Landroid/text/format/Time;
+    //   334: iconst_0
+    //   335: invokevirtual 307	android/text/format/Time:toMillis	(Z)J
+    //   338: lstore 13
+    //   340: getstatic 41	com/tencent/mobileqq/activity/ChatActivityFacade:jdField_a_of_type_AndroidTextFormatTime	Landroid/text/format/Time;
+    //   343: iconst_0
+    //   344: iconst_0
+    //   345: bipush 23
+    //   347: iload 6
+    //   349: iload 5
+    //   351: iload 4
+    //   353: invokevirtual 303	android/text/format/Time:set	(IIIIII)V
+    //   356: getstatic 41	com/tencent/mobileqq/activity/ChatActivityFacade:jdField_a_of_type_AndroidTextFormatTime	Landroid/text/format/Time;
+    //   359: iconst_0
+    //   360: invokevirtual 307	android/text/format/Time:toMillis	(Z)J
+    //   363: lstore 15
+    //   365: lload 11
+    //   367: lload 13
+    //   369: lcmp
+    //   370: iflt +11 -> 381
+    //   373: lload 11
+    //   375: lload 15
+    //   377: lcmp
+    //   378: ifle +70 -> 448
+    //   381: new 72	java/lang/StringBuilder
+    //   384: dup
+    //   385: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   388: ldc_w 813
+    //   391: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   394: bipush 20
+    //   396: invokevirtual 145	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   399: ldc_w 815
+    //   402: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   405: bipush 23
+    //   407: invokevirtual 145	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   410: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   413: astore_0
+    //   414: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   417: ifeq -348 -> 69
+    //   420: ldc_w 793
+    //   423: iconst_2
+    //   424: new 72	java/lang/StringBuilder
+    //   427: dup
+    //   428: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   431: ldc_w 797
+    //   434: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   437: aload_0
+    //   438: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   441: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   444: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   447: return
+    //   448: new 72	java/lang/StringBuilder
+    //   451: dup
+    //   452: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   455: ldc_w 817
+    //   458: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   461: aload_1
+    //   462: invokevirtual 70	com/tencent/mobileqq/app/QQAppInterface:a	()Ljava/lang/String;
+    //   465: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   468: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   471: astore 18
+    //   473: aload 19
+    //   475: aload 18
+    //   477: aconst_null
+    //   478: invokeinterface 176 3 0
+    //   483: astore 20
+    //   485: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   488: ifeq +96 -> 584
+    //   491: new 72	java/lang/StringBuilder
+    //   494: dup
+    //   495: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   498: iload 4
+    //   500: invokevirtual 145	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   503: ldc_w 815
+    //   506: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   509: iload 5
+    //   511: invokevirtual 145	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   514: ldc_w 815
+    //   517: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   520: iload 6
+    //   522: invokevirtual 145	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   525: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   528: astore 21
+    //   530: ldc_w 793
+    //   533: iconst_2
+    //   534: new 72	java/lang/StringBuilder
+    //   537: dup
+    //   538: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   541: ldc_w 819
+    //   544: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   547: aload 21
+    //   549: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   552: ldc_w 821
+    //   555: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   558: getstatic 41	com/tencent/mobileqq/activity/ChatActivityFacade:jdField_a_of_type_AndroidTextFormatTime	Landroid/text/format/Time;
+    //   561: getfield 824	android/text/format/Time:hour	I
+    //   564: invokevirtual 145	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   567: ldc_w 826
+    //   570: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   573: aload 20
+    //   575: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   578: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   581: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   584: aload 20
+    //   586: invokestatic 537	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   589: ifne +95 -> 684
+    //   592: getstatic 41	com/tencent/mobileqq/activity/ChatActivityFacade:jdField_a_of_type_AndroidTextFormatTime	Landroid/text/format/Time;
+    //   595: aload 20
+    //   597: invokestatic 220	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   600: invokevirtual 205	android/text/format/Time:set	(J)V
+    //   603: getstatic 41	com/tencent/mobileqq/activity/ChatActivityFacade:jdField_a_of_type_AndroidTextFormatTime	Landroid/text/format/Time;
+    //   606: getfield 208	android/text/format/Time:year	I
+    //   609: istore 8
+    //   611: getstatic 41	com/tencent/mobileqq/activity/ChatActivityFacade:jdField_a_of_type_AndroidTextFormatTime	Landroid/text/format/Time;
+    //   614: getfield 211	android/text/format/Time:month	I
+    //   617: istore 9
+    //   619: getstatic 41	com/tencent/mobileqq/activity/ChatActivityFacade:jdField_a_of_type_AndroidTextFormatTime	Landroid/text/format/Time;
+    //   622: getfield 214	android/text/format/Time:monthDay	I
+    //   625: istore 10
+    //   627: iload 4
+    //   629: iload 8
+    //   631: if_icmpne +53 -> 684
+    //   634: iload 5
+    //   636: iload 9
+    //   638: if_icmpne +46 -> 684
+    //   641: iload 6
+    //   643: iload 10
+    //   645: if_icmpne +39 -> 684
+    //   648: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   651: ifeq -582 -> 69
+    //   654: ldc_w 793
+    //   657: iconst_2
+    //   658: new 72	java/lang/StringBuilder
+    //   661: dup
+    //   662: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   665: ldc_w 797
+    //   668: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   671: ldc_w 828
+    //   674: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   677: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   680: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   683: return
+    //   684: aload 19
+    //   686: new 72	java/lang/StringBuilder
+    //   689: dup
+    //   690: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   693: ldc_w 830
+    //   696: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   699: aload_1
+    //   700: invokevirtual 70	com/tencent/mobileqq/app/QQAppInterface:a	()Ljava/lang/String;
+    //   703: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   706: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   709: aconst_null
+    //   710: invokeinterface 176 3 0
+    //   715: astore 20
+    //   717: aload 20
+    //   719: invokestatic 537	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   722: ifne +54 -> 776
+    //   725: lload 11
+    //   727: aload 20
+    //   729: invokestatic 220	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   732: lsub
+    //   733: ldc2_w 831
+    //   736: lcmp
+    //   737: ifgt +39 -> 776
+    //   740: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   743: ifeq -674 -> 69
+    //   746: ldc_w 793
+    //   749: iconst_2
+    //   750: new 72	java/lang/StringBuilder
+    //   753: dup
+    //   754: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   757: ldc_w 797
+    //   760: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   763: ldc_w 834
+    //   766: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   769: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   772: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   775: return
+    //   776: lload 11
+    //   778: ldc2_w 831
+    //   781: lsub
+    //   782: ldc2_w 182
+    //   785: ldiv
+    //   786: lstore 13
+    //   788: aload_3
+    //   789: invokeinterface 291 1 0
+    //   794: istore 5
+    //   796: iconst_0
+    //   797: istore 4
+    //   799: new 836	java/util/HashSet
+    //   802: dup
+    //   803: invokespecial 837	java/util/HashSet:<init>	()V
+    //   806: astore 20
+    //   808: iload 5
+    //   810: iconst_1
+    //   811: isub
+    //   812: istore 6
+    //   814: iload 6
+    //   816: iflt +78 -> 894
+    //   819: aload_3
+    //   820: iload 6
+    //   822: invokeinterface 294 2 0
+    //   827: checkcast 502	com/tencent/mobileqq/data/ChatMessage
+    //   830: astore 21
+    //   832: iload 4
+    //   834: istore 5
+    //   836: aload 21
+    //   838: getfield 839	com/tencent/mobileqq/data/ChatMessage:time	J
+    //   841: lload 13
+    //   843: lcmp
+    //   844: iflt +308 -> 1152
+    //   847: iload 4
+    //   849: istore 5
+    //   851: aload 21
+    //   853: getfield 840	com/tencent/mobileqq/data/ChatMessage:msgtype	I
+    //   856: invokestatic 842	com/tencent/mobileqq/app/message/MsgProxyUtils:f	(I)Z
+    //   859: ifeq +293 -> 1152
+    //   862: iload 4
+    //   864: istore 5
+    //   866: aload 21
+    //   868: getfield 845	com/tencent/mobileqq/data/ChatMessage:extraflag	I
+    //   871: ifne +281 -> 1152
+    //   874: iload 4
+    //   876: iconst_1
+    //   877: iadd
+    //   878: istore 5
+    //   880: aload 20
+    //   882: aload 21
+    //   884: getfield 846	com/tencent/mobileqq/data/ChatMessage:senderuin	Ljava/lang/String;
+    //   887: invokevirtual 847	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   890: pop
+    //   891: goto +261 -> 1152
+    //   894: aload 20
+    //   896: invokevirtual 848	java/util/HashSet:size	()I
+    //   899: istore 5
+    //   901: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   904: ifeq +42 -> 946
+    //   907: ldc_w 793
+    //   910: iconst_2
+    //   911: new 72	java/lang/StringBuilder
+    //   914: dup
+    //   915: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   918: ldc_w 850
+    //   921: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   924: iload 4
+    //   926: invokevirtual 145	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   929: ldc_w 852
+    //   932: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   935: iload 5
+    //   937: invokevirtual 145	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   940: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   943: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   946: iload 4
+    //   948: bipush 10
+    //   950: if_icmplt +196 -> 1146
+    //   953: iload 5
+    //   955: iconst_2
+    //   956: if_icmplt +190 -> 1146
+    //   959: aload_0
+    //   960: invokevirtual 856	com/tencent/mobileqq/activity/ChatActivity:d	()Z
+    //   963: ifeq +129 -> 1092
+    //   966: iload 7
+    //   968: iconst_1
+    //   969: iadd
+    //   970: istore 4
+    //   972: aload 19
+    //   974: invokeinterface 860 1 0
+    //   979: astore_0
+    //   980: aload_0
+    //   981: aload 18
+    //   983: lload 11
+    //   985: invokestatic 863	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   988: invokeinterface 869 3 0
+    //   993: aload_2
+    //   994: iload 4
+    //   996: invokeinterface 873 3 0
+    //   1001: pop
+    //   1002: aload_0
+    //   1003: invokeinterface 876 1 0
+    //   1008: pop
+    //   1009: new 72	java/lang/StringBuilder
+    //   1012: dup
+    //   1013: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   1016: ldc_w 878
+    //   1019: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1022: iload 4
+    //   1024: invokevirtual 145	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1027: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1030: astore_0
+    //   1031: aload_1
+    //   1032: ldc_w 274
+    //   1035: ldc 99
+    //   1037: ldc 99
+    //   1039: ldc_w 880
+    //   1042: ldc_w 880
+    //   1045: iconst_0
+    //   1046: iconst_0
+    //   1047: ldc 99
+    //   1049: ldc 99
+    //   1051: ldc 99
+    //   1053: ldc 99
+    //   1055: invokestatic 283	com/tencent/mobileqq/statistics/ReportController:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1058: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1061: ifeq -992 -> 69
+    //   1064: ldc_w 793
+    //   1067: iconst_2
+    //   1068: new 72	java/lang/StringBuilder
+    //   1071: dup
+    //   1072: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   1075: ldc_w 797
+    //   1078: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1081: aload_0
+    //   1082: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1085: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1088: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1091: return
+    //   1092: ldc_w 882
+    //   1095: astore_0
+    //   1096: goto -38 -> 1058
+    //   1099: astore_0
+    //   1100: aload 17
+    //   1102: astore_1
+    //   1103: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1106: ifeq +30 -> 1136
+    //   1109: ldc_w 793
+    //   1112: iconst_2
+    //   1113: new 72	java/lang/StringBuilder
+    //   1116: dup
+    //   1117: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   1120: ldc_w 797
+    //   1123: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1126: aload_1
+    //   1127: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1130: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1133: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1136: aload_0
+    //   1137: athrow
+    //   1138: astore_2
+    //   1139: aload_0
+    //   1140: astore_1
+    //   1141: aload_2
+    //   1142: astore_0
+    //   1143: goto -40 -> 1103
+    //   1146: ldc 99
+    //   1148: astore_0
+    //   1149: goto -91 -> 1058
+    //   1152: iload 6
+    //   1154: iconst_1
+    //   1155: isub
+    //   1156: istore 6
+    //   1158: iload 5
+    //   1160: istore 4
+    //   1162: goto -348 -> 814
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	1165	0	paramChatActivity	ChatActivity
+    //   0	1165	1	paramQQAppInterface	QQAppInterface
+    //   0	1165	2	paramSessionInfo	SessionInfo
+    //   0	1165	3	paramList	List
+    //   297	864	4	i	int
+    //   305	854	5	j	int
+    //   313	844	6	k	int
+    //   196	774	7	m	int
+    //   609	23	8	n	int
+    //   617	22	9	i1	int
+    //   625	21	10	i2	int
+    //   281	703	11	l1	long
+    //   338	504	13	l2	long
+    //   363	13	15	l3	long
+    //   18	1083	17	str1	String
+    //   471	511	18	str2	String
+    //   185	788	19	localSharedPreferences	SharedPreferences
+    //   483	412	20	localObject1	Object
+    //   528	355	21	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   24	34	1099	finally
+    //   70	107	1099	finally
+    //   141	198	1099	finally
+    //   240	274	1099	finally
+    //   274	365	1099	finally
+    //   381	414	1099	finally
+    //   448	584	1099	finally
+    //   584	627	1099	finally
+    //   684	740	1099	finally
+    //   776	796	1099	finally
+    //   799	808	1099	finally
+    //   819	832	1099	finally
+    //   836	847	1099	finally
+    //   851	862	1099	finally
+    //   866	874	1099	finally
+    //   880	891	1099	finally
+    //   894	946	1099	finally
+    //   959	966	1099	finally
+    //   972	1031	1099	finally
+    //   1031	1058	1138	finally
   }
   
   public static void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, long paramLong, boolean paramBoolean)
@@ -1132,7 +1495,7 @@ public class ChatActivityFacade
     paramSessionInfo = PicBusiManager.a(1, 1006);
     paramSessionInfo.a(paramContext.a());
     PicBusiManager.a(paramSessionInfo, paramQQAppInterface);
-    new cfs(paramQQAppInterface, paramString).execute(new Void[0]);
+    new bzz(paramQQAppInterface, paramString).execute(new Void[0]);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, String paramString, int paramInt, long paramLong)
@@ -1215,7 +1578,7 @@ public class ChatActivityFacade
     {
       return;
       a(paramQQAppInterface, paramSessionInfo, paramString, paramArrayList);
-      new cft(paramQQAppInterface, paramString).execute(new Void[0]);
+      new caa(paramQQAppInterface, paramString).execute(new Void[0]);
       paramQQAppInterface.a().f(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int);
     } while (!QLog.isColorLevel());
     QLog.d("SendMsgBtn", 2, " sendMessage end currenttime:" + System.currentTimeMillis());
@@ -1342,10 +1705,10 @@ public class ChatActivityFacade
       ((NewIntent)localObject).putExtra("selfuin", Long.valueOf(paramQQAppInterface.a()));
       ((NewIntent)localObject).putExtra("hostuin", new long[] { Long.valueOf(paramSessionInfo.jdField_a_of_type_JavaLangString).longValue() });
       ((NewIntent)localObject).putExtra("lasttime", l);
-      jdField_a_of_type_Cfz.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 = paramChatAdapter1;
-      jdField_a_of_type_Cfz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-      jdField_a_of_type_Cfz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-      paramQQAppInterface.registObserver(jdField_a_of_type_Cfz);
+      jdField_a_of_type_Cag.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 = paramChatAdapter1;
+      jdField_a_of_type_Cag.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+      jdField_a_of_type_Cag.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+      paramQQAppInterface.registObserver(jdField_a_of_type_Cag);
       paramQQAppInterface.startServlet((NewIntent)localObject);
       return;
       i = 0;
@@ -1971,7 +2334,7 @@ public class ChatActivityFacade
     if ((!AppSetting.m) && (paramInt == 0)) {
       return;
     }
-    paramQQCustomMenu.a(2131234872, paramContext.getString(2131562749));
+    paramQQCustomMenu.a(2131234874, paramContext.getString(2131562749));
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, MessageForLongMsg paramMessageForLongMsg)
@@ -2002,7 +2365,7 @@ public class ChatActivityFacade
   
   public static boolean a(QQAppInterface paramQQAppInterface, Emoticon paramEmoticon)
   {
-    new cfy(paramQQAppInterface, paramEmoticon).execute(new Void[0]);
+    new caf(paramQQAppInterface, paramEmoticon).execute(new Void[0]);
     return true;
   }
   
@@ -2576,58 +2939,49 @@ public class ChatActivityFacade
       }
       else
       {
-        l1 = Long.valueOf(paramSessionInfo.jdField_a_of_type_JavaLangString).longValue();
-        if (paramQQAppInterface.a().a(l1))
+        Long.valueOf(paramSessionInfo.jdField_a_of_type_JavaLangString).longValue();
+        l1 = MessageCache.a() * 1000L;
+        jdField_a_of_type_AndroidTextFormatTime.set(l1);
+        i = jdField_a_of_type_AndroidTextFormatTime.year;
+        j = jdField_a_of_type_AndroidTextFormatTime.month;
+        k = jdField_a_of_type_AndroidTextFormatTime.monthDay;
+        paramChatActivity = "voice_disc_ptt_freq_tip_msg_insert_time" + paramQQAppInterface.a();
+        localSharedPreferences = BaseApplication.getContext().getSharedPreferences("free_call", 0);
+        localObject1 = localSharedPreferences.getString(paramChatActivity, null);
+        if (QLog.isColorLevel())
+        {
+          localObject2 = i + "-" + j + "-" + k;
+          QLog.d("VoiceTipMsg", 2, "currDate is:" + (String)localObject2 + ",curr hour is:" + jdField_a_of_type_AndroidTextFormatTime.hour + ",discPttFreqTipMsgInsertTime is:" + (String)localObject1);
+        }
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          jdField_a_of_type_AndroidTextFormatTime.set(Long.parseLong((String)localObject1));
+          m = jdField_a_of_type_AndroidTextFormatTime.year;
+          n = jdField_a_of_type_AndroidTextFormatTime.month;
+          i1 = jdField_a_of_type_AndroidTextFormatTime.monthDay;
+          if ((i == m) && (j == n) && (k == i1))
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("VoiceTipMsg", 2, "insertDiscPttFreqCallTipIfNeeded() <=====, step is:" + "already insert discuss ppt frequent tip msg this day");
+            return;
+          }
+        }
+        localObject1 = localSharedPreferences.getString("start_group_audio_time" + paramQQAppInterface.a(), null);
+        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (l1 - Long.parseLong((String)localObject1) <= 600000L))
         {
           if (QLog.isColorLevel()) {
-            QLog.d("VoiceTipMsg", 2, "insertDiscPttFreqCallTipIfNeeded() <=====, step is:" + "current discussion is on voice chating");
+            QLog.d("VoiceTipMsg", 2, "insertDiscPttFreqCallTipIfNeeded() <=====, step is:" + "has startGroupAudio in less 10 mins, just return");
           }
         }
         else
         {
-          l1 = MessageCache.a() * 1000L;
-          jdField_a_of_type_AndroidTextFormatTime.set(l1);
-          i = jdField_a_of_type_AndroidTextFormatTime.year;
-          j = jdField_a_of_type_AndroidTextFormatTime.month;
-          k = jdField_a_of_type_AndroidTextFormatTime.monthDay;
-          paramChatActivity = "voice_disc_ptt_freq_tip_msg_insert_time" + paramQQAppInterface.a();
-          localSharedPreferences = BaseApplication.getContext().getSharedPreferences("free_call", 0);
-          localObject1 = localSharedPreferences.getString(paramChatActivity, null);
-          if (QLog.isColorLevel())
-          {
-            localObject2 = i + "-" + j + "-" + k;
-            QLog.d("VoiceTipMsg", 2, "currDate is:" + (String)localObject2 + ",curr hour is:" + jdField_a_of_type_AndroidTextFormatTime.hour + ",discPttFreqTipMsgInsertTime is:" + (String)localObject1);
-          }
-          if (!TextUtils.isEmpty((CharSequence)localObject1))
-          {
-            jdField_a_of_type_AndroidTextFormatTime.set(Long.parseLong((String)localObject1));
-            m = jdField_a_of_type_AndroidTextFormatTime.year;
-            n = jdField_a_of_type_AndroidTextFormatTime.month;
-            i1 = jdField_a_of_type_AndroidTextFormatTime.monthDay;
-            if ((i == m) && (j == n) && (k == i1))
-            {
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.d("VoiceTipMsg", 2, "insertDiscPttFreqCallTipIfNeeded() <=====, step is:" + "already insert discuss ppt frequent tip msg this day");
-              return;
-            }
-          }
-          localObject1 = localSharedPreferences.getString("start_group_audio_time" + paramQQAppInterface.a(), null);
-          if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (l1 - Long.parseLong((String)localObject1) <= 600000L))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("VoiceTipMsg", 2, "insertDiscPttFreqCallTipIfNeeded() <=====, step is:" + "has startGroupAudio in less 10 mins, just return");
-            }
-          }
-          else
-          {
-            l2 = (l1 - 600000L) / 1000L;
-            j = paramList.size();
-            i = 0;
-            localObject1 = new HashSet();
-            k = j - 1;
-          }
+          l2 = (l1 - 600000L) / 1000L;
+          j = paramList.size();
+          i = 0;
+          localObject1 = new HashSet();
+          k = j - 1;
         }
       }
     }
@@ -2743,7 +3097,7 @@ public class ChatActivityFacade
           return;
           if ((FileManagerUtil.a()) && (paramForwardFileInfo.d() > 5242880L))
           {
-            FMDialogUtil.a(paramContext, 2131558759, 2131558756, new cfu(paramSessionInfo, paramQQAppInterface, paramForwardFileInfo));
+            FMDialogUtil.a(paramContext, 2131558759, 2131558756, new cab(paramSessionInfo, paramQQAppInterface, paramForwardFileInfo));
           }
           else if (paramSessionInfo.jdField_a_of_type_Int == 1)
           {
@@ -2785,7 +3139,7 @@ public class ChatActivityFacade
                 paramQQAppInterface.a().b(paramContext, paramSessionInfo.jdField_b_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int);
                 continue;
                 if ((FileManagerUtil.a()) && (paramForwardFileInfo.d() > 5242880L) && (paramForwardFileInfo.c() == 3)) {
-                  FMDialogUtil.a(paramContext, 2131558759, 2131558756, new cfv(paramSessionInfo, paramForwardFileInfo, paramQQAppInterface));
+                  FMDialogUtil.a(paramContext, 2131558759, 2131558756, new cac(paramSessionInfo, paramForwardFileInfo, paramQQAppInterface));
                 } else if (paramSessionInfo.jdField_a_of_type_Int == 1)
                 {
                   if (!TextUtils.isEmpty(paramForwardFileInfo.a())) {

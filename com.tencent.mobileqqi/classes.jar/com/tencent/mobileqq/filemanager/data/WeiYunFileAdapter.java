@@ -66,11 +66,11 @@ public class WeiYunFileAdapter
       try
       {
         WeiYunFileAdapter.WeiYunFileItemHolder localWeiYunFileItemHolder1 = new WeiYunFileAdapter.WeiYunFileItemHolder(this);
-        paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903498, paramViewGroup, false);
+        paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903500, paramViewGroup, false);
         paramView = paramViewGroup;
         try
         {
-          localWeiYunFileItemHolder1.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131232737));
+          localWeiYunFileItemHolder1.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131232740));
           paramView = paramViewGroup;
           localWeiYunFileItemHolder1.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudFileBrowserActivity.c);
           paramView = paramViewGroup;
@@ -78,25 +78,25 @@ public class WeiYunFileAdapter
           paramView = paramViewGroup;
           localWeiYunFileItemHolder1.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localWeiYunFileItemHolder1);
           paramView = paramViewGroup;
-          localWeiYunFileItemHolder1.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131232738));
+          localWeiYunFileItemHolder1.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131232741));
           paramView = paramViewGroup;
-          localWeiYunFileItemHolder1.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramViewGroup.findViewById(2131232739));
+          localWeiYunFileItemHolder1.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramViewGroup.findViewById(2131232742));
           paramView = paramViewGroup;
-          localWeiYunFileItemHolder1.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131232741));
+          localWeiYunFileItemHolder1.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131232744));
           paramView = paramViewGroup;
-          localWeiYunFileItemHolder1.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131232740));
+          localWeiYunFileItemHolder1.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131232743));
           paramView = paramViewGroup;
-          localWeiYunFileItemHolder1.b = ((TextView)paramViewGroup.findViewById(2131232742));
+          localWeiYunFileItemHolder1.b = ((TextView)paramViewGroup.findViewById(2131232745));
           paramView = paramViewGroup;
-          localWeiYunFileItemHolder1.c = ((TextView)paramViewGroup.findViewById(2131232743));
+          localWeiYunFileItemHolder1.c = ((TextView)paramViewGroup.findViewById(2131232746));
           paramView = paramViewGroup;
-          localWeiYunFileItemHolder1.d = ((TextView)paramViewGroup.findViewById(2131231881));
+          localWeiYunFileItemHolder1.d = ((TextView)paramViewGroup.findViewById(2131231883));
           paramView = paramViewGroup;
-          localWeiYunFileItemHolder1.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramViewGroup.findViewById(2131232131));
+          localWeiYunFileItemHolder1.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramViewGroup.findViewById(2131232134));
           paramView = paramViewGroup;
           localWeiYunFileItemHolder1.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramViewGroup.findViewById(2131230987));
           paramView = paramViewGroup;
-          localWeiYunFileItemHolder1.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131231699));
+          localWeiYunFileItemHolder1.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131231701));
           paramView = paramViewGroup;
           paramViewGroup.setTag(localWeiYunFileItemHolder1);
           paramView = paramViewGroup;
@@ -144,7 +144,7 @@ public class WeiYunFileAdapter
             continue;
           }
           paramView = paramViewGroup;
-          localWeiYunFileItemHolder1.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setDefaultImage(2130838612);
+          localWeiYunFileItemHolder1.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setDefaultImage(2130838614);
           paramView = paramViewGroup;
           localWeiYunFileItemHolder1.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncImage(localWeiYunFileInfo.g);
           paramView = paramViewGroup;

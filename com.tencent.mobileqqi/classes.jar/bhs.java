@@ -1,35 +1,29 @@
-import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.av.gaudio.GaInviteActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.common.util.ImageUtil;
+import com.tencent.biz.common.util.LoadedCallBack;
+import com.tencent.qphone.base.util.QLog;
 
-@SuppressLint({"HandlerLeak"})
-public class bhs
+public final class bhs
   extends Handler
 {
-  public bhs(GaInviteActivity paramGaInviteActivity) {}
-  
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.a = true;
-      if (this.a.c) {
-        ReportController.b(null, "CliOper", "", "", "Multi_call", "Lock_popup_timeout", 0, 0, "", "", "", "");
-      }
-      for (;;)
-      {
-        this.a.c();
-        return;
-        ReportController.b(null, "CliOper", "", "", "Multi_call", "Multi_call_timeout", 0, 0, "", "", "", "");
-      }
+    if ((paramMessage.arg1 == 0) && (ImageUtil.jdField_a_of_type_ComTencentBizCommonUtilLoadedCallBack != null)) {
+      ImageUtil.jdField_a_of_type_ComTencentBizCommonUtilLoadedCallBack.a((String)paramMessage.obj);
     }
-    this.a.f();
-    super.sendEmptyMessageDelayed(1, 2000L);
+    for (;;)
+    {
+      ImageUtil.jdField_a_of_type_ComTencentBizCommonUtilLoadedCallBack = null;
+      ImageUtil.d = null;
+      ImageUtil.e = null;
+      long l = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.i(ImageUtil.b, 2, "======time:" + (l - ImageUtil.jdField_a_of_type_Long) + ", start:" + ImageUtil.jdField_a_of_type_Long + ", endTime:" + l);
+      }
+      return;
+      ImageUtil.jdField_a_of_type_ComTencentBizCommonUtilLoadedCallBack.a(null);
+    }
   }
 }
 

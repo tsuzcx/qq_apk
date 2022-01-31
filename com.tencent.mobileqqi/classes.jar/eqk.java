@@ -1,31 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.selectmember.RenMaiQuanMemberListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.app.CircleManager;
+import com.tencent.mobileqq.service.circle.IGroupObserver;
 
 public class eqk
-  implements ActionSheet.OnButtonClickListener
+  implements IGroupObserver
 {
-  public eqk(SettingActivity2 paramSettingActivity2, ActionSheet paramActionSheet) {}
+  public eqk(RenMaiQuanMemberListInnerFrame paramRenMaiQuanMemberListInnerFrame) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-    if (!NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.b(2131562488);
-      return;
+    if (paramInt == 2) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.k();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new eql(this);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
+      this.a.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaUtilArrayList, false);
+      this.a.jdField_a_of_type_Eql.notifyDataSetChanged();
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.a.c();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.a(2131562875, 0L);
   }
 }
 

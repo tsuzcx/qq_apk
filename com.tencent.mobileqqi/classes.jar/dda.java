@@ -1,15 +1,44 @@
-import com.tencent.mobileqq.activity.NearPeopleActivity;
-import com.tencent.mobileqq.app.NearHornHandler;
+import com.tencent.map.lbsapi.api.SOSOMapLBSApi;
+import com.tencent.map.lbsapi.api.SOSOMapLBSApiListener;
+import com.tencent.map.lbsapi.api.SOSOMapLBSApiResult;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class dda
-  implements Runnable
+  extends SOSOMapLBSApiListener
 {
-  public dda(NearPeopleActivity paramNearPeopleActivity) {}
-  
-  public void run()
+  public dda(QQMapActivity paramQQMapActivity, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (NearPeopleActivity.a(this.a) != null) {
-      NearPeopleActivity.a(this.a).a("", Long.valueOf(0L), "1", NearPeopleActivity.c(this.a), Boolean.valueOf(false));
+    super(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onLocationUpdate(SOSOMapLBSApiResult paramSOSOMapLBSApiResult)
+  {
+    SOSOMapLBSApi.getInstance().removeLocationUpdate();
+    String str;
+    if (paramSOSOMapLBSApiResult.Address == null)
+    {
+      str = "";
+      if (QLog.isColorLevel()) {
+        QLog.d("get_location", 2, "get location finish, latitude = " + paramSOSOMapLBSApiResult.Latitude + " longitude=" + paramSOSOMapLBSApiResult.Longitude + " address=" + str);
+      }
+      if (paramSOSOMapLBSApiResult.Info != 1) {
+        break label113;
+      }
+      this.a.runOnUiThread(new ddb(this, paramSOSOMapLBSApiResult, str));
+    }
+    for (;;)
+    {
+      label113:
+      try
+      {
+        this.a.dismissDialog(0);
+        return;
+      }
+      catch (IllegalArgumentException paramSOSOMapLBSApiResult) {}
+      str = paramSOSOMapLBSApiResult.Address;
+      break;
+      this.a.s();
     }
   }
 }

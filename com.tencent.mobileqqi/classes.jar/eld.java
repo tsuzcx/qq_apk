@@ -1,41 +1,29 @@
-import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import java.util.ArrayList;
-import java.util.List;
-
 public class eld
-  implements Runnable
 {
-  public eld(RecommendTroopView paramRecommendTroopView, List paramList) {}
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
   
-  public void run()
+  public eld(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    String[] arrayOfString = paramString.split(" ");
+    if (arrayOfString.length == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.jdField_a_of_type_JavaUtilList.size() <= 0) {
-        break label134;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.jdField_a_of_type_Eli.a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.jdField_a_of_type_Eli);
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.jdField_a_of_type_Eli.notifyDataSetChanged();
-    }
-    for (;;)
-    {
-      RecommendTroopView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView);
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() != 0))
-      {
-        ele localele = new ele(this);
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(localele);
-      }
+      this.jdField_a_of_type_JavaLangString = arrayOfString[0];
+      this.jdField_a_of_type_Boolean = true;
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.jdField_a_of_type_JavaUtilList = new ArrayList();
-      break;
-      label134:
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setEmptyView(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.b);
     }
+    if (arrayOfString.length == 4)
+    {
+      this.b = arrayOfString[0];
+      this.b = this.b.replace("-", " ");
+      this.c = arrayOfString[1];
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaLangString = arrayOfString[3];
+      return;
+    }
+    throw new RuntimeException("format error!, string: " + paramString);
   }
 }
 

@@ -1,50 +1,60 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.SubAccountMessageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.DiscussionObserver;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantImpl;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class drj
-  implements ActionSheet.OnButtonClickListener
+  extends DiscussionObserver
 {
-  public drj(SubAccountMessageActivity paramSubAccountMessageActivity, ActionSheet paramActionSheet, boolean paramBoolean) {}
+  public drj(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(boolean paramBoolean, Long paramLong)
   {
-    boolean bool = true;
-    switch (paramInt)
+    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
+  {
+    if (paramBoolean)
     {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      paramView = SubAccountAssistantImpl.a();
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.b;
-      if (!this.jdField_a_of_type_Boolean)
+      ReportController.b(this.a.b, "CliOper", "", "", "0X80040F5", "0X80040F5", 0, 0, "", "", "", "");
+      TroopMemberListActivity.a(this.a, 0L);
+      this.a.c = null;
+      this.a.c(paramLong2 + "");
+      if (this.a.jdField_a_of_type_Drx != null) {
+        this.a.jdField_a_of_type_Drx.a();
+      }
+      if (TroopMemberListActivity.a(this.a))
       {
-        paramView.a(localQQAppInterface, bool);
-        localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.b;
-        if (this.jdField_a_of_type_Boolean) {
-          break label112;
+        this.a.b(paramLong2 + "");
+        if (this.a.jdField_a_of_type_Dsd != null) {
+          this.a.jdField_a_of_type_Dsd.notifyDataSetChanged();
         }
       }
-      for (paramView = "1";; paramView = "0")
-      {
-        ReportController.b(localQQAppInterface, "CliOper", "", "", "Bind_account", "Top_bind_account", 0, 0, paramView, "", "", "");
-        return;
-        bool = false;
-        break;
-      }
-    case 1: 
-      label112:
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      SubAccountMessageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity, true, false);
-      return;
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-    SubAccountMessageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity, false, true);
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      }
+      return;
+      QQToast.a(this.a, 1, this.a.getString(2131562054), 0).b(this.a.d());
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2)
+  {
+    this.a.runOnUiThread(new drk(this, paramBoolean1, paramString, paramBoolean2, paramInt1, paramInt2));
+  }
+  
+  protected void b(boolean paramBoolean, Long paramLong)
+  {
+    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 

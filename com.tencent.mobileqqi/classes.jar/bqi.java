@@ -1,24 +1,26 @@
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface.LocListener;
-import com.tencent.map.lbsapi.api.SOSOMapLBSApi;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.common.galleryactivity.GalleryPageView;
 
 public class bqi
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public bqi(PublicAccountJavascriptInterface.LocListener paramLocListener) {}
+  public bqi(GalleryPageView paramGalleryPageView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "-2", "{type:1, data:null}" });
-    String str = Long.toString(System.currentTimeMillis() - this.a.jdField_a_of_type_Long);
-    ReportController.a(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 3, this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.getNetworkType(), str, "", "");
-    SOSOMapLBSApi.getInstance().removeLocationUpdate();
+    this.a.a.clearAnimation();
+    this.a.a.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bqi
  * JD-Core Version:    0.7.0.1
  */

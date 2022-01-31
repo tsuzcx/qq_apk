@@ -1,31 +1,41 @@
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class bvd
-  extends Thread
+  extends Handler
 {
-  public bvd(Share paramShare, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
+  public bvd(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    Object localObject = new HashMap();
-    if (this.jdField_a_of_type_Boolean) {
-      ((HashMap)localObject).put("url", this.jdField_a_of_type_JavaLangString);
-    }
-    localObject = HttpUtil.a((HashMap)localObject);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (localObject = (String)((HashMap)localObject).get("url");; localObject = this.jdField_a_of_type_JavaLangString)
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a.runOnUiThread(new bve(this, (String)localObject));
-      return;
     }
+    do
+    {
+      return;
+      if (!this.a.isFinishing())
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131561834));
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2130839721);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(false);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+      return;
+    } while ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()));
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131561702));
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(true);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(false);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bvd
  * JD-Core Version:    0.7.0.1
  */

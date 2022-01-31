@@ -1,14 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
 
-class hmv
-  implements DialogInterface.OnClickListener
+public class hmv
+  implements Runnable
 {
-  hmv(hms paramhms) {}
+  public hmv(DownloadManager paramDownloadManager, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    try
+    {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().pauseDownloadTask(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    catch (Exception localException)
+    {
+      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "downloadSDKClient>>>", localException);
+    }
   }
 }
 

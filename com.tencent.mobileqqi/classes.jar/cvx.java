@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.emosm.view.DragSortListView.LeftEventListener;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.MayKnowManActivity;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
 public class cvx
-  implements DragSortListView.LeftEventListener
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public cvx(GroupManagerActivity paramGroupManagerActivity) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public void a(int paramInt) {}
-  
-  public void b(int paramInt) {}
+  private cvx(MayKnowManActivity paramMayKnowManActivity) {}
 }
 
 

@@ -1,18 +1,25 @@
+import android.content.res.Resources;
 import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopLocationModifyActivity;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.troop.widget.MediaControllerX;
 
 public class gyt
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public gyt(TroopLocationModifyActivity paramTroopLocationModifyActivity) {}
+  public gyt(MediaControllerX paramMediaControllerX) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    TroopLocationModifyActivity.a(this.a);
-    if (paramInt == 0) {
-      TroopLocationModifyActivity.a(this.a, "");
+    if (this.a.c())
+    {
+      this.a.b(0);
+      MediaControllerX.a(this.a).setContentDescription(this.a.getResources().getString(2131558472));
+      return;
     }
+    this.a.b(1);
+    MediaControllerX.a(this.a, true);
+    MediaControllerX.a(this.a).setContentDescription(this.a.getResources().getString(2131558473));
   }
 }
 

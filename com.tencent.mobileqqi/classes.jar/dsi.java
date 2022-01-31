@@ -1,28 +1,15 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.SubAccountSettingActivity;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
+import java.util.Comparator;
 
-class dsi
-  implements ActionSheet.OnButtonClickListener
+public class dsi
+  implements Comparator
 {
-  dsi(dsg paramdsg, ActionSheet paramActionSheet) {}
+  private dsi(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public int a(TroopMemberListActivity.ATroopMember paramATroopMember1, TroopMemberListActivity.ATroopMember paramATroopMember2)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while ((!this.jdField_a_of_type_Dsg.a.f()) || ((SubAccountSettingActivity.a(this.jdField_a_of_type_Dsg.a) != null) && (TextUtils.isEmpty(SubAccountSettingActivity.a(this.jdField_a_of_type_Dsg.a).subuin))));
-    this.jdField_a_of_type_Dsg.a.d();
-    SubAccountAssistantManager.a().a(this.jdField_a_of_type_Dsg.a.b, SubAccountSettingActivity.a(this.jdField_a_of_type_Dsg.a).subuin);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    return paramATroopMember1.f.compareToIgnoreCase(paramATroopMember2.f);
   }
 }
 

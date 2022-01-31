@@ -1,26 +1,28 @@
-import android.content.Context;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import com.tencent.mobileqq.activity.contact.newfriend.CircleGroupListView;
 
 public class edx
-  extends ClickableSpan
+  implements Animation.AnimationListener
 {
-  public edx(GrayTipsItemBuilder paramGrayTipsItemBuilder, String paramString1, String paramString2) {}
+  public edx(CircleGroupListView paramCircleGroupListView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramView = GrayTipsItemBuilder.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder).getString(2131561734) + " " + this.jdField_a_of_type_JavaLangString;
-    paramView = DialogUtil.a(GrayTipsItemBuilder.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder), 230).setTitle(paramView).setMessage(this.b);
-    paramView.setPositiveButton(GrayTipsItemBuilder.g(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder).getString(2131561726), new edz(this)).setNegativeButton(GrayTipsItemBuilder.f(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder).getString(2131561746), new edy(this));
-    paramView.show();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.show();
+    this.a.b.setAnimation(null);
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     edx
  * JD-Core Version:    0.7.0.1
  */

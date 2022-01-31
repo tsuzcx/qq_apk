@@ -8,7 +8,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.LayoutParams;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import edh;
+import dyf;
 
 public class ViewPagerRadioGroup
   extends RadioGroup
@@ -26,18 +26,18 @@ public class ViewPagerRadioGroup
   
   private RadioButton a()
   {
-    edh localedh = new edh(this, getContext());
-    localedh.setButtonDrawable(2130837973);
-    localedh.setGravity(17);
+    dyf localdyf = new dyf(this, getContext());
+    localdyf.setButtonDrawable(2130837975);
+    localdyf.setGravity(17);
     Resources localResources = getResources();
     RadioGroup.LayoutParams localLayoutParams = new RadioGroup.LayoutParams(AIOUtils.a(10.0F, localResources), AIOUtils.a(10.0F, localResources));
     localLayoutParams.gravity = 17;
     int i = AIOUtils.a(3.0F, localResources);
     localLayoutParams.leftMargin = i;
     localLayoutParams.rightMargin = i;
-    localedh.setLayoutParams(localLayoutParams);
-    localedh.setClickable(true);
-    return localedh;
+    localdyf.setLayoutParams(localLayoutParams);
+    localdyf.setClickable(true);
+    return localdyf;
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -74,7 +74,7 @@ public class ViewPagerRadioGroup
     if (paramInt1 > 0)
     {
       RadioButton localRadioButton = (RadioButton)getChildAt(i);
-      localRadioButton.setButtonDrawable(2130837973);
+      localRadioButton.setButtonDrawable(2130837975);
       localRadioButton.setChecked(true);
     }
     paramInt1 = 0;

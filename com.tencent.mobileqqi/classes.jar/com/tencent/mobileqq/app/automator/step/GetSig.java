@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.remote.ToServiceMsg;
-import fmp;
+import fid;
 
 public class GetSig
   extends AsyncStep
@@ -30,7 +30,7 @@ public class GetSig
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new fmp(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new fid(this, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
     }
     c();

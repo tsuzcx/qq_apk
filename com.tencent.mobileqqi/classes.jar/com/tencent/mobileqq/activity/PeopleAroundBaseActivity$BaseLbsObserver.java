@@ -8,7 +8,7 @@ import android.view.View;
 import com.tencent.mobileqq.adapter.PeopleAroundAdapter;
 import com.tencent.mobileqq.app.LBSObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import der;
+import cza;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -142,7 +142,7 @@ public class PeopleAroundBaseActivity$BaseLbsObserver
       {
         paramRespGetEncounterV2 = this.a.jdField_a_of_type_JavaUtilList;
         localObject = this.a.d;
-        this.a.b.a(new der(this, paramString, paramRespGetEncounterV2, (String)localObject));
+        this.a.b.a(new cza(this, paramString, paramRespGetEncounterV2, (String)localObject));
       }
       this.a.jdField_a_of_type_Long = System.currentTimeMillis();
       this.a.jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter.notifyDataSetChanged();

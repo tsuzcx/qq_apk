@@ -1,15 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.fileviewer.base.BaseFileViewerController;
+import android.content.Context;
+import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.weiyun.sdk.IWyFileSystem.CommonFtnFile;
+import com.weiyun.sdk.IWyFileSystem.IWyCallback;
+import com.weiyun.sdk.IWyFileSystem.WyErrorStatus;
 
 public class fxg
-  implements View.OnClickListener
+  implements IWyFileSystem.IWyCallback
 {
-  public fxg(BaseFileViewerController paramBaseFileViewerController) {}
+  public fxg(WeiYunLogicCenter paramWeiYunLogicCenter, FileManagerEntity paramFileManagerEntity, TroopFileTransferManager paramTroopFileTransferManager, TroopFileStatusInfo paramTroopFileStatusInfo) {}
   
-  public void onClick(View paramView)
+  public void a(IWyFileSystem.CommonFtnFile paramCommonFtnFile)
   {
-    this.a.b(paramView);
+    paramCommonFtnFile = paramCommonFtnFile.guid;
+    if ((paramCommonFtnFile == null) || (paramCommonFtnFile.length() < 1))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("WeiYunLogicCenter<FileAssistant>", 2, "sendWyFile2QqOffline onSucceed,But uuid is null!!!");
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager != null) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a, -1, null, BaseApplication.getContext().getString(2131559249));
+      }
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "sendWyFile2QqOffline onSucceed, Uuid[" + paramCommonFtnFile + "]");
+      }
+    } while (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager == null);
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a, 0, paramCommonFtnFile, null);
+  }
+  
+  public void onFailed(IWyFileSystem.WyErrorStatus paramWyErrorStatus)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "sendWeiYun2Troop onFailed: errcode[" + paramWyErrorStatus.errorCode + "], errmsg[" + paramWyErrorStatus.errorMsg + "]");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a, paramWyErrorStatus.errorCode, null, paramWyErrorStatus.errorMsg);
   }
 }
 

@@ -1,31 +1,38 @@
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout.onSizeChangedListenner;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class dsv
-  implements InputMethodRelativeLayout.onSizeChangedListenner
+  extends Handler
 {
-  public dsv(SubLoginActivity paramSubLoginActivity) {}
+  public dsv(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramBoolean)
+    switch (paramMessage.what)
     {
-      int[] arrayOfInt = new int[2];
-      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
-      paramInt1 = arrayOfInt[1];
-      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
-      paramInt1 = paramInt1 - arrayOfInt[1] + SubLoginActivity.a(this.a).getHeight() - paramInt2;
-      if (paramInt1 > 0) {
-        SubLoginActivity.a(this.a).setPadding(SubLoginActivity.a(this.a).getPaddingLeft(), SubLoginActivity.a(this.a).getPaddingTop() - paramInt1, SubLoginActivity.a(this.a).getPaddingRight(), SubLoginActivity.a(this.a).getPaddingBottom());
+    default: 
+      return;
+    case 0: 
+      if (TroopRequestActivity.a(this.a) != null) {
+        TroopRequestActivity.a(this.a).dismiss();
       }
-      SubLoginActivity.b(this.a).setVisibility(8);
+      QQToast.a(this.a, this.a.getString(2131562880), 0).b(this.a.d());
+      this.a.finish();
+      return;
+    case 1: 
+      this.a.a(true);
+      if (TroopRequestActivity.a(this.a) != null) {
+        TroopRequestActivity.a(this.a).dismiss();
+      }
+      QQToast.a(this.a, this.a.getString(2131561435), 0).b(this.a.d());
       return;
     }
-    SubLoginActivity.b(this.a).setVisibility(0);
-    SubLoginActivity.a(this.a).setPadding(0, 0, 0, 0);
+    paramMessage = (String)paramMessage.obj;
+    this.a.a.setText(paramMessage + "");
   }
 }
 

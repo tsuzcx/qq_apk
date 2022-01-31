@@ -1,20 +1,36 @@
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.QvipSpecialCareObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditActivity;
 
 public class cje
-  extends QvipSpecialCareObserver
+  implements View.OnClickListener
 {
-  public cje(ChatSettingActivity paramChatSettingActivity) {}
+  public cje(EditActivity paramEditActivity) {}
   
-  public void a(Object paramObject)
+  public void onClick(View paramView)
   {
-    if (paramObject != null) {}
-    switch (((Integer)paramObject).intValue())
+    paramView = this.a;
+    if (!EditActivity.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
     {
-    default: 
+      EditActivity.a(paramView, bool);
+      if (!EditActivity.a(this.a)) {
+        break;
+      }
+      this.a.f();
+      EditActivity.a(this.a).setImageResource(2130837653);
+      if (EditActivity.a(this.a) != null) {
+        EditActivity.a(this.a).setVisibility(0);
+      }
       return;
     }
-    ChatSettingActivity.b(this.a);
+    if (EditActivity.a(this.a) != null) {
+      EditActivity.a(this.a).setVisibility(4);
+    }
+    EditActivity.a(this.a).setImageResource(2130839369);
+    this.a.e();
   }
 }
 

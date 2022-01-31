@@ -1,20 +1,15 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qquserguide.UserguideVideoFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareActivity;
 
 public class esi
-  implements MediaPlayer.OnPreparedListener
+  implements View.OnClickListener
 {
-  public esi(UserguideVideoFragment paramUserguideVideoFragment) {}
+  public esi(QvipSpecialCareActivity paramQvipSpecialCareActivity) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new esj(this), 200L);
-    if (QLog.isDevelopLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 4, "fight............onPrepared .== ...........");
-    }
+    QvipSpecialCareActivity.c(this.a);
   }
 }
 

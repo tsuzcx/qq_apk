@@ -1,30 +1,19 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
 
 public class hda
-  implements View.OnClickListener
+  implements Runnable
 {
-  public hda(MediaControllerX paramMediaControllerX) {}
+  public hda(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.c())
-    {
-      this.a.b(0);
-      MediaControllerX.a(this.a).setContentDescription(this.a.getResources().getString(2131558472));
-      return;
-    }
-    this.a.b(1);
-    MediaControllerX.a(this.a, true);
-    MediaControllerX.a(this.a).setContentDescription(this.a.getResources().getString(2131558473));
+    this.a.a.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hda
  * JD-Core Version:    0.7.0.1
  */

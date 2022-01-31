@@ -12,8 +12,8 @@ import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.qphone.base.util.QLog;
-import hen;
-import heo;
+import hag;
+import hah;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -31,8 +31,8 @@ public class FaceDecoder
   public static final byte e = 100;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private FaceDecoder.DecodeTaskCompletionListener jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder$DecodeTaskCompletionListener = null;
-  private hen jdField_a_of_type_Hen;
-  private heo jdField_a_of_type_Heo;
+  private hag jdField_a_of_type_Hag;
+  private hah jdField_a_of_type_Hah;
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   private boolean jdField_a_of_type_Boolean = false;
@@ -118,10 +118,10 @@ public class FaceDecoder
       {
         try
         {
-          if ((localFaceInfo.jdField_a_of_type_Int == 101) && (this.jdField_a_of_type_Hen == null))
+          if ((localFaceInfo.jdField_a_of_type_Int == 101) && (this.jdField_a_of_type_Hag == null))
           {
-            this.jdField_a_of_type_Hen = new hen(this, null);
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Hen);
+            this.jdField_a_of_type_Hag = new hag(this, null);
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Hag);
           }
           this.b += 1;
           FaceDecodeTask.a(new FaceDecodeTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFaceInfo, this));
@@ -174,10 +174,10 @@ public class FaceDecoder
     }
     if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramFaceInfo.a()))
     {
-      if (this.jdField_a_of_type_Heo == null)
+      if (this.jdField_a_of_type_Hah == null)
       {
-        this.jdField_a_of_type_Heo = new heo(this, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Heo);
+        this.jdField_a_of_type_Hah = new hah(this, null);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Hah);
       }
       b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFaceInfo);
     }
@@ -322,13 +322,13 @@ public class FaceDecoder
       QLog.d("Q.qqhead.FaceDecoder", 2, "destory ");
     }
     c();
-    if (this.jdField_a_of_type_Hen != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_Hen);
+    if (this.jdField_a_of_type_Hag != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_Hag);
     }
-    if (this.jdField_a_of_type_Heo != null)
+    if (this.jdField_a_of_type_Hah != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_Heo);
-      this.jdField_a_of_type_Heo = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_Hah);
+      this.jdField_a_of_type_Hah = null;
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder$DecodeTaskCompletionListener = null;
     this.b = 0;

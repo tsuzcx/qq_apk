@@ -1,16 +1,25 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
-import com.tencent.litetransfersdk.Session;
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.ChatActivity;
 
 public class bxh
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public bxh(LiteTransferWrapper paramLiteTransferWrapper, ArrayList paramArrayList, boolean paramBoolean1, boolean paramBoolean2) {}
+  public bxh(ChatActivity paramChatActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetProxyToJni();
-    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SendGroupToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), (Session[])this.jdField_a_of_type_JavaUtilArrayList.toArray(new Session[this.jdField_a_of_type_JavaUtilArrayList.size()]), this.jdField_a_of_type_Boolean, this.b);
+    if (paramMotionEvent.getAction() == 0) {
+      this.a.findViewById(2131231208).setBackgroundResource(2130840096);
+    }
+    for (;;)
+    {
+      return false;
+      if (paramMotionEvent.getAction() == 1) {
+        this.a.findViewById(2131231208).setBackgroundResource(2130840095);
+      }
+    }
   }
 }
 

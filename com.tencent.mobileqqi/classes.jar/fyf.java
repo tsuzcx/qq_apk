@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class fyf
+public final class fyf
   implements Runnable
 {
-  public fyf(FMObserver paramFMObserver, ThumbnailInfo paramThumbnailInfo) {}
+  public fyf(int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataThumbnailInfo);
+    QQToast localQQToast = new QQToast(BaseApplicationImpl.getContext());
+    localQQToast.a(2130837933);
+    localQQToast.c(3000);
+    localQQToast.b(this.a);
+    localQQToast.b(FMToastUtil.a());
   }
 }
 

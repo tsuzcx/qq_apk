@@ -1,21 +1,26 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.voip.VoipDialInterface;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.adapter.ForwardRecentListAdapter;
+import com.tencent.mobileqq.app.QQServiceEntry.Tag;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class eyg
-  implements Runnable
+  implements View.OnLongClickListener
 {
-  public eyg(VoipDialInterface paramVoipDialInterface) {}
+  public eyg(ForwardRecentListAdapter paramForwardRecentListAdapter) {}
   
-  public void run()
+  public boolean onLongClick(View paramView)
   {
-    VoipDialInterface.a(this.a);
-    VoipDialInterface.a(this.a).postDelayed(this, 1000L);
-    VoipDialInterface.b(this.a).sendEmptyMessage(100);
+    paramView = (QQServiceEntry.Tag)paramView.getTag();
+    if ((Long.valueOf(paramView.jdField_a_of_type_JavaLangString).longValue() > 10000L) && (paramView.jdField_a_of_type_Int == 0)) {
+      this.a.a(paramView.b, paramView.jdField_a_of_type_JavaLangString).show();
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eyg
  * JD-Core Version:    0.7.0.1
  */

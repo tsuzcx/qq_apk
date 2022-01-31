@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bod;
+import bhz;
 import com.tencent.biz.ProtoServlet;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.mobileqq.app.BrowserAppInterface;
@@ -128,7 +128,7 @@ public class CouponActivity
       this.p.setVisibility(8);
       this.m.setVisibility(0);
       this.m.setText(2131560600);
-      this.m.setOnClickListener(new bod(this));
+      this.m.setOnClickListener(new bhz(this));
     }
     for (;;)
     {

@@ -1,175 +1,79 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.animation.AnimationUtils;
-import com.tencent.util.AnimateUtils;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AdapterView;
+import android.app.Activity;
+import android.content.Context;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.pluginsdk.PluginUtils;
+import com.tencent.mobileqq.statistics.PluginStatisticsCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class hzv
-  implements Runnable
+  extends AsyncTask
 {
-  private static final int jdField_a_of_type_Int = 400;
-  private static final int g = 0;
-  private static final int h = 1;
-  private static final int i = 2;
-  private static final int j = 3;
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 0;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private int d;
-  private int e;
-  private int f;
+  public String a;
+  public final ArrayList a;
+  public String b;
+  public String c;
+  private String d;
   
-  public hzv(AbsListView paramAbsListView) {}
-  
-  public void a()
+  public hzv(String paramString1, String paramString2, String paramString3)
   {
-    boolean bool = true;
-    int k = this.jdField_a_of_type_ComTencentWidgetAbsListView.ap;
-    int m = this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount();
-    k = this.jdField_a_of_type_ComTencentWidgetAbsListView.aB - (k + m - 1) - 1;
-    if (k == 0)
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.c = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramString3;
+  }
+  
+  protected Boolean a(Void... paramVarArgs)
+  {
+    paramVarArgs = PluginUtils.installPlugin(BaseApplication.getContext(), this.b, "master");
+    if (paramVarArgs != null) {
+      PluginStatisticsCollector.a(BaseApplication.getContext(), this.c, this.b, paramVarArgs);
+    }
+    this.d = paramVarArgs;
+    if (paramVarArgs == null) {}
+    for (boolean bool = true;; bool = false) {
+      return Boolean.valueOf(bool);
+    }
+  }
+  
+  public void a(Activity paramActivity, IPluginManager.PluginParams paramPluginParams)
+  {
+    paramActivity = new hzw(this, paramActivity, paramPluginParams);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramActivity);
+  }
+  
+  public void a(Context paramContext, IPluginManager.PluginParams paramPluginParams)
+  {
+    paramContext = new hzy(this, paramContext, paramPluginParams);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramContext);
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    synchronized ()
     {
-      k = AbsListView.j(this.jdField_a_of_type_ComTencentWidgetAbsListView);
-      m = AbsListView.k(this.jdField_a_of_type_ComTencentWidgetAbsListView);
-      int n = this.jdField_a_of_type_ComTencentWidgetAbsListView.c.bottom;
-      this.f = (this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1).getBottom() - (k - m - n));
-      if (this.f == 0)
+      IPluginManager.a().remove(this.b);
+      if (!paramBoolean.booleanValue())
       {
-        b();
+        IPluginManager.a(this.d, this.jdField_a_of_type_JavaLangString);
         return;
       }
-      this.e = 400;
-      this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-      this.jdField_b_of_type_Int = 0;
-      this.jdField_c_of_type_Int = 3;
-      this.jdField_a_of_type_ComTencentWidgetAbsListView.post(this);
-      return;
     }
-    this.jdField_c_of_type_Float = (this.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight() * k / this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() / 300.0F);
-    this.jdField_a_of_type_Float = (this.jdField_c_of_type_Float / 100.0F);
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.d = (this.jdField_a_of_type_ComTencentWidgetAbsListView.aB - 1);
-    if (k == 1) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_ComTencentWidgetAbsListView.post(this);
-      return;
-      bool = false;
+    paramBoolean = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (paramBoolean.hasNext()) {
+      ((hzx)paramBoolean.next()).a();
     }
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
   }
   
-  public void b()
+  public void b(Context paramContext, IPluginManager.PluginParams paramPluginParams)
   {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.removeCallbacks(this);
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.k = false;
-  }
-  
-  public void run()
-  {
-    int k = 0;
-    AdapterView.a("AbsListView.MoveToBottomScroller.run");
-    for (;;)
-    {
-      int m;
-      try
-      {
-        m = (int)(AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long);
-        switch (this.jdField_c_of_type_Int)
-        {
-        case 0: 
-          k -= this.jdField_b_of_type_Int;
-          if (this.jdField_a_of_type_ComTencentWidgetAbsListView.a(-k, -k)) {
-            break label545;
-          }
-          k = this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount();
-          int n = this.jdField_a_of_type_ComTencentWidgetAbsListView.ap;
-          if ((this.jdField_c_of_type_Int == 3) || (this.jdField_c_of_type_Int == 1) || (n + k - 1 < this.d)) {
-            break label524;
-          }
-          n = AbsListView.l(this.jdField_a_of_type_ComTencentWidgetAbsListView);
-          int i1 = AbsListView.m(this.jdField_a_of_type_ComTencentWidgetAbsListView);
-          int i2 = this.jdField_a_of_type_ComTencentWidgetAbsListView.c.bottom;
-          this.f = (this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(k - 1).getBottom() - (n - i1 - i2));
-          if (this.f != 0) {
-            break label426;
-          }
-          b();
-          return;
-        }
-      }
-      finally
-      {
-        AdapterView.A();
-      }
-      if (m > 100)
-      {
-        this.jdField_b_of_type_Float = this.jdField_c_of_type_Float;
-        k = (int)(this.jdField_c_of_type_Float * m - this.jdField_c_of_type_Float * 400.0F / 8.0F);
-        this.jdField_a_of_type_Float = 0.0F;
-        this.jdField_c_of_type_Int = 2;
-      }
-      else
-      {
-        this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float * m);
-        k = (int)(this.jdField_b_of_type_Float * m / 2.0F);
-        continue;
-        k = (int)(this.jdField_c_of_type_Float * m - this.jdField_c_of_type_Float * 400.0F / 8.0F);
-        continue;
-        if (m > this.e)
-        {
-          k = this.f - this.jdField_b_of_type_Int;
-          this.jdField_a_of_type_ComTencentWidgetAbsListView.a(-k, -k);
-          AdapterView.A();
-          return;
-        }
-        this.jdField_b_of_type_Float -= this.jdField_a_of_type_Float * m;
-        k = (int)(this.f - this.jdField_b_of_type_Float * (this.e - m) / 2.0F);
-        continue;
-        if (m > this.e)
-        {
-          k = this.f - this.jdField_b_of_type_Int;
-          this.jdField_a_of_type_ComTencentWidgetAbsListView.a(-k, -k);
-          AdapterView.A();
-          return;
-        }
-        float f1 = m;
-        k = (int)(AnimateUtils.a(f1 / this.e) * this.f);
-        continue;
-        label426:
-        this.e = (400 - m);
-        if (this.e < 100) {
-          this.e = 100;
-        }
-        this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-        this.jdField_b_of_type_Int = 0;
-        if ((this.jdField_b_of_type_Float * 1000.0F > AbsListView.e(this.jdField_a_of_type_ComTencentWidgetAbsListView)) && (!this.jdField_a_of_type_Boolean))
-        {
-          this.jdField_c_of_type_Int = 1;
-          this.jdField_b_of_type_Float = (this.f * 2.0F / this.e);
-          this.jdField_a_of_type_Float = (this.jdField_b_of_type_Float / this.e);
-          label524:
-          this.jdField_a_of_type_ComTencentWidgetAbsListView.post(this);
-        }
-        for (;;)
-        {
-          AdapterView.A();
-          return;
-          this.jdField_c_of_type_Int = 3;
-          break;
-          label545:
-          b();
-        }
-      }
-    }
+    paramContext = new hzz(this, paramContext, paramPluginParams);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramContext);
   }
 }
 

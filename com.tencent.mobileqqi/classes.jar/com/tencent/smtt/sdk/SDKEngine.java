@@ -288,30 +288,45 @@ class SDKEngine
   {
     boolean bool1 = true;
     boolean bool2 = true;
-    try
+    for (;;)
     {
-      if (!isCompatibleChecked)
+      try
       {
-        bool1 = bool2;
-        if (paramInt <= 25206)
+        if (!isCompatibleChecked)
         {
           bool1 = bool2;
-          if (paramInt >= 25200) {
-            bool1 = false;
+          if (paramInt <= 25206)
+          {
+            bool1 = bool2;
+            if (paramInt >= 25200)
+            {
+              if (paramString.indexOf("/com.tencent.mm/") > 0) {
+                break label79;
+              }
+              bool1 = bool2;
+              if (paramString.indexOf("/com.qzone/") > 0) {
+                break label79;
+              }
+            }
           }
+          isCompatibleChecked = true;
         }
+        else
+        {
+          return bool1;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+        return false;
+      }
+      finally
+      {
         isCompatibleChecked = true;
       }
-      return bool1;
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-      return false;
-    }
-    finally
-    {
-      isCompatibleChecked = true;
+      label79:
+      bool1 = false;
     }
   }
   
@@ -321,7 +336,7 @@ class SDKEngine
     // Byte code:
     //   0: aload_0
     //   1: getfield 85	com/tencent/smtt/sdk/SDKEngine:mX5CorePath	Ljava/io/File;
-    //   4: invokevirtual 222	java/io/File:listFiles	()[Ljava/io/File;
+    //   4: invokevirtual 231	java/io/File:listFiles	()[Ljava/io/File;
     //   7: astore_1
     //   8: aload_1
     //   9: ifnull +9 -> 18
@@ -339,7 +354,7 @@ class SDKEngine
     //   30: invokespecial 186	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   33: astore_3
     //   34: aload_3
-    //   35: invokevirtual 226	java/io/File:exists	()Z
+    //   35: invokevirtual 235	java/io/File:exists	()Z
     //   38: ifeq -20 -> 18
     //   41: aconst_null
     //   42: astore_1
@@ -364,8 +379,8 @@ class SDKEngine
     //   75: aload_1
     //   76: ifnull +15 -> 91
     //   79: aload_1
-    //   80: invokestatic 232	com/tencent/smtt/sdk/QbSdk:getX5CoreTimestamp	()Ljava/lang/String;
-    //   83: invokevirtual 238	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   80: invokestatic 241	com/tencent/smtt/sdk/QbSdk:getX5CoreTimestamp	()Ljava/lang/String;
+    //   83: invokevirtual 245	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   86: istore_2
     //   87: iload_2
     //   88: ifne +20 -> 108

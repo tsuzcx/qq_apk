@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bvi;
+import bpk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.international.LocaleUtil;
 import com.tencent.mobileqq.transfile.SosoSrvAddrProvider;
@@ -50,7 +50,7 @@ public class SosoPlugin
   private void a()
   {
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bvi(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bpk(this);
     }
     try
     {

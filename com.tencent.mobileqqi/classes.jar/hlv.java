@@ -1,46 +1,30 @@
-import android.graphics.Color;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import com.tencent.open.base.http.HttpCgiAsyncTask;
+import com.tencent.open.base.http.HttpCgiAsyncTask.Callback;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public class hlv
-  extends Animation
+  implements Runnable
 {
-  private float jdField_a_of_type_Float;
-  private View jdField_a_of_type_AndroidViewView;
-  private float b;
+  public hlv(HttpCgiAsyncTask paramHttpCgiAsyncTask, HashMap paramHashMap) {}
   
-  public hlv(View paramView, float paramFloat1, float paramFloat2)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if (this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.a != null)
+    {
+      if (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get("ResultType")).intValue() == 1) {
+        this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.a.a((JSONObject)this.jdField_a_of_type_JavaUtilHashMap.get("ResultValue"));
+      }
+    }
+    else {
       return;
     }
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = this.b;
-    float f3 = this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb((int)((f1 + (f2 - f3) * paramFloat) * 255.0F), 255, 255, 255));
-  }
-  
-  public boolean willChangeBounds()
-  {
-    return false;
-  }
-  
-  public boolean willChangeTransformationMatrix()
-  {
-    return false;
+    this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.a.a((Exception)this.jdField_a_of_type_JavaUtilHashMap.get("ResultValue"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hlv
  * JD-Core Version:    0.7.0.1
  */

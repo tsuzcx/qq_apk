@@ -1,15 +1,16 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.activity.NearPeopleActivity;
+import com.tencent.mobileqq.app.NearHornHandler;
 
-class cxj
+public class cxj
   implements Runnable
 {
-  cxj(cxi paramcxi, Bitmap paramBitmap) {}
+  public cxj(NearPeopleActivity paramNearPeopleActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Cxi.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (NearPeopleActivity.a(this.a) != null) {
+      NearPeopleActivity.a(this.a).a("", Long.valueOf(0L), "1", NearPeopleActivity.c(this.a), Boolean.valueOf(false));
+    }
   }
 }
 

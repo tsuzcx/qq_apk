@@ -22,7 +22,7 @@ import com.tencent.mobileqq.widget.InputMethodRelativeLayout.onSizeChangedListen
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.InputMethodUtil;
-import gwe;
+import grx;
 import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -112,7 +112,7 @@ public class TroopBarCommentActivity
       if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.getVisibility() == 0) {
         this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.setVisibility(8);
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839367);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839369);
       this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getString(2131558489));
     }
     while ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.getVisibility() != 8) || (this.jdField_b_of_type_Boolean)) {
@@ -182,17 +182,17 @@ public class TroopBarCommentActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903400);
+    setContentView(2130903402);
     this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout = ((InputMethodRelativeLayout)findViewById(2131231116));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231207));
     this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131231206));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232064));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131232469));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232067));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131232472));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setSelected(true);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    findViewById(2131232470).setOnClickListener(this);
+    findViewById(2131232473).setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel = TroopBarPublishActivity.a(this, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_AndroidWidgetEditText, this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout.setOnSizeChangedListenner(this);
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
@@ -279,7 +279,7 @@ public class TroopBarCommentActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131232470: 
+    case 2131232473: 
     case 2131231207: 
       do
       {
@@ -292,13 +292,13 @@ public class TroopBarCommentActivity
       {
         this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.setVisibility(8);
         InputMethodUtil.a(this.jdField_a_of_type_AndroidWidgetEditText);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839367);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839369);
         this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getString(2131558489));
         return;
       }
       this.jdField_b_of_type_Boolean = true;
       InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new gwe(this), 200L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new grx(this), 200L);
       return;
     }
     b();

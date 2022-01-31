@@ -1,27 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.ShortcutGuideDialogActivity;
 
 public class dii
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public dii(QQMapActivity paramQQMapActivity) {}
+  public dii(ShortcutGuideDialogActivity paramShortcutGuideDialogActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.i)
-    {
-      this.a.p();
-      return;
-    }
-    this.a.setResult(-1, this.a.a());
     this.a.finish();
-    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dii
  * JD-Core Version:    0.7.0.1
  */

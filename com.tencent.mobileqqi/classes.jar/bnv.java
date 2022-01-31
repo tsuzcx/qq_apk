@@ -1,27 +1,22 @@
-import java.io.IOException;
-import java.security.cert.X509Certificate;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocket;
-import org.apache.http.conn.ssl.X509HostnameVerifier;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class bnv
-  implements X509HostnameVerifier
+public class bnv
+  extends BizTroopObserver
 {
-  public void verify(String paramString, X509Certificate paramX509Certificate) {}
+  public bnv(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void verify(String paramString, SSLSocket paramSSLSocket)
+  protected void a(String paramString, List paramList, int paramInt)
   {
-    if (paramString.startsWith("macqq.translator.qq.com")) {
-      return;
-    }
-    throw new IOException("Mismatched host :" + paramString);
-  }
-  
-  public void verify(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2) {}
-  
-  public boolean verify(String paramString, SSLSession paramSSLSession)
-  {
-    return paramString.startsWith("https://macqq.translator.qq.com");
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 25);
+    localBundle.putString("pageUrl", paramString);
+    localBundle.putStringArrayList("lstVideoUrl", (ArrayList)paramList);
+    localBundle.putInt("totalTime", paramInt);
+    TroopMemberApiService.a(this.a, 13, localBundle);
   }
 }
 

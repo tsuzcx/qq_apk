@@ -1,13 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.activity.EditActivity;
 
 public class cjh
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public cjh(ChatSettingActivity paramChatSettingActivity) {}
+  public cjh(EditActivity paramEditActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    this.a.e();
+  }
 }
 
 

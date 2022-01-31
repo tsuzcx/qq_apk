@@ -1,92 +1,60 @@
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.dataline.activities.DLBaseFileViewActivity.DLFileState;
-import com.dataline.util.DataLineReportUtil;
-import com.dataline.util.DatalineFilesAdapter;
-import com.dataline.util.DatalineFilesAdapter.ItemHolder;
-import com.dataline.util.file.DLFileInfo;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.DataLineMsgSet;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.dataline.mpfile.MpfileDataCenter;
+import com.dataline.mpfile.MpfileTaskInfo;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ee
-  implements View.OnClickListener
 {
-  public ee(DatalineFilesAdapter paramDatalineFilesAdapter) {}
+  public Map a;
+  public Map b = new HashMap();
   
-  public void onClick(View paramView)
+  private ee(MpfileDataCenter paramMpfileDataCenter)
   {
-    Object localObject2 = (DatalineFilesAdapter.ItemHolder)paramView.getTag();
-    Object localObject1 = DatalineFilesAdapter.a(this.a).a().b(((DatalineFilesAdapter.ItemHolder)localObject2).a.jdField_a_of_type_Long);
-    if (localObject1 == null) {
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
+  
+  public MpfileTaskInfo a(long paramLong)
+  {
+    return (MpfileTaskInfo)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+  }
+  
+  public MpfileTaskInfo a(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while (!this.b.containsKey(paramString)) {
+      return null;
+    }
+    return a(((Long)this.b.get(paramString)).longValue());
+  }
+  
+  public ArrayList a()
+  {
+    return new ArrayList(this.jdField_a_of_type_JavaUtilMap.values());
+  }
+  
+  public void a(MpfileTaskInfo paramMpfileTaskInfo)
+  {
+    if (paramMpfileTaskInfo == null) {}
+    while ((paramMpfileTaskInfo.c == null) || (paramMpfileTaskInfo.c.length() == 0) || (paramMpfileTaskInfo.d == 0L)) {
       return;
     }
-    paramView = ((DatalineFilesAdapter.ItemHolder)localObject2).a;
-    switch (eh.a[paramView.jdField_a_of_type_ComDatalineActivitiesDLBaseFileViewActivity$DLFileState.ordinal()])
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramMpfileTaskInfo.d), paramMpfileTaskInfo);
+    this.b.put(paramMpfileTaskInfo.c, Long.valueOf(paramMpfileTaskInfo.d));
+    this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.a(paramMpfileTaskInfo);
+  }
+  
+  public void a(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    do
     {
-    default: 
       return;
-    case 1: 
-    case 2: 
-    case 3: 
-      if (NetworkUtil.e(DatalineFilesAdapter.a(this.a)))
-      {
-        if ((FileManagerUtil.a()) && (paramView.b > 5242880L))
-        {
-          localObject1 = new ef(this, (DataLineMsgRecord)localObject1, (DatalineFilesAdapter.ItemHolder)localObject2);
-          localObject2 = new eg(this);
-          if (paramView.jdField_a_of_type_ComDatalineActivitiesDLBaseFileViewActivity$DLFileState == DLBaseFileViewActivity.DLFileState.SENDFAILED)
-          {
-            DialogUtil.a(DatalineFilesAdapter.a(this.a), 230, DatalineFilesAdapter.a(this.a).getString(2131558502), DatalineFilesAdapter.a(this.a).getString(2131558756), 2131561746, 2131558509, (DialogInterface.OnClickListener)localObject1, (DialogInterface.OnClickListener)localObject2).show();
-            return;
-          }
-          DialogUtil.a(DatalineFilesAdapter.a(this.a), 230, DatalineFilesAdapter.a(this.a).getString(2131558505), DatalineFilesAdapter.a(this.a).getString(2131558757), 2131561746, 2131558509, (DialogInterface.OnClickListener)localObject1, (DialogInterface.OnClickListener)localObject2).show();
-          return;
-        }
-        DataLineMsgSet localDataLineMsgSet = DatalineFilesAdapter.a(this.a).a().a(((DataLineMsgRecord)localObject1).sessionid);
-        if (localDataLineMsgSet != null) {
-          localDataLineMsgSet.setPaused(false);
-        }
-        if (paramView.jdField_a_of_type_ComDatalineActivitiesDLBaseFileViewActivity$DLFileState != DLBaseFileViewActivity.DLFileState.SENDFAILED)
-        {
-          if ((((DataLineMsgRecord)localObject1).fileMsgStatus == 1L) && (((DataLineMsgRecord)localObject1).strMoloKey != null)) {
-            DataLineReportUtil.e(DatalineFilesAdapter.a(this.a));
-          }
-          DatalineFilesAdapter.a(this.a, (DatalineFilesAdapter.ItemHolder)localObject2, (DataLineMsgRecord)localObject1);
-          return;
-        }
-        DatalineFilesAdapter.b(this.a, (DatalineFilesAdapter.ItemHolder)localObject2, (DataLineMsgRecord)localObject1);
-        return;
-      }
-      FMToastUtil.a(2131562488);
-      return;
-    case 4: 
-      DatalineFilesAdapter.a(this.a, (DataLineMsgRecord)localObject1);
-      return;
-    }
-    localObject2 = (DataLineHandler)DatalineFilesAdapter.a(this.a).a(8);
-    if ((((DataLineMsgRecord)localObject1).strMoloKey != null) && (!((DataLineMsgRecord)localObject1).isReportPause))
-    {
-      ((DataLineMsgRecord)localObject1).isReportPause = true;
-      DataLineReportUtil.m(DatalineFilesAdapter.a(this.a));
-    }
-    ((DataLineHandler)localObject2).a(((DataLineMsgRecord)localObject1).groupId, ((DataLineMsgRecord)localObject1).sessionid, false);
-    if (((DataLineMsgRecord)localObject1).isSendFromLocal())
-    {
-      paramView.jdField_a_of_type_ComDatalineActivitiesDLBaseFileViewActivity$DLFileState = DLBaseFileViewActivity.DLFileState.SENDFAILED;
-      return;
-    }
-    paramView.jdField_a_of_type_ComDatalineActivitiesDLBaseFileViewActivity$DLFileState = DLBaseFileViewActivity.DLFileState.RECVFAILED;
+      paramString = a(paramString);
+    } while (paramString == null);
+    this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramString.d));
+    this.b.remove(paramString.c);
+    this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.d(paramString.c);
   }
 }
 

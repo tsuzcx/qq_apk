@@ -1,44 +1,36 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.troop.data.TroopBarPostAbsLayout.AbsItemViewHolder;
-import com.tencent.mobileqq.troop.data.TroopBarPostLayout1;
+import android.media.MediaPlayer;
+import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import com.tencent.mobileqq.troop.widget.VideoViewX;
+import com.tencent.mobileqq.troop.widget.VideoViewX.OnPlayListener;
 
 public class gzn
-  extends TroopBarPostAbsLayout.AbsItemViewHolder
+  implements Runnable
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public URLImageView a;
-  public LinearLayout b;
-  public TextView b;
-  public LinearLayout c;
-  public TextView c;
-  public TextView d = null;
+  public gzn(VideoViewX paramVideoViewX) {}
   
-  public gzn(TroopBarPostLayout1 paramTroopBarPostLayout1, View paramView)
+  public void run()
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = null;
-    this.jdField_b_of_type_AndroidWidgetTextView = null;
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_ComTencentImageURLImageView = null;
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = null;
-    this.jdField_c_of_type_AndroidWidgetTextView = null;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232487));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232488));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232475));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232489));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232490));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131232491));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232492));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232493));
-    this.d = ((TextView)paramView.findViewById(2131232494));
+    if (VideoViewX.a(this.a) != null)
+    {
+      if (VideoViewX.a(this.a).getCurrentPosition() > 0)
+      {
+        if (this.a.a)
+        {
+          this.a.a = false;
+          if (VideoViewX.a(this.a) != null) {
+            VideoViewX.a(this.a).b();
+          }
+        }
+        if (VideoViewX.a(this.a) != null) {
+          VideoViewX.a(this.a).a(VideoViewX.a(this.a));
+        }
+        VideoViewX.c(this.a, false);
+      }
+    }
+    else {
+      return;
+    }
+    this.a.postDelayed(VideoViewX.a(this.a), 300L);
   }
 }
 

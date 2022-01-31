@@ -1,21 +1,40 @@
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
 
-public final class gcj
-  implements Runnable
+public class gcj
+  implements View.OnKeyListener, TextView.OnEditorActionListener
 {
-  public gcj(Context paramContext, String paramString, int paramInt, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
+  private gcj(RoamSearchDialog paramRoamSearchDialog) {}
   
-  public void run()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentContext.getString(this.jdField_a_of_type_Int), 2131558705, 2131558706, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.b).show();
+    if (paramInt == 3)
+    {
+      RoamSearchDialog.a(this.a);
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((paramKeyEvent.getKeyCode() == 66) || (paramKeyEvent.getKeyCode() == 84))
+    {
+      if (paramKeyEvent.getAction() == 1) {
+        RoamSearchDialog.a(this.a);
+      }
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gcj
  * JD-Core Version:    0.7.0.1
  */

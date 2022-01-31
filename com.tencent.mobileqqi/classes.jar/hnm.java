@@ -1,17 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.open.agent.OpenSdkFriendService;
-import java.util.ArrayList;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
 
 public class hnm
   implements Runnable
 {
-  public hnm(OpenSdkFriendService paramOpenSdkFriendService, Handler paramHandler) {}
+  public hnm(DownloadManager paramDownloadManager, String paramString) {}
   
   public void run()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService.a();
-    Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 888802, localArrayList).sendToTarget();
+    try
+    {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().cancelDownloadTask(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    catch (Exception localException)
+    {
+      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "downloadSDKClient>>>", localException);
+    }
   }
 }
 

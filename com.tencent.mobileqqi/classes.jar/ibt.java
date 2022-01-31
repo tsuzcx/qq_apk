@@ -1,14 +1,18 @@
-import com.tencent.widget.VerticalGallery;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsData.QzoneGpsInfo;
 
-public class ibt
-  implements Runnable
+public final class ibt
+  implements Parcelable.Creator
 {
-  public ibt(VerticalGallery paramVerticalGallery) {}
-  
-  public void run()
+  public LbsData.QzoneGpsInfo a(Parcel paramParcel)
   {
-    VerticalGallery.a(this.a, false);
-    this.a.B_();
+    return new LbsData.QzoneGpsInfo(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt());
+  }
+  
+  public LbsData.QzoneGpsInfo[] a(int paramInt)
+  {
+    return null;
   }
 }
 

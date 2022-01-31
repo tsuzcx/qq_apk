@@ -1,53 +1,18 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.ui.AVActivity;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.eqq.EnterpriseDetailActivity;
+import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
+import com.tencent.widget.Switch;
 
 public class biw
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  int jdField_a_of_type_Int;
+  public biw(EnterpriseDetailActivity paramEnterpriseDetailActivity, mobileqq_mp.ConfigInfo paramConfigInfo, Switch paramSwitch) {}
   
-  public biw(AVActivity paramAVActivity, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-    case 0: 
-      do
-      {
-        return;
-        paramDialogInterface.dismiss();
-        if ((this.jdField_a_of_type_ComTencentAvUiAVActivity.a.a().jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_ComTencentAvUiAVActivity.a.a().jdField_a_of_type_Int == 2))
-        {
-          this.jdField_a_of_type_ComTencentAvUiAVActivity.a.a(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 0);
-          this.jdField_a_of_type_ComTencentAvUiAVActivity.a.c(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 0);
-          return;
-        }
-      } while ((this.jdField_a_of_type_ComTencentAvUiAVActivity.a.a().jdField_a_of_type_Int != 3) && (this.jdField_a_of_type_ComTencentAvUiAVActivity.a.a().jdField_a_of_type_Int != 4));
-      this.jdField_a_of_type_ComTencentAvUiAVActivity.a.r();
-      this.jdField_a_of_type_ComTencentAvUiAVActivity.a.c(this.jdField_a_of_type_ComTencentAvUiAVActivity.a.a().j, 0);
-      return;
-    case 1: 
-      paramDialogInterface.dismiss();
-      return;
-    case 2: 
-      this.jdField_a_of_type_ComTencentAvUiAVActivity.a.a(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 0);
-      this.jdField_a_of_type_ComTencentAvUiAVActivity.a.c(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 0);
-      return;
-    case 3: 
-      paramDialogInterface.dismiss();
-      return;
-    }
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentAvUiAVActivity.a.a(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 0);
-    this.jdField_a_of_type_ComTencentAvUiAVActivity.a.c(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 0);
+    EnterpriseDetailActivity.a(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
+    this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.g = false;
   }
 }
 

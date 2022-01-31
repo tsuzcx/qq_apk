@@ -1,20 +1,13 @@
-import android.content.Context;
-import android.widget.Button;
-import com.tencent.widget.BubblePopupWindow;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import com.tencent.mobileqq.widget.CameraPreview;
 
-public final class hfv
-  extends Button
+public class hfv
+  implements Camera.AutoFocusCallback
 {
-  public hfv(Context paramContext, BubblePopupWindow paramBubblePopupWindow)
-  {
-    super(paramContext);
-  }
+  public hfv(CameraPreview paramCameraPreview) {}
   
-  public boolean performClick()
-  {
-    this.a.b();
-    return super.performClick();
-  }
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera) {}
 }
 
 

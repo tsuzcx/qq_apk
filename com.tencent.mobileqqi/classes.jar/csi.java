@@ -1,33 +1,25 @@
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
+import mqq.app.permission.PermissionItem;
+import mqq.app.permission.PermissionManager;
 
 class csi
-  implements Runnable
+  implements PermissionDialogCallback
 {
-  csi(cse paramcse, Drawable paramDrawable) {}
+  csi(csc paramcsc, View paramView, int paramInt) {}
   
-  public void run()
+  public void a() {}
+  
+  public void b()
   {
-    if ((this.jdField_a_of_type_Cse.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_Cse.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()))
-    {
-      ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_Cse.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a.get("PhotoConst.PHOTO_PATHS");
-      if (localArrayList != null) {
-        this.jdField_a_of_type_Cse.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPreviewImage(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true, localArrayList.size());
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_Cse.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPreviewImage(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true, 0);
+    this.jdField_a_of_type_Csc.a.a().permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.WRITE_EXTERNAL_STORAGE", 300) }).requests(new csj(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     csi
  * JD-Core Version:    0.7.0.1
  */

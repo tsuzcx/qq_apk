@@ -23,8 +23,8 @@ import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
 import com.tencent.open.base.LogUtility;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
-import hni;
-import hnj;
+import hje;
+import hjf;
 
 public class FriendListOpenFrame
   extends OpenFrame
@@ -51,13 +51,13 @@ public class FriendListOpenFrame
   public FriendListOpenFrame(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidOsHandler = new hni(this);
+    this.jdField_a_of_type_AndroidOsHandler = new hje(this);
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    super.setContentView(2130903951);
+    super.setContentView(2130903953);
     f();
   }
   
@@ -115,7 +115,7 @@ public class FriendListOpenFrame
   public void a(String paramString, Bitmap paramBitmap)
   {
     LogUtility.c(jdField_a_of_type_JavaLangString, "-->onImageLoaded() url = " + paramString);
-    this.jdField_a_of_type_AndroidOsHandler.post(new hnj(this, paramString, paramBitmap));
+    this.jdField_a_of_type_AndroidOsHandler.post(new hjf(this, paramString, paramBitmap));
   }
   
   public void b(Bundle paramBundle)
@@ -137,17 +137,17 @@ public class FriendListOpenFrame
   
   protected void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)super.findViewById(2131234428));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)super.findViewById(2131234429));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)super.findViewById(2131234430));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)super.findViewById(2131234431));
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setIndex(new String[] { "$", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" });
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setOnIndexChangedListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelector(2131361815);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setOnItemClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setOnLayoutListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_ComTencentOpenAgentSocialFriendChooser.getLayoutInflater().inflate(2130903942, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131233085));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_ComTencentOpenAgentSocialFriendChooser.getLayoutInflater().inflate(2130903944, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131233087));
     this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(this);
-    ((Button)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131233084)).setVisibility(8);
+    ((Button)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131233086)).setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
   }
   

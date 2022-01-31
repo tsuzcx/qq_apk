@@ -2,15 +2,15 @@ package com.tencent.feedback.eup;
 
 public abstract interface CrashHandleListener
 {
-  public abstract byte[] getCrashExtraData();
+  public abstract byte[] getCrashExtraData(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong);
   
-  public abstract String getCrashExtraMessage();
+  public abstract String getCrashExtraMessage(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong);
   
-  public abstract boolean onCrashFinished(Thread paramThread, Throwable paramThrowable);
+  public abstract boolean onCrashHandleEnd(boolean paramBoolean);
   
-  public abstract void onCrashHappen(Thread paramThread, Throwable paramThrowable);
+  public abstract void onCrashHandleStart(boolean paramBoolean);
   
-  public abstract void onNativeCrash(int paramInt1, int paramInt2, String paramString);
+  public abstract boolean onCrashSaving(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong, String paramString4, String paramString5, String paramString6, String paramString7);
 }
 
 

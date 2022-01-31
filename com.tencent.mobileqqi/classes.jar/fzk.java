@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import com.tencent.mobileqq.international.activity.FeedbackActivity;
+import mqq.observer.AccountObserver;
 
 public class fzk
-  extends fzv
+  extends AccountObserver
 {
-  public fzk(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  public fzk(FeedbackActivity paramFeedbackActivity, String paramString) {}
   
-  protected String a()
+  public void onUpdateSTwxWeb(String paramString)
   {
-    return "StateAcceptByPC";
+    new fzl(this.jdField_a_of_type_ComTencentMobileqqInternationalActivityFeedbackActivity, null).execute(new String[] { "http://mma.qq.com/cgi-bin/support/upload_support", this.jdField_a_of_type_JavaLangString });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fzk
  * JD-Core Version:    0.7.0.1
  */

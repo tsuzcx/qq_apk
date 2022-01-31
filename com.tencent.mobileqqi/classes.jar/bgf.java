@@ -1,20 +1,40 @@
-import com.tencent.av.VideoController;
+import com.rookery.asyncHttpClient.AsyncHttpResponseHandler;
+import com.rookery.asyncHttpClient.JsonHttpResponseHandler;
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bgf
-  implements Runnable
+final class bgf
+  extends JsonHttpResponseHandler
 {
-  public bgf(VideoController paramVideoController, long paramLong) {}
+  bgf(AsyncHttpResponseHandler paramAsyncHttpResponseHandler) {}
   
-  public void run()
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentAvVideoController.g = null;
-    this.jdField_a_of_type_ComTencentAvVideoController.a.e = 0;
-    this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_Long, 17);
+    super.a(paramInt, paramArrayOfHeader, paramJSONObject);
+    try
+    {
+      paramJSONObject = paramJSONObject.getString("id");
+      this.a.a(paramInt, paramArrayOfHeader, paramJSONObject);
+      return;
+    }
+    catch (JSONException paramArrayOfHeader)
+    {
+      paramArrayOfHeader.printStackTrace();
+    }
+  }
+  
+  public void a(Throwable paramThrowable, JSONObject paramJSONObject)
+  {
+    super.a(paramThrowable, paramJSONObject);
+    if ((paramThrowable != null) && (paramThrowable.getMessage() != null)) {
+      this.a.a(paramThrowable, paramThrowable.getMessage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bgf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,44 @@
-import QQService.RespTmpChatPicDownload;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.transfile.LbsTransfileProcessor;
+import android.os.AsyncTask;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import java.io.IOException;
 
 public class gru
-  extends MessageObserver
+  extends AsyncTask
 {
-  public gru(LbsTransfileProcessor paramLbsTransfileProcessor) {}
+  public gru(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  protected void a(boolean paramBoolean, RespTmpChatPicDownload paramRespTmpChatPicDownload)
+  protected String a(Void... paramVarArgs)
   {
-    if ((paramRespTmpChatPicDownload != null) && (paramRespTmpChatPicDownload.lReplyCode == 0) && (paramRespTmpChatPicDownload.strDownloadURL != null) && (paramRespTmpChatPicDownload.strDownloadURL.length() > 0))
+    try
     {
-      this.a.d(paramRespTmpChatPicDownload.strDownloadURL);
-      return;
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
+      if (paramVarArgs != null)
+      {
+        ImageUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, paramVarArgs);
+        return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131562608) + " " + paramVarArgs;
+      }
+      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131561446);
+      return paramVarArgs;
     }
-    this.a.b(null, null);
+    catch (IOException paramVarArgs)
+    {
+      return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131561446);
+    }
+    catch (OutOfMemoryError paramVarArgs) {}
+    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131561446);
+  }
+  
+  protected void a(String paramString)
+  {
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.d());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     gru
  * JD-Core Version:    0.7.0.1
  */

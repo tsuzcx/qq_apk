@@ -1,15 +1,18 @@
-import android.view.animation.Interpolator;
-import com.tencent.util.AnimateUtils;
-import com.tencent.widget.ListView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qlink.SendMsg;
 
-public class ibf
-  implements Interpolator
+public final class ibf
+  implements Parcelable.Creator
 {
-  private ibf(ListView paramListView) {}
-  
-  public float getInterpolation(float paramFloat)
+  public SendMsg a(Parcel paramParcel)
   {
-    return AnimateUtils.a(paramFloat);
+    return new SendMsg(paramParcel);
+  }
+  
+  public SendMsg[] a(int paramInt)
+  {
+    return new SendMsg[paramInt];
   }
 }
 

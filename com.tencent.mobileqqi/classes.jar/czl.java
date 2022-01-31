@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class czl
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  czl(czk paramczk) {}
+  czl(czi paramczi) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.isFinishing()))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     czl
  * JD-Core Version:    0.7.0.1
  */

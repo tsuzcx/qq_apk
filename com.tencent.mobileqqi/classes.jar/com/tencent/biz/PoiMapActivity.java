@@ -27,24 +27,24 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bmn;
-import bmo;
-import bmp;
-import bmq;
-import bmr;
-import bms;
-import bmt;
-import bmu;
-import bmv;
-import bmw;
-import bmx;
-import bmy;
-import bna;
-import bnb;
-import bnc;
-import bnd;
-import bne;
-import bni;
+import bgj;
+import bgk;
+import bgl;
+import bgm;
+import bgn;
+import bgo;
+import bgp;
+import bgq;
+import bgr;
+import bgs;
+import bgt;
+import bgu;
+import bgw;
+import bgx;
+import bgy;
+import bgz;
+import bha;
+import bhe;
 import com.tencent.biz.common.download.OfflineDownloader;
 import com.tencent.mobileqq.activity.QQMapActivity;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -78,8 +78,8 @@ public class PoiMapActivity
   protected float a;
   protected int a;
   public View.OnClickListener a;
-  View.OnKeyListener jdField_a_of_type_AndroidViewView$OnKeyListener = new bmo(this);
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new bmw(this);
+  View.OnKeyListener jdField_a_of_type_AndroidViewView$OnKeyListener = new bgk(this);
+  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new bgs(this);
   protected View a;
   public EditText a;
   public ImageButton a;
@@ -89,7 +89,7 @@ public class PoiMapActivity
   protected AuthorizeConfig a;
   PoiMapActivity.SearchResultAdapter jdField_a_of_type_ComTencentBizPoiMapActivity$SearchResultAdapter;
   public PoiMapActivity.ShopListAdapter a;
-  private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new bmp(this);
+  private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new bgl(this);
   protected XListView a;
   public final String a;
   public List a;
@@ -139,27 +139,27 @@ public class PoiMapActivity
     this.jdField_f_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_g_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bmr(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bgn(this);
     this.jdField_a_of_type_ArrayOfJavaLangString = new String[] { "全部", "写字楼", "小区", "商家" };
     this.jdField_b_of_type_ArrayOfJavaLangString = new String[] { "", "281100|281200", "281000|281010|281011|281012|281013|281099", "100000|130000" };
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131233239));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131233241));
     this.jdField_a_of_type_AndroidViewView = super.findViewById(2131230947);
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131233257);
-    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131233247);
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131233259);
+    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131233249);
     this.jdField_c_of_type_AndroidViewView.setVisibility(4);
-    Object localObject = super.findViewById(2131233242);
+    Object localObject = super.findViewById(2131233244);
     ((View)localObject).setOnClickListener(this);
     if (this.jdField_h_of_type_Boolean)
     {
       a("rec_locate", "pageview_all", "", "", "");
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_h_of_type_AndroidViewView.findViewById(2131231872).setVisibility(0);
-      this.jdField_h_of_type_AndroidViewView.findViewById(2131231873).setVisibility(0);
+      this.jdField_h_of_type_AndroidViewView.findViewById(2131231874).setVisibility(0);
+      this.jdField_h_of_type_AndroidViewView.findViewById(2131231875).setVisibility(0);
       ((View)localObject).setVisibility(8);
       if ((this.jdField_f_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(this.jdField_o_of_type_JavaLangString)))
       {
@@ -167,14 +167,14 @@ public class PoiMapActivity
         this.jdField_f_of_type_AndroidWidgetTextView.setText(this.jdField_o_of_type_JavaLangString);
       }
       i();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.setOnTouchListener(new bmn(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.setOnTouchListener(new bgj(this));
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.setLogoAnchor(2);
     }
     for (;;)
     {
       this.jdField_f_of_type_AndroidViewView = super.findViewById(2131230941);
-      super.findViewById(2131233084).setVisibility(8);
-      localObject = (EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131233085);
+      super.findViewById(2131233086).setVisibility(8);
+      localObject = (EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131233087);
       ((EditText)localObject).setFocusable(false);
       ((EditText)localObject).setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
       localObject = (ImageView)super.findViewById(2131231458);
@@ -601,7 +601,7 @@ public class PoiMapActivity
       if (n == 0) {}
       for (boolean bool = true;; bool = false)
       {
-        runOnUiThread(new bmq(this, str1, paramLocationResp, m, i1, i2, str2, i3, bool));
+        runOnUiThread(new bgm(this, str1, paramLocationResp, m, i1, i2, str2, i3, bool));
         return;
         m = 0;
         break;
@@ -846,7 +846,7 @@ public class PoiMapActivity
     this.jdField_a_of_type_ComTencentBizPoiMapActivity$ShopListAdapter.a(paramArrayList, true, 0, 0, false);
     this.jdField_a_of_type_ComTencentBizPoiMapActivity$ShopListAdapter.jdField_d_of_type_Int = 1;
     this.jdField_a_of_type_AndroidWidgetTextView.setText(super.getResources().getString(2131561722));
-    this.k = super.getResources().getDimensionPixelSize(2131427572);
+    this.k = super.getResources().getDimensionPixelSize(2131427575);
     j();
     this.jdField_a_of_type_Boolean = true;
   }
@@ -871,7 +871,7 @@ public class PoiMapActivity
         this.jdField_a_of_type_ComTencentBizPoiMapActivity$ShopListAdapter.a(paramArrayList, true, paramInt2, paramInt3, bool);
         if (paramInt1 < 3)
         {
-          this.k = (super.getResources().getDimensionPixelSize(2131427572) * paramInt1);
+          this.k = (super.getResources().getDimensionPixelSize(2131427575) * paramInt1);
           return;
           bool = false;
         }
@@ -936,7 +936,7 @@ public class PoiMapActivity
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation((Animation)localObject1);
     localDialog.requestWindowFeature(1);
     localDialog.getWindow().setSoftInputMode(36);
-    localDialog.setContentView(2130903945);
+    localDialog.setContentView(2130903947);
     Object localObject2 = localDialog.getWindow().getAttributes();
     ((WindowManager.LayoutParams)localObject2).x = 0;
     ((WindowManager.LayoutParams)localObject2).y = 0;
@@ -946,33 +946,33 @@ public class PoiMapActivity
     localDialog.getWindow().setBackgroundDrawable(new ColorDrawable());
     localObject2 = new TranslateAnimation(0.0F, 0.0F, -m, 0.0F);
     ((TranslateAnimation)localObject2).setDuration(300L);
-    bmx localbmx = new bmx(this, (TranslateAnimation)localObject1, localDialog, m, (TranslateAnimation)localObject2);
-    ((TranslateAnimation)localObject1).setAnimationListener(localbmx);
-    ((TranslateAnimation)localObject2).setAnimationListener(localbmx);
-    localDialog.setOnDismissListener(new bmy(this, (TranslateAnimation)localObject2, localInputMethodManager));
+    bgt localbgt = new bgt(this, (TranslateAnimation)localObject1, localDialog, m, (TranslateAnimation)localObject2);
+    ((TranslateAnimation)localObject1).setAnimationListener(localbgt);
+    ((TranslateAnimation)localObject2).setAnimationListener(localbgt);
+    localDialog.setOnDismissListener(new bgu(this, (TranslateAnimation)localObject2, localInputMethodManager));
     this.jdField_g_of_type_AndroidViewView = localDialog.findViewById(2131231116);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)localDialog.findViewById(2131233085));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new bni(this, null));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)localDialog.findViewById(2131233087));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new bhe(this, null));
     this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
     this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(this.jdField_a_of_type_AndroidViewView$OnKeyListener);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)localDialog.findViewById(2131233086));
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new bna(this));
-    localObject1 = (Button)localDialog.findViewById(2131233084);
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)localDialog.findViewById(2131233088));
+    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new bgw(this));
+    localObject1 = (Button)localDialog.findViewById(2131233086);
     ((Button)localObject1).setVisibility(0);
-    ((Button)localObject1).setOnClickListener(new bnb(this, localDialog));
+    ((Button)localObject1).setOnClickListener(new bgx(this, localDialog));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localDialog.findViewById(2131231403));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localDialog.findViewById(2131231401));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bnc(this, localDialog));
-    this.jdField_b_of_type_ComTencentWidgetXListView = ((XListView)localDialog.findViewById(2131234405));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bgy(this, localDialog));
+    this.jdField_b_of_type_ComTencentWidgetXListView = ((XListView)localDialog.findViewById(2131234407));
     this.jdField_b_of_type_ComTencentWidgetXListView.setBackgroundDrawable(super.getResources().getDrawable(2130837729));
     this.jdField_b_of_type_ComTencentWidgetXListView.setDividerHeight(0);
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_ComTencentBizPoiMapActivity$SearchResultAdapter = new PoiMapActivity.SearchResultAdapter(this, this);
     this.jdField_b_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentBizPoiMapActivity$SearchResultAdapter);
     this.jdField_b_of_type_ComTencentWidgetXListView.setOnScrollListener(this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener);
-    this.jdField_b_of_type_ComTencentWidgetXListView.setOnTouchListener(new bnd(this, localInputMethodManager));
-    this.jdField_b_of_type_ComTencentWidgetXListView.setOnItemClickListener(new bne(this, localDialog));
+    this.jdField_b_of_type_ComTencentWidgetXListView.setOnTouchListener(new bgz(this, localInputMethodManager));
+    this.jdField_b_of_type_ComTencentWidgetXListView.setOnItemClickListener(new bha(this, localDialog));
     if (1 == OfflineDownloader.a(getApplicationContext())) {}
     for (this.jdField_e_of_type_Boolean = true;; this.jdField_e_of_type_Boolean = false)
     {
@@ -1080,7 +1080,7 @@ public class PoiMapActivity
   
   public void g()
   {
-    Object localObject = (LinearLayout)super.findViewById(2131233258);
+    Object localObject = (LinearLayout)super.findViewById(2131233260);
     if (this.jdField_o_of_type_Boolean)
     {
       ((LinearLayout)localObject).setVisibility(8);
@@ -1088,7 +1088,7 @@ public class PoiMapActivity
       ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
       this.m.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    localObject = (FrameLayout)super.findViewById(2131233259);
+    localObject = (FrameLayout)super.findViewById(2131233261);
     this.jdField_a_of_type_ArrayOfComTencentBizPoiMapActivity$PoiTab = new PoiMapActivity.PoiTab[this.jdField_a_of_type_ArrayOfJavaLangString.length];
     localObject = new LinearLayout.LayoutParams(-2, -1);
     new LinearLayout.LayoutParams(-1, -1);
@@ -1119,23 +1119,23 @@ public class PoiMapActivity
   
   protected void i()
   {
-    this.j = super.getResources().getDimensionPixelSize(2131427570);
-    this.jdField_d_of_type_AndroidViewView = super.findViewById(2131233252);
-    this.jdField_e_of_type_AndroidViewView = super.findViewById(2131233253);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131233255));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131233254));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131233256));
+    this.j = super.getResources().getDimensionPixelSize(2131427573);
+    this.jdField_d_of_type_AndroidViewView = super.findViewById(2131233254);
+    this.jdField_e_of_type_AndroidViewView = super.findViewById(2131233255);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131233257));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131233256));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131233258));
     this.jdField_a_of_type_ComTencentBizPoiMapActivity$ShopListAdapter = new PoiMapActivity.ShopListAdapter(this);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentBizPoiMapActivity$ShopListAdapter);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     this.jdField_e_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new bms(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new bgo(this));
     if (!TextUtils.isEmpty(this.q)) {
       this.jdField_a_of_type_ComTencentBizPoiMapActivity$ShopListAdapter.a(this.q);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new bmt(this));
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new bgp(this));
       return;
       this.jdField_a_of_type_ComTencentBizPoiMapActivity$ShopListAdapter.a();
     }
@@ -1146,7 +1146,7 @@ public class PoiMapActivity
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, -this.k);
     localTranslateAnimation.setDuration(300L);
     localTranslateAnimation.setFillAfter(true);
-    localTranslateAnimation.setAnimationListener(new bmu(this));
+    localTranslateAnimation.setAnimationListener(new bgq(this));
     this.jdField_d_of_type_AndroidViewView.startAnimation(localTranslateAnimation);
   }
   
@@ -1155,7 +1155,7 @@ public class PoiMapActivity
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, this.k);
     localTranslateAnimation.setDuration(300L);
     localTranslateAnimation.setFillAfter(true);
-    localTranslateAnimation.setAnimationListener(new bmv(this));
+    localTranslateAnimation.setAnimationListener(new bgr(this));
     this.jdField_d_of_type_AndroidViewView.startAnimation(localTranslateAnimation);
   }
   
@@ -1165,7 +1165,7 @@ public class PoiMapActivity
     {
     default: 
       return;
-    case 2131233242: 
+    case 2131233244: 
       r();
       if (this.jdField_h_of_type_Boolean)
       {
@@ -1189,8 +1189,8 @@ public class PoiMapActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Int = super.getResources().getColor(2131362097);
-    this.jdField_b_of_type_Int = super.getResources().getColor(2131362070);
+    this.jdField_a_of_type_Int = super.getResources().getColor(2131362107);
+    this.jdField_b_of_type_Int = super.getResources().getColor(2131362080);
     this.jdField_c_of_type_Int = Color.rgb(0, 121, 255);
     this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
     f();

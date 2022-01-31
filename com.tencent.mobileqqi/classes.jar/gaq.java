@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import android.media.SoundPool;
+import com.tencent.mobileqq.magicface.service.SoundPoolUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.TimerTask;
 
 public class gaq
-  extends fzv
+  extends TimerTask
 {
-  public gaq(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  public gaq(SoundPoolUtil paramSoundPoolUtil, int paramInt, String paramString) {}
   
-  protected String a()
+  public void run()
   {
-    return "StateUploadoneWhenChangeToOff";
+    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil.a != null) && (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil.a.play(this.jdField_a_of_type_Int, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
+      QLog.d("SoundPoolUtil", 2, "play failure filepath=" + this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gaq
  * JD-Core Version:    0.7.0.1
  */

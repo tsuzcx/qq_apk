@@ -13,10 +13,10 @@ import android.view.View.OnLongClickListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import ibm;
-import ibn;
-import ibo;
-import ibp;
+import hws;
+import hwt;
+import hwu;
+import hwv;
 
 public class TCWNumberPicker
   extends LinearLayout
@@ -31,7 +31,7 @@ public class TCWNumberPicker
   private final EditText jdField_a_of_type_AndroidWidgetEditText;
   private TCWNumberPicker.OnChangedListener jdField_a_of_type_ComTencentWidgetTCWNumberPicker$OnChangedListener;
   private TCWNumberPickerButton jdField_a_of_type_ComTencentWidgetTCWNumberPickerButton;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new ibn(this);
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new hwt(this);
   private boolean jdField_a_of_type_Boolean;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private int jdField_b_of_type_Int;
@@ -43,7 +43,7 @@ public class TCWNumberPicker
   
   static
   {
-    jdField_a_of_type_ComTencentWidgetTCWNumberPicker$Formatter = new ibm();
+    jdField_a_of_type_ComTencentWidgetTCWNumberPicker$Formatter = new hws();
   }
   
   public TCWNumberPicker(Context paramContext)
@@ -60,19 +60,19 @@ public class TCWNumberPicker
   {
     super(paramContext, paramAttributeSet);
     setOrientation(1);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903294, this, true);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903296, this, true);
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    paramContext = new ibo(this, null);
-    this.jdField_a_of_type_AndroidTextInputFilter = new ibp(this, null);
-    this.jdField_a_of_type_ComTencentWidgetTCWNumberPickerButton = ((TCWNumberPickerButton)findViewById(2131232002));
+    paramContext = new hwu(this, null);
+    this.jdField_a_of_type_AndroidTextInputFilter = new hwv(this, null);
+    this.jdField_a_of_type_ComTencentWidgetTCWNumberPickerButton = ((TCWNumberPickerButton)findViewById(2131232005));
     this.jdField_a_of_type_ComTencentWidgetTCWNumberPickerButton.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentWidgetTCWNumberPickerButton.setOnLongClickListener(this);
     this.jdField_a_of_type_ComTencentWidgetTCWNumberPickerButton.setNumberPicker(this);
-    this.jdField_b_of_type_ComTencentWidgetTCWNumberPickerButton = ((TCWNumberPickerButton)findViewById(2131232004));
+    this.jdField_b_of_type_ComTencentWidgetTCWNumberPickerButton = ((TCWNumberPickerButton)findViewById(2131232007));
     this.jdField_b_of_type_ComTencentWidgetTCWNumberPickerButton.setOnClickListener(this);
     this.jdField_b_of_type_ComTencentWidgetTCWNumberPickerButton.setOnLongClickListener(this);
     this.jdField_b_of_type_ComTencentWidgetTCWNumberPickerButton.setNumberPicker(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131232003));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131232006));
     this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(this);
     this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { paramContext });
     this.jdField_a_of_type_AndroidWidgetEditText.setRawInputType(2);
@@ -207,10 +207,10 @@ public class TCWNumberPicker
     if (!this.jdField_a_of_type_AndroidWidgetEditText.hasFocus()) {
       this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
     }
-    if (2131232002 == paramView.getId()) {
+    if (2131232005 == paramView.getId()) {
       a(this.c + 1);
     }
-    while (2131232004 != paramView.getId()) {
+    while (2131232007 != paramView.getId()) {
       return;
     }
     a(this.c - 1);
@@ -226,12 +226,12 @@ public class TCWNumberPicker
   public boolean onLongClick(View paramView)
   {
     this.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
-    if (2131232002 == paramView.getId())
+    if (2131232005 == paramView.getId())
     {
       this.jdField_a_of_type_Boolean = true;
       this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
     }
-    while (2131232004 != paramView.getId()) {
+    while (2131232007 != paramView.getId()) {
       return true;
     }
     this.jdField_b_of_type_Boolean = true;

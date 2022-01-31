@@ -1,46 +1,80 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import SummaryCard.RespCondSearch;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class faf
-  implements View.OnTouchListener
+  extends FriendListObserver
 {
-  public faf(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  public faf(ConditionSearchManager paramConditionSearchManager) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(long paramLong, boolean paramBoolean, Object paramObject, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 0)
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearch.Manager", 2, "searchseq = " + this.a.jdField_a_of_type_Long + " | seq = " + paramLong);
+    }
+    if (this.a.jdField_a_of_type_Long != paramLong) {
+      return;
+    }
+    if ((paramBoolean) && (paramInt == 0))
     {
-      paramView = new int[2];
-      VoipDialInterfaceActivity.h(this.a).getLocationInWindow(paramView);
-      paramMotionEvent = new int[2];
-      VoipDialInterfaceActivity.h(this.a).getLocationOnScreen(paramMotionEvent);
-      paramMotionEvent = new int[2];
-      VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
-      VoipDialInterfaceActivity.k(this.a).offsetTopAndBottom(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.h(this.a).getHeight() / 2 - VoipDialInterfaceActivity.k(this.a).getHeight() / 2);
-      VoipDialInterfaceActivity.k(this.a).offsetLeftAndRight(paramView[0] + VoipDialInterfaceActivity.h(this.a).getWidth() / 2 - VoipDialInterfaceActivity.k(this.a).getWidth() / 2);
-      VoipDialInterfaceActivity.k(this.a).setVisibility(0);
+      paramObject = (RespCondSearch)paramObject;
+      ConditionSearchManager localConditionSearchManager = this.a;
+      if (paramObject.cEndFlag == 0)
+      {
+        paramBoolean = true;
+        localConditionSearchManager.jdField_c_of_type_Boolean = paramBoolean;
+        this.a.m = paramObject.iPage;
+        this.a.b = paramObject.dwSessionID;
+        if (this.a.jdField_a_of_type_JavaUtilList != null) {
+          break label290;
+        }
+        this.a.jdField_a_of_type_JavaUtilList = paramObject.vUserList;
+      }
+      for (;;)
+      {
+        if ((this.a.n >= 2) || ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() >= 10)) || (!this.a.jdField_c_of_type_Boolean)) {
+          break label330;
+        }
+        paramObject = this.a;
+        paramObject.n += 1;
+        ((FriendListHandler)ConditionSearchManager.a(this.a).a(1)).a(this.a.jdField_a_of_type_Long, this.a.m + 1, this.a.b, this.a.j, this.a.k, this.a.l, this.a.jdField_c_of_type_ArrayOfJavaLangString, this.a.d);
+        return;
+        paramBoolean = false;
+        break;
+        label290:
+        if ((paramObject.vUserList != null) && (!paramObject.vUserList.isEmpty())) {
+          this.a.jdField_a_of_type_JavaUtilList.addAll(paramObject.vUserList);
+        }
+      }
+      label330:
+      if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.size() < 6)) {
+        this.a.jdField_c_of_type_Boolean = false;
+      }
+      this.a.a(true, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_c_of_type_Boolean);
+      return;
     }
-    while (paramMotionEvent.getAction() != 1) {
-      return false;
+    if ((paramBoolean) && (paramInt != 0))
+    {
+      this.a.jdField_c_of_type_Boolean = false;
+      this.a.a(true, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_c_of_type_Boolean);
+      return;
     }
-    paramView = new int[2];
-    VoipDialInterfaceActivity.h(this.a).getLocationInWindow(paramView);
-    paramMotionEvent = new int[2];
-    VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
-    VoipDialInterfaceActivity.k(this.a).offsetTopAndBottom(-(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.h(this.a).getHeight() / 2 - VoipDialInterfaceActivity.k(this.a).getHeight() / 2));
-    VoipDialInterfaceActivity.k(this.a).offsetLeftAndRight(-(paramView[0] + VoipDialInterfaceActivity.h(this.a).getWidth() / 2 - VoipDialInterfaceActivity.k(this.a).getWidth() / 2));
-    VoipDialInterfaceActivity.k(this.a).setVisibility(4);
-    VoipDialInterfaceActivity.c(this.a).invalidate();
-    return false;
+    if (this.a.n == 0)
+    {
+      this.a.a(false, null, this.a.jdField_c_of_type_Boolean);
+      return;
+    }
+    this.a.a(true, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_c_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     faf
  * JD-Core Version:    0.7.0.1
  */

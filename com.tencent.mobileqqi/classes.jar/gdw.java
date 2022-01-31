@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.international.activity.FeedbackActivity;
-import mqq.observer.AccountObserver;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.pic.CompressInfo;
 
-public class gdw
-  extends AccountObserver
+public final class gdw
+  implements Parcelable.Creator
 {
-  public gdw(FeedbackActivity paramFeedbackActivity, String paramString) {}
-  
-  public void onUpdateSTwxWeb(String paramString)
+  public CompressInfo a(Parcel paramParcel)
   {
-    new gdx(this.jdField_a_of_type_ComTencentMobileqqInternationalActivityFeedbackActivity, null).execute(new String[] { "http://mma.qq.com/cgi-bin/support/upload_support", this.jdField_a_of_type_JavaLangString });
+    return new CompressInfo(paramParcel, null);
+  }
+  
+  public CompressInfo[] a(int paramInt)
+  {
+    return new CompressInfo[paramInt];
   }
 }
 

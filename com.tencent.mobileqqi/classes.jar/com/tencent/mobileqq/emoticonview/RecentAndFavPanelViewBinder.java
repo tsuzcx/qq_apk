@@ -54,8 +54,8 @@ public class RecentAndFavPanelViewBinder
   
   public Drawable a(Context paramContext)
   {
-    Drawable localDrawable = paramContext.getResources().getDrawable(2130839156);
-    paramContext = paramContext.getResources().getDrawable(2130839157);
+    Drawable localDrawable = paramContext.getResources().getDrawable(2130839158);
+    paramContext = paramContext.getResources().getDrawable(2130839159);
     StateListDrawable localStateListDrawable = new StateListDrawable();
     localStateListDrawable.addState(new int[] { 16842913 }, paramContext);
     localStateListDrawable.addState(new int[0], localDrawable);

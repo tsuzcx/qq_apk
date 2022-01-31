@@ -7,12 +7,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import bqj;
-import bql;
-import bqm;
-import bqn;
-import bqo;
-import bqp;
+import bkf;
+import bkh;
+import bki;
+import bkj;
+import bkk;
+import bkl;
 import com.tencent.biz.coupon.CouponActivity;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.ChatForEnterpriseActivity;
@@ -86,8 +86,8 @@ public class PublicAccountManager
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
     this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_JavaLangRunnable = new bqo(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new bqp(this);
+    this.jdField_a_of_type_JavaLangRunnable = new bkk(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new bkl(this);
   }
   
   public static PublicAccountManager a()
@@ -328,7 +328,7 @@ public class PublicAccountManager
       paramContext.seqno.set(i1);
       paramContext.uin.set((int)l1);
       localNewIntent.putExtra("data", paramContext.toByteArray());
-      localNewIntent.setObserver(new bql(this, localNewIntent, paramQQAppInterface, paramString, paramBusinessObserver));
+      localNewIntent.setObserver(new bkh(this, localNewIntent, paramQQAppInterface, paramString, paramBusinessObserver));
       paramContext = localNewIntent;
     } while (paramQQAppInterface == null);
     paramQQAppInterface.startServlet(localNewIntent);
@@ -348,7 +348,7 @@ public class PublicAccountManager
       a();
     }
     this.r = paramString1;
-    ThreadManager.b(new bqj(this, paramString2, paramQQAppInterface, paramInitDoneObserver, paramContext));
+    ThreadManager.b(new bkf(this, paramString2, paramQQAppInterface, paramInitDoneObserver, paramContext));
   }
   
   public void a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean, double paramDouble1, double paramDouble2, BusinessObserver paramBusinessObserver)
@@ -369,7 +369,7 @@ public class PublicAccountManager
         localSendMenuEventRequest.longitude.set(paramDouble2);
       }
       localNewIntent.putExtra("data", localSendMenuEventRequest.toByteArray());
-      localNewIntent.setObserver(new bqm(this, localNewIntent, paramContext, paramString1, paramBusinessObserver, paramQQAppInterface));
+      localNewIntent.setObserver(new bki(this, localNewIntent, paramContext, paramString1, paramBusinessObserver, paramQQAppInterface));
       if (paramQQAppInterface != null) {
         paramQQAppInterface.startServlet(localNewIntent);
       }
@@ -403,7 +403,7 @@ public class PublicAccountManager
       if (paramGetPublicAccountMenuResponse.toByteArray() == null) {
         break;
       }
-      ThreadManager.b(new bqn(this, paramQQAppInterface, paramString, paramGetPublicAccountMenuResponse, l1));
+      ThreadManager.b(new bkj(this, paramQQAppInterface, paramString, paramGetPublicAccountMenuResponse, l1));
       return;
     }
   }

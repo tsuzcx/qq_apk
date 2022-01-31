@@ -1,70 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.core.IVcController;
-import com.tencent.av.utils.PhoneStatusMonitor.PhoneStatusListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.PoiMapActivity;
 
 public class bgq
-  implements PhoneStatusMonitor.PhoneStatusListener
+  implements Animation.AnimationListener
 {
-  bgq(VideoController paramVideoController) {}
+  public bgq(PoiMapActivity paramPoiMapActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "onCallStateChanged isCalling: " + paramBoolean);
-    }
-    if (paramBoolean) {
-      switch (this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.e)
-      {
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(22), Boolean.valueOf(paramBoolean) });
-      return;
-      this.a.a(this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_a_of_type_JavaLangString, 0);
-      this.a.c(this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_a_of_type_JavaLangString, 0);
-      continue;
-      this.a.jdField_a_of_type_ComTencentAvCoreIVcController.a(this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_a_of_type_JavaLangString, this.a.e());
-      this.a.a(this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_a_of_type_JavaLangString, 0);
-      this.a.c(this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_a_of_type_JavaLangString, 1);
-      continue;
-      this.a.b(true);
-      continue;
-      this.a.a(this.a.jdField_c_of_type_Long);
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.jdField_c_of_type_Long) });
-      continue;
-      this.a.b(this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.b);
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(66), Long.valueOf(this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.b) });
-      continue;
-      switch (this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.e)
-      {
-      case 5: 
-      case 6: 
-      case 7: 
-      case 8: 
-      default: 
-        break;
-      case 2: 
-        if ((this.a.i) && (!TextUtils.isEmpty(this.a.b)))
-        {
-          this.a.a(this.a.V, this.a.b, this.a.jdField_c_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.v);
-          this.a.i = false;
-          this.a.V = 0;
-          this.a.b = null;
-        }
-        break;
-      case 3: 
-      case 4: 
-      case 9: 
-      case 10: 
-        this.a.b(false);
-      }
-    }
+    paramAnimation = (RelativeLayout.LayoutParams)this.a.d.getLayoutParams();
+    paramAnimation.bottomMargin = (this.a.k - this.a.j);
+    this.a.d.setLayoutParams(paramAnimation);
+    this.a.d.clearAnimation();
+    this.a.a.setImageResource(2130838344);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

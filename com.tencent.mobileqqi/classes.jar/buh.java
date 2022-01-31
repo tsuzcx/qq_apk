@@ -1,80 +1,56 @@
-import android.os.Bundle;
-import com.tencent.biz.webviewplugin.Ad;
-import com.tencent.mobileqq.mp.SSOHttp.GdtAdResponse;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class buh
-  implements BusinessObserver
+  implements TextWatcher
 {
-  public buh(Ad paramAd) {}
+  public buh(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (!paramBoolean) {}
-    label4:
-    do
+    int i = paramEditable.length();
+    int j = i;
+    if (i > 30)
     {
-      SSOHttp.GdtAdResponse localGdtAdResponse;
-      do
+      paramEditable = paramEditable.toString();
+      if (i > 30)
       {
-        do
+        i = paramEditable.length();
+        if ((i >= 2) && (Character.isHighSurrogate(paramEditable.charAt(i - 2)))) {}
+        for (paramEditable = paramEditable.substring(0, i - 2);; paramEditable = paramEditable.substring(0, i - 1))
         {
-          break label4;
-          do
-          {
-            return;
-          } while (!paramBoolean);
-          try
-          {
-            localGdtAdResponse = new SSOHttp.GdtAdResponse();
-            paramBundle = paramBundle.getByteArray("data");
-            if (paramBundle == null) {
-              break label186;
-            }
-            localGdtAdResponse.mergeFrom(paramBundle);
-            if (localGdtAdResponse.retcode.get() != 0) {
-              break label177;
-            }
-            paramInt = localGdtAdResponse.adsType.get();
-            if (paramInt == 0)
-            {
-              this.a.c = false;
-              return;
-            }
-          }
-          catch (Exception paramBundle)
-          {
-            this.a.c = false;
-            return;
-          }
-          if (paramInt != 1) {
-            break;
-          }
-          Ad.a(this.a, localGdtAdResponse.data.get());
-          this.a.c = true;
-        } while (!QLog.isColorLevel());
-        QLog.d("qqbrowser ad", 2, Ad.a(this.a));
-        return;
-      } while (paramInt != 2);
-      Ad.a(this.a, localGdtAdResponse.data.get());
-      this.a.c = true;
-    } while (!QLog.isColorLevel());
-    QLog.d("qqbrowser ad", 2, Ad.a(this.a));
-    return;
-    label177:
-    this.a.c = false;
-    return;
-    label186:
-    this.a.c = false;
+          i = paramEditable.length();
+          break;
+        }
+      }
+      if (AddFriendVerifyActivity.a(this.a) != 9) {
+        break label163;
+      }
+      AddFriendVerifyActivity.a(this.a).setText(paramEditable);
+      AddFriendVerifyActivity.a(this.a).setSelection(paramEditable.length());
+    }
+    for (j = i;; j = i)
+    {
+      if (AddFriendVerifyActivity.b(this.a).getVisibility() == 0) {
+        AddFriendVerifyActivity.b(this.a).setText(30 - j + "");
+      }
+      return;
+      label163:
+      this.a.a.setText(paramEditable);
+      this.a.a.setSelection(paramEditable.length());
+    }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     buh
  * JD-Core Version:    0.7.0.1
  */

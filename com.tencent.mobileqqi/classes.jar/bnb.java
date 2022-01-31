@@ -1,23 +1,14 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.qrcode.CameraManager;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
 
 public class bnb
-  implements View.OnClickListener
+  extends Thread
 {
-  public bnb(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
+  public bnb(ScannerActivity paramScannerActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidAppDialog.cancel();
-    String str = this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getText().toString();
-    paramView = str;
-    if (str == null) {
-      paramView = "";
-    }
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_cancel", paramView, "", "");
+    this.a.a.c();
   }
 }
 

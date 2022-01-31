@@ -1,59 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.RecentFileAdapter.ItemHolder;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class frl
-  extends ContactBindObserver
+  implements View.OnClickListener
 {
-  public frl(ContactSyncManager paramContactSyncManager) {}
+  public frl(FMRecentFileActivity paramFMRecentFileActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    Object localObject = (PhoneContactManager)this.a.a.getManager(10);
-    int i = ((PhoneContactManager)localObject).b();
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Manager", 2, "onQueryBindState | state = " + i);
-    }
-    String str;
-    if (((PhoneContactManager)localObject).h())
+    paramView = (RecentFileAdapter.ItemHolder)paramView.getTag();
+    frm localfrm = new frm(this, paramView);
+    frn localfrn = new frn(this);
+    if ((paramView.a.nOpType == 1) || (paramView.a.nOpType == 5) || (paramView.a.nOpType == 8))
     {
-      localObject = this.a.a.a();
-      str = this.a.a();
-      if (!TextUtils.isEmpty(str)) {}
+      DialogUtil.a(this.a.a(), 230, this.a.getString(2131558690), this.a.getString(2131558688), 2131561746, 2131562539, localfrm, localfrn).show();
+      return;
     }
-    do
-    {
-      do
-      {
-        ContactSyncManager.a(this.a);
-        do
-        {
-          return;
-        } while (((String)localObject).equals(str));
-        ContactSyncManager.a(this.a);
-        ContactSyncManager.a(this.a);
-        return;
-      } while ((i != 2) && (i != 1));
-      ContactSyncManager.b(this.a);
-      localObject = this.a.a();
-    } while ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).equals(this.a.a.a())));
-    ContactSyncManager.a(this.a);
-  }
-  
-  protected void c(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Manager", 2, "onQueryContactList | isSuccess = " + paramBoolean1 + " | hasUpdate = " + paramBoolean2);
-    }
-    this.a.b();
+    DialogUtil.a(this.a.a(), 230, this.a.getString(2131558689), this.a.getString(2131558687), 2131561746, 2131562539, localfrm, localfrn).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     frl
  * JD-Core Version:    0.7.0.1
  */

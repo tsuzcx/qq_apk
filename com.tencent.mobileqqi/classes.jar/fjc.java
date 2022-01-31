@@ -1,23 +1,14 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.RecommendContact;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import java.util.Vector;
+import com.tencent.mobileqq.app.message.DiscMessageProcessor;
+import java.util.TimerTask;
 
 public class fjc
-  implements Runnable
+  extends TimerTask
 {
-  public fjc(PhoneContactManagerImp paramPhoneContactManagerImp, String paramString) {}
+  private fjc(DiscMessageProcessor paramDiscMessageProcessor) {}
   
   public void run()
   {
-    Entity localEntity = PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).a(RecommendContact.class, this.jdField_a_of_type_JavaLangString);
-    if (localEntity != null)
-    {
-      PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).b(localEntity);
-      this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a.remove(localEntity);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.i();
+    this.a.a.cancel();
   }
 }
 

@@ -1,36 +1,22 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.richstatus.IStatusListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper;
+import com.tencent.mobileqq.testassister.activity.ShareAppLogActivity;
 
-public class gml
-  extends FriendListObserver
+class gml
+  implements DialogInterface.OnClickListener
 {
-  public gml(StatusManager paramStatusManager) {}
+  gml(gmk paramgmk) {}
   
-  protected void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.set", 2, "onSetSelfSignatureResult " + paramBoolean);
-    }
-    StatusManager.a(this.a, null);
-    if (paramBoolean) {}
-    for (int i = 100; StatusManager.b(this.a) != null; i = -1)
-    {
-      RichStatus localRichStatus = this.a.a();
-      Iterator localIterator = StatusManager.b(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((IStatusListener)localIterator.next()).a(i, localRichStatus);
-      }
-    }
+    ShareAppLogActivity.a(this.a.a).a(false);
+    ShareAppLogActivity.b(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gml
  * JD-Core Version:    0.7.0.1
  */

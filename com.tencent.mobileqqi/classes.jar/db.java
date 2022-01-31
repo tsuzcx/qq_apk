@@ -1,17 +1,15 @@
-import com.dataline.mpfile.LiteMpFileFileListActivity;
-import com.dataline.mpfile.MpfileDataCenter;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.dataline.mpfile.LiteMpFileDownloadActivity;
+import com.dataline.mpfile.MpfileTaskListAdapter;
 
-public class db
+class db
   implements Runnable
 {
-  public db(LiteMpFileFileListActivity paramLiteMpFileFileListActivity) {}
+  db(da paramda) {}
   
   public void run()
   {
-    DataLineHandler localDataLineHandler = (DataLineHandler)((QQAppInterface)this.a.getAppRuntime()).a(8);
-    LiteMpFileFileListActivity.a(this.a, localDataLineHandler.a().a(false));
+    LiteMpFileDownloadActivity.a(this.a.a).a(LiteMpFileDownloadActivity.a(this.a.a));
+    LiteMpFileDownloadActivity.a(this.a.a).notifyDataSetChanged();
   }
 }
 

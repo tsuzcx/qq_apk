@@ -1,22 +1,15 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.HelloListActivity;
-import com.tencent.mobileqq.activity.NearPeopleActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
 
-public class cwe
-  implements View.OnClickListener
+class cwe
+  implements DialogInterface.OnDismissListener
 {
-  public cwe(HelloListActivity paramHelloListActivity) {}
+  cwe(cwc paramcwc) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (HelloListActivity.a(this.a) == HelloListActivity.b)
-    {
-      HelloListActivity.a(this.a);
-      return;
-    }
-    this.a.startActivity(new Intent(this.a.getBaseContext(), NearPeopleActivity.class).putExtra(NearPeopleActivity.a, NearPeopleActivity.g));
+    this.a.a.a.finish();
   }
 }
 

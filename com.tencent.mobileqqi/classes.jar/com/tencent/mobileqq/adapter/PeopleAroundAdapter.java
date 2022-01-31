@@ -200,9 +200,9 @@ public class PeopleAroundAdapter
         break;
         paramInt = 8;
         break label103;
-        paramInt = 2130838067;
+        paramInt = 2130838069;
         break label198;
-        paramInt = 2130838066;
+        paramInt = 2130838068;
         break label198;
         if ((paramRespEncounterInfo.strSchoolName == null) || (paramRespEncounterInfo.strSchoolName.trim().equals(""))) {
           break label299;
@@ -278,20 +278,20 @@ public class PeopleAroundAdapter
     case 1: 
       if (paramView == null)
       {
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903289, paramViewGroup, false);
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903291, paramViewGroup, false);
         if ((!c) && (paramView == null)) {
           throw new AssertionError();
         }
         paramViewGroup = new PeopleAroundAdapter.ViewHolder();
         paramView.setTag(paramViewGroup);
         paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(16908294));
-        paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131231878);
+        paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131231880);
         paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231090));
-        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231979));
-        paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231980));
-        paramViewGroup.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231981));
-        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231982));
-        paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231882));
+        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231982));
+        paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231983));
+        paramViewGroup.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231984));
+        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231985));
+        paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231884));
       }
       for (;;)
       {
@@ -308,15 +308,15 @@ public class PeopleAroundAdapter
     }
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903281, null);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903283, null);
       if ((!c) && (paramView == null)) {
         throw new AssertionError();
       }
       paramViewGroup = new PeopleAroundAdapter.ViewHolder();
       paramView.setTag(paramViewGroup);
-      paramViewGroup.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231867));
+      paramViewGroup.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231869));
       paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131231066));
-      paramViewGroup.e = ((ImageView)paramView.findViewById(2131231866));
+      paramViewGroup.e = ((ImageView)paramView.findViewById(2131231868));
       ((LinearLayout)paramView).setOrientation(0);
       localObject = paramViewGroup.jdField_d_of_type_AndroidWidgetTextView;
       if (!this.b) {

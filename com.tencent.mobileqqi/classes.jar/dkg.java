@@ -1,35 +1,36 @@
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.util.Pair;
+import android.view.View;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.List;
 
 public class dkg
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public dkg(RecentLoginDevActivity paramRecentLoginDevActivity) {}
+  public dkg(SplashActivity paramSplashActivity, List paramList, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    try
-    {
-      if ((RecentLoginDevActivity.a(this.a) != null) && (RecentLoginDevActivity.a(this.a).isShowing()))
-      {
-        RecentLoginDevActivity.a(this.a).dismiss();
-        RecentLoginDevActivity.a(this.a).cancel();
-      }
-      RecentLoginDevActivity.a(this.a, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.e();
+    if ((paramInt < 0) && (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
       return;
     }
-    catch (Throwable localThrowable)
+    try
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      SplashActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).first).intValue(), (dki)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).second);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+    }
+    catch (Throwable paramView)
+    {
+      paramView.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dkg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.PublicAccountActivity;
 
 public class dal
-  extends Handler
+  implements Animation.AnimationListener
 {
-  public dal(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
+  public dal(PublicAccountActivity paramPublicAccountActivity, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 2014: 
-      this.a.finish();
-      return;
-    }
-    this.a.finish();
+    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity).setAnimation(null);
+    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity).offsetTopAndBottom(this.jdField_a_of_type_Int);
+    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity).requestLayout();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

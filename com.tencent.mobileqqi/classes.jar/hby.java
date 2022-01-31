@@ -1,19 +1,23 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.utils.JumpAction;
 
-class hby
-  implements DialogInterface.OnClickListener
+public class hby
+  implements DialogInterface.OnDismissListener
 {
-  hby(hbx paramhbx) {}
+  public hby(JumpAction paramJumpAction) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
+    if ((JumpAction.a(this.a) instanceof LoginActivity)) {
+      ((LoginActivity)JumpAction.a(this.a)).finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hby
  * JD-Core Version:    0.7.0.1
  */

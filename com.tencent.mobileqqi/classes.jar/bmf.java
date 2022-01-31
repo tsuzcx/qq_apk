@@ -1,21 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.av.utils.RingAnimator;
+import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class bmf
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public bmf(RingAnimator paramRingAnimator) {}
+  public bmf(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.c.setVisibility(4);
+    int i = this.a.c.getHeight();
+    int j = this.a.b.getHeight();
+    if (j < i)
+    {
+      View localView = this.a.findViewById(2131232578);
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
+      int k = localLayoutParams.topMargin;
+      localLayoutParams.topMargin = ((i - j) / 2 + k);
+      localView.setLayoutParams(localLayoutParams);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -9,8 +9,8 @@ import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.gesturelock.LockPatternView;
 import com.tencent.mobileqq.gesturelock.LockPatternView.Cell;
 import com.tencent.mobileqq.widget.QQToast;
-import cux;
-import cuy;
+import cor;
+import cos;
 import java.util.Iterator;
 import java.util.List;
 
@@ -54,12 +54,12 @@ public class GesturePWDCreateActivity
   private void e()
   {
     setTitle(2131562889);
-    a(2131561746, new cux(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231735));
-    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView = ((LockPatternView)findViewById(2131231737));
+    a(2131561746, new cor(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231737));
+    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView = ((LockPatternView)findViewById(2131231739));
     this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setFillInGapCell(false);
     this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setTactileFeedbackEnabled(true);
-    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setOnPatternListener(new cuy(this));
+    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setOnPatternListener(new cos(this));
     if (this.jdField_c_of_type_Float <= 1.0D)
     {
       ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.getLayoutParams();
@@ -67,15 +67,15 @@ public class GesturePWDCreateActivity
       localLayoutParams.width = ((int)(this.jdField_c_of_type_Float * 240.0F));
       this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setLayoutParams(localLayoutParams);
     }
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131231725);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131231726);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131231727);
-    this.d = findViewById(2131231728);
-    this.e = findViewById(2131231729);
-    this.f = findViewById(2131231730);
-    this.g = findViewById(2131231731);
-    this.h = findViewById(2131231732);
-    this.i = findViewById(2131231733);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131231727);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131231728);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131231729);
+    this.d = findViewById(2131231730);
+    this.e = findViewById(2131231731);
+    this.f = findViewById(2131231732);
+    this.g = findViewById(2131231733);
+    this.h = findViewById(2131231734);
+    this.i = findViewById(2131231735);
   }
   
   private void f()
@@ -98,75 +98,75 @@ public class GesturePWDCreateActivity
       if (this.jdField_a_of_type_ArrayOfInt[0] != 1) {
         break label192;
       }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838941);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838943);
       if (this.jdField_a_of_type_ArrayOfInt[1] != 1) {
         break label204;
       }
-      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130838941);
+      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130838943);
       label55:
       if (this.jdField_a_of_type_ArrayOfInt[2] != 1) {
         break label216;
       }
-      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130838941);
+      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130838943);
       label74:
       if (this.jdField_a_of_type_ArrayOfInt[3] != 1) {
         break label228;
       }
-      this.d.setBackgroundResource(2130838941);
+      this.d.setBackgroundResource(2130838943);
       label93:
       if (this.jdField_a_of_type_ArrayOfInt[4] != 1) {
         break label240;
       }
-      this.e.setBackgroundResource(2130838941);
+      this.e.setBackgroundResource(2130838943);
       label112:
       if (this.jdField_a_of_type_ArrayOfInt[5] != 1) {
         break label252;
       }
-      this.f.setBackgroundResource(2130838941);
+      this.f.setBackgroundResource(2130838943);
       label131:
       if (this.jdField_a_of_type_ArrayOfInt[6] != 1) {
         break label264;
       }
-      this.g.setBackgroundResource(2130838941);
+      this.g.setBackgroundResource(2130838943);
       label151:
       if (this.jdField_a_of_type_ArrayOfInt[7] != 1) {
         break label276;
       }
-      this.h.setBackgroundResource(2130838941);
+      this.h.setBackgroundResource(2130838943);
     }
     for (;;)
     {
       if (this.jdField_a_of_type_ArrayOfInt[8] != 1) {
         break label288;
       }
-      this.i.setBackgroundResource(2130838941);
+      this.i.setBackgroundResource(2130838943);
       return;
       label192:
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838940);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838942);
       break;
       label204:
-      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130838940);
+      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130838942);
       break label55;
       label216:
-      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130838940);
+      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130838942);
       break label74;
       label228:
-      this.d.setBackgroundResource(2130838940);
+      this.d.setBackgroundResource(2130838942);
       break label93;
       label240:
-      this.e.setBackgroundResource(2130838940);
+      this.e.setBackgroundResource(2130838942);
       break label112;
       label252:
-      this.f.setBackgroundResource(2130838940);
+      this.f.setBackgroundResource(2130838942);
       break label131;
       label264:
-      this.g.setBackgroundResource(2130838940);
+      this.g.setBackgroundResource(2130838942);
       break label151;
       label276:
-      this.h.setBackgroundResource(2130838940);
+      this.h.setBackgroundResource(2130838942);
     }
     label288:
-    this.i.setBackgroundResource(2130838940);
+    this.i.setBackgroundResource(2130838942);
   }
   
   public void a(int paramInt, String paramString)
@@ -199,7 +199,7 @@ public class GesturePWDCreateActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903238);
+    setContentView(2130903240);
     d();
     e();
     return true;

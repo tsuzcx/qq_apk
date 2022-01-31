@@ -8,7 +8,7 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheet.OnButtonClickListener;
 import com.tencent.widget.ActionSheetHelper;
-import emb;
+import egy;
 
 public class LinkShareActionSheetBuilder
 {
@@ -17,7 +17,8 @@ public class LinkShareActionSheetBuilder
   public static final int b = 3;
   public static final int c = 2;
   public static final int d = 0;
-  public static final int e = 4;
+  public static final int e = 1;
+  public static final int f = 4;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   
   public LinkShareActionSheetBuilder(BaseActivity paramBaseActivity)
@@ -28,9 +29,9 @@ public class LinkShareActionSheetBuilder
   public ActionSheet a(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.a, null);
-    GridView localGridView = (GridView)View.inflate(this.a, 2130904038, null);
+    GridView localGridView = (GridView)View.inflate(this.a, 2130904040, null);
     localGridView.setBackgroundDrawable(this.a.getResources().getDrawable(2130837605));
-    localGridView.setAdapter(new emb(this, null));
+    localGridView.setAdapter(new egy(this, null));
     localGridView.setOnItemClickListener(paramOnItemClickListener);
     localActionSheet.a(localGridView);
     localActionSheet.d(2131561746);
@@ -42,6 +43,7 @@ public class LinkShareActionSheetBuilder
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.a, null);
     localActionSheet.a(2131562908);
     localActionSheet.c(2131562137);
+    localActionSheet.c(2131562715);
     localActionSheet.c(2131561882);
     localActionSheet.a(paramOnButtonClickListener);
     return localActionSheet;

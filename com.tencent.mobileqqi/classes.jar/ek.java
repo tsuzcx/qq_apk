@@ -1,13 +1,16 @@
-import com.dataline.util.HttpDownload.HttpDownloadListenerPack;
+import com.dataline.mpfile.MpfileTaskProxy;
+import com.dataline.mpfile.MpfileTaskRecord;
+import com.dataline.util.WaitEvent;
 
 public class ek
   implements Runnable
 {
-  public ek(HttpDownload.HttpDownloadListenerPack paramHttpDownloadListenerPack, long paramLong1, String paramString, long paramLong2) {}
+  public ek(MpfileTaskProxy paramMpfileTaskProxy, MpfileTaskRecord paramMpfileTaskRecord, WaitEvent paramWaitEvent) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComDatalineUtilHttpDownload$HttpDownloadListenerPack.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
+    this.jdField_a_of_type_ComDatalineMpfileMpfileTaskProxy.a(this.jdField_a_of_type_ComDatalineMpfileMpfileTaskRecord, null);
+    this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
   }
 }
 

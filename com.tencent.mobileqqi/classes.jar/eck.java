@@ -1,52 +1,59 @@
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3;
+import android.view.View;
+import com.tencent.common.galleryactivity.AbstractImageAdapter;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageInfo;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.widget.GestureSelectGridView;
 
 public class eck
-  extends Animation
+  implements AdapterView.OnItemClickListener
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private float b = 0.0F;
+  public eck(AIOImageListScene paramAIOImageListScene) {}
   
-  public eck(ComboAnimation3 paramComboAnimation3) {}
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    float f2 = 1.0F;
-    float f1;
-    if (paramFloat < this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float * 11.0F)
-    {
-      f1 = paramFloat / (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float * 11.0F);
-      if (paramFloat >= this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float * 6.0F) {
-        break label139;
+    boolean bool = true;
+    AIOImageInfo localAIOImageInfo = AIOImageListScene.a(this.a).a(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOImageListScene", 2, "onItemClick" + paramInt + " FirstVisiblePosition " + AIOImageListScene.a(this.a).q() + " LastVisiblePosition " + AIOImageListScene.b(this.a).r());
+    }
+    int i;
+    if (AIOImageListScene.a(this.a)) {
+      if (localAIOImageInfo.b() == 1)
+      {
+        i = 1;
+        AIOImageListScene localAIOImageListScene = this.a;
+        if (i != 0) {
+          break label248;
+        }
+        label116:
+        AIOImageListScene.a(localAIOImageListScene, localAIOImageInfo, bool);
+        if (!AIOImageListScene.a(this.a, paramView, localAIOImageInfo)) {
+          ((AbstractImageAdapter)paramAdapterView.a()).notifyDataSetChanged();
+        }
+        AIOImageListScene.d(this.a);
       }
-      f2 = 1.0F + paramFloat / (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float * 6.0F) * 0.5F;
     }
     for (;;)
     {
-      paramTransformation.setAlpha(f1);
-      paramTransformation.getMatrix().setScale(f2, f2, this.jdField_a_of_type_Float, this.b);
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOImageListScene", 2, "onItemClick" + paramInt + " FirstVisiblePosition " + AIOImageListScene.e(this.a).q() + " LastVisiblePosition " + AIOImageListScene.f(this.a).r() + " SelectedIndex = " + AIOImageListScene.a(this.a).b());
+      }
       return;
-      if (paramFloat < this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float * 20.0F)
-      {
-        f1 = 1.0F;
-        break;
-      }
-      f1 = 1.0F - (paramFloat - this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float * 20.0F) / (4.0F * this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float);
+      i = 0;
       break;
-      label139:
-      if (paramFloat < this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float * 11.0F) {
-        f2 = 1.5F - (paramFloat - this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float * 6.0F) * 0.5F / (5.0F * this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float);
-      }
+      label248:
+      bool = false;
+      break label116;
+      AIOImageListScene.a(this.a).a(paramInt);
+      AIOImageListScene.a(this.a).b(AIOImageListScene.c(this.a).q());
+      AIOImageListScene.a(this.a).c(AIOImageListScene.d(this.a).r());
+      this.a.n();
+      AIOImageListScene.a(this.a, "Multi_Pic_big", 1);
     }
-  }
-  
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Float = (paramInt1 * 0.5F);
-    this.b = (paramInt2 * 0.5F);
   }
 }
 

@@ -1,46 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import com.tencent.mobileqq.app.ConfigHandler;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import java.io.File;
+import java.net.URL;
 
 public class fap
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public fap(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  public fap(ConfigHandler paramConfigHandler, String paramString, File paramFile) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (paramMotionEvent.getAction() == 0)
+    try
     {
-      paramView = new int[2];
-      VoipDialInterfaceActivity.k(this.a).getLocationInWindow(paramView);
-      paramMotionEvent = new int[2];
-      VoipDialInterfaceActivity.k(this.a).getLocationOnScreen(paramMotionEvent);
-      paramMotionEvent = new int[2];
-      VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
-      VoipDialInterfaceActivity.n(this.a).offsetTopAndBottom(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.k(this.a).getHeight() / 2 - VoipDialInterfaceActivity.n(this.a).getHeight() / 2);
-      VoipDialInterfaceActivity.n(this.a).offsetLeftAndRight(paramView[0] + VoipDialInterfaceActivity.k(this.a).getWidth() / 2 - VoipDialInterfaceActivity.n(this.a).getWidth() / 2);
-      VoipDialInterfaceActivity.n(this.a).setVisibility(0);
+      HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a, new URL(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_JavaIoFile);
+      return;
     }
-    while (paramMotionEvent.getAction() != 1) {
-      return false;
-    }
-    paramView = new int[2];
-    VoipDialInterfaceActivity.k(this.a).getLocationInWindow(paramView);
-    paramMotionEvent = new int[2];
-    VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
-    VoipDialInterfaceActivity.n(this.a).offsetTopAndBottom(-(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.k(this.a).getHeight() / 2 - VoipDialInterfaceActivity.n(this.a).getHeight() / 2));
-    VoipDialInterfaceActivity.n(this.a).offsetLeftAndRight(-(paramView[0] + VoipDialInterfaceActivity.k(this.a).getWidth() / 2 - VoipDialInterfaceActivity.n(this.a).getWidth() / 2));
-    VoipDialInterfaceActivity.n(this.a).setVisibility(4);
-    VoipDialInterfaceActivity.c(this.a).invalidate();
-    return false;
+    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fap
  * JD-Core Version:    0.7.0.1
  */

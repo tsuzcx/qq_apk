@@ -1,15 +1,19 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class bzn
+  implements Runnable
 {
-  int jdField_a_of_type_Int;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public bzn(ChatActivity paramChatActivity) {}
+  
+  public void run()
+  {
+    this.a.a.E();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bzn
  * JD-Core Version:    0.7.0.1
  */

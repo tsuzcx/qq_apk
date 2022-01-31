@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b005d" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b005d" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="92.5dip" android:layout_height="152.5dip" android:layout_marginTop="52.5dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203d8" android:scaleType="center" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0137" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d086b" android:shadowColor="#64ffffff" android:shadowDx="1.0" android:shadowDy="1.0" android:lineSpacingExtra="6.0dip" />
+    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f08073f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="35.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d086c" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0186" />
+</LinearLayout>

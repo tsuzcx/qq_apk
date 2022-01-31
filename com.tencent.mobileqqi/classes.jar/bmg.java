@@ -1,55 +1,36 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.ImageView;
-import com.tencent.av.utils.RingAnimator;
+import android.view.View;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class bmg
-  extends Handler
+  implements ActionSheet.OnButtonClickListener
 {
-  public bmg(RingAnimator paramRingAnimator, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bmg(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    super.handleMessage(paramMessage);
-    if ((!this.a.a) && (10 != paramMessage.what)) {}
-    do
+    switch (paramInt)
     {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        case 4: 
-        case 5: 
-        case 6: 
-        case 7: 
-        case 8: 
-        default: 
-          return;
-        case 1: 
-          this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-          this.a.jdField_b_of_type_AndroidWidgetImageView.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
-          sendEmptyMessageDelayed(3, 1300L);
-          return;
-        }
-      } while (!this.a.a);
-      this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.a.jdField_b_of_type_AndroidWidgetImageView.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
-    } while (!this.a.a);
-    this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.jdField_c_of_type_AndroidWidgetImageView.startAnimation(this.a.jdField_c_of_type_AndroidViewAnimationAnimation);
-    sendEmptyMessageDelayed(1, 3300L);
-    return;
-    sendEmptyMessage(1);
-    return;
-    removeMessages(1);
-    removeMessages(2);
-    removeMessages(3);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.a, this.a.d());
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131562645);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(false);
+      }
+      DiscussionInfoCardActivity.a(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.a, 2, this.a.jdField_j_of_type_JavaLangString, this.a.h, this.a.f, this.a.jdField_j_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+      continue;
+      DiscussionInfoCardActivity.a(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.a, this.a.i, this.a.h, this.a.f);
+      continue;
+      DiscussionInfoCardActivity.a(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_b_of_type_Long, this.a.i, this.a.f);
+    }
   }
 }
 

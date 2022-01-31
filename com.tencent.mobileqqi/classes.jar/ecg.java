@@ -1,13 +1,27 @@
-import com.tencent.mobileqq.activity.aio.anim.BubbleAnimation;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
 
-class ecg
-  implements Runnable
+public final class ecg
+  implements Parcelable.Creator
 {
-  ecg(ecf paramecf) {}
-  
-  public void run()
+  public AIOImageData a(Parcel paramParcel)
   {
-    this.a.a.d();
+    AIOImageData localAIOImageData = new AIOImageData();
+    localAIOImageData.a = paramParcel.readLong();
+    localAIOImageData.jdField_d_of_type_Int = paramParcel.readInt();
+    localAIOImageData.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localAIOImageData.e = paramParcel.readString();
+    localAIOImageData.f = paramParcel.readString();
+    localAIOImageData.g = paramParcel.readString();
+    localAIOImageData.b = paramParcel.readLong();
+    localAIOImageData.c = paramParcel.readLong();
+    return localAIOImageData;
+  }
+  
+  public AIOImageData[] a(int paramInt)
+  {
+    return new AIOImageData[paramInt];
   }
 }
 

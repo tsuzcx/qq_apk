@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.item.ShakeItemBuilder;
+import com.tencent.mobileqq.data.MessageForShakeWindow;
 
 public class eaq
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public eaq(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public eaq(ShakeItemBuilder paramShakeItemBuilder, MessageForShakeWindow paramMessageForShakeWindow) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VerifyPhoneNumActivity.a(this.a);
+    ChatActivityFacade.a(ShakeItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShakeItemBuilder), ShakeItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShakeItemBuilder), ShakeItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShakeItemBuilder), this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.uniseq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eaq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,21 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class fau
   implements Runnable
 {
-  public fau(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  public fau(DataLineHandler paramDataLineHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
   
   public void run()
   {
-    if (VoipDialInterfaceActivity.c(this.a))
-    {
-      VoipDialInterfaceActivity.a(this.a);
-      new String();
-      String str = this.a.a(VoipDialInterfaceActivity.b(this.a) * 1000L);
-      if (VoipDialInterfaceActivity.a(this.a) != null) {
-        VoipDialInterfaceActivity.a(this.a).setText(str);
-      }
-    }
-    this.a.a.postDelayed(this, 1000L);
+    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.handleFileDeleteReply(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg, this.jdField_a_of_type_JavaLangObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fau
  * JD-Core Version:    0.7.0.1
  */

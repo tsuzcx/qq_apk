@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantManager;
 
-class gjv
+public class gjv
   implements Runnable
 {
-  gjv(gjt paramgjt) {}
+  public gjv(QZoneShareAlbumAssistantManager paramQZoneShareAlbumAssistantManager, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    QCallDetailActivity.a(this.a.a);
+    this.jdField_a_of_type_ComTencentMobileqqSharealbumQZoneShareAlbumAssistantManager.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

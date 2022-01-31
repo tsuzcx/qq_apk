@@ -1,41 +1,47 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.AbsoluteLayout.LayoutParams;
+import android.app.Dialog;
+import android.os.Handler;
+import android.os.Message;
 import android.widget.ImageView;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.webviewplugin.Ad;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
 public class buj
-  implements Animation.AnimationListener
+  extends Handler
 {
-  public buj(Ad paramAd) {}
+  public buj(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    if (!this.a.jdField_a_of_type_Boolean)
+    switch (paramMessage.what)
     {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838313);
-      paramAnimation = (AbsoluteLayout.LayoutParams)this.a.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      paramAnimation.y = (this.a.b.getHeight() - this.a.e);
-      this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
-      paramAnimation.height = this.a.f;
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
     }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    do
+    {
+      return;
+      if ((AddRequestActivity.a(this.a) != null) && (AddRequestActivity.a(this.a).isShowing()))
+      {
+        AddRequestActivity.a(this.a).setText(this.a.getString(2131562880));
+        AddRequestActivity.a(this.a).setVisibility(8);
+        AddRequestActivity.a(this.a).setVisibility(0);
+        AddRequestActivity.a(this.a).setImageResource(2130837960);
+        postDelayed(new buk(this), 1500L);
+        return;
+      }
+      this.a.finish();
+      return;
+      this.a.a(true);
+    } while ((AddRequestActivity.a(this.a) == null) || (!AddRequestActivity.a(this.a).isShowing()));
+    AddRequestActivity.a(this.a).setText(this.a.getString(2131561435));
+    AddRequestActivity.a(this.a).setVisibility(8);
+    AddRequestActivity.a(this.a).setVisibility(0);
+    AddRequestActivity.a(this.a).setImageResource(2130837949);
+    postDelayed(new bul(this), 1500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     buj
  * JD-Core Version:    0.7.0.1
  */

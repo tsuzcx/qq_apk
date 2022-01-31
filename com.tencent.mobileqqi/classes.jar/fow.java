@@ -1,20 +1,27 @@
-import android.content.ContentValues;
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.FavoriteEmoticonInfo;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class fow
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public fow(DataLineMsgProxy paramDataLineMsgProxy, long paramLong, String paramString, byte[] paramArrayOfByte) {}
+  public fow(FavoriteEmoticonInfo paramFavoriteEmoticonInfo, QQAppInterface paramQQAppInterface, EmoticonCallback paramEmoticonCallback, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_Long);
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("serverPath", this.jdField_a_of_type_JavaLangString);
-    localContentValues.put("md5", this.jdField_a_of_type_ArrayOfByte);
-    if (localDataLineMsgRecord != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(DataLineMsgRecord.tableName(), localContentValues, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo);
     }
   }
 }

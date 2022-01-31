@@ -1,15 +1,23 @@
-import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
 
 public class fch
+  implements ProxyListener
 {
-  public int a;
-  public Friends a;
+  public fch(FriendListHandler paramFriendListHandler) {}
   
-  public fch(Friends paramFriends, int paramInt)
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-    this.jdField_a_of_type_Int = paramInt;
+    if (FriendListHandler.a(this.a) == 0)
+    {
+      this.a.a(1, true, Boolean.valueOf(true));
+      this.a.a(7, true, Boolean.valueOf(true));
+    }
   }
+  
+  public void b(String paramString, int paramInt) {}
 }
 
 

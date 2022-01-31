@@ -24,14 +24,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
-import bzd;
-import bze;
-import bzg;
-import bzh;
-import bzi;
-import bzj;
-import bzk;
-import bzl;
+import bti;
+import btj;
+import btl;
+import btm;
+import btn;
+import bto;
+import btp;
+import btq;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -69,16 +69,16 @@ public class AddFriendActivity
   private static final String jdField_g_of_type_JavaLangString = "performAutoAction";
   private static final int jdField_h_of_type_Int = 4;
   private static final String jdField_h_of_type_JavaLangString = "needFinish";
-  private Handler jdField_a_of_type_AndroidOsHandler = new bzj(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new bto(this);
   public View a;
   private InputMethodManager jdField_a_of_type_AndroidViewInputmethodInputMethodManager;
   public AdapterView.OnItemClickListener a;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   public GridView a;
   public TextView a;
-  public bzl a;
+  public btq a;
   private FriendListHandler jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bzg(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new btl(this);
   public LBSObserver a;
   private TroopHandler jdField_a_of_type_ComTencentMobileqqAppTroopHandler;
   public TroopObserver a;
@@ -101,10 +101,10 @@ public class AddFriendActivity
   public AddFriendActivity()
   {
     this.e = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new bze(this);
-    this.jdField_b_of_type_ComTencentMobileqqAppFriendListObserver = new bzh(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new bzi(this);
-    this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new bzk(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new btj(this);
+    this.jdField_b_of_type_ComTencentMobileqqAppFriendListObserver = new btm(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new btn(this);
+    this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new btp(this);
   }
   
   public static void a(Activity paramActivity, SearchInfo paramSearchInfo, String paramString, byte[] paramArrayOfByte)
@@ -267,7 +267,7 @@ public class AddFriendActivity
     }
     if ((this.jdField_a_of_type_JavaUtilList.size() < 15) && (c()))
     {
-      localObject = getResources().getDrawable(2130837854);
+      localObject = getResources().getDrawable(2130837856);
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, (Drawable)localObject, null);
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
       ((Animatable)localObject).start();
@@ -290,8 +290,8 @@ public class AddFriendActivity
     for (int i = 0;; i = 4)
     {
       localTextView.setVisibility(i);
-      this.jdField_a_of_type_Bzl = new bzl(this);
-      this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Bzl);
+      this.jdField_a_of_type_Btq = new btq(this);
+      this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Btq);
       return;
     }
   }
@@ -457,7 +457,7 @@ public class AddFriendActivity
       if (this.jdField_a_of_type_Boolean)
       {
         f();
-        paramBundle.setOnTouchListener(new bzd(this));
+        paramBundle.setOnTouchListener(new bti(this));
       }
       return true;
       paramBundle.setSoftInputMode(4);

@@ -1,8 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
+
 public class iay
+  implements DialogInterface.OnClickListener
 {
-  public float a;
-  public int a;
-  public int b;
+  public iay(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.finish();
+  }
 }
 
 

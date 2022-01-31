@@ -1,23 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.DrawerFrame;
 
 public class eoo
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  public eoo(BaseActivityView paramBaseActivityView) {}
+  public eoo(DrawerFrame paramDrawerFrame) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    return (paramInt == 4) && (this.a.a.i()) && (NetworkUtil.e(this.a.getContext()));
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eoo
  * JD-Core Version:    0.7.0.1
  */

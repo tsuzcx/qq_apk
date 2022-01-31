@@ -28,11 +28,11 @@ public class QQEntityManagerFactory
   static final int DB_VERSION = 85;
   private static final int FLAG_CHECK_AUTHENTICATION = -1;
   protected static boolean isUpdateFromLowV74 = false;
-  protected String TAG = "QQEntityManagerFactory";
+  public String TAG = "QQEntityManagerFactory";
   protected boolean bUpdated = false;
-  protected SQLiteOpenHelper dbHelper;
-  protected int dbVersion = 1;
-  protected QQEntityManagerFactory.SQLiteOpenHelperImpl mInnerDbHelper;
+  public SQLiteOpenHelper dbHelper;
+  public int dbVersion = 1;
+  public QQEntityManagerFactory.SQLiteOpenHelperImpl mInnerDbHelper;
   public String name;
   
   public QQEntityManagerFactory(String paramString)
@@ -176,7 +176,7 @@ public class QQEntityManagerFactory
     }
   }
   
-  protected void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
+  public void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
   {
     paramSQLiteDatabase.execSQL(TableBuilder.a(new Groups()));
     paramSQLiteDatabase.execSQL(TableBuilder.a(new Friends()));
@@ -210,7 +210,7 @@ public class QQEntityManagerFactory
     paramSQLiteDatabase.execSQL(TableBuilder.a(new VoipHistoryData()));
   }
   
-  protected String getPackageName()
+  public String getPackageName()
   {
     return "com.tencent.mobileqq.data";
   }
@@ -230,7 +230,7 @@ public class QQEntityManagerFactory
     isUpdateFromLowV74 = false;
   }
   
-  protected void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  public void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
     if (paramInt1 < 20) {
       this.mInnerDbHelper.dropAllTable();

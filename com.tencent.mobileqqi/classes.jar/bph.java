@@ -1,17 +1,40 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import android.os.Bundle;
+import com.tencent.biz.webviewplugin.Share;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class bph
-  implements SoundPool.OnLoadCompleteListener
+  implements BusinessObserver
 {
-  public bph(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  public bph(Share paramShare) {}
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SensorApi", 2, "play failure url=" + this.jdField_a_of_type_JavaLangString);
+    if (!paramBoolean) {}
+    byte[] arrayOfByte;
+    do
+    {
+      return;
+      arrayOfByte = paramBundle.getByteArray("data");
+    } while (arrayOfByte == null);
+    paramBundle = new GetAppInfoProto.GetAppinfoResponse();
+    try
+    {
+      paramBundle.mergeFrom(arrayOfByte);
+      ThreadManager.a(new bpi(this, paramBundle));
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(Share.b(), 2, localInvalidProtocolBufferMicroException.getMessage());
+        }
+      }
     }
   }
 }

@@ -1,28 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
-class bsb
-  implements View.OnClickListener
+public class bsb
+  extends AccountObserver
 {
-  bsb(bsa parambsa) {}
+  public bsb(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(View paramView)
+  public void onDeleteAccount(boolean paramBoolean)
   {
-    if ((QRCardActivity.a(this.a.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity) != null) && (QRCardActivity.a(this.a.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity).isShowing())) {
-      QRCardActivity.a(this.a.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity).dismiss();
-    }
-    paramView = (TextView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131231118);
-    if ((paramView.getText() instanceof String)) {
-      this.a.a((String)paramView.getText());
+    if (QLog.isColorLevel()) {
+      QLog.d("Switch_Account", 2, "onDeleteAccount isSuccess " + paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bsb
  * JD-Core Version:    0.7.0.1
  */

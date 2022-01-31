@@ -1,25 +1,22 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.VerifyCodeActivity2;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.richstatus.MovieDetailActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class eal
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  public eal(VerifyCodeActivity2 paramVerifyCodeActivity2) {}
+  public eal(RichStatItemBuilder paramRichStatItemBuilder, int paramInt1, int paramInt2, String paramString1, String paramString2) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    if (paramEditable.length() >= 4)
-    {
-      VerifyCodeActivity2.c(this.a, true);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOSign", 2, "actionId is:" + this.jdField_a_of_type_Int + ",dataId is:" + this.jdField_b_of_type_Int);
     }
-    VerifyCodeActivity2.d(this.a, false);
+    MovieDetailActivity.a((BaseActivity)RichStatItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

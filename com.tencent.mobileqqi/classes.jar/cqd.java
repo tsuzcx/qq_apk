@@ -1,57 +1,105 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.app.FriendsManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseHornListActivity.BaseHornAdapter;
+import com.tencent.mobileqq.activity.HornListActivity;
+import com.tencent.mobileqq.app.NearHornHandler;
+import com.tencent.mobileqq.app.NearHornObserver;
+import com.tencent.mobileqq.data.HornDetail;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class cqd
-  extends TroopObserver
+  extends NearHornObserver
 {
-  public cqd(EditInfoActivity paramEditInfoActivity) {}
+  public cqd(HornListActivity paramHornListActivity) {}
   
-  protected void c(boolean paramBoolean, ArrayList paramArrayList)
+  protected void a(String paramString, int paramInt)
   {
-    if (this.a.a == null) {
-      this.a.a = new QQProgressNotifier(this.a);
-    }
-    if ((!paramBoolean) || (paramArrayList == null) || (paramArrayList.size() == 0)) {
-      this.a.a.a(2, 2131562079, 1000);
-    }
-    Object localObject1;
-    do
+    int i;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity$BaseHornAdapter != null)
     {
-      return;
-      localObject1 = null;
-      int i = 0;
-      if ((localObject1 == null) && (i < paramArrayList.size()))
+      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      i = 0;
+      if (localIterator.hasNext())
       {
-        localObject2 = (TroopMemberCardInfo)paramArrayList.get(i);
-        if (localObject2 == null) {
-          localObject1 = localObject2;
+        HornDetail localHornDetail = (HornDetail)localIterator.next();
+        if (!localHornDetail.hornKey.equals(paramString)) {
+          break label170;
         }
-        for (;;)
-        {
-          i += 1;
-          break;
-          localObject1 = localObject2;
-          if (!Utils.a(((TroopMemberCardInfo)localObject2).troopuin, this.a.c)) {
-            localObject1 = null;
-          }
-        }
+        localHornDetail.commentCnt = paramInt;
+        i = 1;
       }
-    } while (localObject1 == null);
-    paramArrayList = new Intent();
-    paramArrayList.putExtra("nick", localObject1.name);
-    Object localObject2 = (FriendsManagerImp)this.a.b.getManager(8);
-    if (localObject2 != null) {
-      ((FriendsManagerImp)localObject2).a(this.a.c, this.a.d, localObject1.name, -100, null, null, -100, -100, -100, -100L, (byte)-100, -100L);
     }
-    this.a.setResult(-1, paramArrayList);
-    EditInfoActivity.e(this.a);
+    label170:
+    for (;;)
+    {
+      break;
+      if (i != 0) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity$BaseHornAdapter.notifyDataSetChanged();
+      }
+      if ((this.a.jdField_a_of_type_AndroidViewView != null) && (this.a.jdField_a_of_type_AndroidViewView.getTag() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHornDetail != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHornDetail.hornKey.equals(paramString)))
+      {
+        ((bwp)this.a.jdField_a_of_type_AndroidViewView.getTag()).c.setText(String.valueOf(paramInt));
+        this.a.jdField_a_of_type_ComTencentMobileqqDataHornDetail.commentCnt = paramInt;
+      }
+      return;
+    }
+  }
+  
+  protected void a(boolean paramBoolean, List paramList, Boolean paramBoolean1, Boolean paramBoolean2, int paramInt, String paramString)
+  {
+    if (!paramBoolean2.booleanValue())
+    {
+      this.a.jdField_a_of_type_JavaLangString = paramString;
+      if ((!paramBoolean) || (this.a.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler == null)) {
+        break label279;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity$BaseHornAdapter.b = this.a.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.a.booleanValue();
+      if (this.a.jdField_a_of_type_JavaUtilList != null)
+      {
+        if (paramBoolean1.booleanValue()) {
+          this.a.jdField_a_of_type_JavaUtilList.clear();
+        }
+        if (paramList.size() > 0)
+        {
+          paramBoolean1 = (HornDetail)paramList.get(paramList.size() - 1);
+          paramBoolean2 = (HornDetail)paramList.get(0);
+          if (paramBoolean1.publishTime <= paramBoolean2.publishTime) {
+            break label232;
+          }
+          this.a.jdField_b_of_type_JavaLangString = paramBoolean2.hornKey;
+        }
+        for (this.a.jdField_b_of_type_Long = paramBoolean2.publishTime;; this.a.jdField_b_of_type_Long = paramBoolean1.publishTime)
+        {
+          paramList = paramList.iterator();
+          while (paramList.hasNext())
+          {
+            paramBoolean1 = (HornDetail)paramList.next();
+            if ((this.a.jdField_a_of_type_ComTencentMobileqqDataHornDetail == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqDataHornDetail.hornKey.equals(paramBoolean1.hornKey))) {
+              this.a.jdField_a_of_type_JavaUtilList.add(paramBoolean1);
+            }
+          }
+          label232:
+          this.a.jdField_b_of_type_JavaLangString = paramBoolean1.hornKey;
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity$BaseHornAdapter.a = false;
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity$BaseHornAdapter.notifyDataSetChanged();
+      }
+    }
+    return;
+    label279:
+    if (QLog.isColorLevel()) {
+      QLog.i("NearHornRelated", 2, "HornListActivity: getHornList Fail, retCode is " + paramInt);
+    }
+    if (!paramBoolean1.booleanValue())
+    {
+      paramList = this.a.jdField_a_of_type_Bwo.obtainMessage(0);
+      this.a.jdField_a_of_type_Bwo.sendMessageDelayed(paramList, 1000L);
+      return;
+    }
+    paramList = this.a.jdField_a_of_type_Bwo.obtainMessage(3);
+    this.a.jdField_a_of_type_Bwo.sendMessage(paramList);
   }
 }
 

@@ -1,13 +1,33 @@
-import com.dataline.util.HttpDownload.HttpDownloadListenerPack;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.dataline.activities.DLFileViewerActivity;
+import com.dataline.activities.DLFilesViewerActivity;
+import com.dataline.util.DatalineFilesAdapter;
+import com.dataline.util.DatalineFilesAdapter.ItemHolder;
+import com.dataline.util.file.DLFileInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class el
-  implements Runnable
+  implements View.OnClickListener
 {
-  public el(HttpDownload.HttpDownloadListenerPack paramHttpDownloadListenerPack, long paramLong1, boolean paramBoolean, long paramLong2, int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2) {}
+  public el(DatalineFilesAdapter paramDatalineFilesAdapter) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComDatalineUtilHttpDownload$HttpDownloadListenerPack.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+    paramView = (DatalineFilesAdapter.ItemHolder)paramView.getTag();
+    if (paramView.a == null) {}
+    do
+    {
+      return;
+      paramView = DatalineFilesAdapter.a(this.a).a().b(paramView.a.a);
+    } while (paramView == null);
+    Intent localIntent = new Intent(DatalineFilesAdapter.a(this.a).getApplicationContext(), DLFileViewerActivity.class);
+    localIntent.putExtra("dl_file_info_session_id", paramView.sessionid);
+    DatalineFilesAdapter.a(this.a).startActivityForResult(localIntent, 102);
   }
 }
 

@@ -1,19 +1,21 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.RecentCallHelper;
 
-public final class cft
-  extends AsyncTask
+class cft
+  implements Runnable
 {
-  public cft(QQAppInterface paramQQAppInterface, String paramString) {}
+  cft(cfq paramcfq, boolean paramBoolean) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void run()
   {
-    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-    return null;
+    if (Conversation.a(this.jdField_a_of_type_Cfq.a) != null)
+    {
+      Conversation.a(this.jdField_a_of_type_Cfq.a).a(this.jdField_a_of_type_Cfq.a.a, this.jdField_a_of_type_Boolean);
+      if (this.jdField_a_of_type_Boolean) {
+        Conversation.a(this.jdField_a_of_type_Cfq.a).a(true, true, Conversation.a(this.jdField_a_of_type_Cfq.a));
+      }
+    }
   }
-  
-  protected void a(Void paramVoid) {}
 }
 
 

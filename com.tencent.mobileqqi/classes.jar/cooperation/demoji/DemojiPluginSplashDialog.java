@@ -22,7 +22,7 @@ public class DemojiPluginSplashDialog
   public DemojiPluginSplashDialog(Context paramContext)
   {
     super(paramContext, 2131624477);
-    setContentView(2130903651);
+    setContentView(2130903653);
     a(paramContext);
   }
   
@@ -55,13 +55,13 @@ public class DemojiPluginSplashDialog
   
   private void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233261));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233263));
     if (!paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131233262));
-      this.b = ((RelativeLayout)findViewById(2131233263));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131233264));
+      this.b = ((RelativeLayout)findViewById(2131233265));
     }
-    for (this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131233264));; this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131233268)))
+    for (this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131233266));; this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131233270)))
     {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams().height = paramInt1;
       this.b.getLayoutParams().height = paramInt2;
@@ -73,8 +73,8 @@ public class DemojiPluginSplashDialog
         this.jdField_a_of_type_AndroidWidgetButton.getLayoutParams().width = paramInt2;
       }
       return;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131233266));
-      this.b = ((RelativeLayout)findViewById(2131233267));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131233268));
+      this.b = ((RelativeLayout)findViewById(2131233269));
     }
   }
   

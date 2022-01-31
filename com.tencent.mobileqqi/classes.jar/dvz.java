@@ -1,35 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberCardActivity;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
+import mqq.app.AppActivity;
+import mqq.app.permission.PermissionItem;
+import mqq.app.permission.PermissionManager;
 
-class dvz
-  implements DialogInterface.OnClickListener
+public final class dvz
+  implements PermissionDialogCallback
 {
-  dvz(dvy paramdvy, QQCustomDialog paramQQCustomDialog) {}
+  public dvz(AppActivity paramAppActivity, QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a() {}
+  
+  public void b()
   {
-    if (NetworkUtil.e(this.jdField_a_of_type_Dvy.a.getApplicationContext()))
-    {
-      this.jdField_a_of_type_Dvy.a.a.h(this.jdField_a_of_type_Dvy.a.c);
-      this.jdField_a_of_type_Dvy.a.a(0, 2131562648, 0);
-    }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
-      }
-      return;
-      this.jdField_a_of_type_Dvy.a.a(2, 2131562488, 1500);
-    }
+    this.jdField_a_of_type_MqqAppAppActivity.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.CAMERA", 200), PermissionItem.init("android.permission.WRITE_EXTERNAL_STORAGE", 300) }).requests(new dwa(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dvz
  * JD-Core Version:    0.7.0.1
  */

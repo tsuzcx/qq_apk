@@ -14,8 +14,8 @@ import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.voip.VoipAddressBookView;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import eqb;
-import eqc;
+import eln;
+import elo;
 
 public class PhoneFrameActivity
   extends IphoneTitleBarActivity
@@ -41,12 +41,12 @@ public class PhoneFrameActivity
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this);
     this.k = new TextView(this);
     this.m.setText(2131562896);
-    this.m.setOnClickListener(new eqb(this));
+    this.m.setOnClickListener(new eln(this));
     this.jdField_a_of_type_AndroidWidgetImageView = this.p;
     this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("设置");
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame = ((PhoneFrame)findViewById(2131232036));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame = ((PhoneFrame)findViewById(2131232039));
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setActivity(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setPhoneContext(new eqc(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setPhoneContext(new elo(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.a(null);
     Bundle localBundle;
     if (getIntent() != null)
@@ -92,7 +92,7 @@ public class PhoneFrameActivity
   {
     super.doOnCreate(paramBundle);
     getWindow().setBackgroundDrawable(null);
-    setContentView(2130903307);
+    setContentView(2130903309);
     d();
     return true;
   }
@@ -157,13 +157,13 @@ public class PhoneFrameActivity
         break label147;
       }
       localMenuItem = paramMenu.add(0, 0, 0, getString(2131562830));
-      localMenuItem.setIcon(2130839696);
+      localMenuItem.setIcon(2130839698);
       MenuItemCompat.setShowAsAction(localMenuItem, 1);
       localMenuItem = paramMenu.findItem(this.m.getId());
       if (localMenuItem == null) {
         break label159;
       }
-      localMenuItem.setIcon(2130838030);
+      localMenuItem.setIcon(2130838032);
     }
     for (;;)
     {
@@ -172,7 +172,7 @@ public class PhoneFrameActivity
       }
       return true;
       label147:
-      localMenuItem.setIcon(2130839696);
+      localMenuItem.setIcon(2130839698);
       break;
       label159:
       MenuItemCompat.setShowAsAction(paramMenu.add(0, 2131231380, 0, this.m.getText()), 1);

@@ -1,13 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class cuo
-  implements DialogInterface.OnClickListener
+class cuo
+  implements Runnable
 {
-  public cuo(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  cuo(cun paramcun) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    QQToast.a(this.a.a.a.getApplicationContext(), this.a.a.a.getString(2131561765), 0).b(this.a.a.a.d());
+  }
 }
 
 

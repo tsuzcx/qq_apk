@@ -33,9 +33,10 @@ public class WebViewPlugin
   public static final int EVENT_SWITCH_URL = 14;
   public static final int EVENT_THEME_POSTCHANGED = 17;
   public static final String KEY_ERROR_CODE = "errorCode";
-  protected final String TAG = getClass().getSimpleName();
+  public final String TAG = getClass().getSimpleName();
   private AtomicBoolean inited = new AtomicBoolean(false);
-  protected boolean isDestroy = false;
+  public boolean isDestroy = false;
+  public String mPluginNameSpace = "";
   public WebViewPlugin.PluginRuntime mRuntime;
   
   @Deprecated
@@ -73,7 +74,7 @@ public class WebViewPlugin
     return -1;
   }
   
-  protected Object handleEvent(String paramString, int paramInt)
+  public Object handleEvent(String paramString, int paramInt)
   {
     return null;
   }

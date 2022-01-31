@@ -1,17 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AuthDevActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class cbo
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public cbo(AuthDevActivity paramAuthDevActivity) {}
+  public cbo(ChatHistory paramChatHistory) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDialogInterface == AuthDevActivity.a(this.a)) {
-      AuthDevActivity.a(this.a, null);
-    }
+    new cbp(this).start();
   }
 }
 

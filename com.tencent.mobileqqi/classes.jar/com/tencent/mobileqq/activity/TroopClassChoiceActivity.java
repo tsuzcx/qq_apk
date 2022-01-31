@@ -10,7 +10,7 @@ import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.XListView;
-import duo;
+import dox;
 import java.util.ArrayList;
 
 public class TroopClassChoiceActivity
@@ -19,7 +19,7 @@ public class TroopClassChoiceActivity
 {
   public GroupCatalogBean a;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private duo jdField_a_of_type_Duo;
+  private dox jdField_a_of_type_Dox;
   private String jdField_a_of_type_JavaLangString;
   public ArrayList a;
   
@@ -55,10 +55,10 @@ public class TroopClassChoiceActivity
   private void e()
   {
     j(2130837729);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131234598));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131234600));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_Duo = new duo(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Duo);
+    this.jdField_a_of_type_Dox = new dox(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Dox);
   }
   
   public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
@@ -91,7 +91,7 @@ public class TroopClassChoiceActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130904022);
+    setContentView(2130904024);
     setTitle(2131561780);
     d();
     e();

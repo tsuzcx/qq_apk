@@ -1,20 +1,22 @@
-import com.tencent.av.VideoController;
+import android.support.v4.util.LruCache;
+import com.rookery.translate.model.TransMemCache;
 
 public class bgg
-  implements Runnable
+  extends LruCache
 {
-  public bgg(VideoController paramVideoController, long paramLong) {}
-  
-  public void run()
+  public bgg(TransMemCache paramTransMemCache, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvVideoController.g = null;
-    this.jdField_a_of_type_ComTencentAvVideoController.a.e = 0;
-    this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_Long, 16);
+    super(paramInt);
+  }
+  
+  protected int a(String paramString1, String paramString2)
+  {
+    return paramString2.length() + 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bgg
  * JD-Core Version:    0.7.0.1
  */

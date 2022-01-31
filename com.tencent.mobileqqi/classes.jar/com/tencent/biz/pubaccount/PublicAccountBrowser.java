@@ -98,7 +98,7 @@ public class PublicAccountBrowser
     if (!this.jdField_f_of_type_Boolean)
     {
       this.m.setText("");
-      this.p.setImageResource(2130837833);
+      this.p.setImageResource(2130837835);
       this.p.setContentDescription(super.getText(2131562406));
     }
     for (;;)
@@ -251,31 +251,31 @@ public class PublicAccountBrowser
   {
     if (this.jdField_a_of_type_AndroidWidgetPopupWindow == null)
     {
-      View localView = super.getLayoutInflater().inflate(2130903226, null);
+      View localView = super.getLayoutInflater().inflate(2130903228, null);
       this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(localView, -1, -2);
       this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new BitmapDrawable());
       this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(4);
-      LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131231679);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localLinearLayout);
-      localLinearLayout.setOnClickListener(this);
-      localLinearLayout = (LinearLayout)localView.findViewById(2131231680);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localLinearLayout);
-      localLinearLayout.setOnClickListener(this);
-      localLinearLayout = (LinearLayout)localView.findViewById(2131231681);
+      LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131231681);
       this.jdField_a_of_type_JavaUtilArrayList.add(localLinearLayout);
       localLinearLayout.setOnClickListener(this);
       localLinearLayout = (LinearLayout)localView.findViewById(2131231682);
       this.jdField_a_of_type_JavaUtilArrayList.add(localLinearLayout);
       localLinearLayout.setOnClickListener(this);
-      ((LinearLayout)localView.findViewById(2131231683)).setOnClickListener(this);
+      localLinearLayout = (LinearLayout)localView.findViewById(2131231683);
+      this.jdField_a_of_type_JavaUtilArrayList.add(localLinearLayout);
+      localLinearLayout.setOnClickListener(this);
+      localLinearLayout = (LinearLayout)localView.findViewById(2131231684);
+      this.jdField_a_of_type_JavaUtilArrayList.add(localLinearLayout);
+      localLinearLayout.setOnClickListener(this);
+      ((LinearLayout)localView.findViewById(2131231685)).setOnClickListener(this);
     }
     if (!this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()) {
       this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView, 83, 0, 0);
     }
   }
   
-  protected String a()
+  public String a()
   {
     return "PA";
   }
@@ -317,7 +317,7 @@ public class PublicAccountBrowser
     {
       localObject = new PublicAccountBrowser.ActionSheetItem();
       ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = super.getString(2131560568);
-      ((PublicAccountBrowser.ActionSheetItem)localObject).k = 2130837750;
+      ((PublicAccountBrowser.ActionSheetItem)localObject).k = 2130837751;
       ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Boolean = true;
       ((PublicAccountBrowser.ActionSheetItem)localObject).l = 2;
       ((PublicAccountBrowser.ActionSheetItem)localObject).b = "";
@@ -327,7 +327,7 @@ public class PublicAccountBrowser
     {
       localObject = new PublicAccountBrowser.ActionSheetItem();
       ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = super.getString(2131560573);
-      ((PublicAccountBrowser.ActionSheetItem)localObject).k = 2130837751;
+      ((PublicAccountBrowser.ActionSheetItem)localObject).k = 2130837752;
       ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Boolean = true;
       ((PublicAccountBrowser.ActionSheetItem)localObject).l = 3;
       ((PublicAccountBrowser.ActionSheetItem)localObject).b = "";
@@ -336,7 +336,7 @@ public class PublicAccountBrowser
     {
       localObject = new PublicAccountBrowser.ActionSheetItem();
       ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = super.getString(2131560572);
-      ((PublicAccountBrowser.ActionSheetItem)localObject).k = 2130838480;
+      ((PublicAccountBrowser.ActionSheetItem)localObject).k = 2130838482;
       ((PublicAccountBrowser.ActionSheetItem)localObject).l = 5;
       ((PublicAccountBrowser.ActionSheetItem)localObject).b = "";
       localArrayList.add(localObject);
@@ -346,7 +346,7 @@ public class PublicAccountBrowser
       localObject = new PublicAccountBrowser.ActionSheetItem();
       ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = super.getString(2131560571);
       ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Boolean = true;
-      ((PublicAccountBrowser.ActionSheetItem)localObject).k = 2130838478;
+      ((PublicAccountBrowser.ActionSheetItem)localObject).k = 2130838480;
       ((PublicAccountBrowser.ActionSheetItem)localObject).l = 4;
       ((PublicAccountBrowser.ActionSheetItem)localObject).b = "";
       localArrayList.add(localObject);
@@ -357,7 +357,7 @@ public class PublicAccountBrowser
     {
       localActionSheetItem = new PublicAccountBrowser.ActionSheetItem();
       localActionSheetItem.jdField_a_of_type_JavaLangString = super.getString(2131560576);
-      localActionSheetItem.k = 2130838477;
+      localActionSheetItem.k = 2130838479;
       localActionSheetItem.jdField_a_of_type_Boolean = true;
       localActionSheetItem.l = 8;
       localActionSheetItem.b = "";
@@ -368,7 +368,7 @@ public class PublicAccountBrowser
       localActionSheetItem = new PublicAccountBrowser.ActionSheetItem();
       localActionSheetItem.jdField_a_of_type_JavaLangString = super.getString(2131560581);
       localActionSheetItem.jdField_a_of_type_Boolean = true;
-      localActionSheetItem.k = 2130838582;
+      localActionSheetItem.k = 2130838584;
       localActionSheetItem.l = 6;
       localActionSheetItem.b = "";
       ((ArrayList)localObject).add(localActionSheetItem);
@@ -377,7 +377,7 @@ public class PublicAccountBrowser
     {
       localActionSheetItem = new PublicAccountBrowser.ActionSheetItem();
       localActionSheetItem.jdField_a_of_type_JavaLangString = super.getString(2131560569);
-      localActionSheetItem.k = 2130838479;
+      localActionSheetItem.k = 2130838481;
       localActionSheetItem.jdField_a_of_type_Boolean = true;
       localActionSheetItem.l = 7;
       localActionSheetItem.b = "";
@@ -387,7 +387,7 @@ public class PublicAccountBrowser
     {
       localActionSheetItem = new PublicAccountBrowser.ActionSheetItem();
       localActionSheetItem.jdField_a_of_type_JavaLangString = super.getString(2131560570);
-      localActionSheetItem.k = 2130837749;
+      localActionSheetItem.k = 2130837750;
       localActionSheetItem.jdField_a_of_type_Boolean = true;
       localActionSheetItem.l = 1;
       localActionSheetItem.b = "";
@@ -461,16 +461,16 @@ public class PublicAccountBrowser
     default: 
       super.onClick(paramView);
       return;
-    case 2131231683: 
+    case 2131231685: 
       this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
       return;
-    case 2131231679: 
+    case 2131231681: 
       b(0);
       return;
-    case 2131231680: 
+    case 2131231682: 
       b(1);
       return;
-    case 2131231681: 
+    case 2131231683: 
       b(2);
       return;
     }

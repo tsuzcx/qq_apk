@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.activity.ForwardOperations;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.qphone.base.util.QLog;
 
-class csp
+public class csp
   implements Runnable
 {
-  csp(csm paramcsm, HashMap paramHashMap) {}
+  public csp(Leba paramLeba) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Csm.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a(this.jdField_a_of_type_Csm.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Csm.jdField_a_of_type_Int, this.jdField_a_of_type_Csm.b, this.jdField_a_of_type_JavaUtilHashMap);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.lebatab.leba", 2, "init leba list when init UI in refreshAllListInUI()");
+    }
+    Leba.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     csp
  * JD-Core Version:    0.7.0.1
  */

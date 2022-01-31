@@ -25,7 +25,7 @@ import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppSetting;
 import com.tencent.qphone.base.util.QLog;
-import emv;
+import ehs;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class LebaShowListManager
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
   public static final int b = 2;
   public static int c = 0;
-  public emv a;
+  public ehs a;
   public HashMap a;
   protected List a;
   public boolean a;
@@ -53,7 +53,7 @@ public class LebaShowListManager
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Emv = new emv(this, null);
+    this.jdField_a_of_type_Ehs = new ehs(this, null);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     c = 0;
   }
@@ -200,7 +200,7 @@ public class LebaShowListManager
             if (localObject1 != null) {
               break label544;
             }
-            localObject3 = paramContext.getResources().getDrawable(2130838958);
+            localObject3 = paramContext.getResources().getDrawable(2130838960);
             localLebaViewItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)localObject3);
             if ((!localFile.exists()) || (localObject1 == null))
             {
@@ -264,7 +264,7 @@ public class LebaShowListManager
           localLebaViewItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(i);
           continue;
           break;
-          Collections.sort(localArrayList3, this.jdField_a_of_type_Emv);
+          Collections.sort(localArrayList3, this.jdField_a_of_type_Ehs);
           paramContext = (RedTouchManager)paramQQAppInterface.getManager(34);
           if (paramContext == null)
           {
@@ -446,7 +446,7 @@ public class LebaShowListManager
   
   public void a(List paramList1, List paramList2)
   {
-    Collections.sort(paramList2, this.jdField_a_of_type_Emv);
+    Collections.sort(paramList2, this.jdField_a_of_type_Ehs);
     Iterator localIterator = paramList2.iterator();
     int i = 0;
     int j = -1;

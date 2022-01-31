@@ -1,17 +1,16 @@
-import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-class drf
-  implements Runnable
+public class drf
+  implements View.OnClickListener
 {
-  drf(dre paramdre, Drawable paramDrawable) {}
+  public drf(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ((ImageView)SubAccountBindActivity.a(this.jdField_a_of_type_Dre.jdField_a_of_type_Drd.a).getChildAt(this.jdField_a_of_type_Dre.jdField_a_of_type_Int).findViewById(2131230940)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
   }
 }
 

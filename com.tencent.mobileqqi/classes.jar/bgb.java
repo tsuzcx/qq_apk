@@ -1,21 +1,20 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.thread.ThreadPool.Job;
-import com.tencent.av.thread.ThreadPool.JobContext;
+import android.os.Handler;
+import android.os.Message;
+import com.rookery.asyncHttpClient.AsyncHttpResponseHandler;
 
 public class bgb
-  implements ThreadPool.Job
+  extends Handler
 {
-  public bgb(VideoController paramVideoController, Runnable paramRunnable) {}
+  public bgb(AsyncHttpResponseHandler paramAsyncHttpResponseHandler) {}
   
-  public Boolean a(ThreadPool.JobContext paramJobContext)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
-    return Boolean.valueOf(true);
+    this.a.a(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bgb
  * JD-Core Version:    0.7.0.1
  */

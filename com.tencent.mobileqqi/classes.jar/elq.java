@@ -1,62 +1,31 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.activity.phone.PhoneMatchActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.browser.TroopQQBrowserHelper;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class elq
-  implements View.OnClickListener
+  extends ContactBindObserver
 {
-  public elq(TroopActivity paramTroopActivity) {}
+  public elq(PhoneMatchActivity paramPhoneMatchActivity) {}
   
-  public void onClick(View paramView)
+  protected void b(boolean paramBoolean)
   {
-    switch (paramView.getId())
+    if (this.a.a != null)
     {
-    default: 
-      this.a.e();
-      return;
-    case 2131232629: 
-      ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_create", 0, 0, "", "", "", "");
-      paramView = (TroopCreateLogic)this.a.b.getManager(30);
-      if (paramView != null) {
-        paramView.a(this.a, 0);
-      }
-      this.a.e();
-      return;
-    case 2131232631: 
-      ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_join", 0, 0, "", "", "", "");
-      ReportController.b(this.a.b, "CliOper", "", "", "Grp", "grplist_plus_join", 47, 0, "", "", "", "");
-      TroopQQBrowserHelper.a(this.a, this.a.b.a());
-      this.a.e();
-      return;
-    case 2131232633: 
-      ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_msgset", 0, 0, "", "", "", "");
-      ReportController.b(this.a.b, "CliOper", "", "", "Grp", "grplist_plus_setting", 0, 0, "", "", "", "");
-      paramView = new Intent(this.a, TroopAssisSettingActivity.class);
-      this.a.startActivity(paramView);
-      this.a.e();
-      return;
-    case 2131232635: 
-      TroopActivity.b(this.a);
-      this.a.e();
-      return;
-    case 2131231456: 
-      this.a.onBackPressed();
-      return;
+      this.a.b.unRegistObserver(this.a.a);
+      this.a.a = null;
     }
-    ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right", 0, 0, "", "", "", "");
-    if (this.a.a.getVisibility() == 0)
-    {
-      this.a.e();
-      return;
-    }
-    ReportController.b(this.a.b, "CliOper", "", "", "Grp", "Clk_grplist_plus", 0, 0, "", "", "", "");
     this.a.d();
+    if (paramBoolean)
+    {
+      if (this.a.a != null)
+      {
+        this.a.b.unRegistObserver(this.a.a);
+        this.a.a = null;
+      }
+      this.a.finish();
+      return;
+    }
+    this.a.b(2131558979);
   }
 }
 

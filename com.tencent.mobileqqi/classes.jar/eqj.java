@@ -1,29 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.RecentMemberInnerFrame;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
 public class eqj
-  implements ActionSheet.OnButtonClickListener
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public eqj(SettingActivity2 paramSettingActivity2, ActionSheet paramActionSheet) {}
+  public CheckBox a;
+  public TextView a;
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    if (paramInt == 0)
-    {
-      if (!NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.b(2131562488);
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.setResult(2);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.finish();
-  }
+  private eqj(RecentMemberInnerFrame paramRecentMemberInnerFrame) {}
 }
 
 

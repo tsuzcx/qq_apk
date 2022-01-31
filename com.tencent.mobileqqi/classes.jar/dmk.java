@@ -1,26 +1,24 @@
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SubAccountSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantImpl;
 
 public class dmk
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public dmk(RegisterSendUpSms paramRegisterSendUpSms) {}
+  public dmk(SubAccountSettingActivity paramSubAccountSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    try
+    SubAccountAssistantImpl.a().a(this.a.b, paramBoolean);
+    QQAppInterface localQQAppInterface = this.a.b;
+    if (paramBoolean) {}
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
     {
-      if ((RegisterSendUpSms.a(this.a) != null) && (RegisterSendUpSms.a(this.a).isShowing()) && (!this.a.isFinishing()))
-      {
-        RegisterSendUpSms.a(this.a).dismiss();
-        RegisterSendUpSms.a(this.a).cancel();
-      }
-      RegisterSendUpSms.a(this.a, null);
+      ReportController.b(localQQAppInterface, "CliOper", "", "", "Bind_account", "Top_bind_account", 0, 0, paramCompoundButton, "", "", "");
       return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
     }
   }
 }

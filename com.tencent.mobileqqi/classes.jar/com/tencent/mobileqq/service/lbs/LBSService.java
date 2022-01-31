@@ -1322,7 +1322,7 @@ public class LBSService
     ((UniPacket)localObject5).setServantName("QQService.GameSvc");
     ((UniPacket)localObject5).put("ReqLastGameInfo", localObject3);
     localObject5 = ((UniPacket)localObject5).encode();
-    localObject3 = new SSummaryCardQueryReq(1, Long.parseLong(paramToServiceMsg.getUin()), l2, "6.0.1", n, 109L);
+    localObject3 = new SSummaryCardQueryReq(1, Long.parseLong(paramToServiceMsg.getUin()), l2, "6.0.2", n, 109L);
     Object localObject6 = new UniPacket(true);
     ((UniPacket)localObject6).setEncodeName("utf-8");
     ((UniPacket)localObject6).setFuncName("query");
@@ -1333,7 +1333,7 @@ public class LBSService
     {
       try
       {
-        i = Integer.parseInt("6600");
+        i = Integer.parseInt("6602");
         localArrayList = new ArrayList();
         if ((l2 > 0L) || (n == 37))
         {
@@ -1372,7 +1372,7 @@ public class LBSService
               }
             }
             ((SummaryCardBusiEntry.comm)localObject7).platform.set(2);
-            ((SummaryCardBusiEntry.comm)localObject7).qqver.set("6.0.1.6600");
+            ((SummaryCardBusiEntry.comm)localObject7).qqver.set("6.0.2.6602");
             ((SummaryCardBusiEntry.comm)localObject7).build.set(i);
             localObject3 = ((SummaryCardBusiEntry.comm)localObject7).toByteArray();
             int k = localObject3.length;

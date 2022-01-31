@@ -1,21 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.common.util.ShareToQZone;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.biz.ui.CustomMenuBar.OnMenuItemClickListener;
 
-public final class bob
-  implements Runnable
+public class bob
+  implements View.OnClickListener
 {
-  public void run()
+  public bob(CustomMenuBar paramCustomMenuBar, String paramString, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(ShareToQZone.jdField_a_of_type_JavaLangString, 2, "======httpThread:run =========");
+    if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a != null) {
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
     }
-    int i = ShareToQZone.a();
-    Message localMessage = ShareToQZone.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-    localMessage.arg1 = i;
-    ShareToQZone.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-    ShareToQZone.jdField_a_of_type_AndroidOsHandler.removeCallbacks(ShareToQZone.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

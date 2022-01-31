@@ -1,17 +1,40 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.data.TroopBarPostAbsLayout.AbsItemViewHolder;
-import com.tencent.mobileqq.troop.data.TroopBarPostLayoutRelativeGroup;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import android.util.Log;
+import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import com.tencent.mobileqq.troop.widget.VideoViewX;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.util.VersionUtils;
 
 public class gzt
-  extends TroopBarPostAbsLayout.AbsItemViewHolder
+  implements MediaPlayer.OnErrorListener
 {
-  public TextView a;
+  public gzt(VideoViewX paramVideoViewX) {}
   
-  public gzt(TroopBarPostLayoutRelativeGroup paramTroopBarPostLayoutRelativeGroup, View paramView)
+  @TargetApi(8)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232623));
+    Log.d(VideoViewX.a(this.a), "Error: " + paramInt1 + "," + paramInt2);
+    VideoViewX.b(this.a);
+    VideoViewX.c(this.a, -1);
+    VideoViewX.d(this.a, -1);
+    VideoViewX.b(this.a, true);
+    if (VideoViewX.a(this.a) != null)
+    {
+      VideoViewX.a(this.a).d();
+      VideoViewX.a(this.a).c();
+    }
+    if (VersionUtils.b()) {
+      ((AudioManager)BaseApplication.getContext().getSystemService("audio")).abandonAudioFocus(this.a.a);
+    }
+    if ((VideoViewX.a(this.a) != null) && (VideoViewX.a(this.a).onError(VideoViewX.a(this.a), paramInt1, paramInt2))) {}
+    while (this.a.getWindowToken() == null) {
+      return true;
+    }
+    return true;
   }
 }
 

@@ -1,24 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import android.view.ViewStub;
+import com.tencent.mobileqq.activity.main.CommonLoadingView;
 
-public class crv
-  implements DialogInterface.OnDismissListener
+class crv
+  implements Runnable
 {
-  public crv(ForwardFriendListActivity paramForwardFriendListActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
+  crv(cru paramcru) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity.a.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity.a.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    ForwardFriendListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity, null);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityMainCommonLoadingView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidViewViewStub.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     crv
  * JD-Core Version:    0.7.0.1
  */

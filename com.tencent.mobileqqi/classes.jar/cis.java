@@ -1,17 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
+import android.os.StatFs;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.DoodleActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.DoodleTextView;
+import com.tencent.mobileqq.widget.QQToast;
+import java.io.File;
 
 public class cis
-  implements View.OnClickListener
+  extends Handler
 {
-  public cis(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, String paramString) {}
+  public cis(DoodleActivity paramDoodleActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.b.b(this.jdField_a_of_type_JavaLangString, false);
+    switch (paramMessage.what)
+    {
+    case 3: 
+    case 4: 
+    case 5: 
+    default: 
+      return;
+    case 0: 
+      this.a.a.c();
+      return;
+    case 1: 
+      QQToast.a(this.a, "已达到上限，无法输入", 0).b(this.a.d());
+      return;
+    case 2: 
+      this.a.a.b();
+      sendEmptyMessageDelayed(2, 600L);
+      return;
+    }
+    if (Environment.getExternalStorageState().equals("mounted"))
+    {
+      if (new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() > 1)
+      {
+        this.a.c();
+        return;
+      }
+      Toast.makeText(this.a.b.a(), 2131562046, 0).show();
+      return;
+    }
+    Toast.makeText(this.a.b.a(), 2131562824, 0).show();
   }
 }
 

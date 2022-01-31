@@ -1,25 +1,20 @@
-import com.tencent.mobileqq.adapter.DiscussionListAdapter2;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.FriendListHandler;
 
 public class fcm
-  implements Comparator
 {
-  public fcm(DiscussionListAdapter2 paramDiscussionListAdapter2, HashMap paramHashMap) {}
+  public int a;
+  public long a;
+  public String a;
+  public long b = 0L;
+  public long c = 0L;
+  public long d = 0L;
+  public long e;
+  private long f;
   
-  public int a(Entity paramEntity1, Entity paramEntity2)
+  public fcm(FriendListHandler paramFriendListHandler)
   {
-    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity1).uin)).longValue();
-    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity2).uin)).longValue();
-    if (l1 < l2) {
-      return -1;
-    }
-    if (l1 > l2) {
-      return 1;
-    }
-    return 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

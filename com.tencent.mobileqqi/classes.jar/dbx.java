@@ -1,27 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.QQLSUnlockActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class dbx
-  extends Handler
+  implements Runnable
 {
-  public dbx(ModifyFriendInfoActivity paramModifyFriendInfoActivity) {}
+  public dbx(QQLSActivity paramQQLSActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    if (!QQLSActivity.a(this.a))
     {
-    default: 
-    case 1: 
-      do
-      {
-        return;
-      } while ((this.a.c == null) || (this.a.c.length() <= 0));
-      this.a.b.setText(this.a.c);
-      return;
+      ReportController.b(QQLSActivity.a(this.a), "CliOper", "", "", "0X800444B", "0X800444B", 0, 0, "", "", "", "");
+      Intent localIntent = new Intent(this.a, QQLSUnlockActivity.class);
+      this.a.startActivity(localIntent);
     }
-    this.a.a.setText(this.a.d);
   }
 }
 

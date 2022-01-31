@@ -1,67 +1,41 @@
-import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.ResultRecord;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.FaceDecoder;
-import java.util.ArrayList;
+import android.view.View.OnTouchListener;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class ewb
-  extends BaseAdapter
+  implements View.OnTouchListener
 {
-  private ewb(SelectMemberActivity paramSelectMemberActivity) {}
+  public ewb(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  public int getCount()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return this.a.c.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.a.c.size())) {
-      return this.a.c.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    SelectMemberActivity.ResultRecord localResultRecord = (SelectMemberActivity.ResultRecord)getItem(paramInt);
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = this.a.getLayoutInflater().inflate(2130903251, null);
-    }
-    paramViewGroup.setTag(localResultRecord);
-    paramView = this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.b(localResultRecord.jdField_a_of_type_JavaLangString);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131230985);
-    localImageView.setImageDrawable(paramView);
-    if (localResultRecord.jdField_a_of_type_Int == 4)
+    if (paramMotionEvent.getAction() == 0)
     {
-      paramInt = 11;
-      paramView = this.a.a.a(paramInt, localResultRecord.jdField_a_of_type_JavaLangString);
-      if (paramView != null) {
-        break label169;
-      }
-      this.a.a.a(localResultRecord.jdField_a_of_type_JavaLangString, paramInt, true);
-      paramView = this.a.jdField_b_of_type_AndroidGraphicsBitmap;
+      paramView = new int[2];
+      VoipDialInterfaceActivity.k(this.a).getLocationInWindow(paramView);
+      paramMotionEvent = new int[2];
+      VoipDialInterfaceActivity.k(this.a).getLocationOnScreen(paramMotionEvent);
+      paramMotionEvent = new int[2];
+      VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
+      VoipDialInterfaceActivity.n(this.a).offsetTopAndBottom(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.k(this.a).getHeight() / 2 - VoipDialInterfaceActivity.n(this.a).getHeight() / 2);
+      VoipDialInterfaceActivity.n(this.a).offsetLeftAndRight(paramView[0] + VoipDialInterfaceActivity.k(this.a).getWidth() / 2 - VoipDialInterfaceActivity.n(this.a).getWidth() / 2);
+      VoipDialInterfaceActivity.n(this.a).setVisibility(0);
     }
-    label169:
-    for (;;)
-    {
-      localImageView.setImageBitmap(paramView);
-      localImageView.setContentDescription(localResultRecord.b + " 已选中,双击删除,按钮");
-      return paramViewGroup;
-      paramInt = 1;
-      break;
+    while (paramMotionEvent.getAction() != 1) {
+      return false;
     }
+    paramView = new int[2];
+    VoipDialInterfaceActivity.k(this.a).getLocationInWindow(paramView);
+    paramMotionEvent = new int[2];
+    VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
+    VoipDialInterfaceActivity.n(this.a).offsetTopAndBottom(-(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.k(this.a).getHeight() / 2 - VoipDialInterfaceActivity.n(this.a).getHeight() / 2));
+    VoipDialInterfaceActivity.n(this.a).offsetLeftAndRight(-(paramView[0] + VoipDialInterfaceActivity.k(this.a).getWidth() / 2 - VoipDialInterfaceActivity.n(this.a).getWidth() / 2));
+    VoipDialInterfaceActivity.n(this.a).setVisibility(4);
+    VoipDialInterfaceActivity.c(this.a).invalidate();
+    return false;
   }
 }
 

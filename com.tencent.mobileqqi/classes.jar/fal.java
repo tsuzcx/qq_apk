@@ -1,46 +1,34 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import com.tencent.mobileqq.activity.aio.anim.AioAnimationConfigHelper;
+import com.tencent.mobileqq.app.ConfigHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.app.MobileQQ;
 
 public class fal
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public fal(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  public fal(ConfigHandler paramConfigHandler, String paramString, long paramLong) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (paramMotionEvent.getAction() == 0)
+    File localFile = new File(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a.getApplication().getFilesDir(), "eggs_config.zip");
+    int i = HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a, this.jdField_a_of_type_JavaLangString, localFile);
+    if (QLog.isColorLevel()) {
+      QLog.d("eggs", 2, "handleUpdateEggsActions download: " + i);
+    }
+    if (i == 0)
     {
-      paramView = new int[2];
-      VoipDialInterfaceActivity.j(this.a).getLocationInWindow(paramView);
-      paramMotionEvent = new int[2];
-      VoipDialInterfaceActivity.j(this.a).getLocationOnScreen(paramMotionEvent);
-      paramMotionEvent = new int[2];
-      VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
-      VoipDialInterfaceActivity.m(this.a).offsetTopAndBottom(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.j(this.a).getHeight() / 2 - VoipDialInterfaceActivity.m(this.a).getHeight() / 2);
-      VoipDialInterfaceActivity.m(this.a).offsetLeftAndRight(paramView[0] + VoipDialInterfaceActivity.j(this.a).getWidth() / 2 - VoipDialInterfaceActivity.m(this.a).getWidth() / 2);
-      VoipDialInterfaceActivity.m(this.a).setVisibility(0);
+      AioAnimationConfigHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a, this.jdField_a_of_type_Long, localFile.getAbsolutePath());
+      return;
     }
-    while (paramMotionEvent.getAction() != 1) {
-      return false;
-    }
-    paramView = new int[2];
-    VoipDialInterfaceActivity.j(this.a).getLocationInWindow(paramView);
-    paramMotionEvent = new int[2];
-    VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
-    VoipDialInterfaceActivity.m(this.a).offsetTopAndBottom(-(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.j(this.a).getHeight() / 2 - VoipDialInterfaceActivity.m(this.a).getHeight() / 2));
-    VoipDialInterfaceActivity.m(this.a).offsetLeftAndRight(-(paramView[0] + VoipDialInterfaceActivity.j(this.a).getWidth() / 2 - VoipDialInterfaceActivity.m(this.a).getWidth() / 2));
-    VoipDialInterfaceActivity.m(this.a).setVisibility(4);
-    VoipDialInterfaceActivity.c(this.a).invalidate();
-    return false;
+    AioAnimationConfigHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a.getApplication());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fal
  * JD-Core Version:    0.7.0.1
  */

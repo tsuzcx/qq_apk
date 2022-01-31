@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@null" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="19.0sp" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080f17" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02089e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="84.0dip" android:minHeight="50.0dip" android:text="立即更换主题" android:layout_alignParentBottom="true" />
-    <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="56.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0566" android:layout_alignParentBottom="true" />
+    <com.tencent.mobileqq.widget.SlideDetectListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080f16" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:cacheColorHint="@android:color/transparent" android:divider="@android:color/white" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080f17" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02062e" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a013d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0565" />
+    </LinearLayout>
 </RelativeLayout>

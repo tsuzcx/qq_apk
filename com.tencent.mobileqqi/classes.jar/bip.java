@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.RecvMsg;
+import android.widget.Button;
+import com.tencent.biz.eqq.EnterpriseDetailActivity;
 
-public final class bip
-  implements Parcelable.Creator
+public class bip
+  implements Runnable
 {
-  public RecvMsg a(Parcel paramParcel)
-  {
-    return new RecvMsg(paramParcel);
-  }
+  public bip(EnterpriseDetailActivity paramEnterpriseDetailActivity) {}
   
-  public RecvMsg[] a(int paramInt)
+  public void run()
   {
-    return new RecvMsg[paramInt];
+    this.a.a.setEnabled(true);
   }
 }
 

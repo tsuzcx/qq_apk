@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.dataline.activities.DLBaseFileViewActivity.DLFileState;
-import es;
+import fa;
 
 public class DLFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new es();
+  public static final Parcelable.Creator CREATOR = new fa();
   public long a;
   public DLBaseFileViewActivity.DLFileState a;
   public String a;

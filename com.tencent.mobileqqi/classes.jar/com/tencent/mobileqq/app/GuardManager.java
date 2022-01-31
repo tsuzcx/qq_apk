@@ -26,16 +26,16 @@ import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import fdp;
-import fdq;
-import fgr;
-import fgs;
-import fhf;
-import fhg;
-import fhh;
-import fhi;
-import fht;
-import fhu;
+import ezb;
+import ezc;
+import fcd;
+import fce;
+import fcr;
+import fcs;
+import fct;
+import fcu;
+import fdf;
+import fdg;
 import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -79,11 +79,11 @@ public class GuardManager
   private Application jdField_a_of_type_AndroidAppApplication;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private fhh jdField_a_of_type_Fhh = null;
-  private fhi jdField_a_of_type_Fhi = null;
+  private fct jdField_a_of_type_Fct = null;
+  private fcu jdField_a_of_type_Fcu = null;
   private TimerTask jdField_a_of_type_JavaUtilTimerTask = null;
   private boolean jdField_a_of_type_Boolean;
-  private fhi[] jdField_a_of_type_ArrayOfFhi = new fhi[9];
+  private fcu[] jdField_a_of_type_ArrayOfFcu = new fcu[9];
   public long[][] a;
   private long jdField_b_of_type_Long = 0L;
   private boolean jdField_b_of_type_Boolean;
@@ -107,7 +107,7 @@ public class GuardManager
       label140:
       if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
       {
-        this.jdField_a_of_type_AndroidContentBroadcastReceiver = new fhg(this, null);
+        this.jdField_a_of_type_AndroidContentBroadcastReceiver = new fcs(this, null);
         paramApplication = new IntentFilter();
         paramApplication.addAction("android.intent.action.SCREEN_OFF");
         paramApplication.addAction("android.intent.action.SCREEN_ON");
@@ -130,35 +130,35 @@ public class GuardManager
     }
   }
   
-  private fhi a(int paramInt)
+  private fcu a(int paramInt)
   {
-    fhi localfhi = this.jdField_a_of_type_ArrayOfFhi[paramInt];
-    Object localObject = localfhi;
-    if (localfhi == null) {
+    fcu localfcu = this.jdField_a_of_type_ArrayOfFcu[paramInt];
+    Object localObject = localfcu;
+    if (localfcu == null) {
       switch (paramInt)
       {
       case 6: 
       default: 
-        localObject = new fht();
+        localObject = new fdf();
       }
     }
     for (;;)
     {
-      ((fhi)localObject).jdField_a_of_type_ComTencentMobileqqAppGuardManager = this;
-      ((fhi)localObject).s = paramInt;
-      this.jdField_a_of_type_ArrayOfFhi[paramInt] = localObject;
+      ((fcu)localObject).jdField_a_of_type_ComTencentMobileqqAppGuardManager = this;
+      ((fcu)localObject).s = paramInt;
+      this.jdField_a_of_type_ArrayOfFcu[paramInt] = localObject;
       return localObject;
-      localObject = new fgr();
+      localObject = new fcd();
       continue;
-      localObject = new fgs();
+      localObject = new fce();
       continue;
-      localObject = new fdp();
+      localObject = new ezb();
       continue;
-      localObject = new fdq();
+      localObject = new ezc();
       continue;
-      localObject = new fhu();
+      localObject = new fdg();
       continue;
-      localObject = new fhi();
+      localObject = new fcu();
     }
   }
   
@@ -316,14 +316,14 @@ public class GuardManager
     //   15: invokespecial 197	java/lang/StringBuilder:<init>	()V
     //   18: ldc_w 356
     //   21: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: getstatic 359	fhi:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   24: getstatic 359	fcu:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   27: aload_0
     //   28: getfield 88	com/tencent/mobileqq/app/GuardManager:n	I
     //   31: aaload
     //   32: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: ldc_w 361
     //   38: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   41: getstatic 359	fhi:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   41: getstatic 359	fcu:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   44: iload_1
     //   45: aaload
     //   46: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -344,8 +344,8 @@ public class GuardManager
     //   82: aload_0
     //   83: aload_0
     //   84: iload_1
-    //   85: invokespecial 369	com/tencent/mobileqq/app/GuardManager:a	(I)Lfhi;
-    //   88: putfield 86	com/tencent/mobileqq/app/GuardManager:jdField_a_of_type_Fhi	Lfhi;
+    //   85: invokespecial 369	com/tencent/mobileqq/app/GuardManager:a	(I)Lfcu;
+    //   88: putfield 86	com/tencent/mobileqq/app/GuardManager:jdField_a_of_type_Fcu	Lfcu;
     //   91: aload_0
     //   92: getfield 88	com/tencent/mobileqq/app/GuardManager:n	I
     //   95: iconst_1
@@ -364,7 +364,7 @@ public class GuardManager
     //   126: pop
     //   127: aload 4
     //   129: ldc_w 382
-    //   132: getstatic 359	fhi:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   132: getstatic 359	fcu:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   135: iload_1
     //   136: aaload
     //   137: invokevirtual 380	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
@@ -382,10 +382,10 @@ public class GuardManager
     //   160: iload_1
     //   161: putfield 88	com/tencent/mobileqq/app/GuardManager:n	I
     //   164: aload_0
-    //   165: getfield 86	com/tencent/mobileqq/app/GuardManager:jdField_a_of_type_Fhi	Lfhi;
+    //   165: getfield 86	com/tencent/mobileqq/app/GuardManager:jdField_a_of_type_Fcu	Lfcu;
     //   168: iconst_5
     //   169: aload_2
-    //   170: invokevirtual 385	fhi:a	(ILjava/lang/Object;)V
+    //   170: invokevirtual 385	fcu:a	(ILjava/lang/Object;)V
     //   173: aload_0
     //   174: monitorexit
     //   175: return
@@ -404,7 +404,7 @@ public class GuardManager
     //   200: astore 4
     //   202: aload 4
     //   204: ldc_w 374
-    //   207: getstatic 359	fhi:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   207: getstatic 359	fcu:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   210: aload_0
     //   211: getfield 88	com/tencent/mobileqq/app/GuardManager:n	I
     //   214: aaload
@@ -412,7 +412,7 @@ public class GuardManager
     //   218: pop
     //   219: aload 4
     //   221: ldc_w 382
-    //   224: getstatic 359	fhi:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   224: getstatic 359	fcu:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   227: iload_1
     //   228: aaload
     //   229: invokevirtual 380	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
@@ -584,7 +584,7 @@ public class GuardManager
     if (paramInt < 2) {
       a(paramInt);
     }
-    this.jdField_a_of_type_Fhi.a(paramInt, paramObject);
+    this.jdField_a_of_type_Fcu.a(paramInt, paramObject);
   }
   
   public void b(boolean paramBoolean)
@@ -625,7 +625,7 @@ public class GuardManager
     IntentFilter localIntentFilter;
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new fhg(this, null);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new fcs(this, null);
       localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
       localIntentFilter.addAction("android.intent.action.SCREEN_ON");
@@ -654,7 +654,7 @@ public class GuardManager
       }
       if (this.jdField_a_of_type_JavaUtilTimerTask == null)
       {
-        this.jdField_a_of_type_JavaUtilTimerTask = new fhf(this, null);
+        this.jdField_a_of_type_JavaUtilTimerTask = new fcr(this, null);
         ThreadManager.a().schedule(this.jdField_a_of_type_JavaUtilTimerTask, 12000L, 12000L);
       }
       this.d = true;
@@ -681,16 +681,16 @@ public class GuardManager
   public void f()
   {
     Object localObject1 = (ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity");
-    if (this.jdField_a_of_type_Fhh == null)
+    if (this.jdField_a_of_type_Fct == null)
     {
-      this.jdField_a_of_type_Fhh = new fhh(this);
-      this.jdField_a_of_type_Fhh.a();
+      this.jdField_a_of_type_Fct = new fct(this);
+      this.jdField_a_of_type_Fct.a();
     }
-    if (this.jdField_a_of_type_Fhh.jdField_b_of_type_Long == 0L) {
-      this.jdField_a_of_type_Fhh.jdField_b_of_type_Long = DeviceInfoUtil.c();
+    if (this.jdField_a_of_type_Fct.jdField_b_of_type_Long == 0L) {
+      this.jdField_a_of_type_Fct.jdField_b_of_type_Long = DeviceInfoUtil.c();
     }
-    if (this.jdField_a_of_type_Fhh.jdField_c_of_type_Long == 0L) {
-      this.jdField_a_of_type_Fhh.jdField_c_of_type_Long = DeviceInfoUtil.e();
+    if (this.jdField_a_of_type_Fct.jdField_c_of_type_Long == 0L) {
+      this.jdField_a_of_type_Fct.jdField_c_of_type_Long = DeviceInfoUtil.e();
     }
     long l3 = DeviceInfoUtil.d();
     long l4 = a(Process.myPid());
@@ -723,58 +723,58 @@ public class GuardManager
       if ((l3 < 0L) || (l4 < 0L) || (l2 < 0L)) {
         return;
       }
-      if (this.jdField_a_of_type_Fhh.jdField_a_of_type_Long == 0L) {
-        this.jdField_a_of_type_Fhh.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (this.jdField_a_of_type_Fct.jdField_a_of_type_Long == 0L) {
+        this.jdField_a_of_type_Fct.jdField_a_of_type_Long = System.currentTimeMillis();
       }
-      localObject1 = this.jdField_a_of_type_Fhh;
-      ((fhh)localObject1).d += l3;
-      localObject1 = this.jdField_a_of_type_Fhh;
-      ((fhh)localObject1).e = (l2 + ((fhh)localObject1).e);
-      localObject1 = this.jdField_a_of_type_Fhh;
-      ((fhh)localObject1).f += l4;
-      localObject1 = this.jdField_a_of_type_Fhh;
-      ((fhh)localObject1).jdField_a_of_type_Int += 1;
+      localObject1 = this.jdField_a_of_type_Fct;
+      ((fct)localObject1).d += l3;
+      localObject1 = this.jdField_a_of_type_Fct;
+      ((fct)localObject1).e = (l2 + ((fct)localObject1).e);
+      localObject1 = this.jdField_a_of_type_Fct;
+      ((fct)localObject1).f += l4;
+      localObject1 = this.jdField_a_of_type_Fct;
+      ((fct)localObject1).jdField_a_of_type_Int += 1;
       localObject1 = BaseApplicationImpl.jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
-      localObject2 = this.jdField_a_of_type_Fhh;
-      ((fhh)localObject2).g += ((MQLruCache)localObject1).maxSize();
-      localObject2 = this.jdField_a_of_type_Fhh;
-      ((fhh)localObject2).h += ((MQLruCache)localObject1).size();
-      localObject2 = this.jdField_a_of_type_Fhh;
-      ((fhh)localObject2).jdField_c_of_type_Int += ((MQLruCache)localObject1).hitCount();
-      localObject2 = this.jdField_a_of_type_Fhh;
-      int i1 = ((fhh)localObject2).jdField_b_of_type_Int;
-      ((fhh)localObject2).jdField_b_of_type_Int = (((MQLruCache)localObject1).missCount() + i1);
+      localObject2 = this.jdField_a_of_type_Fct;
+      ((fct)localObject2).g += ((MQLruCache)localObject1).maxSize();
+      localObject2 = this.jdField_a_of_type_Fct;
+      ((fct)localObject2).h += ((MQLruCache)localObject1).size();
+      localObject2 = this.jdField_a_of_type_Fct;
+      ((fct)localObject2).jdField_c_of_type_Int += ((MQLruCache)localObject1).hitCount();
+      localObject2 = this.jdField_a_of_type_Fct;
+      int i1 = ((fct)localObject2).jdField_b_of_type_Int;
+      ((fct)localObject2).jdField_b_of_type_Int = (((MQLruCache)localObject1).missCount() + i1);
       l1 = System.currentTimeMillis();
       for (;;)
       {
         try
         {
-          if (l1 - this.jdField_a_of_type_Fhh.jdField_a_of_type_Long > 86400000L)
+          if (l1 - this.jdField_a_of_type_Fct.jdField_a_of_type_Long > 86400000L)
           {
-            i1 = this.jdField_a_of_type_Fhh.jdField_a_of_type_Int;
+            i1 = this.jdField_a_of_type_Fct.jdField_a_of_type_Int;
             localObject1 = new HashMap();
-            ((HashMap)localObject1).put("sysTotalMemory", String.valueOf(this.jdField_a_of_type_Fhh.jdField_b_of_type_Long / 1024L));
-            ((HashMap)localObject1).put("sysClassMemory", String.valueOf(this.jdField_a_of_type_Fhh.jdField_c_of_type_Long / 1024L));
-            ((HashMap)localObject1).put("sysAvailableMemory", String.valueOf(this.jdField_a_of_type_Fhh.d / (i1 * 1024)));
-            ((HashMap)localObject1).put("qqOtherUsedMemory", String.valueOf(this.jdField_a_of_type_Fhh.e / (i1 * 1024)));
-            ((HashMap)localObject1).put("qqUsedMemory", String.valueOf(this.jdField_a_of_type_Fhh.f / (i1 * 1024)));
-            ((HashMap)localObject1).put("imageCacheMax", String.valueOf(this.jdField_a_of_type_Fhh.g / (i1 * 1024)));
-            ((HashMap)localObject1).put("imageCacheUsed", String.valueOf(this.jdField_a_of_type_Fhh.h / (i1 * 1024)));
-            ((HashMap)localObject1).put("imageHitCount", String.valueOf(this.jdField_a_of_type_Fhh.jdField_c_of_type_Int / i1));
-            i1 = this.jdField_a_of_type_Fhh.jdField_c_of_type_Int + this.jdField_a_of_type_Fhh.jdField_b_of_type_Int;
+            ((HashMap)localObject1).put("sysTotalMemory", String.valueOf(this.jdField_a_of_type_Fct.jdField_b_of_type_Long / 1024L));
+            ((HashMap)localObject1).put("sysClassMemory", String.valueOf(this.jdField_a_of_type_Fct.jdField_c_of_type_Long / 1024L));
+            ((HashMap)localObject1).put("sysAvailableMemory", String.valueOf(this.jdField_a_of_type_Fct.d / (i1 * 1024)));
+            ((HashMap)localObject1).put("qqOtherUsedMemory", String.valueOf(this.jdField_a_of_type_Fct.e / (i1 * 1024)));
+            ((HashMap)localObject1).put("qqUsedMemory", String.valueOf(this.jdField_a_of_type_Fct.f / (i1 * 1024)));
+            ((HashMap)localObject1).put("imageCacheMax", String.valueOf(this.jdField_a_of_type_Fct.g / (i1 * 1024)));
+            ((HashMap)localObject1).put("imageCacheUsed", String.valueOf(this.jdField_a_of_type_Fct.h / (i1 * 1024)));
+            ((HashMap)localObject1).put("imageHitCount", String.valueOf(this.jdField_a_of_type_Fct.jdField_c_of_type_Int / i1));
+            i1 = this.jdField_a_of_type_Fct.jdField_c_of_type_Int + this.jdField_a_of_type_Fct.jdField_b_of_type_Int;
             if (i1 == 0) {
               break label950;
             }
-            d1 = this.jdField_a_of_type_Fhh.jdField_c_of_type_Int * 100.0D / i1;
+            d1 = this.jdField_a_of_type_Fct.jdField_c_of_type_Int * 100.0D / i1;
             ((HashMap)localObject1).put("imageHitRate", String.valueOf(d1));
             StatisticCollector.a(BaseApplicationImpl.a()).a(null, "actMemory", true, 0L, 0L, (HashMap)localObject1, null);
-            this.jdField_a_of_type_Fhh.jdField_a_of_type_Long = l1;
-            this.jdField_a_of_type_Fhh.b();
+            this.jdField_a_of_type_Fct.jdField_a_of_type_Long = l1;
+            this.jdField_a_of_type_Fct.b();
           }
           if (QLog.isColorLevel()) {
-            QLog.d("GuardManager", 2, "reportMemoryInfo, startTime=" + this.jdField_a_of_type_Fhh.jdField_a_of_type_Long + ", statCount=" + this.jdField_a_of_type_Fhh.jdField_a_of_type_Int + ", sysTotalMemory=" + this.jdField_a_of_type_Fhh.jdField_b_of_type_Long + ", sysAvailableMemory=" + this.jdField_a_of_type_Fhh.d + ", qqOtherUsedMemory=" + this.jdField_a_of_type_Fhh.e + ", qqUsedMemory=" + this.jdField_a_of_type_Fhh.f + ",imageCacheMax=" + this.jdField_a_of_type_Fhh.g + ",imageCacheUsed=" + this.jdField_a_of_type_Fhh.h + ",imageHitCount=" + this.jdField_a_of_type_Fhh.jdField_c_of_type_Int + ",imageHitTotal=" + (this.jdField_a_of_type_Fhh.jdField_c_of_type_Int + this.jdField_a_of_type_Fhh.jdField_b_of_type_Int));
+            QLog.d("GuardManager", 2, "reportMemoryInfo, startTime=" + this.jdField_a_of_type_Fct.jdField_a_of_type_Long + ", statCount=" + this.jdField_a_of_type_Fct.jdField_a_of_type_Int + ", sysTotalMemory=" + this.jdField_a_of_type_Fct.jdField_b_of_type_Long + ", sysAvailableMemory=" + this.jdField_a_of_type_Fct.d + ", qqOtherUsedMemory=" + this.jdField_a_of_type_Fct.e + ", qqUsedMemory=" + this.jdField_a_of_type_Fct.f + ",imageCacheMax=" + this.jdField_a_of_type_Fct.g + ",imageCacheUsed=" + this.jdField_a_of_type_Fct.h + ",imageHitCount=" + this.jdField_a_of_type_Fct.jdField_c_of_type_Int + ",imageHitTotal=" + (this.jdField_a_of_type_Fct.jdField_c_of_type_Int + this.jdField_a_of_type_Fct.jdField_b_of_type_Int));
           }
-          this.jdField_a_of_type_Fhh.c();
+          this.jdField_a_of_type_Fct.c();
           return;
         }
         catch (Exception localException) {}
@@ -804,7 +804,7 @@ public class GuardManager
         this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
         this.jdField_a_of_type_Boolean = false;
         a(false);
-        this.jdField_a_of_type_Fhi.a(3, paramMessage.obj);
+        this.jdField_a_of_type_Fcu.a(3, paramMessage.obj);
         paramMessage = new Intent("com.tencent.plugin.state.change");
         paramMessage.putExtra("key_plugin_state", 1);
         BaseApplicationImpl.a().sendBroadcast(paramMessage);
@@ -816,7 +816,7 @@ public class GuardManager
         Object localObject;
         if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
         {
-          this.jdField_a_of_type_AndroidContentBroadcastReceiver = new fhg(this, null);
+          this.jdField_a_of_type_AndroidContentBroadcastReceiver = new fcs(this, null);
           localObject = new IntentFilter();
           ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_OFF");
           ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_ON");
@@ -830,7 +830,7 @@ public class GuardManager
           localObject = new Intent("com.tencent.plugin.state.change");
           ((Intent)localObject).putExtra("key_plugin_state", 1);
           BaseApplicationImpl.a().sendBroadcast((Intent)localObject);
-          this.jdField_a_of_type_Fhi.a(2, paramMessage.obj);
+          this.jdField_a_of_type_Fcu.a(2, paramMessage.obj);
           if (this.jdField_a_of_type_Long != 0L) {
             continue;
           }

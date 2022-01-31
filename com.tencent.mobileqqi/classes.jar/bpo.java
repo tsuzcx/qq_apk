@@ -1,37 +1,19 @@
-import android.net.wifi.WifiManager;
-import android.os.Handler;
-import android.os.Message;
-import com.google.zxing.client.android.wifi.BizWifiConfigManager;
-import com.google.zxing.client.android.wifi.WifiParsedResult;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.widgets.ShareResultDialog;
 
 public class bpo
-  extends Thread
+  implements View.OnClickListener
 {
-  public bpo(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString1, String paramString2, String paramString3, boolean paramBoolean, WifiManager paramWifiManager, String paramString4) {}
+  public bpo(ShareResultDialog paramShareResultDialog, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SensorApi", 4, "start connectToWiFi");
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog, -1);
     }
-    Object localObject = new WifiParsedResult(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Boolean);
-    boolean bool = new BizWifiConfigManager(this.jdField_a_of_type_AndroidNetWifiWifiManager).a((WifiParsedResult)localObject);
-    localObject = new Message();
-    if (bool)
-    {
-      ((Message)localObject).what = 5;
-      ((Message)localObject).obj = this.d;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.sendMessage((Message)localObject);
-      return;
-      ((Message)localObject).what = 0;
-      ((Message)localObject).obj = ("javascript: " + this.d + "('1')");
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.b = false;
-    }
+    this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.dismiss();
   }
 }
 

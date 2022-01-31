@@ -1,46 +1,44 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.AppConstants;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantImpl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.managers.TroopRemindSettingManager;
+import com.tencent.mobileqq.model.FriendManager;
 
 public class byf
   implements Runnable
 {
-  public byf(AccountManageActivity paramAccountManageActivity, String paramString) {}
+  public byf(ChatActivity paramChatActivity) {}
   
   public void run()
   {
-    int i = SubAccountAssistantImpl.a().a(this.jdField_a_of_type_JavaLangString);
-    if (i >= 3)
+    new byg(this).execute(new Void[0]);
+    if ((this.a.getIntent().getExtras().containsKey("forward_type")) && (this.a.a.a != null) && (this.a.a.a.equals(this.a.getIntent().getStringExtra("uin")))) {}
+    for (int i = 1;; i = 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountManageActivity", 2, "set stick2top fail." + this.jdField_a_of_type_JavaLangString + " count=" + i + " >=max_stick2top_count , return.");
+      FriendManager localFriendManager = (FriendManager)this.a.b.getManager(8);
+      boolean bool = localFriendManager.f(this.a.a.a);
+      if ((TroopRemindSettingManager.a().a(this.a.a.a, this.a.b)) && (!bool))
+      {
+        ChatActivityUtils.a(this.a, this.a.getString(2131562215), 3000L);
+        TroopRemindSettingManager.a().a(this.a.a.a, this.a.b);
+      }
+      if ((i == 0) && (this.a.b.b(this.a.a.a) == 3) && (!bool)) {
+        ChatActivityUtils.a(this.a, this.a.getString(2131563267), 3000L);
+      }
+      if (bool) {
+        localFriendManager.g(this.a.a.a);
       }
       return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.b.a().a().b(String.valueOf(AppConstants.O), 7000) != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountManageActivity", 2, "subaccount ru is not null");
-      }
-      SubAccountAssistantImpl.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.b, System.currentTimeMillis() / 1000L);
-    }
-    for (;;)
-    {
-      SubAccountAssistantImpl.a().a(this.jdField_a_of_type_JavaLangString, i);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountManageActivity", 2, "subaccount ru is null");
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     byf
  * JD-Core Version:    0.7.0.1
  */

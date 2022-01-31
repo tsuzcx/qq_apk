@@ -1,21 +1,45 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundActivity;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.List;
 
 public class esp
-  implements View.OnClickListener
+  implements QvipSpecialSoundManager.CallBack
 {
-  public esp(BannerManager paramBannerManager) {}
+  public esp(QvipSpecialSoundActivity paramQvipSpecialSoundActivity, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    this.a.a(10, 0);
-    this.a.a(null);
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity.a = ((List)QvipSpecialSoundManager.a.get(this.jdField_a_of_type_JavaLangString));
+        QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity);
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return;
+      }
+      finally
+      {
+        QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("SpecialSoundActivity", 2, "special sound cofing is empty.");
+      }
+      QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity, this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity.getString(2131562063));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     esp
  * JD-Core Version:    0.7.0.1
  */

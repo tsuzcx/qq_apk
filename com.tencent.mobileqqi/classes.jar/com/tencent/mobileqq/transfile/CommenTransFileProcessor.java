@@ -25,7 +25,7 @@ import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.Cryptor;
 import com.tencent.qphone.base.util.QLog;
-import grj;
+import gnc;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.HashMap;
@@ -898,7 +898,7 @@ public abstract class CommenTransFileProcessor
         catch (OutOfMemoryError localOutOfMemoryError2)
         {
           System.gc();
-          localObject1 = new grj(this, (JceOutputStream)localObject1);
+          localObject1 = new gnc(this, (JceOutputStream)localObject1);
           new Timer().schedule((TimerTask)localObject1, 350L);
           return;
         }

@@ -1,26 +1,51 @@
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.AIOTipsController;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.data.TroopFileObserver;
+import com.tencent.mobileqq.troop.utils.TroopFileManager;
+import java.util.Collection;
 
 public class cdq
-  implements View.OnClickListener
+  implements TroopFileObserver
 {
-  public cdq(ChatActivity paramChatActivity) {}
+  public cdq(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    ChatActivity.a(this.a).a();
-    ChatActivityUtils.a(this.a.b, this.a, this.a.a.a, true, true, null);
-    ReportController.b(this.a.b, "CliOper", "", "", "0X8003F00", "0X8003F00", 0, 0, "", "", "", "");
+    if (paramInt > 0)
+    {
+      View localView = this.a.jdField_a_of_type_ArrayOfAndroidViewView[2];
+      this.a.a(localView, paramInt);
+    }
+  }
+  
+  public void a(TroopFileInfo paramTroopFileInfo) {}
+  
+  public void a(Collection paramCollection, boolean paramBoolean) {}
+  
+  public void b(TroopFileInfo paramTroopFileInfo) {}
+  
+  public void c(TroopFileInfo paramTroopFileInfo)
+  {
+    if ((paramTroopFileInfo != null) && (this.a.jdField_a_of_type_AndroidOsHandler != null))
+    {
+      Message localMessage = Message.obtain();
+      localMessage.what = 7;
+      localMessage.obj = paramTroopFileInfo;
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    }
+    if (ChatSettingForTroop.a(this.a).a() > 0)
+    {
+      paramTroopFileInfo = this.a.jdField_a_of_type_ArrayOfAndroidViewView[2];
+      this.a.a(paramTroopFileInfo, ChatSettingForTroop.a(this.a).a());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cdq
  * JD-Core Version:    0.7.0.1
  */

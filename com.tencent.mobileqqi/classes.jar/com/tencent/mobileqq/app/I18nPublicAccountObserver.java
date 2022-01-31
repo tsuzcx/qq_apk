@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import fhj;
-import fhk;
+import fcv;
+import fcw;
 import java.util.List;
 
 public class I18nPublicAccountObserver
@@ -22,7 +22,7 @@ public class I18nPublicAccountObserver
         a(paramInt, false, null);
         return;
       }
-      paramObject = (fhj)paramObject;
+      paramObject = (fcv)paramObject;
       boolean bool1 = bool2;
       if (paramBoolean)
       {
@@ -34,7 +34,7 @@ public class I18nPublicAccountObserver
       a(paramInt, bool1, paramObject.jdField_a_of_type_JavaUtilList);
       return;
     }
-    paramObject = (fhk)paramObject;
+    paramObject = (fcw)paramObject;
     a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_Boolean);
   }
   

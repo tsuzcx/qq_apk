@@ -1,16 +1,37 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.open.agent.FriendChooser.SearchResultAdapter;
-import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.appreport.AppReport;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.io.File;
 
 public class hng
-  implements ImageLoader.ImageLoadListener
+  implements Runnable
 {
-  public hng(FriendChooser.SearchResultAdapter paramSearchResultAdapter, ImageView paramImageView) {}
+  public hng(DownloadManager paramDownloadManager) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    Context localContext = CommonDataAdapter.a().a();
+    boolean bool = localContext.getSharedPreferences("appcenter_app_report", 0).getBoolean("is_app_last_fullReport_success", false);
+    SimpleAccount localSimpleAccount = BaseApplicationImpl.a().getFirstSimpleAccount();
+    String str = "";
+    if (localSimpleAccount != null) {
+      str = localSimpleAccount.getUin();
+    }
+    if (!bool)
+    {
+      LogUtility.c(DownloadManager.a, "getUpdateApp will do full report");
+      AppReport.a(localContext, null, null, str);
+    }
+    while (!new File(localContext.getFilesDir() + File.separator + "appcenter_app_report_storage_file.txt").exists()) {
+      return;
+    }
+    LogUtility.c(DownloadManager.a, "getUpdateApp will do incremental report");
+    AppReport.a(localContext, null, 0, null, null, str);
   }
 }
 

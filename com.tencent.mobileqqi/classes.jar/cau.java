@@ -1,31 +1,29 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class cau
-  implements CompoundButton.OnCheckedChangeListener
+public final class cau
+  implements Runnable
 {
-  public cau(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public cau(String paramString, QQAppInterface paramQQAppInterface) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    AssistantSettingActivity.a(this.a).setContentDescription("摇动手机截屏");
-    paramCompoundButton = this.a.b;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    Object localObject = ChatBackgroundSettingActivity.a();
+    ChatBackgroundSettingActivity.c = ChatBackgroundSettingActivity.a(BaseApplication.getContext(), (List)localObject, this.jdField_a_of_type_JavaLangString);
+    localObject = ChatBackgroundSettingActivity.a.obtainMessage();
+    ((Message)localObject).what = 1;
+    ((Message)localObject).obj = new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface };
+    if (QLog.isColorLevel())
     {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Shake_screenshot", "Shake_screenshot_switch", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131563409), "qqsetting_screenshot_key", paramBoolean);
-      if (!paramBoolean) {
-        break;
-      }
-      this.a.y();
-      return;
+      QLog.d("ThemeDownloadTrace", 2, "bgin to report chat bg info");
+      QLog.d("ThemeDownloadTrace", 2, "initCurrChatBgNameForReport is:" + ChatBackgroundSettingActivity.c);
     }
-    this.a.z();
+    ChatBackgroundSettingActivity.a.sendMessage((Message)localObject);
   }
 }
 

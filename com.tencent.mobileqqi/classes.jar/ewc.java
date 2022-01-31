@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.ResultRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.voip.VoipDialInterface;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
-public final class ewc
-  implements Parcelable.Creator
+public class ewc
+  implements View.OnClickListener
 {
-  public SelectMemberActivity.ResultRecord a(Parcel paramParcel)
-  {
-    return new SelectMemberActivity.ResultRecord(paramParcel, null);
-  }
+  public ewc(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  public SelectMemberActivity.ResultRecord[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new SelectMemberActivity.ResultRecord[paramInt];
+    this.a.a.a("#");
+    VoipDialInterfaceActivity.a(this.a, '#');
+    if (VoipDialInterfaceActivity.b(this.a)) {
+      new Thread(new ewd(this)).start();
+    }
   }
 }
 

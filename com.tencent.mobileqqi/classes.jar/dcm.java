@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
-public class dcm
+class dcm
   implements Runnable
 {
-  public dcm(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
+  dcm(dcl paramdcl) {}
   
   public void run()
   {
-    this.a.c();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a());
-    this.a.a.a(this.a.jdField_b_of_type_JavaLangString, this.a.c, localArrayList);
+    this.a.a.j = true;
+    this.a.a.p();
   }
 }
 

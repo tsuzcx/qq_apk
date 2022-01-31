@@ -1,60 +1,60 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
-import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.qphone.base.util.QLog;
-import com.weiyun.sdk.IWyFileSystem.IWyCallback;
-import com.weiyun.sdk.IWyFileSystem.ListOfflineFile;
-import com.weiyun.sdk.IWyFileSystem.WyErrorStatus;
-import com.weiyun.sdk.data.WyOfflineFileInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.maproam.activity.RoamingActivity;
+import com.tencent.mobileqq.maproam.widget.RoamLocalSearchBar;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class gbq
-  implements IWyFileSystem.IWyCallback
+  implements Runnable
 {
-  public gbq(WeiYunLogicCenter paramWeiYunLogicCenter) {}
-  
-  public void a(IWyFileSystem.ListOfflineFile paramListOfflineFile)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "queryOfflineFileList onSucceed, num[" + paramListOfflineFile.files.size() + "]");
-    }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramListOfflineFile.files.iterator();
-    while (localIterator.hasNext())
+    if (!RoamingActivity.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
     {
-      WyOfflineFileInfo localWyOfflineFileInfo = (WyOfflineFileInfo)localIterator.next();
-      OfflineFileInfo localOfflineFileInfo = new OfflineFileInfo();
-      localOfflineFileInfo.jdField_a_of_type_Boolean = localWyOfflineFileInfo.bSend;
-      localOfflineFileInfo.jdField_a_of_type_Int = localWyOfflineFileInfo.dangerLevel;
-      localOfflineFileInfo.jdField_b_of_type_Long = localWyOfflineFileInfo.fileSize;
-      localOfflineFileInfo.c = (MessageCache.a() * 1000L + localWyOfflineFileInfo.lifeTime);
-      localOfflineFileInfo.d = localWyOfflineFileInfo.uploadTime;
-      localOfflineFileInfo.jdField_b_of_type_JavaLangString = localWyOfflineFileInfo.fileName;
-      localOfflineFileInfo.jdField_a_of_type_JavaLangString = localWyOfflineFileInfo.guid;
-      localOfflineFileInfo.jdField_a_of_type_Long = localWyOfflineFileInfo.uin;
-      localArrayList.add(localOfflineFileInfo);
-      if (QLog.isColorLevel()) {
-        QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "OfflineFileInfo[" + localOfflineFileInfo.toString() + "]");
-      }
+      jdField_a_of_type_Boolean = bool;
+      return;
     }
-    this.a.a.a().a(true, 32, new Object[] { Boolean.valueOf(paramListOfflineFile.isEnd), localArrayList });
   }
   
-  public void onFailed(IWyFileSystem.WyErrorStatus paramWyErrorStatus)
+  public gbq(RoamingActivity paramRoamingActivity, int paramInt) {}
+  
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryOfflineFileList onFailed: errcode[" + paramWyErrorStatus.errorCode + "], errmsg[" + paramWyErrorStatus.errorMsg + "]");
+    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqMaproamActivityRoamingActivity.c.getLayoutParams() == null)) {
+      throw new AssertionError();
     }
-    this.a.a.a().a(false, 32, new Object[] { Integer.valueOf(paramWyErrorStatus.errorCode), paramWyErrorStatus.errorMsg });
+    if (1 == this.jdField_a_of_type_Int)
+    {
+      View localView1 = this.jdField_a_of_type_ComTencentMobileqqMaproamActivityRoamingActivity.findViewById(16908290);
+      if (localView1 == null) {
+        return;
+      }
+      View localView2 = this.jdField_a_of_type_ComTencentMobileqqMaproamActivityRoamingActivity.findViewById(2131231448);
+      this.jdField_a_of_type_ComTencentMobileqqMaproamActivityRoamingActivity.c.getLayoutParams().height = (localView1.getHeight() - localView2.getHeight());
+      this.jdField_a_of_type_ComTencentMobileqqMaproamActivityRoamingActivity.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      RoamingActivity.a(this.jdField_a_of_type_ComTencentMobileqqMaproamActivityRoamingActivity).setVisibility(8);
+      RoamingActivity.a(this.jdField_a_of_type_ComTencentMobileqqMaproamActivityRoamingActivity).setVisibility(8);
+      if (VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqMaproamActivityRoamingActivity.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface)) {
+        this.jdField_a_of_type_ComTencentMobileqqMaproamActivityRoamingActivity.a.setVisibility(0);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqMaproamActivityRoamingActivity.setTitle(2131562996);
+      RoamingActivity.a(this.jdField_a_of_type_ComTencentMobileqqMaproamActivityRoamingActivity);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqMaproamActivityRoamingActivity.c.requestLayout();
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqMaproamActivityRoamingActivity.c.getLayoutParams().height = this.jdField_a_of_type_ComTencentMobileqqMaproamActivityRoamingActivity.getResources().getDimensionPixelSize(2131427577);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gbq
  * JD-Core Version:    0.7.0.1
  */

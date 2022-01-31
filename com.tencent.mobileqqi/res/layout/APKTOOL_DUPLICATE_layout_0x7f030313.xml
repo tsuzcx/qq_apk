@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080871" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080cf9" android:paddingTop="6.0dip" android:paddingBottom="15.0dip" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00a6" />
-</LinearLayout>
+    <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080cf9" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0a0017" android:padding="10.0dip" android:scrollbars="none" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0a0017" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" />
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080874" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="70.0dip" android:layout_marginRight="10.0dip" android:layout_centerInParent="true">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bb3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207a1" />
+        <TextView android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bb4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01ef" android:layout_marginBottom="42.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ec" />
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f080cfa" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030312" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,38 +1,37 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.PublicAccountChatActivity;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SetFunctionFlagResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class dgm
-  implements BusinessObserver
+  implements Runnable
 {
-  public dgm(PublicAccountChatActivity paramPublicAccountChatActivity) {}
+  public dgm(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if ((paramBoolean) && (paramBoolean)) {}
     try
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
+      if ((RegisterQQNumberActivity.a(this.a) == null) && (!this.a.isFinishing()))
       {
-        mobileqq_mp.SetFunctionFlagResponse localSetFunctionFlagResponse = new mobileqq_mp.SetFunctionFlagResponse();
-        localSetFunctionFlagResponse.mergeFrom(paramBundle);
-        if ((localSetFunctionFlagResponse.ret_info.has()) && (((mobileqq_mp.RetInfo)localSetFunctionFlagResponse.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)localSetFunctionFlagResponse.ret_info.get()).ret_code.get() == 0) && (QLog.isColorLevel())) {
-          QLog.d(PublicAccountChatActivity.e(), 2, "状态切换成功");
-        }
+        RegisterQQNumberActivity.a(this.a, new QQProgressDialog(this.a.a(), this.a.d()));
+        RegisterQQNumberActivity.a(this.a).b(2131562645);
+      }
+      if ((RegisterQQNumberActivity.a(this.a) != null) && (!RegisterQQNumberActivity.a(this.a).isShowing())) {
+        RegisterQQNumberActivity.a(this.a).show();
       }
       return;
     }
-    catch (Exception paramBundle) {}
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dgm
  * JD-Core Version:    0.7.0.1
  */

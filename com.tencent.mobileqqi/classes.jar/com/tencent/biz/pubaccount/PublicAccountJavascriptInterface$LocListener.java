@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount;
 import android.app.Activity;
 import android.os.Handler;
 import android.text.TextUtils;
-import bqi;
+import bke;
 import com.tencent.biz.common.report.BnrReport;
 import com.tencent.biz.pubaccount.util.Encrypt;
 import com.tencent.map.lbsapi.api.SOSOMapLBSApi;
@@ -20,7 +20,7 @@ public class PublicAccountJavascriptInterface$LocListener
 {
   public long a;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private Runnable jdField_a_of_type_JavaLangRunnable = new bqi(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new bke(this);
   public String a;
   boolean jdField_a_of_type_Boolean;
   

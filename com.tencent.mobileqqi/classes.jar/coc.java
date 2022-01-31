@@ -1,26 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import com.tencent.mobileqq.model.FriendManager;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.activity.FriendProfileImageModel;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
-class coc
-  implements DialogInterface.OnClickListener
+public class coc
+  implements AdapterView.OnItemSelectedListener
 {
-  coc(cob paramcob, String paramString) {}
+  public coc(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(AdapterView paramAdapterView) {}
+  
+  public void a_(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    ((FriendManager)this.jdField_a_of_type_Cob.a.b.getManager(8)).d(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Cob.a.b.a().a();
-    paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaLangString, 3000));
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("isNeedFinish", true);
-    this.jdField_a_of_type_Cob.a.setResult(-1, paramDialogInterface);
-    this.jdField_a_of_type_Cob.a.finish();
+    if (paramView == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidViewView = paramView;
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(paramInt);
+    this.a.a(paramAdapterView, paramInt);
   }
 }
 

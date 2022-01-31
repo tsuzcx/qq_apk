@@ -1,33 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.qphone.base.util.QLog;
 
-class dxw
-  implements View.OnClickListener
+public class dxw
+  implements Animation.AnimationListener
 {
-  dxw(dxu paramdxu, TroopMemberListActivity.ATroopMember paramATroopMember) {}
+  public dxw(PressToSpeakPanel paramPressToSpeakPanel) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (!this.jdField_a_of_type_Dxu.a.b) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationEnd is called,time is:" + System.currentTimeMillis());
     }
-    if (!NetworkUtil.e(BaseApplication.getContext()))
-    {
-      this.jdField_a_of_type_Dxu.a.a(this.jdField_a_of_type_Dxu.a.a, this.jdField_a_of_type_Dxu.a.getString(2131562452), this.jdField_a_of_type_Dxu.a.getString(2131562948));
-      return;
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationRepeat is called,time is:" + System.currentTimeMillis());
     }
-    DialogUtil.a(this.jdField_a_of_type_Dxu.a, 230).setMessage(2131561973).setPositiveButton(2131562539, new dxy(this)).setNegativeButton(2131561746, new dxx(this)).show();
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationStart is called,time is:" + System.currentTimeMillis());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dxw
  * JD-Core Version:    0.7.0.1
  */

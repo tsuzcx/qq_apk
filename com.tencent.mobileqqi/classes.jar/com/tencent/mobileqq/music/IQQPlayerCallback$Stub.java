@@ -5,7 +5,7 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import gha;
+import gco;
 
 public abstract class IQQPlayerCallback$Stub
   extends Binder
@@ -29,7 +29,7 @@ public abstract class IQQPlayerCallback$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IQQPlayerCallback))) {
       return (IQQPlayerCallback)localIInterface;
     }
-    return new gha(paramIBinder);
+    return new gco(paramIBinder);
   }
   
   public IBinder asBinder()

@@ -18,9 +18,9 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
-import ibq;
-import ibr;
-import ibs;
+import hww;
+import hwx;
+import hwy;
 
 public class TipsPopupWindow
   extends PopupWindow
@@ -34,7 +34,7 @@ public class TipsPopupWindow
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private TipsLinearLayout jdField_a_of_type_ComTencentWidgetTipsLinearLayout;
-  private ibs jdField_a_of_type_Ibs;
+  private hwy jdField_a_of_type_Hwy;
   private boolean jdField_a_of_type_Boolean = false;
   public int b;
   private boolean b;
@@ -102,7 +102,7 @@ public class TipsPopupWindow
     }
     j = (int)paramContext.getResources().getDimension(2131427356);
     ((FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout.getLayoutParams()).width = (i - j * 2);
-    paramContext = paramContext.getResources().getDrawable(2130840317);
+    paramContext = paramContext.getResources().getDrawable(2130840319);
     this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout.setBackgroundDrawable(paramContext);
     this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout.requestLayout();
     setWindowLayoutMode(-2, -2);
@@ -111,13 +111,13 @@ public class TipsPopupWindow
     setAnimationStyle(2131624364);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout.setmTipsLayoutAnimListener(this);
-    this.jdField_a_of_type_Ibs = new ibs(this);
+    this.jdField_a_of_type_Hwy = new hwy(this);
   }
   
   private void d()
   {
     if (this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(this.jdField_a_of_type_Ibs, 1000L);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(this.jdField_a_of_type_Hwy, 1000L);
     }
     while ((!this.jdField_a_of_type_Boolean) || (this.d)) {
       return;
@@ -135,7 +135,7 @@ public class TipsPopupWindow
       this.d = false;
     }
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_Ibs);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_Hwy);
   }
   
   private void f()
@@ -170,7 +170,7 @@ public class TipsPopupWindow
     }
     showAtLocation(this.jdField_a_of_type_AndroidWidgetFrameLayout, 48, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
     if (paramBoolean) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(new ibq(this), paramInt);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(new hww(this), paramInt);
     }
   }
   
@@ -203,7 +203,7 @@ public class TipsPopupWindow
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.post(new ibr(this));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.post(new hwx(this));
   }
   
   public void b(int paramInt)
@@ -226,7 +226,7 @@ public class TipsPopupWindow
   
   public void c()
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_Ibs);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_Hwy);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
     this.d = false;
@@ -238,8 +238,8 @@ public class TipsPopupWindow
     if (QLog.isColorLevel()) {
       QLog.d("TipsPopupWindow", 2, "dismiss");
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_Ibs);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(this.jdField_a_of_type_Ibs, 300L);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_Hwy);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(this.jdField_a_of_type_Hwy, 300L);
   }
   
   public void showAsDropDown(View paramView)

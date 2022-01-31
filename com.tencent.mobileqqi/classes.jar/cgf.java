@@ -1,26 +1,27 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.DetailProfileActivity;
+import com.tencent.mobileqq.richstatus.IStatusListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
-public final class cgf
-  implements Runnable
+public class cgf
+  implements IStatusListener
 {
-  public cgf(String paramString) {}
+  public cgf(DetailProfileActivity paramDetailProfileActivity) {}
   
-  public void run()
+  public void a(int paramInt, RichStatus paramRichStatus)
   {
-    Object localObject = BaseApplication.getContext().getSharedPreferences("free_call", 0);
-    long l = MessageCache.a();
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putString(this.a, String.valueOf(l * 1000L));
-    ((SharedPreferences.Editor)localObject).commit();
+    if (paramInt == -1) {
+      this.a.a(2131561424, 1);
+    }
+    this.a.a();
   }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cgf
  * JD-Core Version:    0.7.0.1
  */

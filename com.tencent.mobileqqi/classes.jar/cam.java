@@ -1,50 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.FriendManager;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.ConfigObserver;
+import java.io.File;
+import java.util.List;
 
 public class cam
-  implements View.OnClickListener
+  extends ConfigObserver
 {
-  public cam(AddRequestActivity paramAddRequestActivity) {}
+  public cam(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, long paramLong)
   {
-    paramView = (FriendManager)this.a.b.getManager(8);
-    if (paramView != null) {}
-    for (boolean bool = paramView.b(AddRequestActivity.a(this.a));; bool = false)
+    if (paramBoolean)
     {
-      if (bool)
-      {
-        paramView = new ProfileActivity.AllInOne(AddRequestActivity.a(this.a), 1);
-        ProfileActivity.a(this.a, paramView);
-        return;
+      Object localObject = new File(AppConstants.aU);
+      List localList = null;
+      if (((File)localObject).exists()) {
+        localList = ChatBackgroundSettingActivity.a();
       }
-      switch (this.a.d)
+      if (localList != null)
       {
-      default: 
-        paramView = new ProfileActivity.AllInOne(AddRequestActivity.a(this.a), 25);
-        ProfileActivity.a(this.a, paramView);
-        return;
-      case -1011: 
-      case -1006: 
-      case 1: 
-      case 187: 
-        paramView = new ProfileActivity.AllInOne(AddRequestActivity.a(this.a), 25);
-        paramView.g = AddRequestActivity.a(this.a);
-        paramView.jdField_c_of_type_JavaLangString = String.valueOf(AddRequestActivity.a(this.a));
-        ProfileActivity.a(this.a, paramView);
-        return;
+        localObject = this.a.getSharedPreferences("chat_background_version", 0).edit();
+        ((SharedPreferences.Editor)localObject).putLong("chat_background_version", paramLong);
+        ((SharedPreferences.Editor)localObject).commit();
+        this.a.runOnUiThread(new can(this, localList));
       }
-      paramView = new ProfileActivity.AllInOne(AddRequestActivity.a(this.a), 25);
-      paramView.g = AddRequestActivity.a(this.a);
-      paramView.jdField_c_of_type_JavaLangString = String.valueOf(AddRequestActivity.a(this.a));
-      paramView.jdField_c_of_type_Int = 1;
-      ProfileActivity.a(this.a, paramView);
-      return;
+    }
+    this.a.d();
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.a.notifyDataSetChanged();
     }
   }
 }

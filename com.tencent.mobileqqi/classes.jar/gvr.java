@@ -1,16 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.troop.data.TroopCreateLogic;
 
 public class gvr
-  implements AdapterView.OnItemClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public gvr(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public gvr(TroopCreateLogic paramTroopCreateLogic) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.d();
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
   }
 }
 

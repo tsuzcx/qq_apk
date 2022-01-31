@@ -1,38 +1,27 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SubAccountBindObserver;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
 public class clh
-  extends SubAccountBindObserver
+  implements Animation.AnimationListener
 {
-  public clh(Conversation paramConversation) {}
+  public clh(ForwardFriendListActivity paramForwardFriendListActivity, int paramInt) {}
   
-  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.d = true;
-    if ((paramSubAccountBackProtocData != null) && (paramSubAccountBackProtocData.p == 1008)) {
-      this.a.a.a().c(AppConstants.O, 7000);
-    }
-    this.a.a(8, AppConstants.O, 7000);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity.a.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity.a.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity.a.requestLayout();
   }
   
-  protected void b(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
-  {
-    this.a.a(8, AppConstants.O, 7000);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  protected void c(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
-  {
-    this.a.a.a().c(AppConstants.O, 7000);
-    this.a.a(8, AppConstants.O, 7000);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     clh
  * JD-Core Version:    0.7.0.1
  */

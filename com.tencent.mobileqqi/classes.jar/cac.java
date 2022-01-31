@@ -1,56 +1,35 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class cac
-  implements TextWatcher
+public final class cac
+  implements FMDialogUtil.FMDialogInterface
 {
-  public cac(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public cac(SessionInfo paramSessionInfo, ForwardFileInfo paramForwardFileInfo, QQAppInterface paramQQAppInterface) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a()
   {
-    int i = paramEditable.length();
-    int j = i;
-    if (i > 30)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
     {
-      paramEditable = paramEditable.toString();
-      if (i > 30)
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.a()))
       {
-        i = paramEditable.length();
-        if ((i >= 2) && (Character.isHighSurrogate(paramEditable.charAt(i - 2)))) {}
-        for (paramEditable = paramEditable.substring(0, i - 2);; paramEditable = paramEditable.substring(0, i - 1))
-        {
-          i = paramEditable.length();
-          break;
-        }
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        return;
       }
-      if (AddFriendVerifyActivity.a(this.a) != 9) {
-        break label163;
-      }
-      AddFriendVerifyActivity.a(this.a).setText(paramEditable);
-      AddFriendVerifyActivity.a(this.a).setSelection(paramEditable.length());
-    }
-    for (j = i;; j = i)
-    {
-      if (AddFriendVerifyActivity.b(this.a).getVisibility() == 0) {
-        AddFriendVerifyActivity.b(this.a).setText(30 - j + "");
-      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.b(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
       return;
-      label163:
-      this.a.a.setText(paramEditable);
-      this.a.a.setSelection(paramEditable.length());
     }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.b(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     cac
  * JD-Core Version:    0.7.0.1
  */

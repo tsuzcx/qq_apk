@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
 
 public class ctw
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ctw(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public ctw(LoginActivity paramLoginActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    FriendProfileImageActivity.a(this.a);
+    if (!this.a.isFinishing()) {
+      this.a.showDialog(3);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ctw
  * JD-Core Version:    0.7.0.1
  */

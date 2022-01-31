@@ -26,7 +26,7 @@ import com.tencent.mobileqq.redtouch.RedTouchManager;
 import com.tencent.mobileqq.servlet.QZoneManagerImp;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
-import fcz;
+import eyl;
 import java.util.List;
 
 public class LebaListViewAdapter
@@ -42,7 +42,7 @@ public class LebaListViewAdapter
   private float jdField_a_of_type_Float;
   Context jdField_a_of_type_AndroidContentContext;
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler = new fcz(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new eyl(this);
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -195,7 +195,7 @@ public class LebaListViewAdapter
         try
         {
           if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839213);
+            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839215);
           }
           localURLDrawable = URLDrawable.getDrawable(paramLebaViewItem, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, false);
           if (localURLDrawable != null)
@@ -213,7 +213,7 @@ public class LebaListViewAdapter
             if (QLog.isColorLevel()) {
               QLog.d("LebaListViewAdapter", 2, "red icon load error, iconUrl=" + paramLebaViewItem);
             }
-            paramLebaViewItem = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839213);
+            paramLebaViewItem = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839215);
             paramCornerListItemHolder.d.setImageDrawable(paramLebaViewItem);
             paramCornerListItemHolder.d.setVisibility(0);
             localException.printStackTrace();
@@ -297,7 +297,7 @@ public class LebaListViewAdapter
     }
     LebaViewItem localLebaViewItem = (LebaViewItem)getItem(paramInt);
     if (paramInt == 0) {
-      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903201, null);
+      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903202, null);
     }
     for (;;)
     {
@@ -315,15 +315,15 @@ public class LebaListViewAdapter
         {
           paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.e, null);
           paramViewGroup = new LebaListViewAdapter.CornerListItemHolder(this);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131231554));
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231556));
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231555));
-          paramViewGroup.d = ((ImageView)paramView.findViewById(2131231559));
-          paramViewGroup.e = ((ImageView)paramView.findViewById(2131231560));
+          paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131231555));
+          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231557));
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231556));
+          paramViewGroup.d = ((ImageView)paramView.findViewById(2131231560));
+          paramViewGroup.e = ((ImageView)paramView.findViewById(2131231561));
           paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231295));
-          paramViewGroup.c = ((ImageView)paramView.findViewById(2131231558));
-          paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231557));
-          paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131231561);
+          paramViewGroup.c = ((ImageView)paramView.findViewById(2131231559));
+          paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231558));
+          paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131231562);
           paramView.setTag(paramViewGroup);
           label227:
           paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strResName);
@@ -347,7 +347,7 @@ public class LebaListViewAdapter
           paramViewGroup = (LebaListViewAdapter.CornerListItemHolder)paramView.getTag();
           break label227;
           label323:
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838958);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838960);
           break label262;
           paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
         }
@@ -373,7 +373,7 @@ public class LebaListViewAdapter
       {
         paramViewGroup = paramView;
         if (paramView == null) {
-          paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903201, null);
+          paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903202, null);
         }
       }
       else

@@ -1,51 +1,36 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.pic.BasePicOprerator;
-import com.tencent.mobileqq.pic.Logger;
-import com.tencent.mobileqq.pic.PicResult;
-import com.tencent.mobileqq.pic.UiCallBack;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.richstatus.IStatusListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class gic
-  extends Handler
+  extends FriendListObserver
 {
-  public gic(BasePicOprerator paramBasePicOprerator, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public gic(StatusManager paramStatusManager) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean)
   {
-    Logger.a(this.a.b, this.a.jdField_a_of_type_JavaLangString, "dispatchMessage", "what:" + paramMessage.what + ",result:" + paramMessage.arg1 + ",obj:" + paramMessage.obj);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack == null) {}
-    int i;
-    PicResult localPicResult;
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.set", 2, "onSetSelfSignatureResult " + paramBoolean);
+    }
+    StatusManager.a(this.a, null);
+    if (paramBoolean) {}
+    for (int i = 100; StatusManager.b(this.a) != null; i = -1)
     {
-      return;
-      i = paramMessage.arg1;
-      localPicResult = (PicResult)paramMessage.obj;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 0: 
-        this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(i, localPicResult);
-        return;
+      RichStatus localRichStatus = this.a.a();
+      Iterator localIterator = StatusManager.b(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((IStatusListener)localIterator.next()).a(i, localRichStatus);
       }
-    } while (!(localPicResult.a instanceof Integer));
-    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(((Integer)localPicResult.a).intValue());
-    return;
-    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.b(i, localPicResult);
-    return;
-    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.c(i, localPicResult);
-    return;
-    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.d(i, localPicResult);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gic
  * JD-Core Version:    0.7.0.1
  */

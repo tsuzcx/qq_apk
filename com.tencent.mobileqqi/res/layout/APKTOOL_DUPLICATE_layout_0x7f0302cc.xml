@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0a00b6" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:qzone="http://schemas.android.com/apk/res/com.tencent.mobileqqi">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/common_strip_setting_bg" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="15.0dip">
+        <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0122" android:layout_gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="显示挂件" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0090" />
+        <com.tencent.widget.Switch android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bdb" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020145" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textOn="@null" android:textOff="@null" />
+    </LinearLayout>
+    <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00c7" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bdc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip" android:text="全部挂件" />
+    <com.qzone.widget.ExtendGridView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bdd" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="35.0dip" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0a0017" android:scrollingCache="false" android:horizontalSpacing="10.0dip" android:verticalSpacing="10.0dip" android:stretchMode="columnWidth" android:numColumns="3" qzone:stretchable="true" />
+    <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+</LinearLayout>

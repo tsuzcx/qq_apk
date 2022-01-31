@@ -1,23 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.ShieldOperationItem;
+import android.content.res.Resources;
+import android.graphics.NinePatch;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import com.tencent.mobileqq.bubble.VipBubbleDrawable;
 
 public final class fld
-  implements Parcelable.Creator
+  extends Drawable.ConstantState
 {
-  public ShieldOperationItem a(Parcel paramParcel)
+  public final NinePatch a;
+  
+  public fld(NinePatch paramNinePatch)
   {
-    ShieldOperationItem localShieldOperationItem = new ShieldOperationItem();
-    localShieldOperationItem.jdField_a_of_type_Int = paramParcel.readInt();
-    localShieldOperationItem.b = paramParcel.readInt();
-    localShieldOperationItem.c = paramParcel.readInt();
-    localShieldOperationItem.jdField_a_of_type_ArrayOfLong = paramParcel.createLongArray();
-    return localShieldOperationItem;
+    this.a = paramNinePatch;
   }
   
-  public ShieldOperationItem[] a(int paramInt)
+  public int getChangingConfigurations()
   {
-    return null;
+    return 0;
+  }
+  
+  public Drawable newDrawable()
+  {
+    return new VipBubbleDrawable(null, this);
+  }
+  
+  public Drawable newDrawable(Resources paramResources)
+  {
+    return new VipBubbleDrawable(paramResources, this);
   }
 }
 

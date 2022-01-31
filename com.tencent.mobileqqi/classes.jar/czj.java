@@ -1,38 +1,41 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.LoginActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class czj
-  implements TextWatcher
+class czj
+  implements DialogInterface.OnClickListener
 {
-  public czj(LoginActivity paramLoginActivity) {}
+  czj(czi paramczi) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramCharSequence.length() > 0) {
-      if (this.a.b != null) {
-        this.a.b.setVisibility(0);
-      }
-    }
-    while (paramCharSequence.length() > 4)
+    if (!this.a.a.a.isFinishing())
     {
-      this.a.a(paramCharSequence.toString());
-      return;
-      if ((this.a.b != null) && (this.a.b.isShown())) {
-        this.a.b.setVisibility(8);
-      }
+      paramDialogInterface.dismiss();
+      this.a.a.a.showDialog(1);
     }
-    this.a.a.setImageResource(2130838111);
+    if (!NetworkUtil.e(this.a.a.a))
+    {
+      QQToast.a(this.a.a.a, 0, this.a.a.a.getResources().getString(2131562488), 0).b(this.a.a.a.d());
+      return;
+    }
+    if (this.a.a.a.a == null)
+    {
+      this.a.a.a.a = new czk(this);
+      this.a.a.a.b.registObserver(this.a.a.a.a);
+    }
+    PermisionPrivacyActivity.c(this.a.a.a).c();
+    PermisionPrivacyActivity.a(this.a.a.a, 2131562875, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     czj
  * JD-Core Version:    0.7.0.1
  */

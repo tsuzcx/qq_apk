@@ -1,14 +1,12 @@
-import com.dataline.activities.LiteMutiPicViewerActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class by
-  implements Runnable
 {
-  by(bx parambx) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void run()
-  {
-    LiteMutiPicViewerActivity.a(this.a.a);
-  }
+  private by(bx parambx) {}
 }
 
 

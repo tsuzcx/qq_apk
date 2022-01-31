@@ -1,35 +1,15 @@
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCarePersonActivity;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.voip.VoipPayActivity;
 
 public class ewy
-  implements QvipSpecialSoundManager.CallBack
+  implements View.OnClickListener
 {
-  public ewy(QvipSpecialCarePersonActivity paramQvipSpecialCarePersonActivity) {}
+  public ewy(VoipPayActivity paramVoipPayActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        QvipSpecialCarePersonActivity.a(this.a);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        QvipSpecialCarePersonActivity.a(this.a);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QvipSpecialCarePersonActivity", 2, "loadSpecialSoundConfig fail.");
-      }
-    }
+    this.a.a(this.a.a);
   }
 }
 

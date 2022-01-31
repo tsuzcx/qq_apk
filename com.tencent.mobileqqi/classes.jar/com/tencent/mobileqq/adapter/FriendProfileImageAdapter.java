@@ -15,7 +15,7 @@ import com.tencent.mobileqq.activity.FriendProfileImageModel;
 import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
 import com.tencent.mobileqq.widget.ImageProgressCircle;
 import com.tencent.qphone.base.util.QLog;
-import fcy;
+import eyk;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -26,16 +26,16 @@ public class FriendProfileImageAdapter
   int jdField_a_of_type_Int;
   Context jdField_a_of_type_AndroidContentContext;
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler = new fcy(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new eyk(this);
   private FriendProfileImageModel jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel;
   Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   
   public FriendProfileImageAdapter(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131427390));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130840360);
-    this.b = paramContext.getResources().getDrawable(2130840361);
+    this.jdField_a_of_type_Int = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131427393));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130840362);
+    this.b = paramContext.getResources().getDrawable(2130840363);
   }
   
   public void a()
@@ -182,7 +182,7 @@ public class FriendProfileImageAdapter
     FriendProfileImageModel.ProfileImageInfo localProfileImageInfo;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130903249, null);
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130903251, null);
       paramViewGroup = (ImageProgressCircle)paramView.findViewById(2131230757);
       paramViewGroup.setVisibility(4);
       localImageView = (ImageView)paramView.findViewById(2131230758);
@@ -219,7 +219,7 @@ public class FriendProfileImageAdapter
     } while (!localProfileImageInfo.a);
     a(paramViewGroup);
     return paramView;
-    localImageView.setImageResource(2130840361);
+    localImageView.setImageResource(2130840363);
     return paramView;
   }
 }

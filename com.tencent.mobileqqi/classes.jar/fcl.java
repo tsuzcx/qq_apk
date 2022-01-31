@@ -1,33 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog.HistoryListChangeListener;
-import com.tencent.mobileqq.adapter.ContactsSearchResultAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SearchHistoryManager;
-import com.tencent.mobileqq.search.ContactSearchableSearchHistory;
-import com.tencent.mobileqq.search.IContactSearchable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.FriendListHandler.QQHeadDetails;
 
-public class fcl
-  implements View.OnClickListener
+public final class fcl
+  implements Parcelable.Creator
 {
-  public fcl(ContactsSearchResultAdapter paramContactsSearchResultAdapter, IContactSearchable paramIContactSearchable) {}
-  
-  public void onClick(View paramView)
+  public FriendListHandler.QQHeadDetails a(Parcel paramParcel)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqSearchIContactSearchable instanceof ContactSearchableSearchHistory))
-    {
-      paramView = (SearchHistoryManager)ContactsSearchResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter).getManager(50);
-      ContactSearchableSearchHistory localContactSearchableSearchHistory = (ContactSearchableSearchHistory)this.jdField_a_of_type_ComTencentMobileqqSearchIContactSearchable;
-      if (paramView != null)
-      {
-        paramView.a(localContactSearchableSearchHistory.e());
-        this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqSearchIContactSearchable);
-        this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.notifyDataSetChanged();
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.getCount() == 0) && (ContactsSearchResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter) != null)) {
-        ContactsSearchResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter).a();
-      }
-    }
+    FriendListHandler.QQHeadDetails localQQHeadDetails = new FriendListHandler.QQHeadDetails(null);
+    localQQHeadDetails.jdField_a_of_type_Int = paramParcel.readInt();
+    localQQHeadDetails.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localQQHeadDetails.jdField_a_of_type_Long = paramParcel.readLong();
+    localQQHeadDetails.jdField_a_of_type_Byte = paramParcel.readByte();
+    localQQHeadDetails.b = paramParcel.readString();
+    return localQQHeadDetails;
+  }
+  
+  public FriendListHandler.QQHeadDetails[] a(int paramInt)
+  {
+    return new FriendListHandler.QQHeadDetails[paramInt];
   }
 }
 

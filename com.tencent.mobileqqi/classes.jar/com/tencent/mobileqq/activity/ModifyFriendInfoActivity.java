@@ -17,12 +17,12 @@ import com.tencent.mobileqq.data.Groups;
 import com.tencent.mobileqq.international.LocaleString;
 import com.tencent.mobileqq.model.FriendManager;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import dbr;
-import dbs;
-import dbw;
-import dbx;
-import dby;
-import dbz;
+import cwa;
+import cwb;
+import cwf;
+import cwg;
+import cwh;
+import cwi;
 
 public class ModifyFriendInfoActivity
   extends IphoneTitleBarActivity
@@ -33,12 +33,12 @@ public class ModifyFriendInfoActivity
   private float jdField_a_of_type_Float;
   public int a;
   public Handler a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new dbr(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new cwa(this);
   private View jdField_a_of_type_AndroidViewView;
   public TextView a;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dbz(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cwi(this);
   public String a;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new dby(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new cwh(this);
   private View jdField_b_of_type_AndroidViewView;
   public TextView b;
   public String b;
@@ -50,12 +50,12 @@ public class ModifyFriendInfoActivity
   public ModifyFriendInfoActivity()
   {
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new dbx(this);
+    this.jdField_a_of_type_AndroidOsHandler = new cwg(this);
   }
   
   private void d()
   {
-    new dbw(this).start();
+    new cwf(this).start();
   }
   
   private void e()
@@ -64,13 +64,13 @@ public class ModifyFriendInfoActivity
     this.m.setText(2131561977);
     this.m.setVisibility(0);
     this.m.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231927));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231930));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231389));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131231925);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131231928);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131231928);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131231931);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131231931);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131231934);
     this.jdField_c_of_type_AndroidViewView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
   }
   
@@ -86,7 +86,7 @@ public class ModifyFriendInfoActivity
   
   public void c()
   {
-    new dbs(this).start();
+    new cwb(this).start();
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -128,7 +128,7 @@ public class ModifyFriendInfoActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903280);
+    setContentView(2130903282);
     j(2130837729);
     a(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("uin");

@@ -5,12 +5,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.qphone.base.util.BaseApplication;
-import gif;
+import gdw;
 
 public class CompressInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new gif();
+  public static final Parcelable.Creator CREATOR = new gdw();
   public int a;
   public String a;
   public boolean a;

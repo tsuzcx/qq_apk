@@ -1,27 +1,27 @@
-import com.dataline.mpfile.LiteMpFileMainActivity;
-import com.dataline.mpfile.MpfileFileListDownloader.MpFileHttpDownloadListener;
+import com.dataline.mpfile.LiteMpFileFileListActivity;
+import com.dataline.mpfile.MpFileDataReportCenter;
+import com.dataline.mpfile.MpFileDataReportCenter.MPFWorkType;
+import com.dataline.mpfile.MpfileDataCenter;
+import com.dataline.mpfile.MpfileDataReportInfo;
+import com.dataline.util.DBNetworkUtil;
 
-public class dm
-  implements MpfileFileListDownloader.MpFileHttpDownloadListener
+class dm
+  implements Runnable
 {
-  public dm(LiteMpFileMainActivity paramLiteMpFileMainActivity) {}
+  dm(dl paramdl) {}
   
-  public void a(int paramInt, String paramString)
+  public void run()
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    LiteMpFileMainActivity.a(this.a, System.currentTimeMillis());
-    this.a.runOnUiThread(new dn(this));
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    LiteMpFileMainActivity.a(this.a, System.currentTimeMillis());
-    LiteMpFileMainActivity.b(this.a, paramString2);
+    MpfileDataReportInfo localMpfileDataReportInfo = new MpfileDataReportInfo();
+    localMpfileDataReportInfo.jdField_b_of_type_Int = 254;
+    localMpfileDataReportInfo.jdField_a_of_type_Int = MpFileDataReportCenter.MPFWorkType.fileList.ordinal();
+    localMpfileDataReportInfo.jdField_a_of_type_JavaLangString = MpfileDataCenter.k;
+    localMpfileDataReportInfo.d = MpfileDataCenter.E;
+    localMpfileDataReportInfo.jdField_b_of_type_JavaLangString = DBNetworkUtil.a();
+    localMpfileDataReportInfo.jdField_b_of_type_Long = LiteMpFileFileListActivity.b(this.a.a);
+    localMpfileDataReportInfo.c = LiteMpFileFileListActivity.c(this.a.a);
+    MpFileDataReportCenter.a(this.a.a.b, localMpfileDataReportInfo);
+    this.a.a.a(MpfileDataCenter.t);
   }
 }
 

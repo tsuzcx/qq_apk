@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-class fxz
-  implements FMDialogUtil.FMDialogInterface
+public final class fxz
+  implements Runnable
 {
-  fxz(fxx paramfxx) {}
+  public fxz(String paramString) {}
   
-  public void a()
+  public void run()
   {
-    this.a.e();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, this.a, 0).b(FMToastUtil.a());
   }
-  
-  public void b() {}
 }
 
 

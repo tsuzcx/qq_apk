@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class fyi
-  implements Runnable
+public final class fyi
+  implements DialogInterface.OnClickListener
 {
-  public fyi(FileTransferHandler paramFileTransferHandler, long paramLong, String paramString) {}
-  
-  public void run()
-  {
-    QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Long + "]  handle cmd 0x211-0x1.save to weiyun");
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 4);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

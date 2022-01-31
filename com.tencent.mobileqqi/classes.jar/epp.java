@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.app.NearFieldDiscussHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import tencent.im.nearfield_discuss.nearfield_discuss.LBSInfo;
 
 public class epp
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public epp(CountryActivity paramCountryActivity) {}
+  public epp(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.a = null;
+    nearfield_discuss.LBSInfo localLBSInfo = CreateFaceToFaceDiscussionActivity.a(this.a);
+    ((NearFieldDiscussHandler)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(40)).b(this.a.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.jdField_b_of_type_Int, localLBSInfo);
+    this.a.jdField_a_of_type_Boolean = true;
   }
 }
 

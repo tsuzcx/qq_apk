@@ -1,19 +1,69 @@
-import android.media.SoundPool;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import com.tencent.mobileqq.app.ConfigHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
+import protocol.KQQConfig.GetResourceRespInfo;
 
-class fak
+public class fak
   implements Runnable
 {
-  fak(faj paramfaj) {}
+  public fak(ConfigHandler paramConfigHandler, String paramString, StatusManager paramStatusManager, GetResourceRespInfo paramGetResourceRespInfo) {}
   
   public void run()
   {
-    VoipDialInterfaceActivity.a(this.a.a).play(VoipDialInterfaceActivity.k(this.a.a), 1.0F, 1.0F, 0, 0, 1.0F);
+    boolean bool = true;
+    Object localObject = new File(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a.getApplication().getFilesDir(), "rich_status.tmp");
+    int i = HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a, this.jdField_a_of_type_JavaLangString, (File)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.w("Q.richstatus.xml", 2, "handleUpdateStatusActions download " + this.jdField_a_of_type_JavaLangString + " result " + i);
+    }
+    HashMap localHashMap;
+    String str;
+    if (i == 0) {
+      if (this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a((File)localObject, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(7, true, Integer.valueOf(102));
+        localObject = StatisticCollector.a(BaseApplication.getContext());
+        localHashMap = new HashMap();
+        localHashMap.put("result", String.valueOf(i));
+        localHashMap.put("version", String.valueOf(this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer));
+        localHashMap.put("url", this.jdField_a_of_type_JavaLangString);
+        str = this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a.a();
+        if (i != 0) {
+          break label318;
+        }
+      }
+    }
+    for (;;)
+    {
+      ((StatisticCollector)localObject).a(str, "RichStatusAction", bool, 0L, 0L, localHashMap, "");
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(7, false, Integer.valueOf(-3));
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.richstatus.xml", 2, "httpdownload failed: " + this.jdField_a_of_type_JavaLangString + ", result " + i);
+      }
+      if ((i == 4) || (i == 12))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(7, false, Integer.valueOf(-3));
+        break;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(7, false, Integer.valueOf(-1));
+      break;
+      label318:
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fak
  * JD-Core Version:    0.7.0.1
  */

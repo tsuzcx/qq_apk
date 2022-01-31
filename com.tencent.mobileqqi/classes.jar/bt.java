@@ -1,17 +1,13 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.dataline.activities.LiteAdvanceActivity;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
 
-public class bt
-  implements CompoundButton.OnCheckedChangeListener
+class bt
+  implements PermissionDialogCallback
 {
-  public bt(LiteAdvanceActivity paramLiteAdvanceActivity) {}
+  bt(bs parambs) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    LiteAdvanceActivity.b(this.a, paramBoolean);
-    LiteAdvanceActivity.b(this.a, LiteAdvanceActivity.b(this.a));
-  }
+  public void a() {}
+  
+  public void b() {}
 }
 
 

@@ -3,13 +3,13 @@ package com.tencent.mobileqq.app;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import fko;
+import fgc;
 import java.util.ArrayList;
 
 public class RoamInfoListWrapper
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new fko();
+  public static final Parcelable.Creator CREATOR = new fgc();
   public ArrayList a;
   
   public RoamInfoListWrapper() {}

@@ -1,49 +1,52 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.automator.step.GetTroopAssisMsg;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.config.DownloadIconsListener;
+import com.tencent.mobileqq.config.LebaConfig;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MsgAutoMonitorUtil;
+import java.io.File;
+import java.net.URL;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class fmr
-  extends MessageObserver
+  implements Runnable
 {
-  private fmr(GetTroopAssisMsg paramGetTroopAssisMsg) {}
+  public fmr(LebaConfig paramLebaConfig, URL paramURL, File paramFile, String paramString) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "onGetAllProxyMsgFin:" + paramBoolean + ", timeoutFlag=" + paramLong1 + ", type=" + paramLong2);
-    }
-    if (paramLong2 == 1L) {
-      if ((!paramBoolean) || (paramLong1 == 8L) || (paramLong1 == 4L)) {
-        break label95;
-      }
-    }
-    label95:
-    for (int i = 1; i == 0; i = 0)
+    try
     {
-      this.a.a(6);
+      if (!HttpDownloadUtil.a(LebaConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigLebaConfig), this.jdField_a_of_type_JavaNetURL, this.jdField_a_of_type_JavaIoFile)) {
+        break label199;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.lebatab.config", 2, "Download icon key = " + this.jdField_a_of_type_JavaLangString + "suc--------");
+      }
+      Bitmap localBitmap = LebaConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigLebaConfig, this.jdField_a_of_type_JavaIoFile);
+      if (localBitmap != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.lebatab.config", 2, "Download icon key = " + this.jdField_a_of_type_JavaLangString + "notify UI++++++++");
+        }
+        Iterator localIterator = LebaConfig.c(this.jdField_a_of_type_ComTencentMobileqqConfigLebaConfig).iterator();
+        while (localIterator.hasNext()) {
+          ((DownloadIconsListener)localIterator.next()).a(this.jdField_a_of_type_JavaLangString, localBitmap);
+        }
+      }
+      LebaConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigLebaConfig, this.jdField_a_of_type_JavaLangString);
+    }
+    catch (Exception localException)
+    {
+      LebaConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigLebaConfig).remove(this.jdField_a_of_type_JavaLangString);
+      LebaConfig.b(this.jdField_a_of_type_ComTencentMobileqqConfigLebaConfig, this.jdField_a_of_type_JavaLangString);
       return;
     }
-    this.a.a(7);
-  }
-  
-  protected void a(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "on GetTroopMsg Fin:" + paramBoolean);
-    }
-    MsgAutoMonitorUtil.a().h();
-    this.a.a(7);
-  }
-  
-  protected void f(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "on RegisterProxy Fin:" + paramBoolean);
-    }
-    if (!paramBoolean) {
-      this.a.a(6);
-    }
+    return;
+    label199:
+    LebaConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigLebaConfig).remove(this.jdField_a_of_type_JavaLangString);
+    LebaConfig.b(this.jdField_a_of_type_ComTencentMobileqqConfigLebaConfig, this.jdField_a_of_type_JavaLangString);
   }
 }
 

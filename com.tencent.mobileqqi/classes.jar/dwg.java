@@ -1,22 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberCardActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
+import mqq.app.AppActivity;
+import mqq.app.permission.PermissionItem;
+import mqq.app.permission.PermissionManager;
 
-public class dwg
-  implements View.OnClickListener
+public final class dwg
+  implements PermissionDialogCallback
 {
-  public dwg(TroopMemberCardActivity paramTroopMemberCardActivity) {}
+  public dwg(AppActivity paramAppActivity, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void b()
   {
-    ReportController.b(this.a.b, "P_CliOper", "Grp_mber", "", "mber_card", "Clk_set", 0, 0, this.a.c, "", "", "");
-    this.a.j();
+    this.jdField_a_of_type_MqqAppAppActivity.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.ACCESS_FINE_LOCATION", 500) }).request(new dwh(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dwg
  * JD-Core Version:    0.7.0.1
  */

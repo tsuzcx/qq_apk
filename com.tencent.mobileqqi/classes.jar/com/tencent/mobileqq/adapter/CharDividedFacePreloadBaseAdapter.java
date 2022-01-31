@@ -40,12 +40,12 @@ public abstract class CharDividedFacePreloadBaseAdapter
     }
   }
   
-  protected Bitmap a(String paramString)
+  public Bitmap a(String paramString)
   {
     return a(paramString, 1, (byte)0);
   }
   
-  protected Bitmap a(String paramString, int paramInt, byte paramByte)
+  public Bitmap a(String paramString, int paramInt, byte paramByte)
   {
     Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(paramInt, paramString);
     if (localBitmap != null) {
@@ -62,7 +62,7 @@ public abstract class CharDividedFacePreloadBaseAdapter
     return jdField_a_of_type_AndroidGraphicsBitmap;
   }
   
-  protected abstract Object a(int paramInt);
+  public abstract Object a(int paramInt);
   
   public void a(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {

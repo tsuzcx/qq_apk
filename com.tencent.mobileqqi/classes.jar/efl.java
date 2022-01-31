@@ -1,30 +1,48 @@
-import android.app.Activity;
+import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.QzoneFeedItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQzoneFeed;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
 
 public class efl
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public efl(QzoneFeedItemBuilder paramQzoneFeedItemBuilder, MessageForQzoneFeed paramMessageForQzoneFeed) {}
+  private float jdField_a_of_type_Float;
+  private float b;
   
-  public void onClick(View paramView)
+  public efl(SystemMsgListView paramSystemMsgListView) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = paramView.getContext();
-    QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.a();
-    localUserInfo.a = QzoneFeedItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder).a();
-    localUserInfo.b = QzoneFeedItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder).e();
-    localUserInfo.c = QzoneFeedItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder).getSid();
-    QZoneHelper.b((Activity)paramView, localUserInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl, "mqqChat.QzoneCard", this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.appId, -1);
+    if (paramMotionEvent.getAction() == 0) {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a(paramMotionEvent.getRawY()))
+      {
+        this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+        this.b = paramMotionEvent.getRawY();
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a.removeMessages(1013);
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a.sendEmptyMessageDelayed(1013, 500L);
+      }
+    }
+    for (;;)
+    {
+      return false;
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a.removeMessages(1013);
+      continue;
+      if (paramMotionEvent.getAction() == 2)
+      {
+        if ((Math.abs(paramMotionEvent.getRawX() - this.jdField_a_of_type_Float) > 60.0F) || (Math.abs(paramMotionEvent.getRawY() - this.b) > 60.0F)) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a.removeMessages(1013);
+        }
+      }
+      else {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a.removeMessages(1013);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     efl
  * JD-Core Version:    0.7.0.1
  */

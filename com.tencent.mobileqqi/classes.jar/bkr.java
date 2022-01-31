@@ -1,13 +1,23 @@
-import com.tencent.av.ui.VideoControlUI;
+import com.tencent.biz.pubaccount.assistant.PubAccountAssistantManager;
+import com.tencent.mobileqq.data.PubAccountAssistantData;
+import java.util.Comparator;
 
 public class bkr
-  implements Runnable
+  implements Comparator
 {
-  public bkr(VideoControlUI paramVideoControlUI) {}
+  public bkr(PubAccountAssistantManager paramPubAccountAssistantManager) {}
   
-  public void run()
+  public int a(PubAccountAssistantData paramPubAccountAssistantData1, PubAccountAssistantData paramPubAccountAssistantData2)
   {
-    this.a.i = false;
+    long l1 = Math.max(paramPubAccountAssistantData1.mLastMsgTime, paramPubAccountAssistantData1.mLastDraftTime);
+    long l2 = Math.max(paramPubAccountAssistantData2.mLastMsgTime, paramPubAccountAssistantData2.mLastDraftTime);
+    if (l1 < l2) {
+      return 1;
+    }
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
   }
 }
 

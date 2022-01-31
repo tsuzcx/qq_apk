@@ -1,19 +1,21 @@
-import android.widget.Button;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class bpt
-  implements Runnable
+  implements MediaPlayer.OnCompletionListener
 {
-  public bpt(AccountDetailActivity paramAccountDetailActivity) {}
+  public bpt(BaseApplicationImpl paramBaseApplicationImpl) {}
   
-  public void run()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.a.a.setEnabled(true);
+    paramMediaPlayer.release();
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bpt
  * JD-Core Version:    0.7.0.1
  */

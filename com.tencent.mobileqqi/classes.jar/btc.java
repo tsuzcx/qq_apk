@@ -1,19 +1,32 @@
-import com.tencent.biz.qrcode.CameraManager;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
 public class btc
-  extends Thread
+  extends AccountObserver
 {
-  public btc(ScannerActivity paramScannerActivity) {}
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean = false;
   
-  public void run()
+  public btc(AccountManageActivity paramAccountManageActivity, String paramString, boolean paramBoolean)
   {
-    this.a.a.c();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void onDeleteAccount(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Switch_Account", 2, "DelHistoryAccountObserver onDeleteAccount isSuccess " + paramBoolean + ",peerUin:" + this.jdField_a_of_type_JavaLangString + ",isDeleteHistory:" + this.jdField_a_of_type_Boolean);
+    }
+    if ((paramBoolean) && (this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     btc
  * JD-Core Version:    0.7.0.1
  */

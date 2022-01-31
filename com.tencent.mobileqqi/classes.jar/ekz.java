@@ -1,16 +1,50 @@
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import java.lang.ref.WeakReference;
 
 public class ekz
-  implements Runnable
+  extends Handler
 {
-  public ekz(NotificationView paramNotificationView) {}
+  private WeakReference a;
   
-  public void run()
+  public ekz(ContactListView paramContactListView)
   {
-    this.a.a.a().a().c();
+    this.a = new WeakReference(paramContactListView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ContactListView localContactListView = (ContactListView)this.a.get();
+    if (localContactListView == null) {}
+    do
+    {
+      return;
+      switch (paramMessage.what)
+      {
+      default: 
+        throw new RuntimeException("Unknown message: " + paramMessage.what);
+      case 1: 
+        localContactListView.k();
+        return;
+      case 2: 
+        if ((ContactListView.a(localContactListView)) && (!localContactListView.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.i()))
+        {
+          localContactListView.g();
+          ContactListView.a(localContactListView, false);
+        }
+        localContactListView.j();
+        localContactListView.jdField_a_of_type_Ekv.notifyDataSetChanged();
+        return;
+      }
+      localContactListView.j();
+      localContactListView.jdField_a_of_type_Ekv.notifyDataSetChanged();
+    } while (NetworkUtil.e(localContactListView.getContext()));
+    localContactListView.i();
+    localContactListView.b(localContactListView.getContext().getString(2131558968));
   }
 }
 

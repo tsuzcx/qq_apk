@@ -1,8 +1,19 @@
-import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
+import mqq.app.permission.PermissionItem;
+import mqq.app.permission.PermissionManager;
 
-public class hfq
+class hfq
+  implements PermissionDialogCallback
 {
-  public static AntiFraudConfigFileUtil a = new AntiFraudConfigFileUtil(null);
+  hfq(hfp paramhfp, BaseActivity paramBaseActivity) {}
+  
+  public void a() {}
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.CAMERA", 200) }).request(new hfr(this));
+  }
 }
 
 

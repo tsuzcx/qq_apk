@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
 
 public class ctk
   implements Runnable
 {
-  public ctk(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public ctk(LoginActivity paramLoginActivity) {}
   
   public void run()
   {
-    this.a.k();
+    LoginActivity.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ctk
  * JD-Core Version:    0.7.0.1
  */

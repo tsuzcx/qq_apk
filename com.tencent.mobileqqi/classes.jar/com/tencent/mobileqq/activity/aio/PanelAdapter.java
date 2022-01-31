@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.emoticonview.PanelRecycleBin;
 import com.tencent.qphone.base.util.QLog;
-import ebn;
+import dvw;
 import java.util.ArrayList;
 
 public class PanelAdapter
@@ -29,16 +29,16 @@ public class PanelAdapter
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  private void a(int paramInt, ebn paramebn)
+  private void a(int paramInt, dvw paramdvw)
   {
     int m = this.jdField_a_of_type_Int;
     int n = this.b;
-    paramebn.jdField_a_of_type_Int = paramInt;
+    paramdvw.jdField_a_of_type_Int = paramInt;
     int j = 0;
     int i = 0;
     while (j < this.b)
     {
-      LinearLayout localLinearLayout = (LinearLayout)paramebn.getChildAt(j);
+      LinearLayout localLinearLayout = (LinearLayout)paramdvw.getChildAt(j);
       int k = 0;
       if (k < this.jdField_a_of_type_Int)
       {
@@ -129,10 +129,10 @@ public class PanelAdapter
         int i = 0;
         while (i < this.jdField_a_of_type_AndroidViewViewGroup.getChildCount())
         {
-          ebn localebn = (ebn)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
-          if ((localebn != null) && (paramInt == localebn.jdField_a_of_type_Int))
+          dvw localdvw = (dvw)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
+          if ((localdvw != null) && (paramInt == localdvw.jdField_a_of_type_Int))
           {
-            a(paramInt, localebn);
+            a(paramInt, localdvw);
             return;
           }
           i += 1;
@@ -143,9 +143,9 @@ public class PanelAdapter
   
   public void destroyItem(View paramView, int paramInt, Object paramObject)
   {
-    ebn localebn = (ebn)paramObject;
-    ((ViewGroup)paramView).removeView(localebn);
-    localebn.a();
+    dvw localdvw = (dvw)paramObject;
+    ((ViewGroup)paramView).removeView(localdvw);
+    localdvw.a();
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.a((View)paramObject);
   }
   
@@ -160,18 +160,18 @@ public class PanelAdapter
   public Object instantiateItem(View paramView, int paramInt)
   {
     QLog.d("PanelIconAdapter", 2, "instantiateItem " + paramInt);
-    ebn localebn2 = (ebn)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.a();
+    dvw localdvw2 = (dvw)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.a();
     this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView);
-    ebn localebn1 = localebn2;
-    if (localebn2 == null) {
-      localebn1 = new ebn(this, this.jdField_a_of_type_AndroidContentContext, null);
+    dvw localdvw1 = localdvw2;
+    if (localdvw2 == null) {
+      localdvw1 = new dvw(this, this.jdField_a_of_type_AndroidContentContext, null);
     }
-    localebn1.jdField_a_of_type_Int = paramInt;
-    a(paramInt, localebn1);
-    if ((localebn1.getParent() != paramView) && (paramInt < getCount())) {
-      ((ViewGroup)paramView).addView(localebn1);
+    localdvw1.jdField_a_of_type_Int = paramInt;
+    a(paramInt, localdvw1);
+    if ((localdvw1.getParent() != paramView) && (paramInt < getCount())) {
+      ((ViewGroup)paramView).addView(localdvw1);
     }
-    return localebn1;
+    return localdvw1;
   }
   
   public boolean isViewFromObject(View paramView, Object paramObject)

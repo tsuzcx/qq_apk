@@ -1,25 +1,16 @@
-import android.graphics.Color;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
-class cqc
-  implements Runnable
+public class cqc
 {
-  cqc(cqa paramcqa, int paramInt) {}
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_Int > this.jdField_a_of_type_Cqa.a.c)
-    {
-      this.jdField_a_of_type_Cqa.a.a.setText(this.jdField_a_of_type_Cqa.a.getString(2131559055, new Object[] { this.jdField_a_of_type_Cqa.a.b }));
-      this.jdField_a_of_type_Cqa.a.a.setTextColor(-65536);
-      EditInfoActivity.b(this.jdField_a_of_type_Cqa.a, false);
-      return;
-    }
-    this.jdField_a_of_type_Cqa.a.a.setText(this.jdField_a_of_type_Cqa.a.b);
-    this.jdField_a_of_type_Cqa.a.a.setTextColor(Color.rgb(119, 119, 119));
-    EditInfoActivity.c(this.jdField_a_of_type_Cqa.a, true);
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  TextView b;
+  TextView c;
 }
 
 

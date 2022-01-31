@@ -1,26 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ccs
-  extends Handler
 {
-  public ccs(ChatActivity paramChatActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public MessageRecord a;
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1) {
-      ChatActivity.a(this.a, null, false);
-    }
-  }
+  private ccs(ChatHistory paramChatHistory) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ccs
  * JD-Core Version:    0.7.0.1
  */

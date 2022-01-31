@@ -36,10 +36,10 @@ import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
-import eav;
-import eaw;
-import eax;
-import ebb;
+import dve;
+import dvf;
+import dvg;
+import dvk;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -70,16 +70,16 @@ public class VisitorsActivity
   public long a;
   public SharedPreferences a;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Handler jdField_a_of_type_AndroidOsHandler = new eav(this);
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new eaw(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new dve(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new dvf(this);
   View jdField_a_of_type_AndroidViewView;
   public CardHandler a;
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new eax(this);
+  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new dvg(this);
   protected FriendManager a;
   FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
   public GridListView a;
   private PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
-  public ebb a;
+  public dvk a;
   protected String a;
   public ArrayList a;
   public HashMap a;
@@ -202,9 +202,9 @@ public class VisitorsActivity
   
   private void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView = ((GridListView)findViewById(2131234657));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView = ((GridListView)findViewById(2131234659));
     this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setContentBackground(2130837729);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setAdapter(this.jdField_a_of_type_Ebb);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setAdapter(this.jdField_a_of_type_Dvk);
     this.jdField_b_of_type_Boolean = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("visitor_grid", false);
     GridListView localGridListView = this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView;
     if (this.jdField_b_of_type_Boolean) {}
@@ -212,7 +212,7 @@ public class VisitorsActivity
     {
       localGridListView.setMode(i1);
       this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setOnItemClickListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)getLayoutInflater().inflate(2130903323, this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView, false));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)getLayoutInflater().inflate(2130903325, this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView, false));
       this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
       this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setOverScrollListener(this);
       return;
@@ -224,7 +224,7 @@ public class VisitorsActivity
     if (!this.jdField_c_of_type_Boolean) {}
     for (this.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.b();; this.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a())
     {
-      this.jdField_a_of_type_Ebb = new ebb(this, this.jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_Dvk = new dvk(this, this.jdField_a_of_type_JavaUtilArrayList);
       d();
       if (!a(true)) {
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 1000L);
@@ -240,13 +240,13 @@ public class VisitorsActivity
       a(1, getString(2131562097));
       return;
     }
-    this.jdField_a_of_type_Ebb.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Ebb.notifyDataSetChanged();
+    this.jdField_a_of_type_Dvk.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Dvk.notifyDataSetChanged();
   }
   
   private void i()
   {
-    this.jdField_b_of_type_AndroidViewView = getLayoutInflater().inflate(2130904047, null);
+    this.jdField_b_of_type_AndroidViewView = getLayoutInflater().inflate(2130904049, null);
   }
   
   protected View a()
@@ -297,7 +297,7 @@ public class VisitorsActivity
     if ((paramInt1 == 0) || (l1 >= 800L))
     {
       this.jdField_d_of_type_Long = SystemClock.uptimeMillis();
-      this.jdField_a_of_type_Ebb.notifyDataSetChanged();
+      this.jdField_a_of_type_Dvk.notifyDataSetChanged();
       return;
     }
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 800L - l1);
@@ -317,13 +317,13 @@ public class VisitorsActivity
   
   public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (this.jdField_a_of_type_Ebb.getItemViewType(paramInt))
+    switch (this.jdField_a_of_type_Dvk.getItemViewType(paramInt))
     {
     default: 
       return;
     case 0: 
     case 2: 
-      a((CardProfile)this.jdField_a_of_type_Ebb.getItem(paramInt));
+      a((CardProfile)this.jdField_a_of_type_Dvk.getItem(paramInt));
       return;
     }
     h();
@@ -350,13 +350,13 @@ public class VisitorsActivity
     for (;;)
     {
       this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-      this.jdField_a_of_type_Ebb.a(paramArrayList);
-      this.jdField_a_of_type_Ebb.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Dvk.a(paramArrayList);
+      this.jdField_a_of_type_Dvk.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_Boolean = false;
       if (paramLong == 0L) {
         a(true);
       }
-      this.jdField_a_of_type_Ebb.notifyDataSetChanged();
+      this.jdField_a_of_type_Dvk.notifyDataSetChanged();
       return;
       localTextView.setClickable(false);
       this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setEmptyView(this.jdField_b_of_type_AndroidViewView);
@@ -430,10 +430,10 @@ public class VisitorsActivity
     }
     QQToast.a(this, 1, 2131562097, 0).b(d());
     a(false);
-    if (this.jdField_a_of_type_Ebb.jdField_a_of_type_Boolean)
+    if (this.jdField_a_of_type_Dvk.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Ebb.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Ebb.notifyDataSetChanged();
+      this.jdField_a_of_type_Dvk.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Dvk.notifyDataSetChanged();
     }
   }
   
@@ -441,7 +441,7 @@ public class VisitorsActivity
   {
     super.doOnConfigurationChanged(paramConfiguration);
     a(paramConfiguration);
-    if (this.jdField_a_of_type_Ebb.getCount() <= 0) {
+    if (this.jdField_a_of_type_Dvk.getCount() <= 0) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setEmptyView(this.jdField_a_of_type_AndroidViewView);
     }
   }
@@ -459,7 +459,7 @@ public class VisitorsActivity
     this.jdField_c_of_type_Long = getIntent().getLongExtra("nextMidVisitor", -1L);
     this.jdField_d_of_type_Boolean = getIntent().getBooleanExtra("hasVoters", true);
     this.e = getIntent().getBooleanExtra("isStartedByProfileCard", false);
-    setContentView(2130904048);
+    setContentView(2130904050);
     this.jdField_a_of_type_AndroidContentSharedPreferences = getSharedPreferences(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
     f = CardHandler.a(this);
     this.s = (getResources().getDimensionPixelSize(2131427376) - (int)DisplayUtils.a(a(), 5.0F));
@@ -486,7 +486,7 @@ public class VisitorsActivity
   
   void e()
   {
-    this.jdField_a_of_type_AndroidViewView = getLayoutInflater().inflate(2130903215, this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView, false);
+    this.jdField_a_of_type_AndroidViewView = getLayoutInflater().inflate(2130903216, this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView, false);
   }
 }
 

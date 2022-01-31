@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
-public class elx
-  extends MessageObserver
+class elx
+  extends ContactBindObserver
 {
-  private elx(TroopView paramTroopView) {}
+  elx(elw paramelw) {}
   
-  protected void d()
+  protected void a(boolean paramBoolean)
   {
-    this.a.a();
+    super.a(paramBoolean);
+    this.a.a.d();
+    this.a.a.b.unRegistObserver(this);
+    if (paramBoolean)
+    {
+      this.a.a.setResult(-1);
+      this.a.a.finish();
+    }
   }
 }
 

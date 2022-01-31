@@ -1,41 +1,25 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.search.ISearchable;
+import java.util.Comparator;
 
-public class exk
+public final class exk
+  implements Comparator
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  
-  public static exk a(JSONObject paramJSONObject)
+  public int a(ISearchable paramISearchable1, ISearchable paramISearchable2)
   {
-    if (paramJSONObject == null) {
-      return new exk();
+    long l1 = paramISearchable1.a();
+    long l2 = paramISearchable2.a();
+    if (l1 < l2) {
+      return 1;
     }
-    exk localexk = new exk();
-    try
-    {
-      localexk.jdField_a_of_type_Int = paramJSONObject.getInt("id");
-      localexk.jdField_a_of_type_JavaLangString = paramJSONObject.getString("soundName");
-      localexk.jdField_b_of_type_Int = paramJSONObject.getInt("type");
-      localexk.jdField_b_of_type_JavaLangString = paramJSONObject.getString("soundVersion");
-      localexk.c = paramJSONObject.getString("soundUrl");
-      localexk.d = paramJSONObject.getString("whiteList");
-      return localexk;
+    if (l1 > l2) {
+      return -1;
     }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-    return localexk;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     exk
  * JD-Core Version:    0.7.0.1
  */

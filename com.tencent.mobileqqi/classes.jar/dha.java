@@ -1,19 +1,21 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import android.widget.Button;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import com.tencent.mobileqq.util.Utils;
 
-class dha
-  implements View.OnClickListener
+public class dha
+  implements Runnable
 {
-  dha(dgx paramdgx, SharedPreferences paramSharedPreferences, String paramString) {}
+  public dha(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
-    this.jdField_a_of_type_Dgx.a.a.sendEmptyMessageDelayed(1010, 1000L);
+    String str = Utils.a(this.jdField_a_of_type_JavaLangString, this.b);
+    if ((str != null) && (str.length() > 0) && (RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity) != null))
+    {
+      RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity).setText(str);
+      RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity).setEnabled(true);
+    }
   }
 }
 

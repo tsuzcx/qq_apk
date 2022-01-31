@@ -1,32 +1,18 @@
-import com.tencent.biz.pubaccount.assistant.PubAccountAssistantSettingActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import java.util.Comparator;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
 
 public class bqz
-  implements Comparator
+  implements Runnable
 {
-  public bqz(PubAccountAssistantSettingActivity paramPubAccountAssistantSettingActivity) {}
+  public bqz(LiteTransferWrapper paramLiteTransferWrapper, String paramString) {}
   
-  public int a(PublicAccountInfo paramPublicAccountInfo1, PublicAccountInfo paramPublicAccountInfo2)
+  public void run()
   {
-    try
-    {
-      if (paramPublicAccountInfo1.mCompareSpell != null) {
-        return paramPublicAccountInfo1.mCompareSpell.compareTo(paramPublicAccountInfo2.mCompareSpell);
-      }
-      if (paramPublicAccountInfo1.name != null)
-      {
-        int i = paramPublicAccountInfo1.name.compareTo(paramPublicAccountInfo2.mCompareSpell);
-        return i;
-      }
-    }
-    catch (Exception paramPublicAccountInfo1) {}
-    return -1;
+    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetTempPathToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bqz
  * JD-Core Version:    0.7.0.1
  */

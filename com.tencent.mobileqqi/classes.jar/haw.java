@@ -1,29 +1,26 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.troop.jsp.TroopAssistantFeedsJsHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class haw
-  implements TroopMemberApiClient.Callback
+public final class haw
+  implements Runnable
 {
-  public haw(TroopAssistantFeedsJsHandler paramTroopAssistantFeedsJsHandler, String paramString1, String paramString2) {}
+  public haw(String paramString) {}
   
-  public void a(Bundle paramBundle)
+  public void run()
   {
-    if (paramBundle != null)
+    File localFile = new File(this.a);
+    if ((localFile.exists()) && (localFile.isFile()))
     {
-      if (paramBundle.getBoolean("ret", false)) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopJspTroopAssistantFeedsJsHandler.a(this.jdField_a_of_type_JavaLangString, this.b);
+      boolean bool = localFile.delete();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.VoiceIntro", 2, "delete result=" + bool + " f.path=" + this.a);
       }
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopJspTroopAssistantFeedsJsHandler.c(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     haw
  * JD-Core Version:    0.7.0.1
  */

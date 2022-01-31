@@ -30,17 +30,17 @@ import com.tencent.widget.ActionSheet.OnButtonClickListener;
 import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
 import com.tencent.widget.XListView;
-import dqh;
-import dqi;
-import dqj;
-import dqk;
-import dql;
-import dqm;
-import dqn;
-import dqo;
-import dqp;
-import dqq;
-import dqr;
+import dkq;
+import dkr;
+import dks;
+import dkt;
+import dku;
+import dkv;
+import dkw;
+import dkx;
+import dky;
+import dkz;
+import dla;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -89,15 +89,15 @@ public class StrangerManageActivity
     this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
     this.jdField_c_of_type_Boolean = false;
     this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppStrangerObserver = new dqi(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dqk(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new dql(this);
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new dqm(this);
-    this.jdField_c_of_type_AndroidViewView$OnClickListener = new dqn(this);
-    this.jdField_d_of_type_AndroidViewView$OnClickListener = new dqo(this);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(new dqp(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppStrangerObserver = new dkr(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dkt(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new dku(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new dkv(this);
+    this.jdField_c_of_type_AndroidViewView$OnClickListener = new dkw(this);
+    this.jdField_d_of_type_AndroidViewView$OnClickListener = new dkx(this);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(new dky(this));
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaLangRunnable = new dqq(this);
+    this.jdField_a_of_type_JavaLangRunnable = new dkz(this);
   }
   
   public static List a(String paramString, List paramList)
@@ -107,7 +107,7 @@ public class StrangerManageActivity
     for (;;)
     {
       return paramList;
-      Collections.sort(paramList, new dqj());
+      Collections.sort(paramList, new dks());
       int i = paramList.size() - 1;
       if (i >= 0) {
         if (!TextUtils.equals(paramString, ((Stranger)paramList.get(i)).uin)) {}
@@ -193,9 +193,9 @@ public class StrangerManageActivity
       paramInt = 0;
       while (paramInt < i)
       {
-        dqh localdqh = (dqh)paramAbsListView.getChildAt(paramInt).getTag();
-        if ((localdqh != null) && (localdqh.jdField_a_of_type_JavaLangString != null) && (localdqh.jdField_a_of_type_JavaLangString.length() > 0)) {
-          a(localdqh);
+        dkq localdkq = (dkq)paramAbsListView.getChildAt(paramInt).getTag();
+        if ((localdkq != null) && (localdkq.jdField_a_of_type_JavaLangString != null) && (localdkq.jdField_a_of_type_JavaLangString.length() > 0)) {
+          a(localdkq);
         }
         paramInt += 1;
       }
@@ -204,16 +204,16 @@ public class StrangerManageActivity
   
   public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(dqh paramdqh)
+  public void a(dkq paramdkq)
   {
-    if (paramdqh == null) {}
-    while ((paramdqh.jdField_a_of_type_Long * 1000L > System.currentTimeMillis()) || (this.jdField_a_of_type_JavaUtilHashSet.contains(paramdqh.jdField_a_of_type_JavaLangString))) {
+    if (paramdkq == null) {}
+    while ((paramdkq.jdField_a_of_type_Long * 1000L > System.currentTimeMillis()) || (this.jdField_a_of_type_JavaUtilHashSet.contains(paramdkq.jdField_a_of_type_JavaLangString))) {
       return;
     }
     try
     {
-      this.jdField_b_of_type_JavaUtilArrayList.add(Long.valueOf(paramdqh.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_JavaUtilHashSet.add(paramdqh.jdField_a_of_type_JavaLangString);
+      this.jdField_b_of_type_JavaUtilArrayList.add(Long.valueOf(paramdkq.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_JavaUtilHashSet.add(paramdkq.jdField_a_of_type_JavaLangString);
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
       return;
@@ -267,7 +267,7 @@ public class StrangerManageActivity
     }
     if (paramBoolean)
     {
-      c(2131561746, new dqr(this));
+      c(2131561746, new dla(this));
       a(2131561641, this.jdField_b_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
@@ -379,7 +379,7 @@ public class StrangerManageActivity
   {
     boolean bool = false;
     paramView.getId();
-    paramView = (dqh)paramView.getTag();
+    paramView = (dkq)paramView.getTag();
     int i;
     if (paramView != null)
     {
@@ -399,13 +399,13 @@ public class StrangerManageActivity
       }
       ((Stranger)localObject).uiSelected = bool;
       if (((Stranger)localObject).uiSelected) {
-        paramView.setImageResource(2130838083);
+        paramView.setImageResource(2130838085);
       }
       for (;;)
       {
         c(((Stranger)localObject).uiSelected);
         return;
-        paramView.setImageResource(2130838082);
+        paramView.setImageResource(2130838084);
       }
     }
     paramView = (Stranger)this.jdField_a_of_type_JavaUtilArrayList.get(i);
@@ -422,21 +422,21 @@ public class StrangerManageActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130903445);
+    super.setContentView(2130903447);
     super.setTitle(2131562348);
     getWindow().setBackgroundDrawable(null);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232614));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131232616));
-    paramBundle = getLayoutInflater().inflate(2130903446, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232617));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131232619));
+    paramBundle = getLayoutInflater().inflate(2130903448, null);
     this.jdField_a_of_type_ComTencentWidgetXListView.a(paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqActivityStrangerManageActivity$StrangeManagerListAdapter = new StrangerManageActivity.StrangeManagerListAdapter(this, this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityStrangerManageActivity$StrangeManagerListAdapter);
     this.jdField_a_of_type_ComTencentMobileqqActivityStrangerManageActivity$StrangeManagerListAdapter.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(a()).inflate(2130903323, this.jdField_a_of_type_ComTencentWidgetXListView, false));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(a()).inflate(2130903325, this.jdField_a_of_type_ComTencentWidgetXListView, false));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(this);
     this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130837729);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232615));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232618));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     c(2131562001, this.jdField_d_of_type_AndroidViewView$OnClickListener);
     this.m.setEnabled(false);

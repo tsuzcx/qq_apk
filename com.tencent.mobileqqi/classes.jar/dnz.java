@@ -1,20 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.ShortcutGuideDialogActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ThemeSwitchDlgActivity;
+import com.tencent.mobileqq.theme.NightModeLogic.NightModeCallback;
 
-public class dnz
-  implements DialogInterface.OnDismissListener
+class dnz
+  extends NightModeLogic.NightModeCallback
 {
-  public dnz(ShortcutGuideDialogActivity paramShortcutGuideDialogActivity) {}
+  dnz(dny paramdny) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(Bundle paramBundle)
   {
-    this.a.finish();
+    this.a.a.finish();
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    if (paramBundle.getInt("start_status") == 2) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dnz
  * JD-Core Version:    0.7.0.1
  */

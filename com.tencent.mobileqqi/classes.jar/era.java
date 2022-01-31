@@ -1,71 +1,57 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.util.ArrayList;
+import android.app.Dialog;
+import android.os.Handler;
+import android.os.Message;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
+import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.adapter.ContactsSearchResultAdapter;
+import java.util.List;
 
 public class era
-  extends BaseAdapter
+  extends Handler
 {
-  public era(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public era(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public String a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if ((CameraPreviewActivity.a(this.a) != null) && (paramInt < CameraPreviewActivity.a(this.a).size()) && (paramInt >= 0)) {
-      return (String)CameraPreviewActivity.a(this.a).get(paramInt);
-    }
-    return null;
-  }
-  
-  public int getCount()
-  {
-    if (CameraPreviewActivity.a(this.a) != null) {
-      return CameraPreviewActivity.a(this.a).size();
-    }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    switch (paramMessage.what)
     {
-      paramView = this.a.getLayoutInflater().inflate(2130903314, null);
-      paramViewGroup = new erb();
-      paramViewGroup.a = ((URLImageView)paramView.findViewById(2131232058));
-      paramView.setTag(paramViewGroup);
     }
-    for (;;)
+    do
     {
-      Object localObject = a(paramInt);
-      if (localObject == null) {
-        break;
-      }
-      localObject = new File((String)localObject);
-      if (((File)localObject).exists()) {}
-      try
+      do
       {
-        paramViewGroup.a.setImageDrawable(URLDrawable.getDrawable(((File)localObject).toURL(), CameraPreviewActivity.a(this.a), CameraPreviewActivity.b(this.a), CameraPreviewActivity.a(this.a), null));
-        return paramView;
+        do
+        {
+          return;
+          this.a.jdField_a_of_type_AndroidWidgetHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
+          return;
+        } while ((this.a.jdField_a_of_type_AndroidAppDialog == null) || (!this.a.jdField_a_of_type_AndroidAppDialog.isShowing()));
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.getString(2131562247));
+        this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837960);
+        postDelayed(new erb(this), 1500L);
+        return;
+      } while ((this.a.jdField_a_of_type_AndroidAppDialog == null) || (!this.a.jdField_a_of_type_AndroidAppDialog.isShowing()));
+      String str = (String)paramMessage.obj;
+      paramMessage = str;
+      if (str == null) {
+        paramMessage = this.a.getString(2131562090);
       }
-      catch (MalformedURLException paramViewGroup)
-      {
-        paramViewGroup.printStackTrace();
-        return paramView;
-      }
-      paramViewGroup = (erb)paramView.getTag();
-    }
-    paramViewGroup.a.setImageDrawable(null);
-    return paramView;
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramMessage);
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837949);
+      postDelayed(new erc(this), 1500L);
+      return;
+      paramMessage = (List)paramMessage.obj;
+    } while ((paramMessage == null) || (SelectMemberActivity.a(this.a) == null));
+    SelectMemberActivity.a(this.a).a(paramMessage);
   }
 }
 

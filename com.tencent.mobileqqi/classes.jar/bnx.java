@@ -1,62 +1,32 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.ImageUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.model.TroopInfoManager;
 
-public final class bnx
-  implements Runnable
+class bnx
+  extends AsyncTask
 {
-  public void run()
+  bnx(bnw parambnw, TroopInfoManager paramTroopInfoManager, Bundle paramBundle, String paramString) {}
+  
+  protected Void a(Void... paramVarArgs)
   {
-    int i = ImageUtil.a(ImageUtil.c, ImageUtil.d, ImageUtil.e);
-    if (QLog.isColorLevel()) {
-      QLog.i(ImageUtil.b, 2, "type:" + i);
-    }
-    if (!TextUtils.isEmpty(ImageUtil.c)) {
-      ImageUtil.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a(ImageUtil.c);
-    }
-    Object localObject2;
-    switch (i)
+    this.jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager.a();
+    return null;
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    paramVoid = this.jdField_a_of_type_AndroidOsBundle;
+    if ((this.jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager.a(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager.b())) {}
+    for (boolean bool = true;; bool = false)
     {
-    default: 
-      localObject1 = null;
-      if (localObject1 != null)
-      {
-        localObject2 = ImageUtil.a((Bitmap)localObject1);
-        ((Bitmap)localObject1).recycle();
-      }
-      break;
-    }
-    for (Object localObject1 = localObject2;; localObject1 = "")
-    {
-      if (ImageUtil.jdField_a_of_type_AndroidGraphicsBitmap != null)
-      {
-        ImageUtil.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-        ImageUtil.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      }
-      localObject2 = ImageUtil.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        ((Message)localObject2).arg1 = 0;
-        ((Message)localObject2).obj = localObject1;
-      }
-      for (;;)
-      {
-        ImageUtil.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
-        ImageUtil.jdField_a_of_type_AndroidOsHandler.removeCallbacks(ImageUtil.jdField_a_of_type_JavaLangRunnable);
-        return;
-        localObject1 = ImageUtil.a(ImageUtil.jdField_a_of_type_AndroidGraphicsBitmap);
-        break;
-        localObject1 = ImageUtil.b(ImageUtil.jdField_a_of_type_AndroidGraphicsBitmap);
-        break;
-        localObject1 = ImageUtil.a();
-        break;
-        ((Message)localObject2).arg1 = 1;
-      }
+      paramVoid.putBoolean("ret", bool);
+      TroopMemberApiService.a(this.jdField_a_of_type_Bnw.a, 12, this.jdField_a_of_type_AndroidOsBundle);
+      return;
     }
   }
+  
+  protected void onCancelled() {}
 }
 
 

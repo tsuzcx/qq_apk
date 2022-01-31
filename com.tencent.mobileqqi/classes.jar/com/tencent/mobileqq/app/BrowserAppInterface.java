@@ -16,7 +16,7 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import fdx;
+import ezj;
 import java.util.ArrayList;
 import mqq.app.MobileQQ;
 import mqq.manager.TicketManager;
@@ -24,17 +24,12 @@ import mqq.manager.TicketManager;
 public class BrowserAppInterface
   extends AppInterface
 {
-  public static final String a;
+  public static final String b = BrowserAppInterface.class.getSimpleName();
   long jdField_a_of_type_Long;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new fdx(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ezj(this);
   SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = null;
   private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
   protected final Object a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = BrowserAppInterface.class.getSimpleName();
-  }
   
   public BrowserAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
@@ -146,12 +141,12 @@ public class BrowserAppInterface
   
   public void a(boolean paramBoolean)
   {
-    a().edit().putBoolean(a().getString(2131563425) + a(), paramBoolean).commit();
+    a().edit().putBoolean(a().getString(2131563453) + a(), paramBoolean).commit();
   }
   
   public final boolean a()
   {
-    return a().getBoolean(a().getString(2131563425) + a(), false);
+    return a().getBoolean(a().getString(2131563453) + a(), false);
   }
   
   public String b()
@@ -192,7 +187,7 @@ public class BrowserAppInterface
     catch (IllegalArgumentException localIllegalArgumentException)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "unregisterReceiver: ", localIllegalArgumentException);
+      QLog.d(b, 2, "unregisterReceiver: ", localIllegalArgumentException);
     }
   }
 }

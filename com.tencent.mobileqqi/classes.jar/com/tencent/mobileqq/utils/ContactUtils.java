@@ -87,21 +87,21 @@ public class ContactUtils
     {
     case 2: 
     default: 
-      return 2130840281;
-    case 1: 
-      return 2130840294;
-    case 3: 
-      return 2130840282;
-    case 4: 
       return 2130840283;
-    case 5: 
-      return 2130840292;
-    case 6: 
-      return 2130840290;
-    case 100: 
+    case 1: 
+      return 2130840296;
+    case 3: 
+      return 2130840284;
+    case 4: 
       return 2130840285;
+    case 5: 
+      return 2130840294;
+    case 6: 
+      return 2130840292;
+    case 100: 
+      return 2130840287;
     }
-    return 2130840288;
+    return 2130840290;
   }
   
   public static int a(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4)

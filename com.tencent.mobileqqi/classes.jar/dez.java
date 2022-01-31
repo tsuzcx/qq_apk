@@ -1,51 +1,27 @@
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-class dez
-  implements ActionSheet.OnButtonClickListener
+public class dez
+  implements Runnable
 {
-  dez(dey paramdey, ActionSheet paramActionSheet) {}
+  public dez(RegisterActivity paramRegisterActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    if (paramInt == 0) {
-      if (1 == PermisionPrivacyActivity.a(this.jdField_a_of_type_Dey.a).b()) {
-        PermisionPrivacyActivity.a(this.jdField_a_of_type_Dey.a);
-      }
-    }
-    while (paramInt != 1)
+    try
     {
-      return;
-      if (2 == PermisionPrivacyActivity.b(this.jdField_a_of_type_Dey.a).b())
+      if (RegisterActivity.a(this.a) != null)
       {
-        PermisionPrivacyActivity.b(this.jdField_a_of_type_Dey.a);
-        return;
+        RegisterActivity.a(this.a).dismiss();
+        RegisterActivity.a(this.a).cancel();
+        RegisterActivity.a(this.a, null);
       }
-      if (!NetworkUtil.e(this.jdField_a_of_type_Dey.a))
-      {
-        QQToast.a(paramView.getContext(), 0, this.jdField_a_of_type_Dey.a.getResources().getString(2131562488), 0).b(this.jdField_a_of_type_Dey.a.d());
-        return;
-      }
-      this.jdField_a_of_type_Dey.a.setResult(2);
-      this.jdField_a_of_type_Dey.a.finish();
       return;
     }
-    paramView = DialogUtil.c(paramView.getContext(), 230, null, null, 2131561746, 2131562545, null, null);
-    paramView.setMessage(2131561621);
-    dfa localdfa = new dfa(this);
-    dfc localdfc = new dfc(this);
-    paramView.setPositiveButton(2131562545, localdfa);
-    paramView.setNegativeButton(2131561746, localdfc);
-    paramView.show();
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
 }
 

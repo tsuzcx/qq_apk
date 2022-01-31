@@ -1,23 +1,15 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ThemeSwitchDlgActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem;
+import java.util.Comparator;
 
 public class dto
-  implements View.OnClickListener
+  implements Comparator
 {
-  public dto(ThemeSwitchDlgActivity paramThemeSwitchDlgActivity) {}
+  private dto(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onClick(View paramView)
+  public int a(TroopTransferActivity.TroopMemberItem paramTroopMemberItem1, TroopTransferActivity.TroopMemberItem paramTroopMemberItem2)
   {
-    if ((ThemeSwitchDlgActivity.a(this.a) != null) && (ThemeSwitchDlgActivity.a(this.a).isShowing()))
-    {
-      ThemeSwitchDlgActivity.a(this.a).dismiss();
-      ThemeSwitchDlgActivity.a(this.a, null);
-    }
-    ReportController.b(ThemeSwitchDlgActivity.a(this.a), "CliOper", "", "", "Setting_tab", "Night_mode_us", 0, 0, "0", "", "", "");
-    this.a.finish();
+    return paramTroopMemberItem1.f.compareToIgnoreCase(paramTroopMemberItem2.f);
   }
 }
 

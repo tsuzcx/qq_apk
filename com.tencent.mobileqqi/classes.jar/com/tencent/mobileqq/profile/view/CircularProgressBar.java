@@ -10,7 +10,7 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import gjd;
+import geu;
 
 public class CircularProgressBar
   extends View
@@ -18,7 +18,7 @@ public class CircularProgressBar
   private int jdField_a_of_type_Int = 60;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private Handler jdField_a_of_type_AndroidOsHandler = new gjd(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new geu(this);
   private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = 5;
   private Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();

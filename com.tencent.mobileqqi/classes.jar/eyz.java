@@ -1,20 +1,85 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class eyz
-  implements View.OnClickListener
+  extends DefaultHandler
 {
-  public eyz(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  private static final String jdField_a_of_type_JavaLangString = "SAXForHandler";
+  private int jdField_a_of_type_Int = 0;
+  private ArrayList jdField_a_of_type_JavaUtilArrayList;
   
-  public void onClick(View paramView)
+  public int a()
   {
-    this.a.h();
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public ArrayList a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public List a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    paramArrayOfChar = paramArrayOfChar.toString();
+    QLog.d("SAXForHandler", 4, "characters: " + paramArrayOfChar);
+  }
+  
+  public void endDocument()
+  {
+    QLog.d("SAXForHandler", 4, "endDocument");
+    super.endDocument();
+  }
+  
+  public void endElement(String paramString1, String paramString2, String paramString3)
+  {
+    QLog.d("SAXForHandler", 4, "endElement uri:" + paramString1 + " localName:" + paramString2 + " qName:" + paramString3);
+  }
+  
+  public void startDocument()
+  {
+    QLog.d("SAXForHandler", 4, "startDocument");
+    this.jdField_a_of_type_JavaUtilArrayList = null;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    int j = 0;
+    int i = 0;
+    QLog.d("SAXForHandler", 4, "startElement: uri:" + paramString1 + " localName:" + paramString2 + " qName:" + paramString3);
+    if ("config".equals(paramString2)) {
+      while (i < paramAttributes.getLength())
+      {
+        this.jdField_a_of_type_Int = Integer.valueOf(paramAttributes.getValue(i)).intValue();
+        QLog.d("SAXForHandler", 4, "startElement: localName:" + paramString2 + " value: " + this.jdField_a_of_type_Int);
+        i += 1;
+      }
+    }
+    if ("Elem".equals(paramString2))
+    {
+      i = j;
+      while (i < paramAttributes.getLength())
+      {
+        paramString1 = paramAttributes.getValue(i);
+        paramString3 = paramAttributes.getLocalName(i);
+        QLog.d("SAXForHandler", 4, "startElement: localName:" + paramString2 + "name: " + paramString3 + " url: " + paramString1);
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramString1);
+        i += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     eyz
  * JD-Core Version:    0.7.0.1
  */

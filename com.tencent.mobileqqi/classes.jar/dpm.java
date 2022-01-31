@@ -1,28 +1,44 @@
+import android.content.Context;
 import android.os.Handler;
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import android.support.v7.app.ActionBar;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
+import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class dpm
-  extends ViewPager.SimpleOnPageChangeListener
+  extends Thread
 {
-  public dpm(SplashActivity paramSplashActivity) {}
+  public dpm(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void run()
   {
-    this.a.supportInvalidateOptionsMenu();
-    this.a.getSupportActionBar().setSelectedNavigationItem(paramInt);
-    new Handler().postDelayed(new dpn(this, paramInt), 500L);
-    this.a.i();
+    try
+    {
+      Object localObject = BaseApplication.getContext();
+      String str = Long.toString(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.a);
+      GroupCatalogBean localGroupCatalogBean = GroupCatalogTool.a((Context)localObject).a();
+      if ((localGroupCatalogBean != null) && (localGroupCatalogBean.b.equals(str))) {}
+      for (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.i = localGroupCatalogBean.a();; this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.i = ((GroupCatalogBean)localObject).a())
+      {
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+        return;
+        localObject = GroupCatalogTool.a((Context)localObject).a((Context)localObject, str);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.troopinfo", 2, localException.toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dpm
  * JD-Core Version:    0.7.0.1
  */

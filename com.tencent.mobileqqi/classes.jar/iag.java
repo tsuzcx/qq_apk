@@ -1,19 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import cooperation.plugin.PluginIphoneTitleBarActivity;
 
 public class iag
   implements View.OnClickListener
 {
-  public iag(ActionSheet paramActionSheet) {}
+  public iag(PluginIphoneTitleBarActivity paramPluginIphoneTitleBarActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.dismiss();
-    if (ActionSheet.a(this.a) != null) {
-      ActionSheet.a(this.a).onDismiss();
-    }
+    this.a.a();
   }
 }
 

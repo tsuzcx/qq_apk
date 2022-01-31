@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Looper;
-import bwm;
-import bwn;
-import bwo;
-import bwp;
-import bwq;
+import bqo;
+import bqp;
+import bqq;
+import bqr;
+import bqs;
 import com.dataline.util.widget.AsyncImageView;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.DataLineHandler;
@@ -301,7 +301,7 @@ public class LiteTransferListenerCallback
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new bwp(this, paramLong, paramInt1));
+      new Handler(localLooper).post(new bqr(this, paramLong, paramInt1));
       return;
     }
     _onSessionComplete(paramLong, paramInt1);
@@ -314,7 +314,7 @@ public class LiteTransferListenerCallback
     }
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread()) {
-      new Handler(localLooper).post(new bwm(this, paramSession, paramNFCInfo, paramFTNInfo));
+      new Handler(localLooper).post(new bqo(this, paramSession, paramNFCInfo, paramFTNInfo));
     }
     for (;;)
     {
@@ -329,7 +329,7 @@ public class LiteTransferListenerCallback
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new bwo(this, paramLong1, paramLong2, paramLong3));
+      new Handler(localLooper).post(new bqq(this, paramLong1, paramLong2, paramLong3));
       return;
     }
     _onSessionProgress(paramLong1, paramLong2, paramLong3);
@@ -343,7 +343,7 @@ public class LiteTransferListenerCallback
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new bwn(this, paramLong));
+      new Handler(localLooper).post(new bqp(this, paramLong));
       return;
     }
     _startSession(this.mHandler.a(paramLong), null, null, true);
@@ -354,7 +354,7 @@ public class LiteTransferListenerCallback
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new bwq(this, paramLong, paramString));
+      new Handler(localLooper).post(new bqs(this, paramLong, paramString));
       return;
     }
     _onSessionThumbUpdate(paramLong, paramString);

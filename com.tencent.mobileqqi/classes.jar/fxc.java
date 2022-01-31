@@ -1,13 +1,29 @@
-import com.tencent.mobileqq.filemanager.activity.VerifyPwdActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
+import com.tencent.qphone.base.util.QLog;
+import com.weiyun.sdk.IWyFileSystem.IWyCallback;
+import com.weiyun.sdk.IWyFileSystem.WyErrorStatus;
 
-class fxc
-  implements Runnable
+public class fxc
+  implements IWyFileSystem.IWyCallback
 {
-  fxc(fxb paramfxb) {}
+  public fxc(WeiYunLogicCenter paramWeiYunLogicCenter) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    VerifyPwdActivity.a(this.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onSucceed");
+    }
+    this.a.a.a().a(true, 45, new Object[] { Integer.valueOf(0), null, paramString });
+  }
+  
+  public void onFailed(IWyFileSystem.WyErrorStatus paramWyErrorStatus)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onFailed. errorCode[" + String.valueOf(paramWyErrorStatus.errorCode) + "],errorMsg[" + paramWyErrorStatus.errorMsg + "]");
+    }
+    this.a.a.a().a(false, 45, new Object[] { Integer.valueOf(paramWyErrorStatus.errorCode), paramWyErrorStatus.errorMsg, null });
   }
 }
 

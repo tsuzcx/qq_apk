@@ -4,7 +4,7 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.AppConstants;
-import hgc;
+import hbv;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class FileUtils
 {
   public static final long a = 1024L;
-  public static Runnable a = new hgc();
+  public static Runnable a = new hbv();
   public static final String a = "FileUtils";
   public static final long b = 1048576L;
   public static String b = "unknown_";

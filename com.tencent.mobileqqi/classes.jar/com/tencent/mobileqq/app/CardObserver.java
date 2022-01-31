@@ -219,65 +219,65 @@ public class CardObserver
     a(paramBoolean, (String)paramObject[0], (mobile_sub_get_cover_rsp)paramObject[1]);
   }
   
-  protected void a(boolean paramBoolean, Card paramCard) {}
+  public void a(boolean paramBoolean, Card paramCard) {}
   
-  protected void a(boolean paramBoolean, Card paramCard, int paramInt, byte[] paramArrayOfByte) {}
+  public void a(boolean paramBoolean, Card paramCard, int paramInt, byte[] paramArrayOfByte) {}
   
   protected void a(boolean paramBoolean1, Card paramCard, boolean paramBoolean2) {}
   
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  public void a(boolean paramBoolean, Object paramObject) {}
   
-  protected void a(boolean paramBoolean, String paramString) {}
+  public void a(boolean paramBoolean, String paramString) {}
   
-  protected void a(boolean paramBoolean, String paramString, int paramInt, Card paramCard) {}
+  public void a(boolean paramBoolean, String paramString, int paramInt, Card paramCard) {}
   
-  protected void a(boolean paramBoolean, String paramString, mobile_sub_get_cover_rsp parammobile_sub_get_cover_rsp) {}
+  public void a(boolean paramBoolean, String paramString, mobile_sub_get_cover_rsp parammobile_sub_get_cover_rsp) {}
   
-  protected void a(boolean paramBoolean, String paramString, Card paramCard) {}
+  public void a(boolean paramBoolean, String paramString, Card paramCard) {}
   
-  protected void a(boolean paramBoolean, String paramString1, String paramString2) {}
+  public void a(boolean paramBoolean, String paramString1, String paramString2) {}
   
   protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt) {}
   
-  protected void a(boolean paramBoolean, String paramString, ArrayList paramArrayList, long paramLong1, long paramLong2, byte[] paramArrayOfByte) {}
+  public void a(boolean paramBoolean, String paramString, ArrayList paramArrayList, long paramLong1, long paramLong2, byte[] paramArrayOfByte) {}
   
-  protected void a(boolean paramBoolean, String paramString, ArrayList paramArrayList, long paramLong1, long paramLong2, byte[] paramArrayOfByte, Card paramCard) {}
+  public void a(boolean paramBoolean, String paramString, ArrayList paramArrayList, long paramLong1, long paramLong2, byte[] paramArrayOfByte, Card paramCard) {}
   
-  protected void a(boolean paramBoolean, String paramString, ArrayList paramArrayList, long paramLong, byte[] paramArrayOfByte) {}
+  public void a(boolean paramBoolean, String paramString, ArrayList paramArrayList, long paramLong, byte[] paramArrayOfByte) {}
   
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3) {}
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3) {}
   
   protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected void b(boolean paramBoolean, Card paramCard) {}
+  public void b(boolean paramBoolean, Card paramCard) {}
   
   public void b(boolean paramBoolean, Object paramObject) {}
   
-  protected void b(boolean paramBoolean, String paramString) {}
+  public void b(boolean paramBoolean, String paramString) {}
   
   protected void b(boolean paramBoolean, String paramString, int paramInt, Card paramCard) {}
   
-  protected void b(boolean paramBoolean, String paramString, Card paramCard) {}
+  public void b(boolean paramBoolean, String paramString, Card paramCard) {}
   
   protected void b(boolean paramBoolean, String paramString1, String paramString2) {}
   
-  protected void b(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3) {}
+  public void b(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3) {}
   
   protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
   
   protected void c(boolean paramBoolean, Card paramCard) {}
   
-  protected void c(boolean paramBoolean, String paramString) {}
+  public void c(boolean paramBoolean, String paramString) {}
   
   protected void c(boolean paramBoolean, String paramString, int paramInt, Card paramCard) {}
   
-  protected void c(boolean paramBoolean, String paramString, Card paramCard) {}
+  public void c(boolean paramBoolean, String paramString, Card paramCard) {}
   
   protected void d(boolean paramBoolean, Card paramCard) {}
   
   protected void d(boolean paramBoolean, String paramString) {}
   
-  protected void d(boolean paramBoolean, String paramString, Card paramCard) {}
+  public void d(boolean paramBoolean, String paramString, Card paramCard) {}
   
   protected void e(boolean paramBoolean, Card paramCard) {}
   

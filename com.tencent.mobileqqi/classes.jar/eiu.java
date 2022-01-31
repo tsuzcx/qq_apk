@@ -1,22 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import mqq.app.permission.PermissionCallback;
 
 public class eiu
-  implements View.OnClickListener
+  implements PermissionCallback
 {
-  public eiu(SearchResultDialog paramSearchResultDialog) {}
+  public eiu(MainAssistObserver paramMainAssistObserver, SplashActivity paramSplashActivity) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    int i = ((Integer)paramView.getTag(-1)).intValue();
-    SearchResultDialog.a(this.a).a(SearchResultDialog.b(this.a), paramView, i, 0L);
+    new PermissionsDialog().a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, paramInt, paramArrayOfString, new eiv(this));
   }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eiu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,58 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.ArrayList;
+import com.tencent.mobileqq.filemanager.core.ThumbDownLoader;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
+import java.io.FileOutputStream;
 
 public class fwl
-  implements ActionSheet.OnButtonClickListener
 {
-  public fwl(LocalFileBrowserActivity paramLocalFileBrowserActivity, ActionSheet paramActionSheet) {}
+  public int a;
+  public long a;
+  public FileManagerEntity a;
+  public HttpMsg a;
+  public FileOutputStream a;
+  public String a;
+  public int[] a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public long d;
+  public String d;
+  public int e;
+  public long e;
   
-  public void OnClick(View paramView, int paramInt)
+  public fwl(ThumbDownLoader paramThumbDownLoader)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = null;
+    this.jdField_a_of_type_JavaIoFileOutputStream = null;
+    this.jdField_a_of_type_ArrayOfInt = new int[0];
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_d_of_type_Long = -1L;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_e_of_type_Long = 0L;
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_e_of_type_Int = 0;
+  }
+  
+  public String toString()
+  {
+    String str = "taskid[" + String.valueOf(this.jdField_d_of_type_Long) + "]";
+    str = str + "EntitySessionId[" + String.valueOf(this.jdField_a_of_type_Long) + "]";
+    StringBuilder localStringBuilder = new StringBuilder().append(str);
+    if ("discUin[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {}
+    for (str = "entity null";; str = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin) + "]")
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_Int != -1)
-      {
-        paramView = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_Int);
-        if ((!FileUtil.a(paramView.c())) || (FileUtil.c(paramView.c())))
-        {
-          FileManagerUtil.d(paramView.c());
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_Int);
-          LocalFileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity);
-        }
-        else
-        {
-          FMToastUtil.a(2131558716);
-        }
-      }
+      str = str;
+      str = str + "recvdSize[" + String.valueOf(this.jdField_c_of_type_Long) + "]";
+      str = str + "thumbSize[" + String.valueOf(this.jdField_a_of_type_Int) + "]";
+      return str + "retryTimes[" + String.valueOf(this.jdField_b_of_type_Int) + "]";
     }
   }
 }

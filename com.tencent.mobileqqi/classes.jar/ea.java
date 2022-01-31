@@ -1,17 +1,11 @@
-import android.content.ContentValues;
-import com.dataline.mpfile.MpfileTaskProxy;
-import com.tencent.mobileqq.app.proxy.ProxyListener;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.dataline.mpfile.LiteMpFileUploadActivity;
 
 public class ea
   implements Runnable
 {
-  public ea(MpfileTaskProxy paramMpfileTaskProxy, String paramString1, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener) {}
+  public ea(LiteMpFileUploadActivity paramLiteMpFileUploadActivity) {}
   
-  public void run()
-  {
-    MpfileTaskProxy.b(this.jdField_a_of_type_ComDatalineMpfileMpfileTaskProxy).a(String.valueOf(0), 0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentContentValues, this.b, this.jdField_a_of_type_ArrayOfJavaLangString, 1, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
-  }
+  public void run() {}
 }
 
 

@@ -32,7 +32,7 @@ import com.tencent.mobileqq.widget.FakeTextView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableActivityProcesser;
 import com.tencent.theme.SkinnableActivityProcesser.Callback;
-import fdv;
+import ezh;
 import mqq.app.BaseActivity;
 
 public class BaseActivity2
@@ -43,7 +43,7 @@ public class BaseActivity2
   public static BaseActivity2 a;
   private static ShakeListener jdField_a_of_type_ComTencentMobileqqAppShakeListener;
   private static boolean jdField_a_of_type_Boolean;
-  protected static final String g;
+  public static final String g;
   static boolean h;
   private FlingHandler jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler;
   public ScreenShot a;
@@ -52,7 +52,7 @@ public class BaseActivity2
   protected int e = 0;
   public boolean f = true;
   protected boolean g;
-  protected String h;
+  public String h;
   
   static
   {
@@ -69,7 +69,7 @@ public class BaseActivity2
   {
     if (paramBoolean) {
       if (jdField_a_of_type_ComTencentMobileqqAppShakeListener == null) {
-        new fdv(this).start();
+        new ezh(this).start();
       }
     }
     while (jdField_a_of_type_ComTencentMobileqqAppShakeListener == null) {
@@ -137,7 +137,7 @@ public class BaseActivity2
     startActivity(new Intent(this, GesturePWDUnlockActivity.class));
   }
   
-  protected boolean a()
+  public boolean a()
   {
     return true;
   }
@@ -237,7 +237,7 @@ public class BaseActivity2
     {
       if (!jdField_a_of_type_Boolean)
       {
-        if (SettingCloneUtil.readValue(this, null, getString(2131563409), "qqsetting_screenshot_key", false)) {
+        if (SettingCloneUtil.readValue(this, null, getString(2131563437), "qqsetting_screenshot_key", false)) {
           a(true);
         }
         jdField_a_of_type_Boolean = true;

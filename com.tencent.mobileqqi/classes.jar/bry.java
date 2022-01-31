@@ -1,41 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
-public class bry
-  implements DialogInterface.OnClickListener
+class bry
+  implements Runnable
 {
-  public bry(QRCardActivity paramQRCardActivity, String paramString) {}
+  bry(brx parambrx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = this.jdField_a_of_type_JavaLangString.toLowerCase();
-    if (paramDialogInterface.startsWith("www.")) {
-      paramDialogInterface = "http://" + this.jdField_a_of_type_JavaLangString;
+    int i = 0;
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidWidgetLinearLayout.removeViewAt(this.a.jdField_a_of_type_Int);
+    if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(false);
     }
-    for (;;)
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidViewView = null;
+    int j = this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    while (i < j)
     {
-      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity, QQBrowserDelegationActivity.class);
-      localIntent.putExtra("url", paramDialogInterface);
-      localIntent.putExtra("key_isReadModeEnabled", true);
-      localIntent.putExtra("injectrecommend", false);
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.startActivity(localIntent);
-      return;
-      if (paramDialogInterface.startsWith("https:")) {
-        paramDialogInterface = "https" + this.jdField_a_of_type_JavaLangString.substring(5);
-      } else if (paramDialogInterface.startsWith("http:")) {
-        paramDialogInterface = "http" + this.jdField_a_of_type_JavaLangString.substring(4);
-      } else {
-        paramDialogInterface = "http://" + this.jdField_a_of_type_JavaLangString;
+      View localView = this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+      if (localView.getTag() != null) {
+        localView.setTag(Integer.valueOf(i));
       }
+      i += 1;
     }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bry
  * JD-Core Version:    0.7.0.1
  */

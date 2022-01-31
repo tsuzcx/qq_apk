@@ -1,31 +1,36 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.PttItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPtt;
-import cooperation.qqfav.QfavBuilder;
-import cooperation.qqfav.QfavReport;
-import cooperation.qqfav.widget.QfavMicroPhoneDialog.Listener;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class efi
-  implements QfavMicroPhoneDialog.Listener
+  extends FriendListObserver
 {
-  public efi(PttItemBuilder paramPttItemBuilder, MessageForPtt paramMessageForPtt) {}
+  public efi(SystemMsgListView paramSystemMsgListView) {}
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  protected void a(String paramString, boolean paramBoolean)
   {
-    QfavBuilder.a(paramString1, paramInt, paramString2).b(PttItemBuilder.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt).a((Activity)PttItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder), PttItemBuilder.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder).getAccount());
-    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.length() > 0)) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      QfavReport.a(PttItemBuilder.f(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder), "User_AddFav", 4, 0, 6, paramInt, "", "");
-      return;
+    if ((paramBoolean) && (SystemMsgListView.a(this.a) != null)) {
+      SystemMsgListView.a(this.a).notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (SystemMsgListView.a(this.a) != null)) {
+      SystemMsgListView.a(this.a).notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if ((paramBoolean) && (SystemMsgListView.a(this.a) != null)) {
+      SystemMsgListView.a(this.a).notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     efi
  * JD-Core Version:    0.7.0.1
  */

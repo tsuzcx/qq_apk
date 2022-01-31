@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.aio.anim.BubbleAnimation;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
 
-class eci
-  implements Runnable
+public class eci
+  implements DialogInterface.OnDismissListener
 {
-  eci(ech paramech) {}
+  public eci(AIOImageListScene paramAIOImageListScene) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.d();
+    AIOImageListScene.a(this.a, null);
   }
 }
 

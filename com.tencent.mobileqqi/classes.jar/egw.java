@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
 
 class egw
   implements Runnable
 {
-  egw(egt paramegt, AIOImageData[] paramArrayOfAIOImageData, int paramInt) {}
+  egw(egv paramegv) {}
   
   public void run()
   {
-    if (egs.e(this.jdField_a_of_type_Egt.a) != null) {
-      ((AIOGalleryScene)egs.f(this.jdField_a_of_type_Egt.a)).a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_Int);
-    }
+    this.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     egw
  * JD-Core Version:    0.7.0.1
  */

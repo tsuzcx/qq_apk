@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendListInfo;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.transfile.DataLineDownloader;
+import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
+import java.net.URL;
 
-public final class gne
-  implements Parcelable.Creator
+public class gne
+  implements BitmapDecoder
 {
-  public FriendListInfo a(Parcel paramParcel)
-  {
-    return new FriendListInfo(paramParcel);
-  }
+  public gnd a;
   
-  public FriendListInfo[] a(int paramInt)
+  public gne(DataLineDownloader paramDataLineDownloader) {}
+  
+  public Bitmap a(URL paramURL)
   {
-    return new FriendListInfo[paramInt];
+    this.jdField_a_of_type_Gnd = this.jdField_a_of_type_ComTencentMobileqqTransfileDataLineDownloader.a(paramURL);
+    return DataLineDownloader.a(this.jdField_a_of_type_ComTencentMobileqqTransfileDataLineDownloader, this.jdField_a_of_type_Gnd);
   }
 }
 

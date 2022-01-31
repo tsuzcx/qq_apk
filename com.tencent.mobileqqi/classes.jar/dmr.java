@@ -1,21 +1,28 @@
-import android.widget.Button;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
-import com.tencent.mobileqq.util.Utils;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.SubAccountSettingActivity;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class dmr
-  implements Runnable
+class dmr
+  implements ActionSheet.OnButtonClickListener
 {
-  public dmr(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity, String paramString1, String paramString2) {}
+  dmr(dmp paramdmp, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    String str = Utils.a(this.jdField_a_of_type_JavaLangString, this.b);
-    if ((str != null) && (str.length() > 0) && (RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity) != null))
+    switch (paramInt)
     {
-      RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity).setText(str);
-      RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity).setEnabled(true);
     }
+    do
+    {
+      return;
+    } while ((!this.jdField_a_of_type_Dmp.a.f()) || ((SubAccountSettingActivity.a(this.jdField_a_of_type_Dmp.a) != null) && (TextUtils.isEmpty(SubAccountSettingActivity.a(this.jdField_a_of_type_Dmp.a).subuin))));
+    this.jdField_a_of_type_Dmp.a.d();
+    SubAccountAssistantManager.a().a(this.jdField_a_of_type_Dmp.a.b, SubAccountSettingActivity.a(this.jdField_a_of_type_Dmp.a).subuin);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 

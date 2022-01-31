@@ -1,17 +1,11 @@
-import com.tencent.mobileqq.app.GuardManager;
-import java.util.TimerTask;
-
 public class fhf
-  extends TimerTask
 {
-  private fhf(GuardManager paramGuardManager) {}
-  
-  public void run()
-  {
-    if (GuardManager.b(this.a)) {
-      GuardManager.a(this.a).a(4, null);
-    }
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b = 0;
+  public int c = 0;
 }
 
 

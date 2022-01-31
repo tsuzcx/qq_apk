@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.VideoInviteFull;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.ThemeSwitchDlgActivity;
@@ -44,17 +42,16 @@ class ThemeSwitchManager$ThemeDownloadHandler
       if (QLog.isColorLevel()) {
         QLog.i("ThemeSwitch", 2, "handleMessage:" + k + " " + " " + paramMessage + " " + l + " ");
       }
-      if ((!TextUtils.isEmpty(paramMessage)) && (paramMessage.startsWith(AppConstants.bb))) {
+      if ((!TextUtils.isEmpty(paramMessage)) && (paramMessage.startsWith(AppConstants.bf))) {
         break label147;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("ThemeSwitch", 2, "not download theme file message" + AppConstants.bb);
+        QLog.d("ThemeSwitch", 2, "not download theme file message" + AppConstants.bf);
       }
     }
     label147:
-    label1178:
-    label1480:
-    label1481:
+    label1452:
+    label1453:
     for (;;)
     {
       return;
@@ -97,7 +94,7 @@ class ThemeSwitchManager$ThemeDownloadHandler
           for (;;)
           {
             if (i == 0) {
-              break label1481;
+              break label1453;
             }
             ThemeSwitchManager.access$800(this.this$0, paramMessage);
             return;
@@ -120,13 +117,13 @@ class ThemeSwitchManager$ThemeDownloadHandler
                 i = j;
                 continue;
                 if (k != 2003) {
-                  break label1270;
+                  break label1242;
                 }
                 try
                 {
                   localObject1 = (ThemeUtil.ThemeInfo)this.this$0.downloadThemeMap.get(ThemeSwitchManager.access$000(this.this$0));
                   if (localObject1 == null) {
-                    break label1178;
+                    break label1150;
                   }
                   if (QLog.isDevelopLevel()) {
                     QLog.d("ThemeSwitch", 4, "download theme success themeID: " + ((ThemeUtil.ThemeInfo)localObject1).themeId);
@@ -152,7 +149,7 @@ class ThemeSwitchManager$ThemeDownloadHandler
                     }
                     this.this$0.setup(BaseApplicationImpl.a.a(), (ThemeUtil.ThemeInfo)localObject1);
                   }
-                  else if ((!localObject2[0].equals(ThemeSwitchManager.access$100(this.this$0).getPackageName())) || (localObject3.equals(AVActivity.class.getName())) || (localObject3.equals(VideoInviteFull.class.getName())) || (localObject3.equals(AIOGalleryActivity.class.getName())))
+                  else if ((!localObject2[0].equals(ThemeSwitchManager.access$100(this.this$0).getPackageName())) || (localObject3.equals(AIOGalleryActivity.class.getName())))
                   {
                     if (ThemeSwitchManager.access$600(this.this$0) == null) {
                       ThemeSwitchManager.access$602(this.this$0, ThreadManager.b());
@@ -197,6 +194,7 @@ class ThemeSwitchManager$ThemeDownloadHandler
             ((Intent)localObject2).setFlags(268435456);
             ThemeSwitchManager.access$100(this.this$0).startActivity((Intent)localObject2);
             return;
+            label1150:
             if (ThemeSwitchManager.isDownloadingInProgress)
             {
               if (QLog.isColorLevel()) {
@@ -206,8 +204,7 @@ class ThemeSwitchManager$ThemeDownloadHandler
               paramMessage.putInt("result", 256);
               paramMessage.putCharSequence("message", "downloadThemeMap themeInfo is null,themeId=" + ThemeSwitchManager.access$000(this.this$0));
               i = 1;
-              break label1480;
-              label1270:
+              break label1452;
               if (k == 2005)
               {
                 try
@@ -251,6 +248,7 @@ class ThemeSwitchManager$ThemeDownloadHandler
           }
           else
           {
+            label1242:
             i = 0;
           }
         }

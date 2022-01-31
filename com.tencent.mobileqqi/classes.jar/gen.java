@@ -1,58 +1,35 @@
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.log.ReportLog;
+import com.tencent.mobileqq.profile.ProfileCardBrowserActivity;
+import com.tencent.mobileqq.utils.HttpDownloadUtil.HttpDownloadListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class gen
-  extends Handler
+class gen
+  implements HttpDownloadUtil.HttpDownloadListener
 {
-  public gen(Looper paramLooper)
+  gen(gem paramgem) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    super(paramLooper);
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.ProfileCardBrowserActivity", 2, String.format("Resource Zip start download, url : %s, position : %s, cardId : %s ", new Object[] { paramString, Integer.valueOf(this.a.jdField_a_of_type_Int), Long.valueOf(this.a.jdField_a_of_type_Long) }));
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString, long paramLong1, long paramLong2)
   {
-    if (paramMessage.what == 10000001)
-    {
-      paramMessage = (ProgressBar)ReportLog.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131231028);
-      localDrawable = ReportLog.jdField_a_of_type_AndroidAppProgressDialog.getContext().getResources().getDrawable(2130837958);
-      paramMessage.setIndeterminateDrawable(localDrawable);
-      paramMessage.setBackgroundDrawable(localDrawable);
-      ((TextView)ReportLog.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131231029)).setText(2131563022);
-      ReportLog.a().sendEmptyMessageDelayed(10000002, 2000L);
-    }
-    while ((paramMessage.what != 10000002) || (ReportLog.jdField_a_of_type_AndroidAppProgressDialog == null))
-    {
-      Drawable localDrawable;
-      return;
-    }
-    try
-    {
-      ReportLog.jdField_a_of_type_Boolean = false;
-      ReportLog.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      paramMessage.printStackTrace();
-      return;
-    }
-    finally
-    {
-      ReportLog.jdField_a_of_type_AndroidAppProgressDialog = null;
+    int i = (int)(360.0D * paramLong2 / paramLong1);
+    this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardBrowserActivity.a(this.a.jdField_a_of_type_Int, i);
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.ProfileCardBrowserActivity", 2, String.format("Resource Zip end download, url : %s, resultCode : %d ", new Object[] { paramString, Integer.valueOf(paramInt) }));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gen
  * JD-Core Version:    0.7.0.1
  */

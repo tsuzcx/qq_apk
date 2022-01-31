@@ -1,20 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.CustomedTabWidget;
+import android.text.TextUtils;
+import com.tencent.open.appcommon.js.AppInterface;
+import com.tencent.open.appcommon.js.BaseInterface;
+import com.tencent.open.base.LogUtility;
+import com.tencent.smtt.sdk.WebView;
 
-public class hkm
-  implements View.OnClickListener
+class hkm
+  implements Runnable
 {
-  public hkm(CustomedTabWidget paramCustomedTabWidget) {}
+  hkm(hkl paramhkl, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.setCurrentTab(this.a.indexOfChild(paramView));
+    try
+    {
+      if ((this.jdField_a_of_type_Hkl.a.webView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+        this.jdField_a_of_type_Hkl.a.webView.loadUrl(this.jdField_a_of_type_JavaLangString);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      LogUtility.a(BaseInterface.TAG, "webview loadUrl>>> ", localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hkm
  * JD-Core Version:    0.7.0.1
  */

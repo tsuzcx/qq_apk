@@ -1,16 +1,26 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder;
 
 public class eba
+  implements DialogInterface.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public eba(TextItemBuilder paramTextItemBuilder) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (!TextTranslationItemBuilder.d) {}
+    for (boolean bool = true;; bool = false)
+    {
+      TextTranslationItemBuilder.d = bool;
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eba
  * JD-Core Version:    0.7.0.1
  */

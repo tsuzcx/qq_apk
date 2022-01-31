@@ -1,72 +1,48 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.VideoLayerUI;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import mqq.observer.AccountObserver;
 
-public class blr
-  implements View.OnTouchListener
+class blr
+  extends AccountObserver
 {
-  int jdField_a_of_type_Int = 0;
-  boolean jdField_a_of_type_Boolean = false;
-  int b = 0;
-  int c = 0;
-  int d;
-  int e = 0;
-  int f = 0;
-  int g = 0;
+  blr(blq paramblq, String paramString1, String paramString2) {}
   
-  public blr(VideoLayerUI paramVideoLayerUI)
+  public void onUpdateSid(String paramString)
   {
-    this.jdField_d_of_type_Int = 0;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_d_of_type_Int != 0) {}
-    do
+    Object localObject;
+    String str;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      return false;
-      switch (paramMotionEvent.getAction() & 0xFF)
-      {
-      default: 
-        return false;
-      case 0: 
-        this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
-        this.b = ((int)paramMotionEvent.getRawY());
-        this.c = this.jdField_a_of_type_Int;
-        this.jdField_d_of_type_Int = this.b;
-        this.g = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(paramView);
-        this.jdField_a_of_type_Boolean = false;
-        return false;
-      case 2: 
-        i = (int)paramMotionEvent.getRawX();
-        j = (int)paramMotionEvent.getRawY();
-        k = i - this.jdField_a_of_type_Int;
-        m = j - this.b;
-        if ((!this.jdField_a_of_type_Boolean) && ((Math.abs(k) > 5) || (Math.abs(m) > 5)))
-        {
-          this.jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.j = true;
-        }
-        if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.j) && (((!this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.c) || (!this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_d_of_type_Boolean)) || (((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.c) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_d_of_type_Boolean)) || ((!this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.c) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.e))))) {
-          paramView.setBackgroundDrawable(null);
-        }
-        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(paramView, k, m);
-        this.jdField_a_of_type_Int = i;
-        this.b = j;
-        return false;
+      localObject = "http://w.mail.qq.com/cgi-bin/login?target=mobileqqwrite&fwd=mq&fun=from3g&uin=" + this.jdField_a_of_type_JavaLangString + "&3g_sid=" + paramString + "&to=" + this.b;
+      str = ((String)localObject).toLowerCase();
+      if (!str.startsWith("www.")) {
+        break label141;
       }
-    } while (!this.jdField_a_of_type_Boolean);
-    int i = (int)paramMotionEvent.getRawX();
-    int j = (int)paramMotionEvent.getRawY();
-    int k = this.jdField_a_of_type_Int;
-    int m = this.b;
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(paramView, i - k, j - m);
-    this.e = i;
-    this.f = j;
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.g = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(paramView, this.g, this.c, this.jdField_d_of_type_Int, this.e, this.f);
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.g);
-    return true;
+      paramString = "http://" + (String)localObject;
+    }
+    for (;;)
+    {
+      localObject = new Intent(this.jdField_a_of_type_Blq.a, QQBrowserDelegationActivity.class);
+      ((Intent)localObject).putExtra("url", paramString);
+      ((Intent)localObject).putExtra("key_isReadModeEnabled", true);
+      ((Intent)localObject).putExtra("injectrecommend", false);
+      this.jdField_a_of_type_Blq.a.startActivity((Intent)localObject);
+      return;
+      label141:
+      if (str.startsWith("https:"))
+      {
+        paramString = "https" + ((String)localObject).substring(5);
+      }
+      else
+      {
+        paramString = (String)localObject;
+        if (str.startsWith("http:")) {
+          paramString = "http" + ((String)localObject).substring(4);
+        }
+      }
+    }
   }
 }
 

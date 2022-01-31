@@ -27,29 +27,29 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import boe;
-import bof;
-import bog;
-import boh;
-import boi;
-import boj;
-import bok;
-import bol;
-import bom;
-import bon;
-import boo;
-import bop;
-import boq;
-import bor;
-import bos;
-import bot;
-import bou;
-import bov;
-import box;
-import boy;
-import boz;
-import bpa;
-import bpb;
+import bia;
+import bib;
+import bic;
+import bid;
+import bie;
+import bif;
+import big;
+import bih;
+import bii;
+import bij;
+import bik;
+import bil;
+import bim;
+import bin;
+import bio;
+import bip;
+import biq;
+import bir;
+import bit;
+import biu;
+import biv;
+import biw;
+import bix;
 import com.tencent.biz.ProtoServlet;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.biz.pubaccount.PublicAccountServlet;
@@ -189,11 +189,11 @@ public class EnterpriseDetailActivity
       localObject1 = paramConfigInfo.content.get();
       if (TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localObject2 = ((LayoutInflater)localObject2).inflate(2130903253, null);
+        localObject2 = ((LayoutInflater)localObject2).inflate(2130903255, null);
         if (paramConfigInfo.event_id.get() != 7) {
           break label346;
         }
-        ((View)localObject2).setOnClickListener(new bog(this));
+        ((View)localObject2).setOnClickListener(new bic(this));
         localObject3 = localObject4;
         localObject1 = localObject2;
         label116:
@@ -206,7 +206,7 @@ public class EnterpriseDetailActivity
           ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
           if (paramConfigInfo.type.get() == 5)
           {
-            ((View)localObject1).setBackgroundResource(2130840176);
+            ((View)localObject1).setBackgroundResource(2130840178);
             label216:
             if (paramConfigInfo.state_id.get() != 5) {
               break label1166;
@@ -235,7 +235,7 @@ public class EnterpriseDetailActivity
         QLog.d(this.jdField_a_of_type_JavaLangString, 2, "addDetailItem exit");
       }
       return;
-      localObject2 = ((LayoutInflater)localObject2).inflate(2130903418, null);
+      localObject2 = ((LayoutInflater)localObject2).inflate(2130903420, null);
       ((TextView)((View)localObject2).findViewById(2131231118)).setText((CharSequence)localObject1);
       break;
       label346:
@@ -243,7 +243,7 @@ public class EnterpriseDetailActivity
       {
         localObject1 = paramConfigInfo.content.get();
         if (Pattern.compile("[\\d-]+?").matcher((CharSequence)localObject1).matches()) {
-          ((View)localObject2).setOnClickListener(new boh(this, paramConfigInfo));
+          ((View)localObject2).setOnClickListener(new bid(this, paramConfigInfo));
         }
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Biz_card", "Biz_card_call", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
         localObject1 = localObject2;
@@ -255,14 +255,14 @@ public class EnterpriseDetailActivity
       if (paramConfigInfo.event_id.get() != 9) {
         break label116;
       }
-      ((View)localObject2).setOnClickListener(new boi(this));
+      ((View)localObject2).setOnClickListener(new bie(this));
       localObject1 = localObject2;
       localObject3 = localObject4;
       break label116;
       if (paramConfigInfo.type.get() == 1)
       {
-        localObject1 = ((LayoutInflater)localObject2).inflate(2130903253, null);
-        ((View)localObject1).setOnClickListener(new boj(this, paramConfigInfo.url.get()));
+        localObject1 = ((LayoutInflater)localObject2).inflate(2130903255, null);
+        ((View)localObject1).setOnClickListener(new bif(this, paramConfigInfo.url.get()));
         localObject3 = localObject4;
         break label116;
       }
@@ -270,11 +270,11 @@ public class EnterpriseDetailActivity
       {
         if (paramConfigInfo.state_id.get() == 5)
         {
-          localObject1 = ((LayoutInflater)localObject2).inflate(2130904007, null);
-          localObject2 = ((View)localObject1).findViewById(2131234578);
-          ((TextView)((View)localObject1).findViewById(2131234579)).setVisibility(0);
+          localObject1 = ((LayoutInflater)localObject2).inflate(2130904009, null);
+          localObject2 = ((View)localObject1).findViewById(2131234580);
+          ((TextView)((View)localObject1).findViewById(2131234581)).setVisibility(0);
           label589:
-          localObject3 = (Switch)((View)localObject2).findViewById(2131231507);
+          localObject3 = (Switch)((View)localObject2).findViewById(2131231508);
           ((Switch)localObject3).setContentDescription(paramConfigInfo.title.get());
           if (paramConfigInfo.state.get() != 1) {
             break label677;
@@ -283,11 +283,11 @@ public class EnterpriseDetailActivity
         }
         for (;;)
         {
-          ((Switch)localObject3).setOnCheckedChangeListener(new bok(this, paramConfigInfo, (Switch)localObject3, (View)localObject2));
+          ((Switch)localObject3).setOnCheckedChangeListener(new big(this, paramConfigInfo, (Switch)localObject3, (View)localObject2));
           localObject3 = localObject1;
           localObject1 = localObject2;
           break;
-          localObject2 = ((LayoutInflater)localObject2).inflate(2130904007, null);
+          localObject2 = ((LayoutInflater)localObject2).inflate(2130904009, null);
           localObject1 = null;
           break label589;
           label677:
@@ -296,19 +296,19 @@ public class EnterpriseDetailActivity
       }
       if (paramConfigInfo.type.get() == 4)
       {
-        localObject1 = ((LayoutInflater)localObject2).inflate(2130903195, null);
+        localObject1 = ((LayoutInflater)localObject2).inflate(2130903196, null);
         ((TextView)((View)localObject1).findViewById(2131231118)).setText(paramConfigInfo.content.get());
         localObject3 = localObject4;
         break label116;
       }
       if (paramConfigInfo.type.get() == 5)
       {
-        localObject1 = ((LayoutInflater)localObject2).inflate(2130903318, null);
+        localObject1 = ((LayoutInflater)localObject2).inflate(2130903320, null);
         localObject2 = paramConfigInfo.url.get();
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
-          ((View)localObject1).findViewById(2131232068).setVisibility(0);
-          ((View)localObject1).setOnClickListener(new bol(this, (String)localObject2));
+          ((View)localObject1).findViewById(2131232071).setVisibility(0);
+          ((View)localObject1).setOnClickListener(new bih(this, (String)localObject2));
         }
         for (boolean bool = true;; bool = false)
         {
@@ -319,7 +319,7 @@ public class EnterpriseDetailActivity
             ((TextView)((View)localObject1).findViewById(2131231118)).setText((CharSequence)localObject3);
             localObject3 = ((JSONObject)localObject2).getJSONArray("pic_list");
             localObject2 = ((JSONObject)localObject2).getJSONArray("thumb_list");
-            a(bool, (LinearLayout)((View)localObject1).findViewById(2131232067), (JSONArray)localObject3, (JSONArray)localObject2);
+            a(bool, (LinearLayout)((View)localObject1).findViewById(2131232070), (JSONArray)localObject3, (JSONArray)localObject2);
             localObject3 = localObject4;
           }
           catch (JSONException localJSONException)
@@ -331,31 +331,13 @@ public class EnterpriseDetailActivity
             localObject3 = localObject4;
           }
           break;
-          ((View)localObject1).findViewById(2131232068).setVisibility(8);
+          ((View)localObject1).findViewById(2131232071).setVisibility(8);
         }
       }
-      localObject1 = localJSONException.inflate(2130903195, null);
+      localObject1 = localJSONException.inflate(2130903196, null);
       localObject3 = localObject4;
       break label116;
       localJSONException.setMargins(0, j, 0, j);
-      ((View)localObject1).setLayoutParams(localJSONException);
-      if (paramConfigInfo.type.get() == 5)
-      {
-        ((View)localObject1).setBackgroundResource(2130840176);
-        break label216;
-      }
-      ((View)localObject1).setBackgroundResource(2130837875);
-      break label216;
-      localJSONException.setMargins(0, j, 0, 0);
-      ((View)localObject1).setLayoutParams(localJSONException);
-      if (paramConfigInfo.type.get() == 5)
-      {
-        ((View)localObject1).setBackgroundResource(2130840186);
-        break label216;
-      }
-      ((View)localObject1).setBackgroundResource(2130837880);
-      break label216;
-      localJSONException.setMargins(0, 0, 0, j);
       ((View)localObject1).setLayoutParams(localJSONException);
       if (paramConfigInfo.type.get() == 5)
       {
@@ -364,14 +346,32 @@ public class EnterpriseDetailActivity
       }
       ((View)localObject1).setBackgroundResource(2130837877);
       break label216;
+      localJSONException.setMargins(0, j, 0, 0);
+      ((View)localObject1).setLayoutParams(localJSONException);
       if (paramConfigInfo.type.get() == 5)
       {
-        ((View)localObject1).setBackgroundResource(2130840184);
+        ((View)localObject1).setBackgroundResource(2130840188);
+        break label216;
+      }
+      ((View)localObject1).setBackgroundResource(2130837882);
+      break label216;
+      localJSONException.setMargins(0, 0, 0, j);
+      ((View)localObject1).setLayoutParams(localJSONException);
+      if (paramConfigInfo.type.get() == 5)
+      {
+        ((View)localObject1).setBackgroundResource(2130840180);
         break label216;
       }
       ((View)localObject1).setBackgroundResource(2130837879);
       break label216;
-      ((View)localObject1).setBackgroundResource(2130837875);
+      if (paramConfigInfo.type.get() == 5)
+      {
+        ((View)localObject1).setBackgroundResource(2130840186);
+        break label216;
+      }
+      ((View)localObject1).setBackgroundResource(2130837881);
+      break label216;
+      ((View)localObject1).setBackgroundResource(2130837877);
       break label216;
       label1155:
       paramViewGroup = getString(2131561841);
@@ -507,7 +507,7 @@ public class EnterpriseDetailActivity
         localSetFunctionFlagRequset.value.set(j);
         localSetFunctionFlagRequset.account_type.set(2);
         localNewIntent.putExtra("data", localSetFunctionFlagRequset.toByteArray());
-        this.jdField_d_of_type_MqqObserverBusinessObserver = new boz(this, paramConfigInfo, paramSwitch, j, paramBoolean);
+        this.jdField_d_of_type_MqqObserverBusinessObserver = new biv(this, paramConfigInfo, paramSwitch, j, paramBoolean);
         localNewIntent.setObserver(this.jdField_d_of_type_MqqObserverBusinessObserver);
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
         this.jdField_a_of_type_Int += 1;
@@ -534,7 +534,7 @@ public class EnterpriseDetailActivity
   
   private void b(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetButton.postDelayed(new boe(this, paramInt), 500L);
+    this.jdField_a_of_type_AndroidWidgetButton.postDelayed(new bia(this, paramInt), 500L);
   }
   
   private void b(EqqDetail paramEqqDetail)
@@ -554,11 +554,11 @@ public class EnterpriseDetailActivity
     if (3 == paramConfigInfo.state_id.get())
     {
       str1 = String.format(getString(2131558609), new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.name });
-      localQQCustomDialog.setOnCancelListener(new bpa(this, paramConfigInfo, paramSwitch));
+      localQQCustomDialog.setOnCancelListener(new biw(this, paramConfigInfo, paramSwitch));
     }
     localQQCustomDialog.setTitle(str2);
     localQQCustomDialog.setMessage(str1);
-    paramConfigInfo = new bpb(this, paramConfigInfo, paramSwitch, paramBoolean);
+    paramConfigInfo = new bix(this, paramConfigInfo, paramSwitch, paramBoolean);
     localQQCustomDialog.setNegativeButton(getString(2131559606), paramConfigInfo);
     localQQCustomDialog.setPositiveButton(getString(2131559607), paramConfigInfo);
     try
@@ -580,7 +580,7 @@ public class EnterpriseDetailActivity
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 0);
     localQQCustomDialog.setCanceledOnTouchOutside(false);
     localQQCustomDialog.setMessage(paramString);
-    paramString = new bof(this, paramString);
+    paramString = new bib(this, paramString);
     localQQCustomDialog.setNegativeButton(getString(2131559606), paramString);
     localQQCustomDialog.setPositiveButton(getString(2131559608), paramString);
     try
@@ -653,7 +653,7 @@ public class EnterpriseDetailActivity
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "initView");
     }
-    super.setContentView(2130903359);
+    super.setContentView(2130903361);
     this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131230980));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131230940));
@@ -662,7 +662,7 @@ public class EnterpriseDetailActivity
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131230978));
     this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131230972));
     this.jdField_a_of_type_AndroidViewView = super.findViewById(2131230971);
-    this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130838999, 0, 0, 0);
+    this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130839001, 0, 0, 0);
     this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131230981));
     super.setTitle(2131560533);
     this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131230974));
@@ -737,7 +737,7 @@ public class EnterpriseDetailActivity
     localUnFollowRequest.uin.set((int)Long.parseLong(this.jdField_b_of_type_JavaLangString));
     localUnFollowRequest.account_type.set(2);
     this.jdField_c_of_type_MqqAppNewIntent.putExtra("data", localUnFollowRequest.toByteArray());
-    this.jdField_c_of_type_MqqObserverBusinessObserver = new bop(this);
+    this.jdField_c_of_type_MqqObserverBusinessObserver = new bil(this);
     this.jdField_c_of_type_MqqAppNewIntent.setObserver(this.jdField_c_of_type_MqqObserverBusinessObserver);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(this.jdField_c_of_type_MqqAppNewIntent);
     this.jdField_a_of_type_Int += 1;
@@ -753,7 +753,7 @@ public class EnterpriseDetailActivity
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "follow");
     }
     this.jdField_f_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidWidgetButton.postDelayed(new bou(this), 3000L);
+    this.jdField_a_of_type_AndroidWidgetButton.postDelayed(new biq(this), 3000L);
     b(2131560544);
     this.jdField_b_of_type_MqqAppNewIntent = new NewIntent(super.getApplicationContext(), PublicAccountServlet.class);
     this.jdField_b_of_type_MqqAppNewIntent.putExtra("cmd", "follow");
@@ -764,7 +764,7 @@ public class EnterpriseDetailActivity
     localFollowRequest.uin.set((int)Long.parseLong(this.jdField_b_of_type_JavaLangString));
     localFollowRequest.account_type.set(2);
     this.jdField_b_of_type_MqqAppNewIntent.putExtra("data", localFollowRequest.toByteArray());
-    this.jdField_b_of_type_MqqObserverBusinessObserver = new bov(this);
+    this.jdField_b_of_type_MqqObserverBusinessObserver = new bir(this);
     this.jdField_b_of_type_MqqAppNewIntent.setObserver(this.jdField_b_of_type_MqqObserverBusinessObserver);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(this.jdField_b_of_type_MqqAppNewIntent);
     this.jdField_a_of_type_Int += 1;
@@ -791,8 +791,8 @@ public class EnterpriseDetailActivity
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(str);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131560534, 3);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.d(2131561746);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new box(this));
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new boy(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new bit(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new biu(this));
       if (!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())
       {
         this.i = false;
@@ -849,12 +849,12 @@ public class EnterpriseDetailActivity
       this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
       if (this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bor(this);
+        this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bin(this);
         a(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
       }
       l();
       return;
-      localObject = getResources().getDrawable(2130838476);
+      localObject = getResources().getDrawable(2130838478);
       ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
       localObject = new ImageSpan((Drawable)localObject, 1);
       SpannableString localSpannableString = new SpannableString(this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.name + "[certified]");
@@ -940,7 +940,7 @@ public class EnterpriseDetailActivity
         localGetEqqDetailInfoRequest.eqq_id.set((int)Long.parseLong(this.jdField_b_of_type_JavaLangString));
         label151:
         this.jdField_a_of_type_MqqAppNewIntent.putExtra("data", localGetEqqDetailInfoRequest.toByteArray());
-        this.jdField_a_of_type_MqqObserverBusinessObserver = new bos(this);
+        this.jdField_a_of_type_MqqObserverBusinessObserver = new bio(this);
         this.jdField_a_of_type_MqqAppNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(this.jdField_a_of_type_MqqAppNewIntent);
         this.jdField_a_of_type_Int += 1;
@@ -1029,20 +1029,20 @@ public class EnterpriseDetailActivity
       return;
     }
     if (paramBoolean) {}
-    for (int j = getWindow().getWindowManager().getDefaultDisplay().getWidth() - getResources().getDimensionPixelSize(2131427542); n == 1; j = getWindow().getWindowManager().getDefaultDisplay().getWidth() - getResources().getDimensionPixelSize(2131427543))
+    for (int j = getWindow().getWindowManager().getDefaultDisplay().getWidth() - getResources().getDimensionPixelSize(2131427545); n == 1; j = getWindow().getWindowManager().getDefaultDisplay().getWidth() - getResources().getDimensionPixelSize(2131427546))
     {
       localObject = new ImageView(this);
       ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
       ((ImageView)localObject).setMaxWidth(j);
       ((ImageView)localObject).setMaxHeight(j);
       ((ImageView)localObject).setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
-      ((ImageView)localObject).setOnClickListener(new bom(this, paramJSONArray1));
+      ((ImageView)localObject).setOnClickListener(new bii(this, paramJSONArray1));
       try
       {
         paramJSONArray1 = URLDrawable.getDrawable(paramJSONArray2.getString(0));
         ((ImageView)localObject).setImageDrawable(paramJSONArray1);
         paramLinearLayout.addView((View)localObject);
-        paramJSONArray1.setURLDrawableListener(new bon(this, (ImageView)localObject));
+        paramJSONArray1.setURLDrawableListener(new bij(this, (ImageView)localObject));
         return;
       }
       catch (JSONException paramLinearLayout)
@@ -1062,8 +1062,8 @@ public class EnterpriseDetailActivity
     if (n == 4)
     {
       ((GridView)localObject).setNumColumns(2);
-      ((GridView)localObject).setAdapter(new boo(this, n, paramJSONArray2, m));
-      ((GridView)localObject).setOnItemClickListener(new boq(this, paramJSONArray1));
+      ((GridView)localObject).setAdapter(new bik(this, n, paramJSONArray2, m));
+      ((GridView)localObject).setOnItemClickListener(new bim(this, paramJSONArray1));
       k = j;
       if (n == 4) {
         k = m * 2 + i1;
@@ -1122,7 +1122,7 @@ public class EnterpriseDetailActivity
       for (;;)
       {
         this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-        this.jdField_a_of_type_AndroidWidgetButton.postDelayed(new bot(this), 1000L);
+        this.jdField_a_of_type_AndroidWidgetButton.postDelayed(new bip(this), 1000L);
         return;
         i();
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Biz_card", "Biz_card_disfollow", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");

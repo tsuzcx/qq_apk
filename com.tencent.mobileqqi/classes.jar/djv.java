@@ -1,20 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import android.os.Handler;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import android.support.v7.app.ActionBar;
+import com.tencent.mobileqq.activity.SplashActivity;
 
 public class djv
-  implements DialogInterface.OnClickListener
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  public djv(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
+  public djv(SplashActivity paramSplashActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    paramDialogInterface.dismiss();
+    this.a.supportInvalidateOptionsMenu();
+    this.a.getSupportActionBar().setSelectedNavigationItem(paramInt);
+    new Handler().postDelayed(new djw(this, paramInt), 500L);
+    this.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     djv
  * JD-Core Version:    0.7.0.1
  */

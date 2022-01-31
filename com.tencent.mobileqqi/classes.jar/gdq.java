@@ -1,22 +1,22 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.fpsreport.FPSCalculator;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
 
 public class gdq
-  extends AsyncTask
+  implements DialogInterface.OnClickListener
 {
-  public gdq(FPSCalculator paramFPSCalculator) {}
+  public gdq(PermissionsDialog paramPermissionsDialog) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramVarArgs = FPSCalculator.a(this.a).iterator();
-    while (paramVarArgs.hasNext()) {
-      QLog.d("Q.PerfTrace", 2, (String)paramVarArgs.next());
+    if (paramInt == 1) {
+      PermissionsDialog.a(this.a).b();
     }
-    FPSCalculator.a(this.a).clear();
-    return null;
+    while (paramInt != 0) {
+      return;
+    }
+    PermissionsDialog.a(this.a).a();
   }
 }
 

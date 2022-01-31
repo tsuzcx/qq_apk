@@ -1,43 +1,35 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack;
+import com.tencent.mobileqq.pic.PicInfoInterface.ErrInfo;
+import com.tencent.mobileqq.pic.PicResult;
+import com.tencent.mobileqq.pic.UiCallBack.DownAdapter;
 
 public class eco
-  extends View
+  extends UiCallBack.DownAdapter
 {
-  public eco(ComboAnimation3 paramComboAnimation3, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public eco(AIOImageProviderService paramAIOImageProviderService, long paramLong1, int paramInt1, int paramInt2, long paramLong2, String paramString) {}
   
-  public void draw(Canvas paramCanvas)
+  public void a(int paramInt)
   {
-    Drawable[] arrayOfDrawable = this.a.a;
-    int j = arrayOfDrawable.length;
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfDrawable[i].draw(paramCanvas);
-      i += 1;
+    IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
+    if (localIAIOImageProviderCallBack != null) {
+      localIAIOImageProviderCallBack.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long);
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(int paramInt, PicResult paramPicResult)
   {
-    paramInt1 = 0;
-    paramInt3 = paramInt4 - paramInt2;
-    Drawable[] arrayOfDrawable = this.a.a;
-    paramInt4 = arrayOfDrawable.length;
-    paramInt2 = 0;
-    while (paramInt1 < paramInt4)
+    IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
+    if (localIAIOImageProviderCallBack != null)
     {
-      Drawable localDrawable = arrayOfDrawable[paramInt1];
-      localDrawable.setBounds(paramInt2, paramInt3 - localDrawable.getIntrinsicHeight(), localDrawable.getIntrinsicWidth() + paramInt2, paramInt3);
-      paramInt2 += localDrawable.getIntrinsicWidth();
-      paramInt1 += 1;
+      if (paramPicResult.d == 0) {
+        localIAIOImageProviderCallBack.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString);
+      }
     }
+    else {
+      return;
+    }
+    localIAIOImageProviderCallBack.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 2, "step:" + paramPicResult.a.jdField_a_of_type_JavaLangString + ", desc:" + paramPicResult.a.b);
   }
 }
 

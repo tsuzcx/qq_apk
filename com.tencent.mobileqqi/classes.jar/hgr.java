@@ -1,11 +1,18 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.GridListView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class hgr
+  implements View.OnClickListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public hgr(GridListView paramGridListView) {}
   
-  private hgr(QQCustomDialog paramQQCustomDialog) {}
+  public void onClick(View paramView)
+  {
+    int i = ((Integer)paramView.getTag(2131233145)).intValue();
+    this.a.a.a(this.a, paramView, i, 0L);
+  }
 }
 
 

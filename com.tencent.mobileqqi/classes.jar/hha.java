@@ -1,19 +1,24 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
+import com.tencent.mobileqq.widget.AnimationTextView;
+import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
+import java.util.Stack;
 
 public class hha
-  implements View.OnClickListener
 {
-  public hha(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
+  private Stack jdField_a_of_type_JavaUtilStack = new Stack();
   
-  public void onClick(View paramView)
+  public hha(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
+  
+  public AnimationTextView a()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
+    if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
+      return null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
+    return (AnimationTextView)this.jdField_a_of_type_JavaUtilStack.pop();
+  }
+  
+  public void a(AnimationTextView paramAnimationTextView)
+  {
+    this.jdField_a_of_type_JavaUtilStack.push(paramAnimationTextView);
   }
 }
 

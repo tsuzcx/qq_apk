@@ -1,24 +1,16 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.PeopleAroundBaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class deq
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public deq(PeopleAroundBaseActivity paramPeopleAroundBaseActivity, View paramView1, Drawable[] paramArrayOfDrawable, LinearLayout paramLinearLayout, View paramView2) {}
+  public deq(RegisterActivity paramRegisterActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    if (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable != null) {
-      PeopleAroundBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPeopleAroundBaseActivity).setCompoundDrawables(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[3]);
-    }
-    PeopleAroundBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPeopleAroundBaseActivity).setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeView(this.b);
+    this.a.a = 0;
+    this.a.finish();
   }
 }
 

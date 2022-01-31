@@ -1,40 +1,18 @@
-import com.tencent.mobileqq.customviews.MessageProgressTextView;
+import com.tencent.mobileqq.filemanager.activity.FileAssistantActivity;
 
-public class frs
+class frs
   implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
-  
-  public frs(MessageProgressTextView paramMessageProgressTextView, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.b = paramInt;
-  }
+  frs(frr paramfrr) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView.jdField_a_of_type_Frs = null;
-    if (!MessageProgressTextView.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Int += this.b;
-      MessageProgressTextView.a(this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView, this.jdField_a_of_type_Int, this.b);
-    }
+    FileAssistantActivity.e(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     frs
  * JD-Core Version:    0.7.0.1
  */

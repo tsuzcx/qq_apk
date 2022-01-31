@@ -9,8 +9,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import dr;
-import ds;
+import dz;
+import ea;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -22,7 +22,7 @@ public class LiteMpFileUploadActivity
 {
   public static int a;
   public static String a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new dr(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new dz(this);
   private ListView jdField_a_of_type_AndroidWidgetListView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private MpfileTaskListAdapter jdField_a_of_type_ComDatalineMpfileMpfileTaskListAdapter;
@@ -45,7 +45,7 @@ public class LiteMpFileUploadActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903523);
+    setContentView(2130903525);
     this.jdField_a_of_type_ComDatalineMpfileMpfileTaskListAdapter = new MpfileTaskListAdapter(this, null, null);
   }
   
@@ -63,7 +63,7 @@ public class LiteMpFileUploadActivity
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    runOnUiThread(new ds(this));
+    runOnUiThread(new ea(this));
   }
 }
 

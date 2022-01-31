@@ -1,22 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
 
-public class dgw
-  extends Handler
+class dgw
+  implements Runnable
 {
-  public dgw(QQBroadcastActivity paramQQBroadcastActivity) {}
+  dgw(dgu paramdgu) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while (this.a.a == null);
-    this.a.a.changeCursor(this.a.a());
+    this.a.a.a(2131562790, 1);
   }
 }
 

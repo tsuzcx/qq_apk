@@ -1,15 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.activity.phone.BindNumberBusinessActivity;
+import com.tencent.mobileqq.activity.phone.MyBusinessActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class elm
   implements View.OnClickListener
 {
-  public elm(TroopActivity paramTroopActivity) {}
+  public elm(MyBusinessActivity paramMyBusinessActivity) {}
   
   public void onClick(View paramView)
   {
-    TroopActivity.a(this.a);
+    BindNumberBusinessActivity.a(this.a, "", true);
+    ReportController.b(this.a.b, "CliOper", "", "", "0X800421C", "0X800421C", 0, 0, "", "", "", "");
   }
 }
 

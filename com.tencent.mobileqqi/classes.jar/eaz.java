@@ -1,20 +1,22 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
+import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
 
 public class eaz
+  implements AnimationTextView.OnDoubleClick
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  TextView c;
-  TextView d;
-  TextView e;
+  public eaz(TextItemBuilder paramTextItemBuilder) {}
+  
+  public void a(View paramView)
+  {
+    ChatActivityUtils.a(TextItemBuilder.b(this.a), paramView, (ChatActivity)TextItemBuilder.a(this.a));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eaz
  * JD-Core Version:    0.7.0.1
  */

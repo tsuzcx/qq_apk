@@ -28,11 +28,11 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
-import ehe;
-import ehf;
-import ehg;
-import ehh;
-import ehi;
+import ecb;
+import ecc;
+import ecd;
+import ece;
+import ecf;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -53,7 +53,7 @@ public class AIOGalleryUtils
   {
     if (BaseApplicationImpl.a.getProcessName().endsWith(":peak"))
     {
-      a = new ehi();
+      a = new ecf();
       return;
     }
   }
@@ -121,7 +121,7 @@ public class AIOGalleryUtils
         return;
       }
     }
-    DialogUtil.a(paramActivity, 230).setTitle(paramActivity.getString(2131562802)).setMessage(paramActivity.getString(2131561976)).setPositiveButton(paramActivity.getString(2131562765), new ehf(paramActivity, paramFile, paramString)).setNegativeButton(paramActivity.getString(2131562473), new ehe()).show();
+    DialogUtil.a(paramActivity, 230).setTitle(paramActivity.getString(2131562802)).setMessage(paramActivity.getString(2131561976)).setPositiveButton(paramActivity.getString(2131562765), new ecc(paramActivity, paramFile, paramString)).setNegativeButton(paramActivity.getString(2131562473), new ecb()).show();
   }
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt, AIOImageInfo paramAIOImageInfo, boolean paramBoolean, String paramString3)
@@ -192,7 +192,7 @@ public class AIOGalleryUtils
   
   public static void a(Context paramContext, QQAppInterface paramQQAppInterface, URLDrawable paramURLDrawable, String paramString, int paramInt)
   {
-    new ehh(paramContext, paramInt, paramQQAppInterface, paramURLDrawable, paramString).execute(new Void[0]);
+    new ece(paramContext, paramInt, paramQQAppInterface, paramURLDrawable, paramString).execute(new Void[0]);
   }
   
   private static int b(Context paramContext, String paramString)
@@ -241,7 +241,7 @@ public class AIOGalleryUtils
   
   private static void b(Activity paramActivity, File paramFile1, File paramFile2)
   {
-    new ehg(paramFile2, paramFile1, paramActivity).execute(new Void[0]);
+    new ecd(paramFile2, paramFile1, paramActivity).execute(new Void[0]);
   }
   
   private static boolean b(Context paramContext, String paramString)

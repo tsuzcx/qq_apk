@@ -1,39 +1,16 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollToTopListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
 public class fwf
-  implements SlideDetectListView.OnScrollToTopListener
+  extends fvj
 {
-  public fwf(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
-  
-  public void a() {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public fwf(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectPhotoTrace", 2, LocalFileBrowserActivity.b + ",onScrollStateChanged() is called,scrollState is:" + paramInt + ",time is:" + System.currentTimeMillis());
-    }
-    if (paramInt == 0)
-    {
-      URLDrawable.resume();
-      return;
-    }
-    URLDrawable.pause();
+    super(paramOnlineFileSessionWorker);
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  protected String a()
   {
-    if ((paramInt1 <= 0) || (paramInt1 + paramInt2 >= paramInt3 - 1)) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      if (paramInt1 != 0) {
-        URLDrawable.resume();
-      }
-      return;
-    }
+    return "StateUploadoneWhenPause";
   }
 }
 

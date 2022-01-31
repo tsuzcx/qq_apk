@@ -1,71 +1,52 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
-import com.tencent.mobileqq.config.DownloadIconsListener;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import java.io.File;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-public class cys
-  extends DownloadIconsListener
+class cys
+  extends MessageObserver
 {
-  public cys(LebaListMgrActivity paramLebaListMgrActivity) {}
+  cys(cyp paramcyp) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  protected void a(boolean paramBoolean, String[] paramArrayOfString)
   {
     int k = 0;
-    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {}
-    label209:
-    label210:
+    int j = k;
+    int i;
+    if (paramArrayOfString != null) {
+      i = 0;
+    }
     for (;;)
     {
-      return;
-      int m = LebaListMgrActivity.a(this.a).getCount();
-      int j = 0;
-      int i = k;
-      if (j < m)
+      j = k;
+      if (i < paramArrayOfString.length)
       {
-        Object localObject = (LebaViewItem)LebaListMgrActivity.a(this.a).getItem(j);
-        if ((((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo != null) && (paramString.equals(((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName)))
-        {
-          ((LebaViewItem)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(paramBitmap);
+        if (paramArrayOfString[i].equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) {
           j = 1;
-          localObject = LebaShowListManager.a(this.a.a(), paramString, ((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName);
-          i = j;
-          if (localObject == null) {
-            break label209;
-          }
-          i = j;
-          if (paramBitmap == null) {
-            break label209;
-          }
-          i = j;
-          if (LebaShowListManager.a().a.containsKey(((File)localObject).getAbsolutePath())) {
-            break label209;
-          }
-          LebaShowListManager.a().a.put(((File)localObject).getAbsolutePath(), paramBitmap);
-          i = 1;
         }
       }
-      for (;;)
+      else
       {
-        if (i == 0) {
-          break label210;
+        if (j != 0)
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131559091));
+          paramArrayOfString = Message.obtain();
+          paramArrayOfString.what = 1003;
+          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramArrayOfString);
         }
-        this.a.runOnUiThread(new cyt(this, paramString));
+        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b.c(this.a.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
         return;
-        j += 1;
-        break;
       }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cys
  * JD-Core Version:    0.7.0.1
  */

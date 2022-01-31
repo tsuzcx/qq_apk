@@ -10,8 +10,8 @@ import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.weiyun.sdk.IWyFileSystem.Thumbnail;
 import com.weiyun.sdk.IWyFileSystem.ThumbnailType;
-import fye;
-import fyf;
+import fts;
+import ftt;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -298,7 +298,7 @@ public class FMObserver
       paramObject.jdField_a_of_type_JavaLangObject = localObject1[1];
       localObject1 = new Handler();
       QLog.i("FMObserver<FileAssistant>", 1, "OnThumbDownLoadSuccess(faild),fileId[" + paramObject.jdField_a_of_type_JavaLangString + "],delay 1000ms");
-      ((Handler)localObject1).postDelayed(new fyf(this, paramObject), 1000L);
+      ((Handler)localObject1).postDelayed(new ftt(this, paramObject), 1000L);
       return;
     case 40: 
       if (((Boolean)paramObject[1]).booleanValue())
@@ -427,27 +427,27 @@ public class FMObserver
   
   public void a() {}
   
-  protected void a(int paramInt, long paramLong, String paramString) {}
+  public void a(int paramInt, long paramLong, String paramString) {}
   
-  protected void a(int paramInt, String paramString) {}
+  public void a(int paramInt, String paramString) {}
   
   public void a(int paramInt, String paramString1, String paramString2) {}
   
-  protected void a(long paramLong) {}
+  public void a(long paramLong) {}
   
   protected void a(long paramLong, int paramInt, String paramString) {}
   
-  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt) {}
+  public void a(long paramLong1, long paramLong2, String paramString, int paramInt) {}
   
   protected void a(long paramLong1, String paramString, int paramInt, long paramLong2) {}
   
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2) {}
+  public void a(long paramLong, String paramString1, int paramInt, String paramString2) {}
   
   public void a(ThumbnailInfo paramThumbnailInfo) {}
   
   public void a(Boolean paramBoolean, List paramList) {}
   
-  protected void a(Integer paramInteger, long paramLong, String paramString) {}
+  public void a(Integer paramInteger, long paramLong, String paramString) {}
   
   public void a(Integer paramInteger, String paramString) {}
   
@@ -457,48 +457,48 @@ public class FMObserver
   
   public void a(String paramString1, String paramString2, boolean paramBoolean) {}
   
-  protected void a(String paramString, boolean paramBoolean, int paramInt1, long paramLong, List paramList, int paramInt2) {}
+  public void a(String paramString, boolean paramBoolean, int paramInt1, long paramLong, List paramList, int paramInt2) {}
   
   public void a(List paramList) {}
   
-  protected void a(boolean paramBoolean) {}
+  public void a(boolean paramBoolean) {}
   
   protected void a(boolean paramBoolean, int paramInt, String paramString1, long paramLong1, long paramLong2, String paramString2, long paramLong3) {}
   
   protected void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2, String paramString5) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt) {}
+  public void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2) {}
+  public void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2) {}
   
   public void b() {}
   
-  protected void b(int paramInt, String paramString) {}
+  public void b(int paramInt, String paramString) {}
   
-  protected void b(long paramLong) {}
+  public void b(long paramLong) {}
   
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt) {}
+  public void b(long paramLong1, long paramLong2, String paramString, int paramInt) {}
   
   protected void b(Integer paramInteger, String paramString) {}
   
   protected void b(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2, String paramString5) {}
   
-  protected void c() {}
+  public void c() {}
   
   public void c(int paramInt, String paramString) {}
   
-  protected void c(long paramLong) {}
+  public void c(long paramLong) {}
   
-  protected void d() {}
+  public void d() {}
   
-  protected void d(int paramInt, String paramString) {}
+  public void d(int paramInt, String paramString) {}
   
   public void update(Observable paramObservable, Object paramObject)
   {
     paramObservable = Looper.getMainLooper();
     if (Thread.currentThread() != paramObservable.getThread())
     {
-      new Handler(paramObservable).post(new fye(this, paramObject));
+      new Handler(paramObservable).post(new fts(this, paramObject));
       return;
     }
     a(paramObject);

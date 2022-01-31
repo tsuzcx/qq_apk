@@ -1,24 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
+import com.tencent.mobileqq.music.SongInfo;
 
-public final class gcr
+public class gcr
   implements Runnable
 {
-  public gcr(int paramInt) {}
+  public gcr(QQPlayerService paramQQPlayerService, QQPlayerService.QQPlayerCallback paramQQPlayerCallback, SongInfo paramSongInfo) {}
   
   public void run()
   {
-    QQToast localQQToast = new QQToast(BaseApplicationImpl.getContext());
-    localQQToast.a(2130837931);
-    localQQToast.c(3000);
-    localQQToast.b(this.a);
-    localQQToast.b(FMToastUtil.a());
+    this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback.onPlaySongChanged(this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gcr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,94 +1,54 @@
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.photo.AlbumListActivity;
-import com.tencent.mobileqq.data.QQAlbumInfo;
-import com.tencent.mobileqq.utils.AlbumUtil;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class eqr
-  extends BaseAdapter
+  extends TroopObserver
 {
-  ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(-2141891243);
-  private Drawable.ConstantState jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState;
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  public eqr(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public eqr(AlbumListActivity paramAlbumListActivity)
+  protected void a(int paramInt, byte paramByte)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState = paramAlbumListActivity.getResources().getDrawable(2130837803).getConstantState();
-  }
-  
-  public QQAlbumInfo a(int paramInt)
-  {
-    return (QQAlbumInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public void a(List paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    Object localObject;
-    URL localURL;
-    if (paramView == null)
+    if (paramInt == 8)
     {
-      localView = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListActivity.getLayoutInflater().inflate(2130903544, null);
-      paramViewGroup = (TextView)localView;
-      localObject = a(paramInt);
-      paramViewGroup.setText(((QQAlbumInfo)localObject).name + String.format(" (%d)", new Object[] { Integer.valueOf(((QQAlbumInfo)localObject).imageCount) }));
-      paramView = paramViewGroup.getCompoundDrawables()[0];
-      localURL = AlbumUtil.a(((QQAlbumInfo)localObject).cover, 200);
-      if ((paramView == null) || (!URLDrawable.class.isInstance(paramView))) {
-        break label231;
+      if (QLog.isColorLevel()) {
+        QLog.d("SelectMemberActivity", 2, "add troop member fail");
       }
-      localObject = (URLDrawable)paramView;
-      paramView = (View)localObject;
-      if (!localURL.equals(((URLDrawable)localObject).getURL())) {
-        ((URLDrawable)localObject).cancelDownload(true);
-      }
+      this.a.a.sendEmptyMessage(1);
     }
-    label231:
-    for (paramView = null;; paramView = null)
+  }
+  
+  protected void a(int paramInt, byte paramByte, String paramString)
+  {
+    if (paramInt == 8)
     {
-      if (paramView == null)
+      if (paramByte != 0) {
+        break label95;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SelectMemberActivity", 2, "add troop member success");
+      }
+      this.a.a.sendEmptyMessage(0);
+      if (!SelectMemberActivity.a(this.a))
       {
-        paramView = URLDrawable.getDrawable(localURL, this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, null);
-        paramView.setBounds(0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListActivity.c);
-        localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState.newDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListActivity.getResources());
-        ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
-        paramViewGroup.setCompoundDrawables(paramView, null, (Drawable)localObject, null);
+        paramInt = this.a.a();
+        this.a.a(paramInt + 1);
+        ReportController.b(this.a.b, "CliOper", "", "", "Grp", "Send_invite", 0, 0, "", "", "", "");
       }
-      return localView;
-      paramViewGroup = (TextView)paramView;
-      localView = paramView;
-      break;
     }
+    return;
+    label95:
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectMemberActivity", 2, "add troop member fail, troopUin: " + paramString + " result: " + paramByte);
+    }
+    paramString = null;
+    if (paramByte == 7) {
+      paramString = this.a.getString(2131561460);
+    }
+    this.a.a.obtainMessage(1, paramString).sendToTarget();
   }
 }
 

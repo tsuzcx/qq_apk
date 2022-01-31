@@ -1,33 +1,34 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.text.Editable;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AutoReplySettingActivity;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
 
 public class ccf
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public ccf(AutoReplySettingActivity paramAutoReplySettingActivity) {}
+  public ccf(ChatHistory paramChatHistory) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (this.a.b != null)
+    if (this.a.c > 1)
     {
-      this.a.b.edit().putBoolean(this.a.getString(2131563424) + this.a.jdField_a_of_type_JavaLangString, paramBoolean).commit();
-      if (paramBoolean)
+      this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(true);
+      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130837762);
+      paramView = this.a;
+      paramView.c -= 1;
+      if (this.a.c <= 1)
       {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        AutoReplySettingActivity.a(this.a).setVisibility(0);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838078);
       }
+      this.a.e = ((this.a.c - 1) * 8);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.c));
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
     }
-    else
-    {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    AutoReplySettingActivity.a(this.a).setVisibility(8);
   }
 }
 

@@ -88,7 +88,7 @@ public class ThemeUtil
   
   public static String getThemeDownloadFilePath(Context paramContext, String paramString1, String paramString2)
   {
-    paramContext = AppConstants.bb;
+    paramContext = AppConstants.bf;
     return paramContext + paramString1 + "_" + paramString2 + ".zip";
   }
   
@@ -207,7 +207,7 @@ public class ThemeUtil
       }
     }
     label91:
-    for (paramContext = AppConstants.aU + "using_theme_res";; paramContext = paramContext.getDir("mobileqq_theme", 0).getAbsolutePath())
+    for (paramContext = AppConstants.aY + "using_theme_res";; paramContext = paramContext.getDir("mobileqq_theme", 0).getAbsolutePath())
     {
       localObject1 = paramContext + File.separator + paramString1 + "_" + paramString2;
       return localObject1;

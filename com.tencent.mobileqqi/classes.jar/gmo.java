@@ -1,20 +1,35 @@
-import PersonalState.UserProfile;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import java.util.Comparator;
+import com.tencent.mobileqq.testassister.activity.ShareAppLogActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class gmo
-  implements Comparator
+  implements Runnable
 {
-  public gmo(StatusManager paramStatusManager) {}
+  public gmo(ShareAppLogActivity paramShareAppLogActivity) {}
   
-  public int a(UserProfile paramUserProfile1, UserProfile paramUserProfile2)
+  public void run()
   {
-    return (int)(paramUserProfile2.richTime - paramUserProfile1.richTime);
+    try
+    {
+      if ((ShareAppLogActivity.a(this.a) != null) && (ShareAppLogActivity.a(this.a).isShowing()) && (!this.a.isFinishing()))
+      {
+        ShareAppLogActivity.a(this.a).dismiss();
+        ShareAppLogActivity.a(this.a).cancel();
+      }
+      ShareAppLogActivity.a(this.a, null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gmo
  * JD-Core Version:    0.7.0.1
  */

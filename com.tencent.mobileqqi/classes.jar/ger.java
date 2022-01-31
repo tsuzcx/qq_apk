@@ -1,21 +1,19 @@
-import android.app.ProgressDialog;
-import com.tencent.util.DumpMemInfoHandler;
-import java.util.TimerTask;
+import com.tencent.mobileqq.profile.ProfileCardBrowserActivity;
+import com.tencent.mobileqq.profile.ProfileCardTemplate;
 
-class ger
-  extends TimerTask
+public class ger
+  implements Runnable
 {
-  ger(geq paramgeq, ProgressDialog paramProgressDialog) {}
+  public ger(ProfileCardBrowserActivity paramProfileCardBrowserActivity) {}
   
   public void run()
   {
-    DumpMemInfoHandler.a(this.jdField_a_of_type_Geq.a.a);
-    this.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
+    new ProfileCardTemplate().a(this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     ger
  * JD-Core Version:    0.7.0.1
  */

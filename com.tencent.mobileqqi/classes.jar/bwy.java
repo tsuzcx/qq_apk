@@ -1,13 +1,27 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopNotificationHelper;
 
 public class bwy
   implements Runnable
 {
-  public bwy(LiteTransferWrapper paramLiteTransferWrapper, String paramString) {}
+  public bwy(ChatActivity paramChatActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetThumbTempPathToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_JavaLangString);
+    if ((this.a.a.jdField_a_of_type_Int == 1) && (BaseApplicationImpl.getContext().getSharedPreferences("troop_new_guid", 0).getBoolean(this.a.a.jdField_a_of_type_JavaLangString, false))) {}
+    try
+    {
+      long l1 = Long.parseLong(this.a.a.jdField_a_of_type_JavaLangString);
+      long l2 = Long.parseLong(this.a.b.a());
+      TroopNotificationHelper.a(this.a.b, 0, l1, l1, l2, "", (int)System.currentTimeMillis(), "OidbSvc.0x852_48", (short)34, true);
+      return;
+    }
+    catch (Exception localException) {}
   }
 }
 

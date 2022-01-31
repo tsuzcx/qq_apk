@@ -1,16 +1,13 @@
-import android.graphics.Rect;
-import android.widget.GridView;
-import com.tencent.mobileqq.app.QQServiceEntry;
-import com.tencent.mobileqq.app.QQServiceEntry.Tag;
+import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
 
 public class fkl
   implements Runnable
 {
-  public fkl(QQServiceEntry paramQQServiceEntry) {}
+  public fkl(DataLineMsgProxy paramDataLineMsgProxy, long paramLong) {}
   
   public void run()
   {
-    this.a.a.a.requestRectangleOnScreen(new Rect(0, 0, 0, this.a.a.a.getHeight()), false);
+    DataLineMsgProxy.b(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy, this.jdField_a_of_type_Long);
   }
 }
 

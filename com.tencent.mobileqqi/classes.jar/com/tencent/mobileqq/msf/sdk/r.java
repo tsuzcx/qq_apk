@@ -20,7 +20,7 @@ final class r
     String str = ((SimpleDateFormat)localObject2).format(((Calendar)localObject1).getTime()) + ".log";
     ((Calendar)localObject1).add(11, -1);
     localObject2 = ((SimpleDateFormat)localObject2).format(((Calendar)localObject1).getTime()) + ".log";
-    File[] arrayOfFile = new File(n.m()).listFiles();
+    File[] arrayOfFile = new File(n.n()).listFiles();
     if ((arrayOfFile != null) && (arrayOfFile.length > 0))
     {
       localObject1 = new ArrayList();
@@ -34,8 +34,8 @@ final class r
         }
         i += 1;
       }
-      n.e(n.n().replace(":", "_"));
-      str = n.m() + n.n() + ".zip";
+      n.e(n.o().replace(":", "_"));
+      str = n.n() + n.o() + ".zip";
       localObject2 = new File(str);
       ((File)localObject2).delete();
     }

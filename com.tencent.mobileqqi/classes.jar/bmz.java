@@ -1,19 +1,21 @@
 import android.view.View;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.RelativeLayout;
-import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.qrcode.CameraManager;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
 
-class bmz
+public class bmz
   implements Runnable
 {
-  bmz(bmy parambmy) {}
+  public bmz(ScannerActivity paramScannerActivity) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentBizPoiMapActivity.b = false;
-    this.a.jdField_a_of_type_ComTencentBizPoiMapActivity.a.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_ComTencentBizPoiMapActivity.getWindow().peekDecorView().getWindowToken(), 0);
+    int i = this.a.b.getWidth();
+    int j = this.a.b.getHeight();
+    this.a.a.a(i, j);
+    this.a.d = true;
+    if ((!this.a.g) && (this.a.h)) {
+      this.a.a(null);
+    }
   }
 }
 

@@ -1,13 +1,22 @@
+import android.app.Dialog;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EmosmDetailActivity;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
 
 public class crj
   implements View.OnClickListener
 {
-  public crj(EmosmDetailActivity paramEmosmDetailActivity) {}
+  public crj(LbsBaseActivity paramLbsBaseActivity) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(View paramView)
+  {
+    this.a.startActivityForResult(new Intent("android.settings.LOCATION_SOURCE_SETTINGS"), 10);
+    this.a.b();
+    if ((LbsBaseActivity.b(this.a) != null) && (LbsBaseActivity.b(this.a).isShowing())) {
+      LbsBaseActivity.b(this.a).dismiss();
+    }
+  }
 }
 
 

@@ -12,7 +12,7 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
-import fxs;
+import ftg;
 import java.io.File;
 import java.util.List;
 
@@ -38,8 +38,8 @@ public class FileViewerImageAdapter
     this.jdField_c_of_type_Int *= 2;
     this.jdField_a_of_type_Int = ((int)(paramBaseFileViewerActivity.getResources().getDisplayMetrics().widthPixels * 1.5D));
     this.jdField_b_of_type_Int = ((int)(paramBaseFileViewerActivity.getResources().getDisplayMetrics().heightPixels * 1.5D));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramBaseFileViewerActivity.getResources().getDrawable(2130840360);
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramBaseFileViewerActivity.getResources().getDrawable(2130837860);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramBaseFileViewerActivity.getResources().getDrawable(2130840362);
+    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramBaseFileViewerActivity.getResources().getDrawable(2130837862);
   }
   
   private void a(ProgressBar paramProgressBar)
@@ -101,8 +101,8 @@ public class FileViewerImageAdapter
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileviewerBaseBaseFileViewerActivity).inflate(2130903513, null);
-      paramViewGroup = new fxs(this);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileviewerBaseBaseFileViewerActivity).inflate(2130903515, null);
+      paramViewGroup = new ftg(this);
       paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131230758));
       paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131230757));
       paramView.setTag(paramViewGroup);
@@ -117,7 +117,7 @@ public class FileViewerImageAdapter
       paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       b(paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar);
       return paramView;
-      paramViewGroup = (fxs)paramView.getTag();
+      paramViewGroup = (ftg)paramView.getTag();
     }
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileviewerBaseBaseFileViewerActivity.a(localFileViewerImageInfo.jdField_a_of_type_JavaLangObject);
     if (localObject == null)

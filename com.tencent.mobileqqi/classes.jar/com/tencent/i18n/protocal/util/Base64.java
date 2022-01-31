@@ -1,7 +1,7 @@
 package com.tencent.i18n.protocal.util;
 
-import bwk;
-import bwl;
+import bqm;
+import bqn;
 import java.io.UnsupportedEncodingException;
 
 public class Base64
@@ -61,15 +61,15 @@ public class Base64
   
   public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    bwk localbwk = new bwk(paramInt3, new byte[paramInt2 * 3 / 4]);
-    if (!localbwk.a(paramArrayOfByte, paramInt1, paramInt2, true)) {
+    bqm localbqm = new bqm(paramInt3, new byte[paramInt2 * 3 / 4]);
+    if (!localbqm.a(paramArrayOfByte, paramInt1, paramInt2, true)) {
       throw new IllegalArgumentException("bad base-64");
     }
-    if (localbwk.jdField_a_of_type_Int == localbwk.jdField_a_of_type_ArrayOfByte.length) {
-      return localbwk.jdField_a_of_type_ArrayOfByte;
+    if (localbqm.jdField_a_of_type_Int == localbqm.jdField_a_of_type_ArrayOfByte.length) {
+      return localbqm.jdField_a_of_type_ArrayOfByte;
     }
-    paramArrayOfByte = new byte[localbwk.jdField_a_of_type_Int];
-    System.arraycopy(localbwk.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, 0, localbwk.jdField_a_of_type_Int);
+    paramArrayOfByte = new byte[localbqm.jdField_a_of_type_Int];
+    System.arraycopy(localbqm.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, 0, localbqm.jdField_a_of_type_Int);
     return paramArrayOfByte;
   }
   
@@ -80,23 +80,23 @@ public class Base64
   
   public static byte[] b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    bwl localbwl = new bwl(paramInt3, null);
+    bqn localbqn = new bqn(paramInt3, null);
     int i = paramInt2 / 3 * 4;
     int j;
-    if (localbwl.jdField_a_of_type_Boolean)
+    if (localbqn.jdField_a_of_type_Boolean)
     {
       paramInt3 = i;
       if (paramInt2 % 3 > 0) {
         paramInt3 = i + 4;
       }
       i = paramInt3;
-      if (localbwl.b)
+      if (localbqn.b)
       {
         i = paramInt3;
         if (paramInt2 > 0)
         {
           j = (paramInt2 - 1) / 57;
-          if (!localbwl.c) {
+          if (!localbqn.c) {
             break label186;
           }
         }
@@ -106,9 +106,9 @@ public class Base64
     for (i = 2;; i = 1)
     {
       i = paramInt3 + i * (j + 1);
-      localbwl.jdField_a_of_type_ArrayOfByte = new byte[i];
-      localbwl.a(paramArrayOfByte, paramInt1, paramInt2, true);
-      if ((jdField_a_of_type_Boolean) || (localbwl.jdField_a_of_type_Int == i)) {
+      localbqn.jdField_a_of_type_ArrayOfByte = new byte[i];
+      localbqn.a(paramArrayOfByte, paramInt1, paramInt2, true);
+      if ((jdField_a_of_type_Boolean) || (localbqn.jdField_a_of_type_Int == i)) {
         break label192;
       }
       throw new AssertionError();
@@ -128,7 +128,7 @@ public class Base64
       }
     }
     label192:
-    return localbwl.jdField_a_of_type_ArrayOfByte;
+    return localbqn.jdField_a_of_type_ArrayOfByte;
   }
 }
 

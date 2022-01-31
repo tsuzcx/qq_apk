@@ -1,17 +1,10 @@
-import com.tencent.mobileqq.activity.TroopGagActivity;
-import com.tencent.mobileqq.app.TroopObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 
 public class duw
-  extends TroopObserver
+  extends Handler
 {
-  public duw(TroopGagActivity paramTroopGagActivity) {}
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
+  public duw(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
 }
 
 

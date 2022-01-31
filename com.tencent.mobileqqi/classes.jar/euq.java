@@ -1,20 +1,15 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class euq
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public euq(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  public euq(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.a.g();
-    }
-    return true;
+    this.a.r();
   }
 }
 

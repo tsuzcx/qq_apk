@@ -1,32 +1,29 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Message;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.utils.AvatarPendantUtil;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
 
 public class erh
-  extends Handler
+  implements AdapterView.OnItemClickListener
 {
-  public erh(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity, int paramInt1, int paramInt2, ExtensionInfo paramExtensionInfo) {}
+  public erh(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (-1 != paramMessage.what) {
-      return;
+    paramAdapterView = ((SelectMemberActivity.ResultRecord)paramView.getTag()).a;
+    if (this.a.a(paramAdapterView))
+    {
+      this.a.a(paramAdapterView);
+      this.a.d();
+      paramInt = this.a.a.a();
+      if ((paramInt == 8) || (paramInt == 9) || (paramInt == 6) || (paramInt == 5) || (paramInt == 7) || (paramInt == 2)) {
+        ((SelectMemberInnerFrame)this.a.a.getCurrentView()).f();
+      }
+      this.a.a(false);
     }
-    paramMessage = new URLImageView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.getApplicationContext());
-    Object localObject = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Int * 1.257D), (int)(this.b * 1.481D));
-    ((RelativeLayout.LayoutParams)localObject).addRule(14);
-    ((RelativeLayout.LayoutParams)localObject).topMargin = (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.a.getHeight() / 2 - (int)(this.b / 2 * 1.705D));
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.a.addView(paramMessage, (ViewGroup.LayoutParams)localObject);
-    localObject = AvatarPendantUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.b, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantId, 7);
-    paramMessage.setVisibility(0);
-    paramMessage.setImageDrawable((Drawable)localObject);
   }
 }
 

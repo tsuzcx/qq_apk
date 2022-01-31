@@ -1,60 +1,28 @@
-import com.tencent.mobileqq.app.ContactSorter;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.securemodule.service.CloudScanListener;
 
-public final class ffe
-  implements Comparator
+public class ffe
+  implements CloudScanListener
 {
-  public int a(Entity paramEntity1, Entity paramEntity2)
+  public ffe(QQAppInterface paramQQAppInterface) {}
+  
+  public void onFinish(int paramInt)
   {
-    int i = 0;
-    if ((paramEntity1 instanceof Groups)) {
-      return ContactSorter.a((Groups)paramEntity1, (Groups)paramEntity2);
+    if (paramInt == 0) {
+      PreferenceManager.getDefaultSharedPreferences(QQAppInterface.f(this.a)).edit().putLong("security_scan_last_time", System.currentTimeMillis()).putBoolean("security_scan_last_result", false).commit();
     }
-    Object localObject = "-";
-    String str = "-";
-    int j;
-    if (((paramEntity1 instanceof TroopInfo)) && ((paramEntity2 instanceof TroopInfo)))
-    {
-      paramEntity1 = (TroopInfo)paramEntity1;
-      localObject = (TroopInfo)paramEntity2;
-      j = paramEntity1.mComparePartInt;
-      i = ((TroopInfo)localObject).mComparePartInt;
-      paramEntity2 = paramEntity1.mCompareSpell;
-      paramEntity1 = ((TroopInfo)localObject).mCompareSpell;
+  }
+  
+  public void onRiskFound()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("security_scan", 2, "Find Risk");
     }
-    for (;;)
-    {
-      return ContactSorter.a(j, paramEntity2, i, paramEntity1);
-      if (((paramEntity1 instanceof DiscussionInfo)) && ((paramEntity2 instanceof DiscussionInfo)))
-      {
-        paramEntity1 = (DiscussionInfo)paramEntity1;
-        localObject = (DiscussionInfo)paramEntity2;
-        j = paramEntity1.mComparePartInt;
-        i = ((DiscussionInfo)localObject).mComparePartInt;
-        paramEntity2 = paramEntity1.mCompareSpell;
-        paramEntity1 = ((DiscussionInfo)localObject).mCompareSpell;
-      }
-      else if (((paramEntity1 instanceof PublicAccountInfo)) && ((paramEntity2 instanceof PublicAccountInfo)))
-      {
-        paramEntity1 = (PublicAccountInfo)paramEntity1;
-        localObject = (PublicAccountInfo)paramEntity2;
-        j = paramEntity1.mComparePartInt;
-        i = ((PublicAccountInfo)localObject).mComparePartInt;
-        paramEntity2 = paramEntity1.mCompareSpell;
-        paramEntity1 = ((PublicAccountInfo)localObject).mCompareSpell;
-      }
-      else
-      {
-        j = 0;
-        paramEntity1 = str;
-        paramEntity2 = (Entity)localObject;
-      }
-    }
+    PreferenceManager.getDefaultSharedPreferences(QQAppInterface.e(this.a)).edit().putBoolean("security_scan_last_result", true).commit();
   }
 }
 

@@ -13,9 +13,9 @@ public abstract class BaseProxy
     this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager = paramProxyManager;
   }
   
-  protected abstract void a();
+  public abstract void a();
   
-  protected abstract void b();
+  public abstract void b();
 }
 
 

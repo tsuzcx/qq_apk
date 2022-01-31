@@ -1,48 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.mobileqq.app.PrivacyDeclareHelper.Callback;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.EUCountryUtils;
+import com.tencent.mobileqq.activity.SubAccountMessageActivity;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class dlr
-  implements PrivacyDeclareHelper.Callback
+  implements Runnable
 {
-  public dlr(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, String paramString, boolean paramBoolean) {}
+  public dlr(SubAccountMessageActivity paramSubAccountMessageActivity) {}
   
-  private void a(String paramString, boolean paramBoolean)
+  public void run()
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
-      EUCountryUtils.a(paramString);
+    if (SubAccountMessageActivity.a(this.a) != null) {
+      SubAccountMessageActivity.a(this.a).B();
     }
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("lich", 2, "in Register to privacy page, user reject, this to cancel");
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("lich", 2, "in Register to privacy page, user FinishSelf, this go2finish");
-    }
-    a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.finish();
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("lich", 2, "in Register to privacy page, user confirm, this go2next");
-    }
-    RegisterPhoneNumActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dlr
  * JD-Core Version:    0.7.0.1
  */

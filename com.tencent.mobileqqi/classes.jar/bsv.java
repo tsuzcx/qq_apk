@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginActivity;
-
-public class bsv
-  implements DialogInterface.OnClickListener
+class bsv
+  implements Runnable
 {
-  public bsv(QRLoginActivity paramQRLoginActivity) {}
+  bsv(bsu parambsu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    this.a.a.d = true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bsv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.fileviewer.base.BaseFileViewerController;
+import com.dataline.util.file.ImageInfo;
+import java.util.Comparator;
 
-public class fxl
-  implements View.OnClickListener
+public final class fxl
+  implements Comparator
 {
-  public fxl(BaseFileViewerController paramBaseFileViewerController) {}
-  
-  public void onClick(View paramView)
+  public int a(ImageInfo paramImageInfo1, ImageInfo paramImageInfo2)
   {
-    this.a.g(paramView);
+    return -Long.valueOf(paramImageInfo1.a()).compareTo(Long.valueOf(paramImageInfo2.a()));
   }
 }
 

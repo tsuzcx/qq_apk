@@ -1,33 +1,19 @@
-import com.tencent.mobileqq.jsbridge.WebBridge.JsBridgeListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pic.Logger;
+import com.tencent.mobileqq.pic.PicPreDownloader;
+import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class gdy
-  implements Runnable
+  extends TimerTask
 {
-  public gdy(WebBridge.JsBridgeListener paramJsBridgeListener, JSONObject paramJSONObject, WebView paramWebView) {}
+  public gdy(PicPreDownloader paramPicPreDownloader) {}
   
   public void run()
   {
-    try
+    if (!this.a.a.get())
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("responseId", this.jdField_a_of_type_ComTencentMobileqqJsbridgeWebBridge$JsBridgeListener.a);
-      localJSONObject.put("responseData", this.jdField_a_of_type_OrgJsonJSONObject);
-      if (QLog.isColorLevel()) {
-        QLog.i("BaseWebActivity.WebBridge", 2, "WebBridge onComplete setMessage message:" + localJSONObject.toString());
-      }
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:qqJSBridge.setMessage('" + localJSONObject.toString() + "');");
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("BaseWebActivity.WebBridge", 2, "WebBridge onComplete Exception:" + localJSONException.getMessage());
-      }
-      localJSONException.printStackTrace();
+      this.a.a.set(true);
+      Logger.b("PIC_TAG_PRELOAD", "timer count off,picPreDownload set on", "mIsPicPreloadSuitable" + this.a.a.get());
     }
   }
 }

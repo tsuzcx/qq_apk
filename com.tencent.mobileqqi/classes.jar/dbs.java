@@ -1,36 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.biz.widgets.ElasticHorScrView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class dbs
-  extends Thread
+  implements Runnable
 {
-  public dbs(ModifyFriendInfoActivity paramModifyFriendInfoActivity) {}
+  public dbs(QQBrowserActivity paramQQBrowserActivity, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    Object localObject = (FriendManager)this.a.b.getManager(8);
-    Friends localFriends = ((FriendManager)localObject).c(this.a.jdField_a_of_type_JavaLangString);
-    if (localFriends != null)
-    {
-      this.a.jdField_a_of_type_Int = localFriends.groupid;
-      localObject = ((FriendManager)localObject).a(this.a.jdField_a_of_type_Int + "");
-      if (localObject != null) {
-        this.a.d = ((Groups)localObject).group_name;
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a.getWidth() < this.jdField_a_of_type_Int) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a.setMove(true);
     }
-    if (this.a.jdField_a_of_type_Int == -1)
+    while (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b.getWidth() < this.b)
     {
-      this.a.runOnUiThread(new dbt(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b.setMove(true);
       return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a.setMove(false);
     }
-    localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-    ((Message)localObject).what = 2;
-    ((Message)localObject).sendToTarget();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b.setMove(false);
   }
 }
 

@@ -1,31 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.RecentFileAdapter;
-import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.TimerTask;
 
 public class fuv
-  implements View.OnClickListener
+  extends TimerTask
 {
-  public fuv(FMActivity paramFMActivity) {}
+  public fuv(OnlineFileSessionWorker paramOnlineFileSessionWorker) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b();
-    }
-    if ((((Button)paramView.findViewById(2131231699)).getTag() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.a(null);
-    }
-    if (this.a.b.a().b(this.a.jdField_a_of_type_Long)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.a(Integer.valueOf(-1));
-    FMActivity.a(this.a);
+    QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] state:" + OnlineFileSessionWorker.a(this.a).a() + " WaitSenderReplayOnRecvTimer time out!!!!!!!");
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 42, new Object[] { Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) });
+    this.a.b();
   }
 }
 

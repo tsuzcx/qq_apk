@@ -1,36 +1,72 @@
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.transfile.ProtoReqManager.IProtoRespBack;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmoticonViewBinder;
+import com.tencent.mobileqq.emoticonview.MagicFaceViewBinder;
 import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.RspHead;
-import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
+import java.util.List;
 
 public class fol
-  implements ProtoReqManager.IProtoRespBack
+  extends EmoticonPackageDownloadListener
 {
-  public fol(SystemMessageProcessor paramSystemMessageProcessor, long paramLong1, long paramLong2, long paramLong3) {}
+  public fol(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public void a(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
+  private void a(EmoticonPackage paramEmoticonPackage)
   {
-    try
+    int j;
+    int i;
+    if ((this.a.getVisibility() == 0) && (EmoticonMainPanel.b() == 2) && (paramEmoticonPackage.jobType == 3))
     {
-      paramProtoResp = paramProtoResp.a.getWupBuffer();
-      paramProtoReq = new structmsg.RspSystemMsgRead();
-      paramProtoReq.mergeFrom(paramProtoResp);
-      int i = paramProtoReq.head.result.get();
       if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.", 2, "clearFriendSystemMsgResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
+        QLog.d("EmoticonMainPanel", 2, "refresh magic face panel: " + paramEmoticonPackage.epId);
       }
+      if (EmoticonMainPanel.c(this.a) != null)
+      {
+        j = EmoticonMainPanel.c(this.a).size();
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      if (i < j)
+      {
+        paramEmoticonPackage = (EmoticonViewBinder)EmoticonMainPanel.c(this.a).get(i);
+        if ((paramEmoticonPackage != null) && ((paramEmoticonPackage instanceof MagicFaceViewBinder)) && (EmoticonMainPanel.c() == i))
+        {
+          paramEmoticonPackage = (MagicFaceViewBinder)paramEmoticonPackage;
+          this.a.post(new fom(this, paramEmoticonPackage));
+        }
+      }
+      else
+      {
+        return;
+      }
+      i += 1;
+    }
+  }
+  
+  public void onPackageEnd(EmoticonPackage paramEmoticonPackage, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "magicfaceDownloadListener, onPackageEnd");
+    }
+    if (paramEmoticonPackage == null) {}
+    while ((paramEmoticonPackage.jobType != 3) || (paramInt != 0)) {
       return;
     }
-    catch (Exception paramProtoResp)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.systemmsg.", 2, "clearFriendSystemMsgResp exception", paramProtoResp);
+    a(paramEmoticonPackage);
+  }
+  
+  public void onPackageStart(EmoticonPackage paramEmoticonPackage)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "magicfaceDownloadListener, onPackageStart");
     }
+    if (paramEmoticonPackage == null) {}
+    while (paramEmoticonPackage.jobType != 3) {
+      return;
+    }
+    a(paramEmoticonPackage);
   }
 }
 

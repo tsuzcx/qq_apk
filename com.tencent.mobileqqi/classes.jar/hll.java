@@ -1,44 +1,50 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.applist.WebAppActivity;
+import com.tencent.open.base.LogUtility;
+import com.tencent.smtt.sdk.WebView;
 
 public class hll
-  extends Handler
+  implements View.OnClickListener
 {
-  public hll(QQProgressNotifier paramQQProgressNotifier) {}
+  public hll(WebAppActivity paramWebAppActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (paramMessage.what == 1) {
-      this.a.a(paramMessage.arg1, (String)paramMessage.obj, paramMessage.arg2);
-    }
-    do
+    try
     {
-      do
+      if (paramView == this.a.jdField_a_of_type_AndroidWidgetImageView)
       {
+        if (!this.a.jdField_a_of_type_ComTencentSmttSdkWebView.canGoBack()) {
+          return;
+        }
+        this.a.jdField_a_of_type_ComTencentSmttSdkWebView.goBack();
         return;
-      } while (paramMessage.what != 2);
-      this.a.a();
-    } while ((paramMessage.arg1 != 3) && (paramMessage.arg1 != 4) && (paramMessage.arg1 != 6) && (paramMessage.arg1 != 5));
-    if ((paramMessage.arg1 == 6) || (paramMessage.arg1 == 5))
-    {
-      paramMessage = new Intent();
-      paramMessage.putExtra("isNeedFinish", true);
-      this.a.a.setResult(-1, paramMessage);
+      }
+      if (paramView == this.a.b)
+      {
+        this.a.jdField_a_of_type_ComTencentSmttSdkWebView.goForward();
+        return;
+      }
     }
-    for (;;)
+    catch (Exception paramView)
     {
-      this.a.a.finish();
+      LogUtility.c("WebAppActivity", "onClick", paramView);
       return;
-      this.a.a.setResult(-1);
+    }
+    if (paramView == this.a.c)
+    {
+      this.a.jdField_a_of_type_ComTencentSmttSdkWebView.reload();
+      return;
+    }
+    if (paramView == this.a.d) {
+      this.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hll
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,21 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class dsy
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public dsy(SubLoginActivity paramSubLoginActivity) {}
+  public dsy(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.h();
+    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
+    if (paramMotionEvent != null) {
+      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    }
+    return false;
   }
 }
 

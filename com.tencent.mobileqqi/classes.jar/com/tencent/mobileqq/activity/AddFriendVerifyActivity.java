@@ -24,17 +24,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bzt;
-import bzu;
-import bzv;
-import bzw;
-import bzx;
-import bzy;
-import bzz;
-import caa;
-import cab;
-import cac;
-import cad;
+import bty;
+import btz;
+import bua;
+import bub;
+import buc;
+import bud;
+import bue;
+import buf;
+import bug;
+import buh;
+import bui;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.FriendListObserver;
@@ -59,13 +59,13 @@ public class AddFriendVerifyActivity
   private static final String jdField_b_of_type_JavaLangString = "last_verify_msg";
   private static final String jdField_c_of_type_JavaLangString = "last_add_friend_verify_";
   private static final String d = "last_add_troop_verfity_";
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new cac(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new buh(this);
   public EditText a;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new cad(this);
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bzu(this);
-  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new bzv(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new bui(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new btz(this);
+  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new bua(this);
   public QQProgressDialog a;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private EditText jdField_b_of_type_AndroidWidgetEditText;
@@ -258,17 +258,17 @@ public class AddFriendVerifyActivity
           this.jdField_a_of_type_AndroidWidgetEditText.setText(paramBundle);
           this.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramBundle.length());
         }
-        b(2131562463, new bzt(this, str2, j, str1));
+        b(2131562463, new bty(this, str2, j, str1));
         getWindow().setSoftInputMode(5);
         continue;
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
         paramBundle = (String)localArrayList.get(0);
         localObject1 = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131231294);
-        localObject2 = (EditText)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131232843);
+        localObject2 = (EditText)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131232846);
         ((TextView)localObject1).setText(getString(2131562694) + ":" + paramBundle);
         ((EditText)localObject2).setSingleLine(true);
         ((EditText)localObject2).setContentDescription(getString(2131561094));
-        b(2131562463, new bzw(this, (EditText)localObject2, str2, j, str1));
+        b(2131562463, new bub(this, (EditText)localObject2, str2, j, str1));
         getWindow().setSoftInputMode(5);
         continue;
         this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
@@ -285,8 +285,8 @@ public class AddFriendVerifyActivity
           }
           for (;;)
           {
-            localObject3 = getLayoutInflater().inflate(2130903537, this.jdField_b_of_type_AndroidWidgetLinearLayout, false);
-            localObject4 = getLayoutInflater().inflate(2130903536, this.jdField_b_of_type_AndroidWidgetLinearLayout, false);
+            localObject3 = getLayoutInflater().inflate(2130903539, this.jdField_b_of_type_AndroidWidgetLinearLayout, false);
+            localObject4 = getLayoutInflater().inflate(2130903538, this.jdField_b_of_type_AndroidWidgetLinearLayout, false);
             if (i > 0)
             {
               localObject5 = (LinearLayout.LayoutParams)((View)localObject3).getLayoutParams();
@@ -300,7 +300,7 @@ public class AddFriendVerifyActivity
             this.jdField_b_of_type_AndroidWidgetLinearLayout.addView((View)localObject4);
             localObject5 = (String)localArrayList.get(i);
             ((TextView)((View)localObject3).findViewById(2131231294)).setText(paramBundle + (String)localObject5);
-            paramBundle = (EditText)((View)localObject4).findViewById(2131232843);
+            paramBundle = (EditText)((View)localObject4).findViewById(2131232846);
             paramBundle.setFilters(new InputFilter[] { localObject1 });
             paramBundle.setSingleLine(false);
             this.jdField_a_of_type_JavaUtilArrayList.add(paramBundle);
@@ -325,8 +325,8 @@ public class AddFriendVerifyActivity
             paramBundle = getResources().getString(2131562699);
           }
         }
-        b(2131562463, new bzx(this, (StringBuffer)localObject2, str2, j, str1));
-        findViewById(2131231088).setOnTouchListener(new bzy(this));
+        b(2131562463, new buc(this, (StringBuffer)localObject2, str2, j, str1));
+        findViewById(2131231088).setOnTouchListener(new bud(this));
         getWindow().setSoftInputMode(4);
       }
     }
@@ -348,7 +348,7 @@ public class AddFriendVerifyActivity
       this.jdField_b_of_type_AndroidWidgetEditText.setHeight(AIOUtils.a(92.0F, getResources()));
       this.jdField_b_of_type_AndroidWidgetEditText.setSingleLine(false);
       this.jdField_b_of_type_AndroidWidgetEditText.setGravity(48);
-      this.jdField_b_of_type_AndroidWidgetEditText.setBackgroundResource(2130840176);
+      this.jdField_b_of_type_AndroidWidgetEditText.setBackgroundResource(2130840178);
       i = AIOUtils.a(10.0F, getResources());
       this.jdField_b_of_type_AndroidWidgetEditText.setPadding(i, i, i, i);
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -360,7 +360,7 @@ public class AddFriendVerifyActivity
         this.jdField_b_of_type_AndroidWidgetEditText.setSelection(paramBundle.length());
         this.jdField_b_of_type_AndroidWidgetEditText.setContentDescription(getString(2131561094));
       }
-      b(2131562857, new bzz(this, str2));
+      b(2131562857, new bue(this, str2));
       continue;
       this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131562694) + ":" + (String)localObject4);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -372,7 +372,7 @@ public class AddFriendVerifyActivity
       this.jdField_b_of_type_AndroidWidgetEditText.setFocusable(true);
       this.jdField_b_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
       this.jdField_b_of_type_AndroidWidgetEditText.setContentDescription(getString(2131561094));
-      b(2131562857, new caa(this, str2));
+      b(2131562857, new buf(this, str2));
       continue;
       this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131562694) + ":" + (String)localObject4);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -384,7 +384,7 @@ public class AddFriendVerifyActivity
       this.jdField_b_of_type_AndroidWidgetEditText.setFocusable(true);
       this.jdField_b_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
       this.jdField_b_of_type_AndroidWidgetEditText.setContentDescription(getString(2131561094));
-      b(2131562857, new cab(this, str2));
+      b(2131562857, new bug(this, str2));
     }
   }
   
@@ -412,7 +412,7 @@ public class AddFriendVerifyActivity
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramView.getId() == 2131232843) {}
+    if (paramView.getId() == 2131232846) {}
     switch (paramMotionEvent.getAction() & 0xFF)
     {
     case 2: 

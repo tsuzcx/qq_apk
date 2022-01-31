@@ -1,11 +1,16 @@
-import com.dataline.mpfile.LiteMpFileDownloadActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.dataline.activities.LiteWifiphotoActivity;
 
 public class cu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public cu(LiteMpFileDownloadActivity paramLiteMpFileDownloadActivity) {}
+  public cu(LiteWifiphotoActivity paramLiteWifiphotoActivity) {}
   
-  public void run() {}
+  public void onClick(View paramView)
+  {
+    this.a.finish();
+  }
 }
 
 

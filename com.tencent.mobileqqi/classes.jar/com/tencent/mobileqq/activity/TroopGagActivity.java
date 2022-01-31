@@ -28,9 +28,9 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.Switch;
 import com.tencent.widget.XListView;
-import duv;
-import duw;
-import dux;
+import dpe;
+import dpf;
+import dpg;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,12 +40,12 @@ public class TroopGagActivity
 {
   public LinearLayout a;
   public TextView a;
-  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new duv(this);
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new duw(this);
+  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new dpe(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new dpf(this);
   TroopInfo jdField_a_of_type_ComTencentMobileqqDataTroopInfo;
   public Switch a;
   public XListView a;
-  public dux a;
+  public dpg a;
   public String a;
   public List a;
   LinearLayout b;
@@ -104,8 +104,8 @@ public class TroopGagActivity
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("troopuin");
     this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramBundle.b(this.jdField_a_of_type_JavaLangString);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this);
-    paramBundle = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2130903397, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131232456));
+    paramBundle = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2130903399, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131232459));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextAppearance(this, 2131624137);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131560428));
     this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramBundle.findViewById(2131231313));
@@ -116,10 +116,10 @@ public class TroopGagActivity
     Object localObject = new AbsListView.LayoutParams(-1, -2);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-    localObject = View.inflate(this, 2130903646, null);
+    localObject = View.inflate(this, 2130903648, null);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
     localObject = new TextView(this);
-    ((TextView)localObject).setPadding(getResources().getDimensionPixelSize(2131427544), 0, getResources().getDimensionPixelSize(2131427544), getResources().getDimensionPixelSize(2131427540));
+    ((TextView)localObject).setPadding(getResources().getDimensionPixelSize(2131427547), 0, getResources().getDimensionPixelSize(2131427547), getResources().getDimensionPixelSize(2131427543));
     ((TextView)localObject).setTextAppearance(this, 2131624137);
     ((TextView)localObject).setText(getResources().getString(2131560427));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
@@ -127,10 +127,10 @@ public class TroopGagActivity
     localObject = new AbsListView.LayoutParams(-1, -2);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-    localObject = View.inflate(this, 2130903646, null);
+    localObject = View.inflate(this, 2130903648, null);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
-    localObject = View.inflate(this, 2130903378, null);
-    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)((View)localObject).findViewById(2131232377));
+    localObject = View.inflate(this, 2130903380, null);
+    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)((View)localObject).findViewById(2131232380));
     TroopGagMgr.TroopGagInfo localTroopGagInfo = ((TroopGagMgr)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(44)).a(this.jdField_a_of_type_JavaLangString, false);
     if ((localTroopGagInfo != null) && (localTroopGagInfo.a != 0L)) {
       this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
@@ -139,11 +139,11 @@ public class TroopGagActivity
     {
       this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this);
       this.jdField_b_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
-      localObject = View.inflate(this, 2130903646, null);
+      localObject = View.inflate(this, 2130903648, null);
       this.jdField_b_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
       this.jdField_a_of_type_ComTencentWidgetXListView.b(this.jdField_b_of_type_AndroidWidgetLinearLayout);
-      this.jdField_a_of_type_Dux = new dux(this);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Dux);
+      this.jdField_a_of_type_Dpg = new dpg(this);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Dpg);
       this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130837729);
       setContentView(paramBundle);
       setTitle(getString(2131562887));
@@ -166,8 +166,8 @@ public class TroopGagActivity
   
   protected void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Dux != null) {
-      this.jdField_a_of_type_Dux.b();
+    if (this.jdField_a_of_type_Dpg != null) {
+      this.jdField_a_of_type_Dpg.b();
     }
     b(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
     b(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);

@@ -1,63 +1,27 @@
-import android.content.Context;
-import android.view.LayoutInflater;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.QQCustomSingleChoiceDialog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class hhq
-  extends BaseAdapter
+class hhq
+  implements Animation.AnimationListener
 {
-  public hhq(QQCustomSingleChoiceDialog paramQQCustomSingleChoiceDialog) {}
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_Hhp.a.getBackground();
   
-  public int getCount()
+  hhq(hhp paramhhp) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.jdField_a_of_type_ArrayOfJavaLangCharSequence != null) {
-      return this.a.jdField_a_of_type_ArrayOfJavaLangCharSequence.length;
-    }
-    return 0;
+    this.jdField_a_of_type_Hhp.a.clearAnimation();
+    this.jdField_a_of_type_Hhp.a.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
   }
   
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public long getItemId(int paramInt)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (this.a.inflater == null) {
-      this.a.inflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
-    }
-    paramViewGroup = paramView;
-    if (paramView == null)
-    {
-      paramViewGroup = this.a.inflater.inflate(2130903164, null);
-      paramView = new hhs(this.a, null);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131231474));
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131231475));
-      paramViewGroup.setTag(paramView);
-    }
-    paramView = (hhs)paramViewGroup.getTag();
-    if (paramView.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_a_of_type_ArrayOfJavaLangCharSequence[paramInt]);
-      if (this.a.jdField_a_of_type_Int == paramInt) {
-        paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-      }
-    }
-    else
-    {
-      return paramViewGroup;
-    }
-    paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-    return paramViewGroup;
+    this.jdField_a_of_type_Hhp.a.setBackgroundResource(17170443);
   }
 }
 

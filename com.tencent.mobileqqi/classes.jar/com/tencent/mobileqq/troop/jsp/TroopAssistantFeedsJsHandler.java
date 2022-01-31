@@ -20,7 +20,7 @@ import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
 import cooperation.troop.TroopProxyActivity;
-import haw;
+import gwp;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONObject;
 
@@ -124,7 +124,7 @@ public class TroopAssistantFeedsJsHandler
           this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
           this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a();
         }
-        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b((String)localObject, new haw(this, (String)localObject, str));
+        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b((String)localObject, new gwp(this, (String)localObject, str));
         return;
       }
     }

@@ -9,7 +9,7 @@ import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
-import etq;
+import epc;
 
 public class DragTextView
   extends TextView
@@ -78,7 +78,7 @@ public class DragTextView
     localRect.bottom = ((int)(localRect.bottom + this.jdField_a_of_type_Float));
     localRect.left = ((int)(localRect.left - this.jdField_a_of_type_Float));
     localRect.right = ((int)(localRect.right + this.jdField_a_of_type_Float * 1.5D));
-    paramOnChangeModeListener.setTouchDelegate(new etq(this, localRect, this));
+    paramOnChangeModeListener.setTouchDelegate(new epc(this, localRect, this));
   }
   
   public void setVisibility(int paramInt)

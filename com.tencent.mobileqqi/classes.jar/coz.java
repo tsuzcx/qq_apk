@@ -1,16 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DoodleActivity;
-import com.tencent.mobileqq.widget.DoodlePicView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class coz
-  implements DialogInterface.OnClickListener
+public class coz
+  implements CompoundButton.OnCheckedChangeListener
 {
-  coz(coy paramcoy) {}
+  public coz(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.a.a.b();
+    int j = 1;
+    GesturePWDUtils.setGesturePWDMode(this.a, this.a.b.a(), 21);
+    paramCompoundButton = this.a;
+    String str = this.a.b.a();
+    if (paramBoolean)
+    {
+      i = 2;
+      GesturePWDUtils.setGesturePWDState(paramCompoundButton, str, i);
+      this.a.a(paramBoolean);
+      paramCompoundButton = this.a.b;
+      if (!paramBoolean) {
+        break label112;
+      }
+    }
+    label112:
+    for (int i = j;; i = 0)
+    {
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Setting_Gesture_password", 0, i, "", "", "", "");
+      this.a.a();
+      return;
+      i = 1;
+      break;
+    }
   }
 }
 

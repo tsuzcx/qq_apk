@@ -1,37 +1,21 @@
-import android.database.sqlite.SQLiteCursor;
-import android.database.sqlite.SQLiteCursorDriver;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteQuery;
-import com.tencent.mobileqq.utils.SecurityUtile;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
-class frw
-  extends SQLiteCursor
+public class frw
+  implements Runnable
 {
-  frw(frv paramfrv, SQLiteDatabase paramSQLiteDatabase, SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
-  {
-    super(paramSQLiteDatabase, paramSQLiteCursorDriver, paramString, paramSQLiteQuery);
-  }
+  public frw(LocalFileBrowserActivity paramLocalFileBrowserActivity, int paramInt) {}
   
-  public byte[] getBlob(int paramInt)
+  public void run()
   {
-    return SecurityUtile.a(super.getBlob(paramInt));
-  }
-  
-  public String getString(int paramInt)
-  {
-    String str1 = super.getString(paramInt);
-    try
-    {
-      String str2 = SecurityUtile.a(str1);
-      return str2;
-    }
-    catch (Exception localException) {}
-    return str1;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.setSelected(true);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.setSelection(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.setSelected(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     frw
  * JD-Core Version:    0.7.0.1
  */

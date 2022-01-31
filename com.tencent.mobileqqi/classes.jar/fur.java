@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
 
-class fur
-  implements Runnable
+public class fur
+  extends Handler
 {
-  fur(fuo paramfuo) {}
-  
-  public void run()
+  public fur(OnlineFileSessionCenter paramOnlineFileSessionCenter, Looper paramLooper)
   {
-    FMActivity.a(this.a.a);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.d();
   }
 }
 

@@ -8,8 +8,8 @@ import com.tencent.mobileqq.utils.httputils.HttpMsg;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import grx;
-import gry;
+import gnq;
+import gnr;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -49,7 +49,7 @@ public class OldHttpEngine$OldHttpCommunicatorListner
     NetworkCenter.a().a();
     if (NetworkCenter.a().a() != 0) {
       if ((this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (paramLong != 0L)) {
-        ThreadManager.a().schedule(new grx(this), paramLong);
+        ThreadManager.a().schedule(new gnq(this), paramLong);
       }
     }
     do
@@ -62,7 +62,7 @@ public class OldHttpEngine$OldHttpCommunicatorListner
       return;
       if (this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
       {
-        ThreadManager.a().schedule(new gry(this), paramLong);
+        ThreadManager.a().schedule(new gnr(this), paramLong);
         return;
       }
     } while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());

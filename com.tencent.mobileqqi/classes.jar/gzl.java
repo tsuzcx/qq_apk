@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.troop.data.TroopAndDiscMsgProxy;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.widget.VideoViewX;
 
 public class gzl
-  implements Runnable
+  implements View.OnClickListener
 {
-  public gzl(TroopAndDiscMsgProxy paramTroopAndDiscMsgProxy, boolean paramBoolean) {}
+  public gzl(VideoViewX paramVideoViewX) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    StatisticCollector localStatisticCollector = StatisticCollector.a(BaseApplication.getContext());
-    String str = TroopAndDiscMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAndDiscMsgProxy).a();
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localStatisticCollector.a(str, "aio_break_point", bool, 0L, 0L, new HashMap(), "");
-      return;
+    if (VideoViewX.a(this.a) == -1) {
+      this.a.d = true;
+    }
+    if ((VideoViewX.a(this.a) != null) && (VideoViewX.a(this.a) != 0) && (VideoViewX.a(this.a) != 1) && (VideoViewX.a(this.a) != null)) {
+      VideoViewX.a(this.a);
     }
   }
 }

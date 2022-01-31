@@ -1,19 +1,24 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
+import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
+import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
+import java.util.Stack;
 
 public class hgz
-  implements View.OnClickListener
 {
-  public hgz(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
+  private Stack jdField_a_of_type_JavaUtilStack = new Stack();
   
-  public void onClick(View paramView)
+  public hgz(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
+  
+  public ChatThumbView a()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
+    if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
+      return null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
+    return (ChatThumbView)this.jdField_a_of_type_JavaUtilStack.pop();
+  }
+  
+  public void a(ChatThumbView paramChatThumbView)
+  {
+    this.jdField_a_of_type_JavaUtilStack.push(paramChatThumbView);
   }
 }
 

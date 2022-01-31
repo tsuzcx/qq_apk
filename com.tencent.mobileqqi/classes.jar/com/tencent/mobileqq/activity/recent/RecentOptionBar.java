@@ -23,8 +23,8 @@ import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
-import etk;
-import etl;
+import eow;
+import eox;
 
 public class RecentOptionBar
 {
@@ -32,9 +32,9 @@ public class RecentOptionBar
   protected static final int[] b;
   protected static final int[] c;
   protected static final int[] d;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new etl(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new eox(this);
   private View jdField_a_of_type_AndroidViewView;
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new etk(this);
+  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new eow(this);
   private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private View jdField_b_of_type_AndroidViewView;
@@ -46,7 +46,7 @@ public class RecentOptionBar
   static
   {
     jdField_a_of_type_ArrayOfInt = new int[] { 2131231437, 2131231438, 2131231439, 2131231440 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130837912, 2130837910, 2130837916, 2130837914 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2130837914, 2130837912, 2130837918, 2130837916 };
     jdField_c_of_type_ArrayOfInt = new int[] { 2131562415, 2131561857, 2131562912, 2131562815 };
     jdField_d_of_type_ArrayOfInt = new int[] { 2131558440, 2131558441, 2131558442, 2131558443 };
   }
@@ -90,7 +90,7 @@ public class RecentOptionBar
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
     this.jdField_b_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(paramBaseActivity, 2130968626);
     this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
-    this.e = paramBaseActivity.findViewById(2131231912);
+    this.e = paramBaseActivity.findViewById(2131231915);
     this.e.setVisibility(8);
   }
   

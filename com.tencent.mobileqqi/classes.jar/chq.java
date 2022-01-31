@@ -1,31 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
+import com.tencent.mobileqq.model.FriendManager;
 
-public class chq
-  implements View.OnClickListener
+class chq
+  implements DialogInterface.OnClickListener
 {
-  public chq(ChatHistory paramChatHistory) {}
+  chq(chp paramchp, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = this.a.a(this.a.b, this.a.a, localStringBuilder);
-    Object localObject = null;
-    paramView = localObject;
-    if (localStringBuilder != null)
-    {
-      paramView = localObject;
-      if (localStringBuilder.length() > 0) {
-        paramView = localStringBuilder.toString();
-      }
-    }
-    if (i > 0)
-    {
-      this.a.a(paramView);
-      return;
-    }
-    this.a.b(this.a.getString(2131561800));
+    ((FriendManager)this.jdField_a_of_type_Chp.a.b.getManager(8)).d(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_Chp.a.b.a().a();
+    paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaLangString, 3000));
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("isNeedFinish", true);
+    this.jdField_a_of_type_Chp.a.setResult(-1, paramDialogInterface);
+    this.jdField_a_of_type_Chp.a.finish();
   }
 }
 

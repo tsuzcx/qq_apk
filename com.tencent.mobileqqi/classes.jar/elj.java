@@ -1,24 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
-import com.tencent.mobileqq.data.RecommendTroopMsg;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 
-class elj
-  implements View.OnClickListener
+public class elj
+  implements DialogInterface.OnClickListener
 {
-  elj(eli parameli, RecommendTroopMsg paramRecommendTroopMsg) {}
+  public elj(DialogBaseActivity paramDialogBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataRecommendTroopMsg.isTroop()) {
-      RecommendTroopView.a(this.jdField_a_of_type_Eli.a, this.jdField_a_of_type_ComTencentMobileqqDataRecommendTroopMsg.troop, this.jdField_a_of_type_ComTencentMobileqqDataRecommendTroopMsg.isRead);
-    }
-    while (!this.jdField_a_of_type_ComTencentMobileqqDataRecommendTroopMsg.isBusiness()) {
-      return;
-    }
-    RecommendTroopView.a(this.jdField_a_of_type_Eli.a, this.jdField_a_of_type_ComTencentMobileqqDataRecommendTroopMsg.rtbItem);
-    ReportController.b(this.jdField_a_of_type_Eli.a.a, "CliOper", "", "", "Grp_recommend", "Clk_grp_recommend", 0, 0, "", "", "", "");
+    this.a.setResult(1);
+    this.a.finish();
   }
 }
 

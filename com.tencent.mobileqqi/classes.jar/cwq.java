@@ -1,83 +1,18 @@
-import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
-import com.tencent.mobileqq.activity.BaseHornListActivity;
-import com.tencent.mobileqq.activity.HornPublishActivity;
-import com.tencent.mobileqq.app.NearHornHandler;
-import com.tencent.mobileqq.app.NearHornObserver;
-import com.tencent.mobileqq.data.HornDetail;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.VipUtils;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.activity.MyPublishedHornActivity;
+import com.tencent.mobileqq.maproam.Utils;
 
 public class cwq
-  extends NearHornObserver
+  implements View.OnClickListener
 {
-  public cwq(HornPublishActivity paramHornPublishActivity) {}
+  public cwq(MyPublishedHornActivity paramMyPublishedHornActivity) {}
   
-  protected void a(boolean paramBoolean, List paramList, int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_JavaLangString = paramString;
-    if (paramBoolean)
-    {
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Svip", "", "Vip_nearby", "Vip_nearby_freeHorn", 0, 0, "", "", "", "");
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.jdField_a_of_type_JavaUtilList != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.jdField_a_of_type_JavaUtilList.clear();
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          paramString = (HornDetail)paramList.next();
-          this.a.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.jdField_a_of_type_JavaUtilList.add(paramString);
-        }
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity.setResult(1);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity.finish();
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      return;
-      switch (paramInt)
-      {
-      default: 
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity.a(2131563060);
-        break;
-      case 210000: 
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity.a(2131563029);
-        break;
-      case 210001: 
-        HornPublishActivity.a(this.a);
-        break;
-      case 100351: 
-        if (VipUtils.a(this.a.b)) {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity.a(2131562529);
-        } else {
-          HornPublishActivity.a(this.a);
-        }
-        break;
-      case 100353: 
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity.a(2131563027);
-        break;
-      case 100354: 
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity.a(2131563218);
-        break;
-      case 100355: 
-        paramList = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity.getResources().getString(2131561908);
-        paramString = paramString.split("=");
-        if (paramString.length > 1) {
-          paramList = paramString[1];
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity.a(paramList);
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, List paramList, Boolean paramBoolean1, Boolean paramBoolean2, int paramInt, String paramString)
-  {
-    if (paramBoolean) {
-      HornPublishActivity.b(this.a);
-    }
+    Utils.a();
+    this.a.a.setEnabled(true);
   }
 }
 

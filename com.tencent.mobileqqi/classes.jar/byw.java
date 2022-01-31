@@ -1,56 +1,71 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import mqq.app.AppRuntime.Status;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.ConfigObserver;
+import com.tencent.mobileqq.config.operation.QQOperateManager;
+import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
+import com.tencent.mobileqq.data.AppShareID;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class byw
-  implements View.OnClickListener
+  extends ConfigObserver
 {
-  public byw(AccountManageActivity paramAccountManageActivity) {}
+  public byw(ChatActivity paramChatActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(String paramString, int paramInt, ArrayList paramArrayList)
   {
-    AppRuntime.Status localStatus = AppRuntime.Status.online;
-    int i = paramView.getId();
-    if (i == 2131231009)
-    {
-      ReportController.b(this.a.b, "CliOper", "", "", "0X800403A", "0X800403A", 0, 0, "", "", "", "");
-      paramView = AppRuntime.Status.online;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QQOperateVoIP", 4, "on showTips, chatactivity upadte ui");
+    }
+    if ((!this.a.a.jdField_a_of_type_JavaLangString.equals(paramString)) || (this.a.a.jdField_a_of_type_Int != paramInt)) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QQOperateVoIP", 4, "on showTips, uin dosenot equal");
+      }
     }
     for (;;)
     {
-      this.a.a(paramView);
-      if (((paramView == AppRuntime.Status.online) || (paramView == AppRuntime.Status.invisiable) || (paramView == AppRuntime.Status.away)) && (paramView != this.a.b.getOnlineStatus()))
-      {
-        if (!NetworkUtil.e(this.a.getApplication())) {
-          break;
-        }
-        this.a.b.a(this.a.a(paramView), true);
-      }
       return;
-      if (i == 2131231010)
+      if ((paramArrayList == null) || (paramArrayList.size() == 0))
       {
-        ReportController.b(this.a.b, "CliOper", "", "", "0X800403B", "0X800403B", 0, 0, "", "", "", "");
-        paramView = AppRuntime.Status.invisiable;
+        if (QLog.isDevelopLevel()) {
+          QLog.d("QQOperateVoIP", 4, "on showTips,tasklist is null");
+        }
       }
       else
       {
-        paramView = localStatus;
-        if (i == 2131231011) {
-          paramView = AppRuntime.Status.away;
+        paramString = QQOperateManager.a(this.a.b);
+        paramArrayList = paramArrayList.iterator();
+        while (paramArrayList.hasNext())
+        {
+          paramInt = ((QQOperationViopTipTask)paramArrayList.next()).taskid;
+          QQOperationViopTipTask localQQOperationViopTipTask = paramString.a(paramInt);
+          if ((QLog.isDevelopLevel()) && (localQQOperationViopTipTask == null)) {
+            QLog.d("QQOperateVoIP", 4, "on showTips, voipTask is null, taskId=" + paramInt);
+          }
+          if (localQQOperationViopTipTask != null) {
+            if (localQQOperationViopTipTask.isBlueTipsTask()) {
+              ChatActivity.a(this.a, localQQOperationViopTipTask);
+            } else if ((localQQOperationViopTipTask.isGryTipsTask()) && (!paramString.a(this.a.a.jdField_a_of_type_Int, 2))) {
+              ChatActivity.b(this.a, localQQOperationViopTipTask);
+            }
+          }
         }
       }
     }
-    Toast.makeText(this.a, 2131562447, 0).show();
+  }
+  
+  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
+  {
+    if ((paramBoolean) && (ChatActivity.a(this.a) != null)) {
+      ChatActivity.a(this.a).notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     byw
  * JD-Core Version:    0.7.0.1
  */

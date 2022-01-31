@@ -1,42 +1,20 @@
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import android.widget.Button;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.util.Utils;
 
 public class eko
-  implements View.OnTouchListener
+  implements Runnable
 {
-  private float jdField_a_of_type_Float;
-  private float b;
+  public eko(BindVerifyActivity paramBindVerifyActivity, String paramString1, String paramString2) {}
   
-  public eko(SystemMsgListView paramSystemMsgListView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (paramMotionEvent.getAction() == 0) {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a(paramMotionEvent.getRawY()))
-      {
-        this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-        this.b = paramMotionEvent.getRawY();
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a.removeMessages(1013);
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a.sendEmptyMessageDelayed(1013, 500L);
-      }
-    }
-    for (;;)
+    String str = Utils.b(this.jdField_a_of_type_JavaLangString, this.b);
+    if ((str != null) && (str.length() > 0) && (BindVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBindVerifyActivity) != null))
     {
-      return false;
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a.removeMessages(1013);
-      continue;
-      if (paramMotionEvent.getAction() == 2)
-      {
-        if ((Math.abs(paramMotionEvent.getRawX() - this.jdField_a_of_type_Float) > 60.0F) || (Math.abs(paramMotionEvent.getRawY() - this.b) > 60.0F)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a.removeMessages(1013);
-        }
-      }
-      else {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a.removeMessages(1013);
-      }
+      BindVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBindVerifyActivity).setText(str);
+      BindVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBindVerifyActivity).setEnabled(true);
     }
   }
 }

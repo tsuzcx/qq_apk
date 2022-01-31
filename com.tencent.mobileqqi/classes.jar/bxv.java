@@ -1,30 +1,26 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.managers.MessageRecordManagerImpl;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.AIOTipsController;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class bxv
-  implements Runnable
+  implements View.OnClickListener
 {
-  public bxv(AccountManageActivity paramAccountManageActivity, boolean paramBoolean, String paramString, int paramInt) {}
+  public bxv(ChatActivity paramChatActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      ProxyManager localProxyManager = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.b.a();
-      if (localProxyManager != null)
-      {
-        localProxyManager.c();
-        new MessageRecordManagerImpl().a(this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.runOnUiThread(new bxw(this));
+    ChatActivity.a(this.a).a();
+    ChatActivityUtils.a(this.a.b, this.a, this.a.a.a, true, true, null);
+    ReportController.b(this.a.b, "CliOper", "", "", "0X8003F00", "0X8003F00", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bxv
  * JD-Core Version:    0.7.0.1
  */

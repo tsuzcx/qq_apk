@@ -1,25 +1,12 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.utils.SharedPreferencesHandler;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.Set;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class gfr
-  implements Runnable
 {
-  public gfr(TroopAssistantManager paramTroopAssistantManager, QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
-  {
-    synchronized (TroopAssistantManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager))
-    {
-      Object[] arrayOfObject = TroopAssistantManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager).toArray();
-      SharedPreferencesHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit(), "troop_assis_new_unread_list", arrayOfObject).commit();
-      return;
-    }
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
 }
 
 

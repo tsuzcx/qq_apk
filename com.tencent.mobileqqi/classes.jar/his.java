@@ -1,19 +1,30 @@
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-import com.tencent.mobileqq.utils.httputils.HttpMsg;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.MsgIconsurl;
 
-public class his
+class his
   implements Runnable
 {
-  public his(HttpCommunicator paramHttpCommunicator, HttpMsg paramHttpMsg, hiu paramhiu) {}
+  his(hio paramhio, GetAppInfoProto.MsgIconsurl paramMsgIconsurl) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg, this.jdField_a_of_type_Hiu);
+    Bitmap localBitmap = AuthorityActivity.a(this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$MsgIconsurl.url.get());
+    if (localBitmap != null)
+    {
+      Message localMessage = new Message();
+      localMessage.obj = localBitmap;
+      localMessage.what = 4;
+      this.jdField_a_of_type_Hio.a.a.sendMessage(localMessage);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     his
  * JD-Core Version:    0.7.0.1
  */

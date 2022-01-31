@@ -1,29 +1,52 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.DeleteAccountActivity;
-import com.tencent.mobileqq.app.PrivacyDeclareHelper;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.DiscussionObserver;
+import com.tencent.mobileqq.app.FriendsManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
 
 public class byr
-  implements View.OnClickListener
+  extends DiscussionObserver
 {
-  public byr(AccountManageActivity paramAccountManageActivity) {}
+  public byr(ChatActivity paramChatActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    paramView = PrivacyDeclareHelper.b(this.a.getApplicationContext(), "https://sqimg.qq.com/qq_product_operations/i18n/logoutApplication.html?uin=${uin}&language=${language}").replace("${uin}", this.a.b.a());
-    Intent localIntent = new Intent(this.a, DeleteAccountActivity.class);
-    localIntent.putExtra("reqType", 4);
-    localIntent.putExtra("title", this.a.getString(2131563347));
-    localIntent.putExtra("uin", this.a.b.a());
-    this.a.startActivityForResult(localIntent.putExtra("url", paramView), 0);
+    if ((this.a.a.jdField_a_of_type_JavaLangString.equals(paramString)) && (this.a.a.jdField_a_of_type_Int == 3000))
+    {
+      paramString = ((FriendsManagerImp)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).a(paramString);
+      if ((paramString != null) && (paramString.discussionName != null))
+      {
+        this.a.a.d = paramString.discussionName;
+        ChatActivity.a(this.a, this.a.a.d, paramString.uin, this.a.jdField_b_of_type_AndroidWidgetTextView);
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    String str = (String)paramArrayOfObject[0];
+    boolean bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
+    if ((this.a.a.jdField_a_of_type_JavaLangString.equals(str)) && (paramBoolean))
+    {
+      if (bool) {
+        this.a.b(false);
+      }
+      if (this.a.a.jdField_a_of_type_Int == 3000)
+      {
+        paramArrayOfObject = ((FriendsManagerImp)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).a(str);
+        if ((paramArrayOfObject != null) && (paramArrayOfObject.discussionName != null))
+        {
+          this.a.a.d = paramArrayOfObject.discussionName;
+          ChatActivity.a(this.a, this.a.a.d, paramArrayOfObject.uin, this.a.jdField_b_of_type_AndroidWidgetTextView);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     byr
  * JD-Core Version:    0.7.0.1
  */

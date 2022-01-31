@@ -30,17 +30,17 @@ import com.tencent.mobileqq.widget.SlideDetectListView.OnSlideListener;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.ListView;
-import ejt;
-import eju;
-import ejw;
-import ejx;
-import ejy;
-import eka;
-import ekb;
-import ekc;
-import ekd;
-import eke;
-import ekf;
+import eeq;
+import eer;
+import eet;
+import eeu;
+import eev;
+import eex;
+import eey;
+import eez;
+import efa;
+import efb;
+import efc;
 import java.util.List;
 
 public class RecommendListView
@@ -56,15 +56,15 @@ public class RecommendListView
   public long a;
   private Context jdField_a_of_type_AndroidContentContext;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Handler jdField_a_of_type_AndroidOsHandler = new ejt(this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ejw(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new eeq(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new eet(this);
   TextView jdField_a_of_type_AndroidWidgetTextView;
   private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver;
   private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver;
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
   public SlideDetectListView a;
-  private ekd jdField_a_of_type_Ekd;
-  public eke a;
+  private efa jdField_a_of_type_Efa;
+  public efb a;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   public String a;
   public List a;
@@ -101,9 +101,9 @@ public class RecommendListView
     {
       if (i < j)
       {
-        ekf localekf = (ekf)paramListView.getChildAt(i).getTag();
-        if ((localekf != null) && (paramString.equals(localekf.jdField_a_of_type_JavaLangString))) {
-          localekf.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+        efc localefc = (efc)paramListView.getChildAt(i).getTag();
+        if ((localefc != null) && (paramString.equals(localefc.jdField_a_of_type_JavaLangString))) {
+          localefc.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
         }
       }
       else
@@ -114,7 +114,7 @@ public class RecommendListView
     }
   }
   
-  private void a(ekf paramekf, String paramString, int paramInt1, int paramInt2)
+  private void a(efc paramefc, String paramString, int paramInt1, int paramInt2)
   {
     Bitmap localBitmap2 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(paramInt2, paramString);
     Bitmap localBitmap1 = localBitmap2;
@@ -126,8 +126,8 @@ public class RecommendListView
       }
       localBitmap1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
     }
-    paramekf.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap1);
-    paramekf.jdField_a_of_type_JavaLangString = paramString;
+    paramefc.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap1);
+    paramefc.jdField_a_of_type_JavaLangString = paramString;
   }
   
   private boolean c()
@@ -135,16 +135,16 @@ public class RecommendListView
     if (this.jdField_b_of_type_Boolean) {
       return false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131233082));
-    this.d = findViewById(2131233083);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233081));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233080));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131233084));
+    this.d = findViewById(2131233085);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233083));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233082));
     if (this.g == 0) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnSlideListener(this);
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setTranscriptMode(0);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnScrollToTopListener(this);
-    this.jdField_a_of_type_Eke = new eke(this, null);
+    this.jdField_a_of_type_Efb = new efb(this, null);
     this.jdField_b_of_type_Boolean = true;
     Object localObject = (PhoneContactManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10);
     if (localObject != null)
@@ -154,10 +154,10 @@ public class RecommendListView
       if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 0)) {
         break label237;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a() != this.jdField_a_of_type_Eke) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_Eke);
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a() != this.jdField_a_of_type_Efb) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_Efb);
       }
-      this.jdField_a_of_type_Eke.notifyDataSetChanged();
+      this.jdField_a_of_type_Efb.notifyDataSetChanged();
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131559921, new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) }));
     }
@@ -180,13 +180,13 @@ public class RecommendListView
   
   private void j()
   {
-    a(2130903613);
+    a(2130903615);
     c();
   }
   
   private void k()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new eju(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new eer(this));
   }
   
   private void l()
@@ -194,7 +194,7 @@ public class RecommendListView
     Object localObject = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10);
     if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new ejy(this, (PhoneContactManagerImp)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new eev(this, (PhoneContactManagerImp)localObject);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     }
     if (localObject != null)
@@ -231,7 +231,7 @@ public class RecommendListView
   {
     j();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(RecommendListView.class, this.jdField_a_of_type_AndroidOsHandler);
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new eka(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new eex(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     l();
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
@@ -268,11 +268,11 @@ public class RecommendListView
   
   public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_Eke.getCount())) {}
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_Efb.getCount())) {}
     do
     {
       return;
-      this.jdField_a_of_type_Eke.jdField_a_of_type_Int = paramInt;
+      this.jdField_a_of_type_Efb.jdField_a_of_type_Int = paramInt;
       View localView = paramView.findViewById(2131230987);
       if (localView != null)
       {
@@ -282,11 +282,11 @@ public class RecommendListView
         ((ShaderAnimLayout)localView).a();
         paramSlideDetectListView.setDeleteAreaWidth(localView.getLayoutParams().width);
       }
-      paramSlideDetectListView = paramView.findViewById(2131234360);
+      paramSlideDetectListView = paramView.findViewById(2131234362);
       if (paramSlideDetectListView != null) {
         paramSlideDetectListView.setVisibility(4);
       }
-      paramSlideDetectListView = paramView.findViewById(2131234361);
+      paramSlideDetectListView = paramView.findViewById(2131234363);
     } while (paramSlideDetectListView == null);
     paramSlideDetectListView.setVisibility(4);
   }
@@ -309,20 +309,20 @@ public class RecommendListView
       paramInt = 0;
       while (paramInt < i)
       {
-        ekf localekf = (ekf)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.getChildAt(paramInt).getTag();
-        if ((localekf != null) && (!TextUtils.isEmpty(localekf.jdField_a_of_type_JavaLangString)))
+        efc localefc = (efc)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.getChildAt(paramInt).getTag();
+        if ((localefc != null) && (!TextUtils.isEmpty(localefc.jdField_a_of_type_JavaLangString)))
         {
-          Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(11, localekf.jdField_a_of_type_JavaLangString);
+          Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(11, localefc.jdField_a_of_type_JavaLangString);
           paramAbsListView = localBitmap;
           if (localBitmap == null)
           {
-            this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(localekf.jdField_a_of_type_JavaLangString, 11, false);
+            this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(localefc.jdField_a_of_type_JavaLangString, 11, false);
             if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
               this.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a();
             }
             paramAbsListView = this.jdField_a_of_type_AndroidGraphicsBitmap;
           }
-          localekf.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramAbsListView);
+          localefc.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramAbsListView);
         }
         paramInt += 1;
       }
@@ -333,7 +333,7 @@ public class RecommendListView
   
   public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
   {
-    paramSlideDetectListView = this.jdField_a_of_type_Eke.getItem(paramInt);
+    paramSlideDetectListView = this.jdField_a_of_type_Efb.getItem(paramInt);
     if (paramSlideDetectListView == null) {}
     View localView;
     do
@@ -345,7 +345,7 @@ public class RecommendListView
         {
           return;
           paramSlideDetectListView = (RecommendContactMsg)paramSlideDetectListView;
-          this.jdField_a_of_type_Eke.jdField_a_of_type_Int = -1;
+          this.jdField_a_of_type_Efb.jdField_a_of_type_Int = -1;
           localObject = paramView.findViewById(2131230987);
           if (localObject != null)
           {
@@ -356,16 +356,16 @@ public class RecommendListView
           }
           localObject = (FriendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8);
         } while (localObject == null);
-        localView = paramView.findViewById(2131234360);
-        paramView = paramView.findViewById(2131234361);
+        localView = paramView.findViewById(2131234362);
+        paramView = paramView.findViewById(2131234363);
         if ((!((FriendManager)localObject).b(paramSlideDetectListView.uin)) && (!((FriendManager)localObject).e(paramSlideDetectListView.uin)) && (!((FriendManager)localObject).e(paramSlideDetectListView.nationCode + paramSlideDetectListView.mobileCode))) {
           break;
         }
       } while (paramView == null);
-      paramView.postDelayed(new ekb(this, paramView), 300L);
+      paramView.postDelayed(new eey(this, paramView), 300L);
       return;
     } while (localView == null);
-    localView.postDelayed(new ekc(this, localView), 300L);
+    localView.postDelayed(new eez(this, localView), 300L);
   }
   
   boolean b()
@@ -388,14 +388,14 @@ public class RecommendListView
       d(false);
       return;
     }
-    a(2131562933, new ejx(this));
+    a(2131562933, new eeu(this));
   }
   
   protected void e()
   {
     super.e();
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Eke != null)) {
-      this.jdField_a_of_type_Eke.notifyDataSetChanged();
+    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Efb != null)) {
+      this.jdField_a_of_type_Efb.notifyDataSetChanged();
     }
   }
   
@@ -423,8 +423,8 @@ public class RecommendListView
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(RecommendListView.class);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(null);
-    if (this.jdField_a_of_type_Eke != null) {
-      this.jdField_a_of_type_Eke.a();
+    if (this.jdField_a_of_type_Efb != null) {
+      this.jdField_a_of_type_Efb.a();
     }
     if (this.g == 0) {
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Frd_offer", "Clk_Frd_offer", 22, 0, this.jdField_a_of_type_Long + "", this.jdField_b_of_type_Long + "", this.jdField_a_of_type_JavaLangString + "&" + this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int + "");
@@ -434,7 +434,7 @@ public class RecommendListView
   public void onClick(View paramView)
   {
     if (!b()) {}
-    while (paramView.getId() != 2131234360) {
+    while (paramView.getId() != 2131234362) {
       return;
     }
     paramView = (RecommendContactMsg)paramView.getTag();

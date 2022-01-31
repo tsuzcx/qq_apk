@@ -1,39 +1,22 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SubAccountSettingActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.utils.ContactUtils;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class dsj
-  extends FriendListObserver
+  implements TextWatcher
 {
-  public dsj(SubAccountSettingActivity paramSubAccountSettingActivity) {}
+  private dsj(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  protected void a(String paramString, boolean paramBoolean)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((paramBoolean) && (SubAccountSettingActivity.a(this.a) != null) && (SubAccountSettingActivity.a(this.a).subuin != null) && (paramString != null) && (SubAccountSettingActivity.a(this.a).subuin.equals(paramString)))
-    {
-      paramString = ContactUtils.b(this.a.b, paramString, false);
-      if ((!TextUtils.isEmpty(paramString)) && ((TextUtils.isEmpty(SubAccountSettingActivity.a(this.a).subname)) || (!paramString.equals(SubAccountSettingActivity.a(this.a).subname))))
-      {
-        SubAccountSettingActivity.a(this.a).subname = paramString;
-        SubAccountSettingActivity.a(this.a).setText(SubAccountSettingActivity.a(this.a).subname);
-      }
-    }
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.d(paramEditable);
   }
   
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (SubAccountSettingActivity.a(this.a) == null) || (!paramString.equals(SubAccountSettingActivity.a(this.a).subuin))) {}
-    while (SubAccountSettingActivity.a(this.a) == null) {
-      return;
-    }
-    paramString = this.a.b.b(SubAccountSettingActivity.a(this.a).subuin);
-    SubAccountSettingActivity.a(this.a).setImageDrawable(paramString);
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

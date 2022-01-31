@@ -20,6 +20,22 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import ckm;
+import cko;
+import ckp;
+import ckq;
+import ckr;
+import cks;
+import ckt;
+import cku;
+import ckv;
+import ckw;
+import ckx;
+import cky;
+import ckz;
+import cla;
+import clb;
+import clc;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -49,22 +65,6 @@ import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cqz;
-import crb;
-import crc;
-import crd;
-import cre;
-import crf;
-import crg;
-import crh;
-import cri;
-import crj;
-import crk;
-import crl;
-import crm;
-import crn;
-import cro;
-import crp;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,13 +86,13 @@ public class EmosmDetailActivity
   ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   public RelativeLayout a;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new crh(this);
+  clc jdField_a_of_type_Clc;
+  URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new cku(this);
   public Emoticon a;
   private EmoticonPackage jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = null;
-  private EmoticonPackageDownloadListener jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new cqz(this);
+  private EmoticonPackageDownloadListener jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new ckm(this);
   public PicEmoticonInfo a;
   MyGridView jdField_a_of_type_ComTencentMobileqqWidgetMyGridView;
-  crp jdField_a_of_type_Crp;
   boolean jdField_a_of_type_Boolean;
   Button jdField_b_of_type_AndroidWidgetButton;
   public ImageView b;
@@ -137,7 +137,7 @@ public class EmosmDetailActivity
       return;
     }
     EmosmHandler localEmosmHandler = (EmosmHandler)paramQQAppInterface.a(11);
-    localEmosmHandler.a(new cro(localEmosmHandler, paramContext, paramInt, paramQQAppInterface, paramPicEmoticonInfo, paramImageView, paramQQProgressDialog, paramSessionInfo));
+    localEmosmHandler.a(new clb(localEmosmHandler, paramContext, paramInt, paramQQAppInterface, paramPicEmoticonInfo, paramImageView, paramQQProgressDialog, paramSessionInfo));
     localEmosmHandler.a(paramInt, Integer.valueOf(paramPicEmoticonInfo.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId).intValue(), paramPicEmoticonInfo.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
   }
   
@@ -150,7 +150,7 @@ public class EmosmDetailActivity
   {
     try
     {
-      DialogUtil.a(paramContext, 230, paramString1, paramString2, 2131561746, 2131561940, new crf(), new crg()).show();
+      DialogUtil.a(paramContext, 230, paramString1, paramString2, 2131561746, 2131561940, new cks(), new ckt()).show();
       return;
     }
     catch (Exception paramContext)
@@ -204,7 +204,7 @@ public class EmosmDetailActivity
               paramSessionInfo = (CustomEmotionData)paramQQProgressDialog.get(paramInt2);
               if ((paramSessionInfo.isMarkFace) && (paramSessionInfo.emoPath.equals(paramPicEmoticonInfo.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId)) && (paramSessionInfo.eId.equals(paramPicEmoticonInfo.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId)))
               {
-                localHandler.post(new crb(paramContext));
+                localHandler.post(new cko(paramContext));
                 return;
               }
               j = paramInt1;
@@ -226,7 +226,7 @@ public class EmosmDetailActivity
           paramString.a();
           ChatActivityFacade.a(paramQQAppInterface, paramPicEmoticonInfo.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
           a(paramQQAppInterface, MarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, "ep_mall", "Clk_collect_suc", 0);
-          localHandler.post(new crc(paramContext));
+          localHandler.post(new ckp(paramContext));
           if (paramImageView != null) {
             paramImageView.setEnabled(false);
           }
@@ -241,10 +241,10 @@ public class EmosmDetailActivity
     }
     if (paramInt2 < 0)
     {
-      localHandler.post(new crd(paramContext, paramString));
+      localHandler.post(new ckq(paramContext, paramString));
       return;
     }
-    localHandler.post(new cre(paramInt1, paramContext, paramQQAppInterface, paramPicEmoticonInfo, paramString));
+    localHandler.post(new ckr(paramInt1, paramContext, paramQQAppInterface, paramPicEmoticonInfo, paramString));
   }
   
   private void e()
@@ -254,18 +254,18 @@ public class EmosmDetailActivity
     this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(300L);
     this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setFillAfter(true);
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new crl(this));
+    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new cky(this));
   }
   
   public void a()
   {
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233314));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233316));
-    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233318));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233315));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131233317));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233316));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233318));
+    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233320));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233317));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131233319));
     this.jdField_b_of_type_AndroidWidgetButton.setText(2131563178);
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new crj(this));
+    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new ckw(this));
   }
   
   public void a(EmoticonPackage paramEmoticonPackage)
@@ -306,10 +306,10 @@ public class EmosmDetailActivity
       if (QLog.isColorLevel()) {
         QLog.i("Q.emoji.EmosmDetailActivity", 2, "emoticon size:" + paramEmoticonPackage.size());
       }
-      this.jdField_a_of_type_Crp = new crp(this, paramEmoticonPackage);
+      this.jdField_a_of_type_Clc = new clc(this, paramEmoticonPackage);
       this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.setHorizontalSpacing(15);
       this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.setVerticalSpacing(10);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.setAdapter(this.jdField_a_of_type_Crp);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.setAdapter(this.jdField_a_of_type_Clc);
     }
     for (;;)
     {
@@ -347,7 +347,7 @@ public class EmosmDetailActivity
       if (this.jdField_a_of_type_AndroidWidgetProgressBar == null)
       {
         this.jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar(this.jdField_a_of_type_AndroidContentContext);
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130837854));
+        this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130837856));
         j = AIOUtils.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
         localLayoutParams = new RelativeLayout.LayoutParams(j, j);
         localLayoutParams.bottomMargin = j;
@@ -368,24 +368,24 @@ public class EmosmDetailActivity
   
   public void b()
   {
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233308));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233311));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233309));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131233310));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new crk(this));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233310));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233313));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233311));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131233312));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ckx(this));
   }
   
   public void c()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233301));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233302));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233303));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233304));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231518));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131233306));
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131233312));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView = ((MyGridView)findViewById(2131233319));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232052));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233303));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233304));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233305));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233306));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231519));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131233308));
+    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131233314));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView = ((MyGridView)findViewById(2131233321));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232055));
     jdField_e_of_type_AndroidWidgetImageView = (ImageView)findViewById(2131230805);
     jdField_f_of_type_AndroidWidgetImageView = (ImageView)findViewById(2131230806);
     if (this.jdField_a_of_type_Boolean)
@@ -396,7 +396,7 @@ public class EmosmDetailActivity
     Object localObject;
     for (;;)
     {
-      int j = getResources().getDimensionPixelSize(2131427499);
+      int j = getResources().getDimensionPixelSize(2131427502);
       this.jdField_d_of_type_Int = ((((WindowManager)getSystemService("window")).getDefaultDisplay().getWidth() - j * 2 - 45) / 4);
       this.jdField_e_of_type_Int = this.jdField_d_of_type_Int;
       if (!this.jdField_a_of_type_Boolean)
@@ -439,7 +439,7 @@ public class EmosmDetailActivity
       return;
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new crm(this, this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ckz(this, this));
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
     List localList = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager().a(CustomEmotionData.class, false, null, null, null, null, null, null);
     if (localList != null)
@@ -456,7 +456,7 @@ public class EmosmDetailActivity
         j += 1;
       }
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new crn(this, this));
+    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new cla(this, this));
   }
   
   public void onCreate(Bundle paramBundle)
@@ -477,7 +477,7 @@ public class EmosmDetailActivity
       label60:
       this.jdField_a_of_type_Boolean = bool;
       h(2131560958);
-      setContentView(2130903661);
+      setContentView(2130903663);
       this.jdField_a_of_type_AndroidContentContext = getApplicationContext();
       this.jdField_a_of_type_AndroidOsHandler = new Handler();
       this.h = 320;
@@ -501,7 +501,7 @@ public class EmosmDetailActivity
         break;
       }
       jdField_f_of_type_AndroidWidgetImageView.setVisibility(0);
-      jdField_f_of_type_AndroidWidgetImageView.setOnClickListener(new cri(this));
+      jdField_f_of_type_AndroidWidgetImageView.setOnClickListener(new ckv(this));
       return;
       bool = false;
       break label60;

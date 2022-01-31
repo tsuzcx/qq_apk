@@ -1,25 +1,24 @@
-import com.tencent.mobileqq.app.NewFriendManager;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RecommendContact;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Vector;
+import com.tencent.mobileqq.app.message.MsgProxy;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class fjd
   implements Runnable
 {
-  public fjd(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public fjd(MsgProxy paramMsgProxy, boolean paramBoolean) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact", 2, "deleteRecommendList ");
+    StatisticCollector localStatisticCollector = StatisticCollector.a(BaseApplication.getContext());
+    String str = MsgProxy.f(this.jdField_a_of_type_ComTencentMobileqqAppMessageMsgProxy).a();
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localStatisticCollector.a(str, "aio_break_point", bool, 0L, 0L, new HashMap(), "");
+      return;
     }
-    PhoneContactManagerImp.a(this.a).a(RecommendContact.class);
-    this.a.a.clear();
-    this.a.i();
-    ((NewFriendManager)PhoneContactManagerImp.a(this.a).getManager(32)).d();
   }
 }
 

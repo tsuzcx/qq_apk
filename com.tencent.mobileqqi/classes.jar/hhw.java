@@ -1,19 +1,41 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomSplitDialog;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.Scroller;
+import com.tencent.mobileqq.widget.TCTransitDrawable;
 
 public class hhw
-  implements View.OnClickListener
+  extends Handler
 {
-  public hhw(QQCustomSplitDialog paramQQCustomSplitDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  public hhw(TCTransitDrawable paramTCTransitDrawable) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog, 0);
+    if (paramMessage.what == 1) {
+      if ((this.a.jdField_a_of_type_Boolean) && (!this.a.b) && (this.a.c)) {}
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog.dismiss();
+    while (paramMessage.what != 2)
+    {
+      return;
+      if (this.a.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
+      {
+        int i = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
+        int j = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
+        int k = this.a.f;
+        int m = this.a.g;
+        this.a.f = i;
+        this.a.g = j;
+        paramMessage = this.a;
+        paramMessage.d += i - k;
+        paramMessage = this.a;
+        paramMessage.e += j - m;
+        this.a.invalidateSelf();
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 50L);
+        return;
+      }
+      this.a.d();
+      return;
+    }
+    this.a.d();
   }
 }
 

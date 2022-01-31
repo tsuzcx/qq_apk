@@ -1,17 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.LoginManagerActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class brr
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public brr(LoginManagerActivity paramLoginManagerActivity) {}
+  public brr(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 9875: 
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountManageActivity", 2, "SUBACCOUNT_REQUEST_CHANGE_HANDLER_VALUE");
+      }
+      AccountManageActivity.a(this.a);
+      AccountManageActivity.b(this.a);
+      return;
+    }
+    this.a.f();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     brr
  * JD-Core Version:    0.7.0.1
  */

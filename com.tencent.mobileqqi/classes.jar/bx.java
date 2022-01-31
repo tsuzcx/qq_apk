@@ -1,45 +1,63 @@
-import com.dataline.activities.LiteMutiPicViewerActivity;
-import com.tencent.mobileqq.app.DataLineHandler.EFILETYPE;
-import com.tencent.mobileqq.app.DataLineObserver;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.dataline.activities.LiteActivity;
 
 public class bx
-  extends DataLineObserver
+  extends BaseAdapter
 {
-  public bx(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity) {}
+  private by jdField_a_of_type_By;
+  private final int[] jdField_a_of_type_ArrayOfInt = { 2131558511, 2130837778 };
+  private final int[][] jdField_a_of_type_Array2dOfInt = { this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt, this.c, this.d };
+  private final int[] jdField_b_of_type_ArrayOfInt = { 2131561737, 2130837773 };
+  private int[][] jdField_b_of_type_Array2dOfInt = this.jdField_a_of_type_Array2dOfInt;
+  private final int[] c = { 2131558512, 2130837782 };
+  private final int[] d = { 2131558513, 2130837780 };
   
-  protected void a(long paramLong)
+  private bx(LiteActivity paramLiteActivity) {}
+  
+  public int[][] a()
   {
-    this.a.runOnUiThread(new cd(this));
+    return this.jdField_b_of_type_Array2dOfInt;
   }
   
-  protected void a(long paramLong, float paramFloat)
+  public int getCount()
   {
-    super.a(paramLong, paramFloat);
-    this.a.runOnUiThread(new cc(this));
+    return this.jdField_b_of_type_Array2dOfInt.length;
   }
   
-  protected void a(long paramLong1, String paramString, DataLineHandler.EFILETYPE paramEFILETYPE, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  public Object getItem(int paramInt)
   {
-    super.a(paramLong1, paramString, paramEFILETYPE, paramBoolean1, paramBoolean2, paramLong2);
-    this.a.runOnUiThread(new by(this));
+    return null;
   }
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  public long getItemId(int paramInt)
   {
-    super.a(paramBoolean, paramLong, paramString);
-    this.a.runOnUiThread(new ca(this));
+    return 0L;
   }
   
-  protected void b(long paramLong1, String paramString, DataLineHandler.EFILETYPE paramEFILETYPE, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    super.b(paramLong1, paramString, paramEFILETYPE, paramBoolean1, paramBoolean2, paramLong2);
-    this.a.runOnUiThread(new bz(this));
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.b(paramBoolean, paramLong, paramString);
-    this.a.runOnUiThread(new cb(this));
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getLayoutInflater().inflate(2130903185, null);
+    }
+    this.jdField_a_of_type_By = ((by)paramViewGroup.getTag());
+    if (this.jdField_a_of_type_By == null)
+    {
+      this.jdField_a_of_type_By = new by(this, null);
+      this.jdField_a_of_type_By.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131231293));
+      this.jdField_a_of_type_By.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131231294));
+    }
+    this.jdField_a_of_type_By.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_Array2dOfInt[paramInt][0]);
+    paramView = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getResources().getDrawable(this.jdField_b_of_type_Array2dOfInt[paramInt][1]);
+    this.jdField_a_of_type_By.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(paramView);
+    paramViewGroup.setTag(this.jdField_a_of_type_By);
+    return paramViewGroup;
   }
 }
 

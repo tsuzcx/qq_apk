@@ -1,23 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils.MyLBSApiPOI;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public final class hbv
-  implements Parcelable.Creator
+  implements Runnable
 {
-  public TroopBarUtils.MyLBSApiPOI a(Parcel paramParcel)
+  public void run()
   {
-    return new TroopBarUtils.MyLBSApiPOI(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
-  }
-  
-  public TroopBarUtils.MyLBSApiPOI[] a(int paramInt)
-  {
-    return null;
+    FileUtils.a(BaseApplicationImpl.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hbv
  * JD-Core Version:    0.7.0.1
  */

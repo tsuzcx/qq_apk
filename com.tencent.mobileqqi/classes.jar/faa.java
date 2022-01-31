@@ -1,25 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.voip.VoipDialInterface;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import java.util.Comparator;
 
 public class faa
-  implements View.OnClickListener
+  implements Comparator
 {
-  public faa(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  public faa(ConditionSearchManager paramConditionSearchManager) {}
   
-  public void onClick(View paramView)
+  public int a(BaseAddress paramBaseAddress1, BaseAddress paramBaseAddress2)
   {
-    this.a.a.a("7");
-    VoipDialInterfaceActivity.a(this.a, '7');
-    if (VoipDialInterfaceActivity.b(this.a)) {
-      new Thread(new fab(this)).start();
+    int j = paramBaseAddress1.d.compareTo(paramBaseAddress2.d);
+    int i = j;
+    if (j == 0) {
+      i = paramBaseAddress1.c.compareTo(paramBaseAddress2.c);
     }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     faa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,20 @@
-import android.view.View;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
 
-class dwq
+public class dwq
   implements Runnable
 {
-  dwq(dwp paramdwp) {}
+  public dwq(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt) {}
   
   public void run()
   {
-    TroopMemberListActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, false);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.getWindow().peekDecorView().getWindowToken(), 0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(2, 300, new Object[] { this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, Integer.valueOf(this.jdField_a_of_type_Int) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dwq
  * JD-Core Version:    0.7.0.1
  */

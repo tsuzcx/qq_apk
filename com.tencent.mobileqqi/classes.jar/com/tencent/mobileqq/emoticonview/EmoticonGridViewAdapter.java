@@ -29,9 +29,9 @@ import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.AudioPlayer;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.emosm.EmosmUtils;
-import fso;
-import fsp;
-import fsq;
+import fob;
+import foc;
+import fod;
 import java.util.List;
 
 public class EmoticonGridViewAdapter
@@ -41,9 +41,9 @@ public class EmoticonGridViewAdapter
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new fso(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new fob(this);
   public View.OnLongClickListener a;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new fsq(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new fod(this);
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private GridView jdField_a_of_type_AndroidWidgetGridView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -59,7 +59,7 @@ public class EmoticonGridViewAdapter
   
   public EmoticonGridViewAdapter(GridView paramGridView, Context paramContext, EmoticonCallback paramEmoticonCallback)
   {
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new fsp(this);
+    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new foc(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_Int = ((int)(46.0F * this.jdField_a_of_type_Float));
@@ -254,8 +254,8 @@ public class EmoticonGridViewAdapter
       if (paramView == null)
       {
         localViewHolder = new EmoticonGridViewAdapter.ViewHolder(this);
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903210, null);
-        localViewHolder.a = ((URLImageView)paramView.findViewById(2131231628));
+        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903211, null);
+        localViewHolder.a = ((URLImageView)paramView.findViewById(2131231629));
         paramView.setTag(localViewHolder);
         localViewHolder.a.setTag(paramViewGroup);
         if (paramViewGroup == null) {
@@ -288,7 +288,7 @@ public class EmoticonGridViewAdapter
         if (((paramViewGroup.jdField_b_of_type_Int != 7) && (this.d != 2011)) || (paramInt != i - 1)) {
           break label616;
         }
-        localViewHolder.a.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837978));
+        localViewHolder.a.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837980));
         localViewHolder.a.setTag(null);
       }
       for (;;)

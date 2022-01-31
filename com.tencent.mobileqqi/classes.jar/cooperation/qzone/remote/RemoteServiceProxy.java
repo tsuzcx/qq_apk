@@ -8,15 +8,15 @@ import android.os.RemoteException;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QzonePluginProxyActivity;
-import ihx;
-import ihy;
+import idd;
+import ide;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class RemoteServiceProxy
 {
   private static final String tag = "RemoteServiceProxy";
   private Class clazz;
-  protected ServiceConnection conn = new ihx(this);
+  protected ServiceConnection conn = new idd(this);
   protected volatile long lastStartSerivceTime = -1L;
   private IActionListener mActionListener;
   protected Object sendLock = new Object();
@@ -89,9 +89,9 @@ public class RemoteServiceProxy
   
   public void onBaseServiceConnected()
   {
-    ihy localihy = new ihy(this);
-    localihy.setName("handleWaitSendProxyMsgThread");
-    localihy.start();
+    ide localide = new ide(this);
+    localide.setName("handleWaitSendProxyMsgThread");
+    localide.start();
   }
   
   public void sendFailedRespToApp(SendMsg paramSendMsg, RecvMsg paramRecvMsg)

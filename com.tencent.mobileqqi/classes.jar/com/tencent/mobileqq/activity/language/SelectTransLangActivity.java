@@ -11,9 +11,9 @@ import com.tencent.mobileqq.international.LocaleUtil;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import emq;
-import emr;
-import ems;
+import ehn;
+import eho;
+import ehp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -26,7 +26,7 @@ public class SelectTransLangActivity
   private static final String jdField_a_of_type_JavaLangString = "SelectTransLangActivity";
   private int jdField_a_of_type_Int = -1;
   private ListView jdField_a_of_type_AndroidWidgetListView;
-  private ems jdField_a_of_type_Ems;
+  private ehp jdField_a_of_type_Ehp;
   private final List jdField_a_of_type_JavaUtilList = new ArrayList();
   private Map jdField_a_of_type_JavaUtilMap;
   private String b;
@@ -45,16 +45,16 @@ public class SelectTransLangActivity
       }
       i += 1;
     }
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131231855));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131231857));
     if (!"10000512".equals(AppSetting.a(this)))
     {
-      View localView = LayoutInflater.from(this).inflate(2130903257, null, false);
-      localView.findViewById(2131231859).setOnClickListener(new emq(this));
+      View localView = LayoutInflater.from(this).inflate(2130903259, null, false);
+      localView.findViewById(2131231861).setOnClickListener(new ehn(this));
       this.jdField_a_of_type_AndroidWidgetListView.addFooterView(localView);
     }
-    this.jdField_a_of_type_Ems = new ems(this, this);
-    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Ems);
-    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new emr(this));
+    this.jdField_a_of_type_Ehp = new ehp(this, this);
+    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Ehp);
+    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new eho(this));
   }
   
   private void e()
@@ -104,7 +104,7 @@ public class SelectTransLangActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903255);
+    setContentView(2130903257);
     setTitle(2131559792);
     e();
     this.jdField_b_of_type_JavaLangString = LocaleUtil.a(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a());

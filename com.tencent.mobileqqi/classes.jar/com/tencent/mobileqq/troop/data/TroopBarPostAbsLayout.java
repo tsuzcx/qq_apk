@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import com.tencent.image.URLDrawableDownListener.Adapter;
 import com.tencent.mobileqq.data.TroopBarAbsDataEntity;
-import gzm;
+import gvf;
 
 public abstract class TroopBarPostAbsLayout
 {
@@ -17,7 +17,7 @@ public abstract class TroopBarPostAbsLayout
   public TroopBarPostAbsLayout()
   {
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(0);
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new gzm(this);
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new gvf(this);
   }
   
   public abstract View a(Activity paramActivity, LayoutInflater paramLayoutInflater, View paramView, TroopBarAbsDataEntity paramTroopBarAbsDataEntity);

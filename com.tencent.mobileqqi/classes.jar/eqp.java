@@ -1,15 +1,23 @@
-import com.tencent.mobileqq.activity.photo.AlbumListActivity;
-import com.tencent.mobileqq.data.QQAlbumInfo;
-import java.util.Comparator;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.mobileqq.activity.selectmember.RenMaiQuanTeamListInnerFrame;
+import com.tencent.mobileqq.data.CircleGroup;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class eqp
-  implements Comparator
+class eqp
+  implements View.OnClickListener
 {
-  public eqp(AlbumListActivity paramAlbumListActivity) {}
+  eqp(eqo parameqo, CircleGroup paramCircleGroup) {}
   
-  public int a(QQAlbumInfo paramQQAlbumInfo1, QQAlbumInfo paramQQAlbumInfo2)
+  public void onClick(View paramView)
   {
-    return -Long.valueOf(paramQQAlbumInfo1.coverDate).compareTo(Long.valueOf(paramQQAlbumInfo2.coverDate));
+    paramView = new Bundle();
+    paramView.putInt("group_uin", this.jdField_a_of_type_ComTencentMobileqqDataCircleGroup.groupId);
+    paramView.putString("group_name", this.jdField_a_of_type_ComTencentMobileqqDataCircleGroup.groupName);
+    this.jdField_a_of_type_Eqo.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a(7, paramView);
+    ReportController.b(this.jdField_a_of_type_Eqo.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Network_circle", "Mutichat_circle_grp", 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCircleGroup.groupId), "", "", "");
   }
 }
 

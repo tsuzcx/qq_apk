@@ -1,16 +1,31 @@
-import android.text.Editable;
-import com.tencent.open.agent.SendStoryActivity.CustomLengthInputFilter;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.Comparator;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.TicketUtils;
+import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDK;
+import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDK_V2;
 
-public class hns
-  implements Comparator
+class hns
+  implements Runnable
 {
-  public hns(SendStoryActivity.CustomLengthInputFilter paramCustomLengthInputFilter, Editable paramEditable) {}
+  hns(hnq paramhnq) {}
   
-  public int a(Friend paramFriend1, Friend paramFriend2)
+  public void run()
   {
-    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1);
+    this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils.a();
+    this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.c();
+    if (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam != null)
+    {
+      if (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a() <= 2) {
+        ((TMQQDownloaderOpenSDK)this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKBaseQQDownloaderOpenSDK).startToAuthorized(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam, "2");
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam = null;
+        return;
+        ((TMQQDownloaderOpenSDK_V2)this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKBaseQQDownloaderOpenSDK).startToAuthorized(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam, "2");
+      }
+    }
+    LogUtility.e("MyAppApi", "startToAuthorizedDirect->onGetA1Fail lastAuthorizeParam = null, needCarryQQIdentity = true");
   }
 }
 

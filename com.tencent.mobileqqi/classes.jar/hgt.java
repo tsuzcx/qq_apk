@@ -1,19 +1,14 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialogDevLock;
+import com.tencent.mobileqq.widget.ImageViewTouchBase;
+import com.tencent.mobileqq.widget.RotateBitmap;
 
 public class hgt
-  implements View.OnClickListener
+  implements Runnable
 {
-  public hgt(QQCustomDialogDevLock paramQQCustomDialogDevLock, DialogInterface.OnClickListener paramOnClickListener) {}
+  public hgt(ImageViewTouchBase paramImageViewTouchBase, RotateBitmap paramRotateBitmap, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogDevLock, 1);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogDevLock.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetImageViewTouchBase.setImageRotateBitmapResetBase(this.jdField_a_of_type_ComTencentMobileqqWidgetRotateBitmap, this.jdField_a_of_type_Boolean);
   }
 }
 

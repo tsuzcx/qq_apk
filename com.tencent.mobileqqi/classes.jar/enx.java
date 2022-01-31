@@ -1,15 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.LoginManagerActivity;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class enx
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public enx(MainAssistObserver paramMainAssistObserver) {}
+  public enx(BannerManager paramBannerManager) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.a = false;
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131232014: 
+      paramView = new Intent(BannerManager.a(this.a), LoginManagerActivity.class);
+      paramView.putExtra("loginInfo", this.a.e);
+      BannerManager.a(this.a).startActivity(paramView);
+      return;
+    }
+    this.a.b();
   }
 }
 

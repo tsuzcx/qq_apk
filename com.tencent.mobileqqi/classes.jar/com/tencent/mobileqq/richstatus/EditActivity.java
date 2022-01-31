@@ -42,19 +42,19 @@ import cooperation.qzone.LbsData.QzoneGpsInfo;
 import cooperation.qzone.LbsData.QzonePoiInfo;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
-import gla;
-import glb;
-import glc;
-import gld;
-import glh;
-import gli;
-import glj;
-import glk;
-import gll;
-import glm;
-import gln;
-import glo;
-import glp;
+import ggr;
+import ggs;
+import ggt;
+import ggu;
+import ggy;
+import ggz;
+import gha;
+import ghb;
+import ghc;
+import ghd;
+import ghe;
+import ghf;
+import ghg;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -81,26 +81,26 @@ public class EditActivity
   private static final String j = "...";
   public long a;
   private Intent jdField_a_of_type_AndroidContentIntent;
-  private Handler jdField_a_of_type_AndroidOsHandler = new glb(this);
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new glj(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new ggs(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new gha(this);
   private View jdField_a_of_type_AndroidViewView;
   private GridView jdField_a_of_type_AndroidWidgetGridView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private IActionListener jdField_a_of_type_ComTencentMobileqqRichstatusIActionListener = new gla(this);
-  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new glh(this);
-  private IStatusListener jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener = new gli(this);
+  private IActionListener jdField_a_of_type_ComTencentMobileqqRichstatusIActionListener = new ggr(this);
+  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new ggy(this);
+  private IStatusListener jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener = new ggz(this);
   private RichStatus jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus;
-  private RichStatusEditText.RichStatusEditListener jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener = new glk(this);
+  private RichStatusEditText.RichStatusEditListener jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener = new ghb(this);
   private RichStatusEditText jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText;
   private StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
-  private StatusObserver jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver = new glc(this);
-  private ClickableImageSpan.ClickableImageSpanListener jdField_a_of_type_ComTencentMobileqqWidgetClickableImageSpan$ClickableImageSpanListener = new gll(this);
+  private StatusObserver jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver = new ggt(this);
+  private ClickableImageSpan.ClickableImageSpanListener jdField_a_of_type_ComTencentMobileqqWidgetClickableImageSpan$ClickableImageSpanListener = new ghc(this);
   private ClickableImageSpan jdField_a_of_type_ComTencentMobileqqWidgetClickableImageSpan;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
   public ActionSheet a;
-  private glp jdField_a_of_type_Glp;
+  private ghg jdField_a_of_type_Ghg;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList(6);
   private boolean jdField_a_of_type_Boolean = false;
   private View jdField_b_of_type_AndroidViewView;
@@ -139,9 +139,9 @@ public class EditActivity
   
   private Drawable a(boolean paramBoolean)
   {
-    View localView = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2130903259, null);
-    ImageView localImageView = (ImageView)localView.findViewById(2131231860);
-    TextView localTextView = (TextView)localView.findViewById(2131231861);
+    View localView = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2130903261, null);
+    ImageView localImageView = (ImageView)localView.findViewById(2131231862);
+    TextView localTextView = (TextView)localView.findViewById(2131231863);
     Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.jdField_c_of_type_JavaLangString;
     Object localObject1 = localObject2;
     if (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.jdField_d_of_type_JavaLangString != null) {
@@ -155,12 +155,12 @@ public class EditActivity
     localImageView.setImageBitmap(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.b, 200));
     localTextView.setPressed(paramBoolean);
     if (paramBoolean) {
-      localView.setBackgroundResource(2130839650);
+      localView.setBackgroundResource(2130839652);
     }
     for (;;)
     {
       return a(localView);
-      localView.setBackgroundResource(2130839649);
+      localView.setBackgroundResource(2130839651);
     }
   }
   
@@ -258,14 +258,14 @@ public class EditActivity
     if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.jdField_e_of_type_JavaLangString))
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setText(2131562922);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840359);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131362098));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840361);
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131362108));
       this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription("连按两次添加位置信息");
       return;
     }
     this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.jdField_e_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838102);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131362075));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838104);
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131362085));
     this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription("所在地:" + this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.jdField_e_of_type_JavaLangString + "连按两次添加位置信息");
   }
   
@@ -306,12 +306,12 @@ public class EditActivity
     setTitle(getString(2131559265));
     b(2131562656, this);
     d(true);
-    ((MaxHeightRelativelayout)findViewById(2131234518)).setMaxHeight((int)(getResources().getDisplayMetrics().heightPixels * 0.31D));
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText = ((RichStatusEditText)findViewById(2131233371));
+    ((MaxHeightRelativelayout)findViewById(2131234520)).setMaxHeight((int)(getResources().getDisplayMetrics().heightPixels * 0.31D));
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText = ((RichStatusEditText)findViewById(2131233373));
     this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.setEditListener(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231169));
     this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131234520);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131234522);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     if (!this.jdField_a_of_type_Boolean) {
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
@@ -319,18 +319,18 @@ public class EditActivity
     this.k.setContentDescription(this.k.getText() + "按钮");
     this.m.setContentDescription(this.m.getText() + "按钮");
     this.jdField_a_of_type_AndroidViewView.setContentDescription("做什么按钮");
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131234519);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131234521);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839658);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131231860));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131231861));
+    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839660);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131231862));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131231863));
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131234521));
-      this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131234523));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131234523));
+      this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131234525));
       this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(this);
-      this.jdField_a_of_type_Glp = new glp(this, null);
-      this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Glp);
+      this.jdField_a_of_type_Ghg = new ghg(this, null);
+      this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Ghg);
       if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
       }
@@ -387,8 +387,8 @@ public class EditActivity
   private void l()
   {
     this.d = false;
-    this.jdField_a_of_type_Glp.notifyDataSetChanged();
-    this.jdField_a_of_type_AndroidWidgetGridView.postDelayed(new gld(this), 200L);
+    this.jdField_a_of_type_Ghg.notifyDataSetChanged();
+    this.jdField_a_of_type_AndroidWidgetGridView.postDelayed(new ggu(this), 200L);
   }
   
   protected void a(int paramInt)
@@ -461,7 +461,7 @@ public class EditActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903985);
+    setContentView(2130903987);
     this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager = ((StatusManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13));
     if (this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager == null)
     {
@@ -572,13 +572,13 @@ public class EditActivity
     this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131561788, 0);
     this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131561919, 3);
     this.jdField_a_of_type_ComTencentWidgetActionSheet.d(2131561746);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new glm(this));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new gln(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new ghd(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new ghe(this));
   }
   
   public void g()
   {
-    new Handler().postDelayed(new glo(this), 500L);
+    new Handler().postDelayed(new ghf(this), 500L);
   }
   
   void h()
@@ -595,8 +595,8 @@ public class EditActivity
         a(2131562446);
       }
       break;
-    case 2131234520: 
-    case 2131234519: 
+    case 2131234522: 
+    case 2131234521: 
       do
       {
         return;

@@ -22,8 +22,8 @@ import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import cooperation.plugin.IPluginManager;
 import cooperation.plugin.IPluginManager.PluginParams;
-import igs;
-import igt;
+import iby;
+import ibz;
 import java.util.Iterator;
 import java.util.List;
 
@@ -87,12 +87,12 @@ public class QzonePluginProxyActivity
     {
       localObject = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131427376));
       ((QQProgressDialog)localObject).b(2131559318);
-      ((QQProgressDialog)localObject).setOnDismissListener(new igs(paramOnDismissListener));
+      ((QQProgressDialog)localObject).setOnDismissListener(new iby(paramOnDismissListener));
     }
     for (paramOnDismissListener = (DialogInterface.OnDismissListener)localObject;; paramOnDismissListener = null)
     {
       localObject = a(paramIntent);
-      Class localClass = igt.a();
+      Class localClass = ibz.a();
       paramIntent.putExtra("userQqResources", 1);
       IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
       localPluginParams.jdField_b_of_type_JavaLangString = "qzone_plugin.apk";
@@ -204,7 +204,7 @@ public class QzonePluginProxyActivity
   
   protected Class getProxyActivity(String paramString)
   {
-    return igt.a(paramString);
+    return ibz.a(paramString);
   }
   
   protected void onCreate(Bundle paramBundle)

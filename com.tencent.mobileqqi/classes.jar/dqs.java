@@ -1,26 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class dqs
-  extends Handler
+  implements View.OnClickListener
 {
-  public dqs(SubAccountBindActivity paramSubAccountBindActivity) {}
+  public dqs(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1981: 
-      this.a.finish();
-      return;
-    case 1990: 
-      this.a.f();
-      return;
-    }
-    SubAccountBindActivity.a(this.a);
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
   }
 }
 

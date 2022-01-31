@@ -1,19 +1,36 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import NS_MOBILE_AIONewestFeed.AIONewestFeedRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.observer.QZoneObserver;
 
-class cag
-  implements Runnable
+public class cag
+  extends QZoneObserver
 {
-  cag(cae paramcae) {}
+  public ChatAdapter1 a;
+  public SessionInfo a;
+  public QQAppInterface a;
   
-  public void run()
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    AddRequestActivity.a(this.a.a).dismiss();
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 == null)) {
+      return;
+    }
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof AIONewestFeedRsp))) {
+      ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (AIONewestFeedRsp)paramBundle, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(ChatActivityFacade.a());
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     cag
  * JD-Core Version:    0.7.0.1
  */

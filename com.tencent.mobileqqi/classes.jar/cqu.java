@@ -1,13 +1,32 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.mobileqq.activity.IndividuationSetActivity;
 
 public class cqu
-  implements Runnable
+  implements URLDrawableDownListener
 {
-  public cqu(EmosmActivity paramEmosmActivity) {}
+  public cqu(IndividuationSetActivity paramIndividuationSetActivity) {}
   
-  public void run()
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    EmosmActivity.a(this.a);
+    paramView = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
+    float f = paramURLDrawable.getIntrinsicHeight() / paramURLDrawable.getIntrinsicWidth();
+    paramURLDrawable = new DisplayMetrics();
+    this.a.getWindowManager().getDefaultDisplay().getMetrics(paramURLDrawable);
+    paramView.height = ((int)(f * paramURLDrawable.widthPixels + 0.5F));
   }
 }
 

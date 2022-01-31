@@ -1,33 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundActivity;
+import android.content.Context;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.voip.VoipTencentPayActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-public class exe
-  extends Handler
+class exe
+  implements Runnable
 {
-  public exe(QvipSpecialSoundActivity paramQvipSpecialSoundActivity) {}
+  exe(exc paramexc, Context paramContext) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 0: 
-      do
-      {
-        return;
-        QvipSpecialSoundActivity.b(this.a);
-        QvipSpecialSoundActivity.a(this.a).removeMessages(2);
-      } while (((Boolean)paramMessage.obj).booleanValue());
-      QvipSpecialSoundActivity.a(this.a, this.a.getString(2131562062));
-      return;
-    case 1: 
-      QvipSpecialSoundActivity.a(this.a).setText(this.a.getString(2131562762));
-      return;
-    }
-    QvipSpecialSoundActivity.c(this.a);
-    QvipSpecialSoundActivity.a(this.a, this.a.getString(2131562882));
+    this.jdField_a_of_type_Exc.a.a.hide();
+    Toast.makeText(this.jdField_a_of_type_AndroidContentContext, "加载失败", 0).show();
+    this.jdField_a_of_type_Exc.a.finish();
   }
 }
 

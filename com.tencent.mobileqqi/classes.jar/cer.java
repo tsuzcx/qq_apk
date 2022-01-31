@@ -1,82 +1,92 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.RecentDataListManager;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.StrangerObserver;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
 
 public class cer
-  extends StrangerObserver
+  extends MessageObserver
 {
-  public cer(ChatActivity paramChatActivity) {}
+  public cer(Conversation paramConversation) {}
   
-  public void a(boolean paramBoolean, PBRepeatMessageField paramPBRepeatMessageField)
+  protected void a()
   {
-    if (this.a.isFinishing()) {}
-    label318:
-    label319:
-    for (;;)
+    TroopAssistantManager.a().c(this.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "refresh recent, from_onupdaterecentlist");
+    }
+    this.a.a(0L);
+  }
+  
+  protected void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 0) {
+      this.a.b(new ceu(this));
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    paramString = RecentDataListManager.a(paramString, -2147483648);
+    this.a.a(2, 9, paramString);
+  }
+  
+  public void a(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
+  {
+    if (QLog.isColorLevel())
     {
-      return;
-      if ((ChatActivity.a(this.a) != null) && (ChatActivity.a(this.a).isShowing())) {
-        ChatActivity.a(this.a).cancel();
-      }
-      if (paramBoolean)
-      {
-        paramPBRepeatMessageField = paramPBRepeatMessageField.get().iterator();
-        paramBoolean = false;
-        if (paramPBRepeatMessageField.hasNext())
-        {
-          if (!String.valueOf(((oidb_0x5d4.DelResult)paramPBRepeatMessageField.next()).uin.get()).equalsIgnoreCase(this.a.b.a())) {
-            break label318;
-          }
-          paramBoolean = true;
-        }
-      }
-      for (;;)
-      {
-        break;
-        if (!paramBoolean) {
-          break label319;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ChatActivity", 2, "StrangerObserver : onDelete , result=" + paramBoolean);
-        }
-        paramPBRepeatMessageField = new ArrayList();
-        paramPBRepeatMessageField.add(this.a.a.jdField_a_of_type_JavaLangString);
-        ChatActivityFacade.a(this.a.b, BaseApplication.getContext(), paramPBRepeatMessageField);
-        paramPBRepeatMessageField = this.a.b.a().a();
-        if (paramPBRepeatMessageField != null)
-        {
-          RecentUser localRecentUser = paramPBRepeatMessageField.a(this.a.a.jdField_a_of_type_JavaLangString, this.a.a.jdField_a_of_type_Int);
-          if (QLog.isDevelopLevel()) {
-            QLog.d("ChatActivity", 4, "StrangerObserver, delete Recent user");
-          }
-          paramPBRepeatMessageField.b(localRecentUser);
-        }
-        QQToast.a(this.a, 2, this.a.getResources().getString(2131561961), 0).a();
-        if (ChatActivity.f(this.a)) {
-          this.a.setResult(-1);
-        }
-        this.a.finish();
-        return;
-        QQToast.a(this.a, this.a.getResources().getString(2131562061), 0).a();
-        return;
+      QLog.i("Q.recent", 2, "onPushSubAccountMsgNotify.isSuccess=" + paramBoolean + "  subAccount=" + paramString);
+      if (paramSubAccountBackProtocData != null) {
+        QLog.i("Q.recent", 2, "onGetSubAccountMsgNotify.data.errorType=" + paramSubAccountBackProtocData.p + "  errorMsg=" + paramSubAccountBackProtocData.a + " mainAccount=" + paramSubAccountBackProtocData.jdField_b_of_type_JavaLangString + "  subAccount=" + paramSubAccountBackProtocData.c + " isNeedStartGetMsg=" + paramSubAccountBackProtocData.jdField_b_of_type_Boolean);
       }
     }
+    if (paramBoolean)
+    {
+      this.a.a.a().c(AppConstants.O, 7000);
+      this.a.a(9, AppConstants.O, 7000);
+    }
+  }
+  
+  protected void b()
+  {
+    this.a.a(0L);
+  }
+  
+  public void b(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.i("Q.recent", 2, "onGetSubAccountMsgNotify.isSuccess=" + paramBoolean + "  subAccount=" + paramString);
+      if (paramSubAccountBackProtocData != null) {
+        QLog.i("Q.recent", 2, "onGetSubAccountMsgNotify.data.errorType=" + paramSubAccountBackProtocData.p + "  errorMsg=" + paramSubAccountBackProtocData.a + " mainAccount=" + paramSubAccountBackProtocData.jdField_b_of_type_JavaLangString + "  subAccount=" + paramSubAccountBackProtocData.c + " isNeedStartGetMsg=" + paramSubAccountBackProtocData.jdField_b_of_type_Boolean);
+      }
+    }
+    this.a.a(9, AppConstants.O, 7000);
+  }
+  
+  protected void d(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "onGetOfflineMsgFinished|isSuc = " + paramBoolean);
+    }
+    if (this.a.b != 1000L) {
+      this.a.b = 1000L;
+    }
+    this.a.b(new ces(this, paramBoolean));
+  }
+  
+  public void d(boolean paramBoolean, String paramString)
+  {
+    this.a.a(8, paramString, -2147483648);
+  }
+  
+  protected void e(boolean paramBoolean)
+  {
+    this.a.b(new cet(this, paramBoolean));
   }
 }
 

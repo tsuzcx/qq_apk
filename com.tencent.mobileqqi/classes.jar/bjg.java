@@ -1,14 +1,26 @@
-import com.tencent.av.ui.ControlUIObserver;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.LoadedBack;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
 
 public class bjg
-  implements Runnable
+  implements LoadedBack
 {
-  public bjg(ControlUIObserver paramControlUIObserver, Object paramObject) {}
+  public bjg(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvUiControlUIObserver.a(this.jdField_a_of_type_JavaLangObject);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("forceUpdate", 2, "loaded code:" + paramInt);
+    }
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.b = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.notifyCacheReady(paramInt);
   }
+  
+  public void b(int paramInt) {}
 }
 
 

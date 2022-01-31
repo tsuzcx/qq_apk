@@ -1,23 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AntiphingToast;
-import java.util.TimerTask;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.open.agent.RecommendListManager;
+import java.util.HashMap;
 
 public class hjm
-  extends TimerTask
+  implements Runnable
 {
-  public hjm(AntiphingToast paramAntiphingToast) {}
+  public hjm(RecommendListManager paramRecommendListManager, String paramString, Bitmap paramBitmap) {}
   
   public void run()
   {
-    Message localMessage = new Message();
-    localMessage.what = 1;
-    this.a.a.sendMessage(localMessage);
+    ((ImageView)((View)this.jdField_a_of_type_ComTencentOpenAgentRecommendListManager.a.get(this.jdField_a_of_type_JavaLangString)).findViewById(2131230940)).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hjm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemLongClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
 public class gvx
-  implements AdapterView.OnItemLongClickListener
+  implements DialogInterface.OnClickListener
 {
-  public gvx(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public gvx(TroopFileItemOperation paramTroopFileItemOperation, TroopFileTransferManager paramTroopFileTransferManager, String paramString, boolean paramBoolean) {}
   
-  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.c) {
-      TroopAvatarWallPreviewActivity.a(this.a);
+    if (paramInt == 1) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
     }
-    return true;
   }
 }
 

@@ -1,35 +1,23 @@
-import com.tencent.mobileqq.profile.ProfileCardBrowserActivity;
-import com.tencent.mobileqq.utils.HttpDownloadUtil.HttpDownloadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.friendlist.remote.FriendSingleInfo;
 
-class giw
-  implements HttpDownloadUtil.HttpDownloadListener
+public final class giw
+  implements Parcelable.Creator
 {
-  giw(giv paramgiv) {}
-  
-  public void a(String paramString, int paramInt)
+  public FriendSingleInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.ProfileCardBrowserActivity", 2, String.format("Resource Zip start download, url : %s, position : %s, cardId : %s ", new Object[] { paramString, Integer.valueOf(this.a.jdField_a_of_type_Int), Long.valueOf(this.a.jdField_a_of_type_Long) }));
-    }
+    return new FriendSingleInfo(paramParcel);
   }
   
-  public void a(String paramString, long paramLong1, long paramLong2)
+  public FriendSingleInfo[] a(int paramInt)
   {
-    int i = (int)(360.0D * paramLong2 / paramLong1);
-    this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardBrowserActivity.a(this.a.jdField_a_of_type_Int, i);
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.ProfileCardBrowserActivity", 2, String.format("Resource Zip end download, url : %s, resultCode : %d ", new Object[] { paramString, Integer.valueOf(paramInt) }));
-    }
+    return new FriendSingleInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     giw
  * JD-Core Version:    0.7.0.1
  */

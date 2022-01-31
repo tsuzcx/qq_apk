@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqqi">
-    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="10.0dip">
-        <ImageView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020860" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <TextView android:textSize="20.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0116" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d1247" />
-    </LinearLayout>
-    <TextView android:textSize="40.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0116" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080e4a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0d77" />
-    <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0208b5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="30.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="30.0dip" />
-</LinearLayout>
+<shape android:shape="rectangle"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#ffffffff" />
+    <stroke android:width="1.0dip" android:color="#ffcfcfcf" />
+    <corners android:radius="3.0dip" />
+</shape>

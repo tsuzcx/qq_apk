@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.managers.LoadingStateManager;
 
 public class cff
-  implements Runnable
+  extends Handler
 {
-  public cff(ChatActivity paramChatActivity) {}
+  public cff(Conversation paramConversation) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.E();
+    LoadingStateManager.a().a(paramMessage.what);
+    if (paramMessage.what == 4)
+    {
+      Conversation.a(this.a, 1134013, 0L, false);
+      return;
+    }
+    Conversation.a(this.a, true);
   }
 }
 

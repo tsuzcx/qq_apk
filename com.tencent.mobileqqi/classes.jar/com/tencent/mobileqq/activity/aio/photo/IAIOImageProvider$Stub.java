@@ -8,7 +8,7 @@ import android.os.IInterface;
 import android.os.Parcel;
 import android.os.RemoteException;
 import com.tencent.qphone.base.util.QLog;
-import ehu;
+import ecr;
 
 public abstract class IAIOImageProvider$Stub
   extends Binder
@@ -38,7 +38,7 @@ public abstract class IAIOImageProvider$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IAIOImageProvider))) {
       return (IAIOImageProvider)localIInterface;
     }
-    return new ehu(paramIBinder);
+    return new ecr(paramIBinder);
   }
   
   public void a()

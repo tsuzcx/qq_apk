@@ -1,21 +1,68 @@
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShakeWindow;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
+import java.util.Map;
 
 public class cdk
-  implements Runnable
+  extends FriendListObserver
 {
-  public cdk(ChatActivity paramChatActivity, MessageForShakeWindow paramMessageForShakeWindow) {}
+  public cdk(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.u();
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.b.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.frienduin, true);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {}
+    try
+    {
+      int i = Integer.valueOf(paramString).intValue();
+      l = i;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+        long l = 0L;
+      }
+    }
+    if (l != 0L) {
+      this.a.a(l);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Map paramMap)
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {}
+    while (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.f == this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.g) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.f = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.g;
+      return;
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this.a);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131562192, 1500);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.g = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.f;
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {}
+    while ((!paramBoolean) || (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.c))) {
+      return;
+    }
+    this.a.v();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cdk
  * JD-Core Version:    0.7.0.1
  */

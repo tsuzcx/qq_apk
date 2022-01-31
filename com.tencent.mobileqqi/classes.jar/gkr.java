@@ -1,80 +1,150 @@
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.richstatus.ActionInfo;
-import com.tencent.mobileqq.richstatus.ActionListActivity;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import com.tencent.mobileqq.widget.StatableBitmapDrawable;
-import java.util.ArrayList;
+import com.tencent.mobileqq.service.message.MessageUtils;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import java.io.OutputStream;
+import java.io.Writer;
+import org.xmlpull.v1.XmlSerializer;
 
 public class gkr
-  extends BaseAdapter
+  implements XmlSerializer
 {
-  private ArrayList jdField_a_of_type_JavaUtilArrayList;
+  XmlSerializer jdField_a_of_type_OrgXmlpullV1XmlSerializer;
   
-  public gkr(ActionListActivity paramActionListActivity, ArrayList paramArrayList)
+  public gkr(AbsStructMsg paramAbsStructMsg, XmlSerializer paramXmlSerializer)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer = paramXmlSerializer;
   }
   
-  public int getCount()
+  public XmlSerializer attribute(String paramString1, String paramString2, String paramString3)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.attribute(paramString1, paramString2, paramString3);
   }
   
-  public Object getItem(int paramInt)
+  public void cdsect(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.cdsect(paramString);
   }
   
-  public long getItemId(int paramInt)
+  public void comment(String paramString)
   {
-    return paramInt;
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.comment(paramString);
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void docdecl(String paramString)
   {
-    View localView = paramView;
-    if (paramView == null)
-    {
-      localView = this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getLayoutInflater().inflate(2130903996, paramViewGroup, false);
-      paramView = new gkq(null);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131232966));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131232967));
-      localView.setTag(paramView);
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.docdecl(paramString);
+  }
+  
+  public void endDocument()
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endDocument();
+  }
+  
+  public XmlSerializer endTag(String paramString1, String paramString2)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endTag(paramString1, paramString2);
+  }
+  
+  public void entityRef(String paramString)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.entityRef(paramString);
+  }
+  
+  public void flush()
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.flush();
+  }
+  
+  public int getDepth()
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getDepth();
+  }
+  
+  public boolean getFeature(String paramString)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getFeature(paramString);
+  }
+  
+  public String getName()
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getName();
+  }
+  
+  public String getNamespace()
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getNamespace();
+  }
+  
+  public String getPrefix(String paramString, boolean paramBoolean)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getPrefix(paramString, paramBoolean);
+  }
+  
+  public Object getProperty(String paramString)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getProperty(paramString);
+  }
+  
+  public void ignorableWhitespace(String paramString)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.ignorableWhitespace(paramString);
+  }
+  
+  public void processingInstruction(String paramString)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.processingInstruction(paramString);
+  }
+  
+  public void setFeature(String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setFeature(paramString, paramBoolean);
+  }
+  
+  public void setOutput(OutputStream paramOutputStream, String paramString)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setOutput(paramOutputStream, paramString);
+  }
+  
+  public void setOutput(Writer paramWriter)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setOutput(paramWriter);
+  }
+  
+  public void setPrefix(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setPrefix(paramString1, paramString2);
+  }
+  
+  public void setProperty(String paramString, Object paramObject)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setProperty(paramString, paramObject);
+  }
+  
+  public void startDocument(String paramString, Boolean paramBoolean)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startDocument(paramString, paramBoolean);
+  }
+  
+  public XmlSerializer startTag(String paramString1, String paramString2)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startTag(paramString1, paramString2);
+  }
+  
+  public XmlSerializer text(String paramString)
+  {
+    if (paramString != null) {
+      return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.text(MessageUtils.a(paramString, false));
     }
-    paramView = (gkq)localView.getTag();
-    paramViewGroup = ActionListActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity).a(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue());
-    if ((paramViewGroup != null) && (paramView.jdField_a_of_type_Int != paramViewGroup.i))
-    {
-      paramView.jdField_a_of_type_Int = paramViewGroup.i;
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new StatableBitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getResources(), ActionListActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity).a(paramViewGroup.i, 201), false, false));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramViewGroup.c);
-      if (paramViewGroup.j != 1) {
-        break label205;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    }
-    for (;;)
-    {
-      localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity);
-      return localView;
-      label205:
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getResources().getDrawable(2130837803), null);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
-    }
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.text(paramString);
+  }
+  
+  public XmlSerializer text(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.text(paramArrayOfChar, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gkr
  * JD-Core Version:    0.7.0.1
  */

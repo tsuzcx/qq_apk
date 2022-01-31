@@ -1,35 +1,55 @@
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.RichStatusEditText.RichStatusEditListener;
-import com.tencent.mobileqq.widget.ClickableImageSpan;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SubAccountBindObserver;
+import com.tencent.mobileqq.subaccount.SubAccountProtocManager;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
+import com.tencent.qphone.base.util.QLog;
 
 public class glk
-  implements RichStatusEditText.RichStatusEditListener
+  extends SubAccountBindObserver
 {
-  public glk(EditActivity paramEditActivity) {}
+  public glk(SubAccountProtocManager paramSubAccountProtocManager) {}
   
-  public void a(ClickableImageSpan paramClickableImageSpan)
+  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    if (EditActivity.a(this.a) == paramClickableImageSpan)
+    if ((!SubAccountProtocManager.a(this.a)) && (SubAccountProtocManager.a(this.a) != null)) {
+      SubAccountProtocManager.a(this.a).postDelayed(SubAccountProtocManager.a(this.a), 100L);
+    }
+    synchronized (SubAccountProtocManager.c())
     {
-      if (EditActivity.a(this.a) != null) {
-        EditActivity.a(this.a).a(null);
+      SubAccountProtocManager.c(this.a, false);
+      SubAccountProtocManager.d(this.a, true);
+      if ((paramSubAccountBackProtocData != null) && (paramSubAccountBackProtocData.b)) {
+        SubAccountProtocManager.a(this.a).e(false);
       }
-      EditActivity.a(this.a, null);
-      EditActivity.a(this.a).c = null;
-      EditActivity.a(this.a).d = null;
-      EditActivity.a(this.a).e = null;
-      EditActivity.c(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.subaccount.SubAccountProtocManager", 2, "onGetBindSubAccount:");
+      }
+      return;
     }
   }
   
-  public boolean a(ClickableImageSpan paramClickableImageSpan)
+  protected void b(boolean paramBoolean, SubAccountBackProtocData arg2)
   {
-    return paramClickableImageSpan != EditActivity.a(this.a);
+    synchronized ()
+    {
+      SubAccountProtocManager.a(this.a, false);
+      return;
+    }
+  }
+  
+  protected void c(boolean paramBoolean, SubAccountBackProtocData arg2)
+  {
+    synchronized ()
+    {
+      SubAccountProtocManager.b(this.a, false);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     glk
  * JD-Core Version:    0.7.0.1
  */

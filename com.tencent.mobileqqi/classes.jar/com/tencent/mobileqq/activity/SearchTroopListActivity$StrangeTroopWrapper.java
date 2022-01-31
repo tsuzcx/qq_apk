@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import dnb;
+import dhk;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,7 +12,7 @@ import tencent.im.kqq.searchgroup.SearchGroup.GroupInfo;
 public class SearchTroopListActivity$StrangeTroopWrapper
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new dnb();
+  public static final Parcelable.Creator CREATOR = new dhk();
   private SearchGroup.GroupInfo a;
   
   public SearchTroopListActivity$StrangeTroopWrapper() {}

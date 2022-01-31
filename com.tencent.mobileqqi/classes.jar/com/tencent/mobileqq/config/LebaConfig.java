@@ -14,10 +14,10 @@ import com.tencent.mobileqq.data.ResourcePluginInfo;
 import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import frc;
-import frd;
-import fre;
-import frf;
+import fmp;
+import fmq;
+import fmr;
+import fms;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -57,7 +57,7 @@ public class LebaConfig
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
   private List jdField_a_of_type_JavaUtilList;
   private Set jdField_a_of_type_JavaUtilSet;
-  private ServerConfigObserver jdField_a_of_type_MqqObserverServerConfigObserver = new frd(this);
+  private ServerConfigObserver jdField_a_of_type_MqqObserverServerConfigObserver = new fmq(this);
   private boolean jdField_a_of_type_Boolean = true;
   private List jdField_b_of_type_JavaUtilList;
   private boolean jdField_b_of_type_Boolean = false;
@@ -105,23 +105,6 @@ public class LebaConfig
     localResourcePluginInfo.strGotoUrl = String.format("mqqapi://app/action?src_type=app&version=1&plg_sid=1&plg_ha3=1&plg_nickname=1&plg_newflag=1&plg_launchtime=1&pkg=com.tencent.mobileqqi&cmp=com.qzone.feed.ui.activity.QZoneFriendFeedActivity&isFromQQ=true&qzone_uin=%s&page=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), "tab_qzone" });
     localResourcePluginInfo.iPluginType = 64;
     localResourcePluginInfo.sPriority = 860;
-    localArrayList.add(localResourcePluginInfo);
-    localResourcePluginInfo = new ResourcePluginInfo();
-    localResourcePluginInfo.strPkgName = "nearby_friends";
-    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131562328);
-    localResourcePluginInfo.strResURL = "icon_recent_lbs_hello_90px";
-    localResourcePluginInfo.strResDesc = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131562328);
-    localResourcePluginInfo.sResSubType = 2;
-    localResourcePluginInfo.cCanChangeState = 1;
-    localResourcePluginInfo.cDefaultState = 0;
-    localResourcePluginInfo.cLocalState = 1;
-    localResourcePluginInfo.cDataType = 1;
-    localResourcePluginInfo.isNew = 1;
-    localResourcePluginInfo.sLanType = 1;
-    localResourcePluginInfo.uiResId = 0L;
-    localResourcePluginInfo.strGotoUrl = null;
-    localResourcePluginInfo.iPluginType = 64;
-    localResourcePluginInfo.sPriority = 270;
     localArrayList.add(localResourcePluginInfo);
     localResourcePluginInfo = new ResourcePluginInfo();
     localResourcePluginInfo.strPkgName = "transfer_file";
@@ -301,7 +284,7 @@ public class LebaConfig
     }
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
-    ThreadManager.b(new frc(this, localArrayList));
+    ThreadManager.b(new fmp(this, localArrayList));
   }
   
   private void g()
@@ -315,7 +298,7 @@ public class LebaConfig
     if (QLog.isDevelopLevel()) {
       QLog.d("Q.lebatab.config", 4, "clearLocalDBPlugin.local plugin.");
     }
-    ThreadManager.b(new frf(this));
+    ThreadManager.b(new fms(this));
     Object localObject = ((SharedPreferences)localObject).edit();
     ((SharedPreferences.Editor)localObject).putBoolean("lebaplugin_clear_local" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), false);
     ((SharedPreferences.Editor)localObject).commit();
@@ -407,7 +390,7 @@ public class LebaConfig
     if (QLog.isColorLevel()) {
       QLog.i("Q.lebatab.config", 2, "Download icon for " + paramString);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fre(this, paramURL, paramFile, paramString));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fmr(this, paramURL, paramFile, paramString));
   }
   
   public void a(List paramList)

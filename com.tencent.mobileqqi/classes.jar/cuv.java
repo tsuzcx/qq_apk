@@ -1,64 +1,23 @@
-import com.tencent.mobileqq.activity.FriendProfileImageModel.InfoUpdateListener;
-import com.tencent.mobileqq.activity.FriendProfileImagePortraits;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.service.lbs.LbsPortraitUtil;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class cuv
-  extends CardObserver
+  implements Runnable
 {
-  public cuv(FriendProfileImagePortraits paramFriendProfileImagePortraits) {}
+  public cuv(LoginPhoneNumActivity paramLoginPhoneNumActivity, String paramString1, String paramString2) {}
   
-  protected void a(boolean paramBoolean, Card paramCard, int paramInt, byte[] paramArrayOfByte)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.profilecard.PhotoWall", 2, "onDeletePortrait() isSuccess: " + paramBoolean);
-    }
-    if (!paramCard.uin.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a())) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          switch (paramInt)
-          {
-          default: 
-            return;
-          case 0: 
-            paramCard = HexUtil.a(paramArrayOfByte);
-            this.a.a(paramCard);
-          }
-        } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener == null);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener.b();
-        return;
-        LbsPortraitUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()), this.a.b, 0);
-      } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener == null);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener.c();
-      return;
-      LbsPortraitUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()), this.a.b, 0);
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener.b();
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, int paramInt, Card paramCard)
-  {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener.a();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, ArrayList paramArrayList, long paramLong, byte[] paramArrayOfByte)
-  {
-    if ((!paramBoolean) || (this.a.b == null) || (!this.a.b.equals(paramString))) {
-      return;
-    }
-    this.a.a(this.a.a());
+    QQCustomDialog localQQCustomDialog = DialogUtil.c(this.jdField_a_of_type_ComTencentMobileqqActivityLoginPhoneNumActivity, 230, null, null, 2131561746, 2131561875, null, null);
+    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
+    localQQCustomDialog.setMessage(this.b);
+    localQQCustomDialog.setDividerGone();
+    cuw localcuw = new cuw(this);
+    cux localcux = new cux(this);
+    localQQCustomDialog.setPositiveButton(2131561875, localcuw);
+    localQQCustomDialog.setNegativeButton(2131561746, localcux);
+    localQQCustomDialog.show();
   }
 }
 

@@ -45,7 +45,7 @@ public class BytesBufferPool
     //   36: aload_0
     //   37: getfield 26	common/qzone/component/cache/common/BytesBufferPool:c	I
     //   40: aconst_null
-    //   41: invokespecial 41	common/qzone/component/cache/common/BytesBufferPool$BytesBuffer:<init>	(ILidv;)V
+    //   41: invokespecial 41	common/qzone/component/cache/common/BytesBufferPool$BytesBuffer:<init>	(ILhzb;)V
     //   44: astore_2
     //   45: goto -17 -> 28
     //   48: astore_2

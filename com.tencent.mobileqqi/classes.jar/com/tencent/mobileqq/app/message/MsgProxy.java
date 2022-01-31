@@ -30,8 +30,8 @@ import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.MessageDBUtils;
 import com.tencent.mobileqq.utils.MsgUtils;
 import com.tencent.qphone.base.util.QLog;
-import fnp;
-import fnq;
+import fjd;
+import fje;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,7 +54,7 @@ public class MsgProxy
   static final String jdField_a_of_type_JavaLangString = "Q.msg.MsgProxy";
   public static final int b = 1;
   public static final int c = 2;
-  protected MessageRecordEntityManager a;
+  public MessageRecordEntityManager a;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   
   public MsgProxy(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
@@ -588,7 +588,7 @@ public class MsgProxy
     }
   }
   
-  protected int a(MessageRecord paramMessageRecord, boolean paramBoolean)
+  public int a(MessageRecord paramMessageRecord, boolean paramBoolean)
   {
     if (paramMessageRecord == null) {
       return -1;
@@ -637,7 +637,7 @@ public class MsgProxy
     return 1;
   }
   
-  protected int a(String paramString, int paramInt, long paramLong)
+  public int a(String paramString, int paramInt, long paramLong)
   {
     String str3 = MessageRecord.getTableName(paramString, paramInt);
     int i;
@@ -688,7 +688,7 @@ public class MsgProxy
     return i;
   }
   
-  protected int a(String paramString, int paramInt, MessageRecord paramMessageRecord)
+  public int a(String paramString, int paramInt, MessageRecord paramMessageRecord)
   {
     int i = 0;
     String str1 = null;
@@ -749,15 +749,15 @@ public class MsgProxy
           paramInt += 1;
         }
       }
-      return new fnq(this, localArrayList);
+      return new fje(this, localArrayList);
     }
-    return new fnq(this, (List)((ArrayList)localList).clone());
+    return new fje(this, (List)((ArrayList)localList).clone());
   }
   
   @Deprecated
   protected Cursor a(List paramList)
   {
-    return new fnq(this, paramList);
+    return new fje(this, paramList);
   }
   
   protected QQMessageFacade.Message a(String paramString, EntityManager paramEntityManager)
@@ -996,7 +996,7 @@ public class MsgProxy
     //   81	90	124	finally
   }
   
-  protected MessageRecord a(MessageRecord paramMessageRecord, int paramInt, boolean paramBoolean)
+  public MessageRecord a(MessageRecord paramMessageRecord, int paramInt, boolean paramBoolean)
   {
     if (paramMessageRecord == null) {
       return null;
@@ -1035,7 +1035,7 @@ public class MsgProxy
     }
   }
   
-  protected MessageRecord a(MessageRecord paramMessageRecord, boolean paramBoolean1, boolean paramBoolean2)
+  public MessageRecord a(MessageRecord paramMessageRecord, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramMessageRecord == null) {
       return null;
@@ -1391,7 +1391,7 @@ public class MsgProxy
     return (MessageRecord)paramString1.get(0);
   }
   
-  protected MessageRecordEntityManager a()
+  public MessageRecordEntityManager a()
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager == null) || (!this.jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager.a())) {}
     synchronized (this.jdField_a_of_type_JavaLangObject)
@@ -1403,7 +1403,7 @@ public class MsgProxy
     }
   }
   
-  protected String a(Cursor paramCursor, SessionInfo paramSessionInfo, int paramInt)
+  public String a(Cursor paramCursor, SessionInfo paramSessionInfo, int paramInt)
   {
     paramCursor.getString(paramCursor.getColumnIndex("senderuin"));
     if (MsgUtils.a(paramCursor.getInt(paramCursor.getColumnIndex("issend")))) {
@@ -1412,7 +1412,7 @@ public class MsgProxy
     return paramSessionInfo.jdField_a_of_type_JavaLangString;
   }
   
-  protected String a(String paramString, int paramInt)
+  public String a(String paramString, int paramInt)
   {
     return MsgProxyUtils.a(paramString, paramInt);
   }
@@ -1422,7 +1422,7 @@ public class MsgProxy
     return a(b(paramString, paramInt));
   }
   
-  protected List a(String paramString, int paramInt1, int paramInt2)
+  public List a(String paramString, int paramInt1, int paramInt2)
   {
     if (a(paramString, paramInt1, true)) {
       this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(a());
@@ -1654,7 +1654,7 @@ public class MsgProxy
     return paramString;
   }
   
-  protected List a(String paramString1, int paramInt1, long paramLong, int paramInt2, String paramString2)
+  public List a(String paramString1, int paramInt1, long paramLong, int paramInt2, String paramString2)
   {
     int j = 1;
     if (QLog.isColorLevel()) {
@@ -1851,7 +1851,7 @@ public class MsgProxy
     //   103	124	156	finally
   }
   
-  protected List a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public List a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MsgProxy", 2, "getAIOMsgList peerUin: " + paramString + " type: " + paramInt + " , autoInit = " + paramBoolean1);
@@ -1936,13 +1936,13 @@ public class MsgProxy
   
   protected void a() {}
   
-  protected void a(SessionInfo paramSessionInfo, String paramString, int paramInt, Set paramSet)
+  public void a(SessionInfo paramSessionInfo, String paramString, int paramInt, Set paramSet)
   {
     paramSet.add(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a());
     paramSet.add(paramSessionInfo.jdField_a_of_type_JavaLangString);
   }
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener)
+  public void a(String paramString1, int paramInt1, int paramInt2, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener)
   {
     if (paramInt2 > 0)
     {
@@ -1952,7 +1952,7 @@ public class MsgProxy
     this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(paramString1, paramInt1, MessageRecord.getOldTableName(paramString1, paramInt1), paramContentValues, paramString2, paramArrayOfString, 1, paramProxyListener);
   }
   
-  protected void a(String paramString, int paramInt, long paramLong)
+  public void a(String paramString, int paramInt, long paramLong)
   {
     b(paramString, paramInt, paramLong);
     ContentValues localContentValues = new ContentValues();
@@ -2069,7 +2069,7 @@ public class MsgProxy
     }
   }
   
-  protected void a(String paramString, int paramInt, MessageRecord paramMessageRecord)
+  public void a(String paramString, int paramInt, MessageRecord paramMessageRecord)
   {
     synchronized (MsgPool.a().a(paramString, paramInt))
     {
@@ -2094,7 +2094,7 @@ public class MsgProxy
     this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.c();
   }
   
-  protected void a(String paramString, int paramInt, MessageRecord paramMessageRecord, ProxyListener paramProxyListener, boolean paramBoolean1, boolean paramBoolean2)
+  public void a(String paramString, int paramInt, MessageRecord paramMessageRecord, ProxyListener paramProxyListener, boolean paramBoolean1, boolean paramBoolean2)
   {
     if ((MsgProxyUtils.e(paramMessageRecord.msgtype)) && (!MsgProxyUtils.a(paramMessageRecord.frienduin, paramMessageRecord.istroop))) {}
     while (!paramBoolean2) {
@@ -2114,7 +2114,7 @@ public class MsgProxy
     a(paramString, paramInt, paramMessageRecord, paramProxyListener, paramBoolean1, paramBoolean2);
   }
   
-  protected void a(String paramString, int paramInt, MessageRecord paramMessageRecord, boolean paramBoolean)
+  public void a(String paramString, int paramInt, MessageRecord paramMessageRecord, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MsgProxy", 2, "insertToList " + paramMessageRecord.getBaseInfoString());
@@ -2149,14 +2149,14 @@ public class MsgProxy
     }
   }
   
-  protected void a(String paramString, int paramInt, Entity paramEntity, ProxyListener paramProxyListener)
+  public void a(String paramString, int paramInt, Entity paramEntity, ProxyListener paramProxyListener)
   {
     if (((paramEntity instanceof MessageRecord)) && (((MessageRecord)paramEntity).versionCode > 0)) {
       this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(paramString, paramInt, MessageRecord.getTableName(paramString, paramInt), paramEntity, 0, paramProxyListener);
     }
   }
   
-  protected void a(String paramString1, int paramInt, String paramString2, ContentValues paramContentValues, String paramString3, String[] paramArrayOfString, ProxyListener paramProxyListener)
+  public void a(String paramString1, int paramInt, String paramString2, ContentValues paramContentValues, String paramString3, String[] paramArrayOfString, ProxyListener paramProxyListener)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(paramString1, paramInt, paramString2, paramContentValues, paramString3, paramArrayOfString, 1, paramProxyListener);
   }
@@ -2226,9 +2226,9 @@ public class MsgProxy
     }
   }
   
-  protected void a(String paramString, int paramInt, boolean paramBoolean)
+  public void a(String paramString, int paramInt, boolean paramBoolean)
   {
-    new Thread(new fnp(this, paramBoolean), "report_troop_aio_break").start();
+    new Thread(new fjd(this, paramBoolean), "report_troop_aio_break").start();
   }
   
   public void a(List paramList, ProxyListener paramProxyListener)
@@ -2236,7 +2236,7 @@ public class MsgProxy
     b(MsgProxyUtils.a(paramList), paramProxyListener);
   }
   
-  protected boolean a(int paramInt, long paramLong, MessageRecord paramMessageRecord)
+  public boolean a(int paramInt, long paramLong, MessageRecord paramMessageRecord)
   {
     if ((paramInt == 3000) || (paramInt == 1)) {
       if (paramLong < paramMessageRecord.shmsgseq) {}
@@ -2357,7 +2357,7 @@ public class MsgProxy
     }
   }
   
-  protected String b(String paramString, int paramInt)
+  public String b(String paramString, int paramInt)
   {
     if (MsgProxyUtils.a(paramString)) {
       return "select * from " + MessageRecord.getTableName(paramString, paramInt) + " order by time desc , _id desc";
@@ -2382,7 +2382,7 @@ public class MsgProxy
     }
   }
   
-  protected List b(String paramString, int paramInt1, int paramInt2)
+  public List b(String paramString, int paramInt1, int paramInt2)
   {
     if (a(paramString, paramInt1, true)) {
       this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(a());
@@ -2428,7 +2428,7 @@ public class MsgProxy
     return new ArrayList();
   }
   
-  protected List b(String paramString1, int paramInt1, long paramLong, int paramInt2, String paramString2)
+  public List b(String paramString1, int paramInt1, long paramLong, int paramInt2, String paramString2)
   {
     if (a(paramString1, paramInt1, true)) {
       this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(a());
@@ -2482,7 +2482,7 @@ public class MsgProxy
     }
   }
   
-  protected void b(String paramString, int paramInt, long paramLong)
+  public void b(String paramString, int paramInt, long paramLong)
   {
     Object localObject2;
     synchronized (MsgPool.a().a(paramString, paramInt))
@@ -2607,7 +2607,7 @@ public class MsgProxy
     }
   }
   
-  protected MessageRecord d(String paramString, int paramInt, long paramLong)
+  public MessageRecord d(String paramString, int paramInt, long paramLong)
   {
     for (;;)
     {
@@ -2632,7 +2632,7 @@ public class MsgProxy
     }
   }
   
-  protected List d(String paramString, int paramInt)
+  public List d(String paramString, int paramInt)
   {
     synchronized (MsgPool.a().a(paramString, paramInt))
     {
@@ -2675,7 +2675,7 @@ public class MsgProxy
     }
   }
   
-  protected void e()
+  public void e()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.c();
     this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.d();

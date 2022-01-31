@@ -1,18 +1,24 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
-import com.tencent.mobileqq.troop.activity.TroopBarCommentActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
 public class gwe
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public gwe(TroopBarCommentActivity paramTroopBarCommentActivity) {}
+  public gwe(TroopFileItemOperation paramTroopFileItemOperation, TroopFileInfo paramTroopFileInfo) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b = false;
-    this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839368);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.a.getString(2131558490));
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+    } while (TroopFileItemOperation.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation) == 0);
+    TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_Long).c(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a);
   }
 }
 

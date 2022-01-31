@@ -19,9 +19,9 @@ public class EnterpriseQQObserver
     b(paramBoolean, paramObject);
   }
   
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  public void a(boolean paramBoolean, Object paramObject) {}
   
-  protected void b(boolean paramBoolean, Object paramObject) {}
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

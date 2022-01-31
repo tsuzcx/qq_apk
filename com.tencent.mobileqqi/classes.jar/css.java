@@ -1,26 +1,29 @@
-import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.activity.leba.LebaShowListManager;
+import com.tencent.mobileqq.observer.GameCenterObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class css
-  implements Runnable
+  extends GameCenterObserver
 {
-  public css(ForwardRecentActivity paramForwardRecentActivity) {}
+  public css(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if (this.a.isFinishing()) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.mgr", 2, "onGameCenterMsgReceive. notifyData.");
+    }
+    if ((this.a.isResume()) && (paramBoolean1) && (paramInt != 2) && (LebaListMgrActivity.a(this.a) != null))
     {
-      return;
-      this.a.c = true;
-      ForwardRecentActivity.a(this.a).e();
-    } while ((!this.a.a) || (this.a.f != 11));
-    ForwardRecentActivity.a(this.a).a("-1010", -1, "", this.a.getString(2131560461));
+      List localList = LebaShowListManager.a().a();
+      this.a.runOnUiThread(new cst(this, localList));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     css
  * JD-Core Version:    0.7.0.1
  */

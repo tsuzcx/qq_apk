@@ -1,21 +1,40 @@
-import com.tencent.litetransfersdk.FTNInfo;
-import com.tencent.litetransfersdk.LiteTransferListenerCallback;
-import com.tencent.litetransfersdk.NFCInfo;
-import com.tencent.litetransfersdk.Session;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseHornListActivity;
+import com.tencent.mobileqq.activity.MyPublishedHornActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class bwm
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public bwm(LiteTransferListenerCallback paramLiteTransferListenerCallback, Session paramSession, NFCInfo paramNFCInfo, FTNInfo paramFTNInfo) {}
+  public bwm(BaseHornListActivity paramBaseHornListActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    LiteTransferListenerCallback.access$000(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferListenerCallback, this.jdField_a_of_type_ComTencentLitetransfersdkSession, this.jdField_a_of_type_ComTencentLitetransfersdkNFCInfo, this.jdField_a_of_type_ComTencentLitetransfersdkFTNInfo, false);
+    this.a.d();
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return;
+    case 0: 
+      paramView = new Intent(this.a.a, QQBrowserActivity.class);
+      paramView.putExtra("uin", this.a.b.a());
+      paramView.putExtra("isShowAd", false);
+      paramView.putExtra("url", String.format("http://imgcache.qq.com/club/horn/rel/myComment.html?_bid=179&uin=%1$s&pvsrc=nearby&_wv=5123", new Object[] { this.a.b.a() }));
+      paramView.putExtra("business", 2147549184L);
+      this.a.startActivity(paramView);
+      return;
+    }
+    paramView = new Intent(this.a.a, MyPublishedHornActivity.class);
+    this.a.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bwm
  * JD-Core Version:    0.7.0.1
  */

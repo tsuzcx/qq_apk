@@ -1,27 +1,61 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
+import android.graphics.Bitmap;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.jsbridge.JsBridge;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class duk
-  implements View.OnClickListener
+  extends WebViewClient
 {
-  public duk(TroopAssistantActivity paramTroopAssistantActivity) {}
+  private duk(UpgradeDetailActivity paramUpgradeDetailActivity) {}
   
-  public void onClick(View paramView)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    this.a.jdField_b_of_type_Boolean = false;
-    if (TroopAssistantActivity.a(this.a) != null)
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "onPageFinished: " + paramString);
+    }
+    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    super.onPageFinished(paramWebView, paramString);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "onPageStarted: " + paramString);
+    }
+    if (this.a.a(paramString)) {
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    }
+    try
     {
-      TroopAssistantActivity.a(this.a).a(4);
-      this.a.i();
-      this.a.h();
+      this.a.jdField_a_of_type_ComTencentSmttSdkWebView.stopLoading();
+      return;
     }
-    if (TroopAssistantManager.a().c()) {
-      TroopAssistantManager.a().f(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
+    catch (Exception paramWebView) {}
+    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    return;
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    this.a.a(true);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "shouldOverrideUrlLoading: " + paramString);
     }
-    TroopAssistantActivity.a(this.a);
+    if ((paramString == null) || ("".equals(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {}
+    for (;;)
+    {
+      return true;
+      if ((!UpgradeDetailActivity.a(this.a).a(paramWebView, paramString)) && (!this.a.a(paramString))) {
+        this.a.a(paramString);
+      }
+    }
   }
 }
 

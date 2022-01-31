@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="72.0dip" android:layout_height="45.0dip"
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00b9" android:layout_alignParentBottom="true">
-        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803a3" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02064a" android:layout_width="2.0px" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00ba" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803a4" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201d7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0803a3" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803a5" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a8f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginRight="2.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        <ImageView android:id="@id/tabView" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00bc" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00bc" android:scaleType="centerCrop" android:layout_centerInParent="true" />
-    </RelativeLayout>
-</RelativeLayout>
+    <com.tencent.mobileqq.emoticonview.EmoticonViewPager android:id="@id/APKTOOL_DUPLICATE_id_0x7f080391" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f080392" />
+    <com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080392" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <ImageButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803a3" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201d4" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</merge>

@@ -1,20 +1,33 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.PublicAccountActivity;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
 
 public class dak
-  extends ClickableSpan
+  implements Animation.AnimationListener
 {
-  private dak(LoginInfoActivity paramLoginInfoActivity) {}
+  public dak(PublicAccountActivity paramPublicAccountActivity) {}
   
-  public void onClick(View paramView) {}
-  
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramTextPaint.setColor(paramTextPaint.linkColor);
-    paramTextPaint.setUnderlineText(false);
+    try
+    {
+      PublicAccountActivity.a(this.a).show();
+      label10:
+      PublicAccountActivity.a(this.a).setAnimation(null);
+      PublicAccountActivity.b(this.a).setVisibility(8);
+      return;
+    }
+    catch (Exception paramAnimation)
+    {
+      break label10;
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

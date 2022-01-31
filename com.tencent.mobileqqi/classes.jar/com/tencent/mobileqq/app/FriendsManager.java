@@ -18,7 +18,7 @@ import com.tencent.mobileqq.utils.ChnToSpell;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.TraceUtils;
-import fhb;
+import fcn;
 import friendlist.GetOnlineInfoResp;
 import friendlist.SimpleOnlineFriendInfo;
 import java.util.ArrayList;
@@ -50,7 +50,7 @@ public class FriendsManager
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new fhb(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new fcn(this);
   private boolean jdField_a_of_type_Boolean = false;
   private ConcurrentHashMap jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private boolean jdField_b_of_type_Boolean = false;

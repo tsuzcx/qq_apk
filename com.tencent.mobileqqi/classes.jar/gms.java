@@ -1,11 +1,16 @@
-class gms
-  implements Runnable
+import android.text.Editable;
+import android.text.Editable.Factory;
+import com.tencent.mobileqq.text.QQTextBuilder;
+
+public final class gms
+  extends Editable.Factory
 {
-  gms(gmr paramgmr, long paramLong1, long paramLong2) {}
-  
-  public void run()
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_Gmr.b(this.jdField_a_of_type_Long, this.b);
+    if ((paramCharSequence instanceof QQTextBuilder)) {
+      return (Editable)paramCharSequence;
+    }
+    return new QQTextBuilder(paramCharSequence, 3);
   }
 }
 

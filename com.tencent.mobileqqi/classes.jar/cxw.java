@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class cxw
-  extends FMObserver
+  implements View.OnClickListener
 {
-  public cxw(Leba paramLeba) {}
+  public cxw(NotificationActivity paramNotificationActivity) {}
   
-  protected void b()
+  public void onClick(View paramView)
   {
-    this.a.a.notifyDataSetChanged();
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.leba", 2, "onSomethingchaned. notifyData.");
-    }
+    this.a.c();
   }
 }
 

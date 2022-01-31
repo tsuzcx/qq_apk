@@ -1,37 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.emosm.view.DragSortListView.LeftEventListener;
 
 public class cpr
-  implements View.OnClickListener
+  implements DragSortListView.LeftEventListener
 {
-  public cpr(EditActivity paramEditActivity) {}
+  public cpr(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onClick(View paramView)
-  {
-    paramView = this.a;
-    if (!EditActivity.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      EditActivity.a(paramView, bool);
-      if (!EditActivity.a(this.a)) {
-        break;
-      }
-      this.a.f();
-      EditActivity.a(this.a).setImageResource(2130837653);
-      if (EditActivity.a(this.a) != null) {
-        EditActivity.a(this.a).setVisibility(0);
-      }
-      return;
-    }
-    if (EditActivity.a(this.a) != null) {
-      EditActivity.a(this.a).setVisibility(4);
-    }
-    EditActivity.a(this.a).setImageResource(2130839367);
-    this.a.e();
-  }
+  public void a(int paramInt) {}
+  
+  public void b(int paramInt) {}
 }
 
 

@@ -1,27 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
 public class btw
-  extends BizTroopObserver
+  implements DialogInterface.OnDismissListener
 {
-  public btw(TroopMemberApiService paramTroopMemberApiService) {}
+  public btw(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  protected void a(String paramString, List paramList, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 25);
-    localBundle.putString("pageUrl", paramString);
-    localBundle.putStringArrayList("lstVideoUrl", (ArrayList)paramList);
-    localBundle.putInt("totalTime", paramInt);
-    TroopMemberApiService.a(this.a, 13, localBundle);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     btw
  * JD-Core Version:    0.7.0.1
  */

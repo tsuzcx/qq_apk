@@ -1,23 +1,14 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantActivity;
-import java.util.Comparator;
+import com.tencent.mobileqq.transfile.RichMediaUtil;
+import java.util.TimerTask;
 
-public class gnu
-  implements Comparator
+public final class gnu
+  extends TimerTask
 {
-  public gnu(QZoneShareAlbumAssistantActivity paramQZoneShareAlbumAssistantActivity) {}
+  public gnu(String paramString) {}
   
-  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
+  public void run()
   {
-    long l1 = paramRecentBaseData1.a();
-    long l2 = paramRecentBaseData2.a();
-    if (l1 < l2) {
-      return 1;
-    }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
+    RichMediaUtil.a(this.a, false, null);
   }
 }
 

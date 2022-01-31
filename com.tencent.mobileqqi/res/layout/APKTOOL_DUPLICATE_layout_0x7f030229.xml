@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqqi">
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f08028e" android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030076" />
-    <RelativeLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080630" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mobileqq.widget.TabBarView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080291" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </RelativeLayout>
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080631" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+<LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808fa" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205bf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="19.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808fb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205c4" />
+    <TextView android:textSize="14.0sp" android:textColor="#ffbfbfbd" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808f9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="40.0dip" android:text="一条为接听电话一条为接接听电话接听电话听电话一条为接听电话一条为接听电话" android:maxLines="10" />
 </LinearLayout>

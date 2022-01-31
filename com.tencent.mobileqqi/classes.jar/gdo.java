@@ -1,21 +1,35 @@
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
 
 public class gdo
-  implements FMDialogUtil.FMDialogInterface
+  implements DialogInterface.OnClickListener
 {
-  public gdo(SendBottomBar paramSendBottomBar) {}
+  public gdo(PermissionsDialog paramPermissionsDialog) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b();
+    if (paramInt == 1)
+    {
+      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      paramDialogInterface.setData(Uri.parse("package:" + PermissionsDialog.a(this.a).getPackageName()));
+      PermissionsDialog.a(this.a).startActivity(paramDialogInterface);
+      PermissionsDialog.a(this.a).finish();
+      PermissionsDialog.a(this.a).b();
+    }
+    while (paramInt != 0) {
+      return;
+    }
+    PermissionsDialog.a(this.a).a();
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gdo
  * JD-Core Version:    0.7.0.1
  */

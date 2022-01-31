@@ -21,18 +21,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.utils.kapalaiadapter.ReflecterHelper;
-import hgl;
-import hgm;
-import hgn;
-import hgo;
-import hgp;
+import hce;
+import hcf;
+import hcg;
+import hch;
+import hci;
 
 public class QQCustomDialog
   extends Dialog
 {
   public static final int WHICH_NEGATIVE = 0;
   public static final int WHICH_POSITIVE = 1;
-  private BaseAdapter adapter = new hgl(this);
+  private BaseAdapter adapter = new hce(this);
   LinearLayout bodyLayout;
   LinearLayout btnLayout;
   TextView countText;
@@ -272,7 +272,7 @@ public class QQCustomDialog
     this.lBtn.setText(paramInt);
     this.lBtn.setContentDescription(getContext().getString(paramInt));
     this.lBtn.setVisibility(0);
-    this.lBtn.setOnClickListener(new hgo(this, paramOnClickListener));
+    this.lBtn.setOnClickListener(new hch(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }
@@ -287,7 +287,7 @@ public class QQCustomDialog
     this.lBtn.setText(paramString);
     this.lBtn.setContentDescription(paramString);
     this.lBtn.setVisibility(0);
-    this.lBtn.setOnClickListener(new hgm(this, paramOnClickListener));
+    this.lBtn.setOnClickListener(new hcf(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }
@@ -307,7 +307,7 @@ public class QQCustomDialog
     this.rBtn.setText(paramInt);
     this.rBtn.setContentDescription(getContext().getString(paramInt));
     this.rBtn.setVisibility(0);
-    this.rBtn.setOnClickListener(new hgp(this, paramOnClickListener));
+    this.rBtn.setOnClickListener(new hci(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }
@@ -322,7 +322,7 @@ public class QQCustomDialog
     this.rBtn.setText(paramString);
     this.rBtn.setContentDescription(paramString);
     this.rBtn.setVisibility(0);
-    this.rBtn.setOnClickListener(new hgn(this, paramOnClickListener));
+    this.rBtn.setOnClickListener(new hcg(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }
@@ -354,10 +354,10 @@ public class QQCustomDialog
       }
       if (paramInt == 2)
       {
-        this.framePreview.setBackgroundResource(2130838002);
+        this.framePreview.setBackgroundResource(2130838004);
         return this;
       }
-      this.framePreview.setBackgroundResource(2130838003);
+      this.framePreview.setBackgroundResource(2130838005);
       return this;
     }
     this.framePreview.setVisibility(8);

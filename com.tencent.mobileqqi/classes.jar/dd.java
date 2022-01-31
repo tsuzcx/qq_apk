@@ -1,27 +1,30 @@
-import com.dataline.mpfile.LiteMpFileFileListActivity;
-import com.dataline.mpfile.MpfileFileListDownloader.MpFileHttpDownloadListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.dataline.mpfile.LiteMpFileDownloadActivity;
 
 public class dd
-  implements MpfileFileListDownloader.MpFileHttpDownloadListener
+  extends BroadcastReceiver
 {
-  public dd(LiteMpFileFileListActivity paramLiteMpFileFileListActivity) {}
+  public dd(LiteMpFileDownloadActivity paramLiteMpFileDownloadActivity) {}
   
-  public void a(int paramInt, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    LiteMpFileFileListActivity.b(this.a, System.currentTimeMillis());
-    this.a.runOnUiThread(new de(this));
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    LiteMpFileFileListActivity.b(this.a, System.currentTimeMillis());
-    LiteMpFileFileListActivity.b(this.a, paramString2);
+    if (paramIntent == null) {}
+    do
+    {
+      do
+      {
+        return;
+        paramContext = paramIntent.getAction();
+      } while (paramContext == null);
+      if (paramContext.equals("com.dataline.mpfile.download_progress"))
+      {
+        this.a.a();
+        return;
+      }
+    } while (!paramContext.equals("com.dataline.mpfile.download_completed"));
+    this.a.a();
   }
 }
 

@@ -1,35 +1,22 @@
-import com.tencent.mobileqq.app.ConditionSearchManager.ISearchListener;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.data.RecentFileAdapter;
 
 public class fql
-  implements ConditionSearchManager.ISearchListener
+  implements DialogInterface.OnDismissListener
 {
-  public fql(SearchResultActivity paramSearchResultActivity) {}
+  public fql(FMActivity paramFMActivity) {}
   
-  public void a(boolean paramBoolean1, List paramList, boolean paramBoolean2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (!paramBoolean1)
-    {
-      this.a.b = 3;
-      this.a.jdField_a_of_type_Fqn.notifyDataSetChanged();
-      return;
-    }
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-    paramList = this.a;
-    if (paramBoolean2) {}
-    for (int i = 1;; i = 0)
-    {
-      paramList.b = i;
-      break;
-    }
+    this.a.a.a(Integer.valueOf(-1));
+    FMActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fql
  * JD-Core Version:    0.7.0.1
  */

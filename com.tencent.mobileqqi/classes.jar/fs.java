@@ -1,16 +1,35 @@
-final class fs
-  extends fk
+import com.google.zxing.common.BitMatrix;
+
+abstract class fs
 {
-  private fs()
+  private static final fs[] a = { new fu(null), new fv(null), new fw(null), new fx(null), new fy(null), new fz(null), new ga(null), new gb(null) };
+  
+  static fs a(int paramInt)
   {
-    super(null);
+    if ((paramInt < 0) || (paramInt > 7)) {
+      throw new IllegalArgumentException();
+    }
+    return a[paramInt];
   }
   
-  boolean a(int paramInt1, int paramInt2)
+  final void a(BitMatrix paramBitMatrix, int paramInt)
   {
-    paramInt1 *= paramInt2;
-    return (paramInt1 % 3 + (paramInt1 & 0x1) & 0x1) == 0;
+    int i = 0;
+    while (i < paramInt)
+    {
+      int j = 0;
+      while (j < paramInt)
+      {
+        if (a(i, j)) {
+          paramBitMatrix.b(j, i);
+        }
+        j += 1;
+      }
+      i += 1;
+    }
   }
+  
+  abstract boolean a(int paramInt1, int paramInt2);
 }
 
 

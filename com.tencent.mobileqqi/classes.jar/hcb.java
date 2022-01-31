@@ -1,51 +1,42 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileManager;
-import java.util.Collection;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Hashtable;
 
 public class hcb
-  extends Handler
+  extends FriendListObserver
 {
-  public hcb(TroopFileManager paramTroopFileManager, Looper paramLooper)
+  private JumpAction b;
+  
+  public hcb(JumpAction paramJumpAction1, JumpAction paramJumpAction2)
   {
-    super(paramLooper);
+    this.b = paramJumpAction2;
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    super.handleMessage(paramMessage);
-    Object[] arrayOfObject = (Object[])paramMessage.obj;
-    switch (paramMessage.what)
+    if ((!paramBoolean) || (JumpAction.a(this.a) == null) || (!JumpAction.a(this.a).containsKey(paramString))) {}
+    do
     {
-    default: 
       return;
-    case 1: 
-      paramMessage = (Collection)arrayOfObject[0];
-      boolean bool = ((Boolean)arrayOfObject[1]).booleanValue();
-      this.a.b(paramMessage, bool);
-      return;
-    case 2: 
-      paramMessage = (TroopFileInfo)arrayOfObject[0];
-      this.a.e(paramMessage);
-      return;
-    case 3: 
-      paramMessage = (TroopFileInfo)arrayOfObject[0];
-      this.a.f(paramMessage);
-      return;
-    case 4: 
-      paramMessage = (TroopFileInfo)arrayOfObject[0];
-      this.a.g(paramMessage);
-      return;
-    }
-    int i = paramMessage.arg1;
-    this.a.b(i);
+      JumpAction.a(this.a).remove(paramString);
+      if (JumpAction.a(this.a).size() == 0) {
+        JumpAction.a(this.a).c(JumpAction.a(this.a));
+      }
+      Object localObject = Uri.parse(JumpAction.a(this.a) + "&uin=" + paramString);
+      localObject = new Intent(this.b.bm, (Uri)localObject);
+      JumpAction.a(this.a).sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
+    } while (!QLog.isColorLevel());
+    QLog.i("JumpAction", 2, "download head " + paramString + " success. Send broadcast to " + this.b.bm);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hcb
  * JD-Core Version:    0.7.0.1
  */

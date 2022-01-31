@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.activity.EditActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class cpu
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public cpu(EditActivity paramEditActivity) {}
+  public cpu(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void run()
-  {
-    this.a.e();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

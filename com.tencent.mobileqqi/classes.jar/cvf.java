@@ -1,39 +1,28 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
 
-public class cvf
-  implements CompoundButton.OnCheckedChangeListener
+class cvf
+  implements DialogInterface.OnClickListener
 {
-  public cvf(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
+  cvf(cve paramcve) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = 1;
-    GesturePWDUtils.setGesturePWDMode(this.a, this.a.b.a(), 21);
-    paramCompoundButton = this.a;
-    String str = this.a.b.a();
-    if (paramBoolean)
+    if (paramInt == 1)
     {
-      i = 2;
-      GesturePWDUtils.setGesturePWDState(paramCompoundButton, str, i);
-      this.a.a(paramBoolean);
-      paramCompoundButton = this.a.b;
-      if (!paramBoolean) {
-        break label112;
-      }
+      this.a.a.e();
+      LoginVerifyCodeActivity.a(this.a.a, true);
+      SubAccountAssistantManager.a().a(this.a.a.b);
+      this.a.a.h();
     }
-    label112:
-    for (int i = j;; i = 0)
+    for (;;)
     {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Setting_Gesture_password", 0, i, "", "", "", "");
-      this.a.a();
+      SubAccountAssistantForward.a(this.a.a.b, 0L);
       return;
-      i = 1;
-      break;
+      this.a.a.h();
     }
   }
 }

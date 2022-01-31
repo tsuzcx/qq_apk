@@ -1,32 +1,43 @@
-import android.app.Activity;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.StrangerManageActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.contact.newfriend.CircleGroupListView;
+import com.tencent.mobileqq.data.CircleGroup;
+import java.util.ArrayList;
 
 public class eea
-  extends ClickableSpan
+  extends BaseAdapter
 {
-  public eea(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
+  private eea(CircleGroupListView paramCircleGroupListView) {}
   
-  public void onClick(View paramView)
+  public int getCount()
   {
-    ReportController.b(GrayTipsItemBuilder.d(this.a), "CliOper", "", GrayTipsItemBuilder.e(this.a).a, "Manage_stranger", "Manage_str_aio_clk", 0, 0, "", "", "", "");
-    StrangerManageActivity.a((Activity)GrayTipsItemBuilder.i(this.a), GrayTipsItemBuilder.f(this.a).a);
+    return this.a.a.size();
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public Object getItem(int paramInt)
   {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = this.a.a();
+    }
+    this.a.a(paramViewGroup, (CircleGroup)this.a.a.get(paramInt));
+    return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     eea
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.LoginActivity;
 
 public class cuc
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public cuc(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public cuc(LoginActivity paramLoginActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.c = false;
-    this.a.finish();
+    this.a.c();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     cuc
  * JD-Core Version:    0.7.0.1
  */

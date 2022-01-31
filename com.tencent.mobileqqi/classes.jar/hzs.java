@@ -1,64 +1,29 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.TransitionDrawable;
-import android.view.View;
-import android.view.ViewConfiguration;
-import com.tencent.widget.AbsListView;
+import android.app.Dialog;
+import android.widget.Toast;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
 
-public final class hzs
-  implements Runnable
+class hzs
+  extends OnPluginInstallListener.Stub
 {
-  public hzs(AbsListView paramAbsListView) {}
+  hzs(hzr paramhzr) {}
   
-  public void run()
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
   {
-    Object localObject;
-    int i;
-    boolean bool;
-    if (this.a.ab == 0)
-    {
-      this.a.ab = 1;
-      localObject = this.a.getChildAt(this.a.W - this.a.ap);
-      if ((localObject != null) && (!((View)localObject).hasFocusable()))
-      {
-        this.a.P = 0;
-        if (this.a.p) {
-          break label249;
-        }
-        ((View)localObject).setPressed(true);
-        this.a.setPressed(true);
-        this.a.i();
-        this.a.a(this.a.W, (View)localObject);
-        this.a.refreshDrawableState();
-        i = ViewConfiguration.getLongPressTimeout();
-        bool = this.a.isLongClickable();
-        if (this.a.c != null)
-        {
-          localObject = this.a.c.getCurrent();
-          if ((localObject != null) && ((localObject instanceof TransitionDrawable)))
-          {
-            if (!bool) {
-              break label230;
-            }
-            ((TransitionDrawable)localObject).startTransition(i);
-          }
-        }
-      }
+    if ((this.a.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a != null) && (this.a.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a.isShowing())) {
+      this.a.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a.dismiss();
     }
-    while (bool)
-    {
-      if (AbsListView.a(this.a) == null) {
-        AbsListView.a(this.a, new hzr(this.a, null));
-      }
-      AbsListView.a(this.a).a();
-      this.a.postDelayed(AbsListView.a(this.a), i);
-      return;
-      label230:
-      ((TransitionDrawable)localObject).resetTransition();
-    }
-    this.a.ab = 2;
-    return;
-    label249:
-    this.a.ab = 2;
+    Toast.makeText(this.a.jdField_a_of_type_AndroidAppActivity, "加载失败", 0).show();
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    IPluginManager.d(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
   }
 }
 

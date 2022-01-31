@@ -1,4 +1,15 @@
-public class hem {}
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+
+public class hem
+  implements Runnable
+{
+  public hem(HttpCommunicator paramHttpCommunicator) {}
+  
+  public void run()
+  {
+    this.a.c();
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar

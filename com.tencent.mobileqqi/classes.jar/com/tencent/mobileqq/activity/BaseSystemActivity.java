@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
-import ccl;
-import ccm;
+import bwq;
+import bwr;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -119,9 +119,9 @@ public class BaseSystemActivity
   
   private void d()
   {
-    setContentView(2130904008);
+    setContentView(2130904010);
     j(2130837729);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131234580));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131234582));
     this.jdField_a_of_type_JavaLangString = b();
     if (this.jdField_a_of_type_JavaLangString == null) {
       throw new Exception("peerUin is null");
@@ -155,7 +155,7 @@ public class BaseSystemActivity
   {
     super.a();
     this.m.setVisibility(0);
-    this.m.setCompoundDrawablesWithIntrinsicBounds(2130840318, 0, 0, 0);
+    this.m.setCompoundDrawablesWithIntrinsicBounds(2130840320, 0, 0, 0);
     return this.m;
   }
   
@@ -244,10 +244,10 @@ public class BaseSystemActivity
       if ((this.jdField_a_of_type_JavaLangString.equals(paramObservable.frienduin)) && (paramObservable.istroop == 0))
       {
         this.b.a().c(this.jdField_a_of_type_JavaLangString, 0);
-        runOnUiThread(new ccl(this));
+        runOnUiThread(new bwq(this));
       }
       if (!paramObservable.isSendFromLocal()) {
-        runOnUiThread(new ccm(this));
+        runOnUiThread(new bwr(this));
       }
     }
   }

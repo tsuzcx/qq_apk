@@ -13,9 +13,9 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import hkm;
-import hkn;
-import hko;
+import hgi;
+import hgj;
+import hgk;
 
 @SuppressLint({"ResourceAsColor"})
 public class CustomedTabWidget
@@ -32,7 +32,7 @@ public class CustomedTabWidget
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private CustomedTabWidget.OnSwitchTabListener jdField_a_of_type_ComTencentMobileqqWidgetCustomedTabWidget$OnSwitchTabListener;
-  public hko a;
+  public hgk a;
   public boolean a;
   private float jdField_b_of_type_Float;
   public Rect b;
@@ -46,12 +46,12 @@ public class CustomedTabWidget
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)inflate(paramContext, 2130903979, null));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)inflate(paramContext, 2130903981, null));
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidWidgetImageView.getBackground();
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130840190);
-    this.c = paramContext.getResources().getDrawable(2130840189);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130840192);
+    this.c = paramContext.getResources().getDrawable(2130840191);
     this.jdField_b_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Hko = new hko(this);
+    this.jdField_a_of_type_Hgk = new hgk(this);
   }
   
   private void a(int paramInt)
@@ -69,13 +69,13 @@ public class CustomedTabWidget
       getChildAt(this.f).getHitRect(this.jdField_a_of_type_AndroidGraphicsRect);
     } while ((this.jdField_a_of_type_AndroidGraphicsRect.left == this.jdField_b_of_type_AndroidGraphicsRect.left) && (this.jdField_a_of_type_AndroidGraphicsRect.right == this.jdField_b_of_type_AndroidGraphicsRect.right));
     this.jdField_a_of_type_Float = ((this.jdField_a_of_type_AndroidGraphicsRect.left - this.jdField_b_of_type_AndroidGraphicsRect.left) / 4);
-    this.jdField_a_of_type_Hko.sendEmptyMessage(0);
+    this.jdField_a_of_type_Hgk.sendEmptyMessage(0);
   }
   
   private void a(View paramView)
   {
-    paramView.setOnClickListener(new hkm(this));
-    paramView.setOnTouchListener(new hkn(this));
+    paramView.setOnClickListener(new hgi(this));
+    paramView.setOnTouchListener(new hgj(this));
     if (getChildCount() == 1) {
       paramView.setSelected(true);
     }
@@ -144,7 +144,7 @@ public class CustomedTabWidget
   
   public void setOnSwitchTabListener(CustomedTabWidget.OnSwitchTabListener paramOnSwitchTabListener)
   {
-    this.jdField_a_of_type_Hko.removeMessages(0);
+    this.jdField_a_of_type_Hgk.removeMessages(0);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCustomedTabWidget$OnSwitchTabListener = paramOnSwitchTabListener;
   }
 }

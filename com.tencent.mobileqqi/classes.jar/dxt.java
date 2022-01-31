@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
-import java.util.Comparator;
-
-public class dxt
-  implements Comparator
+class dxt
 {
-  private dxt(TroopMemberListActivity paramTroopMemberListActivity) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int b;
   
-  public int a(TroopMemberListActivity.ATroopMember paramATroopMember1, TroopMemberListActivity.ATroopMember paramATroopMember2)
+  public dxt(dxr paramdxr, String paramString, int paramInt1, int paramInt2)
   {
-    return paramATroopMember1.c.compareToIgnoreCase(paramATroopMember2.c);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dxt
  * JD-Core Version:    0.7.0.1
  */

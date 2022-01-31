@@ -1,35 +1,20 @@
-import android.app.Activity;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.ContactRecommendActivity;
 
 public class eed
-  extends ClickableSpan
+  implements View.OnClickListener
 {
-  public eed(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
+  public eed(ContactRecommendActivity paramContactRecommendActivity) {}
   
   public void onClick(View paramView)
   {
-    if ((GrayTipsItemBuilder.n(this.a) instanceof Activity))
-    {
-      ChatActivityUtils.a(GrayTipsItemBuilder.i(this.a), (Activity)GrayTipsItemBuilder.o(this.a), GrayTipsItemBuilder.u(this.a).a, true, true, null);
-      ReportController.b(GrayTipsItemBuilder.j(this.a), "CliOper", "", "", "0X8003F02", "0X8003F02", 0, 0, "", "", "", "");
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     eed
  * JD-Core Version:    0.7.0.1
  */

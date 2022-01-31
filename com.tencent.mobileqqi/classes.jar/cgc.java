@@ -1,23 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler.Callback;
+import com.tencent.mobileqq.activity.DetailProfileActivity;
+import com.tencent.widget.TimePickerView.TimePickerListener;
 
-public final class cgc
-  implements DialogInterface.OnClickListener
+public class cgc
+  implements TimePickerView.TimePickerListener
 {
-  public cgc(Handler.Callback paramCallback) {}
+  public cgc(DetailProfileActivity paramDetailProfileActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.a != null) {
-      this.a.handleMessage(null);
-    }
-    paramDialogInterface.dismiss();
+    this.a.a(paramInt1, paramInt2, paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cgc
  * JD-Core Version:    0.7.0.1
  */

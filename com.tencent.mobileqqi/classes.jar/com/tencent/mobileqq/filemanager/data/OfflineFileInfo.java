@@ -3,12 +3,12 @@ package com.tencent.mobileqq.filemanager.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import gcd;
+import fxr;
 
 public class OfflineFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new gcd();
+  public static final Parcelable.Creator CREATOR = new fxr();
   private static final int c = 1;
   private static final int d = 2;
   public int a;

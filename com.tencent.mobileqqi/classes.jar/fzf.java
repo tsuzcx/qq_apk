@@ -1,76 +1,31 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.mobileqq.international.activity.FeedbackActivity;
 
 public class fzf
+  implements TextWatcher
 {
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private Thread jdField_a_of_type_JavaLangThread = null;
-  private boolean jdField_a_of_type_Boolean = false;
-  private Object jdField_b_of_type_JavaLangObject = new Object();
-  private boolean jdField_b_of_type_Boolean = true;
+  public fzf(FeedbackActivity paramFeedbackActivity) {}
   
-  private fzf(OnlineFileSessionCenter paramOnlineFileSessionCenter) {}
-  
-  public void a()
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (!a())
+    if (TextUtils.isEmpty(paramEditable.toString().trim()))
     {
-      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  progress make pump thread is  running!!!");
+      FeedbackActivity.a(this.a).setEnabled(false);
       return;
     }
-    a(false);
-    this.jdField_a_of_type_JavaLangThread = new Thread(new fzg(this));
-    this.jdField_a_of_type_JavaLangThread.start();
+    FeedbackActivity.a(this.a).setEnabled(true);
   }
   
-  void a(boolean paramBoolean)
-  {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      return;
-    }
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  boolean a()
-  {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      boolean bool = this.jdField_b_of_type_Boolean;
-      return bool;
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaLangThread != null)
-    {
-      b(true);
-      this.jdField_a_of_type_JavaLangThread = null;
-    }
-  }
-  
-  void b(boolean paramBoolean)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
-  }
-  
-  boolean b()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
-    }
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fzf
  * JD-Core Version:    0.7.0.1
  */

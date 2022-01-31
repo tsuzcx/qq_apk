@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import com.tencent.open.agent.datamodel.Friend;
 import com.tencent.open.agent.datamodel.ImageLoader;
 import com.tencent.open.agent.datamodel.QZonePortraitData;
-import hnf;
-import hnh;
+import hjb;
+import hjd;
 import java.util.ArrayList;
 
 public class FriendChooser$GridViewAdapter
@@ -41,8 +41,8 @@ public class FriendChooser$GridViewAdapter
     Friend localFriend = (Friend)getItem(paramInt);
     if (paramView == null)
     {
-      paramViewGroup = new hnh();
-      paramView = this.a.getLayoutInflater().inflate(2130903251, null);
+      paramViewGroup = new hjd();
+      paramView = this.a.getLayoutInflater().inflate(2130903253, null);
       paramViewGroup.a = ((ImageView)paramView.findViewById(2131230985));
       paramView.setTag(paramViewGroup);
     }
@@ -56,11 +56,11 @@ public class FriendChooser$GridViewAdapter
       if (localBitmap != null) {
         break;
       }
-      paramViewGroup.a.setImageResource(2130838008);
+      paramViewGroup.a.setImageResource(2130838010);
       paramViewGroup = paramViewGroup.a;
-      ImageLoader.a().a(localFriend.d, new hnf(this, paramViewGroup));
+      ImageLoader.a().a(localFriend.d, new hjb(this, paramViewGroup));
       return paramView;
-      paramViewGroup = (hnh)paramView.getTag();
+      paramViewGroup = (hjd)paramView.getTag();
     }
     paramViewGroup.a.setImageBitmap(localBitmap);
     return paramView;

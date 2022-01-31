@@ -17,9 +17,9 @@ public class FriendListObserver
 {
   public static final int c = 7;
   
-  protected void a() {}
+  public void a() {}
   
-  protected void a(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public void a(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   public final void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
@@ -290,106 +290,106 @@ public class FriendListObserver
     a(i, paramBoolean, (Bundle)paramObject);
   }
   
-  protected void a(long paramLong, boolean paramBoolean, Object paramObject, int paramInt) {}
+  public void a(long paramLong, boolean paramBoolean, Object paramObject, int paramInt) {}
   
-  protected void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  public void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
   {
     if (QLog.isColorLevel()) {
       QLog.d("Shield", 2, "FriendShield : send_oidb_0x5d1_0 : uin : " + paramLong + " isSetOrClear:" + paramBoolean1 + " isSuc:" + paramBoolean2 + " isPush:" + paramBoolean3 + " errMsg:" + paramString);
     }
   }
   
-  protected void a(String paramString) {}
+  public void a(String paramString) {}
   
-  protected void a(String paramString, byte paramByte1, byte paramByte2) {}
+  public void a(String paramString, byte paramByte1, byte paramByte2) {}
   
-  protected void a(String paramString, boolean paramBoolean) {}
+  public void a(String paramString, boolean paramBoolean) {}
   
-  protected void a(ArrayList paramArrayList, boolean paramBoolean) {}
+  public void a(ArrayList paramArrayList, boolean paramBoolean) {}
   
-  protected void a(boolean paramBoolean) {}
+  public void a(boolean paramBoolean) {}
   
   protected void a(boolean paramBoolean, byte paramByte1, String paramString1, long paramLong, byte paramByte2, byte paramByte3, short paramShort, String paramString2) {}
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2) {}
+  public void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2) {}
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp) {}
+  public void a(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp) {}
   
-  protected void a(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo) {}
+  public void a(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
   
-  protected void a(boolean paramBoolean, GroupActionResp paramGroupActionResp) {}
+  public void a(boolean paramBoolean, GroupActionResp paramGroupActionResp) {}
   
-  protected void a(boolean paramBoolean, Setting paramSetting) {}
+  public void a(boolean paramBoolean, Setting paramSetting) {}
   
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  public void a(boolean paramBoolean, Object paramObject) {}
   
-  protected void a(boolean paramBoolean, Object paramObject, int paramInt, String paramString) {}
+  public void a(boolean paramBoolean, Object paramObject, int paramInt, String paramString) {}
   
-  protected void a(boolean paramBoolean, String paramString) {}
+  public void a(boolean paramBoolean, String paramString) {}
   
-  protected void a(boolean paramBoolean, String paramString, int paramInt) {}
+  public void a(boolean paramBoolean, String paramString, int paramInt) {}
   
-  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2) {}
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2) {}
   
   protected void a(boolean paramBoolean, String paramString1, String paramString2) {}
   
-  protected void a(boolean paramBoolean, String paramString1, String paramString2, byte paramByte) {}
+  public void a(boolean paramBoolean, String paramString1, String paramString2, byte paramByte) {}
   
   protected void a(boolean paramBoolean, ArrayList paramArrayList) {}
   
-  protected void a(boolean paramBoolean, HashMap paramHashMap) {}
+  public void a(boolean paramBoolean, HashMap paramHashMap) {}
   
   protected void a(boolean paramBoolean, List paramList1, List paramList2) {}
   
-  protected void a(boolean paramBoolean, Map paramMap) {}
+  public void a(boolean paramBoolean, Map paramMap) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected void a(boolean paramBoolean, String[] paramArrayOfString) {}
+  public void a(boolean paramBoolean, String[] paramArrayOfString) {}
   
-  protected void a(boolean paramBoolean, String[] paramArrayOfString, Bundle paramBundle) {}
+  public void a(boolean paramBoolean, String[] paramArrayOfString, Bundle paramBundle) {}
   
-  protected void a(boolean paramBoolean, String[] paramArrayOfString, Map paramMap) {}
+  public void a(boolean paramBoolean, String[] paramArrayOfString, Map paramMap) {}
   
   protected void b(boolean paramBoolean) {}
   
-  protected void b(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo) {}
+  public void b(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo) {}
   
-  protected void b(boolean paramBoolean, Bundle paramBundle) {}
+  public void b(boolean paramBoolean, Bundle paramBundle) {}
   
-  protected void b(boolean paramBoolean, GroupActionResp paramGroupActionResp) {}
+  public void b(boolean paramBoolean, GroupActionResp paramGroupActionResp) {}
   
-  protected void b(boolean paramBoolean, Object paramObject) {}
+  public void b(boolean paramBoolean, Object paramObject) {}
   
-  protected void b(boolean paramBoolean, String paramString) {}
+  public void b(boolean paramBoolean, String paramString) {}
   
-  protected void b(boolean paramBoolean, String paramString, int paramInt) {}
+  public void b(boolean paramBoolean, String paramString, int paramInt) {}
   
-  protected void b(boolean paramBoolean, ArrayList paramArrayList) {}
+  public void b(boolean paramBoolean, ArrayList paramArrayList) {}
   
-  protected void b(boolean paramBoolean, Map paramMap) {}
+  public void b(boolean paramBoolean, Map paramMap) {}
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
+  public void b(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected void b(boolean paramBoolean, String[] paramArrayOfString) {}
+  public void b(boolean paramBoolean, String[] paramArrayOfString) {}
   
   protected void c(boolean paramBoolean) {}
   
-  protected void c(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo) {}
+  public void c(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo) {}
   
-  protected void c(boolean paramBoolean, GroupActionResp paramGroupActionResp) {}
+  public void c(boolean paramBoolean, GroupActionResp paramGroupActionResp) {}
   
-  protected void c(boolean paramBoolean, String paramString) {}
+  public void c(boolean paramBoolean, String paramString) {}
   
-  protected void c(boolean paramBoolean, String paramString, int paramInt) {}
+  public void c(boolean paramBoolean, String paramString, int paramInt) {}
   
   protected void c(boolean paramBoolean, Map paramMap) {}
   
-  protected void c(boolean paramBoolean1, boolean paramBoolean2) {}
+  public void c(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected void d(boolean paramBoolean, GroupActionResp paramGroupActionResp) {}
+  public void d(boolean paramBoolean, GroupActionResp paramGroupActionResp) {}
   
   protected void d(boolean paramBoolean, String paramString, int paramInt) {}
   

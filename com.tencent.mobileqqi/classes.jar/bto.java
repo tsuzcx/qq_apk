@@ -1,58 +1,104 @@
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.biz.troop.TroopMemberApiPlugin;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.activity.AddFriendActivity;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.SearchTroopListActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.List;
+import tencent.im.kqq.searchgroup.SearchGroup.GroupInfo;
 
 public class bto
-  implements Runnable
+  extends Handler
 {
-  public bto(TroopMemberApiPlugin paramTroopMemberApiPlugin, AppInterface paramAppInterface, boolean paramBoolean) {}
+  public bto(AddFriendActivity paramAddFriendActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    for (;;)
-    {
-      Object localObject3;
-      try
-      {
-        localObject3 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount()).createEntityManager();
-        if (localObject3 == null) {
-          break label168;
-        }
-        Object localObject1 = ((EntityManager)localObject3).a(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.e }, null, null, null, null);
-        ((EntityManager)localObject3).a();
-        if (localObject1 == null) {
-          break label165;
-        }
-        localObject3 = new ArrayList(((List)localObject1).size());
-        localObject1 = ((List)localObject1).iterator();
-        if (((Iterator)localObject1).hasNext())
-        {
-          ((ArrayList)localObject3).add(((TroopMemberInfo)((Iterator)localObject1).next()).memberuin);
-          continue;
-        }
-        localMessage = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.a.obtainMessage();
-      }
-      finally {}
-      localMessage.what = 5;
-      localMessage.obj = new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), localObject3 };
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.a.sendMessage(localMessage);
-      label165:
-      return;
-      label168:
-      Message localMessage = null;
+    if (paramMessage.what == 1) {
+      AddFriendActivity.c(this.a);
     }
+    Object localObject2;
+    String str1;
+    byte b;
+    long l;
+    short s;
+    boolean bool;
+    do
+    {
+      return;
+      if (paramMessage.what == 3)
+      {
+        AddFriendActivity.b(this.a);
+        localObject1 = (TroopInfo)paramMessage.obj;
+        localObject2 = ((TroopInfo)localObject1).troopuin;
+        str1 = ((TroopInfo)localObject1).troopcode;
+        String str2 = ((TroopInfo)localObject1).troopname;
+        String str3 = ((TroopInfo)localObject1).troopowneruin;
+        String str4 = ((TroopInfo)localObject1).Administrator;
+        b = (byte)((TroopInfo)localObject1).cGroupOption;
+        l = ((TroopInfo)localObject1).dwGroupClassExt;
+        s = ((TroopInfo)localObject1).troopface;
+        String str5 = ((TroopInfo)localObject1).fingertroopmemo;
+        String str6 = ((TroopInfo)localObject1).strLocation;
+        if (paramMessage.arg1 == 1) {}
+        for (bool = true;; bool = false)
+        {
+          paramMessage = TroopInfoActivity.a(2, (String)localObject2, str1, str2, str3, str4, b, l, s, str5, str6, bool, this.a.getIntent().getStringExtra("param_return_addr"), ((TroopInfo)localObject1).dwGroupFlagExt, ((TroopInfo)localObject1).dwAuthGroupType, 0);
+          ChatSettingForTroop.a(this.a, paramMessage, 2);
+          return;
+        }
+      }
+    } while (paramMessage.what != 4);
+    AddFriendActivity.b(this.a);
+    int i = paramMessage.arg1;
+    int j;
+    if (paramMessage.arg2 == 1)
+    {
+      bool = true;
+      paramMessage = (List)paramMessage.obj;
+      if ((i != 1) || (paramMessage == null) || (paramMessage.size() <= 0)) {
+        break label440;
+      }
+      localObject2 = (SearchGroup.GroupInfo)paramMessage.get(0);
+      i = ((SearchGroup.GroupInfo)localObject2).dwGroupCode.get();
+      str1 = ((SearchGroup.GroupInfo)localObject2).sGroupName.get();
+      j = ((SearchGroup.GroupInfo)localObject2).dwGroupOwnerId.get();
+      b = (byte)SearchTroopListActivity.a((SearchGroup.GroupInfo)localObject2);
+      l = ((SearchGroup.GroupInfo)localObject2).dwGroupClass.get();
+      s = (short)((SearchGroup.GroupInfo)localObject2).dwGroupFaceId.get();
+      if (!((SearchGroup.GroupInfo)localObject2).sGroupFingerMem.has()) {
+        break label427;
+      }
+      paramMessage = ((SearchGroup.GroupInfo)localObject2).sGroupFingerMem.get();
+      label333:
+      if (!((SearchGroup.GroupInfo)localObject2).sGroupLocation.has()) {
+        break label433;
+      }
+    }
+    label427:
+    label433:
+    for (Object localObject1 = ((SearchGroup.GroupInfo)localObject2).sGroupLocation.get();; localObject1 = "")
+    {
+      paramMessage = TroopInfoActivity.a(6, String.valueOf(i), "", str1, String.valueOf(j), "", b, l, s, paramMessage, (String)localObject1, ((SearchGroup.GroupInfo)localObject2).bGroupIn.get(), null, ((SearchGroup.GroupInfo)localObject2).dwGroupFlagExt.get(), ((SearchGroup.GroupInfo)localObject2).dwAuthGroupType.get(), 0);
+      ChatSettingForTroop.a(this.a, paramMessage, 2);
+      return;
+      bool = false;
+      break;
+      paramMessage = "";
+      break label333;
+    }
+    label440:
+    SearchTroopListActivity.a(this.a, this.a.c, paramMessage, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bto
  * JD-Core Version:    0.7.0.1
  */

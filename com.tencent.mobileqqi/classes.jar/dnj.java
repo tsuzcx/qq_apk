@@ -1,18 +1,29 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
 
-public class dnj
+class dnj
   implements DialogInterface.OnClickListener
 {
-  public dnj(SendMultiPictureHelper paramSendMultiPictureHelper) {}
+  dnj(dni paramdni) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.show();
-    this.a.b = false;
-    SendMultiPictureHelper.c(this.a);
+    if (paramInt == 1)
+    {
+      this.a.a.d();
+      SubLoginActivity.a(this.a.a, true);
+      SubAccountAssistantManager.a().a(this.a.a.b);
+      this.a.a.f();
+    }
+    for (;;)
+    {
+      SubAccountAssistantForward.a(this.a.a.b, 0L);
+      return;
+      this.a.a.f();
+    }
   }
 }
 

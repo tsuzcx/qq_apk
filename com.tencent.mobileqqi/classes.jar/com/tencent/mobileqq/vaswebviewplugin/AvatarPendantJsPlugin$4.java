@@ -7,6 +7,7 @@ import android.view.View;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.utils.FileProvider7Helper;
 import com.tencent.mobileqq.vas.AvatarPendantMarketActivity;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
 import com.tencent.widget.ActionSheet;
@@ -35,14 +36,12 @@ class AvatarPendantJsPlugin$4
       if (!paramView.exists()) {
         paramView.mkdirs();
       }
-      paramView = Uri.fromFile(new File(AppConstants.an + "photo/" + System.currentTimeMillis() + ".jpg"));
-      Intent localIntent = new Intent("android.media.action.IMAGE_CAPTURE");
-      localIntent.putExtra("output", paramView);
-      localIntent.putExtra("android.intent.extra.videoQuality", 100);
-      this.this$0.mRuntime.a().startActivityForResult(localIntent, 1);
+      paramView = new Intent();
+      Uri localUri = FileProvider7Helper.setSystemCapture(this.this$0.mRuntime.a(), new File(AppConstants.an + "photo/" + System.currentTimeMillis() + ".jpg"), paramView);
+      this.this$0.mRuntime.a().startActivityForResult(paramView, 1);
       AvatarPendantUiPlugin.sJsHandler = this.this$0;
       AvatarPendantUiPlugin.sCallbackId = this.val$callbackId;
-      AvatarPendantUiPlugin.sUploadPhotoUri = paramView;
+      AvatarPendantUiPlugin.sUploadPhotoUri = localUri;
       continue;
       paramView = new Intent();
       paramView.putExtra("Business_Origin", 100);

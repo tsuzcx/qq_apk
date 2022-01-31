@@ -1,10 +1,21 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class fci
+  implements Runnable
 {
-  public int a;
-  public TextView a;
-  public TextView b;
+  public fci(FriendListHandler paramFriendListHandler) {}
+  
+  public void run()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StatusPush", 2, "handlePushBatchFStatus notifyUI uin:" + this.a.a.a() + " at " + System.currentTimeMillis());
+    }
+    this.a.a(1, true, Boolean.valueOf(true));
+    this.a.a(7, true, Boolean.valueOf(true));
+    FriendListHandler.a(this.a, 0);
+  }
 }
 
 

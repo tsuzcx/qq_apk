@@ -60,22 +60,22 @@ public class ProfilePhotoBoard
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new LinearInterpolator());
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839040);
-      paramInt = getResources().getDimensionPixelSize(2131427494);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839042);
+      paramInt = getResources().getDimensionPixelSize(2131427497);
       if (paramInt <= 0)
       {
         this.x = ((int)(this.x * this.jdField_b_of_type_Float));
-        paramInt = getResources().getDimensionPixelSize(2131427495);
+        paramInt = getResources().getDimensionPixelSize(2131427498);
         if (paramInt > 0) {
           break label251;
         }
         this.y = ((int)(this.y * this.jdField_b_of_type_Float));
-        paramInt = getResources().getDimensionPixelSize(2131427496);
+        paramInt = getResources().getDimensionPixelSize(2131427499);
         if (paramInt > 0) {
           break label259;
         }
         this.z = ((int)(this.z * this.jdField_b_of_type_Float));
-        paramInt = getResources().getDimensionPixelSize(2131427497);
+        paramInt = getResources().getDimensionPixelSize(2131427500);
         if (paramInt > 0) {
           break label267;
         }
@@ -132,7 +132,7 @@ public class ProfilePhotoBoard
         if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) && ((paramInt == 1) || (paramInt == 2) || (paramInt == 5) || (paramInt == 3) || (paramInt == 4))) {}
         try
         {
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839040);
+          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839042);
           if (!this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) {
             this.jdField_a_of_type_AndroidWidgetScroller.forceFinished(true);
           }

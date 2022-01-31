@@ -1,23 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.opengl.QQGLGestureView;
-import com.tencent.av.opengl.gesture.GlViewTouchListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.biz.eqq.EnterpriseDetailActivity;
 
 public class bib
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public bib(QQGLGestureView paramQQGLGestureView) {}
+  public bib(EnterpriseDetailActivity paramEnterpriseDetailActivity, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_AndroidViewView$OnTouchListener != null) {
-      this.a.jdField_a_of_type_AndroidViewView$OnTouchListener.onTouch(paramView, paramMotionEvent);
+    if (paramInt == 0) {}
+    while (paramInt != 1) {
+      return;
     }
-    if (this.a.jdField_a_of_type_ComTencentAvOpenglGestureGlViewTouchListener != null) {
-      return this.a.jdField_a_of_type_ComTencentAvOpenglGestureGlViewTouchListener.a(paramView, paramMotionEvent);
-    }
-    return false;
+    paramDialogInterface = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.startActivity(paramDialogInterface);
   }
 }
 

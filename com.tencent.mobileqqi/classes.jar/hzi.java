@@ -1,64 +1,87 @@
-import android.content.ContentResolver;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.BadgeUtils;
+import common.qzone.component.cache.common.SoftHashMap;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-public final class hzi
-  implements Runnable
+public abstract class hzi
+  implements Iterator
 {
-  public hzi(int paramInt, Context paramContext) {}
+  int jdField_a_of_type_Int;
+  hzf jdField_a_of_type_Hzf = null;
+  Object jdField_a_of_type_JavaLangObject = null;
+  int jdField_b_of_type_Int = SoftHashMap.a(this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap);
+  hzf jdField_b_of_type_Hzf = null;
+  Object jdField_b_of_type_JavaLangObject = null;
   
-  public void run()
+  hzi(SoftHashMap paramSoftHashMap)
   {
-    int i = this.jdField_a_of_type_Int;
-    try
+    if (paramSoftHashMap.size() != 0) {}
+    for (int i = SoftHashMap.a(paramSoftHashMap).length;; i = 0)
     {
-      if (BadgeUtils.a() == null)
-      {
-        localObject = Uri.parse("content://com.sec.badge/apps");
-        if (this.jdField_a_of_type_AndroidContentContext.getContentResolver().query((Uri)localObject, null, null, null, null) == null)
-        {
-          BadgeUtils.a(Boolean.valueOf(false));
-          return;
-        }
-        BadgeUtils.a(Boolean.valueOf(true));
-      }
-      if (!BadgeUtils.a().booleanValue()) {
-        return;
-      }
-      localObject = BadgeUtils.a(this.jdField_a_of_type_AndroidContentContext);
-      if (localObject == null) {
-        return;
-      }
-      if (i <= 99) {
-        break label147;
-      }
-      i = 99;
+      this.jdField_a_of_type_Int = i;
+      return;
     }
-    catch (Throwable localThrowable)
+  }
+  
+  protected hzf a()
+  {
+    if (SoftHashMap.a(this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap) != this.jdField_b_of_type_Int) {
+      throw new ConcurrentModificationException();
+    }
+    if ((this.jdField_a_of_type_JavaLangObject == null) && (!hasNext())) {
+      throw new NoSuchElementException();
+    }
+    this.jdField_b_of_type_Hzf = this.jdField_a_of_type_Hzf;
+    this.jdField_a_of_type_Hzf = hzf.a(this.jdField_a_of_type_Hzf);
+    this.jdField_b_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangObject;
+    this.jdField_a_of_type_JavaLangObject = null;
+    return this.jdField_b_of_type_Hzf;
+  }
+  
+  public boolean hasNext()
+  {
+    hzf[] arrayOfhzf = SoftHashMap.a(this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap);
+    while (this.jdField_a_of_type_JavaLangObject == null)
     {
-      Object localObject;
-      Intent localIntent;
-      while (QLog.isColorLevel())
+      hzf localhzf = this.jdField_a_of_type_Hzf;
+      int i = this.jdField_a_of_type_Int;
+      while ((localhzf == null) && (i > 0))
       {
-        QLog.d("BadgeUtil", 2, "samsung badge get a  crash");
-        return;
+        i -= 1;
+        localhzf = arrayOfhzf[i];
+      }
+      this.jdField_a_of_type_Hzf = localhzf;
+      this.jdField_a_of_type_Int = i;
+      if (localhzf == null)
+      {
+        this.jdField_b_of_type_JavaLangObject = null;
+        return false;
+      }
+      this.jdField_a_of_type_JavaLangObject = localhzf.get();
+      if (this.jdField_a_of_type_JavaLangObject == null) {
+        this.jdField_a_of_type_Hzf = hzf.a(this.jdField_a_of_type_Hzf);
       }
     }
-    localIntent = new Intent("android.intent.action.BADGE_COUNT_UPDATE");
-    localIntent.putExtra("badge_count", i);
-    localIntent.putExtra("badge_count_package_name", this.jdField_a_of_type_AndroidContentContext.getPackageName());
-    localIntent.putExtra("badge_count_class_name", (String)localObject);
-    this.jdField_a_of_type_AndroidContentContext.sendBroadcast(localIntent);
-    return;
-    label147:
+    return true;
+  }
+  
+  public void remove()
+  {
+    if (this.jdField_b_of_type_Hzf == null) {
+      throw new IllegalStateException();
+    }
+    if (SoftHashMap.a(this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap) != this.jdField_b_of_type_Int) {
+      throw new ConcurrentModificationException();
+    }
+    this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap.remove(this.jdField_b_of_type_JavaLangObject);
+    this.jdField_b_of_type_Int = SoftHashMap.a(this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap);
+    this.jdField_b_of_type_Hzf = null;
+    this.jdField_b_of_type_JavaLangObject = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hzi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,23 @@
+import com.tencent.mobileqq.utils.CameraUtil;
+import com.tencent.mobileqq.widget.CameraFrameLayout;
+
 public class hfi
+  implements Runnable
 {
-  public float a;
-  public int a;
-  public boolean a;
-  public int b;
+  public hfi(CameraFrameLayout paramCameraFrameLayout) {}
+  
+  public void run()
+  {
+    synchronized (CameraFrameLayout.a(this.a))
+    {
+      if (CameraFrameLayout.a(this.a) != null)
+      {
+        CameraUtil.a(CameraFrameLayout.a(this.a));
+        CameraFrameLayout.a(this.a, null);
+      }
+      return;
+    }
+  }
 }
 
 

@@ -1,58 +1,87 @@
-import android.content.Context;
-import android.graphics.PointF;
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import com.tencent.mobileqq.widget.ContextMenuTextView;
-import com.tencent.widget.BubblePopupWindow;
+import android.text.TextUtils;
+import com.tencent.open.appcommon.Common;
+import com.tencent.open.appcommon.ResourceUpdater;
+import com.tencent.open.appcommon.ResourceUpdater.CheckUpdateCallback;
+import com.tencent.open.appcommon.TaskThread;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.MD5Utils;
+import java.util.concurrent.CountDownLatch;
+import org.json.JSONObject;
 
 public class hkj
-  implements View.OnLongClickListener, View.OnTouchListener
+  implements Runnable
 {
-  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  public hkj(ResourceUpdater.CheckUpdateCallback paramCheckUpdateCallback, JSONObject paramJSONObject) {}
   
-  private hkj(ContextMenuTextView paramContextMenuTextView) {}
-  
-  protected void a(View paramView)
+  public void run()
   {
-    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
-    paramView.dispatchTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-1);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-7829368);
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.g()))
-    {
-      a(paramView);
-      return false;
+    int i = this.jdField_a_of_type_OrgJsonJSONObject.optInt("code", -6);
+    long l = this.jdField_a_of_type_OrgJsonJSONObject.optLong("maxage", 0L);
+    Common.a(l, System.currentTimeMillis());
+    if (i == 0) {
+      switch (this.jdField_a_of_type_OrgJsonJSONObject.optInt("situation", 0))
+      {
+      default: 
+        if (!TextUtils.isEmpty(ResourceUpdater.e)) {
+          Common.a(ResourceUpdater.e);
+        }
+        break;
+      }
     }
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131234877, ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView).getString(2131561879));
-    ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView, BubbleContextMenu.a(paramView, localQQCustomMenu, this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_AndroidViewView$OnClickListener, null));
-    a(paramView);
-    return true;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getRawX();
-      this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getRawY();
+      this.jdField_a_of_type_ComTencentOpenAppcommonResourceUpdater$CheckUpdateCallback.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+      LogUtility.b(ResourceUpdater.jdField_a_of_type_JavaLangString, "<checkUpdate> Resource update check end !!!");
+      return;
+      ResourceUpdater.e = this.jdField_a_of_type_ComTencentOpenAppcommonResourceUpdater$CheckUpdateCallback.jdField_a_of_type_JavaLangString;
+      LogUtility.c(ResourceUpdater.jdField_a_of_type_JavaLangString, "<checkUpdate> Direc MD5 not change. Do not need update.");
+      break;
+      LogUtility.c(ResourceUpdater.jdField_a_of_type_JavaLangString, "<checkUpdate> Direc MD5 changed, but zip MD5 is newest. unzip local zip file.");
+      if (ResourceUpdater.a())
+      {
+        ResourceUpdater.e = MD5Utils.c(Common.e());
+        LogUtility.c(ResourceUpdater.jdField_a_of_type_JavaLangString, "send UPDATED_SYSTEM_FILE msg");
+      }
+      for (;;)
+      {
+        TaskThread.a().a();
+        break;
+        LogUtility.e(ResourceUpdater.jdField_a_of_type_JavaLangString, "unZipFile error ");
+      }
+      String str1 = this.jdField_a_of_type_OrgJsonJSONObject.optString("cdn_url", "");
+      LogUtility.c(ResourceUpdater.jdField_a_of_type_JavaLangString, "<checkUpdate> Direct MD5 and zip MD5 not match. Do full update. url = " + str1 + " maxAge = " + l);
+      if ((!TextUtils.isEmpty(str1)) && (ResourceUpdater.a(str1)))
+      {
+        ResourceUpdater.e = MD5Utils.c(Common.e());
+        LogUtility.c(ResourceUpdater.jdField_a_of_type_JavaLangString, "send UPDATED_SYSTEM_FILE msg");
+      }
+      for (;;)
+      {
+        TaskThread.a().a();
+        break;
+        LogUtility.e(ResourceUpdater.jdField_a_of_type_JavaLangString, "Full update failed. ");
+      }
+      str1 = this.jdField_a_of_type_OrgJsonJSONObject.optString("cdn_url", "");
+      String str2 = this.jdField_a_of_type_OrgJsonJSONObject.optString("latest_zip_md5", "");
+      LogUtility.c(ResourceUpdater.jdField_a_of_type_JavaLangString, "<checkUpdate> Direct MD5 changed and zip MD5 is old. Do incremental update.url = " + str1 + " maxAge = " + l);
+      if ((!TextUtils.isEmpty(str1)) && (ResourceUpdater.a(str1, str2)))
+      {
+        ResourceUpdater.e = MD5Utils.c(Common.e());
+        LogUtility.c(ResourceUpdater.jdField_a_of_type_JavaLangString, "send UPDATED_SYSTEM_FILE msg");
+      }
+      for (;;)
+      {
+        TaskThread.a().a();
+        break;
+        LogUtility.e(ResourceUpdater.jdField_a_of_type_JavaLangString, "Incremental update failed. ");
+      }
+      LogUtility.c(ResourceUpdater.jdField_a_of_type_JavaLangString, "<checkUpdate> update failed, ret=" + i + ", msg=" + this.jdField_a_of_type_OrgJsonJSONObject.optString("msg"));
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hkj
  * JD-Core Version:    0.7.0.1
  */

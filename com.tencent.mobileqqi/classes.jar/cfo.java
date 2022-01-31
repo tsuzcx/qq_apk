@@ -1,19 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
+import com.tencent.mobileqq.activity.Conversation;
 
-class cfo
-  implements DialogInterface.OnClickListener
+public class cfo
+  implements Runnable
 {
-  cfo(cfn paramcfn) {}
+  public cfo(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    MsgProxyUtils.b(this.a.a.b, this.a.a.a.jdField_a_of_type_JavaLangString, this.a.a.a.jdField_a_of_type_Int);
-    ChatActivity.a(this.a.a).notifyDataSetChanged();
+    this.a.k();
   }
 }
 

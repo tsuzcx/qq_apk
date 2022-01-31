@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.BigEmoticonViewBinder;
+import com.tencent.mobileqq.emoticonview.HorizonEmoticonTabs;
+import com.tencent.mobileqq.model.EmoticonManager;
 
 public class foy
   implements Runnable
 {
-  public foy(DataLineMsgProxy paramDataLineMsgProxy, long paramLong) {}
+  public foy(HorizonEmoticonTabs paramHorizonEmoticonTabs, QQAppInterface paramQQAppInterface, BigEmoticonViewBinder paramBigEmoticonViewBinder) {}
   
   public void run()
   {
-    DataLineMsgProxy.b(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy, this.jdField_a_of_type_Long);
+    ((EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(12)).a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmoticonViewBinder.a);
   }
 }
 

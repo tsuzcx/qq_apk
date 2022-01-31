@@ -263,7 +263,7 @@ public class EmojiJsPlugin
     localIntent.putExtra("clsUploader", "com.tencent.mobileqq.statistics.PluginStatisticsCollector");
     localIntent.putExtra("param_plugin_gesturelock", true);
     localIntent.putExtra("resource_file_path", EmosmUtils.getQFaceMaterialFolderPath(Integer.toString(paramInt), true));
-    localIntent.putExtra("qFace-save-folder", AppConstants.aF);
+    localIntent.putExtra("qFace-save-folder", AppConstants.aJ);
     localIntent.putExtra("logindata-ha3", paramArrayOfByte);
     localIntent.putExtra("logindata-sid", paramString);
     localIntent.putExtra("logindata-uni", this.mSelfUin);

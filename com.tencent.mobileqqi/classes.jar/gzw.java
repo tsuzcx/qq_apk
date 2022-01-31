@@ -1,26 +1,25 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.troop.data.TroopBarPostAbsLayout.AbsItemViewHolder;
-import com.tencent.mobileqq.troop.data.TroopBarPostLayoutTop;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.troopshare.TroopShareUtility;
 
 public class gzw
-  extends TroopBarPostAbsLayout.AbsItemViewHolder
+  implements DialogInterface.OnDismissListener
 {
-  public LinearLayout a;
-  ArrayList jdField_a_of_type_JavaUtilArrayList;
-  public LinearLayout b;
+  public gzw(TroopShareUtility paramTroopShareUtility) {}
   
-  public gzw(TroopBarPostLayoutTop paramTroopBarPostLayoutTop, View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super(paramView);
-    this.b = ((LinearLayout)paramView.findViewById(2131232625));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232624));
+    TroopShareUtility.a(this.a, false);
+    if ((!(TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity)) || (this.a.a)) {
+      return;
+    }
+    ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gzw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,28 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
 
-public class dgi
-  extends FacePreloadBaseAdapter.ViewHolder
+class dgi
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
-  public PublicAccountInfo a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  dgi(dgh paramdgh) {}
+  
+  @SuppressLint({"NewApi"})
+  public void onClick(View paramView)
+  {
+    if ((RegisterQQNumberActivity.a(this.a.a) != null) && (RegisterQQNumberActivity.a(this.a.a).isShowing())) {
+      RegisterQQNumberActivity.a(this.a.a).dismiss();
+    }
+    if (Build.VERSION.SDK_INT < 11)
+    {
+      ((android.text.ClipboardManager)this.a.a.getSystemService("clipboard")).setText(RegisterQQNumberActivity.a(this.a.a) + "");
+      return;
+    }
+    ((android.content.ClipboardManager)this.a.a.getSystemService("clipboard")).setText(RegisterQQNumberActivity.a(this.a.a) + "");
+  }
 }
 
 

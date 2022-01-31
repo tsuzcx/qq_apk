@@ -41,10 +41,10 @@ import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
 import com.tencent.widget.XListView;
-import glv;
-import glw;
-import glx;
-import gly;
+import ghm;
+import ghn;
+import gho;
+import ghp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -85,7 +85,7 @@ public class SameStatusActivity
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
   private PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private gly jdField_a_of_type_Gly;
+  private ghp jdField_a_of_type_Ghp;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
   private HashMap jdField_a_of_type_JavaUtilHashMap;
   private HashSet jdField_a_of_type_JavaUtilHashSet = new HashSet();
@@ -111,7 +111,7 @@ public class SameStatusActivity
       return;
     }
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(false, false);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840228);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840230);
     if (paramInt == 3)
     {
       this.e.setText(getString(2131559268));
@@ -140,7 +140,7 @@ public class SameStatusActivity
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppCardObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppCardObserver = new glw(this);
+      this.jdField_a_of_type_ComTencentMobileqqAppCardObserver = new ghn(this);
       this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
     }
     if (this.jdField_a_of_type_JavaUtilHashMap == null)
@@ -212,27 +212,27 @@ public class SameStatusActivity
   
   private void f()
   {
-    Drawable localDrawable = getResources().getDrawable(2130838070);
+    Drawable localDrawable = getResources().getDrawable(2130838072);
     localDrawable.setBounds(0, 0, localDrawable.getMinimumWidth(), localDrawable.getMinimumHeight());
     this.l.setCompoundDrawables(null, null, localDrawable, null);
     this.l.setOnClickListener(this);
     b(this.g);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131234528));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131234530));
     this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130837729);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130903986, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-    this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231656));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130903988, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231657));
     this.e.setCompoundDrawables(null, null, null, null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231655));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837860);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231656));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837862);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(true, true);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this).inflate(2130903323, this.jdField_a_of_type_ComTencentWidgetXListView, false));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this).inflate(2130903325, this.jdField_a_of_type_ComTencentWidgetXListView, false));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(this);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this);
-    this.jdField_a_of_type_Gly = new gly(this, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Gly);
+    this.jdField_a_of_type_Ghp = new ghp(this, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ghp);
   }
   
   private void g()
@@ -246,7 +246,7 @@ public class SameStatusActivity
   
   private void h()
   {
-    d(new glx(this));
+    d(new gho(this));
   }
   
   private void i()
@@ -283,12 +283,12 @@ public class SameStatusActivity
   
   private void j()
   {
-    View localView = getLayoutInflater().inflate(2130903233, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231702));
-    ((TextView)localView.findViewById(2131231703)).setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231705));
-    this.c = ((TextView)localView.findViewById(2131231704));
-    this.d = ((TextView)localView.findViewById(2131231706));
+    View localView = getLayoutInflater().inflate(2130903235, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231704));
+    ((TextView)localView.findViewById(2131231705)).setVisibility(8);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231707));
+    this.c = ((TextView)localView.findViewById(2131231706));
+    this.d = ((TextView)localView.findViewById(2131231708));
     this.d.setText(getString(2131559275));
     localView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -354,7 +354,7 @@ public class SameStatusActivity
       if (this.r != 2)
       {
         this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.b();
-        this.jdField_a_of_type_Gly.notifyDataSetChanged();
+        this.jdField_a_of_type_Ghp.notifyDataSetChanged();
       }
     }
     else
@@ -462,7 +462,7 @@ public class SameStatusActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_Gly.notifyDataSetChanged();
+      this.jdField_a_of_type_Ghp.notifyDataSetChanged();
       return;
       g();
       break;
@@ -504,10 +504,10 @@ public class SameStatusActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    e(2130903988);
+    e(2130903990);
     e();
     f();
-    b(new glv(this));
+    b(new ghm(this));
     return true;
   }
   

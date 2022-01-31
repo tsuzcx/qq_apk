@@ -1,57 +1,39 @@
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import android.view.TouchDelegate;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import com.tencent.mobileqq.activity.voip.VoipDialInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class etq
-  extends TouchDelegate
+  extends BroadcastReceiver
 {
-  public etq(DragTextView paramDragTextView, Rect paramRect, View paramView)
-  {
-    super(paramRect, paramView);
-  }
+  public etq(VoipDialInterface paramVoipDialInterface) {}
   
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Drag", 2, "DragTouchDelegate.onTouchEvent:" + paramMotionEvent.getAction() + ", " + paramMotionEvent.getX() + ", " + paramMotionEvent.getY());
-    }
-    if (this.a.getVisibility() != 0) {
-      return false;
-    }
-    if (DragTextView.a(this.a) == -1) {
-      return false;
-    }
-    Object localObject = (ViewGroup)this.a.getParent();
-    if (localObject == null) {
-      return false;
-    }
-    Rect localRect = new Rect();
-    ((ViewGroup)localObject).getGlobalVisibleRect(localRect);
-    localObject = new Rect();
-    this.a.getGlobalVisibleRect((Rect)localObject);
-    if (DragTextView.a(this.a) == 2)
+    paramContext = BaseApplication.getContext();
+    BaseApplication.getContext();
+    paramIntent = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    paramContext = paramIntent.getNetworkInfo(0);
+    paramIntent = paramIntent.getNetworkInfo(1);
+    if ((!paramContext.isConnected()) && (!paramIntent.isConnected()))
     {
-      ((Rect)localObject).left = ((int)(((Rect)localObject).left - localRect.left - DragTextView.a(this.a) * 0.5D));
-      ((Rect)localObject).top = ((int)(((Rect)localObject).top - localRect.top - DragTextView.a(this.a) * 1.5D));
-      ((Rect)localObject).right = ((int)(((Rect)localObject).right - localRect.left + DragTextView.a(this.a) * 1.5D));
+      QLog.d(VoipDialInterface.a, 4, "VOIP_ Receive Unconnect");
+      paramContext = VoipDialInterface.a();
+      if (paramContext != null) {
+        paramContext.a();
+      }
+      return;
     }
-    for (((Rect)localObject).bottom = ((int)(((Rect)localObject).bottom - localRect.top + DragTextView.a(this.a) * 0.5D)); ((Rect)localObject).contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()); ((Rect)localObject).bottom = ((int)(((Rect)localObject).bottom - localRect.top + DragTextView.a(this.a))))
-    {
-      return this.a.onTouchEvent(paramMotionEvent);
-      ((Rect)localObject).left = ((int)(((Rect)localObject).left - localRect.left - DragTextView.a(this.a)));
-      ((Rect)localObject).top = ((int)(((Rect)localObject).top - localRect.top - DragTextView.a(this.a)));
-      ((Rect)localObject).right = ((int)(((Rect)localObject).right - localRect.left + DragTextView.a(this.a)));
-    }
-    return false;
+    QLog.d(VoipDialInterface.a, 4, "VOIP_ Receive Connected");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     etq
  * JD-Core Version:    0.7.0.1
  */

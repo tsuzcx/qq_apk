@@ -1,29 +1,17 @@
-import android.os.IBinder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.galleryactivity.AbstractImageListModel;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageInfo;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
+import android.graphics.Matrix;
 
 public class egz
-  implements View.OnClickListener
 {
-  public egz(AIOGalleryScene paramAIOGalleryScene) {}
+  public float a;
+  private final Matrix a;
+  public boolean a;
+  public float b = 0.0F;
   
-  public void onClick(View paramView)
+  public egz()
   {
-    paramView = (AIOImageInfo)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(AIOGalleryScene.a(this.a).b());
-    if ((paramView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.asBinder().pingBinder()))
-    {
-      this.a.a(true);
-      this.a.jdField_a_of_type_Ehd = new ehd(this.a, null);
-      this.a.jdField_a_of_type_Ehd.jdField_a_of_type_Long = paramView.a.jdField_a_of_type_Long;
-      this.a.jdField_a_of_type_Ehd.jdField_a_of_type_Int = paramView.a.d;
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.a(this.a.jdField_a_of_type_Ehd.jdField_a_of_type_Long, this.a.jdField_a_of_type_Ehd.jdField_a_of_type_Int, 4);
-    }
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Float = 0.0F;
   }
 }
 

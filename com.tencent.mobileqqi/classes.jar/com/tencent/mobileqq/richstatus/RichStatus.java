@@ -322,7 +322,7 @@ public class RichStatus
       localObject1 = new SpannableString((String)localObject1 + "[L]" + " " + this.jdField_e_of_type_JavaLangString);
       localObject2 = paramTextView.getResources();
       if (jdField_a_of_type_AndroidGraphicsBitmap == null) {
-        jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource((Resources)localObject2, 2130839656);
+        jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource((Resources)localObject2, 2130839658);
       }
       i1 = (int)(paramTextView.getTextSize() * 0.9F + 0.5F);
       int i2 = jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * i1 / jdField_a_of_type_AndroidGraphicsBitmap.getHeight();

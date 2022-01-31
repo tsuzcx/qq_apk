@@ -1,25 +1,21 @@
-import com.tencent.mobileqq.search.ISearchable;
-import java.util.Comparator;
+import android.widget.TextView;
+import com.tencent.mobileqq.testassister.activity.ShareAppLogActivity;
+import com.tencent.widget.TCWDatePicker;
+import com.tencent.widget.TCWDatePickerDialog.OnDateSetListener;
 
-public final class gmp
-  implements Comparator
+public class gmp
+  implements TCWDatePickerDialog.OnDateSetListener
 {
-  public int a(ISearchable paramISearchable1, ISearchable paramISearchable2)
+  public gmp(ShareAppLogActivity paramShareAppLogActivity, TextView paramTextView) {}
+  
+  public void a(TCWDatePicker paramTCWDatePicker, int paramInt1, int paramInt2, int paramInt3)
   {
-    long l1 = paramISearchable1.a();
-    long l2 = paramISearchable2.a();
-    if (l1 < l2) {
-      return 1;
-    }
-    if (l1 > l2) {
-      return -1;
-    }
-    return 0;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt1 + "-" + (paramInt2 + 1) + "-" + paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gmp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantActivity;
-
 public class gnv
-  implements Runnable
 {
-  public gnv(QZoneShareAlbumAssistantActivity paramQZoneShareAlbumAssistantActivity) {}
+  public int a;
+  public String[] a;
   
-  public void run()
+  public gnv(int paramInt, String[] paramArrayOfString)
   {
-    QZoneShareAlbumAssistantActivity.a(this.a).a(QZoneShareAlbumAssistantActivity.b(this.a));
-    QZoneShareAlbumAssistantActivity.a(this.a).notifyDataSetChanged();
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

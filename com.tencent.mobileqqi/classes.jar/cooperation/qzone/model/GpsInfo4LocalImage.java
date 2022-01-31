@@ -5,12 +5,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import common.config.service.QzoneLbsConfig;
-import ihf;
+import icl;
 
 public class GpsInfo4LocalImage
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ihf();
+  public static final Parcelable.Creator CREATOR = new icl();
   public float a;
   public int a;
   public float b;

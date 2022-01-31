@@ -1,19 +1,27 @@
-import android.media.SoundPool;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.adapter.FriendProfileImageAdapter;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 
-class eyk
-  implements Runnable
+public class eyk
+  extends Handler
 {
-  eyk(eyj parameyj) {}
+  public eyk(FriendProfileImageAdapter paramFriendProfileImageAdapter) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    VoipDialInterfaceActivity.a(this.a.a).play(VoipDialInterfaceActivity.m(this.a.a), 1.0F, 1.0F, 0, 0, 1.0F);
+    if ((paramMessage.what == 1) && ((paramMessage.obj instanceof ImageProgressCircle)))
+    {
+      paramMessage = (ImageProgressCircle)paramMessage.obj;
+      if (paramMessage.getVisibility() != 0) {
+        paramMessage.setVisibility(0);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eyk
  * JD-Core Version:    0.7.0.1
  */

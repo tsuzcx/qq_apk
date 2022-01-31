@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.widget.UpScrollHideView.onViewHideListener;
 
 public class bye
-  implements Runnable
+  implements UpScrollHideView.onViewHideListener
 {
-  public bye(AccountManageActivity paramAccountManageActivity, long paramLong) {}
+  public bye(ChatActivity paramChatActivity) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Long);
+    if (ChatActivity.c(this.a))
+    {
+      TroopAssistantManager.a().a(this.a.b, this.a.a.a);
+      ChatActivity.c(this.a, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bye
  * JD-Core Version:    0.7.0.1
  */

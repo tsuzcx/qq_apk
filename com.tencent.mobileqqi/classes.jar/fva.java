@@ -1,27 +1,30 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.RecentFileAdapter.ItemHolder;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import com.tencent.qphone.base.util.QLog;
 
 public class fva
-  implements View.OnLongClickListener
+  extends fvb
 {
-  public fva(FMActivity paramFMActivity) {}
-  
-  public boolean onLongClick(View paramView)
+  public fva(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    if (paramView == null) {
-      return false;
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateAcceptByPCWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.a == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "]. recvOnLineFile entity is null");
+      return;
     }
-    FileManagerEntity localFileManagerEntity = ((RecentFileAdapter.ItemHolder)paramView.getTag()).a;
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131230986, paramView.getContext().getString(2131561917));
-    FMActivity.a(this.a, BubbleContextMenu.a(paramView, localQQCustomMenu, new fvb(this, paramView), localFileManagerEntity.fileName));
-    return true;
+    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 5);
+    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 5);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateAcceptByPC)");
+    this.jdField_a_of_type_Fvb = new fuy(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
   }
 }
 

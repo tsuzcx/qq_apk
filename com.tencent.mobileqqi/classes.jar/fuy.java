@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.data.RecentFileAdapter;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
 public class fuy
-  implements DialogInterface.OnCancelListener
+  extends fvj
 {
-  public fuy(FMActivity paramFMActivity) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public fuy(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    this.a.a.a(Integer.valueOf(-1));
-    FMActivity.a(this.a);
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateAcceptByPC";
   }
 }
 

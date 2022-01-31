@@ -1,33 +1,18 @@
-import com.tencent.biz.pubaccount.util.PubAccountHttpDownloader;
-import java.io.FilterOutputStream;
-import java.io.OutputStream;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
 
 public class bre
-  extends FilterOutputStream
+  implements Runnable
 {
-  public int a;
+  public bre(LiteTransferWrapper paramLiteTransferWrapper, long paramLong1, long paramLong2, long paramLong3, String paramString, long paramLong4, byte[] paramArrayOfByte1, long paramLong5, long paramLong6, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong7, long paramLong8, long paramLong9, boolean paramBoolean) {}
   
-  public bre(PubAccountHttpDownloader paramPubAccountHttpDownloader, OutputStream paramOutputStream)
+  public void run()
   {
-    super(paramOutputStream);
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void write(int paramInt)
-  {
-    this.jdField_a_of_type_Int += 1;
-    this.out.write(paramInt);
-  }
-  
-  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int += paramInt2;
-    this.out.write(paramArrayOfByte, paramInt1, paramInt2);
+    LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_c_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_d_of_type_Long, this.jdField_a_of_type_ArrayOfByte, this.e, this.f, this.jdField_b_of_type_ArrayOfByte, this.jdField_c_of_type_ArrayOfByte, this.jdField_d_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.g, this.h, this.i, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bre
  * JD-Core Version:    0.7.0.1
  */

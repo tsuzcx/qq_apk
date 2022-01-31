@@ -1,59 +1,90 @@
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.activity.FriendProfileImageModel;
-import com.tencent.mobileqq.activity.FriendProfileImageModel.InfoUpdateListener;
-import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
-import com.tencent.mobileqq.adapter.FriendProfileImageAdapter;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Gallery;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Filter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.DropdownView;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.List;
 
 public class cug
-  implements FriendProfileImageModel.InfoUpdateListener
+  extends ArrayAdapter
+  implements View.OnClickListener
 {
-  public cug(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  Filter jdField_a_of_type_AndroidWidgetFilter;
   
-  public void a()
+  public cug(LoginActivity paramLoginActivity, Context paramContext)
   {
-    FriendProfileImageActivity localFriendProfileImageActivity = this.a;
-    localFriendProfileImageActivity.b += 1;
+    super(paramContext, 2130903066, 2131230993, paramLoginActivity.jdField_a_of_type_JavaUtilList);
   }
   
-  public void a(FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo)
+  public String a(int paramInt)
   {
-    this.a.c(paramProfileImageInfo);
+    return this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.b.b(((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin());
   }
   
-  public void b()
+  public String b(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.profilecard.PhotoWall", 2, "onDeleteSuccess()");
+    return ((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.size() == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView.b().setVisibility(8);
     }
-    this.a.b();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a() != 0)
+    for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterFriendProfileImageAdapter.notifyDataSetChanged();
-      return;
+      return super.getCount();
+      this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView.b().setVisibility(0);
     }
-    this.a.finish();
   }
   
-  public void b(FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo)
+  public Filter getFilter()
   {
-    this.a.c(paramProfileImageInfo);
-    this.a.a(2131563110, 1);
+    if (this.jdField_a_of_type_AndroidWidgetFilter == null) {
+      this.jdField_a_of_type_AndroidWidgetFilter = new cuh(this);
+    }
+    return this.jdField_a_of_type_AndroidWidgetFilter;
   }
   
-  public void c()
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.profilecard.PhotoWall", 2, "onDeleteFailed()");
+    paramView = super.getView(paramInt, paramView, paramViewGroup);
+    paramViewGroup = (LinearLayout)paramView.findViewById(2131230991);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131230992);
+    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.a(((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin(), false);
+    if (localBitmap != null) {
+      localImageView.setImageBitmap(localBitmap);
     }
-    this.a.b();
-    this.a.jdField_a_of_type_ComTencentWidgetGallery.postDelayed(new cuh(this), 50L);
+    for (;;)
+    {
+      localImageView = (ImageView)paramView.findViewById(2131230994);
+      localImageView.setTag(Integer.valueOf(paramInt));
+      localImageView.setOnClickListener(this);
+      localImageView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.getString(2131561820));
+      paramView.setContentDescription(String.format(this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.getString(2131561582) + "%s", new Object[] { ((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin() }));
+      paramViewGroup.setOnClickListener(new cui(this, paramInt));
+      return paramView;
+      localImageView.setImageResource(2130838113);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.f = ((Integer)paramView.getTag()).intValue();
+    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.showDialog(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     cug
  * JD-Core Version:    0.7.0.1
  */

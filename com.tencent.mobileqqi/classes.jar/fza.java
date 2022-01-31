@@ -1,27 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
-public class fza
-  extends BroadcastReceiver
+class fza
+  implements DialogInterface.OnClickListener
 {
-  public fza(OnlineFileSessionCenter paramOnlineFileSessionCenter) {}
+  fza(fyz paramfyz) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramIntent != null)
-    {
-      paramContext = paramIntent.getAction();
-      if ((paramContext != null) && (paramContext.equals("com.tencent.mobileqq.intent.logout")))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("OnlineFileSessionCenter<FileAssistant>", 2, "OLfilesession[] logout.....!");
-        }
-        this.a.a();
-      }
+    if (paramInt == 1) {
+      this.a.a.b();
     }
+    paramDialogInterface.dismiss();
   }
 }
 

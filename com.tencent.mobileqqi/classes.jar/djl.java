@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.SpaceGateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.ImageCreator;
 
 class djl
-  implements Runnable
+  implements ImageCreator
 {
-  djl(djk paramdjk) {}
+  djl(djk paramdjk, String paramString) {}
   
-  public void run()
+  public Drawable a()
   {
-    this.a.a.h();
+    return this.jdField_a_of_type_Djk.a.b.b(this.jdField_a_of_type_JavaLangString);
   }
 }
 

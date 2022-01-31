@@ -1,20 +1,64 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qquserguide.UserguideVideoFragment;
-import com.tencent.mobileqq.widget.QQVideoView;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareActivity;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareManager;
+import com.tencent.mobileqq.activity.specialcare.SpecialCareTipsController;
+import com.tencent.mobileqq.app.QvipSpecialCareObserver;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
-class esj
-  implements Runnable
+public class esj
+  extends QvipSpecialCareObserver
 {
-  esj(esi paramesi) {}
+  public esj(QvipSpecialCareActivity paramQvipSpecialCareActivity) {}
   
-  public void run()
+  public void a(Object paramObject)
   {
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView.isPlaying())
+    if (paramObject != null)
     {
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      return;
+      QvipSpecialCareActivity.f(this.a);
+      if (QvipSpecialCareActivity.a(this.a) != null) {
+        QvipSpecialCareActivity.a(this.a).removeMessages(0);
+      }
+      switch (((Integer)paramObject).intValue())
+      {
+      }
     }
-    this.a.a.jdField_a_of_type_AndroidWidgetImageView.postDelayed(this, 200L);
+    do
+    {
+      return;
+      QvipSpecialCareActivity.a(this.a).setVisibility(8);
+      if (!QvipSpecialCareActivity.g(this.a)) {
+        QvipSpecialCareActivity.d(this.a);
+      }
+      QvipSpecialCareActivity.a(this.a);
+      return;
+      QvipSpecialCareActivity.a(this.a);
+      return;
+      QvipSpecialCareActivity.a(this.a).setVisibility(8);
+    } while (QvipSpecialCareActivity.a(this.a) == null);
+    QvipSpecialCareActivity.a(this.a).a();
+  }
+  
+  public void b(Object paramObject)
+  {
+    if (paramObject != null)
+    {
+      QvipSpecialCareActivity.h(this.a);
+      if (QvipSpecialCareActivity.a(this.a) != null) {
+        QvipSpecialCareActivity.a(this.a).removeMessages(0);
+      }
+      if (((Integer)paramObject).intValue() != 10010) {
+        break label83;
+      }
+      QvipSpecialCareActivity.a(this.a, this.a.getString(2131562091));
+      QvipSpecialCareActivity.a(this.a).a(null, 1, null);
+    }
+    for (;;)
+    {
+      QvipSpecialCareActivity.a(this.a);
+      return;
+      label83:
+      QvipSpecialCareActivity.a(this.a, this.a.getString(2131562882));
+    }
   }
 }
 

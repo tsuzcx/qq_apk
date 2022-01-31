@@ -1,22 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.item.LongMsgItemBuilder;
-import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import com.tencent.mobileqq.newfriend.NewFriendMessage;
+import com.tencent.qphone.base.util.QLog;
 
 public class eek
-  implements AnimationTextView.OnDoubleClick
+  implements Runnable
 {
-  public eek(LongMsgItemBuilder paramLongMsgItemBuilder) {}
+  public eek(NewFriendActivity paramNewFriendActivity, Object paramObject) {}
   
-  public void a(View paramView)
+  public void run()
   {
-    ChatActivityUtils.a(LongMsgItemBuilder.a(this.a), paramView, (ChatActivity)LongMsgItemBuilder.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "init red dot from NewFriendManager push");
+    }
+    if (NewFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendActivity) != this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendActivity.a(((NewFriendMessage)this.jdField_a_of_type_JavaLangObject).b())) {
+      NewFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendActivity);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     eek
  * JD-Core Version:    0.7.0.1
  */

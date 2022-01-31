@@ -1,85 +1,25 @@
-import android.os.Process;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import cooperation.qzone.QzonePluginProxyActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
 
 public class fdp
-  extends fhi
+  extends SendMessageHandler.SendMessageRunnable
 {
-  private String a;
+  public fdp(MessageHandler paramMessageHandler, msg_svc.PbMsgReadedReportReq paramPbMsgReadedReportReq, long paramLong1, long paramLong2) {}
   
-  public fdp()
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = null;
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_Long += 1L;
-    this.b += 1L;
-    if (this.jdField_a_of_type_Long >= fhd.a().a(this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(Process.myPid())) / 12000L) {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(5, this.jdField_a_of_type_JavaLangString);
-    }
-    label180:
-    do
-    {
-      return;
-      if (this.b == 1L)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.f();
-        return;
-      }
-      if ((this.b == 4L) || (this.b == 5L))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(new String[] { this.jdField_a_of_type_JavaLangString });
-        String str1;
-        if (QzonePluginProxyActivity.a)
-        {
-          str1 = "1";
-          if (!QzonePluginProxyActivity.b) {
-            break label180;
-          }
-        }
-        for (String str2 = "1";; str2 = "0")
-        {
-          ReportController.b(null, "CliOper", "", "", "Qzone", "Qzone_prestrain", 0, 0, str1, str2, "1", "");
-          QzonePluginProxyActivity.b = false;
-          QzonePluginProxyActivity.a = false;
-          return;
-          str1 = "0";
-          break;
-        }
-      }
-    } while ((this.b != 50L) && (this.b != 51L));
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(new String[0]);
-  }
-  
-  protected void a(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(3, paramString);
-  }
-  
-  protected void b()
-  {
-    if (this.jdField_a_of_type_Long > 2L) {
-      this.jdField_a_of_type_Long -= 2L;
-    }
-  }
-  
-  protected void b(String paramString)
-  {
-    ((QQAppInterface)BaseApplicationImpl.a.a()).a(BaseApplicationImpl.a);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = 0L;
-    this.jdField_a_of_type_Long = 0L;
-    if ("fake_p_msg".equals(paramString)) {
-      this.jdField_a_of_type_Long = (fhd.a().a(this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(Process.myPid())) / 12000L - 2L);
-    }
-    CoreService.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.d();
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a("PbMessageSvc.PbMsgReadedReport");
+    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbMsgReadedReportReq.toByteArray());
+    localToServiceMsg.extraData.putLong("timeOut", this.e);
+    localToServiceMsg.extraData.putLong("startTime", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putInt("retryIndex", this.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putLong("msgSeq", this.b);
+    localToServiceMsg.setEnableFastResend(true);
+    localToServiceMsg.setTimeout(this.e);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(localToServiceMsg);
   }
 }
 

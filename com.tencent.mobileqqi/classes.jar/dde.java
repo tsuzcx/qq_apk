@@ -1,24 +1,71 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.util.Utils;
 
 public class dde
-  implements DialogInterface.OnClickListener
+  extends FriendListObserver
 {
-  public dde(NotificationActivity paramNotificationActivity) {}
+  public dde(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(String paramString, boolean paramBoolean)
   {
-    SettingCloneUtil.writeValue(this.a.b.a(), null, "security_scan_key", "qqsetting_security_scan_key", true);
-    this.a.b.B();
-    this.a.finish();
+    if ((paramBoolean) && (this.a.b) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (Utils.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()))) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new ddf(this));
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (this.a.b) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (Utils.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()))) {
+      this.a.a(paramString);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean2) && (paramBoolean1) && (this.a.b)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new ddg(this));
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    int k = 0;
+    String str;
+    int i;
+    if ((paramBoolean) && (this.a.b) && (paramArrayOfString != null) && (paramArrayOfString.length > 0))
+    {
+      str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+      i = 0;
+    }
+    for (;;)
+    {
+      int j = k;
+      if (str != null)
+      {
+        j = k;
+        if (i < paramArrayOfString.length)
+        {
+          if (!str.equals(paramArrayOfString[i])) {
+            break label97;
+          }
+          j = 1;
+        }
+      }
+      if (j != 0) {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new ddh(this));
+      }
+      return;
+      label97:
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dde
  * JD-Core Version:    0.7.0.1
  */

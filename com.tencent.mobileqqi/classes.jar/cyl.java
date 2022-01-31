@@ -1,22 +1,31 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class cyl
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public cyl(Leba paramLeba) {}
+  public cyl(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.leba", 2, "init leba list when init UI in refreshAllListInUI()");
+    NotifyPushSettingActivity.e(this.a).setContentDescription("退出后仍接收消息通知");
+    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131561654), "qqsetting_receivemsg_whenexit_key", paramBoolean);
+    paramCompoundButton = this.a.b;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Logout_msg", 0, i, "", "", "", "");
+      return;
     }
-    Leba.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cyl
  * JD-Core Version:    0.7.0.1
  */

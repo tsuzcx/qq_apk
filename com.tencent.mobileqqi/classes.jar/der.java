@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.activity.PeopleAroundBaseActivity;
-import com.tencent.mobileqq.activity.PeopleAroundBaseActivity.BaseLbsObserver;
-import java.util.List;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class der
   implements Runnable
 {
-  public der(PeopleAroundBaseActivity.BaseLbsObserver paramBaseLbsObserver, String paramString1, List paramList, String paramString2) {}
+  public der(RegisterActivity paramRegisterActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPeopleAroundBaseActivity$BaseLbsObserver.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.b);
+    if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
+      this.a.a.dismiss();
+    }
+    this.a.a = null;
   }
 }
 

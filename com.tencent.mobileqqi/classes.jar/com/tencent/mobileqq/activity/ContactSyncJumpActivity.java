@@ -18,11 +18,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import ckj;
-import ckk;
-import ckl;
-import ckm;
-import ckn;
+import cec;
+import ced;
+import cee;
+import cef;
+import ceg;
 import com.tencent.mobileqq.activity.voip.VoipDialData;
 import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -63,13 +63,13 @@ public class ContactSyncJumpActivity
   private static final String jdField_g_of_type_JavaLangString = "ContactSync.JumpActivity";
   public int a;
   public Dialog a;
-  private DialogInterface.OnCancelListener jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener = new ckm(this);
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new ckj(this);
-  private Handler jdField_a_of_type_AndroidOsHandler = new ckl(this);
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ckk(this);
+  private DialogInterface.OnCancelListener jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener = new cef(this);
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new cec(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new cee(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ced(this);
   private PhoneContactManagerImp jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp;
   private ContactSyncManager jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager;
-  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new ckn(this);
+  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new ceg(this);
   private int b;
   private String h;
   private String i;
@@ -86,16 +86,16 @@ public class ContactSyncJumpActivity
   private Dialog a()
   {
     Dialog localDialog = new Dialog(this, 2131624405);
-    localDialog.setContentView(2130903561);
-    Object localObject2 = (ImageView)localDialog.findViewById(2131232925);
+    localDialog.setContentView(2130903563);
+    Object localObject2 = (ImageView)localDialog.findViewById(2131232928);
     if (this.k.equals("0")) {}
     for (Object localObject1 = FaceDrawable.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, 11, this.i + this.j);; localObject1 = FaceDrawable.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.k))
     {
       ((ImageView)localObject2).setImageDrawable((Drawable)localObject1);
-      Object localObject3 = (TextView)localDialog.findViewById(2131232926);
-      localObject1 = (TextView)localDialog.findViewById(2131232927);
-      TextView localTextView = (TextView)localDialog.findViewById(2131232923);
-      localObject2 = (TextView)localDialog.findViewById(2131232924);
+      Object localObject3 = (TextView)localDialog.findViewById(2131232929);
+      localObject1 = (TextView)localDialog.findViewById(2131232930);
+      TextView localTextView = (TextView)localDialog.findViewById(2131232926);
+      localObject2 = (TextView)localDialog.findViewById(2131232927);
       ((TextView)localObject3).setText(this.l);
       localTextView.setText(2131561757);
       localTextView.setOnClickListener(this);
@@ -103,7 +103,7 @@ public class ContactSyncJumpActivity
       if (!NetworkUtil.e(this)) {
         break;
       }
-      localObject3 = getResources().getDrawable(2130837860);
+      localObject3 = getResources().getDrawable(2130837862);
       ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds((Drawable)localObject3, null, null, null);
       ((TextView)localObject1).setCompoundDrawablePadding(10);
       ((Animatable)localObject3).start();
@@ -119,11 +119,11 @@ public class ContactSyncJumpActivity
   private Dialog a(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
     Dialog localDialog = new Dialog(this, 2131624405);
-    localDialog.setContentView(2130903560);
-    TextView localTextView1 = (TextView)localDialog.findViewById(2131232921);
-    TextView localTextView2 = (TextView)localDialog.findViewById(2131232922);
-    TextView localTextView3 = (TextView)localDialog.findViewById(2131232923);
-    TextView localTextView4 = (TextView)localDialog.findViewById(2131232924);
+    localDialog.setContentView(2130903562);
+    TextView localTextView1 = (TextView)localDialog.findViewById(2131232924);
+    TextView localTextView2 = (TextView)localDialog.findViewById(2131232925);
+    TextView localTextView3 = (TextView)localDialog.findViewById(2131232926);
+    TextView localTextView4 = (TextView)localDialog.findViewById(2131232927);
     localTextView1.setText(paramInt1);
     localTextView2.setText(paramString);
     if (paramInt2 == 0) {
@@ -435,26 +435,26 @@ public class ContactSyncJumpActivity
       n = 1;
       QQAppInterface localQQAppInterface = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface;
       if (n == 0) {
-        break label126;
+        break label125;
       }
       str = "0";
       label26:
       ReportController.b(localQQAppInterface, "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "16", str, "", "");
       if (n == 0) {
-        break label133;
+        break label132;
       }
     }
-    label133:
+    label132:
     for (int n = 0;; n = 1006)
     {
       str = this.i + this.j;
-      if (ChatActivityUtils.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this, n, this.k, this.l, str, true, null, true, true, this.jdField_a_of_type_AndroidOsHandler$Callback, "from_app_contact")) {
+      if (ChatActivityUtils.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this, n, this.k, this.l, str, true, null, true, true, this.jdField_a_of_type_AndroidOsHandler$Callback, "")) {
         finish();
       }
       return;
       n = 0;
       break;
-      label126:
+      label125:
       str = "3";
       break label26;
     }
@@ -522,7 +522,7 @@ public class ContactSyncJumpActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131232923: 
+    case 2131232926: 
       do
       {
         return;

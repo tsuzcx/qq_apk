@@ -179,16 +179,11 @@ public class QCallRecord
   
   public boolean isMissCall()
   {
-    if (this.uinType != 3000)
-    {
-      if ((this.issend != 0) || ((12 != this.state) && (1 != this.state))) {}
+    if (this.uinType != 3000) {}
+    while ((this.issend != 0) || (this.state != 2)) {
+      return false;
     }
-    else {
-      while ((this.issend == 0) && (this.state == 2)) {
-        return true;
-      }
-    }
-    return false;
+    return true;
   }
   
   public boolean isSender()

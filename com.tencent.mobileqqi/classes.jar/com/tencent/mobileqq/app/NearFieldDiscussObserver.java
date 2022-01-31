@@ -28,11 +28,11 @@ public class NearFieldDiscussObserver
     b(paramBoolean, paramObject);
   }
   
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  public void a(boolean paramBoolean, Object paramObject) {}
   
-  protected void a(boolean paramBoolean, List paramList, int paramInt1, int paramInt2, nearfield_discuss.BusiRespHead paramBusiRespHead) {}
+  public void a(boolean paramBoolean, List paramList, int paramInt1, int paramInt2, nearfield_discuss.BusiRespHead paramBusiRespHead) {}
   
-  protected void b(boolean paramBoolean, Object paramObject) {}
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

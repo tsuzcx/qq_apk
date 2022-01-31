@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class dtx
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public dtx(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public dtx(UpgradeActivity paramUpgradeActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a != null) && (this.a.a.equals("conversation"))) {
-      this.a.d();
-    }
+    this.a.finish();
   }
 }
 

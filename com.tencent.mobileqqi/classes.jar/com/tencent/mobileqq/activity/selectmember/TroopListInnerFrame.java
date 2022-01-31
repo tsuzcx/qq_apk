@@ -16,8 +16,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.SlideDetectListView;
-import ewf;
-import ewi;
+import err;
+import eru;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +46,7 @@ public class TroopListInnerFrame
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131427610);
+    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131427613);
   }
   
   private void a(int paramInt)
@@ -139,14 +139,14 @@ public class TroopListInnerFrame
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    setContentView(2130903442);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232609));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232379));
+    setContentView(2130903444);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232612));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232382));
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setSelector(2131361815);
     this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopListInnerFrame$TroopListAdapter = new TroopListInnerFrame.TroopListAdapter(this, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, 4, false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopListInnerFrame$TroopListAdapter);
     TroopListInnerFrame.TroopListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopListInnerFrame$TroopListAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnScrollGroupFloatingListener(new ewf(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnScrollGroupFloatingListener(new err(this));
   }
   
   public void b(Bundle paramBundle)
@@ -170,7 +170,7 @@ public class TroopListInnerFrame
   
   public void onClick(View paramView)
   {
-    paramView = (ewi)paramView.getTag();
+    paramView = (eru)paramView.getTag();
     TroopInfo localTroopInfo;
     int i;
     if ((paramView != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null))

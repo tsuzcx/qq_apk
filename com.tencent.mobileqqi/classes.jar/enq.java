@@ -1,25 +1,37 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import android.content.Intent;
+import android.os.Bundle;
+import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.activity.qfileJumpActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.MainAcitivityReportHelper;
-import java.util.TimerTask;
+import com.tencent.mobileqq.statistics.StatisticAssist;
+import mqq.app.MobileQQ;
 
 public class enq
-  extends TimerTask
+  implements Runnable
 {
-  public enq(MainAssistObserver paramMainAssistObserver) {}
+  public enq(qfileJumpActivity paramqfileJumpActivity) {}
   
   public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b == null)) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b;
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqStatisticsMainAcitivityReportHelper == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqStatisticsMainAcitivityReportHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.j);
-    this.a.jdField_a_of_type_ComTencentMobileqqStatisticsMainAcitivityReportHelper.b(localQQAppInterface);
+    StatisticAssist.a(this.a.b.getApplication().getApplicationContext(), this.a.b.a(), "dl_share_my_pc");
+    Intent localIntent = this.a.getIntent();
+    Object localObject2 = localIntent.getExtras();
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new Bundle();
+    }
+    ((Bundle)localObject1).putString("leftBackText", this.a.getString(2131559092));
+    ((Bundle)localObject1).putBoolean("isBack2Root", true);
+    localObject2 = new Intent(this.a, LiteActivity.class);
+    ((Intent)localObject2).addFlags(268435456);
+    ((Intent)localObject2).addFlags(67108864);
+    ((Intent)localObject2).putExtra("dataline_share_finish", false);
+    ((Intent)localObject2).putExtras((Bundle)localObject1);
+    ((Intent)localObject2).putExtras(localIntent);
+    ((Intent)localObject2).setAction(localIntent.getAction());
+    ((Intent)localObject2).setType(localIntent.getType());
+    this.a.startActivity((Intent)localObject2);
+    this.a.finish();
   }
 }
 

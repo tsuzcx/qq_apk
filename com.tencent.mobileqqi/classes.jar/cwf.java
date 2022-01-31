@@ -1,23 +1,24 @@
-import com.tencent.mobileqq.activity.HelloListActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.model.FriendManager;
 
 public class cwf
-  extends FriendListObserver
+  extends Thread
 {
-  public cwf(HelloListActivity paramHelloListActivity) {}
+  public cwf(ModifyFriendInfoActivity paramModifyFriendInfoActivity) {}
   
-  protected void a(String paramString, boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean) {
-      this.a.a(0);
+    Object localObject = ((FriendManager)this.a.b.getManager(8)).a(this.a.jdField_a_of_type_JavaLangString);
+    if (localObject != null) {
+      this.a.c = ((Card)localObject).strReMark;
     }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.a(0);
-    }
+    localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+    ((Message)localObject).what = 1;
+    ((Message)localObject).sendToTarget();
   }
 }
 

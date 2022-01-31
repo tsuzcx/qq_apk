@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.utils.ZebraBlacklistUtils;
-import com.tencent.mobileqq.utils.ZebraBlacklistUtils.JceRequestCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class hir
-  implements ZebraBlacklistUtils.JceRequestCallback
+class hir
+  implements DialogInterface.OnClickListener
 {
-  public hir(ZebraBlacklistUtils paramZebraBlacklistUtils) {}
+  hir(hio paramhio) {}
   
-  public void a() {}
-  
-  public void a(byte[] paramArrayOfByte)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ZebraBlacklistUtils.a(this.a, paramArrayOfByte);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hir
  * JD-Core Version:    0.7.0.1
  */

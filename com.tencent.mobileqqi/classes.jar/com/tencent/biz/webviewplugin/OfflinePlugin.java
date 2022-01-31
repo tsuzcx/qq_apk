@@ -13,12 +13,12 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bup;
-import bur;
-import bus;
-import but;
-import buu;
-import buv;
+import boo;
+import boq;
+import bor;
+import bos;
+import bot;
+import bou;
 import com.tencent.biz.AuthorizeConfig;
 import com.tencent.biz.common.offline.HtmlOffline;
 import com.tencent.biz.common.util.LoadedBack2;
@@ -43,14 +43,14 @@ public class OfflinePlugin
   static final int jdField_b_of_type_Int = Build.VERSION.SDK_INT;
   public int a;
   public Handler a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new but(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bos(this);
   public LinearLayout a;
   public ProgressBar a;
   public RelativeLayout a;
   public TextView a;
   private AuthorizeConfig jdField_a_of_type_ComTencentBizAuthorizeConfig;
-  private LoadedBack2 jdField_a_of_type_ComTencentBizCommonUtilLoadedBack2 = new buu(this);
-  private Runnable jdField_a_of_type_JavaLangRunnable = new buv(this);
+  private LoadedBack2 jdField_a_of_type_ComTencentBizCommonUtilLoadedBack2 = new bot(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new bou(this);
   private String jdField_a_of_type_JavaLangString = "offline";
   protected ArrayList a;
   public boolean a;
@@ -119,7 +119,7 @@ public class OfflinePlugin
       paramJSONObject = localOfflineUpdateStatus.jdField_c_of_type_JavaLangString;
     } while ((TextUtils.isEmpty((CharSequence)localObject2)) || (i <= 0));
     localOfflineUpdateStatus.c(0);
-    Object localObject1 = ((Activity)localObject1).getResources().getDrawable(2130838729);
+    Object localObject1 = ((Activity)localObject1).getResources().getDrawable(2130838731);
     ((Drawable)localObject1).setBounds(0, 0, 40, 40);
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables((Drawable)localObject1, null, null, null);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramJSONObject);
@@ -167,7 +167,7 @@ public class OfflinePlugin
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new bur(this);
+    this.jdField_a_of_type_AndroidOsHandler = new boq(this);
   }
   
   public WebResourceResponse a(String paramString)
@@ -322,7 +322,7 @@ public class OfflinePlugin
     try
     {
       l1 = Long.parseLong(str);
-      HtmlOffline.a(this.mRuntime.a().getApplicationContext(), paramString, this.mRuntime.a().a(), new bup(this, paramString, l1));
+      HtmlOffline.a(this.mRuntime.a().getApplicationContext(), paramString, this.mRuntime.a().a(), new boo(this, paramString, l1));
       return;
     }
     catch (NumberFormatException localNumberFormatException)
@@ -386,7 +386,7 @@ public class OfflinePlugin
       QLog.i(this.jdField_a_of_type_JavaLangString, 2, "webviewLoadUrl...");
     }
     long l = System.currentTimeMillis();
-    HtmlOffline.a(this.mRuntime.a().getApplicationContext(), paramString, new bus(this, l));
+    HtmlOffline.a(this.mRuntime.a().getApplicationContext(), paramString, new bor(this, l));
   }
   
   protected Object handleEvent(String paramString, int paramInt)
@@ -425,7 +425,7 @@ public class OfflinePlugin
       return false;
     case 0: 
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramMap.jdField_c_of_type_JavaLangString);
-      paramString = paramString.getResources().getDrawable(2130838729);
+      paramString = paramString.getResources().getDrawable(2130838731);
       paramString.setBounds(0, 0, 40, 40);
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramString, null, null, null);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
@@ -443,7 +443,7 @@ public class OfflinePlugin
       return false;
     case 3: 
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramMap.d);
-      paramString = paramString.getResources().getDrawable(2130837839);
+      paramString = paramString.getResources().getDrawable(2130837841);
       paramString.setBounds(0, 0, paramString.getMinimumWidth(), paramString.getMinimumHeight());
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramString, null, null, null);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);

@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.Comparator;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
 
-public final class gcs
-  implements Comparator
+public class gcs
+  implements Runnable
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
+  public gcs(QQPlayerService paramQQPlayerService, QQPlayerService.QQPlayerCallback paramQQPlayerCallback, int paramInt) {}
+  
+  public void run()
   {
-    return -Long.valueOf(paramFileInfo1.b()).compareTo(Long.valueOf(paramFileInfo2.b()));
+    this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback.onPlayStateChanged(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gcs
  * JD-Core Version:    0.7.0.1
  */

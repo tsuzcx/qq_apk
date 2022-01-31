@@ -1,17 +1,22 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
+import android.os.Process;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
+import com.tencent.mobileqq.startup.step.SetPermission;
+import mqq.app.AppActivity;
 
-public final class gke
-  implements Runnable
+class gke
+  implements PermissionDialogCallback
 {
-  public gke(RedTouchManager paramRedTouchManager, Conversation paramConversation, Handler paramHandler) {}
+  gke(gkd paramgkd) {}
   
-  public void run()
+  public void a()
   {
-    RedTouchManager localRedTouchManager = this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager;
-    gkf localgkf = new gkf(this);
-    localRedTouchManager.a(new int[] { 0, 1, 2 }, localgkf);
+    SetPermission.a(this.a.a).superFinish();
+    Process.killProcess(Process.myPid());
+  }
+  
+  public void b()
+  {
+    Process.killProcess(Process.myPid());
   }
 }
 

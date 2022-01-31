@@ -1,33 +1,41 @@
-import android.os.Handler;
-import com.tencent.av.gaudio.GAudioNotifyCenter;
-import com.tencent.av.utils.UITools;
+import com.tencent.biz.common.download.OfflineDownloader;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.qphone.base.util.QLog;
 
-public class bho
-  implements Runnable
+class bho
+  implements AsyncBack
 {
-  public bho(GAudioNotifyCenter paramGAudioNotifyCenter) {}
+  bho(bhn parambhn, long paramLong) {}
   
-  public void run()
+  public void a(int paramInt) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    Object localObject = this.a;
-    ((GAudioNotifyCenter)localObject).b += 1L;
-    if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 1000L);
+    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    if (QLog.isColorLevel()) {
+      QLog.i("QQBrowserOffline", 2, "OfflineDownloader code:" + paramInt + ", time:" + l);
     }
-    if (this.a.e)
+    if (paramInt == 0)
     {
-      localObject = UITools.a(this.a.b);
-      if (this.a.jdField_a_of_type_Int == 3)
+      HtmlOffline.a(bhn.a(this.jdField_a_of_type_Bhn), bhn.a(this.jdField_a_of_type_Bhn));
+      if (2 == this.jdField_a_of_type_Bhn.jdField_a_of_type_Int)
       {
-        String str = Long.toString(this.a.jdField_a_of_type_Long);
-        this.a.a(29, 0, str, (String)localObject);
+        HtmlOffline.a(bhn.a(this.jdField_a_of_type_Bhn));
+        bhn.a(this.jdField_a_of_type_Bhn, -1);
       }
     }
-    else
+    for (;;)
     {
+      HtmlOffline.a(bhn.a(this.jdField_a_of_type_Bhn), paramInt, l, OfflineDownloader.a(bhn.a(this.jdField_a_of_type_Bhn)));
       return;
+      if (this.jdField_a_of_type_Bhn.jdField_a_of_type_Boolean) {
+        HtmlOffline.a(bhn.a(this.jdField_a_of_type_Bhn));
+      }
+      bhn.a(this.jdField_a_of_type_Bhn, 0);
+      continue;
+      bhn.a(this.jdField_a_of_type_Bhn, 2);
     }
-    this.a.a(29, 0, this.a.c, (String)localObject);
   }
 }
 

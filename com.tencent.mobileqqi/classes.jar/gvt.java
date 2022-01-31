@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.troop.data.TroopCreateLogic;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class gvt
+class gvt
   implements Runnable
 {
-  public gvt(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  gvt(gvs paramgvs) {}
   
   public void run()
   {
-    this.a.d = false;
+    BaseActivity localBaseActivity = (BaseActivity)this.a.a.a;
+    if (localBaseActivity != null) {
+      QQToast.a(localBaseActivity, localBaseActivity.getString(2131560417), 0).b(localBaseActivity.d());
+    }
+    this.a.cancel();
+    this.a.a.a();
   }
 }
 

@@ -35,14 +35,19 @@ public class PlatformInfor
   
   private PlatformInfor()
   {
-    try
+    if (this.jdField_a_of_type_AndroidContentContext.checkSelfPermission("android.permission.READ_PHONE_STATE") != 0) {}
+    for (;;)
     {
-      h = this.jdField_a_of_type_AndroidContentContext.getPackageManager().getPackageInfo(this.jdField_a_of_type_AndroidContentContext.getPackageName(), 0).versionName;
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+      try
+      {
+        h = this.jdField_a_of_type_AndroidContentContext.getPackageManager().getPackageInfo(this.jdField_a_of_type_AndroidContentContext.getPackageName(), 0).versionName;
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      this.jdField_a_of_type_AndroidTelephonyTelephonyManager = ((TelephonyManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("phone"));
     }
   }
   
@@ -140,13 +145,20 @@ public class PlatformInfor
     Object localObject1 = new DisplayMetrics();
     ((WindowManager)localObject2).getDefaultDisplay().getMetrics((DisplayMetrics)localObject1);
     localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("i=").append(this.jdField_a_of_type_AndroidTelephonyTelephonyManager.getDeviceId()).append('&');
-    ((StringBuilder)localObject2).append("mac=").append(g()).append('&');
-    ((StringBuilder)localObject2).append("m=").append(Build.MODEL).append('&');
-    ((StringBuilder)localObject2).append("o=").append(Build.VERSION.RELEASE).append('&');
-    ((StringBuilder)localObject2).append("a=").append(Build.VERSION.SDK_INT).append('&');
-    StringBuilder localStringBuilder = ((StringBuilder)localObject2).append("sc=");
-    if (Environment.getExternalStorageState().equals("mounted")) {}
+    StringBuilder localStringBuilder;
+    if (this.jdField_a_of_type_AndroidTelephonyTelephonyManager != null)
+    {
+      ((StringBuilder)localObject2).append("i=").append(this.jdField_a_of_type_AndroidTelephonyTelephonyManager.getDeviceId()).append('&');
+      ((StringBuilder)localObject2).append("mac=").append(g()).append('&');
+      ((StringBuilder)localObject2).append("m=").append(Build.MODEL).append('&');
+      ((StringBuilder)localObject2).append("o=").append(Build.VERSION.RELEASE).append('&');
+      ((StringBuilder)localObject2).append("a=").append(Build.VERSION.SDK_INT).append('&');
+      localStringBuilder = ((StringBuilder)localObject2).append("sc=");
+      if (!Environment.getExternalStorageState().equals("mounted")) {
+        break label353;
+      }
+    }
+    label353:
     for (int j = 1;; j = 0)
     {
       localStringBuilder.append(j).append('&');
@@ -157,6 +169,8 @@ public class PlatformInfor
       this.d = ((StringBuilder)localObject2).toString();
       ((StringBuilder)localObject2).append("n=").append(h());
       return ((StringBuilder)localObject2).toString();
+      ((StringBuilder)localObject2).append("i=").append("").append('&');
+      break;
     }
   }
   

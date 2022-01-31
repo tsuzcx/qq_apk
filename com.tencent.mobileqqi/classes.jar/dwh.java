@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.activity.TroopMemberGagActivity;
-import com.tencent.mobileqq.activity.TroopMemberGagActivity.GagItemListener;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr.GagItem;
+import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import mqq.app.permission.PermissionCallback;
 
-public class dwh
-  implements TroopMemberGagActivity.GagItemListener
+class dwh
+  implements PermissionCallback
 {
-  public dwh(TroopMemberGagActivity paramTroopMemberGagActivity) {}
+  dwh(dwg paramdwg) {}
   
-  public void a(TroopGagMgr.GagItem paramGagItem)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a = paramGagItem.a;
+    new PermissionsDialog().a(this.a.jdField_a_of_type_MqqAppAppActivity, paramInt, paramArrayOfString, new dwi(this));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    PlusPanelUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_MqqAppAppActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dwh
  * JD-Core Version:    0.7.0.1
  */

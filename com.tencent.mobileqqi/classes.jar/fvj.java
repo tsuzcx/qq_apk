@@ -1,36 +1,18 @@
-import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
 public class fvj
-  extends FMObserver
+  extends fvb
 {
-  public fvj(FMRecentFileActivity paramFMRecentFileActivity) {}
-  
-  protected void a()
+  public fvj(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    super.a();
-    this.a.runOnUiThread(new fvo(this));
+    super(paramOnlineFileSessionWorker);
+    this.a = true;
+    this.b = true;
   }
   
-  protected void a(ThumbnailInfo paramThumbnailInfo)
+  protected String a()
   {
-    this.a.runOnUiThread(new fvm(this));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.runOnUiThread(new fvk(this));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.a.runOnUiThread(new fvl(this, paramLong2));
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.runOnUiThread(new fvn(this));
+    return "StateEnd";
   }
 }
 

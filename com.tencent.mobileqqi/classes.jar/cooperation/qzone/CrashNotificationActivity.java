@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
-import igl;
+import ibr;
 
 public class CrashNotificationActivity
   extends Activity
@@ -21,15 +21,15 @@ public class CrashNotificationActivity
     AlertDialog localAlertDialog = new AlertDialog.Builder(this).create();
     localAlertDialog.show();
     Object localObject = localAlertDialog.getWindow();
-    ((Window)localObject).setContentView(2130903292);
-    Button localButton1 = (Button)((Window)localObject).findViewById(2131231991);
-    Button localButton2 = (Button)((Window)localObject).findViewById(2131231990);
-    localObject = (TextView)((Window)localObject).findViewById(2131231985);
+    ((Window)localObject).setContentView(2130903294);
+    Button localButton1 = (Button)((Window)localObject).findViewById(2131231994);
+    Button localButton2 = (Button)((Window)localObject).findViewById(2131231993);
+    localObject = (TextView)((Window)localObject).findViewById(2131231988);
     if ((localButton1 == null) || (localObject == null)) {
       return null;
     }
-    ((TextView)localObject).setText(getString(2131562388) + "6.0.1" + getString(2131562560));
-    localObject = new igl(this);
+    ((TextView)localObject).setText(getString(2131562388) + "6.0.2" + getString(2131562560));
+    localObject = new ibr(this);
     localButton1.setOnClickListener((View.OnClickListener)localObject);
     localButton2.setOnClickListener((View.OnClickListener)localObject);
     return localAlertDialog;
@@ -77,7 +77,7 @@ public class CrashNotificationActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903291);
+    setContentView(2130903293);
     b();
   }
   

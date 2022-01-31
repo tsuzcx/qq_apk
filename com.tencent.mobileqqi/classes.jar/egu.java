@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import com.tencent.mobileqq.app.MessageObserver;
 
-class egu
-  implements Runnable
+public class egu
+  extends MessageObserver
 {
-  egu(egt paramegt, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
+  private egu(TroopView paramTroopView) {}
   
-  public void run()
+  protected void d()
   {
-    if (egs.a(this.jdField_a_of_type_Egt.a) != null) {
-      ((AIOGalleryScene)egs.b(this.jdField_a_of_type_Egt.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString);
-    }
-    if (egs.a(this.jdField_a_of_type_Egt.a) != null) {
-      ((AIOImageListScene)egs.b(this.jdField_a_of_type_Egt.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString);
-    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     egu
  * JD-Core Version:    0.7.0.1
  */

@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.util.DisplayMetrics;
 import com.tencent.mobileqq.transfile.filebrowser.MimeTypesTools;
+import com.tencent.mobileqq.utils.FileProvider7Helper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -38,8 +39,7 @@ public class UniformDownloadUtil
         return -2;
       }
       Intent localIntent = new Intent("android.intent.action.VIEW");
-      localIntent.setFlags(268435456);
-      localIntent.setDataAndType(Uri.fromFile(new File(paramString)), "application/vnd.android.package-archive");
+      FileProvider7Helper.installApkFile(BaseApplication.getContext(), paramString);
       BaseApplication.getContext().startActivity(localIntent);
       return 0;
     }

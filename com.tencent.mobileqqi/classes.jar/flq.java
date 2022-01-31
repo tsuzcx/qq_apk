@@ -1,20 +1,6 @@
-class flq
-  implements Runnable
+public class flq
 {
-  flq(flp paramflp, Runnable paramRunnable) {}
-  
-  public void run()
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-      return;
-    }
-    finally
-    {
-      this.jdField_a_of_type_Flp.a();
-    }
-  }
+  public String a;
 }
 
 

@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.conditionsearch.widget.IphonePickerView android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020152" android:layout_width="fill_parent" android:layout_height="85.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:background="#fffafafa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip" android:layout_alignParentTop="true">
-        <RelativeLayout android:gravity="center_vertical" android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0021" android:ellipsize="end" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808c8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-            <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808c9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d050d" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0183" />
-        </RelativeLayout>
-    </FrameLayout>
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01f6" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip">
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="0.0dip">
-            <com.tencent.mobileqq.remind.widget.WheelView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808ca" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01fb" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01fc" android:layout_weight="4.0" />
-            <com.tencent.mobileqq.remind.widget.WheelView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808cb" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01fb" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01fc" android:layout_weight="3.0" />
-            <com.tencent.mobileqq.remind.widget.WheelView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808cc" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01fb" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01fc" android:layout_weight="3.0" />
-        </LinearLayout>
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01f6">
-            <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808cd" android:background="#ffcdcdcd" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01fd" />
-            <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808ce" android:background="#ffcdcdcd" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01fe" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0808cd" />
-        </RelativeLayout>
-    </FrameLayout>
-</com.tencent.mobileqq.conditionsearch.widget.IphonePickerView>
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808c9" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="14.0dip" android:layout_marginBottom="7.0dip" />
+    <TextView android:textSize="13.0sp" android:textColor="#ff808080" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808ca" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="11.0dip" android:includeFontPadding="false" />
+</LinearLayout>

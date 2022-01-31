@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.widget.CameraFrameLayout;
-import com.tencent.mobileqq.widget.CameraPreview;
+import android.text.Editable;
+import com.tencent.open.agent.SendStoryActivity.CustomLengthInputFilter;
+import com.tencent.open.agent.datamodel.Friend;
+import java.util.Comparator;
 
 public class hjo
-  implements Runnable
+  implements Comparator
 {
-  public hjo(CameraFrameLayout paramCameraFrameLayout) {}
+  public hjo(SendStoryActivity.CustomLengthInputFilter paramCustomLengthInputFilter, Editable paramEditable) {}
   
-  public void run()
+  public int a(Friend paramFriend1, Friend paramFriend2)
   {
-    if (CameraFrameLayout.a(this.a) != null) {
-      CameraFrameLayout.a(this.a).a(this.a.getWidth(), this.a.getHeight());
-    }
+    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hjo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080553" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080554" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mobileqq.widget.ADView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080555" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <LinearLayout android:gravity="center" android:id="@id/close" android:clickable="true" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="5.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080557" android:clickable="false" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020123" />
-        </LinearLayout>
-    </RelativeLayout>
+    <com.tencent.widget.FadeIconImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080551" android:background="@drawable/top_button_right_selector" android:layout_width="44.0dip" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/skin_qzone_publish_box_level_1" android:scaleType="center" android:includeFontPadding="false" android:layout_centerVertical="true" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0098" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080552" android:paddingBottom="0.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="0.0dip" android:text="11" android:layout_alignParentTop="@id/APKTOOL_DUPLICATE_id_0x7f080551"
+      xmlns:android="http://schemas.android.com/apk/res/android" />
 </RelativeLayout>

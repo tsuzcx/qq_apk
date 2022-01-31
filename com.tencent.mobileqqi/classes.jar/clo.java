@@ -1,29 +1,51 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class clo
-  extends BroadcastReceiver
+  implements BusinessObserver
 {
-  public clo(Conversation paramConversation) {}
+  public clo(ForwardOperations paramForwardOperations) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ("login".equals(paramIntent.getStringExtra("status")))
+    if (!paramBoolean) {}
+    for (;;)
     {
-      this.a.a.a(7, 2);
-      this.a.a.e = paramIntent.getStringExtra("loginInfo");
-      this.a.a.a(null);
       return;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
+          localGetAppinfoResponse.mergeFrom(paramBundle);
+          if ((localGetAppinfoResponse.has()) && (localGetAppinfoResponse.ret.get() == 0))
+          {
+            try
+            {
+              this.a.a = localGetAppinfoResponse;
+              if (QLog.isColorLevel()) {
+                QLog.d("ForwardOperations", 2, "get appinfo time = " + (System.currentTimeMillis() - this.a.b));
+              }
+              return;
+            }
+            finally {}
+            if (!QLog.isColorLevel()) {}
+          }
+        }
+      }
+      catch (Exception paramBundle) {}
     }
-    this.a.a.b();
+    QLog.d("ForwardOperations", 2, paramBundle.getMessage());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     clo
  * JD-Core Version:    0.7.0.1
  */

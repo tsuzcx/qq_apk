@@ -1,19 +1,28 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MyPublishedHornActivity;
-import com.tencent.mobileqq.app.NearHornHandler;
-import com.tencent.mobileqq.data.HornDetail;
-import com.tencent.mobileqq.maproam.Utils;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class dcg
   implements View.OnClickListener
 {
-  public dcg(MyPublishedHornActivity paramMyPublishedHornActivity) {}
+  public dcg(QQMapActivity paramQQMapActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.b(this.a.b.hornKey, this.a.e);
-    Utils.a();
+    if (!NetworkUtil.e(this.a))
+    {
+      this.a.q();
+      return;
+    }
+    if (NetworkUtil.b(this.a))
+    {
+      this.a.m();
+      return;
+    }
+    DialogUtil.a(this.a, 230).setTitle(this.a.getString(2131562272)).setMessage(2131563235).setPositiveButton(2131563186, new dci(this)).setNegativeButton(2131561746, new dch(this)).show();
   }
 }
 

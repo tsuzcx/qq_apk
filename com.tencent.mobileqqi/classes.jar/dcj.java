@@ -1,10 +1,13 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class dcj
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public dcj(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
+  public dcj(QQMapActivity paramQQMapActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

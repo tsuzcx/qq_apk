@@ -1,30 +1,41 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SubAccountBindObserver;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
 
 public class bsq
-  implements Comparator
+  extends SubAccountBindObserver
 {
-  public bsq(QRDisplayActivity paramQRDisplayActivity) {}
+  public bsq(AccountManageActivity paramAccountManageActivity) {}
   
-  public int a(String paramString1, String paramString2)
+  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    int i = 1;
-    if ((paramString1 != null) && (paramString2 != null)) {
-      i = ChnToSpell.a(paramString1, 1).compareTo(ChnToSpell.a(paramString2, 1));
+    if (paramBoolean) {
+      AccountManageActivity.a(this.a);
     }
-    while (paramString1 != null) {
-      return i;
+  }
+  
+  protected void b(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  {
+    if (paramBoolean) {
+      AccountManageActivity.a(this.a);
     }
-    if (paramString2 != null) {
-      return -1;
+  }
+  
+  protected void c(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  {
+    if (paramBoolean)
+    {
+      this.a.b.a().c(AppConstants.O, 7000);
+      AccountManageActivity.a(this.a);
     }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bsq
  * JD-Core Version:    0.7.0.1
  */

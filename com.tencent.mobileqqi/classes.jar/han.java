@@ -1,44 +1,62 @@
-import android.view.View;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
-import com.tencent.mobileqq.troop.utils.TroopFileManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.graphics.Bitmap;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.util.CustomLruCache;
+import com.tencent.mobileqq.util.ImageCache;
 
 public class han
-  implements ActionSheet.OnButtonClickListener
+  extends CustomLruCache
 {
-  public han(TroopFileItemOperation paramTroopFileItemOperation, boolean paramBoolean, TroopFileInfo paramTroopFileInfo, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public han(ImageCache paramImageCache, int paramInt)
   {
-    int i = paramInt;
-    if (!this.jdField_a_of_type_Boolean) {
-      i = paramInt + 1;
-    }
-    switch (i)
+    super(paramInt);
+  }
+  
+  protected int a(String paramString, Drawable paramDrawable)
+  {
+    int i = 0;
+    int j = 0;
+    if ((paramDrawable instanceof BitmapDrawable))
     {
+      paramString = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramString != null) {
+        j = paramString.getRowBytes() * paramString.getHeight();
+      }
+    }
+    int m;
+    int k;
+    do
+    {
+      do
+      {
+        return j;
+      } while (!(paramDrawable instanceof AnimationDrawable));
+      paramString = (AnimationDrawable)paramDrawable;
+      m = paramString.getNumberOfFrames();
+      k = 0;
+      j = i;
+    } while (k >= m);
+    paramDrawable = paramString.getFrame(k);
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramDrawable != null)
+      {
+        j = paramDrawable.getRowBytes();
+        i = paramDrawable.getHeight() * j + i;
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_Long).a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Clk_delete_local", 0, 0, "", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_Long + "", "", "");
-      continue;
-      if (TroopFileItemOperation.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation) != 0)
-      {
-        TroopFileManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_Long).a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Clk_delete_share", 0, 0, "", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_Long + "", "", "");
-      }
+      k += 1;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     han
  * JD-Core Version:    0.7.0.1
  */

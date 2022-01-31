@@ -1,83 +1,47 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.model.FriendManager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.profile.ProfileCardTemplate;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 
 public class cnl
-  extends CardObserver
+  implements Runnable
 {
-  public cnl(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public cnl(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if ((paramObject instanceof Card)) {}
-    for (Object localObject2 = (Card)paramObject;; localObject2 = null)
+    if (FriendProfileCardActivity.a(this.a) != null)
     {
-      if ((paramBoolean) && (localObject2 != null))
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.FrdProfileCard", 2, "initTemplateConfig currentCardTemplate=" + FriendProfileCardActivity.a(this.a).toString());
+      }
+      if (FriendProfileCardActivity.a(this.a).a(this.a.b))
       {
-        if ((DiscussionInfoCardActivity.a(this.a) != 0) || (!DiscussionInfoCardActivity.a(this.a).equals(((Card)localObject2).uin))) {
-          break label148;
-        }
-        paramObject = ((FriendManager)this.a.b.getManager(8)).b(DiscussionInfoCardActivity.a(this.a));
-        if ((!TextUtils.isEmpty(paramObject)) && (!paramObject.equals(DiscussionInfoCardActivity.b(this.a))))
+        localMessage = this.a.a.obtainMessage(8);
+        if (QLog.isColorLevel())
         {
-          DiscussionInfoCardActivity.a(this.a, paramObject);
-          ((HashMap)DiscussionInfoCardActivity.a(this.a).get(0)).put("memberName", DiscussionInfoCardActivity.b(this.a));
-          DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
-        }
-      }
-      return;
-      label148:
-      while (DiscussionInfoCardActivity.a(this.a) != 3000) {}
-      paramObject = (FriendManager)this.a.b.getManager(8);
-      String str = ((Card)localObject2).uin;
-      Object localObject3 = paramObject.c(str);
-      Object localObject1 = paramObject.b(str);
-      paramObject = localObject1;
-      if (localObject3 != null)
-      {
-        paramObject = localObject1;
-        if (!((Friends)localObject3).isFriend()) {
-          if (!TextUtils.isEmpty(((Card)localObject2).strAutoRemark))
-          {
-            localObject1 = ((Card)localObject2).strAutoRemark;
-            label237:
-            paramObject = localObject1;
-            if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-              break label351;
-            }
-            paramObject = ((Card)localObject2).uin;
+          if ((FriendProfileCardActivity.a(this.a) == null) || (FriendProfileCardActivity.a(this.a).a == null)) {
+            break label192;
           }
+          i = FriendProfileCardActivity.a(this.a).a.size();
+          QLog.d("Q.profilecard.FrdProfileCard", 2, "initTemplateConfig result=" + localMessage.what + ",templateAttr size=" + i);
         }
-      }
-      label351:
-      for (;;)
-      {
-        localObject1 = DiscussionInfoCardActivity.a(this.a).iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break;
-        }
-        localObject2 = (HashMap)((Iterator)localObject1).next();
-        localObject3 = (String)((HashMap)localObject2).get("memberUin");
-        if ((localObject3 == null) || (!((String)localObject3).equals(str))) {
-          break;
-        }
-        ((HashMap)localObject2).put("memberName", paramObject);
-        if (DiscussionInfoCardActivity.a(this.a) == null) {
-          break;
-        }
-        DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
-        return;
-        localObject1 = ((Card)localObject2).strNick;
-        break label237;
+        this.a.a.sendMessage(localMessage);
       }
     }
+    label192:
+    while (!QLog.isColorLevel()) {
+      for (;;)
+      {
+        return;
+        Message localMessage = this.a.a.obtainMessage(9);
+        continue;
+        int i = 0;
+      }
+    }
+    QLog.d("Q.profilecard.FrdProfileCard", 2, "initTemplateConfig currentCardTemplate is null");
   }
 }
 

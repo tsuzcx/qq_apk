@@ -1,15 +1,14 @@
-import com.tencent.av.ui.MultiVideoMembersHolderUI;
+import com.tencent.biz.pubaccount.assistant.PubAccountAssistantActivity;
 
 public class bkn
+  implements Runnable
 {
-  public static final int a = 0;
-  public static final int b = 1;
-  public static final int c = 2;
-  public static final int d = 3;
-  public static final int e = 4;
-  public static final int f = 5;
+  public bkn(PubAccountAssistantActivity paramPubAccountAssistantActivity) {}
   
-  bkn(MultiVideoMembersHolderUI paramMultiVideoMembersHolderUI) {}
+  public void run()
+  {
+    this.a.m_();
+  }
 }
 
 

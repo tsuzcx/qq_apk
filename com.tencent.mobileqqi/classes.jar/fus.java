@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.mobileqq.service.message.MessageCache;
 
-class fus
-  implements Runnable
+public class fus
 {
-  fus(fuo paramfuo) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
   
-  public void run()
+  public fus(OnlineFileSessionCenter paramOnlineFileSessionCenter, int paramInt)
   {
-    FMActivity.a(this.a.a);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = MessageCache.a();
   }
 }
 

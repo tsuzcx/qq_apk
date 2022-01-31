@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bf9" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020bda" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.textwidget.CellTextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0099" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bfa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bfb" android:layout_width="100.0dip" android:layout_height="50.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-        <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00ac" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bfc" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020765" android:layout_width="64.0dip" android:layout_height="30.0dip" android:layout_marginRight="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0b6b" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bb3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207a1" />
+        <TextView android:textColor="#ffc3c7c9" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bb4" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" />
+        <Button android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bf5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" />
+    </LinearLayout>
 </RelativeLayout>

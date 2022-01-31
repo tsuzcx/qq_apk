@@ -1,19 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.SwitchAccountActivity;
+import com.tencent.open.business.base.StaticAnalyz;
+import com.tencent.open.downloadnew.MyAppApi;
 
 public class hnw
-  implements View.OnClickListener
+  implements Runnable
 {
-  public hnw(SwitchAccountActivity paramSwitchAccountActivity) {}
+  public hnw(MyAppApi paramMyAppApi, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.a) {
-      return;
-    }
-    this.a.b = ((String)paramView.getTag());
-    this.a.i();
+    StaticAnalyz.a("202", StaticAnalyz.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
   }
 }
 

@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopMessageProcessor;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class hav
-  implements Comparator
+public final class hav
+  extends Thread
 {
-  public hav(TroopMessageProcessor paramTroopMessageProcessor) {}
+  public hav(String paramString1, String paramString2) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public void run()
   {
-    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
+    String str1 = CardHandler.a(this.a, CardHandler.c(BaseApplication.getContext()));
+    int i = CardHandler.d(BaseApplication.getContext());
+    String str2 = CardHandler.a(this.a, i);
+    ImageUtil.a(this.b, str1);
+    ImageUtil.a(this.b, str2, i, i);
+    FileUtils.a(this.b, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hav
  * JD-Core Version:    0.7.0.1
  */

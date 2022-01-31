@@ -1,36 +1,20 @@
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileError.TroopFileErrorFilter;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.activity.recent.RecentCallHelper;
 
-public class cfr
-  implements TroopFileError.TroopFileErrorFilter
+class cfr
+  implements Runnable
 {
-  private WeakReference a;
+  cfr(cfq paramcfq, String paramString) {}
   
-  public cfr(ChatActivity paramChatActivity)
+  public void run()
   {
-    this.a = new WeakReference(paramChatActivity);
-  }
-  
-  public long a()
-  {
-    if (this.a != null)
-    {
-      ChatActivity localChatActivity = (ChatActivity)this.a.get();
-      if ((localChatActivity != null) && (localChatActivity.a.jdField_a_of_type_Int == 1)) {
-        try
-        {
-          long l = Long.parseLong(localChatActivity.a.jdField_a_of_type_JavaLangString);
-          return l;
-        }
-        catch (Exception localException)
-        {
-          return 0L;
-        }
-      }
+    if (Conversation.a(this.jdField_a_of_type_Cfq.a) != null) {
+      Conversation.a(this.jdField_a_of_type_Cfq.a).a(this.jdField_a_of_type_JavaLangString, false);
     }
-    return 0L;
+    if (Conversation.a(this.jdField_a_of_type_Cfq.a) != null) {
+      Conversation.a(this.jdField_a_of_type_Cfq.a).a(this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

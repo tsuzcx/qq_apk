@@ -1,23 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import friendlist.GetOnlineInfoResp;
+import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantItemData;
+import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantManager;
+import java.util.Comparator;
 
 public class gjt
-  extends FriendListObserver
+  implements Comparator
 {
-  public gjt(QCallDetailActivity paramQCallDetailActivity) {}
+  public gjt(QZoneShareAlbumAssistantManager paramQZoneShareAlbumAssistantManager) {}
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  public int a(QZoneShareAlbumAssistantItemData paramQZoneShareAlbumAssistantItemData1, QZoneShareAlbumAssistantItemData paramQZoneShareAlbumAssistantItemData2)
   {
-    if ((paramBoolean) && (TextUtils.equals(paramString, QCallDetailActivity.a(this.a)))) {
-      this.a.runOnUiThread(new gju(this));
+    long l1 = paramQZoneShareAlbumAssistantItemData1.lastmsgtime;
+    long l2 = paramQZoneShareAlbumAssistantItemData2.lastmsgtime;
+    if (l1 < l2) {
+      return 1;
     }
-  }
-  
-  protected void a(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    this.a.runOnUiThread(new gjv(this));
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
   }
 }
 

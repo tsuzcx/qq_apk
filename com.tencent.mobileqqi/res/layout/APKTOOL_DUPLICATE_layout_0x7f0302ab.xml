@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b2c" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0a00c3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_gravity="top" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b2d" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0a00ac" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00b8" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b2e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="10.0dip" android:lineSpacingExtra="2.0dip" />
-    </RelativeLayout>
-    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0164" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00b8" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b2f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="15.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f080b2d" android:lineSpacingExtra="2.0dip" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b30" android:layout_width="fill_parent" android:layout_height="200.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:scaleType="fitXY" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f080b2f" />
-</RelativeLayout>
+    <com.qzone.widget.ExtendLinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b23" android:paddingLeft="12.0dip" android:paddingTop="15.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b24" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207b5" android:clickable="false" android:layout_width="fill_parent" android:layout_height="51.0dip">
+            <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00b4" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d05f2" />
+            <TextView android:textSize="14.0dip" android:textColor="#ff48afff" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b25" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="0.0dip" android:text="" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <DatePicker android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08033f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" />
+    </com.qzone.widget.ExtendLinearLayout>
+</LinearLayout>

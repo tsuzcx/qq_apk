@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class eqx
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public eqx(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public eqx(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a = null;
+    this.a.i();
   }
 }
 

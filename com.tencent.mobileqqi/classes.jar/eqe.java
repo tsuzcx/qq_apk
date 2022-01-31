@@ -1,31 +1,19 @@
-import com.tencent.mobileqq.activity.phone.PhoneMatchActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class eqe
-  extends ContactBindObserver
+class eqe
+  implements View.OnClickListener
 {
-  public eqe(PhoneMatchActivity paramPhoneMatchActivity) {}
+  eqe(eqd parameqd) {}
   
-  protected void b(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (this.a.a != null)
-    {
-      this.a.b.unRegistObserver(this.a.a);
-      this.a.a = null;
-    }
-    this.a.d();
-    if (paramBoolean)
-    {
-      if (this.a.a != null)
-      {
-        this.a.b.unRegistObserver(this.a.a);
-        this.a.a = null;
-      }
-      this.a.finish();
-      return;
-    }
-    this.a.b(2131558979);
+    this.a.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a(5, new Bundle());
+    ReportController.b(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Friends_select", "Fs_tab_clk", 0, 0, "4", "", "", "");
   }
 }
 

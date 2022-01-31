@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bnj;
+import bhf;
 import com.tencent.image.URLDrawable;
 import java.util.ArrayList;
 
@@ -84,18 +84,18 @@ public class PoiMapActivity$ShopListAdapter
     if (this.d == 0) {
       if (paramView == null)
       {
-        paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPoiMapActivity).inflate(2130903421, null);
+        paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPoiMapActivity).inflate(2130903423, null);
         paramViewGroup = new PoiMapActivity.ShopHolderView(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232553));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232555));
-        paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131232550);
-        paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131232556);
-        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232557));
-        paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232558));
-        paramViewGroup.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232560));
-        paramViewGroup.e = ((TextView)paramView.findViewById(2131232561));
-        paramViewGroup.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131232552);
-        paramViewGroup.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131232551);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232556));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232558));
+        paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131232553);
+        paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131232559);
+        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232560));
+        paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232561));
+        paramViewGroup.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232563));
+        paramViewGroup.e = ((TextView)paramView.findViewById(2131232564));
+        paramViewGroup.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131232555);
+        paramViewGroup.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131232554);
         paramView.setTag(paramViewGroup);
         if (paramInt != this.jdField_a_of_type_JavaUtilArrayList.size()) {
           break label210;
@@ -125,7 +125,7 @@ public class PoiMapActivity$ShopListAdapter
         localObject2 = URLDrawable.getDrawable(((PoiMapActivity.GeneralShops)localObject1).f);
         paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
-        ((URLDrawable)localObject2).setURLDrawableListener(new bnj(this, paramViewGroup.jdField_a_of_type_AndroidWidgetImageView));
+        ((URLDrawable)localObject2).setURLDrawableListener(new bhf(this, paramViewGroup.jdField_a_of_type_AndroidWidgetImageView));
         paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(((PoiMapActivity.GeneralShops)localObject1).jdField_b_of_type_JavaLangString);
         localObject2 = new SpannableString(((PoiMapActivity.GeneralShops)localObject1).jdField_c_of_type_JavaLangString);
         ((SpannableString)localObject2).setSpan(new StrikethroughSpan(), 0, ((PoiMapActivity.GeneralShops)localObject1).jdField_c_of_type_JavaLangString.length(), 33);
@@ -156,16 +156,16 @@ public class PoiMapActivity$ShopListAdapter
     } while (this.d != 1);
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPoiMapActivity).inflate(2130903422, null);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPoiMapActivity).inflate(2130903424, null);
       paramViewGroup = new PoiMapActivity.ShopHolderView(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232562));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232553));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232555));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131232550);
-      paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131232556);
-      paramViewGroup.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232560));
-      paramViewGroup.f = ((TextView)paramView.findViewById(2131232564));
-      paramViewGroup.g = ((TextView)paramView.findViewById(2131232563));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232565));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232556));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232558));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131232553);
+      paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131232559);
+      paramViewGroup.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232563));
+      paramViewGroup.f = ((TextView)paramView.findViewById(2131232567));
+      paramViewGroup.g = ((TextView)paramView.findViewById(2131232566));
       paramView.setTag(paramViewGroup);
       localObject1 = (PoiMapActivity.SingleShops)a(paramInt);
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((PoiMapActivity.SingleShops)localObject1).e);
@@ -185,7 +185,7 @@ public class PoiMapActivity$ShopListAdapter
       if (paramInt * 2 > ((PoiMapActivity.SingleShops)localObject1).d) {
         break label739;
       }
-      ((ImageView)localObject2).setImageResource(2130838474);
+      ((ImageView)localObject2).setImageResource(2130838476);
     }
     for (;;)
     {
@@ -199,9 +199,9 @@ public class PoiMapActivity$ShopListAdapter
       break label662;
       label739:
       if (paramInt * 2 - 1 == ((PoiMapActivity.SingleShops)localObject1).d) {
-        ((ImageView)localObject2).setImageResource(2130838473);
+        ((ImageView)localObject2).setImageResource(2130838475);
       } else {
-        ((ImageView)localObject2).setImageResource(2130838472);
+        ((ImageView)localObject2).setImageResource(2130838474);
       }
     }
     label772:

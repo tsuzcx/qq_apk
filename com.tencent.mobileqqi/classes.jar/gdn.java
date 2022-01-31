@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class gdn
-  implements FMDialogUtil.FMDialogInterface
 {
-  public gdn(SendBottomBar paramSendBottomBar) {}
-  
-  public void a()
-  {
-    SendBottomBar.b(this.a);
-  }
-  
-  public void b() {}
+  public ImageView a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gdn
  * JD-Core Version:    0.7.0.1
  */

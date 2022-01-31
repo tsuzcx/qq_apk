@@ -1,12 +1,14 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.mobileqq.activity.SubaccountUgActivity;
 
 public class dnw
-  extends FacePreloadBaseAdapter.ViewHolder
+  implements Runnable
 {
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  public dnw(SubaccountUgActivity paramSubaccountUgActivity) {}
+  
+  public void run()
+  {
+    this.a.i();
+  }
 }
 
 

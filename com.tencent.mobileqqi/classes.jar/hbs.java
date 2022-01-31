@@ -1,32 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
-public final class hbs
-  implements Runnable
+public class hbs
+  implements FileFilter
 {
-  public hbs(QQAppInterface paramQQAppInterface, Entity paramEntity) {}
-  
-  public void run()
+  public boolean accept(File paramFile)
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity != null) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity.getId() != -1L)) {
-      if (!localEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity)) {
-        localEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity.getClass());
-      }
-    }
-    for (;;)
-    {
-      localEntityManager.a();
-      return;
-      localEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity);
-    }
+    return Pattern.matches("cpu[0-9]", paramFile.getName());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hbs
  * JD-Core Version:    0.7.0.1
  */

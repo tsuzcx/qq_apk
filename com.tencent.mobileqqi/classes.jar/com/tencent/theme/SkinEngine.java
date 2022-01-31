@@ -98,8 +98,14 @@ public class SkinEngine
     {
       b = bool;
       IS_PROBLEM_MIUI = false;
-      d = new String[][] { { "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" }, { "drawable-hdpi/", "drawable-xhdpi/", "drawable-mdpi/", "drawable/" }, { "drawable-mdpi/", "drawable/", "drawable-hdpi/", "drawable-xhdpi/" }, { "drawable-ldpi/", "drawable-mdpi/", "drawable-hdpi/", "drawable-xhdpi/", "drawable/" }, { "drawable-xxhdpi", "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" } };
-      e = new int[][] { { 320, 240, 160, 160 }, { 240, 320, 160, 160 }, { 160, 160, 240, 320 }, { 120, 160, 240, 320, 160 }, { 480, 320, 240, 160, 160 } };
+      Object localObject1 = { "drawable-hdpi/", "drawable-xhdpi/", "drawable-mdpi/", "drawable/" };
+      Object localObject2 = { "drawable-mdpi/", "drawable/", "drawable-hdpi/", "drawable-xhdpi/" };
+      d = new String[][] { { "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" }, localObject1, localObject2, { "drawable-ldpi/", "drawable-mdpi/", "drawable-hdpi/", "drawable-xhdpi/", "drawable/" }, { "drawable-xxhdpi", "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" } };
+      localObject1 = new int[] { 320, 240, 160, 160 };
+      localObject2 = new int[] { 240, 320, 160, 160 };
+      int[] arrayOfInt1 = { 120, 160, 240, 320, 160 };
+      int[] arrayOfInt2 = { 480, 320, 240, 160, 160 };
+      e = new int[][] { localObject1, localObject2, { 160, 160, 240, 320 }, arrayOfInt1, arrayOfInt2 };
       f = 0;
       g = 1;
       h = 2;

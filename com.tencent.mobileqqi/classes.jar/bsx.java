@@ -1,21 +1,38 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.qrcode.activity.QRLoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.SubAccountSettingActivity;
+import com.tencent.mobileqq.activity.SubaccountUgActivity;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.subaccount.SubAccountDataControll;
 
-class bsx
-  extends Thread
+public class bsx
+  implements View.OnClickListener
 {
-  bsx(bsw parambsw, String paramString) {}
+  public bsx(AccountManageActivity paramAccountManageActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Drawable localDrawable = this.jdField_a_of_type_Bsw.a.b.b(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Bsw.a.runOnUiThread(new bsy(this, localDrawable));
+    ReportController.b(this.a.b, "CliOper", "", "", "0X8004039", "0X8004039", 0, 0, "", "", "", "");
+    com.tencent.mobileqq.activity.SubAccountBaseActivity.a = true;
+    paramView = SubAccountDataControll.a().a(this.a.b);
+    if ((paramView != null) && (!TextUtils.isEmpty(paramView.subuin)))
+    {
+      paramView = new Intent(this.a, SubAccountSettingActivity.class);
+      this.a.startActivity(paramView);
+      return;
+    }
+    paramView = new Intent(this.a, SubaccountUgActivity.class);
+    paramView.putExtra("from_where", true);
+    this.a.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bsx
  * JD-Core Version:    0.7.0.1
  */

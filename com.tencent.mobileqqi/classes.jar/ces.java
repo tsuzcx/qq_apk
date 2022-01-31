@@ -1,16 +1,29 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
 
-public class ces
-  implements View.OnTouchListener
+class ces
+  implements Runnable
 {
-  public ces(ChatActivity paramChatActivity) {}
+  ces(cer paramcer, boolean paramBoolean) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    return true;
+    Conversation.a(this.jdField_a_of_type_Cer.a, true);
+    PullRefreshHeader localPullRefreshHeader;
+    if (Conversation.b(this.jdField_a_of_type_Cer.a))
+    {
+      Conversation.a(this.jdField_a_of_type_Cer.a, 800L);
+      localPullRefreshHeader = Conversation.a(this.jdField_a_of_type_Cer.a);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label63;
+      }
+    }
+    label63:
+    for (int i = 0;; i = 2)
+    {
+      localPullRefreshHeader.a(i);
+      return;
+    }
   }
 }
 

@@ -1,25 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.filemanager.activity.CloudFileBrowserActivity;
-import com.tencent.mobileqq.widget.GridListView;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
 
-public class fud
-  extends Handler
+class fud
 {
-  public fud(CloudFileBrowserActivity paramCloudFileBrowserActivity) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.B();
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.B();
-  }
+  public int a;
+  public long a = 0L;
+  public HttpMsg a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b = 0L;
+  public String b;
+  public long c = 0L;
+  public String c;
+  public long d = 0L;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
 }
 
 

@@ -1,28 +1,25 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SetTroopAdminsActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.SubaccountUgActivity;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
 
 public class dnn
-  implements View.OnClickListener
+  extends MessageObserver
 {
-  public dnn(SetTroopAdminsActivity paramSetTroopAdminsActivity) {}
+  public dnn(SubaccountUgActivity paramSubaccountUgActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    if ((SetTroopAdminsActivity.a(this.a) > 0) && (SetTroopAdminsActivity.a(this.a) <= SetTroopAdminsActivity.a(this.a).size() - 1))
-    {
-      QQToast.a(this.a, 1, String.format(this.a.getString(2131562353), new Object[] { Integer.valueOf(SetTroopAdminsActivity.a(this.a)) }), 0).b(this.a.d());
+    if (this.a.isFinishing()) {
       return;
     }
-    paramView = new Intent(this.a, TroopMemberListActivity.class);
-    paramView.putExtra("troop_code", SetTroopAdminsActivity.a(this.a));
-    paramView.putExtra("troop_uin", SetTroopAdminsActivity.b(this.a));
-    paramView.putExtra("mode", 1);
-    this.a.startActivityForResult(paramView, 0);
+    paramString = this.a.getString(2131562520);
+    if (paramSubAccountBackProtocData.p == 0) {}
+    for (int i = 2131563288;; i = 2131563291)
+    {
+      paramSubAccountBackProtocData = this.a.getString(i);
+      this.a.a(paramString, paramSubAccountBackProtocData, this.a.getString(2131562543), new dno(this));
+      return;
+    }
   }
 }
 

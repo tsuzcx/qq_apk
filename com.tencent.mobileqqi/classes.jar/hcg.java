@@ -1,33 +1,24 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class hcg
-  implements Runnable
+  implements View.OnClickListener
 {
-  public hcg(TroopFileTransferManager paramTroopFileTransferManager) {}
+  public hcg(QQCustomDialog paramQQCustomDialog, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    for (;;)
-    {
-      synchronized (this.a)
-      {
-        if (this.a.e == 0L) {
-          return;
-        }
-        if (SystemClock.uptimeMillis() > this.a.e + 10000L)
-        {
-          this.a.e = 0L;
-          this.a.a();
-          return;
-        }
-      }
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, 1);
     }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hcg
  * JD-Core Version:    0.7.0.1
  */

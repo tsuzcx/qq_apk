@@ -1,24 +1,18 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.utils.DialogUtil;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.MayKnowManActivity;
 
 public class cvw
-  implements AdapterView.OnItemClickListener
+  implements DialogInterface.OnCancelListener
 {
-  public cvw(GroupManagerActivity paramGroupManagerActivity) {}
+  public cvw(MayKnowManActivity paramMayKnowManActivity) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((paramInt - 1 < 0) || (this.a.a.size() <= paramInt - 1)) {
-      return;
+    this.a.a = null;
+    if (!this.a.isFinishing()) {
+      this.a.finish();
     }
-    GroupManagerActivity.a(this.a, (Groups)this.a.a.get(paramInt - 1));
-    GroupManagerActivity.a(this.a, DialogUtil.a(this.a, 2131562003, 2131562625, GroupManagerActivity.a(this.a).group_name, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
-    GroupManagerActivity.a(this.a, 1);
   }
 }
 

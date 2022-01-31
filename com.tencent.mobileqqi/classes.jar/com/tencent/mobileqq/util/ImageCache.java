@@ -3,7 +3,7 @@ package com.tencent.mobileqq.util;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
 import com.tencent.qphone.base.util.QLog;
-import heu;
+import han;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 
@@ -20,7 +20,7 @@ public class ImageCache
     if (QLog.isColorLevel()) {
       QLog.d("ImageCache", 2, "Memory cache size = " + paramInt + "MB");
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache = new heu(this, paramInt * 1024 * 1024);
+    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache = new han(this, paramInt * 1024 * 1024);
   }
   
   public Drawable a(String paramString)

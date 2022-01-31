@@ -1,31 +1,35 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
+import com.tencent.mobileqq.richstatus.ActionInfo;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.IActionListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusManager;
 
 public class ggr
-  implements TextWatcher
+  implements IActionListener
 {
-  public ggr(RoamSearchDialog paramRoamSearchDialog) {}
+  public ggr(EditActivity paramEditActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (this.a.a.getText().toString().trim().length() == 0)
+    if ((paramInt1 == 102) && (EditActivity.a(this.a).b != 0) && (" ".equals(EditActivity.a(this.a).c)))
     {
-      this.a.findViewById(2131233086).setVisibility(8);
-      return;
+      ActionInfo localActionInfo = EditActivity.a(this.a).a(EditActivity.a(this.a).b);
+      if (localActionInfo != null)
+      {
+        EditActivity.a(this.a).c = localActionInfo.d;
+        EditActivity.a(this.a, false);
+      }
     }
-    this.a.findViewById(2131233086).setVisibility(0);
+    if (EditActivity.a(this.a) != null)
+    {
+      EditActivity.a(this.a, true);
+      EditActivity.a(this.a).notifyDataSetChanged();
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     ggr
  * JD-Core Version:    0.7.0.1
  */

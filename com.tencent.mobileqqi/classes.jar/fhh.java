@@ -1,95 +1,60 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.utils.Base64Util;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.OutputStream;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class fhh
+  extends Handler
 {
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  public int c;
-  public long c;
-  public long d;
-  public long e;
-  public long f;
-  public long g;
-  public long h;
-  
-  public fhh(GuardManager paramGuardManager) {}
-  
-  public void a()
+  public fhh(TroopQZoneUploadAlbumHandler paramTroopQZoneUploadAlbumHandler, Looper paramLooper, QQAppInterface paramQQAppInterface)
   {
-    try
-    {
-      Object localObject = BaseApplicationImpl.a().getSharedPreferences("MemoryInfomation", 0).getString("MemoryInfomation", null);
-      if (localObject != null)
-      {
-        if (((String)localObject).length() == 0) {
-          return;
-        }
-        localObject = new DataInputStream(new ByteArrayInputStream(Base64Util.a((String)localObject, 0)));
-        this.jdField_a_of_type_Long = ((DataInputStream)localObject).readLong();
-        this.jdField_a_of_type_Int = ((DataInputStream)localObject).readInt();
-        this.jdField_b_of_type_Long = ((DataInputStream)localObject).readLong();
-        this.jdField_c_of_type_Long = ((DataInputStream)localObject).readLong();
-        this.d = ((DataInputStream)localObject).readLong();
-        this.e = ((DataInputStream)localObject).readLong();
-        this.f = ((DataInputStream)localObject).readLong();
-        this.g = ((DataInputStream)localObject).readLong();
-        this.h = ((DataInputStream)localObject).readLong();
-        this.jdField_b_of_type_Int = ((DataInputStream)localObject).readInt();
-        this.jdField_c_of_type_Int = ((DataInputStream)localObject).readInt();
-        return;
-      }
-    }
-    catch (Exception localException) {}
+    super(paramLooper);
   }
   
-  public void b()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.d = 0L;
-    this.e = 0L;
-    this.f = 0L;
-    this.g = 0L;
-    this.h = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-  }
-  
-  public void c()
-  {
-    try
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      Object localObject = new ByteArrayOutputStream();
-      DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
-      localDataOutputStream.writeLong(this.jdField_a_of_type_Long);
-      localDataOutputStream.writeInt(this.jdField_a_of_type_Int);
-      localDataOutputStream.writeLong(this.jdField_b_of_type_Long);
-      localDataOutputStream.writeLong(this.jdField_c_of_type_Long);
-      localDataOutputStream.writeLong(this.d);
-      localDataOutputStream.writeLong(this.e);
-      localDataOutputStream.writeLong(this.f);
-      localDataOutputStream.writeLong(this.g);
-      localDataOutputStream.writeLong(this.h);
-      localDataOutputStream.writeInt(this.jdField_b_of_type_Int);
-      localDataOutputStream.writeInt(this.jdField_c_of_type_Int);
-      localDataOutputStream.flush();
-      localObject = ((ByteArrayOutputStream)localObject).toByteArray();
-      BaseApplicationImpl.a().getSharedPreferences("MemoryInfomation", 0).edit().putString("MemoryInfomation", Base64Util.a((byte[])localObject, 0)).commit();
+    default: 
+      return;
+    case 1001: 
+      QLog.d("UploadPhoto", 2, "Get Message Progress. clientKey= " + paramMessage.arg1 + " progress=" + paramMessage.arg2);
+      i = paramMessage.arg1;
+      this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, i, paramMessage.arg2);
+      return;
+    case 1000: 
+      QLog.d("UploadPhoto", 2, "Get Message Finished. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
+      i = paramMessage.arg1;
+      this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, i, paramMessage.arg2);
+      return;
+    case 1003: 
+      QLog.d("UploadPhoto", 2, "Get Message failed. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
+      i = paramMessage.arg1;
+      this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, i, paramMessage.arg2);
+      return;
+    case 1005: 
+      QLog.d("UploadPhoto", 2, "Get Message task removed. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
+      i = paramMessage.arg1;
+      this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, i, paramMessage.arg2);
+      this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a.remove(i);
+      return;
+    case 1004: 
+      QLog.d("UploadPhoto", 2, "Get Message no task. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
+      this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, paramMessage.arg1, paramMessage.arg2);
+      this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a.clear();
       return;
     }
-    catch (Exception localException) {}
+    paramMessage = (Object[])paramMessage.obj;
+    int i = ((Integer)paramMessage[0]).intValue();
+    fhk localfhk = (fhk)paramMessage[1];
+    int j = ((Integer)paramMessage[2]).intValue();
+    int k = ((Integer)paramMessage[3]).intValue();
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(localfhk.jdField_a_of_type_Long, j, k);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, localfhk.jdField_a_of_type_JavaLangString, localfhk.jdField_a_of_type_Long, j, k);
   }
 }
 

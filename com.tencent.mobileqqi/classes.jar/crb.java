@@ -1,15 +1,15 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
 
-public final class crb
+class crb
   implements Runnable
 {
-  public crb(Context paramContext) {}
+  crb(cra paramcra, Bitmap paramBitmap) {}
   
   public void run()
   {
-    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131561494), 0).b(this.a.getResources().getDimensionPixelSize(2131427376));
+    this.jdField_a_of_type_Cra.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

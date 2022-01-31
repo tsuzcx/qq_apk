@@ -1,41 +1,17 @@
-import com.tencent.mobileqq.app.NearHornHandler;
-import com.tencent.mobileqq.data.HornDetail;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.message.BaseMessageManager;
+import com.tencent.mobileqq.app.message.MsgProxyUtils;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import java.util.Map;
 
-public class fiu
+class fiu
   implements Runnable
 {
-  public fiu(NearHornHandler paramNearHornHandler, String paramString) {}
+  fiu(fit paramfit) {}
   
   public void run()
   {
-    Object localObject1 = null;
-    try
-    {
-      localObject2 = (List)this.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.b);
-      localObject1 = localObject2;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject2;
-        localException.printStackTrace();
-      }
-    }
-    if ((localObject1 != null) && (localObject1.size() > 0))
-    {
-      localObject2 = localObject1.iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        HornDetail localHornDetail = (HornDetail)((Iterator)localObject2).next();
-        if (localHornDetail.hornKey.equals(this.jdField_a_of_type_JavaLangString)) {
-          localObject1.remove(localHornDetail);
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.c = localObject1;
-      NearHornHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler, this.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.c, this.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.b);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a.b.containsKey(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a.b.remove(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
     }
   }
 }

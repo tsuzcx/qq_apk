@@ -9,10 +9,10 @@ public abstract class ConfigDialog
   public static String a;
   public static int b;
   public static String b;
-  protected Bundle a;
+  public Bundle a;
   protected CommandListener a;
-  protected String c;
-  protected String d;
+  public String c;
+  public String d;
   
   static
   {

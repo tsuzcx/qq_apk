@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.activity.phone.PhoneMatchActivity;
+import com.tencent.mobileqq.model.PhoneContactManager;
 
 public class elr
   implements Runnable
 {
-  public elr(TroopActivity paramTroopActivity) {}
+  public elr(PhoneMatchActivity paramPhoneMatchActivity) {}
   
   public void run()
   {
-    if (TroopActivity.a(this.a) != null) {
-      TroopActivity.a(this.a).b();
-    }
+    this.a.a.e();
   }
 }
 

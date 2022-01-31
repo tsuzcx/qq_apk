@@ -1,18 +1,71 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.qphone.base.util.QLog;
 
-class fut
-  implements Runnable
+public class fut
 {
-  fut(fuo paramfuo, boolean paramBoolean) {}
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private Thread jdField_a_of_type_JavaLangThread = null;
+  private boolean jdField_a_of_type_Boolean = false;
+  private Object jdField_b_of_type_JavaLangObject = new Object();
+  private boolean jdField_b_of_type_Boolean = true;
   
-  public void run()
+  private fut(OnlineFileSessionCenter paramOnlineFileSessionCenter) {}
+  
+  public void a()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!a())
     {
-      FMActivity.b(this.jdField_a_of_type_Fuo.a);
+      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  progress make pump thread is  running!!!");
       return;
     }
-    FMActivity.c(this.jdField_a_of_type_Fuo.a);
+    a(false);
+    this.jdField_a_of_type_JavaLangThread = new Thread(new fuu(this));
+    this.jdField_a_of_type_JavaLangThread.start();
+  }
+  
+  void a(boolean paramBoolean)
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      this.jdField_b_of_type_Boolean = paramBoolean;
+      return;
+    }
+  }
+  
+  boolean a()
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      boolean bool = this.jdField_b_of_type_Boolean;
+      return bool;
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaLangThread != null)
+    {
+      b(true);
+      this.jdField_a_of_type_JavaLangThread = null;
+    }
+  }
+  
+  void b(boolean paramBoolean)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      return;
+    }
+  }
+  
+  boolean b()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
+    }
   }
 }
 

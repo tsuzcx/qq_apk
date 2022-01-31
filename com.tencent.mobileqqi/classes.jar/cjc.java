@@ -1,45 +1,20 @@
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.MessageObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.DoodleActivity;
 
 public class cjc
-  extends MessageObserver
+  implements View.OnClickListener
 {
-  public cjc(ChatSettingActivity paramChatSettingActivity) {}
+  public cjc(DoodleActivity paramDoodleActivity) {}
   
-  protected void b(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (!ChatSettingActivity.c(this.a)) {
-      return;
-    }
-    ChatSettingActivity.c(this.a, false);
-    ChatSettingActivity.e(this.a);
-    if (paramBoolean)
-    {
-      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.b(this.a, true);
-      }
-      ChatSettingActivity.c(this.a);
-      return;
-    }
-    ChatSettingActivity.a(this.a, 2131562919, 1);
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    if (!ChatSettingActivity.c(this.a)) {
-      return;
-    }
-    ChatSettingActivity.c(this.a, false);
-    ChatSettingActivity.e(this.a);
-    if (paramBoolean)
-    {
-      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.b(this.a, false);
-      }
-      ChatSettingActivity.c(this.a);
-      return;
-    }
-    ChatSettingActivity.a(this.a, 2131562919, 1);
+    this.a.b.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+    this.a.a();
   }
 }
 

@@ -13,8 +13,8 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.qphone.base.util.QLog;
-import hjf;
-import hjg;
+import hey;
+import hez;
 
 public class ADView
   extends LinearLayout
@@ -23,7 +23,7 @@ public class ADView
   private float jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   public WorkSpaceView a;
-  private hjg jdField_a_of_type_Hjg = new hjg(this);
+  private hez jdField_a_of_type_Hez = new hez(this);
   private boolean jdField_a_of_type_Boolean = false;
   private int b = 2130837615;
   private int c = this.b;
@@ -163,7 +163,7 @@ public class ADView
       localRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
       localObject1 = new LinearLayout(getContext());
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView = new WorkSpaceView(getContext());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setOnScreenChangeListener(new hjf(this, (LinearLayout)localObject1));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setOnScreenChangeListener(new hey(this, (LinearLayout)localObject1));
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
       Object localObject2 = new LinearLayout.LayoutParams(-1, -1);
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setId(100000);
@@ -173,7 +173,7 @@ public class ADView
       ((RelativeLayout.LayoutParams)localObject2).addRule(14, 100000);
       ((RelativeLayout.LayoutParams)localObject2).setMargins(0, 0, 0, (int)(6.0F * this.jdField_a_of_type_Float));
       ((LinearLayout)localObject1).setGravity(16);
-      ((LinearLayout)localObject1).setBackgroundResource(2130838095);
+      ((LinearLayout)localObject1).setBackgroundResource(2130838097);
       ((LinearLayout)localObject1).setPadding((int)(4.0F * this.jdField_a_of_type_Float), 0, (int)(2.0F * this.jdField_a_of_type_Float), 0);
       ((LinearLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       localRelativeLayout.addView((View)localObject1);
@@ -204,13 +204,13 @@ public class ADView
   
   public void b()
   {
-    this.jdField_a_of_type_Hjg.removeMessages(0);
-    this.jdField_a_of_type_Hjg.sendEmptyMessage(0);
+    this.jdField_a_of_type_Hez.removeMessages(0);
+    this.jdField_a_of_type_Hez.sendEmptyMessage(0);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Hjg.sendEmptyMessage(1);
+    this.jdField_a_of_type_Hez.sendEmptyMessage(1);
   }
   
   public void setIsCloseADView(boolean paramBoolean)

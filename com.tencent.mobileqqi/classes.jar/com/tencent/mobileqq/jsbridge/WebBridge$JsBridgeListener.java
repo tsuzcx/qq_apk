@@ -2,9 +2,9 @@ package com.tencent.mobileqq.jsbridge;
 
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import gdy;
-import gdz;
-import gea;
+import fzm;
+import fzn;
+import fzo;
 import java.lang.ref.WeakReference;
 import org.json.JSONObject;
 
@@ -36,7 +36,7 @@ public class WebBridge$JsBridgeListener
       }
       return;
     }
-    localWebView.post(new gdz(this, localWebView));
+    localWebView.post(new fzn(this, localWebView));
   }
   
   public void a(String paramString)
@@ -52,7 +52,7 @@ public class WebBridge$JsBridgeListener
       }
       return;
     }
-    localWebView.post(new gea(this, paramString, localWebView));
+    localWebView.post(new fzo(this, paramString, localWebView));
   }
   
   public void a(JSONObject paramJSONObject)
@@ -69,7 +69,7 @@ public class WebBridge$JsBridgeListener
     if (QLog.isColorLevel()) {
       QLog.i("BaseWebActivity.WebBridge", 2, "WebBridge onComplete,callbackId=" + this.jdField_a_of_type_JavaLangString + ",json=" + str);
     }
-    localWebView.post(new gdy(this, paramJSONObject, localWebView));
+    localWebView.post(new fzm(this, paramJSONObject, localWebView));
   }
 }
 

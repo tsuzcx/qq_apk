@@ -1,23 +1,29 @@
-import android.view.animation.TranslateAnimation;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTimer;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView.TimerCallback;
 
 public class gld
-  implements Runnable
+  implements CountdownTextView.TimerCallback
 {
-  public gld(EditActivity paramEditActivity) {}
+  public gld(StructMsgItemTimer paramStructMsgItemTimer, CountdownTextView paramCountdownTextView) {}
   
-  public void run()
+  public void a()
   {
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -20.0F, 0.0F);
-    localTranslateAnimation.setDuration(400L);
-    localTranslateAnimation.setAnimationListener(new gle(this));
-    EditActivity.a(this.a).startAnimation(localTranslateAnimation);
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_c_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(StructMsgItemTimer.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer, 0L));
+  }
+  
+  public void a(long paramLong)
+  {
+    paramLong /= 1000L;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(StructMsgItemTimer.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer, paramLong));
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_c_of_type_Long = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gld
  * JD-Core Version:    0.7.0.1
  */

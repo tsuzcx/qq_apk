@@ -1,33 +1,28 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.animation.Animation;
+import com.tencent.common.galleryactivity.AbstractAnimationManager;
+import com.tencent.common.galleryactivity.AbstractGalleryScene;
+import com.tencent.common.galleryactivity.GalleryManager;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
 public class bpz
-  implements ActionSheet.OnButtonClickListener
+  extends AnimateUtils.AnimationAdapter
 {
-  public bpz(AccountDetailActivity paramAccountDetailActivity) {}
+  public bpz(AbstractGalleryScene paramAbstractGalleryScene) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (AccountDetailActivity.a(this.a)) {
-      return;
-    }
-    AccountDetailActivity.a(this.a, true);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a.a.dismiss();
-      return;
-      AccountDetailActivity.d(this.a);
-    }
+    this.a.a.a().b();
+    this.a.a.a().a();
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a.a().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bpz
  * JD-Core Version:    0.7.0.1
  */

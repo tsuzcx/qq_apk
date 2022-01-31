@@ -1,17 +1,18 @@
-import java.io.File;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
 
-class fme
-  implements Comparator
+public class fme
+  implements View.OnClickListener
 {
-  fme(fmc paramfmc) {}
+  public fme(IphonePickerView paramIphonePickerView) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void onClick(View paramView)
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
+    if (IphonePickerView.a(this.a) != null) {
+      IphonePickerView.a(this.a).a();
     }
-    return 0;
   }
 }
 

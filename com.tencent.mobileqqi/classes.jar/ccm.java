@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.activity.BaseSystemActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
 
 public class ccm
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ccm(BaseSystemActivity paramBaseSystemActivity) {}
+  public ccm(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, int paramInt, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a();
+    View localView = (View)paramView.getParent();
+    new ccn(this, paramView.getTag(), localView).run();
   }
 }
 

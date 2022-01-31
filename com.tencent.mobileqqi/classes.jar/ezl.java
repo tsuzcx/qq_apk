@@ -1,19 +1,20 @@
-import android.media.SoundPool;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
 
-class ezl
+public class ezl
   implements Runnable
 {
-  ezl(ezk paramezk) {}
+  public ezl(BusinessHandler paramBusinessHandler, BusinessObserver paramBusinessObserver, int paramInt, Handler paramHandler, boolean paramBoolean, Object paramObject) {}
   
   public void run()
   {
-    VoipDialInterfaceActivity.a(this.a.a).play(VoipDialInterfaceActivity.b(this.a.a), 1.0F, 1.0F, 0, 0, 1.0F);
+    this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ezl
  * JD-Core Version:    0.7.0.1
  */

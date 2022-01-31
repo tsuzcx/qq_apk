@@ -1,24 +1,28 @@
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.UpdateTroop;
+import com.tencent.qphone.base.util.QLog;
 
 public class fiq
+  extends TroopObserver
 {
-  public static final int a = 1;
-  public static final int b = 2;
-  public static final int c = 3;
-  public static final int d = 4;
-  public static final int e = 5;
-  public FromServiceMsg a;
-  public ToServiceMsg a;
-  public Object a;
-  public int f;
+  private fiq(UpdateTroop paramUpdateTroop) {}
   
-  public fiq(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  protected void b(boolean paramBoolean)
   {
-    this.f = paramInt;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "updateTroopList:" + paramBoolean);
+    }
+    if (!paramBoolean)
+    {
+      this.a.a(6);
+      return;
+    }
+    UpdateTroop.a(this.a).a.edit().putBoolean("isTrooplistok", true).commit();
+    UpdateTroop.b(this.a).a(3, true, Integer.valueOf(2));
+    this.a.a(7);
   }
 }
 

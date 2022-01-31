@@ -1,20 +1,17 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SplashActivity;
 
-class djr
-  implements Runnable
+public class djr
+  implements CompoundButton.OnCheckedChangeListener
 {
-  djr(djq paramdjq) {}
+  public djr(SplashActivity paramSplashActivity) {}
   
-  public void run()
-  {
-    this.a.a.c();
-    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
-  }
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     djr
  * JD-Core Version:    0.7.0.1
  */

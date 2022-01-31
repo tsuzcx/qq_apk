@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.config.AboutConfig;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
+import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
 
-public final class fqy
+class fqy
   implements Runnable
 {
-  public fqy(AboutConfig paramAboutConfig, ResourcePluginInfo paramResourcePluginInfo) {}
+  fqy(fqx paramfqx) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig.a(this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo);
-    this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig.c();
+    FMRecentFileActivity.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fqy
  * JD-Core Version:    0.7.0.1
  */

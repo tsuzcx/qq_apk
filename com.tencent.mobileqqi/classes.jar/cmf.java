@@ -1,25 +1,26 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.RecentCallHelper;
+import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
-class cmf
+public class cmf
   implements Runnable
 {
-  cmf(cmc paramcmc, boolean paramBoolean) {}
+  public cmf(ForwardRecentActivity paramForwardRecentActivity) {}
   
   public void run()
   {
-    if (Conversation.a(this.jdField_a_of_type_Cmc.a) != null)
+    if (this.a.isFinishing()) {}
+    do
     {
-      Conversation.a(this.jdField_a_of_type_Cmc.a).a(this.jdField_a_of_type_Cmc.a.a, this.jdField_a_of_type_Boolean);
-      if (this.jdField_a_of_type_Boolean) {
-        Conversation.a(this.jdField_a_of_type_Cmc.a).a(true, true, Conversation.a(this.jdField_a_of_type_Cmc.a));
-      }
-    }
+      return;
+      this.a.c = true;
+      ForwardRecentActivity.a(this.a).e();
+    } while ((!this.a.a) || (this.a.f != 11));
+    ForwardRecentActivity.a(this.a).a("-1010", -1, "", this.a.getString(2131560461));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cmf
  * JD-Core Version:    0.7.0.1
  */

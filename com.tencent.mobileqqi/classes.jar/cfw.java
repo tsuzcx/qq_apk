@@ -1,23 +1,17 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.ConfigObserver;
+import com.tencent.mobileqq.data.AppShareID;
 
-public final class cfw
-  implements Runnable
+public class cfw
+  extends ConfigObserver
 {
-  public cfw(Context paramContext, QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage) {}
+  public cfw(Conversation paramConversation) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
   {
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
-    localActionSheet.a(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131560601));
-    localActionSheet.a(2131561917, 3);
-    localActionSheet.d(2131561746);
-    localActionSheet.a(new cfx(this, localActionSheet));
-    localActionSheet.show();
+    if (paramBoolean) {
+      this.a.a(0L);
+    }
   }
 }
 

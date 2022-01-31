@@ -6,7 +6,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.photopreview.CountDownTimer;
 import com.tencent.mobileqq.activity.photopreview.CountDownTimer.CountDownTimerListener;
-import gpm;
+import glf;
 
 public class CountdownTextView
   extends TextView
@@ -66,7 +66,7 @@ public class CountdownTextView
     CountDownTimer localCountDownTimer = ChatActivity.a;
     if (localCountDownTimer != null)
     {
-      this.a = new gpm(this, paramLong, paramTimerCallback);
+      this.a = new glf(this, paramLong, paramTimerCallback);
       localCountDownTimer.a(this.a);
     }
   }

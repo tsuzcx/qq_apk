@@ -1,23 +1,39 @@
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCarePersonActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.voip.VoipContact;
+import com.tencent.mobileqq.activity.voip.VoipDialData;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import com.tencent.mobileqq.activity.voip.VoipPhoneNumber;
+import com.tencent.mobileqq.activity.voip.VoipQCallTimeOutActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.PhoneContactManager;
 
 public class exa
-  extends FriendListObserver
+  implements View.OnClickListener
 {
-  public exa(QvipSpecialCarePersonActivity paramQvipSpecialCarePersonActivity) {}
+  public exa(VoipQCallTimeOutActivity paramVoipQCallTimeOutActivity, String paramString) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      QvipSpecialCarePersonActivity.a(this.a);
+    paramView = new Intent();
+    PhoneContactManager localPhoneContactManager = (PhoneContactManager)this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipQCallTimeOutActivity.b.getManager(10);
+    if (localPhoneContactManager != null)
+    {
+      VoipQCallTimeOutActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipQCallTimeOutActivity, localPhoneContactManager.a(this.jdField_a_of_type_JavaLangString, null, null));
+      if (VoipQCallTimeOutActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipQCallTimeOutActivity).phoneNumber != null) {}
     }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean2) {
-      QvipSpecialCarePersonActivity.a(this.a);
+    else
+    {
+      return;
     }
+    if (VoipQCallTimeOutActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipQCallTimeOutActivity).phoneNumber.jdField_a_of_type_JavaLangString.length() > 0)
+    {
+      paramView.putExtra("dialData", new VoipDialData(VoipQCallTimeOutActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipQCallTimeOutActivity).phoneNumber.b, VoipQCallTimeOutActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipQCallTimeOutActivity).phoneNumber.jdField_a_of_type_JavaLangString));
+      paramView.putExtra("callNow", 0);
+    }
+    paramView.setClass(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipQCallTimeOutActivity, VoipDialInterfaceActivity.class);
+    this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipQCallTimeOutActivity.startActivity(paramView);
   }
 }
 

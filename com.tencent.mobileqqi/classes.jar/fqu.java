@@ -1,30 +1,34 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
-import com.tencent.mobileqq.remind.widget.WheelView;
-import com.tencent.widget.VerticalGallery;
-import com.tencent.widget.VerticalGallery.OnEndMovementListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
+import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter.ItemHolder;
+import com.tencent.qphone.base.util.QLog;
 
 public class fqu
-  implements VerticalGallery.OnEndMovementListener
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
+  public fqu(FMLocalFileActivity paramFMLocalFileActivity) {}
   
-  public fqu(IphonePickerView paramIphonePickerView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(VerticalGallery paramVerticalGallery)
-  {
-    int i = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView)[this.jdField_a_of_type_Int].p();
-    if (IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView) != null) {
-      IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.jdField_a_of_type_Int, i);
+    if (!this.a.c()) {
+      if (QLog.isColorLevel()) {
+        QLog.i(FMLocalFileActivity.b, 2, "click too fast , wait a minute.");
+      }
     }
+    do
+    {
+      return;
+      this.a.d();
+      paramView = (FileCategoryAdapter.ItemHolder)paramView.getTag();
+    } while (paramView.a == 0);
+    int i = paramView.a;
+    FMLocalFileActivity.a(this.a, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fqu
  * JD-Core Version:    0.7.0.1
  */

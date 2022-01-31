@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ViewFlipper;
-import bqd;
+import bjz;
 import com.tencent.qphone.base.util.QLog;
 
 public class GridViewFlipper
@@ -15,7 +15,7 @@ public class GridViewFlipper
   private static final int b = 0;
   private static final int c = 1;
   private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  private bqd jdField_a_of_type_Bqd;
+  private bjz jdField_a_of_type_Bjz;
   private int d = 0;
   
   public GridViewFlipper(Context paramContext)
@@ -44,8 +44,8 @@ public class GridViewFlipper
         {
           QLog.d("ViewFlipperTest", 2, "======need move========");
           this.d = 1;
-          if (this.jdField_a_of_type_Bqd != null) {
-            this.jdField_a_of_type_Bqd.a(this.jdField_a_of_type_AndroidViewMotionEvent, paramMotionEvent);
+          if (this.jdField_a_of_type_Bjz != null) {
+            this.jdField_a_of_type_Bjz.a(this.jdField_a_of_type_AndroidViewMotionEvent, paramMotionEvent);
           }
           this.jdField_a_of_type_AndroidViewMotionEvent = null;
           continue;
@@ -60,9 +60,9 @@ public class GridViewFlipper
     return false;
   }
   
-  public void setOnScrollListener(bqd parambqd)
+  public void setOnScrollListener(bjz parambjz)
   {
-    this.jdField_a_of_type_Bqd = parambqd;
+    this.jdField_a_of_type_Bjz = parambjz;
   }
 }
 

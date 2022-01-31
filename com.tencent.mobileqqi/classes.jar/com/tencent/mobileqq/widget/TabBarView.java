@@ -13,8 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import hmb;
-import hmc;
+import hhx;
+import hhy;
 
 public class TabBarView
   extends LinearLayout
@@ -30,7 +30,7 @@ public class TabBarView
   private static final int j = 2;
   private float jdField_a_of_type_Float;
   public final Paint a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new hmb(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new hhx(this);
   private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
   public TabBarView.OnTabChangeListener a;
   private int e = -1;
@@ -40,8 +40,8 @@ public class TabBarView
   {
     jdField_a_of_type_JavaLangString = TabBarView.class.getSimpleName();
     Context localContext = BaseApplicationImpl.getContext();
-    jdField_a_of_type_Int = localContext.getResources().getColor(2131362073);
-    b = localContext.getResources().getColor(2131362097);
+    jdField_a_of_type_Int = localContext.getResources().getColor(2131362083);
+    b = localContext.getResources().getColor(2131362107);
     c = (int)(46.0F * localContext.getResources().getDisplayMetrics().density + 0.5F);
     d = (int)(localContext.getResources().getDisplayMetrics().density * 3.0F + 0.5F);
   }
@@ -59,7 +59,7 @@ public class TabBarView
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(0, -1);
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.weight = 1.0F;
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.gravity = 17;
-    setBackgroundDrawable(getResources().getDrawable(2130840203));
+    setBackgroundDrawable(getResources().getDrawable(2130840205));
   }
   
   private void a(int paramInt1, int paramInt2)
@@ -116,7 +116,7 @@ public class TabBarView
     localRedDotTextView.setFocusable(true);
     localRedDotTextView.setContentDescription(paramString);
     localRedDotTextView.setGravity(17);
-    localRedDotTextView.setOnClickListener(new hmc(this, paramInt));
+    localRedDotTextView.setOnClickListener(new hhy(this, paramInt));
     addView(localRedDotTextView, paramInt, this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
   }
   

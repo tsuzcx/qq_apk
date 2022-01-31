@@ -1,19 +1,31 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import MyCarrier.Carrier;
+import com.tencent.mobileqq.activity.QQSettingMe.UpdateMyBusinessReceiver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mybusiness.MyBusinessManager;
+import com.tencent.mobileqq.mybusiness.MyBusinessObserver;
+import com.tencent.qphone.base.util.QLog;
 
-class gdh
-  implements Runnable
+public class gdh
+  extends MyBusinessObserver
 {
-  gdh(gde paramgde, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3) {}
+  public gdh(MyBusinessManager paramMyBusinessManager) {}
   
-  public void run()
+  public void a(boolean paramBoolean, Carrier paramCarrier, int paramInt)
   {
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Gde.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c);
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Gde.a);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MyBusinessManager", 4, "onCarrierQuery refreshTimeSpan = " + paramInt);
+    }
+    this.a.jdField_a_of_type_Int = paramInt;
+    if (this.a.jdField_a_of_type_Int > 86400) {
+      this.a.jdField_a_of_type_Int = 86400;
+    }
+    this.a.a(paramCarrier);
+    QQSettingMe.UpdateMyBusinessReceiver.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gdh
  * JD-Core Version:    0.7.0.1
  */

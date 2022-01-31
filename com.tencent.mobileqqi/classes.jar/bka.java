@@ -1,27 +1,28 @@
-import com.tencent.av.ui.MultiVideoCtrlLayerUI;
-import com.tencent.av.utils.TipsManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
+import com.tencent.smtt.sdk.WebView;
 
 public class bka
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
+  public bka(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2) {}
   
-  public bka(MultiVideoCtrlLayerUI paramMultiVideoCtrlLayerUI, int paramInt, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void run()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiVideoCtrlLayerUI", 2, "RefreshStatusTipsRunnale,type=" + this.jdField_a_of_type_Int + " flag=" + this.jdField_a_of_type_Boolean);
-    }
-    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.a != null) {
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-    }
+    paramDialogInterface = this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.mRuntime.a();
+    if (paramDialogInterface == null) {}
+    do
+    {
+      return;
+      if (paramInt == 0)
+      {
+        paramDialogInterface.loadUrl("javascript:" + this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+    } while (paramInt != 1);
+    paramDialogInterface.loadUrl("javascript:" + this.b);
   }
 }
 

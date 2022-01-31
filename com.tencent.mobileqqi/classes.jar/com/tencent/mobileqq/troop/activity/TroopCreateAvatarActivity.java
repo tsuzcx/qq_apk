@@ -26,11 +26,11 @@ import com.tencent.mobileqq.troop.widget.AvatarWallView;
 import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
-import gxp;
-import gxq;
-import gxr;
-import gxs;
-import gxt;
+import gti;
+import gtj;
+import gtk;
+import gtl;
+import gtm;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -51,11 +51,11 @@ public class TroopCreateAvatarActivity
   public Intent a;
   public Handler a;
   protected TextView a;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gxt(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gtm(this);
   public AvatarWallAdapter a;
   public AvatarWallView a;
   public ArrayList a;
-  AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new gxs(this);
+  AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new gtl(this);
   public boolean a;
   protected TextView b;
   public String b;
@@ -71,7 +71,7 @@ public class TroopCreateAvatarActivity
     this.jdField_c_of_type_Boolean = false;
     this.jdField_c_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidOsHandler = new gxp(this);
+    this.jdField_a_of_type_AndroidOsHandler = new gti(this);
   }
   
   protected void a(int paramInt, Intent paramIntent)
@@ -119,9 +119,9 @@ public class TroopCreateAvatarActivity
     if (bool == true) {}
     for (int i = 2131560422;; i = 2131560420)
     {
-      setContentView(2130903411);
+      setContentView(2130903413);
       setTitle(2131560419);
-      c(i, new gxq(this));
+      c(i, new gtj(this));
       localObject = (TroopCreateLogic)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(30);
       if (localObject == null) {
         break label157;
@@ -144,7 +144,7 @@ public class TroopCreateAvatarActivity
     {
       localObject = new DisplayMetrics();
       getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
-      i = (((DisplayMetrics)localObject).widthPixels - getResources().getDimensionPixelSize(2131427553)) / 4;
+      i = (((DisplayMetrics)localObject).widthPixels - getResources().getDimensionPixelSize(2131427556)) / 4;
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallView = ((AvatarWallView)findViewById(2131230904));
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallView.setColumnWidth(i);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter = new AvatarWallAdapter(new WeakReference(this), this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, true, this.jdField_a_of_type_AndroidOsHandler, true, "Grp_Admin_data");
@@ -155,8 +155,8 @@ public class TroopCreateAvatarActivity
       this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131230976));
       localObject = getString(2131560421);
       this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232530));
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new gxr(this));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232533));
+      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new gtk(this));
       this.k.setText(getString(2131561692));
       return;
       this.m.setEnabled(true);

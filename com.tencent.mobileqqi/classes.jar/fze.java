@@ -1,23 +1,27 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.service.message.MessageCache;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.fpsreport.FPSCalculator;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class fze
+  extends AsyncTask
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
+  public fze(FPSCalculator paramFPSCalculator) {}
   
-  public fze(OnlineFileSessionCenter paramOnlineFileSessionCenter, int paramInt)
+  protected Void a(Void... paramVarArgs)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = MessageCache.a();
+    paramVarArgs = FPSCalculator.a(this.a).iterator();
+    while (paramVarArgs.hasNext()) {
+      QLog.d("Q.PerfTrace", 2, (String)paramVarArgs.next());
+    }
+    FPSCalculator.a(this.a).clear();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fze
  * JD-Core Version:    0.7.0.1
  */

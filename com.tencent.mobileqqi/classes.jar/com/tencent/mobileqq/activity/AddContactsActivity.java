@@ -14,7 +14,8 @@ import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
-import bzc;
+import bte;
+import bth;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.biz.qrcode.activity.ScannerActivity;
 import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
@@ -25,6 +26,7 @@ import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
@@ -39,6 +41,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import mqq.app.permission.PermissionManager;
 
 public class AddContactsActivity
   extends IphoneTitleBarActivity
@@ -58,7 +61,7 @@ public class AddContactsActivity
   
   public AddContactsActivity()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bzc(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bth(this);
   }
   
   public static void a(Activity paramActivity)
@@ -106,11 +109,11 @@ public class AddContactsActivity
     this.jdField_a_of_type_AndroidWidgetButton = ((Button)((View)localObject).findViewById(2131231068));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     localObject = (FormSimpleItem)findViewById(2131231070);
-    ((FormSimpleItem)localObject).setLeftIcon(getResources().getDrawable(2130838695));
+    ((FormSimpleItem)localObject).setLeftIcon(getResources().getDrawable(2130838697));
     ((FormSimpleItem)localObject).setLeftText(getString(2131562330));
     ((FormSimpleItem)localObject).setBgType(3);
     if (((ConditionSearchManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a()) {
-      ((FormSimpleItem)localObject).setRightIcon(getResources().getDrawable(2130840210));
+      ((FormSimpleItem)localObject).setRightIcon(getResources().getDrawable(2130840212));
     }
     ((FormSimpleItem)localObject).a(true);
     ((FormSimpleItem)localObject).setOnClickListener(this);
@@ -132,6 +135,7 @@ public class AddContactsActivity
     ((FormSimpleItem)localObject).setBgType(2);
     ((FormSimpleItem)localObject).a(true);
     ((FormSimpleItem)localObject).setOnClickListener(this);
+    ((FormSimpleItem)localObject).setVisibility(8);
     localObject = (FormSimpleItem)findViewById(2131231075);
     ((FormSimpleItem)localObject).setLeftIcon(getResources().getDrawable(2130837618));
     ((FormSimpleItem)localObject).setLeftText(getString(2131562264));
@@ -146,7 +150,7 @@ public class AddContactsActivity
     ((FormSimpleItem)localObject).a(true);
     ((FormSimpleItem)localObject).setOnClickListener(this);
     localObject = (FormSimpleItem)findViewById(2131231076);
-    ((FormSimpleItem)localObject).setLeftIcon(getResources().getDrawable(2130838390));
+    ((FormSimpleItem)localObject).setLeftIcon(getResources().getDrawable(2130838392));
     ((FormSimpleItem)localObject).setLeftText(getString(2131562439));
     ((FormSimpleItem)localObject).setBgType(0);
     ((FormSimpleItem)localObject).a(true);
@@ -159,11 +163,11 @@ public class AddContactsActivity
     if (this.jdField_a_of_type_JavaLangString.indexOf("@") != -1)
     {
       if (this.jdField_a_of_type_JavaUtilRegexPattern.matcher(this.jdField_a_of_type_JavaLangString).matches()) {
-        break label119;
+        break label120;
       }
       a(getResources().getString(2131559028));
     }
-    label119:
+    label120:
     do
     {
       return;
@@ -268,6 +272,13 @@ public class AddContactsActivity
       return;
     case 2131231068: 
       a();
+      return;
+    }
+    if (!this.permissionManager.checkPermission("android.permission.ACCESS_FINE_LOCATION"))
+    {
+      paramView = new PermissionsDialog();
+      bte localbte = new bte(this);
+      paramView.a(this, new String[] { "android.permission.ACCESS_FINE_LOCATION" }, localbte);
       return;
     }
     startActivity(new Intent(this, NearbyTroopsActivity.class));

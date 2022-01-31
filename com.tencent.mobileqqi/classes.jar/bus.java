@@ -1,36 +1,34 @@
-import android.os.Handler;
-import com.tencent.biz.common.offline.AsyncCallBack;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class bus
-  implements AsyncCallBack
+  implements View.OnClickListener
 {
-  public bus(OfflinePlugin paramOfflinePlugin, long paramLong) {}
+  public bus(AddRequestActivity paramAddRequestActivity) {}
   
-  public void a(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(OfflinePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin), 2, "webviewLoadUrl calll back. param2:" + paramString2 + "," + " time:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.jdField_a_of_type_Int = Integer.parseInt(paramString2);
-    if (this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.jdField_a_of_type_Int == -1)
+    if (paramView == this.a.jdField_a_of_type_AndroidWidgetButton)
     {
-      ((CustomWebView)this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.mRuntime.a()).a(paramString1);
-      return;
+      if (this.a.d != -1011) {
+        break label104;
+      }
+      this.a.a(AddRequestActivity.a(this.a), this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ArrayOfByte, this.a.q, AddRequestActivity.b(this.a), AddRequestActivity.c(this.a));
     }
-    paramString2 = this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-    paramString2.arg1 = 1;
-    paramString2.arg2 = this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.jdField_a_of_type_Int;
-    paramString2.obj = paramString1;
-    this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString2);
+    for (;;)
+    {
+      ReportController.b(this.a.b, "CliOper", "", "", "frd_recommend", "Frd_accept", 0, 0, "1", "", "", "");
+      return;
+      label104:
+      this.a.a(AddRequestActivity.a(this.a), AddRequestActivity.b(this.a), 0, null, AddRequestActivity.c(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bus
  * JD-Core Version:    0.7.0.1
  */

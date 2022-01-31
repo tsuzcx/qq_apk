@@ -140,56 +140,56 @@ public class BaseDownloadTransfer
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 23
+    //   1: astore 12
     //   3: aconst_null
-    //   4: astore 12
+    //   4: astore 23
     //   6: aconst_null
-    //   7: astore 24
+    //   7: astore 22
     //   9: aconst_null
-    //   10: astore 22
+    //   10: astore 24
     //   12: aconst_null
     //   13: astore 15
     //   15: aconst_null
     //   16: astore 21
     //   18: aconst_null
-    //   19: astore 20
+    //   19: astore 19
     //   21: aconst_null
-    //   22: astore 19
+    //   22: astore 20
     //   24: iconst_0
     //   25: istore_3
     //   26: iconst_0
     //   27: istore 4
     //   29: iload_3
     //   30: istore_1
-    //   31: aload 22
-    //   33: astore 16
+    //   31: aload 24
+    //   33: astore 18
     //   35: iload 4
     //   37: istore_2
-    //   38: aload 23
+    //   38: aload 12
     //   40: astore 13
     //   42: aload 15
     //   44: astore 14
-    //   46: aload 12
-    //   48: astore 18
-    //   50: aload 24
-    //   52: astore 17
+    //   46: aload 23
+    //   48: astore 17
+    //   50: aload 22
+    //   52: astore 16
     //   54: aload_0
     //   55: invokevirtual 173	com/weiyun/sdk/job/transfer/BaseDownloadTransfer:createUrl	()Ljava/net/URL;
     //   58: astore 25
     //   60: iload_3
     //   61: istore_1
-    //   62: aload 22
-    //   64: astore 16
+    //   62: aload 24
+    //   64: astore 18
     //   66: iload 4
     //   68: istore_2
-    //   69: aload 23
+    //   69: aload 12
     //   71: astore 13
     //   73: aload 15
     //   75: astore 14
-    //   77: aload 12
-    //   79: astore 18
-    //   81: aload 24
-    //   83: astore 17
+    //   77: aload 23
+    //   79: astore 17
+    //   81: aload 22
+    //   83: astore 16
     //   85: aload 25
     //   87: invokevirtual 177	java/net/URL:openConnection	()Ljava/net/URLConnection;
     //   90: checkcast 179	java/net/HttpURLConnection
@@ -197,7 +197,7 @@ public class BaseDownloadTransfer
     //   95: iload_3
     //   96: istore_1
     //   97: aload 12
-    //   99: astore 16
+    //   99: astore 18
     //   101: iload 4
     //   103: istore_2
     //   104: aload 12
@@ -205,9 +205,9 @@ public class BaseDownloadTransfer
     //   108: aload 15
     //   110: astore 14
     //   112: aload 12
-    //   114: astore 18
+    //   114: astore 17
     //   116: aload 12
-    //   118: astore 17
+    //   118: astore 16
     //   120: aload_0
     //   121: getfield 34	com/weiyun/sdk/job/transfer/BaseDownloadTransfer:mContext	Lcom/weiyun/sdk/job/DownloadJobContext;
     //   124: aload 12
@@ -217,7 +217,7 @@ public class BaseDownloadTransfer
     //   135: iload_3
     //   136: istore_1
     //   137: aload 12
-    //   139: astore 16
+    //   139: astore 18
     //   141: iload 4
     //   143: istore_2
     //   144: aload 12
@@ -225,16 +225,16 @@ public class BaseDownloadTransfer
     //   148: aload 15
     //   150: astore 14
     //   152: aload 12
-    //   154: astore 18
+    //   154: astore 17
     //   156: aload 12
-    //   158: astore 17
+    //   158: astore 16
     //   160: aload_0
     //   161: aload 12
     //   163: invokevirtual 191	com/weiyun/sdk/job/transfer/BaseDownloadTransfer:setHttpHeader	(Ljava/net/HttpURLConnection;)V
     //   166: iload_3
     //   167: istore_1
     //   168: aload 12
-    //   170: astore 16
+    //   170: astore 18
     //   172: iload 4
     //   174: istore_2
     //   175: aload 12
@@ -242,9 +242,9 @@ public class BaseDownloadTransfer
     //   179: aload 15
     //   181: astore 14
     //   183: aload 12
-    //   185: astore 18
+    //   185: astore 17
     //   187: aload 12
-    //   189: astore 17
+    //   189: astore 16
     //   191: aload_0
     //   192: getfield 36	com/weiyun/sdk/job/transfer/BaseDownloadTransfer:mJob	Lcom/weiyun/sdk/job/BaseDownloadJob;
     //   195: invokevirtual 194	com/weiyun/sdk/job/BaseDownloadJob:isAlive	()Z
@@ -252,7 +252,7 @@ public class BaseDownloadTransfer
     //   201: iload_3
     //   202: istore_1
     //   203: aload 12
-    //   205: astore 16
+    //   205: astore 18
     //   207: iload 4
     //   209: istore_2
     //   210: aload 12
@@ -260,9 +260,9 @@ public class BaseDownloadTransfer
     //   214: aload 15
     //   216: astore 14
     //   218: aload 12
-    //   220: astore 18
+    //   220: astore 17
     //   222: aload 12
-    //   224: astore 17
+    //   224: astore 16
     //   226: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
     //   229: dup
     //   230: sipush -10002
@@ -301,7 +301,7 @@ public class BaseDownloadTransfer
     //   303: iload_3
     //   304: istore_1
     //   305: aload 12
-    //   307: astore 16
+    //   307: astore 18
     //   309: iload 4
     //   311: istore_2
     //   312: aload 12
@@ -309,9 +309,9 @@ public class BaseDownloadTransfer
     //   316: aload 15
     //   318: astore 14
     //   320: aload 12
-    //   322: astore 18
+    //   322: astore 17
     //   324: aload 12
-    //   326: astore 17
+    //   326: astore 16
     //   328: aload 12
     //   330: invokevirtual 214	java/net/HttpURLConnection:connect	()V
     //   333: iconst_1
@@ -321,7 +321,7 @@ public class BaseDownloadTransfer
     //   338: iload 5
     //   340: istore_1
     //   341: aload 12
-    //   343: astore 16
+    //   343: astore 18
     //   345: iload 4
     //   347: istore_2
     //   348: aload 12
@@ -329,9 +329,9 @@ public class BaseDownloadTransfer
     //   352: aload 15
     //   354: astore 14
     //   356: aload 12
-    //   358: astore 18
+    //   358: astore 17
     //   360: aload 12
-    //   362: astore 17
+    //   362: astore 16
     //   364: aload 12
     //   366: invokevirtual 217	java/net/HttpURLConnection:getResponseCode	()I
     //   369: istore 7
@@ -348,7 +348,7 @@ public class BaseDownloadTransfer
     //   393: iload 5
     //   395: istore_1
     //   396: aload 12
-    //   398: astore 16
+    //   398: astore 18
     //   400: iload 6
     //   402: istore_2
     //   403: aload 12
@@ -356,9 +356,9 @@ public class BaseDownloadTransfer
     //   407: aload 15
     //   409: astore 14
     //   411: aload 12
-    //   413: astore 18
+    //   413: astore 17
     //   415: aload 12
-    //   417: astore 17
+    //   417: astore 16
     //   419: aload 12
     //   421: ldc 219
     //   423: invokevirtual 223	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
@@ -368,7 +368,7 @@ public class BaseDownloadTransfer
     //   433: iload 5
     //   435: istore_1
     //   436: aload 12
-    //   438: astore 16
+    //   438: astore 18
     //   440: iload 6
     //   442: istore_2
     //   443: aload 12
@@ -376,9 +376,9 @@ public class BaseDownloadTransfer
     //   447: aload 15
     //   449: astore 14
     //   451: aload 12
-    //   453: astore 18
+    //   453: astore 17
     //   455: aload 12
-    //   457: astore 17
+    //   457: astore 16
     //   459: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
     //   462: dup
     //   463: aload 23
@@ -417,7 +417,7 @@ public class BaseDownloadTransfer
     //   536: iload 5
     //   538: istore_1
     //   539: aload 12
-    //   541: astore 16
+    //   541: astore 18
     //   543: iload 6
     //   545: istore_2
     //   546: aload 12
@@ -425,9 +425,9 @@ public class BaseDownloadTransfer
     //   550: aload 15
     //   552: astore 14
     //   554: aload 12
-    //   556: astore 18
+    //   556: astore 17
     //   558: aload 12
-    //   560: astore 17
+    //   560: astore 16
     //   562: ldc 10
     //   564: new 231	java/lang/StringBuilder
     //   567: dup
@@ -446,7 +446,7 @@ public class BaseDownloadTransfer
     //   600: iload 5
     //   602: istore_1
     //   603: aload 12
-    //   605: astore 16
+    //   605: astore 18
     //   607: iload 6
     //   609: istore_2
     //   610: aload 12
@@ -454,9 +454,9 @@ public class BaseDownloadTransfer
     //   614: aload 15
     //   616: astore 14
     //   618: aload 12
-    //   620: astore 18
+    //   620: astore 17
     //   622: aload 12
-    //   624: astore 17
+    //   624: astore 16
     //   626: ldc 10
     //   628: new 231	java/lang/StringBuilder
     //   631: dup
@@ -475,7 +475,7 @@ public class BaseDownloadTransfer
     //   663: iload 5
     //   665: istore_1
     //   666: aload 12
-    //   668: astore 16
+    //   668: astore 18
     //   670: iload 6
     //   672: istore_2
     //   673: aload 12
@@ -483,9 +483,9 @@ public class BaseDownloadTransfer
     //   677: aload 15
     //   679: astore 14
     //   681: aload 12
-    //   683: astore 18
+    //   683: astore 17
     //   685: aload 12
-    //   687: astore 17
+    //   687: astore 16
     //   689: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
     //   692: dup
     //   693: iload 7
@@ -525,7 +525,7 @@ public class BaseDownloadTransfer
     //   769: iload 5
     //   771: istore_1
     //   772: aload 12
-    //   774: astore 16
+    //   774: astore 18
     //   776: iload 6
     //   778: istore_2
     //   779: aload 12
@@ -533,9 +533,9 @@ public class BaseDownloadTransfer
     //   783: aload 15
     //   785: astore 14
     //   787: aload 12
-    //   789: astore 18
+    //   789: astore 17
     //   791: aload 12
-    //   793: astore 17
+    //   793: astore 16
     //   795: new 231	java/lang/StringBuilder
     //   798: dup
     //   799: ldc_w 262
@@ -566,7 +566,7 @@ public class BaseDownloadTransfer
     //   865: iload 5
     //   867: istore_1
     //   868: aload 12
-    //   870: astore 16
+    //   870: astore 18
     //   872: iload 6
     //   874: istore_2
     //   875: aload 12
@@ -574,9 +574,9 @@ public class BaseDownloadTransfer
     //   879: aload 15
     //   881: astore 14
     //   883: aload 12
-    //   885: astore 18
+    //   885: astore 17
     //   887: aload 12
-    //   889: astore 17
+    //   889: astore 16
     //   891: aload 12
     //   893: ldc_w 279
     //   896: invokevirtual 223	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
@@ -588,7 +588,7 @@ public class BaseDownloadTransfer
     //   910: iload 5
     //   912: istore_1
     //   913: aload 12
-    //   915: astore 16
+    //   915: astore 18
     //   917: iload 6
     //   919: istore_2
     //   920: aload 12
@@ -596,20 +596,20 @@ public class BaseDownloadTransfer
     //   924: aload 15
     //   926: astore 14
     //   928: aload 12
-    //   930: astore 18
+    //   930: astore 17
     //   932: aload 12
-    //   934: astore 17
+    //   934: astore 16
     //   936: aload 22
     //   938: invokestatic 285	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   941: lstore 8
     //   943: lload 8
     //   945: lconst_0
     //   946: lcmp
-    //   947: ifne +532 -> 1479
+    //   947: ifne +528 -> 1475
     //   950: iload 5
     //   952: istore_1
     //   953: aload 12
-    //   955: astore 16
+    //   955: astore 18
     //   957: iload 6
     //   959: istore_2
     //   960: aload 12
@@ -617,9 +617,9 @@ public class BaseDownloadTransfer
     //   964: aload 15
     //   966: astore 14
     //   968: aload 12
-    //   970: astore 18
+    //   970: astore 17
     //   972: aload 12
-    //   974: astore 17
+    //   974: astore 16
     //   976: ldc 10
     //   978: new 231	java/lang/StringBuilder
     //   981: dup
@@ -636,7 +636,7 @@ public class BaseDownloadTransfer
     //   1010: iload 5
     //   1012: istore_1
     //   1013: aload 12
-    //   1015: astore 16
+    //   1015: astore 18
     //   1017: iload 6
     //   1019: istore_2
     //   1020: aload 12
@@ -644,19 +644,19 @@ public class BaseDownloadTransfer
     //   1024: aload 15
     //   1026: astore 14
     //   1028: aload 12
-    //   1030: astore 18
+    //   1030: astore 17
     //   1032: aload 12
-    //   1034: astore 17
+    //   1034: astore 16
     //   1036: aload_0
     //   1037: getfield 34	com/weiyun/sdk/job/transfer/BaseDownloadTransfer:mContext	Lcom/weiyun/sdk/job/DownloadJobContext;
     //   1040: invokevirtual 57	com/weiyun/sdk/job/DownloadJobContext:getCurSize	()J
     //   1043: lconst_0
     //   1044: lcmp
-    //   1045: ifle +335 -> 1380
+    //   1045: ifle +331 -> 1376
     //   1048: iload 5
     //   1050: istore_1
     //   1051: aload 12
-    //   1053: astore 16
+    //   1053: astore 18
     //   1055: iload 6
     //   1057: istore_2
     //   1058: aload 12
@@ -664,9 +664,9 @@ public class BaseDownloadTransfer
     //   1062: aload 15
     //   1064: astore 14
     //   1066: aload 12
-    //   1068: astore 18
+    //   1068: astore 17
     //   1070: aload 12
-    //   1072: astore 17
+    //   1072: astore 16
     //   1074: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
     //   1077: dup
     //   1078: sipush -29005
@@ -704,7 +704,7 @@ public class BaseDownloadTransfer
     //   1149: iload 5
     //   1151: istore_1
     //   1152: aload 12
-    //   1154: astore 16
+    //   1154: astore 18
     //   1156: iload 6
     //   1158: istore_2
     //   1159: aload 12
@@ -712,9 +712,9 @@ public class BaseDownloadTransfer
     //   1163: aload 15
     //   1165: astore 14
     //   1167: aload 12
-    //   1169: astore 18
+    //   1169: astore 17
     //   1171: aload 12
-    //   1173: astore 17
+    //   1173: astore 16
     //   1175: ldc 10
     //   1177: new 231	java/lang/StringBuilder
     //   1180: dup
@@ -727,303 +727,303 @@ public class BaseDownloadTransfer
     //   1198: lload 10
     //   1200: lstore 8
     //   1202: goto -259 -> 943
-    //   1205: astore 13
-    //   1207: aload 19
+    //   1205: astore 16
+    //   1207: aload 20
     //   1209: astore 15
-    //   1211: aload 16
+    //   1211: aload 18
     //   1213: astore 12
-    //   1215: aload 13
-    //   1217: astore 16
-    //   1219: aload 12
-    //   1221: astore 13
-    //   1223: aload 15
-    //   1225: astore 14
-    //   1227: ldc 10
-    //   1229: new 231	java/lang/StringBuilder
-    //   1232: dup
-    //   1233: ldc 246
-    //   1235: invokespecial 235	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1238: aload_0
-    //   1239: getfield 34	com/weiyun/sdk/job/transfer/BaseDownloadTransfer:mContext	Lcom/weiyun/sdk/job/DownloadJobContext;
-    //   1242: invokevirtual 296	com/weiyun/sdk/job/DownloadJobContext:getDestFilePath	()Ljava/lang/String;
-    //   1245: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1248: invokevirtual 242	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1251: aload 16
-    //   1253: invokestatic 211	com/weiyun/sdk/log/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1256: aload 12
-    //   1258: astore 13
-    //   1260: aload 15
-    //   1262: astore 14
-    //   1264: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
-    //   1267: dup
-    //   1268: aload 16
-    //   1270: invokestatic 302	com/weiyun/sdk/util/ErrCodeUtil:getErrCodeFromIOException	(Ljava/io/IOException;)I
-    //   1273: aload 16
-    //   1275: invokestatic 112	com/weiyun/sdk/util/Utils:getStackTraceAsString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   1278: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
-    //   1281: astore 16
-    //   1283: aload 12
-    //   1285: astore 13
-    //   1287: aload 15
-    //   1289: astore 14
-    //   1291: aload 16
-    //   1293: getfield 44	com/weiyun/sdk/job/transfer/Transfer$Result:mRet	I
-    //   1296: sipush -30002
-    //   1299: if_icmpne +473 -> 1772
-    //   1302: iload_1
-    //   1303: ifne +469 -> 1772
-    //   1306: aload 12
-    //   1308: astore 13
-    //   1310: aload 15
-    //   1312: astore 14
-    //   1314: aload 16
-    //   1316: sipush -30028
-    //   1319: putfield 44	com/weiyun/sdk/job/transfer/Transfer$Result:mRet	I
-    //   1322: aload 15
-    //   1324: ifnull +8 -> 1332
-    //   1327: aload 15
-    //   1329: invokevirtual 307	java/io/InputStream:close	()V
-    //   1332: aload 16
-    //   1334: astore 13
-    //   1336: aload 12
-    //   1338: ifnull -1069 -> 269
-    //   1341: aload 12
-    //   1343: invokevirtual 200	java/net/HttpURLConnection:disconnect	()V
-    //   1346: aload 16
-    //   1348: areturn
-    //   1349: astore 12
-    //   1351: ldc 10
-    //   1353: invokestatic 206	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   1356: invokevirtual 209	java/lang/Thread:getName	()Ljava/lang/String;
-    //   1359: aload 12
-    //   1361: invokestatic 211	com/weiyun/sdk/log/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1364: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
-    //   1367: dup
-    //   1368: sipush -30017
-    //   1371: aload 12
-    //   1373: invokestatic 112	com/weiyun/sdk/util/Utils:getStackTraceAsString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   1376: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
-    //   1379: areturn
-    //   1380: iload 5
-    //   1382: istore_1
-    //   1383: aload 12
-    //   1385: astore 16
-    //   1387: iload 6
-    //   1389: istore_2
-    //   1390: aload 12
-    //   1392: astore 13
-    //   1394: aload 15
-    //   1396: astore 14
+    //   1215: aload 12
+    //   1217: astore 13
+    //   1219: aload 15
+    //   1221: astore 14
+    //   1223: ldc 10
+    //   1225: new 231	java/lang/StringBuilder
+    //   1228: dup
+    //   1229: ldc 246
+    //   1231: invokespecial 235	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1234: aload_0
+    //   1235: getfield 34	com/weiyun/sdk/job/transfer/BaseDownloadTransfer:mContext	Lcom/weiyun/sdk/job/DownloadJobContext;
+    //   1238: invokevirtual 296	com/weiyun/sdk/job/DownloadJobContext:getDestFilePath	()Ljava/lang/String;
+    //   1241: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1244: invokevirtual 242	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1247: aload 16
+    //   1249: invokestatic 211	com/weiyun/sdk/log/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1252: aload 12
+    //   1254: astore 13
+    //   1256: aload 15
+    //   1258: astore 14
+    //   1260: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
+    //   1263: dup
+    //   1264: aload 16
+    //   1266: invokestatic 302	com/weiyun/sdk/util/ErrCodeUtil:getErrCodeFromIOException	(Ljava/io/IOException;)I
+    //   1269: aload 16
+    //   1271: invokestatic 112	com/weiyun/sdk/util/Utils:getStackTraceAsString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   1274: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
+    //   1277: astore 16
+    //   1279: aload 12
+    //   1281: astore 13
+    //   1283: aload 15
+    //   1285: astore 14
+    //   1287: aload 16
+    //   1289: getfield 44	com/weiyun/sdk/job/transfer/Transfer$Result:mRet	I
+    //   1292: sipush -30002
+    //   1295: if_icmpne +473 -> 1768
+    //   1298: iload_1
+    //   1299: ifne +469 -> 1768
+    //   1302: aload 12
+    //   1304: astore 13
+    //   1306: aload 15
+    //   1308: astore 14
+    //   1310: aload 16
+    //   1312: sipush -30028
+    //   1315: putfield 44	com/weiyun/sdk/job/transfer/Transfer$Result:mRet	I
+    //   1318: aload 15
+    //   1320: ifnull +8 -> 1328
+    //   1323: aload 15
+    //   1325: invokevirtual 307	java/io/InputStream:close	()V
+    //   1328: aload 16
+    //   1330: astore 13
+    //   1332: aload 12
+    //   1334: ifnull -1065 -> 269
+    //   1337: aload 12
+    //   1339: invokevirtual 200	java/net/HttpURLConnection:disconnect	()V
+    //   1342: aload 16
+    //   1344: areturn
+    //   1345: astore 12
+    //   1347: ldc 10
+    //   1349: invokestatic 206	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   1352: invokevirtual 209	java/lang/Thread:getName	()Ljava/lang/String;
+    //   1355: aload 12
+    //   1357: invokestatic 211	com/weiyun/sdk/log/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1360: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
+    //   1363: dup
+    //   1364: sipush -30017
+    //   1367: aload 12
+    //   1369: invokestatic 112	com/weiyun/sdk/util/Utils:getStackTraceAsString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   1372: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
+    //   1375: areturn
+    //   1376: iload 5
+    //   1378: istore_1
+    //   1379: aload 12
+    //   1381: astore 18
+    //   1383: iload 6
+    //   1385: istore_2
+    //   1386: aload 12
+    //   1388: astore 13
+    //   1390: aload 15
+    //   1392: astore 14
+    //   1394: aload 12
+    //   1396: astore 17
     //   1398: aload 12
-    //   1400: astore 18
-    //   1402: aload 12
-    //   1404: astore 17
-    //   1406: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
-    //   1409: dup
-    //   1410: sipush -29001
-    //   1413: aconst_null
-    //   1414: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
-    //   1417: astore 15
-    //   1419: iconst_0
-    //   1420: ifeq +11 -> 1431
-    //   1423: new 196	java/lang/NullPointerException
-    //   1426: dup
-    //   1427: invokespecial 197	java/lang/NullPointerException:<init>	()V
-    //   1430: athrow
-    //   1431: aload 15
-    //   1433: astore 13
-    //   1435: aload 12
-    //   1437: ifnull -1168 -> 269
-    //   1440: aload 12
-    //   1442: invokevirtual 200	java/net/HttpURLConnection:disconnect	()V
-    //   1445: aload 15
-    //   1447: areturn
-    //   1448: astore 12
-    //   1450: ldc 10
-    //   1452: invokestatic 206	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   1455: invokevirtual 209	java/lang/Thread:getName	()Ljava/lang/String;
-    //   1458: aload 12
-    //   1460: invokestatic 211	com/weiyun/sdk/log/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1463: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
-    //   1466: dup
-    //   1467: sipush -30017
-    //   1470: aload 12
-    //   1472: invokestatic 112	com/weiyun/sdk/util/Utils:getStackTraceAsString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   1475: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
-    //   1478: areturn
-    //   1479: lload 8
-    //   1481: lconst_0
-    //   1482: lcmp
-    //   1483: ifle +46 -> 1529
-    //   1486: iload 5
-    //   1488: istore_1
-    //   1489: aload 12
-    //   1491: astore 16
-    //   1493: iload 6
-    //   1495: istore_2
-    //   1496: aload 12
-    //   1498: astore 13
-    //   1500: aload 15
-    //   1502: astore 14
+    //   1400: astore 16
+    //   1402: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
+    //   1405: dup
+    //   1406: sipush -29001
+    //   1409: aconst_null
+    //   1410: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
+    //   1413: astore 15
+    //   1415: iconst_0
+    //   1416: ifeq +11 -> 1427
+    //   1419: new 196	java/lang/NullPointerException
+    //   1422: dup
+    //   1423: invokespecial 197	java/lang/NullPointerException:<init>	()V
+    //   1426: athrow
+    //   1427: aload 15
+    //   1429: astore 13
+    //   1431: aload 12
+    //   1433: ifnull -1164 -> 269
+    //   1436: aload 12
+    //   1438: invokevirtual 200	java/net/HttpURLConnection:disconnect	()V
+    //   1441: aload 15
+    //   1443: areturn
+    //   1444: astore 12
+    //   1446: ldc 10
+    //   1448: invokestatic 206	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   1451: invokevirtual 209	java/lang/Thread:getName	()Ljava/lang/String;
+    //   1454: aload 12
+    //   1456: invokestatic 211	com/weiyun/sdk/log/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1459: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
+    //   1462: dup
+    //   1463: sipush -30017
+    //   1466: aload 12
+    //   1468: invokestatic 112	com/weiyun/sdk/util/Utils:getStackTraceAsString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   1471: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
+    //   1474: areturn
+    //   1475: lload 8
+    //   1477: lconst_0
+    //   1478: lcmp
+    //   1479: ifle +46 -> 1525
+    //   1482: iload 5
+    //   1484: istore_1
+    //   1485: aload 12
+    //   1487: astore 18
+    //   1489: iload 6
+    //   1491: istore_2
+    //   1492: aload 12
+    //   1494: astore 13
+    //   1496: aload 15
+    //   1498: astore 14
+    //   1500: aload 12
+    //   1502: astore 17
     //   1504: aload 12
-    //   1506: astore 18
-    //   1508: aload 12
-    //   1510: astore 17
+    //   1506: astore 16
+    //   1508: aload_0
+    //   1509: getfield 34	com/weiyun/sdk/job/transfer/BaseDownloadTransfer:mContext	Lcom/weiyun/sdk/job/DownloadJobContext;
     //   1512: aload_0
     //   1513: getfield 34	com/weiyun/sdk/job/transfer/BaseDownloadTransfer:mContext	Lcom/weiyun/sdk/job/DownloadJobContext;
-    //   1516: aload_0
-    //   1517: getfield 34	com/weiyun/sdk/job/transfer/BaseDownloadTransfer:mContext	Lcom/weiyun/sdk/job/DownloadJobContext;
-    //   1520: invokevirtual 57	com/weiyun/sdk/job/DownloadJobContext:getCurSize	()J
-    //   1523: lload 8
-    //   1525: ladd
-    //   1526: invokevirtual 310	com/weiyun/sdk/job/DownloadJobContext:setTotalSize	(J)V
-    //   1529: iload 5
-    //   1531: istore_1
-    //   1532: aload 12
-    //   1534: astore 16
-    //   1536: iload 6
-    //   1538: istore_2
-    //   1539: aload 12
-    //   1541: astore 13
-    //   1543: aload 15
-    //   1545: astore 14
+    //   1516: invokevirtual 57	com/weiyun/sdk/job/DownloadJobContext:getCurSize	()J
+    //   1519: lload 8
+    //   1521: ladd
+    //   1522: invokevirtual 310	com/weiyun/sdk/job/DownloadJobContext:setTotalSize	(J)V
+    //   1525: iload 5
+    //   1527: istore_1
+    //   1528: aload 12
+    //   1530: astore 18
+    //   1532: iload 6
+    //   1534: istore_2
+    //   1535: aload 12
+    //   1537: astore 13
+    //   1539: aload 15
+    //   1541: astore 14
+    //   1543: aload 12
+    //   1545: astore 17
     //   1547: aload 12
-    //   1549: astore 18
-    //   1551: aload 12
-    //   1553: astore 17
-    //   1555: aload_0
-    //   1556: getfield 34	com/weiyun/sdk/job/transfer/BaseDownloadTransfer:mContext	Lcom/weiyun/sdk/job/DownloadJobContext;
-    //   1559: invokevirtual 57	com/weiyun/sdk/job/DownloadJobContext:getCurSize	()J
-    //   1562: lstore 10
-    //   1564: iload 5
-    //   1566: istore_1
-    //   1567: aload 12
-    //   1569: astore 16
-    //   1571: iload 6
-    //   1573: istore_2
-    //   1574: aload 12
-    //   1576: astore 13
-    //   1578: aload 15
-    //   1580: astore 14
+    //   1549: astore 16
+    //   1551: aload_0
+    //   1552: getfield 34	com/weiyun/sdk/job/transfer/BaseDownloadTransfer:mContext	Lcom/weiyun/sdk/job/DownloadJobContext;
+    //   1555: invokevirtual 57	com/weiyun/sdk/job/DownloadJobContext:getCurSize	()J
+    //   1558: lstore 10
+    //   1560: iload 5
+    //   1562: istore_1
+    //   1563: aload 12
+    //   1565: astore 18
+    //   1567: iload 6
+    //   1569: istore_2
+    //   1570: aload 12
+    //   1572: astore 13
+    //   1574: aload 15
+    //   1576: astore 14
+    //   1578: aload 12
+    //   1580: astore 17
     //   1582: aload 12
-    //   1584: astore 18
-    //   1586: aload 12
-    //   1588: astore 17
-    //   1590: new 312	java/io/BufferedInputStream
-    //   1593: dup
-    //   1594: aload 12
-    //   1596: invokevirtual 316	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   1599: invokespecial 319	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   1602: astore 15
-    //   1604: aload_0
-    //   1605: aload 15
-    //   1607: invokevirtual 323	com/weiyun/sdk/job/transfer/BaseDownloadTransfer:readHttpContent	(Ljava/io/InputStream;)I
-    //   1610: istore_1
-    //   1611: iload_1
-    //   1612: sipush -10002
-    //   1615: if_icmpne +92 -> 1707
-    //   1618: aload_0
-    //   1619: getfield 34	com/weiyun/sdk/job/transfer/BaseDownloadTransfer:mContext	Lcom/weiyun/sdk/job/DownloadJobContext;
-    //   1622: invokevirtual 57	com/weiyun/sdk/job/DownloadJobContext:getCurSize	()J
-    //   1625: lload 10
-    //   1627: lsub
-    //   1628: lload 8
-    //   1630: lcmp
-    //   1631: ifne +76 -> 1707
-    //   1634: ldc 10
-    //   1636: ldc_w 325
-    //   1639: invokestatic 161	com/weiyun/sdk/log/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1642: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
-    //   1645: dup
-    //   1646: iconst_0
-    //   1647: aconst_null
-    //   1648: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
-    //   1651: astore 13
-    //   1653: aload 15
-    //   1655: ifnull +8 -> 1663
-    //   1658: aload 15
-    //   1660: invokevirtual 307	java/io/InputStream:close	()V
-    //   1663: aload 12
-    //   1665: ifnull +8 -> 1673
-    //   1668: aload 12
-    //   1670: invokevirtual 200	java/net/HttpURLConnection:disconnect	()V
-    //   1673: aload 13
-    //   1675: areturn
-    //   1676: astore 12
-    //   1678: ldc 10
-    //   1680: invokestatic 206	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   1683: invokevirtual 209	java/lang/Thread:getName	()Ljava/lang/String;
-    //   1686: aload 12
-    //   1688: invokestatic 211	com/weiyun/sdk/log/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1691: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
-    //   1694: dup
-    //   1695: sipush -30017
-    //   1698: aload 12
-    //   1700: invokestatic 112	com/weiyun/sdk/util/Utils:getStackTraceAsString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   1703: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
-    //   1706: areturn
-    //   1707: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
-    //   1710: dup
-    //   1711: iload_1
-    //   1712: aconst_null
-    //   1713: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
-    //   1716: astore 13
-    //   1718: aload 15
-    //   1720: ifnull +8 -> 1728
-    //   1723: aload 15
-    //   1725: invokevirtual 307	java/io/InputStream:close	()V
-    //   1728: aload 12
-    //   1730: ifnull +8 -> 1738
-    //   1733: aload 12
-    //   1735: invokevirtual 200	java/net/HttpURLConnection:disconnect	()V
-    //   1738: aload 13
-    //   1740: areturn
-    //   1741: astore 12
-    //   1743: ldc 10
-    //   1745: invokestatic 206	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   1748: invokevirtual 209	java/lang/Thread:getName	()Ljava/lang/String;
-    //   1751: aload 12
-    //   1753: invokestatic 211	com/weiyun/sdk/log/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1756: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
-    //   1759: dup
-    //   1760: sipush -30017
-    //   1763: aload 12
-    //   1765: invokestatic 112	com/weiyun/sdk/util/Utils:getStackTraceAsString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   1768: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
-    //   1771: areturn
-    //   1772: aload 12
-    //   1774: astore 13
-    //   1776: aload 15
-    //   1778: astore 14
-    //   1780: aload 16
-    //   1782: getfield 44	com/weiyun/sdk/job/transfer/Transfer$Result:mRet	I
-    //   1785: sipush -30002
-    //   1788: if_icmpne -466 -> 1322
-    //   1791: iload_2
-    //   1792: ifne -470 -> 1322
-    //   1795: aload 12
-    //   1797: astore 13
-    //   1799: aload 15
-    //   1801: astore 14
-    //   1803: aload 16
-    //   1805: sipush -30029
-    //   1808: putfield 44	com/weiyun/sdk/job/transfer/Transfer$Result:mRet	I
-    //   1811: goto -489 -> 1322
+    //   1584: astore 16
+    //   1586: new 312	java/io/BufferedInputStream
+    //   1589: dup
+    //   1590: aload 12
+    //   1592: invokevirtual 316	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   1595: invokespecial 319	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   1598: astore 15
+    //   1600: aload_0
+    //   1601: aload 15
+    //   1603: invokevirtual 323	com/weiyun/sdk/job/transfer/BaseDownloadTransfer:readHttpContent	(Ljava/io/InputStream;)I
+    //   1606: istore_1
+    //   1607: iload_1
+    //   1608: sipush -10002
+    //   1611: if_icmpne +92 -> 1703
+    //   1614: aload_0
+    //   1615: getfield 34	com/weiyun/sdk/job/transfer/BaseDownloadTransfer:mContext	Lcom/weiyun/sdk/job/DownloadJobContext;
+    //   1618: invokevirtual 57	com/weiyun/sdk/job/DownloadJobContext:getCurSize	()J
+    //   1621: lload 10
+    //   1623: lsub
+    //   1624: lload 8
+    //   1626: lcmp
+    //   1627: ifne +76 -> 1703
+    //   1630: ldc 10
+    //   1632: ldc_w 325
+    //   1635: invokestatic 161	com/weiyun/sdk/log/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1638: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
+    //   1641: dup
+    //   1642: iconst_0
+    //   1643: aconst_null
+    //   1644: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
+    //   1647: astore 13
+    //   1649: aload 15
+    //   1651: ifnull +8 -> 1659
+    //   1654: aload 15
+    //   1656: invokevirtual 307	java/io/InputStream:close	()V
+    //   1659: aload 12
+    //   1661: ifnull +8 -> 1669
+    //   1664: aload 12
+    //   1666: invokevirtual 200	java/net/HttpURLConnection:disconnect	()V
+    //   1669: aload 13
+    //   1671: areturn
+    //   1672: astore 12
+    //   1674: ldc 10
+    //   1676: invokestatic 206	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   1679: invokevirtual 209	java/lang/Thread:getName	()Ljava/lang/String;
+    //   1682: aload 12
+    //   1684: invokestatic 211	com/weiyun/sdk/log/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1687: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
+    //   1690: dup
+    //   1691: sipush -30017
+    //   1694: aload 12
+    //   1696: invokestatic 112	com/weiyun/sdk/util/Utils:getStackTraceAsString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   1699: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
+    //   1702: areturn
+    //   1703: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
+    //   1706: dup
+    //   1707: iload_1
+    //   1708: aconst_null
+    //   1709: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
+    //   1712: astore 13
+    //   1714: aload 15
+    //   1716: ifnull +8 -> 1724
+    //   1719: aload 15
+    //   1721: invokevirtual 307	java/io/InputStream:close	()V
+    //   1724: aload 12
+    //   1726: ifnull +8 -> 1734
+    //   1729: aload 12
+    //   1731: invokevirtual 200	java/net/HttpURLConnection:disconnect	()V
+    //   1734: aload 13
+    //   1736: areturn
+    //   1737: astore 12
+    //   1739: ldc 10
+    //   1741: invokestatic 206	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   1744: invokevirtual 209	java/lang/Thread:getName	()Ljava/lang/String;
+    //   1747: aload 12
+    //   1749: invokestatic 211	com/weiyun/sdk/log/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1752: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
+    //   1755: dup
+    //   1756: sipush -30017
+    //   1759: aload 12
+    //   1761: invokestatic 112	com/weiyun/sdk/util/Utils:getStackTraceAsString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   1764: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
+    //   1767: areturn
+    //   1768: aload 12
+    //   1770: astore 13
+    //   1772: aload 15
+    //   1774: astore 14
+    //   1776: aload 16
+    //   1778: getfield 44	com/weiyun/sdk/job/transfer/Transfer$Result:mRet	I
+    //   1781: sipush -30002
+    //   1784: if_icmpne -466 -> 1318
+    //   1787: iload_2
+    //   1788: ifne -470 -> 1318
+    //   1791: aload 12
+    //   1793: astore 13
+    //   1795: aload 15
+    //   1797: astore 14
+    //   1799: aload 16
+    //   1801: sipush -30029
+    //   1804: putfield 44	com/weiyun/sdk/job/transfer/Transfer$Result:mRet	I
+    //   1807: goto -489 -> 1318
+    //   1810: astore 15
+    //   1812: aload 13
     //   1814: astore 12
     //   1816: aload 14
     //   1818: ifnull +8 -> 1826
     //   1821: aload 14
     //   1823: invokevirtual 307	java/io/InputStream:close	()V
-    //   1826: aload 13
+    //   1826: aload 12
     //   1828: ifnull +8 -> 1836
-    //   1831: aload 13
+    //   1831: aload 12
     //   1833: invokevirtual 200	java/net/HttpURLConnection:disconnect	()V
-    //   1836: aload 12
+    //   1836: aload 15
     //   1838: athrow
     //   1839: astore 16
     //   1841: aload 21
     //   1843: astore 15
-    //   1845: aload 18
+    //   1845: aload 17
     //   1847: astore 12
     //   1849: aload 12
     //   1851: astore 13
@@ -1077,86 +1077,86 @@ public class BaseDownloadTransfer
     //   1962: invokestatic 112	com/weiyun/sdk/util/Utils:getStackTraceAsString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   1965: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
     //   1968: areturn
-    //   1969: astore 16
-    //   1971: aload 20
+    //   1969: astore 13
+    //   1971: aload 19
     //   1973: astore 15
-    //   1975: aload 17
+    //   1975: aload 16
     //   1977: astore 12
-    //   1979: aload 12
-    //   1981: astore 13
-    //   1983: aload 15
-    //   1985: astore 14
-    //   1987: ldc 10
-    //   1989: new 231	java/lang/StringBuilder
-    //   1992: dup
-    //   1993: ldc 246
-    //   1995: invokespecial 235	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1998: aload_0
-    //   1999: getfield 34	com/weiyun/sdk/job/transfer/BaseDownloadTransfer:mContext	Lcom/weiyun/sdk/job/DownloadJobContext;
-    //   2002: invokevirtual 296	com/weiyun/sdk/job/DownloadJobContext:getDestFilePath	()Ljava/lang/String;
-    //   2005: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2008: invokevirtual 242	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2011: aload 16
-    //   2013: invokestatic 211	com/weiyun/sdk/log/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   2016: aload 12
-    //   2018: astore 13
-    //   2020: aload 15
-    //   2022: astore 14
-    //   2024: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
-    //   2027: dup
-    //   2028: sipush -10014
-    //   2031: aload 16
-    //   2033: invokestatic 112	com/weiyun/sdk/util/Utils:getStackTraceAsString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   2036: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
-    //   2039: astore 16
-    //   2041: aload 15
-    //   2043: ifnull +8 -> 2051
-    //   2046: aload 15
-    //   2048: invokevirtual 307	java/io/InputStream:close	()V
-    //   2051: aload 16
-    //   2053: astore 13
-    //   2055: aload 12
-    //   2057: ifnull -1788 -> 269
-    //   2060: aload 12
-    //   2062: invokevirtual 200	java/net/HttpURLConnection:disconnect	()V
-    //   2065: aload 16
-    //   2067: areturn
-    //   2068: astore 12
-    //   2070: ldc 10
-    //   2072: invokestatic 206	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   2075: invokevirtual 209	java/lang/Thread:getName	()Ljava/lang/String;
-    //   2078: aload 12
-    //   2080: invokestatic 211	com/weiyun/sdk/log/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   2083: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
-    //   2086: dup
-    //   2087: sipush -30017
-    //   2090: aload 12
-    //   2092: invokestatic 112	com/weiyun/sdk/util/Utils:getStackTraceAsString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   2095: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
-    //   2098: areturn
-    //   2099: astore 12
-    //   2101: ldc 10
-    //   2103: invokestatic 206	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   2106: invokevirtual 209	java/lang/Thread:getName	()Ljava/lang/String;
-    //   2109: aload 12
-    //   2111: invokestatic 211	com/weiyun/sdk/log/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   2114: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
-    //   2117: dup
-    //   2118: sipush -30017
-    //   2121: aload 12
-    //   2123: invokestatic 112	com/weiyun/sdk/util/Utils:getStackTraceAsString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   2126: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
-    //   2129: areturn
-    //   2130: astore 16
-    //   2132: aload 15
-    //   2134: astore 14
-    //   2136: aload 12
-    //   2138: astore 13
-    //   2140: aload 16
-    //   2142: astore 12
+    //   1979: aload 13
+    //   1981: astore 16
+    //   1983: aload 12
+    //   1985: astore 13
+    //   1987: aload 15
+    //   1989: astore 14
+    //   1991: ldc 10
+    //   1993: new 231	java/lang/StringBuilder
+    //   1996: dup
+    //   1997: ldc 246
+    //   1999: invokespecial 235	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   2002: aload_0
+    //   2003: getfield 34	com/weiyun/sdk/job/transfer/BaseDownloadTransfer:mContext	Lcom/weiyun/sdk/job/DownloadJobContext;
+    //   2006: invokevirtual 296	com/weiyun/sdk/job/DownloadJobContext:getDestFilePath	()Ljava/lang/String;
+    //   2009: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2012: invokevirtual 242	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2015: aload 16
+    //   2017: invokestatic 211	com/weiyun/sdk/log/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   2020: aload 12
+    //   2022: astore 13
+    //   2024: aload 15
+    //   2026: astore 14
+    //   2028: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
+    //   2031: dup
+    //   2032: sipush -10014
+    //   2035: aload 16
+    //   2037: invokestatic 112	com/weiyun/sdk/util/Utils:getStackTraceAsString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   2040: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
+    //   2043: astore 16
+    //   2045: aload 15
+    //   2047: ifnull +8 -> 2055
+    //   2050: aload 15
+    //   2052: invokevirtual 307	java/io/InputStream:close	()V
+    //   2055: aload 16
+    //   2057: astore 13
+    //   2059: aload 12
+    //   2061: ifnull -1792 -> 269
+    //   2064: aload 12
+    //   2066: invokevirtual 200	java/net/HttpURLConnection:disconnect	()V
+    //   2069: aload 16
+    //   2071: areturn
+    //   2072: astore 12
+    //   2074: ldc 10
+    //   2076: invokestatic 206	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   2079: invokevirtual 209	java/lang/Thread:getName	()Ljava/lang/String;
+    //   2082: aload 12
+    //   2084: invokestatic 211	com/weiyun/sdk/log/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   2087: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
+    //   2090: dup
+    //   2091: sipush -30017
+    //   2094: aload 12
+    //   2096: invokestatic 112	com/weiyun/sdk/util/Utils:getStackTraceAsString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   2099: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
+    //   2102: areturn
+    //   2103: astore 12
+    //   2105: ldc 10
+    //   2107: invokestatic 206	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   2110: invokevirtual 209	java/lang/Thread:getName	()Ljava/lang/String;
+    //   2113: aload 12
+    //   2115: invokestatic 211	com/weiyun/sdk/log/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   2118: new 41	com/weiyun/sdk/job/transfer/Transfer$Result
+    //   2121: dup
+    //   2122: sipush -30017
+    //   2125: aload 12
+    //   2127: invokestatic 112	com/weiyun/sdk/util/Utils:getStackTraceAsString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   2130: invokespecial 75	com/weiyun/sdk/job/transfer/Transfer$Result:<init>	(ILjava/lang/String;)V
+    //   2133: areturn
+    //   2134: astore 13
+    //   2136: aload 15
+    //   2138: astore 14
+    //   2140: aload 13
+    //   2142: astore 15
     //   2144: goto -328 -> 1816
     //   2147: astore 16
-    //   2149: goto -170 -> 1979
+    //   2149: goto -166 -> 1983
     //   2152: astore 16
     //   2154: goto -305 -> 1849
     //   2157: astore 16
@@ -1164,7 +1164,7 @@ public class BaseDownloadTransfer
     //   2160: istore_1
     //   2161: iload 4
     //   2163: istore_2
-    //   2164: goto -945 -> 1219
+    //   2164: goto -949 -> 1215
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	2167	0	this	BaseDownloadTransfer
@@ -1172,54 +1172,54 @@ public class BaseDownloadTransfer
     //   37	2127	2	j	int
     //   25	2135	3	k	int
     //   27	2135	4	m	int
-    //   336	1229	5	n	int
-    //   375	1197	6	i1	int
+    //   336	1225	5	n	int
+    //   375	1193	6	i1	int
     //   369	331	7	i2	int
-    //   903	726	8	l1	long
-    //   863	763	10	l2	long
-    //   4	257	12	localHttpURLConnection	HttpURLConnection
+    //   903	722	8	l1	long
+    //   863	759	10	l2	long
+    //   1	260	12	localHttpURLConnection	HttpURLConnection
     //   272	224	12	localIOException1	IOException
     //   503	228	12	localIOException2	IOException
     //   738	371	12	localIOException3	IOException
     //   1116	56	12	localIOException4	IOException
-    //   1213	129	12	localObject1	Object
-    //   1349	92	12	localIOException5	IOException
-    //   1448	221	12	localIOException6	IOException
-    //   1676	58	12	localIOException7	IOException
-    //   1741	55	12	localIOException8	IOException
-    //   1814	23	12	localObject2	Object
-    //   1847	84	12	localObject3	Object
+    //   1213	125	12	localObject1	Object
+    //   1345	92	12	localIOException5	IOException
+    //   1444	221	12	localIOException6	IOException
+    //   1672	58	12	localIOException7	IOException
+    //   1737	55	12	localIOException8	IOException
+    //   1814	117	12	localObject2	Object
     //   1938	23	12	localIOException9	IOException
-    //   1977	84	12	localObject4	Object
-    //   2068	23	12	localIOException10	IOException
-    //   2099	38	12	localIOException11	IOException
-    //   2142	1	12	localObject5	Object
-    //   40	449	13	localObject6	Object
+    //   1977	88	12	localObject3	Object
+    //   2072	23	12	localIOException10	IOException
+    //   2103	23	12	localIOException11	IOException
+    //   40	449	13	localObject4	Object
     //   534	1	13	localNumberFormatException1	java.lang.NumberFormatException
-    //   548	554	13	localObject7	Object
+    //   548	554	13	localObject5	Object
     //   1147	1	13	localNumberFormatException2	java.lang.NumberFormatException
-    //   1161	1	13	localIOException12	IOException
-    //   1205	11	13	localIOException13	IOException
-    //   1221	918	13	localObject8	Object
-    //   44	2091	14	localObject9	Object
-    //   13	2120	15	localObject10	Object
-    //   33	1771	16	localObject11	Object
+    //   1161	763	13	localObject6	Object
+    //   1969	11	13	localException1	java.lang.Exception
+    //   1985	73	13	localObject7	Object
+    //   2134	7	13	localObject8	Object
+    //   44	2095	14	localObject9	Object
+    //   13	1783	15	localObject10	Object
+    //   1810	27	15	localObject11	Object
+    //   1843	300	15	localObject12	Object
+    //   52	1122	16	localObject13	Object
+    //   1205	65	16	localIOException12	IOException
+    //   1277	523	16	localObject14	Object
     //   1839	63	16	localInterruptedException1	InterruptedException
-    //   1909	27	16	localResult1	Transfer.Result
-    //   1969	63	16	localException1	java.lang.Exception
-    //   2039	27	16	localResult2	Transfer.Result
-    //   2130	11	16	localObject12	Object
+    //   1909	161	16	localObject15	Object
     //   2147	1	16	localException2	java.lang.Exception
     //   2152	1	16	localInterruptedException2	InterruptedException
-    //   2157	1	16	localIOException14	IOException
-    //   52	1924	17	localObject13	Object
-    //   48	1798	18	localObject14	Object
-    //   22	1186	19	localObject15	Object
-    //   19	1953	20	localObject16	Object
-    //   16	1826	21	localObject17	Object
-    //   10	1178	22	localObject18	Object
-    //   1	573	23	str	String
-    //   7	75	24	localObject19	Object
+    //   2157	1	16	localIOException13	IOException
+    //   48	1798	17	localObject16	Object
+    //   33	1533	18	localObject17	Object
+    //   19	1953	19	localObject18	Object
+    //   22	1186	20	localObject19	Object
+    //   16	1826	21	localObject20	Object
+    //   7	1181	22	localObject21	Object
+    //   4	570	23	str	String
+    //   10	53	24	localObject22	Object
     //   58	764	25	localURL	URL
     // Exception table:
     //   from	to	target	type
@@ -1253,52 +1253,52 @@ public class BaseDownloadTransfer
     //   1036	1048	1205	java/io/IOException
     //   1074	1087	1205	java/io/IOException
     //   1175	1198	1205	java/io/IOException
-    //   1406	1419	1205	java/io/IOException
-    //   1512	1529	1205	java/io/IOException
-    //   1555	1564	1205	java/io/IOException
-    //   1590	1604	1205	java/io/IOException
-    //   1327	1332	1349	java/io/IOException
-    //   1341	1346	1349	java/io/IOException
-    //   1423	1431	1448	java/io/IOException
-    //   1440	1445	1448	java/io/IOException
-    //   1658	1663	1676	java/io/IOException
-    //   1668	1673	1676	java/io/IOException
-    //   1723	1728	1741	java/io/IOException
-    //   1733	1738	1741	java/io/IOException
-    //   54	60	1814	finally
-    //   85	95	1814	finally
-    //   120	135	1814	finally
-    //   160	166	1814	finally
-    //   191	201	1814	finally
-    //   226	239	1814	finally
-    //   328	333	1814	finally
-    //   364	371	1814	finally
-    //   419	428	1814	finally
-    //   459	474	1814	finally
-    //   562	584	1814	finally
-    //   626	663	1814	finally
-    //   689	709	1814	finally
-    //   795	860	1814	finally
-    //   891	901	1814	finally
-    //   936	943	1814	finally
-    //   976	1010	1814	finally
-    //   1036	1048	1814	finally
-    //   1074	1087	1814	finally
-    //   1175	1198	1814	finally
-    //   1227	1256	1814	finally
-    //   1264	1283	1814	finally
-    //   1291	1302	1814	finally
-    //   1314	1322	1814	finally
-    //   1406	1419	1814	finally
-    //   1512	1529	1814	finally
-    //   1555	1564	1814	finally
-    //   1590	1604	1814	finally
-    //   1780	1791	1814	finally
-    //   1803	1811	1814	finally
-    //   1857	1886	1814	finally
-    //   1894	1911	1814	finally
-    //   1987	2016	1814	finally
-    //   2024	2041	1814	finally
+    //   1402	1415	1205	java/io/IOException
+    //   1508	1525	1205	java/io/IOException
+    //   1551	1560	1205	java/io/IOException
+    //   1586	1600	1205	java/io/IOException
+    //   1323	1328	1345	java/io/IOException
+    //   1337	1342	1345	java/io/IOException
+    //   1419	1427	1444	java/io/IOException
+    //   1436	1441	1444	java/io/IOException
+    //   1654	1659	1672	java/io/IOException
+    //   1664	1669	1672	java/io/IOException
+    //   1719	1724	1737	java/io/IOException
+    //   1729	1734	1737	java/io/IOException
+    //   54	60	1810	finally
+    //   85	95	1810	finally
+    //   120	135	1810	finally
+    //   160	166	1810	finally
+    //   191	201	1810	finally
+    //   226	239	1810	finally
+    //   328	333	1810	finally
+    //   364	371	1810	finally
+    //   419	428	1810	finally
+    //   459	474	1810	finally
+    //   562	584	1810	finally
+    //   626	663	1810	finally
+    //   689	709	1810	finally
+    //   795	860	1810	finally
+    //   891	901	1810	finally
+    //   936	943	1810	finally
+    //   976	1010	1810	finally
+    //   1036	1048	1810	finally
+    //   1074	1087	1810	finally
+    //   1175	1198	1810	finally
+    //   1223	1252	1810	finally
+    //   1260	1279	1810	finally
+    //   1287	1298	1810	finally
+    //   1310	1318	1810	finally
+    //   1402	1415	1810	finally
+    //   1508	1525	1810	finally
+    //   1551	1560	1810	finally
+    //   1586	1600	1810	finally
+    //   1776	1787	1810	finally
+    //   1799	1807	1810	finally
+    //   1857	1886	1810	finally
+    //   1894	1911	1810	finally
+    //   1991	2020	1810	finally
+    //   2028	2045	1810	finally
     //   54	60	1839	java/lang/InterruptedException
     //   85	95	1839	java/lang/InterruptedException
     //   120	135	1839	java/lang/InterruptedException
@@ -1319,10 +1319,10 @@ public class BaseDownloadTransfer
     //   1036	1048	1839	java/lang/InterruptedException
     //   1074	1087	1839	java/lang/InterruptedException
     //   1175	1198	1839	java/lang/InterruptedException
-    //   1406	1419	1839	java/lang/InterruptedException
-    //   1512	1529	1839	java/lang/InterruptedException
-    //   1555	1564	1839	java/lang/InterruptedException
-    //   1590	1604	1839	java/lang/InterruptedException
+    //   1402	1415	1839	java/lang/InterruptedException
+    //   1508	1525	1839	java/lang/InterruptedException
+    //   1551	1560	1839	java/lang/InterruptedException
+    //   1586	1600	1839	java/lang/InterruptedException
     //   1916	1921	1938	java/io/IOException
     //   1930	1935	1938	java/io/IOException
     //   54	60	1969	java/lang/Exception
@@ -1345,26 +1345,26 @@ public class BaseDownloadTransfer
     //   1036	1048	1969	java/lang/Exception
     //   1074	1087	1969	java/lang/Exception
     //   1175	1198	1969	java/lang/Exception
-    //   1406	1419	1969	java/lang/Exception
-    //   1512	1529	1969	java/lang/Exception
-    //   1555	1564	1969	java/lang/Exception
-    //   1590	1604	1969	java/lang/Exception
-    //   2046	2051	2068	java/io/IOException
-    //   2060	2065	2068	java/io/IOException
-    //   1821	1826	2099	java/io/IOException
-    //   1831	1836	2099	java/io/IOException
-    //   1604	1611	2130	finally
-    //   1618	1653	2130	finally
-    //   1707	1718	2130	finally
-    //   1604	1611	2147	java/lang/Exception
-    //   1618	1653	2147	java/lang/Exception
-    //   1707	1718	2147	java/lang/Exception
-    //   1604	1611	2152	java/lang/InterruptedException
-    //   1618	1653	2152	java/lang/InterruptedException
-    //   1707	1718	2152	java/lang/InterruptedException
-    //   1604	1611	2157	java/io/IOException
-    //   1618	1653	2157	java/io/IOException
-    //   1707	1718	2157	java/io/IOException
+    //   1402	1415	1969	java/lang/Exception
+    //   1508	1525	1969	java/lang/Exception
+    //   1551	1560	1969	java/lang/Exception
+    //   1586	1600	1969	java/lang/Exception
+    //   2050	2055	2072	java/io/IOException
+    //   2064	2069	2072	java/io/IOException
+    //   1821	1826	2103	java/io/IOException
+    //   1831	1836	2103	java/io/IOException
+    //   1600	1607	2134	finally
+    //   1614	1649	2134	finally
+    //   1703	1714	2134	finally
+    //   1600	1607	2147	java/lang/Exception
+    //   1614	1649	2147	java/lang/Exception
+    //   1703	1714	2147	java/lang/Exception
+    //   1600	1607	2152	java/lang/InterruptedException
+    //   1614	1649	2152	java/lang/InterruptedException
+    //   1703	1714	2152	java/lang/InterruptedException
+    //   1600	1607	2157	java/io/IOException
+    //   1614	1649	2157	java/io/IOException
+    //   1703	1714	2157	java/io/IOException
   }
   
   protected int getMaxTryTimes()

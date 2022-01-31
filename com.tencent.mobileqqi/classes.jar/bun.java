@@ -1,18 +1,21 @@
-import com.tencent.biz.webviewplugin.Ad;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class bun
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public bun(Ad paramAd) {}
+  public bun(AddRequestActivity paramAddRequestActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.g();
+    this.a.a.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bun
  * JD-Core Version:    0.7.0.1
  */

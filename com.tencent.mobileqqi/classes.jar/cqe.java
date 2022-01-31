@@ -1,24 +1,34 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.EditTagActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.HornListActivity;
+import com.tencent.mobileqq.activity.HornPublishActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class cqe
-  extends CardObserver
+  implements View.OnClickListener
 {
-  public cqe(EditTagActivity paramEditTagActivity) {}
+  public cqe(HornListActivity paramHornListActivity) {}
   
-  protected void b(boolean paramBoolean, Card paramCard)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      this.a.d(2131562804);
-    }
-    for (;;)
+    QQAppInterface localQQAppInterface;
+    if (this.a.a != null)
     {
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 1000L);
+      localQQAppInterface = this.a.b;
+      if (!VipUtils.a(this.a.b)) {
+        break label81;
+      }
+    }
+    label81:
+    for (paramView = "1";; paramView = "0")
+    {
+      ReportController.b(localQQAppInterface, "P_CliOper", "Svip", "", "Vip_nearby", "Vip_nearby_enterHornCreate", 0, 0, "isSvip", paramView, "", "");
+      paramView = new Intent(this.a, HornPublishActivity.class);
+      this.a.startActivityForResult(paramView, 0);
       return;
-      this.a.d(2131562043);
     }
   }
 }

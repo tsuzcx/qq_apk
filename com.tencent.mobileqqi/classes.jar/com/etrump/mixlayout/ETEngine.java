@@ -4,9 +4,9 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import ex;
-import ey;
-import fb;
+import ff;
+import fg;
+import fj;
 import java.util.ArrayList;
 
 public class ETEngine
@@ -20,7 +20,7 @@ public class ETEngine
   private FontManager jdField_a_of_type_ComEtrumpMixlayoutFontManager = null;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList(8);
   private boolean jdField_a_of_type_Boolean = false;
-  private ex[] jdField_a_of_type_ArrayOfEx = { new ex(), new ex() };
+  private ff[] jdField_a_of_type_ArrayOfFf = { new ff(), new ff() };
   private boolean jdField_b_of_type_Boolean;
   
   private ETEngine()
@@ -159,11 +159,11 @@ public class ETEngine
     //   113: invokespecial 143	java/util/ArrayList:<init>	()V
     //   116: astore_1
     //   117: aload 6
-    //   119: new 145	ez
+    //   119: new 145	fh
     //   122: dup
     //   123: aload_0
     //   124: aload_1
-    //   125: invokespecial 148	ez:<init>	(Lcom/etrump/mixlayout/ETEngine;Ljava/util/ArrayList;)V
+    //   125: invokespecial 148	fh:<init>	(Lcom/etrump/mixlayout/ETEngine;Ljava/util/ArrayList;)V
     //   128: invokevirtual 152	java/io/File:listFiles	(Ljava/io/FilenameFilter;)[Ljava/io/File;
     //   131: pop
     //   132: aload_0
@@ -260,7 +260,7 @@ public class ETEngine
     return new EtrumpLayoutLine(this.jdField_a_of_type_ComEtrumpMixlayoutEtrumpJNI.nativeTextLayoutGetLineWidth(paramInt1, paramInt2), this.jdField_a_of_type_ComEtrumpMixlayoutEtrumpJNI.nativeTextLayoutGetLineHeight(paramInt1, paramInt2), this.jdField_a_of_type_ComEtrumpMixlayoutEtrumpJNI.nativeTextLayoutGetLineRangeFrom(paramInt1, paramInt2), this.jdField_a_of_type_ComEtrumpMixlayoutEtrumpJNI.nativeTextLayoutGetLineRangeTo(paramInt1, paramInt2));
   }
   
-  public ey a(long paramLong)
+  public fg a(long paramLong)
   {
     ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
     int i = 0;
@@ -270,9 +270,9 @@ public class ETEngine
       {
         if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          ey localey = (ey)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-          if (localey.a == paramLong) {
-            return localey;
+          fg localfg = (fg)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+          if (localfg.a == paramLong) {
+            return localfg;
           }
         }
         else
@@ -377,21 +377,21 @@ public class ETEngine
   
   public void a(int paramInt1, String paramString1, int paramInt2, String paramString2, boolean paramBoolean)
   {
-    arrayOfex = this.jdField_a_of_type_ArrayOfEx;
+    arrayOfff = this.jdField_a_of_type_ArrayOfFf;
     if (paramBoolean) {}
     for (;;)
     {
       try
       {
-        localex = this.jdField_a_of_type_ArrayOfEx[0];
-        localex.jdField_b_of_type_Int = paramInt2;
-        localex.jdField_a_of_type_Int = paramInt1;
-        localex.jdField_b_of_type_JavaLangString = paramString1;
-        localex.jdField_a_of_type_JavaLangString = paramString2;
+        localff = this.jdField_a_of_type_ArrayOfFf[0];
+        localff.jdField_b_of_type_Int = paramInt2;
+        localff.jdField_a_of_type_Int = paramInt1;
+        localff.jdField_b_of_type_JavaLangString = paramString1;
+        localff.jdField_a_of_type_JavaLangString = paramString2;
         return;
       }
       finally {}
-      ex localex = this.jdField_a_of_type_ArrayOfEx[1];
+      ff localff = this.jdField_a_of_type_ArrayOfFf[1];
     }
   }
   
@@ -400,11 +400,11 @@ public class ETEngine
     this.jdField_a_of_type_ComEtrumpMixlayoutFontManager = paramFontManager;
   }
   
-  public void a(ex paramex)
+  public void a(ff paramff)
   {
-    this.jdField_a_of_type_ComEtrumpMixlayoutEtrumpJNI.nativeFontDelete(paramex.jdField_b_of_type_Int);
+    this.jdField_a_of_type_ComEtrumpMixlayoutEtrumpJNI.nativeFontDelete(paramff.jdField_b_of_type_Int);
     if (QLog.isColorLevel()) {
-      QLog.d("ETEngine", 2, "removeFont id=" + paramex.jdField_a_of_type_Int + ", handle=" + paramex.jdField_b_of_type_Int);
+      QLog.d("ETEngine", 2, "removeFont id=" + paramff.jdField_a_of_type_Int + ", handle=" + paramff.jdField_b_of_type_Int);
     }
   }
   
@@ -479,7 +479,7 @@ public class ETEngine
     boolean bool1 = true;
     for (;;)
     {
-      ex[] arrayOfex;
+      ff[] arrayOfff;
       try
       {
         boolean bool2 = this.jdField_a_of_type_Boolean;
@@ -493,12 +493,12 @@ public class ETEngine
           paramBoolean = false;
           continue;
         }
-        arrayOfex = this.jdField_a_of_type_ArrayOfEx;
+        arrayOfff = this.jdField_a_of_type_ArrayOfFf;
         if (paramBoolean) {
           try
           {
-            ex localex = this.jdField_a_of_type_ArrayOfEx[0];
-            if (localex.jdField_a_of_type_Int != paramInt) {
+            ff localff = this.jdField_a_of_type_ArrayOfFf[0];
+            if (localff.jdField_a_of_type_Int != paramInt) {
               break label101;
             }
             paramBoolean = bool1;
@@ -506,14 +506,14 @@ public class ETEngine
           }
           finally {}
         }
-        localObject3 = this.jdField_a_of_type_ArrayOfEx[1];
+        localObject3 = this.jdField_a_of_type_ArrayOfFf[1];
       }
       finally {}
       continue;
       label101:
-      if ((((ex)localObject3).jdField_a_of_type_Int != paramInt) && (((ex)localObject3).jdField_b_of_type_Int > 0))
+      if ((((ff)localObject3).jdField_a_of_type_Int != paramInt) && (((ff)localObject3).jdField_b_of_type_Int > 0))
       {
-        a((ex)localObject3);
+        a((ff)localObject3);
         a(0, null, 0, null, paramBoolean);
       }
       long l = paramInt;
@@ -521,7 +521,7 @@ public class ETEngine
       if (localObject3 != null)
       {
         this.jdField_a_of_type_ComEtrumpMixlayoutFontManager.a(true, paramBoolean);
-        ThreadManager.a(new fb(this, paramInt, (ey)localObject3, paramBoolean));
+        ThreadManager.a(new fj(this, paramInt, (fg)localObject3, paramBoolean));
         paramBoolean = false;
       }
       else
@@ -537,21 +537,21 @@ public class ETEngine
     if (!this.jdField_a_of_type_Boolean) {
       return false;
     }
-    ex[] arrayOfex = this.jdField_a_of_type_ArrayOfEx;
+    ff[] arrayOfff = this.jdField_a_of_type_ArrayOfFf;
     int i = 0;
     for (;;)
     {
       try
       {
-        if (i >= this.jdField_a_of_type_ArrayOfEx.length) {
+        if (i >= this.jdField_a_of_type_ArrayOfFf.length) {
           break;
         }
-        ex localex = this.jdField_a_of_type_ArrayOfEx[i];
-        if (localex.jdField_a_of_type_Int == paramLong)
+        ff localff = this.jdField_a_of_type_ArrayOfFf[i];
+        if (localff.jdField_a_of_type_Int == paramLong)
         {
-          boolean bool = this.jdField_a_of_type_ComEtrumpMixlayoutEtrumpJNI.nativeSwitchFont(localex.jdField_b_of_type_Int);
+          boolean bool = this.jdField_a_of_type_ComEtrumpMixlayoutEtrumpJNI.nativeSwitchFont(localff.jdField_b_of_type_Int);
           if (QLog.isColorLevel()) {
-            QLog.d("ETEngine", 2, "switch font name=" + localex.jdField_b_of_type_JavaLangString + ",id=" + paramLong + ", handle=" + localex.jdField_b_of_type_Int + ",switch font=" + bool);
+            QLog.d("ETEngine", 2, "switch font name=" + localff.jdField_b_of_type_JavaLangString + ",id=" + paramLong + ", handle=" + localff.jdField_b_of_type_Int + ",switch font=" + bool);
           }
           return true;
         }
@@ -607,22 +607,22 @@ public class ETEngine
   public void c()
   {
     int i = 0;
-    synchronized (this.jdField_a_of_type_ArrayOfEx)
+    synchronized (this.jdField_a_of_type_ArrayOfFf)
     {
-      while (i < this.jdField_a_of_type_ArrayOfEx.length)
+      while (i < this.jdField_a_of_type_ArrayOfFf.length)
       {
-        ex localex = this.jdField_a_of_type_ArrayOfEx[i];
-        if (localex.jdField_b_of_type_Int > 0)
+        ff localff = this.jdField_a_of_type_ArrayOfFf[i];
+        if (localff.jdField_b_of_type_Int > 0)
         {
-          this.jdField_a_of_type_ComEtrumpMixlayoutEtrumpJNI.nativeFontDelete(localex.jdField_b_of_type_Int);
+          this.jdField_a_of_type_ComEtrumpMixlayoutEtrumpJNI.nativeFontDelete(localff.jdField_b_of_type_Int);
           if (QLog.isColorLevel()) {
-            QLog.d("ETEngine", 2, "removeAllFont id=" + localex.jdField_a_of_type_Int + ", active=" + localex.jdField_b_of_type_Int);
+            QLog.d("ETEngine", 2, "removeAllFont id=" + localff.jdField_a_of_type_Int + ", active=" + localff.jdField_b_of_type_Int);
           }
         }
-        localex.jdField_b_of_type_Int = 0;
-        localex.jdField_a_of_type_Int = 0;
-        localex.jdField_b_of_type_JavaLangString = null;
-        localex.jdField_a_of_type_JavaLangString = null;
+        localff.jdField_b_of_type_Int = 0;
+        localff.jdField_a_of_type_Int = 0;
+        localff.jdField_b_of_type_JavaLangString = null;
+        localff.jdField_a_of_type_JavaLangString = null;
         i += 1;
       }
       return;

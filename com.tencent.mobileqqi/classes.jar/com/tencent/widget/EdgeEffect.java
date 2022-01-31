@@ -63,8 +63,8 @@ public class EdgeEffect
   {
     this.g = 300;
     paramContext = paramContext.getResources();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130838151);
-    this.b = paramContext.getDrawable(2130838152);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130838153);
+    this.b = paramContext.getDrawable(2130838154);
     this.h = ((int)(paramContext.getDisplayMetrics().density * 300.0F + 0.5F));
     this.jdField_a_of_type_AndroidViewAnimationInterpolator = new DecelerateInterpolator();
   }

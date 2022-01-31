@@ -1,30 +1,16 @@
-import com.tencent.mobileqq.widget.QZoneCoverView;
-import com.tencent.mobileqq.widget.QZoneCoverView.PhotoInfo;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
 public class hlp
-  extends Thread
+  implements Comparator
 {
-  public hlp(QZoneCoverView paramQZoneCoverView, QZoneCoverView.PhotoInfo paramPhotoInfo) {}
-  
-  public void run()
+  public int a(String paramString1, String paramString2)
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQZoneCoverView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQZoneCoverView$PhotoInfo);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQZoneCoverView.f();
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("Q.qzonecover.", 2, localException.toString());
-    }
+    return paramString1.compareTo(paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hlp
  * JD-Core Version:    0.7.0.1
  */

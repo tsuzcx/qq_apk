@@ -1,36 +1,33 @@
-import android.app.Dialog;
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.AIOTipsController;
 
-class bxw
-  implements Runnable
+public class bxw
+  extends Handler
 {
-  bxw(bxv parambxv) {}
+  public bxw(ChatActivity paramChatActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    int i = 0;
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidWidgetLinearLayout.removeViewAt(this.a.jdField_a_of_type_Int);
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(false);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidViewView = null;
-    int j = this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    while (i < j)
+    if (paramMessage.what == 101)
     {
-      View localView = this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      if (localView.getTag() != null) {
-        localView.setTag(Integer.valueOf(i));
-      }
-      i += 1;
+      ChatActivity.a(this.a, 2);
+      ChatActivity.a(this.a);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.dismiss();
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      if (paramMessage.what == 102) {
+        ChatActivity.a(this.a).a();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bxw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,37 @@
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.app.Dialog;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import java.io.UnsupportedEncodingException;
 
 public class cjn
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  public cjn(ChatSettingForTroop paramChatSettingForTroop) {}
+  public cjn(EditInfoActivity paramEditInfoActivity) {}
   
-  @SuppressLint({"ServiceCast"})
-  @TargetApi(11)
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((ChatSettingForTroop.a(this.a) != null) && (ChatSettingForTroop.a(this.a).isShowing())) {
-      ChatSettingForTroop.a(this.a).dismiss();
-    }
-    if (Build.VERSION.SDK_INT < 11)
+    if ((paramCharSequence == null) || (paramCharSequence.length() == 0))
     {
-      ((android.text.ClipboardManager)this.a.getSystemService("clipboard")).setText(this.a.a.f + "/n" + this.a.a.c);
+      this.a.b = ("0/" + this.a.c);
+      this.a.a.post(new cjo(this));
       return;
     }
-    ((android.content.ClipboardManager)this.a.getSystemService("clipboard")).setText(this.a.a.f + "/n" + this.a.a.c);
+    try
+    {
+      paramInt1 = paramCharSequence.toString().getBytes("utf-8").length;
+      this.a.b = (paramInt1 + "/" + this.a.c);
+      this.a.a.post(new cjp(this, paramInt1));
+      return;
+    }
+    catch (UnsupportedEncodingException paramCharSequence)
+    {
+      paramCharSequence.printStackTrace();
+    }
   }
 }
 

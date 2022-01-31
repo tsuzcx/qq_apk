@@ -1,112 +1,75 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQServiceEntry;
+import com.tencent.mobileqq.app.QQServiceEntry.Tag;
+import java.util.ArrayList;
+import java.util.List;
 
 public class fgb
-  extends DefaultHandler
+  extends BaseAdapter
 {
-  public static HashMap a;
-  private int jdField_a_of_type_Int = 0;
-  private String jdField_a_of_type_JavaLangString = "0";
-  private StringBuffer jdField_a_of_type_JavaLangStringBuffer = new StringBuffer();
-  private boolean jdField_a_of_type_Boolean = false;
-  
-  private boolean a(String paramString)
+  public fgb(QQServiceEntry paramQQServiceEntry, int paramInt)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return false;
-    }
-    return Pattern.compile("^([0-9]{0,5}|\\{([\\s\\S]*)\\})(,([0-9]{0,5}|\\{([\\s\\S]*)\\}))*$").matcher(paramString).matches();
-  }
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_JavaLangStringBuffer.append(paramArrayOfChar, paramInt1, paramInt2);
-    }
-  }
-  
-  public void endElement(String paramString1, String paramString2, String paramString3)
-  {
-    if (this.jdField_a_of_type_Boolean)
+    paramQQServiceEntry.jdField_a_of_type_JavaUtilList = new ArrayList();
+    fga[] arrayOffga = QQServiceEntry.jdField_a_of_type_ArrayOfFga;
+    int j = arrayOffga.length;
+    int i = 0;
+    while (i < j)
     {
-      if (!a(this.jdField_a_of_type_JavaLangStringBuffer.toString()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(DeviceProfileManager.jdField_a_of_type_JavaLangString, 2, "DPCXmlHandler format is error: " + paramString2 + "-" + this.jdField_a_of_type_JavaLangStringBuffer.toString());
-        }
-        return;
+      fga localfga = arrayOffga[i];
+      if ((localfga.jdField_a_of_type_Int & paramInt) != 0) {
+        paramQQServiceEntry.jdField_a_of_type_JavaUtilList.add(localfga);
       }
-      if (!jdField_a_of_type_JavaUtilHashMap.containsKey(paramString2)) {
-        break label222;
-      }
-      paramString1 = (fgc)jdField_a_of_type_JavaUtilHashMap.get(paramString2);
-      if (QLog.isColorLevel()) {
-        QLog.d(DeviceProfileManager.jdField_a_of_type_JavaLangString, 2, "DPCXmlHandler parse to TEMPMAP update oldInfo: " + paramString2 + "-" + paramString1.toString());
-      }
-      if (paramString1.jdField_a_of_type_Int < this.jdField_a_of_type_Int)
-      {
-        paramString1.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-        paramString1.b = this.jdField_a_of_type_JavaLangStringBuffer.toString();
-        paramString1.c = this.jdField_a_of_type_JavaLangString;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(DeviceProfileManager.jdField_a_of_type_JavaLangString, 2, "DPCXmlHandler parse to TEMPMAP update newInfo: " + paramString2 + "-" + paramString1.toString());
-      }
+      i += 1;
+    }
+  }
+  
+  public int getCount()
+  {
+    return this.a.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQServiceEntry$Tag.a.getContext();
+    paramViewGroup = paramView;
+    if (paramView == null)
+    {
+      paramViewGroup = ((LayoutInflater)((Context)localObject).getSystemService("layout_inflater")).inflate(2130903976, null);
+      paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-2, this.a.i + 4));
+    }
+    paramView = (ImageView)paramViewGroup.findViewById(2131231293);
+    paramView.setAdjustViewBounds(true);
+    paramView.setImageDrawable(((Context)localObject).getResources().getDrawable(((fga)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).b));
+    localObject = paramView.getDrawable();
+    if (!this.a.jdField_a_of_type_Boolean) {
+      ((TextView)paramViewGroup.findViewById(2131231294)).setText(((fga)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Boolean = false;
-      return;
-      label222:
-      paramString1 = new fgc();
-      paramString1.jdField_a_of_type_JavaLangString = paramString2;
-      paramString1.b = this.jdField_a_of_type_JavaLangStringBuffer.toString();
-      paramString1.c = this.jdField_a_of_type_JavaLangString;
-      paramString1.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      jdField_a_of_type_JavaUtilHashMap.put(paramString2, paramString1);
-      if (QLog.isColorLevel()) {
-        QLog.d(DeviceProfileManager.jdField_a_of_type_JavaLangString, 2, "DPCXmlHandler parse to TEMPMAP add: " + paramString2 + "-" + paramString1.toString());
-      }
-    }
-  }
-  
-  public void startDocument()
-  {
-    super.startDocument();
-    if (jdField_a_of_type_JavaUtilHashMap == null) {
-      jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    }
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    int i = 0;
-    if (paramString2.equals("features"))
-    {
-      if (i < paramAttributes.getLength())
-      {
-        if (paramAttributes.getLocalName(i).equals("weight")) {
-          this.jdField_a_of_type_Int = Integer.parseInt(paramAttributes.getValue(i));
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (paramAttributes.getLocalName(i).equals("taskId")) {
-            this.jdField_a_of_type_JavaLangString = paramAttributes.getValue(i);
-          }
-        }
-      }
-    }
-    else
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_JavaLangStringBuffer.delete(0, this.jdField_a_of_type_JavaLangStringBuffer.length());
+      paramView.setImageDrawable((Drawable)localObject);
+      return paramViewGroup;
+      ((Drawable)localObject).setColorFilter(-1, PorterDuff.Mode.SRC_IN);
     }
   }
 }

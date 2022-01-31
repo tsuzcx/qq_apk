@@ -1,28 +1,17 @@
-import com.tencent.mobileqq.activity.RegisterActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
 public class dkq
-  implements Runnable
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public dkq(RegisterActivity paramRegisterActivity) {}
-  
-  public void run()
-  {
-    try
-    {
-      if (RegisterActivity.a(this.a) != null)
-      {
-        RegisterActivity.a(this.a).dismiss();
-        RegisterActivity.a(this.a).cancel();
-        RegisterActivity.a(this.a, null);
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-  }
+  public int a = -1;
+  public long a;
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
 }
 
 

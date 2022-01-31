@@ -1,19 +1,19 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomSingleButtonDialog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.RotateableView;
 
 public class hhn
-  implements View.OnClickListener
+  extends Handler
 {
-  public hhn(QQCustomSingleButtonDialog paramQQCustomSingleButtonDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  public hhn(RotateableView paramRotateableView) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog, 1);
+    RotateableView.a(this.a, 8.0F);
+    if (RotateableView.a(this.a) >= 360.0F) {
+      RotateableView.b(this.a, 360.0F);
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.dismiss();
+    this.a.invalidate();
   }
 }
 

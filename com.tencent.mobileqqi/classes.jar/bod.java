@@ -1,29 +1,19 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.coupon.CouponActivity;
+import com.tencent.biz.ui.CustomMenuBar.OnMenuItemClickListener;
+import com.tencent.biz.ui.PopupMenu;
 
 public class bod
   implements View.OnClickListener
 {
-  public bod(CouponActivity paramCouponActivity) {}
+  public bod(PopupMenu paramPopupMenu, String paramString, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.a & 0x4) != 0)
-    {
-      paramView = new Intent();
-      paramView.putExtra("isNeedFinish", true);
-      paramView.putExtra("toPage", 1);
-      this.a.setResult(-1, paramView);
-      this.a.finish();
-      return;
+    if (this.jdField_a_of_type_ComTencentBizUiPopupMenu.a != null) {
+      this.jdField_a_of_type_ComTencentBizUiPopupMenu.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
     }
-    paramView = new Intent(this.a, CouponActivity.class);
-    paramView.putExtra("url", "http://web.p.qq.com/qqmpmobile/coupon/mycoupons.html?_bid=108");
-    paramView.putExtra("source", "2");
-    paramView.putExtra("from", (this.a.a | 0x5) & 0xF);
-    this.a.startActivityForResult(paramView, 100);
+    paramView.post(new boe(this));
   }
 }
 

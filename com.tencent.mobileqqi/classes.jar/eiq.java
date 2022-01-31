@@ -1,26 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog.HistoryListChangeListener;
-import com.tencent.widget.XListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
-public class eiq
-  implements SearchResultDialog.HistoryListChangeListener
+class eiq
+  implements DialogInterface.OnDismissListener
 {
-  public eiq(SearchResultDialog paramSearchResultDialog, View paramView) {}
+  eiq(ein paramein) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    try
-    {
-      SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog).a(this.jdField_a_of_type_AndroidViewView);
-      return;
-    }
-    catch (Exception localException) {}
+    this.a.a.a(this.a.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eiq
  * JD-Core Version:    0.7.0.1
  */

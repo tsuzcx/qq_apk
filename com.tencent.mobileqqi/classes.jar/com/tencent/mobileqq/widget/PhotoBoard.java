@@ -64,7 +64,7 @@ public class PhotoBoard
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
     this.b = localDisplayMetrics.density;
     this.j = Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
-    this.k = getResources().getDimensionPixelSize(2131427495);
+    this.k = getResources().getDimensionPixelSize(2131427498);
     if (this.k <= 0) {
       this.k = ((int)(130.0F * this.b));
     }

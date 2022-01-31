@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import com.tencent.mobileqq.activity.PublicAccountActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
-class dan
-  implements DialogInterface.OnClickListener
+public class dan
+  extends FriendListObserver
 {
-  dan(dam paramdam) {}
+  public dan(PublicAccountActivity paramPublicAccountActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    paramDialogInterface.dismiss();
-    LoginPhoneNumActivity.a(this.a.a);
+    if (paramBoolean) {
+      PublicAccountActivity.a(this.a).sendEmptyMessageDelayed(3, 1200L);
+    }
   }
 }
 

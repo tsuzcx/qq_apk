@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.theme.SkinEngine;
-import hja;
+import het;
 import java.io.File;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -67,7 +67,7 @@ public class ThemeUiPlugin
   {
     reportTimes = 0;
     if (reportHandler == null) {
-      reportHandler = new hja(BaseApplication.getContext().getMainLooper());
+      reportHandler = new het(BaseApplication.getContext().getMainLooper());
     }
     reportHandler.removeMessages(1);
     initDownloadedThemeNumForReport = 0;

@@ -16,8 +16,8 @@ import com.pay.googlewalletsdk.IPayListener;
 import com.pay.googlewalletsdk.util.IabHelper;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import fbl;
-import fbm;
+import ewx;
+import ewy;
 import java.io.PrintStream;
 import mqq.app.MobileQQ;
 
@@ -86,13 +86,13 @@ public class VoipPayActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130904059);
+    setContentView(2130904061);
     jdField_a_of_type_ComPayGooglewalletsdkUtilIabHelper = new IabHelper(this.b.getApplication().getApplicationContext(), "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1NiOGiwiiVAc8WoXdMzw+pD7J65wpQYS7n9+e0Hvttf2UCLv7rxxQqWh3siJwl2nf62MKZjnKoiNxwunShwbncsEFwa/X1OYpJ0ANNJq0vwrDaAiZb7mrwz67eqwU8ChZtzb5fj58AtZqevvBwBZ6C7EKrclwQTonE0Kj3jihuuJkwlzSmr08yVrUUMELTwDeAGMv79HCEEicbdo8BDJ3SCyByy+hWtBf0FRuYZeTXlCIEdtIbFG5RRAksFD4ab8Zs4BMqkNHDKUMsshRcZ9b//OtphYR4jYTh/YZAht0MHPneNqsXXQLgHkyBEMKZ+CRQW2HJEQ5QjrsIXhlXFYuwIDAQAB");
     GoogleWalletPayHelper.getInstance().init(this, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1NiOGiwiiVAc8WoXdMzw+pD7J65wpQYS7n9+e0Hvttf2UCLv7rxxQqWh3siJwl2nf62MKZjnKoiNxwunShwbncsEFwa/X1OYpJ0ANNJq0vwrDaAiZb7mrwz67eqwU8ChZtzb5fj58AtZqevvBwBZ6C7EKrclwQTonE0Kj3jihuuJkwlzSmr08yVrUUMELTwDeAGMv79HCEEicbdo8BDJ3SCyByy+hWtBf0FRuYZeTXlCIEdtIbFG5RRAksFD4ab8Zs4BMqkNHDKUMsshRcZ9b//OtphYR4jYTh/YZAht0MHPneNqsXXQLgHkyBEMKZ+CRQW2HJEQ5QjrsIXhlXFYuwIDAQAB", this);
     GoogleWalletPayHelper.getInstance().setEnv("test");
     GoogleWalletPayHelper.getInstance().setDebugLog(true);
-    ((Button)findViewById(2131234704)).setOnClickListener(new fbl(this));
-    ((Button)findViewById(2131234705)).setOnClickListener(new fbm(this));
+    ((Button)findViewById(2131234706)).setOnClickListener(new ewx(this));
+    ((Button)findViewById(2131234707)).setOnClickListener(new ewy(this));
     return true;
   }
   

@@ -3,19 +3,22 @@ package com.tencent.open.business.base;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Environment;
 import android.provider.Settings.Secure;
-import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.base.APNUtil;
 import com.tencent.open.base.LogUtility;
+import com.tencent.util.QQDeviceInfo;
 import java.util.Locale;
 import java.util.TimeZone;
 import org.json.JSONObject;
@@ -31,6 +34,7 @@ public class MobileInfoUtil
   public static final String g = "wifi_mac_address";
   public static final String h = "imei";
   public static final String i = "imei";
+  private static final String j = "ea6862";
   
   public static String a()
   {
@@ -89,7 +93,7 @@ public class MobileInfoUtil
         c = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 0).getString("imei", "");
         if (TextUtils.isEmpty(c))
         {
-          c = ((TelephonyManager)((Context)localObject).getSystemService("phone")).getDeviceId();
+          c = QQDeviceInfo.a("master");
           if (c != null)
           {
             localObject = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 0).edit();
@@ -113,12 +117,12 @@ public class MobileInfoUtil
         d = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 0).getString("imei", "");
         if (TextUtils.isEmpty(d))
         {
-          d = ((TelephonyManager)((Context)localObject).getSystemService("phone")).getDeviceId();
+          c = QQDeviceInfo.b("ea6862");
           if (d != null)
           {
             localObject = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 0).edit();
             ((SharedPreferences.Editor)localObject).putString("imei", d);
-            ((SharedPreferences.Editor)localObject).commit();
+            ((SharedPreferences.Editor)localObject).apply();
           }
         }
       }
@@ -132,13 +136,43 @@ public class MobileInfoUtil
       return b;
     }
     WindowManager localWindowManager = (WindowManager)CommonDataAdapter.a().a().getSystemService("window");
-    int j = localWindowManager.getDefaultDisplay().getWidth();
-    int k = localWindowManager.getDefaultDisplay().getHeight();
-    return j + "x" + k;
+    int k = localWindowManager.getDefaultDisplay().getWidth();
+    int m = localWindowManager.getDefaultDisplay().getHeight();
+    return k + "x" + m;
   }
   
   public static String f()
   {
+    if (!TextUtils.isEmpty(e)) {
+      return e;
+    }
+    Object localObject1 = CommonDataAdapter.a().a();
+    if (localObject1 == null) {
+      return "";
+    }
+    try
+    {
+      localObject1 = (LocationManager)((Context)localObject1).getSystemService("location");
+      Object localObject2 = new Criteria();
+      ((Criteria)localObject2).setCostAllowed(false);
+      ((Criteria)localObject2).setAccuracy(2);
+      localObject2 = ((LocationManager)localObject1).getBestProvider((Criteria)localObject2, true);
+      if (localObject2 != null)
+      {
+        localObject1 = ((LocationManager)localObject1).getLastKnownLocation((String)localObject2);
+        if (localObject1 == null) {
+          return "";
+        }
+        double d1 = ((Location)localObject1).getLatitude();
+        double d2 = ((Location)localObject1).getLongitude();
+        localObject1 = d1 + "*" + d2;
+        return localObject1;
+      }
+    }
+    catch (Exception localException)
+    {
+      LogUtility.c("getLocation", "getLocation>>>", localException);
+    }
     return "";
   }
   
@@ -165,9 +199,9 @@ public class MobileInfoUtil
       localStringBuilder.append("network=").append((String)localObject).append('&');
       localObject = localStringBuilder.append("sdcard=");
       if (Environment.getExternalStorageState().equals("mounted")) {}
-      for (int j = 1;; j = 0)
+      for (int k = 1;; k = 0)
       {
-        ((StringBuilder)localObject).append(j).append('&');
+        ((StringBuilder)localObject).append(k).append('&');
         localStringBuilder.append("display=").append(e()).append('&');
         localStringBuilder.append("manu=").append(Build.MANUFACTURER).append("&");
         localStringBuilder.append("wifi=").append(APNUtil.e(localContext));

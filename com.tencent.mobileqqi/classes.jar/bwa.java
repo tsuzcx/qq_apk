@@ -1,15 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.galleryactivity.AbstractImageListScene;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
 
 public class bwa
-  implements View.OnClickListener
+  implements Runnable
 {
-  public bwa(AbstractImageListScene paramAbstractImageListScene) {}
+  public bwa(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.l();
+    if (AuthDevVerifyCodeActivity.a(this.a) <= 1)
+    {
+      AuthDevVerifyCodeActivity.a(this.a).setText(2131562863);
+      AuthDevVerifyCodeActivity.a(this.a).setEnabled(true);
+      AuthDevVerifyCodeActivity.a(this.a).setClickable(true);
+      return;
+    }
+    AuthDevVerifyCodeActivity.b(this.a);
+    AuthDevVerifyCodeActivity.a(this.a).setText(this.a.getString(2131562863) + "(" + AuthDevVerifyCodeActivity.a(this.a) + ")");
+    this.a.a.postDelayed(this, 1000L);
   }
 }
 

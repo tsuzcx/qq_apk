@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/skin_setting_strip_bg_unpressed" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckBox android:id="@id/APKTOOL_DUPLICATE_id_0x7f0809cd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginBottom="10.0dip" android:checked="true" android:button="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020632" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0cd1" android:drawablePadding="6.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/C6_Font" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0809ce" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0809cd" android:layout_alignParentLeft="true">
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0809cf" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="5.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0515" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0186" />
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0809d0" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:layout_marginRight="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0516" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e017f" />
-    </LinearLayout>
-    <com.tencent.widget.ProtectedWebView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0809d1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="10.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0809ce" android:layout_alignParentTop="true" />
+    <RelativeLayout android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00c3" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:id="@id/title" android:minWidth="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00c2" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0232" />
+        <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0809ca" android:paddingBottom="0.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0237">
+            <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e0241" />
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080788" style="@style/APKTOOL_DUPLICATE_style_0x7f0e023d" />
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080789" style="@style/APKTOOL_DUPLICATE_style_0x7f0e023b" />
+        </LinearLayout>
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08076f" android:visibility="gone" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0234" />
+        <LinearLayout android:gravity="left" android:id="@id/content" android:paddingTop="7.0dip" android:paddingBottom="2.0dip" android:visibility="gone" android:layout_marginLeft="12.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e023a">
+            <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0809cb" style="@style/APKTOOL_DUPLICATE_style_0x7f0e023f" />
+            <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0809cc" style="@style/APKTOOL_DUPLICATE_style_0x7f0e023f" />
+            <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0809cd" style="@style/APKTOOL_DUPLICATE_style_0x7f0e023f" />
+            <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0809ce" style="@style/APKTOOL_DUPLICATE_style_0x7f0e023f" />
+            <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e0241" />
+        </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>

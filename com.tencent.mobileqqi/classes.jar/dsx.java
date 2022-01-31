@@ -1,19 +1,19 @@
-import android.text.Editable;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
 
 public class dsx
-  implements View.OnFocusChangeListener
+  implements View.OnClickListener
 {
-  public dsx(SubLoginActivity paramSubLoginActivity) {}
+  public dsx(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (true == paramBoolean) {
-      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
+    if (this.a.a != null) {
+      this.a.a.a();
     }
+    this.a.finish();
   }
 }
 

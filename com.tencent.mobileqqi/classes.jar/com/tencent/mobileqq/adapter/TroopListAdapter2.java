@@ -15,11 +15,11 @@ import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.widget.SlideDetectListView;
 import com.tencent.widget.XListView;
-import fdb;
-import fde;
-import fdf;
-import fdg;
-import fdh;
+import eyn;
+import eyq;
+import eyr;
+import eys;
+import eyt;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -33,12 +33,12 @@ public class TroopListAdapter2
   public static final int b = 1;
   public Context a;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new fde(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new eyq(this);
   public TroopListAdapter2.OnTroopListClickListener a;
   public QQAppInterface a;
   public SlideDetectListView a;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new fdf(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new eyr(this);
   private List jdField_b_of_type_JavaUtilList = new ArrayList();
   int c = 0;
   public int d;
@@ -75,7 +75,7 @@ public class TroopListAdapter2
       Object localObject3 = ((TroopManager)localObject1).b();
       if (localObject3 != null)
       {
-        Collections.sort((List)localObject3, new fdg(null));
+        Collections.sort((List)localObject3, new eys(null));
         localObject3 = ((List)localObject3).iterator();
         while (((Iterator)localObject3).hasNext())
         {
@@ -102,7 +102,7 @@ public class TroopListAdapter2
           ((List)localObject1).add(new TroopListAdapter2.TroopListItemWithMask(this, i, localEntity));
         }
       }
-      localObject5 = new fdh(null);
+      localObject5 = new eyt(null);
       Collections.sort((List)localObject4, (Comparator)localObject5);
       Collections.sort((List)localObject3, (Comparator)localObject5);
       Collections.sort((List)localObject1, (Comparator)localObject5);
@@ -207,19 +207,19 @@ public class TroopListAdapter2
     Object localObject1 = (TroopListAdapter2.TroopListItem)getItem(paramInt);
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903379, paramViewGroup, false);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903381, paramViewGroup, false);
       paramViewGroup = new TroopListAdapter2.TroopListViewItemTag(paramView);
       paramView.setTag(paramViewGroup);
-      ((Button)paramView.findViewById(2131232382)).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      ((Button)paramView.findViewById(2131232385)).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       paramView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-      paramView.setOnLongClickListener(new fdb(this));
+      paramView.setOnLongClickListener(new eyn(this));
     }
     TextView localTextView;
     for (;;)
     {
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$TroopListItem = ((TroopListAdapter2.TroopListItem)localObject1);
-      localObject2 = paramView.findViewById(2131232380);
-      localTextView = (TextView)paramView.findViewById(2131232379);
+      localObject2 = paramView.findViewById(2131232383);
+      localTextView = (TextView)paramView.findViewById(2131232382);
       if (((TroopListAdapter2.TroopListItem)localObject1).i != 0) {
         break;
       }
@@ -284,7 +284,7 @@ public class TroopListAdapter2
         break label526;
       }
       paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130838179);
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130838181);
       return paramView;
       paramInt = 0;
       break;
@@ -296,7 +296,7 @@ public class TroopListAdapter2
     if (((TroopInfo)localObject2).dwAuthGroupType == 1L)
     {
       paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130838355);
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130838357);
       return paramView;
     }
     paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);

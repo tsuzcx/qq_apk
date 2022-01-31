@@ -19,7 +19,7 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.mobileqq.utils.CameraUtil;
 import com.tencent.qphone.base.util.QLog;
-import hjz;
+import hfv;
 import java.util.Iterator;
 import java.util.List;
 
@@ -224,7 +224,7 @@ public class CameraPreview
         this.jdField_a_of_type_AndroidHardwareCamera.setPreviewDisplay(this.jdField_a_of_type_AndroidViewSurfaceHolder);
         this.jdField_a_of_type_AndroidHardwareCamera.startPreview();
         if (Build.VERSION.SDK_INT < 9) {
-          this.jdField_a_of_type_AndroidHardwareCamera.autoFocus(new hjz(this));
+          this.jdField_a_of_type_AndroidHardwareCamera.autoFocus(new hfv(this));
         }
         FrameLayout localFrameLayout = (FrameLayout)getParent();
         a(localFrameLayout.getWidth(), localFrameLayout.getHeight());

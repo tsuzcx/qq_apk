@@ -28,8 +28,8 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import hcj;
-import hck;
+import gyc;
+import gyd;
 import java.nio.ByteBuffer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -65,7 +65,7 @@ public class TroopGagMgr
   public static final int f = 4;
   public static final int g = 5;
   public QQAppInterface a;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new hck(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gyd(this);
   Queue jdField_a_of_type_JavaUtilQueue = new LinkedList();
   
   public TroopGagMgr(QQAppInterface paramQQAppInterface)
@@ -419,7 +419,7 @@ public class TroopGagMgr
     int i = localContext.getResources().getDimensionPixelSize(2131427376);
     if (Looper.getMainLooper() != Looper.myLooper())
     {
-      new Handler(Looper.getMainLooper()).post(new hcj(this, paramBoolean, localContext, paramString, i));
+      new Handler(Looper.getMainLooper()).post(new gyc(this, paramBoolean, localContext, paramString, i));
       return;
     }
     if (paramBoolean)
@@ -427,7 +427,7 @@ public class TroopGagMgr
       QQToast.a(localContext, 2, paramString, 0).b(i);
       return;
     }
-    QQToast.a(localContext, 2130837959, paramString, 0).b(i);
+    QQToast.a(localContext, 2130837961, paramString, 0).b(i);
   }
   
   public final boolean a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)

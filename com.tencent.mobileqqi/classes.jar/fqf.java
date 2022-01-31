@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 
-public class fqf
-  implements View.OnClickListener
+class fqf
+  implements Runnable
 {
-  public fqf(LocationSelectActivity paramLocationSelectActivity) {}
+  fqf(fqc paramfqc) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.b();
+    FMActivity.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fqf
  * JD-Core Version:    0.7.0.1
  */

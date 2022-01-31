@@ -67,11 +67,11 @@ import cooperation.qzone.QZoneShareManager;
 import cooperation.qzone.QzonePluginProxyActivity;
 import cooperation.qzone.TranslucentActivity;
 import cooperation.troop.TroopProxyActivity;
-import hge;
-import hgf;
-import hgg;
-import hgh;
-import hgi;
+import hbx;
+import hby;
+import hbz;
+import hca;
+import hcb;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -203,7 +203,7 @@ public class JumpAction
   public static final String z = "chat";
   private Context jdField_a_of_type_AndroidContentContext;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private hgi jdField_a_of_type_Hgi = new hgi(this, this);
+  private hcb jdField_a_of_type_Hcb = new hcb(this, this);
   private HashMap jdField_a_of_type_JavaUtilHashMap;
   private Hashtable jdField_a_of_type_JavaUtilHashtable = new Hashtable();
   private boolean jdField_a_of_type_Boolean;
@@ -254,7 +254,7 @@ public class JumpAction
         ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult((Intent)localObject1, 1);
         return true;
       }
-      localObject2 = new hgg(this);
+      localObject2 = new hbz(this);
       return ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, (String)localObject1, true, true, (Handler.Callback)localObject2);
     }
     return false;
@@ -262,59 +262,35 @@ public class JumpAction
   
   private boolean B()
   {
-    boolean bool2 = false;
     if (QLog.isColorLevel()) {
       QLog.d("JumpAction", 2, "gotoVideoChat");
     }
-    Object localObject3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("src_type");
-    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("version");
+    String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("src_type");
+    String str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("version");
     Object localObject1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("request_type");
-    String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("uinType");
-    Object localObject2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("uin");
-    Object localObject5 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("phone");
-    String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("extraUin");
-    boolean bool1 = bool2;
-    if (localObject3 != null)
-    {
-      bool1 = bool2;
-      if (((String)localObject3).equals("web"))
-      {
-        bool1 = bool2;
-        if (str2 != null)
-        {
-          bool1 = bool2;
-          if (!str2.equals("1")) {}
-        }
-      }
-    }
+    String str5 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("uinType");
+    String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("uin");
+    Object localObject2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("phone");
+    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("extraUin");
+    if ((str3 != null) && (str3.equals("web")) && (str4 != null) && (str4.equals("1"))) {}
+    int i1;
+    int i2;
     try
     {
-      i1 = Integer.valueOf(str3).intValue();
-      if ((localObject1 != null) && (((String)localObject1).equals("audio")))
+      i1 = Integer.valueOf(str5).intValue();
+      if (((localObject1 == null) || (!((String)localObject1).equals("audio"))) || (i1 == 1006))
       {
-        bool1 = true;
-        if (i1 == 1006)
-        {
-          localObject1 = localObject5;
-          if (!((String)localObject5).startsWith("+")) {
-            localObject1 = "+" + (String)localObject5;
-          }
-          localObject3 = ((PhoneContactManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10)).f((String)localObject1);
-          if (localObject3 != null)
-          {
-            localObject3 = ((PhoneContact)localObject3).name;
-            localObject5 = localObject2;
-            if (TextUtils.isEmpty((CharSequence)localObject2)) {
-              localObject5 = localObject1;
-            }
-            localObject2 = localObject3;
-            localObject3 = localObject1;
-            localObject1 = localObject5;
-            localObject5 = new hgh(this);
-            bool1 = ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, i1, (String)localObject1, (String)localObject2, (String)localObject3, bool1, str1, true, true, (Handler.Callback)localObject5, "from_internal");
-            return bool1;
-          }
+        localObject1 = localObject2;
+        if (!((String)localObject2).startsWith("+")) {
+          localObject1 = "+" + (String)localObject2;
         }
+        localObject1 = ((PhoneContactManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10)).f((String)localObject1);
+        if (localObject1 != null) {
+          localObject1 = ((PhoneContact)localObject1).name;
+        }
+        if (TextUtils.isEmpty(str1)) {}
+        new hca(this);
+        return false;
       }
     }
     catch (Exception localException)
@@ -324,38 +300,26 @@ public class JumpAction
         if (QLog.isColorLevel()) {
           QLog.d("JumpAction", 2, "gotoVideoChat", localException);
         }
-        int i1 = 0;
-        continue;
-        Object localObject4 = localObject1;
-        continue;
-        int i2 = ContactUtils.b(i1);
-        if (i2 == -1) {}
-        for (localObject4 = ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject2, i1);; localObject4 = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject2, str1, i2, 0))
-        {
-          if (!TextUtils.isEmpty((CharSequence)localObject4))
-          {
-            localObject1 = localObject4;
-            if (!((String)localObject2).equals(localObject4)) {}
-          }
-          else
-          {
-            localObject1 = ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject2, true);
-          }
-          if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-            break label464;
-          }
-          localObject1 = localObject2;
-          localObject4 = localObject5;
-          break;
-        }
-        label464:
-        localObject4 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject4;
-        localObject4 = localObject5;
-        continue;
-        bool1 = false;
+        i1 = 0;
       }
+      i2 = ContactUtils.b(i1);
+      if (i2 != -1) {}
+    }
+    for (localObject1 = ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str1, i1);; localObject1 = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str1, str2, i2, 0))
+    {
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localObject2 = localObject1;
+        if (!str1.equals(localObject1)) {}
+      }
+      else
+      {
+        localObject2 = ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str1, true);
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        break;
+      }
+      break;
     }
   }
   
@@ -687,13 +651,13 @@ public class JumpAction
     {
       if ("head".equals(this.bh))
       {
-        if (this.jdField_a_of_type_Hgi == null) {
-          this.jdField_a_of_type_Hgi = new hgi(this, this);
+        if (this.jdField_a_of_type_Hcb == null) {
+          this.jdField_a_of_type_Hcb = new hcb(this, this);
         }
         if (this.jdField_a_of_type_JavaUtilHashtable == null) {
           this.jdField_a_of_type_JavaUtilHashtable = new Hashtable();
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Hgi);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Hcb);
         long l1 = System.currentTimeMillis();
         String[] arrayOfString = ((String)this.jdField_a_of_type_JavaUtilHashMap.get("uin")).split(",");
         FriendListHandler localFriendListHandler = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
@@ -1085,19 +1049,19 @@ public class JumpAction
     //   33: aload 7
     //   35: ifnull +134 -> 169
     //   38: aload 6
-    //   40: invokevirtual 1092	java/lang/String:trim	()Ljava/lang/String;
-    //   43: invokestatic 1029	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   40: invokevirtual 1087	java/lang/String:trim	()Ljava/lang/String;
+    //   43: invokestatic 1024	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   46: i2d
-    //   47: ldc2_w 1114
+    //   47: ldc2_w 1109
     //   50: ddiv
     //   51: dstore_1
     //   52: aload 7
-    //   54: invokevirtual 1092	java/lang/String:trim	()Ljava/lang/String;
-    //   57: invokestatic 1029	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   54: invokevirtual 1087	java/lang/String:trim	()Ljava/lang/String;
+    //   57: invokestatic 1024	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   60: istore 5
     //   62: iload 5
     //   64: i2d
-    //   65: ldc2_w 1114
+    //   65: ldc2_w 1109
     //   68: ddiv
     //   69: dstore_3
     //   70: aload_0
@@ -1106,39 +1070,39 @@ public class JumpAction
     //   75: ldc 94
     //   77: invokevirtual 403	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   80: checkcast 356	java/lang/String
-    //   83: invokespecial 945	com/tencent/mobileqq/utils/JumpAction:c	(Ljava/lang/String;)Ljava/lang/String;
+    //   83: invokespecial 940	com/tencent/mobileqq/utils/JumpAction:c	(Ljava/lang/String;)Ljava/lang/String;
     //   86: pop
     //   87: new 507	java/lang/StringBuilder
     //   90: dup
     //   91: invokespecial 508	java/lang/StringBuilder:<init>	()V
-    //   94: ldc_w 738
+    //   94: ldc_w 733
     //   97: invokevirtual 512	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   100: dload_3
-    //   101: invokevirtual 1118	java/lang/StringBuilder:append	(D)Ljava/lang/StringBuilder;
-    //   104: ldc_w 743
+    //   101: invokevirtual 1113	java/lang/StringBuilder:append	(D)Ljava/lang/StringBuilder;
+    //   104: ldc_w 738
     //   107: invokevirtual 512	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   110: dload_1
-    //   111: invokevirtual 1118	java/lang/StringBuilder:append	(D)Ljava/lang/StringBuilder;
-    //   114: ldc_w 1120
+    //   111: invokevirtual 1113	java/lang/StringBuilder:append	(D)Ljava/lang/StringBuilder;
+    //   114: ldc_w 1115
     //   117: invokevirtual 512	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   120: invokevirtual 516	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   123: astore 6
     //   125: new 417	android/content/Intent
     //   128: dup
-    //   129: ldc_w 1122
+    //   129: ldc_w 1117
     //   132: aload 6
-    //   134: invokestatic 1128	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   137: invokespecial 1131	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
+    //   134: invokestatic 1123	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   137: invokespecial 1126	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
     //   140: astore 7
     //   142: aload 7
-    //   144: ldc_w 1133
-    //   147: ldc_w 1135
-    //   150: invokevirtual 750	android/content/Intent:setClassName	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   144: ldc_w 1128
+    //   147: ldc_w 1130
+    //   150: invokevirtual 745	android/content/Intent:setClassName	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   153: pop
     //   154: aload_0
     //   155: getfield 381	com/tencent/mobileqq/utils/JumpAction:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
     //   158: aload 7
-    //   160: invokevirtual 699	android/content/Context:startActivity	(Landroid/content/Intent;)V
+    //   160: invokevirtual 694	android/content/Context:startActivity	(Landroid/content/Intent;)V
     //   163: iconst_1
     //   164: ireturn
     //   165: astore 6
@@ -1151,11 +1115,11 @@ public class JumpAction
     //   174: getfield 381	com/tencent/mobileqq/utils/JumpAction:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
     //   177: new 417	android/content/Intent
     //   180: dup
-    //   181: ldc_w 1122
+    //   181: ldc_w 1117
     //   184: aload 6
-    //   186: invokestatic 1128	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   189: invokespecial 1131	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
-    //   192: invokevirtual 699	android/content/Context:startActivity	(Landroid/content/Intent;)V
+    //   186: invokestatic 1123	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   189: invokespecial 1126	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
+    //   192: invokevirtual 694	android/content/Context:startActivity	(Landroid/content/Intent;)V
     //   195: goto -32 -> 163
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1371,10 +1335,10 @@ public class JumpAction
       {
         if ((this.br != null) && (this.br.trim().equalsIgnoreCase("com.qq.yijianfankui")))
         {
-          localStringBuffer.append("&version=6.0.1.6600");
+          localStringBuffer.append("&version=6.0.2.6602");
           localStringBuffer.append("&appid=" + AppSetting.a);
           localStringBuffer.append("&QUA=" + QUA.a());
-          localStringBuffer.append("&adtag=6600");
+          localStringBuffer.append("&adtag=6602");
           if (localStringBuffer.indexOf("sid=") < 0) {
             localStringBuffer.append("&sid=" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getSid());
           }
@@ -1664,7 +1628,7 @@ public class JumpAction
           }
           ((Bundle)localObject2).putInt("req_type", i2);
           com.tencent.mobileqq.app.PhoneContactManagerImp.c = true;
-          localObject1 = new hgf(this);
+          localObject1 = new hby(this);
           QZoneShareManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, (Bundle)localObject2, (DialogInterface.OnDismissListener)localObject1);
         }
       }
@@ -1761,7 +1725,7 @@ public class JumpAction
   
   public boolean a()
   {
-    new hge(this).start();
+    new hbx(this).start();
     return b();
   }
   

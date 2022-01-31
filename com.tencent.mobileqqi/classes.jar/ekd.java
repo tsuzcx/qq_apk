@@ -1,73 +1,25 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
-import com.tencent.mobileqq.activity.contact.newfriend.RecommendListView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.RecommendContactMsg;
-import com.tencent.mobileqq.model.FriendManager;
-import java.util.ArrayList;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
 public class ekd
-  implements View.OnClickListener
+  implements Runnable
 {
-  ekd(RecommendListView paramRecommendListView) {}
+  public ekd(BindNumberActivity paramBindNumberActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    RecommendContactMsg localRecommendContactMsg = ((ekf)paramView.getTag()).a;
-    if ((localRecommendContactMsg.source != null) && (localRecommendContactMsg.source.length() > 0))
+    if (!this.a.isFinishing())
     {
-      paramView = (FriendManager)this.a.a.getManager(8);
-      if (paramView != null)
-      {
-        Friends localFriends = paramView.c(localRecommendContactMsg.uin);
-        if ((localFriends != null) && (localFriends.isFriend()))
-        {
-          paramView = new ProfileActivity.AllInOne(localRecommendContactMsg.uin, 1);
-          paramView.g = localFriends.name;
-          paramView.h = localFriends.remark;
-          paramView.k = localRecommendContactMsg.nickName;
-          paramView.f = 66;
-        }
-      }
-    }
-    for (;;)
-    {
-      ProfileActivity.a((Activity)this.a.getContext(), paramView, 2);
-      return;
-      paramView = new ProfileActivity.AllInOne(localRecommendContactMsg.uin, 52);
-      paramView.k = localRecommendContactMsg.nickName;
-      paramView.f = 66;
-      continue;
-      paramView = new ProfileActivity.AllInOne(localRecommendContactMsg.uin, 52);
-      paramView.k = localRecommendContactMsg.nickName;
-      paramView.f = 66;
-      continue;
-      if (localRecommendContactMsg.groupId < 0) {
-        break;
-      }
-      paramView = new ProfileActivity.AllInOne(localRecommendContactMsg.uin, 30);
-      paramView.a = new ArrayList();
-      paramView.g = localRecommendContactMsg.nickName;
-      paramView.j = localRecommendContactMsg.contactName;
-      paramView.a.add(new ProfileActivity.CardContactInfo(localRecommendContactMsg.contactName, localRecommendContactMsg.mobileCode, localRecommendContactMsg.nationCode));
-      paramView.f = 67;
-    }
-    paramView = localRecommendContactMsg.mobileNo;
-    if (localRecommendContactMsg.originBinder == 3L) {}
-    for (int i = 51;; i = 50)
-    {
-      paramView = new ProfileActivity.AllInOne(paramView, i);
-      paramView.g = localRecommendContactMsg.nickName;
-      paramView.j = localRecommendContactMsg.contactName;
-      paramView.a = new ArrayList();
-      paramView.a.add(new ProfileActivity.CardContactInfo(localRecommendContactMsg.contactName, localRecommendContactMsg.mobileCode, localRecommendContactMsg.nationCode));
-      paramView.f = 67;
-      break;
+      long l = SystemClock.uptimeMillis();
+      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 0, 0.0F, 0.0F, 0);
+      this.a.a.dispatchTouchEvent(localMotionEvent);
+      localMotionEvent.recycle();
+      localMotionEvent = MotionEvent.obtain(l, l, 1, 0.0F, 0.0F, 0);
+      this.a.a.dispatchTouchEvent(localMotionEvent);
+      localMotionEvent.recycle();
+      this.a.a.setSelection(this.a.a.getText().toString().length());
     }
   }
 }

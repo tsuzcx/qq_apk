@@ -1,35 +1,25 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.adapter.TroopListAdapter2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.search.ContactSearchableTroop;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.activity.phone.RebindActivity;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class elu
-  extends SearchResultDialog
+  extends ContactBindObserver
 {
-  public elu(TroopView paramTroopView, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
-  {
-    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
-  }
+  public elu(RebindActivity paramRebindActivity) {}
   
-  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  protected void c(boolean paramBoolean)
   {
-    Object localObject = this.a.a.a();
-    ArrayList localArrayList = new ArrayList();
-    if (localObject != null)
+    this.a.d();
+    if (paramBoolean)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        localArrayList.add(new ContactSearchableTroop(paramContext, paramQQAppInterface, (TroopInfo)((Iterator)localObject).next(), 0L, 0L));
-      }
+      Intent localIntent = new Intent(this.a, BindVerifyActivity.class);
+      localIntent.putExtra("k_number", this.a.d);
+      localIntent.putExtra("kBindType", RebindActivity.a(this.a));
+      this.a.startActivityForResult(localIntent, 1);
+      return;
     }
-    return localArrayList;
+    this.a.b(2131562782);
   }
 }
 

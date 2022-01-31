@@ -1,19 +1,65 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.AudioUtil;
+import com.tencent.mobileqq.utils.QQRecorder;
+import com.tencent.mobileqq.widget.MicroPhoneClipImageView;
+import com.tencent.mobileqq.widget.MicroPhoneDialog;
+import com.tencent.mobileqq.widget.OvalProgress;
 
 public class hgw
-  implements View.OnClickListener
+  extends Handler
 {
-  public hgw(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
+  public hgw(MicroPhoneDialog paramMicroPhoneDialog) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.b();
+      }
+      AudioUtil.a(this.a.jdField_a_of_type_AndroidContentContext, false);
+      return;
+    case 2: 
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetMicroPhoneClipImageView.setSoundWave(paramMessage.arg1);
+      return;
+    case 3: 
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetMicroPhoneClipImageView.setSoundWave(0);
+      return;
+    case 4: 
+      this.a.a(true);
+      return;
+    case 5: 
+      this.a.a(false);
+      return;
+    case 6: 
+      this.a.a();
+      return;
+    case 7: 
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress.setProgressParams(0L, 0L);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839032);
+      return;
+    case 9: 
+      MicroPhoneDialog.a(this.a);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839032);
+      return;
+    case 8: 
+      MicroPhoneDialog.b(this.a);
+      return;
+    case 10: 
+      MicroPhoneDialog.a(this.a);
+      MicroPhoneDialog.c(this.a);
+      return;
+    case 11: 
+      this.a.c.setText(Integer.toString((int)Math.round(this.a.g * 1.0D / 1000.0D)) + "\"");
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
+    MicroPhoneDialog.a(this.a, 2131562618, 1);
   }
 }
 

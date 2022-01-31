@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import java.util.Comparator;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.activity.voip.VoipGoogleWalletPayActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class ewn
-  implements Comparator
+  implements Runnable
 {
-  private ewn(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public ewn(VoipGoogleWalletPayActivity paramVoipGoogleWalletPayActivity) {}
   
-  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
+  public void run()
   {
-    return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
+    this.a.a.hide();
+    QRUtils.a(1, 2131562452);
+    this.a.finish();
   }
 }
 

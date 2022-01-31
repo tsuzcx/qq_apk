@@ -8,7 +8,7 @@ import com.tencent.mobileqq.persistence.TableBuilder;
 import com.tencent.mobileqq.utils.SecurityUtile;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import frv;
+import fni;
 
 public class QQEntityManagerFactory$SQLiteOpenHelperImpl
   extends SQLiteOpenHelper
@@ -20,7 +20,7 @@ public class QQEntityManagerFactory$SQLiteOpenHelperImpl
   
   public QQEntityManagerFactory$SQLiteOpenHelperImpl(QQEntityManagerFactory paramQQEntityManagerFactory, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt)
   {
-    super(BaseApplication.getContext(), paramString, new frv(paramQQEntityManagerFactory, null), paramInt);
+    super(BaseApplication.getContext(), paramString, new fni(paramQQEntityManagerFactory, null), paramInt);
     this.databaseName = paramString;
   }
   

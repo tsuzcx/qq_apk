@@ -1,28 +1,36 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr.SelfGagInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class ceb
-  extends AsyncTask
+public class ceb
+  implements View.OnClickListener
 {
-  ceb(cea paramcea) {}
+  public ceb(ChatTextSizeSettingActivity paramChatTextSizeSettingActivity) {}
   
-  protected TroopGagMgr.SelfGagInfo a(Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    return ((TroopGagMgr)this.a.a.b.getManager(44)).a(this.a.a.a.a, true);
-  }
-  
-  protected void a(TroopGagMgr.SelfGagInfo paramSelfGagInfo)
-  {
-    ChatActivity.a(this.a.a, paramSelfGagInfo, true);
+    switch (paramView.getId())
+    {
+    default: 
+      this.a.e = 0;
+    }
+    for (;;)
+    {
+      this.a.a(this.a.e);
+      ReportController.b(this.a.b, "CliOper", "", "", "Trends_tab", "Font_size", 0, 0, Integer.toString(this.a.e), "", "", "");
+      return;
+      this.a.e = 1;
+      continue;
+      this.a.e = 2;
+      continue;
+      this.a.e = 3;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ceb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,25 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BookShareAdviceEditActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
+import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
 
-public class ccn
-  implements View.OnClickListener
+class ccn
+  implements Runnable
 {
-  public ccn(BookShareAdviceEditActivity paramBookShareAdviceEditActivity) {}
+  ccn(ccm paramccm, Object paramObject, View paramView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.c < 0)
+    if ((this.jdField_a_of_type_Ccm.jdField_a_of_type_Int == 0) && ((this.jdField_a_of_type_Ccm.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) || (!this.jdField_a_of_type_Ccm.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_JavaLangObject))))
     {
-      QQToast.a(this.a, 1, this.a.getString(2131561490), 0).b(this.a.d());
+      Toast.makeText(this.jdField_a_of_type_Ccm.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ccm.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131562826), 0).show();
       return;
     }
-    if (!NetworkUtil.e(BaseApplication.getContext()))
-    {
-      QQToast.a(this.a, 2131562452, 0).b(this.a.d());
-      return;
+    if (this.jdField_a_of_type_Ccm.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) {
+      this.jdField_a_of_type_Ccm.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a = new ChatHistory.PlayingPttHistoryInfo(this.jdField_a_of_type_Ccm.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory);
     }
-    if (this.a.a == null)
-    {
-      QQToast.a(this.a, 2131561769, 0).b(this.a.d());
-      return;
-    }
-    BookShareAdviceEditActivity.a(this.a);
+    this.jdField_a_of_type_Ccm.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Ccm.jdField_a_of_type_JavaLangString);
   }
 }
 

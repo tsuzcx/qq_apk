@@ -1,51 +1,18 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
-import com.tencent.mobileqq.utils.AlbumUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.utils.TroopBarUtils.MyBar;
 
-public class gxn
-  implements ActionSheet.OnButtonClickListener
+public final class gxn
+  implements Parcelable.Creator
 {
-  public gxn(TroopBarReplyActivity paramTroopBarReplyActivity, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public TroopBarUtils.MyBar a(Parcel paramParcel)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.b();
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_AndroidNetUri = TroopBarUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity, AppConstants.ap, 1001);
-      continue;
-      paramView = new ArrayList();
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_JavaUtilArrayList != null) {
-        paramView.addAll(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_JavaUtilArrayList);
-      }
-      TroopBarReplyActivity localTroopBarReplyActivity = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity;
-      Intent localIntent = new Intent(localTroopBarReplyActivity, TroopBarReplyActivity.class);
-      localIntent.setClass(localTroopBarReplyActivity, PhotoListActivity.class);
-      localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", paramView);
-      localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", TroopBarReplyActivity.class.getName());
-      localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqqi");
-      localIntent.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
-      localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 8);
-      localIntent.getExtras().remove("forward_type");
-      localIntent.putExtra("album_enter_directly", true);
-      localIntent.putExtra("ALBUM_ID", AlbumUtil.b);
-      localIntent.putExtra("ALBUM_NAME", AlbumUtil.c);
-      localIntent.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.startActivityForResult(localIntent, 1001);
-      AlbumUtil.a(localTroopBarReplyActivity, false, true);
-    }
+    return new TroopBarUtils.MyBar(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
+  }
+  
+  public TroopBarUtils.MyBar[] a(int paramInt)
+  {
+    return null;
   }
 }
 

@@ -13,17 +13,17 @@ import com.tencent.open.business.base.OpenConfig;
 import com.tencent.open.business.base.StaticAnalyz;
 import com.tencent.tmassistantsdk.downloadclient.ITMAssistantExchangeURLListenner;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKURLTool;
-import hqk;
-import hql;
-import hqm;
-import hqn;
-import hqo;
-import hqp;
-import hqq;
-import hqr;
-import hqs;
-import hqt;
-import hqu;
+import hmg;
+import hmh;
+import hmi;
+import hmj;
+import hmk;
+import hml;
+import hmm;
+import hmn;
+import hmo;
+import hmp;
+import hmq;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -58,7 +58,7 @@ public class DownloadApi
     jdField_a_of_type_JavaLangString = DownloadApi.class.getName();
     jdField_a_of_type_JavaLangObject = new Object();
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_a_of_type_ComTencentTmassistantsdkDownloadclientITMAssistantExchangeURLListenner = new hqm();
+    jdField_a_of_type_ComTencentTmassistantsdkDownloadclientITMAssistantExchangeURLListenner = new hmi();
   }
   
   public static int a()
@@ -154,7 +154,7 @@ public class DownloadApi
     if ((paramBundle == null) || (paramActivity == null)) {
       return;
     }
-    ThreadManager.b(new hqn(paramActivity, paramBundle));
+    ThreadManager.b(new hmj(paramActivity, paramBundle));
   }
   
   public static void a(Activity paramActivity, Bundle paramBundle, int paramInt1, ApkUpdateDetail paramApkUpdateDetail, int paramInt2)
@@ -162,7 +162,7 @@ public class DownloadApi
     if (paramInt1 == 1) {
       StaticAnalyz.a("100", "ANDROIDQQ.SELFUPDATE.FOLLOW.FOR.DEBUG", "100686848");
     }
-    ThreadManager.b().post(new hqk(paramBundle, paramInt1, paramInt2, paramActivity, paramApkUpdateDetail));
+    ThreadManager.b().post(new hmg(paramBundle, paramInt1, paramInt2, paramActivity, paramApkUpdateDetail));
   }
   
   public static void a(Bundle paramBundle)
@@ -170,22 +170,22 @@ public class DownloadApi
     if (paramBundle == null) {
       return;
     }
-    ThreadManager.b(new hqo(paramBundle));
+    ThreadManager.b(new hmk(paramBundle));
   }
   
   public static void a(DownloadListener paramDownloadListener)
   {
-    ThreadManager.b().post(new hqs(paramDownloadListener));
+    ThreadManager.b().post(new hmo(paramDownloadListener));
   }
   
   public static void a(String paramString)
   {
-    ThreadManager.b().post(new hqr(paramString));
+    ThreadManager.b().post(new hmn(paramString));
   }
   
   public static void a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    ThreadManager.b().post(new hqq(paramString1, paramString2, paramBoolean));
+    ThreadManager.b().post(new hmm(paramString1, paramString2, paramBoolean));
   }
   
   public static void a(List paramList, DownloadQueryListener paramDownloadQueryListener)
@@ -198,7 +198,7 @@ public class DownloadApi
     if (paramDownloadQueryListener == null) {
       LogUtility.a(jdField_a_of_type_JavaLangString, "getQueryDownloadAction listener == null");
     }
-    ThreadManager.b().post(new hqp(paramList, paramDownloadQueryListener));
+    ThreadManager.b().post(new hml(paramList, paramDownloadQueryListener));
   }
   
   public static boolean a(Bundle paramBundle)
@@ -297,16 +297,16 @@ public class DownloadApi
       if (paramInt2 == 1)
       {
         paramBundle.putInt("source", paramInt1);
-        MyAppApi.a().a(paramActivity, paramBundle, new hqu(paramBundle, paramInt1, paramApkUpdateDetail));
+        MyAppApi.a().a(paramActivity, paramBundle, new hmq(paramBundle, paramInt1, paramApkUpdateDetail));
         return;
       }
     } while ((paramInt2 != 2) && (paramInt2 != 0));
-    MyAppApi.a().b(paramActivity, paramBundle, new hql(paramBundle, paramInt1, paramApkUpdateDetail));
+    MyAppApi.a().b(paramActivity, paramBundle, new hmh(paramBundle, paramInt1, paramApkUpdateDetail));
   }
   
   public static void b(DownloadListener paramDownloadListener)
   {
-    ThreadManager.b().post(new hqt(paramDownloadListener));
+    ThreadManager.b().post(new hmp(paramDownloadListener));
   }
   
   public static boolean b(String paramString)

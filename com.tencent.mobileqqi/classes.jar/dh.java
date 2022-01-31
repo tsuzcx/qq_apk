@@ -1,27 +1,20 @@
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.dataline.mpfile.LiteMpFileDownloadActivity;
 import com.dataline.mpfile.LiteMpFileFileListActivity;
-import com.dataline.mpfile.MpFileDataReportCenter;
-import com.dataline.mpfile.MpFileDataReportCenter.MPFWorkType;
-import com.dataline.mpfile.MpfileDataCenter;
-import com.dataline.mpfile.MpfileDataReportInfo;
-import com.dataline.util.DBNetworkUtil;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class dh
-  implements Runnable
+  implements View.OnClickListener
 {
   public dh(LiteMpFileFileListActivity paramLiteMpFileFileListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    MpfileDataReportInfo localMpfileDataReportInfo = new MpfileDataReportInfo();
-    localMpfileDataReportInfo.jdField_b_of_type_Int = 253;
-    localMpfileDataReportInfo.jdField_a_of_type_Int = MpFileDataReportCenter.MPFWorkType.fileList.ordinal();
-    localMpfileDataReportInfo.jdField_a_of_type_JavaLangString = MpfileDataCenter.k;
-    localMpfileDataReportInfo.jdField_b_of_type_JavaLangString = DBNetworkUtil.a();
-    localMpfileDataReportInfo.d = MpfileDataCenter.E;
-    localMpfileDataReportInfo.jdField_b_of_type_Long = LiteMpFileFileListActivity.b(this.a);
-    localMpfileDataReportInfo.c = LiteMpFileFileListActivity.c(this.a);
-    MpFileDataReportCenter.a(this.a.b, localMpfileDataReportInfo);
-    this.a.a(MpfileDataCenter.t);
+    paramView = new Intent(this.a, LiteMpFileDownloadActivity.class);
+    this.a.startActivity(paramView);
+    ReportController.b(this.a.b, "CliOper", "", "", "0X800421B", "0X800421B", 0, 0, "", "", "", "");
   }
 }
 

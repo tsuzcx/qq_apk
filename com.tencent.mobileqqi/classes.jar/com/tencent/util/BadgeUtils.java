@@ -8,7 +8,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
 import com.tencent.mobileqq.app.ThreadManager;
-import hzi;
+import huo;
 import java.util.Iterator;
 import java.util.List;
 
@@ -71,7 +71,7 @@ public class BadgeUtils
   
   public static void b(Context paramContext, int paramInt)
   {
-    ThreadManager.b(new hzi(paramInt, paramContext));
+    ThreadManager.b(new huo(paramInt, paramContext));
   }
   
   public static void c(Context paramContext, int paramInt)

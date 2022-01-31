@@ -40,7 +40,7 @@ public abstract class BaseMessageManagerForTroopAndDisc
     return paramMessageRecord.shmsgseq;
   }
   
-  protected abstract String a(String paramString1, String paramString2);
+  public abstract String a(String paramString1, String paramString2);
   
   protected void a(QQMessageFacade.RefreshMessageContext paramRefreshMessageContext, int paramInt)
   {
@@ -846,7 +846,7 @@ public abstract class BaseMessageManagerForTroopAndDisc
     this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(paramString, paramInt));
   }
   
-  protected void d(String paramString, int paramInt, long paramLong)
+  public void d(String paramString, int paramInt, long paramLong)
   {
     if ((paramString == null) || (paramLong < 0L)) {}
     label347:

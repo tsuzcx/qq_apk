@@ -18,12 +18,12 @@ import com.tencent.mobileqq.pluginsdk.SplashDialogWrapper;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
 import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
 import com.tencent.mobileqq.statistics.PluginStatisticsCollector;
-import iej;
-import iek;
-import iel;
-import ien;
-import ieo;
-import iep;
+import hzp;
+import hzq;
+import hzr;
+import hzt;
+import hzu;
+import hzv;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -66,7 +66,7 @@ public abstract class IPluginManager
     if (paramPluginParams.jdField_a_of_type_AndroidAppDialog != null) {
       new SplashDialogWrapper(paramActivity, paramPluginParams.jdField_a_of_type_AndroidAppDialog, paramPluginParams.d, paramPluginParams.jdField_b_of_type_JavaLangString, paramPluginParams.jdField_a_of_type_Boolean, paramPluginParams.jdField_c_of_type_Int).show();
     }
-    ((IPluginManager)((QQAppInterface)localObject).getManager(24)).a(paramActivity, paramPluginParams, new iej());
+    ((IPluginManager)((QQAppInterface)localObject).getManager(24)).a(paramActivity, paramPluginParams, new hzp());
   }
   
   public static void a(Context paramContext, IPluginManager.PluginParams paramPluginParams)
@@ -83,7 +83,7 @@ public abstract class IPluginManager
         c(paramContext, paramPluginParams);
         return;
       }
-      ((IPluginManager)((QQAppInterface)localObject).getManager(24)).a(paramContext, paramPluginParams, new ien());
+      ((IPluginManager)((QQAppInterface)localObject).getManager(24)).a(paramContext, paramPluginParams, new hzt());
       return;
     }
     catch (IOException localIOException)
@@ -166,7 +166,7 @@ public abstract class IPluginManager
         d(paramContext, paramPluginParams);
         return;
       }
-      ((IPluginManager)((QQAppInterface)localObject).getManager(24)).a(paramContext, paramPluginParams, new ieo());
+      ((IPluginManager)((QQAppInterface)localObject).getManager(24)).a(paramContext, paramPluginParams, new hzu());
       return;
     }
     catch (IOException localIOException)
@@ -179,16 +179,16 @@ public abstract class IPluginManager
   {
     synchronized (jdField_a_of_type_JavaUtilHashMap)
     {
-      iep localiep = (iep)jdField_a_of_type_JavaUtilHashMap.get(paramPluginParams.jdField_b_of_type_JavaLangString);
-      if (localiep == null)
+      hzv localhzv = (hzv)jdField_a_of_type_JavaUtilHashMap.get(paramPluginParams.jdField_b_of_type_JavaLangString);
+      if (localhzv == null)
       {
-        localiep = new iep(paramPluginParams.jdField_a_of_type_JavaLangString, paramPluginParams.d, paramPluginParams.jdField_b_of_type_JavaLangString);
-        jdField_a_of_type_JavaUtilHashMap.put(paramPluginParams.jdField_b_of_type_JavaLangString, localiep);
-        localiep.a(paramActivity, paramPluginParams);
-        localiep.execute(new Void[0]);
+        localhzv = new hzv(paramPluginParams.jdField_a_of_type_JavaLangString, paramPluginParams.d, paramPluginParams.jdField_b_of_type_JavaLangString);
+        jdField_a_of_type_JavaUtilHashMap.put(paramPluginParams.jdField_b_of_type_JavaLangString, localhzv);
+        localhzv.a(paramActivity, paramPluginParams);
+        localhzv.execute(new Void[0]);
         return;
       }
-      localiep.a(paramActivity, paramPluginParams);
+      localhzv.a(paramActivity, paramPluginParams);
     }
   }
   
@@ -249,29 +249,29 @@ public abstract class IPluginManager
   
   private static void e(Activity paramActivity, IPluginManager.PluginParams paramPluginParams)
   {
-    paramActivity.runOnUiThread(new iek(paramPluginParams, paramActivity, paramActivity));
+    paramActivity.runOnUiThread(new hzq(paramPluginParams, paramActivity, paramActivity));
   }
   
   private static void e(Context paramContext, IPluginManager.PluginParams paramPluginParams)
   {
     synchronized (jdField_a_of_type_JavaUtilHashMap)
     {
-      iep localiep = (iep)jdField_a_of_type_JavaUtilHashMap.get(paramPluginParams.jdField_b_of_type_JavaLangString);
-      if (localiep == null)
+      hzv localhzv = (hzv)jdField_a_of_type_JavaUtilHashMap.get(paramPluginParams.jdField_b_of_type_JavaLangString);
+      if (localhzv == null)
       {
-        localiep = new iep(paramPluginParams.jdField_a_of_type_JavaLangString, paramPluginParams.d, paramPluginParams.jdField_b_of_type_JavaLangString);
-        jdField_a_of_type_JavaUtilHashMap.put(paramPluginParams.jdField_b_of_type_JavaLangString, localiep);
-        localiep.a(paramContext, paramPluginParams);
-        localiep.execute(new Void[0]);
+        localhzv = new hzv(paramPluginParams.jdField_a_of_type_JavaLangString, paramPluginParams.d, paramPluginParams.jdField_b_of_type_JavaLangString);
+        jdField_a_of_type_JavaUtilHashMap.put(paramPluginParams.jdField_b_of_type_JavaLangString, localhzv);
+        localhzv.a(paramContext, paramPluginParams);
+        localhzv.execute(new Void[0]);
         return;
       }
-      localiep.a(paramContext, paramPluginParams);
+      localhzv.a(paramContext, paramPluginParams);
     }
   }
   
   private static void f(Activity paramActivity, IPluginManager.PluginParams paramPluginParams)
   {
-    jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener = new iel(paramPluginParams, paramActivity);
+    jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener = new hzr(paramPluginParams, paramActivity);
     PluginManagerHelper.getPluginInterface(paramActivity, jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener);
   }
   
@@ -279,16 +279,16 @@ public abstract class IPluginManager
   {
     synchronized (jdField_a_of_type_JavaUtilHashMap)
     {
-      iep localiep = (iep)jdField_a_of_type_JavaUtilHashMap.get(paramPluginParams.jdField_b_of_type_JavaLangString);
-      if (localiep == null)
+      hzv localhzv = (hzv)jdField_a_of_type_JavaUtilHashMap.get(paramPluginParams.jdField_b_of_type_JavaLangString);
+      if (localhzv == null)
       {
-        localiep = new iep(paramPluginParams.jdField_a_of_type_JavaLangString, paramPluginParams.d, paramPluginParams.jdField_b_of_type_JavaLangString);
-        jdField_a_of_type_JavaUtilHashMap.put(paramPluginParams.jdField_b_of_type_JavaLangString, localiep);
-        localiep.b(paramContext, paramPluginParams);
-        localiep.execute(new Void[0]);
+        localhzv = new hzv(paramPluginParams.jdField_a_of_type_JavaLangString, paramPluginParams.d, paramPluginParams.jdField_b_of_type_JavaLangString);
+        jdField_a_of_type_JavaUtilHashMap.put(paramPluginParams.jdField_b_of_type_JavaLangString, localhzv);
+        localhzv.b(paramContext, paramPluginParams);
+        localhzv.execute(new Void[0]);
         return;
       }
-      localiep.b(paramContext, paramPluginParams);
+      localhzv.b(paramContext, paramPluginParams);
     }
   }
   

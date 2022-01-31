@@ -1,33 +1,17 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RecentEmotionData;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
 
-public final class cfs
-  extends AsyncTask
+class cfs
+  implements Runnable
 {
-  public cfs(QQAppInterface paramQQAppInterface, String paramString) {}
+  cfs(cfq paramcfq, String paramString) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void run()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-    List localList = localEntityManager.a(RecentEmotionData.class, false, null, null, null, null, null, null);
-    paramVarArgs = localList;
-    if (localList == null) {
-      paramVarArgs = new ArrayList();
+    if (Conversation.a(this.jdField_a_of_type_Cfq.a) != null) {
+      Conversation.a(this.jdField_a_of_type_Cfq.a).a(this.jdField_a_of_type_JavaLangString, true);
     }
-    if (ChatActivityFacade.a(paramVarArgs, 3, 0, this.jdField_a_of_type_JavaLangString) < 0) {
-      ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localEntityManager, 3, 0, this.jdField_a_of_type_JavaLangString, paramVarArgs);
-    }
-    localEntityManager.a();
-    return null;
   }
-  
-  protected void a(Void paramVoid) {}
 }
 
 

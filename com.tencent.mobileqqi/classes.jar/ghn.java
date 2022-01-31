@@ -1,25 +1,43 @@
-import com.tencent.mobileqq.music.IQQPlayerCallback.Stub;
-import com.tencent.mobileqq.music.IQQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
+import PersonalState.UserProfile;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.richstatus.SameStatusActivity;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class ghn
-  extends IQQPlayerCallback.Stub
+  extends CardObserver
 {
-  public ghn(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
+  public ghn(SameStatusActivity paramSameStatusActivity) {}
   
-  public void a(int paramInt)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    MusicGeneWebViewPlugin.a(this.a, paramInt);
-    if (paramInt == 2) {
-      MusicGeneWebViewPlugin.a(this.a, MusicGeneWebViewPlugin.a(this.a).c());
-    }
-  }
-  
-  public void a(SongInfo paramSongInfo)
-  {
-    if (MusicGeneWebViewPlugin.a(this.a) != null) {
-      MusicGeneWebViewPlugin.a(this.a, MusicGeneWebViewPlugin.a(this.a).a());
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
+    {
+      UserProfile localUserProfile;
+      if ((paramBoolean) && (paramObject != null) && (SameStatusActivity.a(this.a).containsKey(paramObject.uin)))
+      {
+        localUserProfile = (UserProfile)SameStatusActivity.a(this.a).get(paramObject.uin);
+        localUserProfile.nPicNum = paramObject.iFaceNum;
+        localUserProfile.bAge = paramObject.age;
+        if (paramObject.shGender != 0) {
+          break label113;
+        }
+        localUserProfile.bSex = 0;
+      }
+      for (;;)
+      {
+        SameStatusActivity.a(this.a).add(Long.valueOf(localUserProfile.lEctID));
+        SameStatusActivity.a(this.a).notifyDataSetChanged();
+        return;
+        label113:
+        if (paramObject.shGender == 1) {
+          localUserProfile.bSex = 1;
+        } else {
+          localUserProfile.bSex = 2;
+        }
+      }
     }
   }
 }

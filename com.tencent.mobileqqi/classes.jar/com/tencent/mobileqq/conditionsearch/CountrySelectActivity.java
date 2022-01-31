@@ -17,9 +17,9 @@ import com.tencent.mobileqq.widget.IndexView;
 import com.tencent.mobileqq.widget.IndexView.OnIndexChangedListener;
 import com.tencent.mobileqq.widget.PinnedDividerListView;
 import com.tencent.qphone.base.util.QLog;
-import fqc;
-import fqd;
-import fqe;
+import flp;
+import flq;
+import flr;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -42,7 +42,7 @@ public class CountrySelectActivity
   TextView jdField_a_of_type_AndroidWidgetTextView;
   IndexView jdField_a_of_type_ComTencentMobileqqWidgetIndexView;
   PinnedDividerListView jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView;
-  fqc jdField_a_of_type_Fqc;
+  flp jdField_a_of_type_Flp;
   LinkedHashMap jdField_a_of_type_JavaUtilLinkedHashMap;
   public List a;
   public String c;
@@ -59,9 +59,9 @@ public class CountrySelectActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903304);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)findViewById(2131232033));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)findViewById(2131232027));
+    setContentView(2130903306);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)findViewById(2131232036));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)findViewById(2131232030));
     setTitle(getString(2131559224));
     Object localObject1 = ((ConditionSearchManager)this.b.getManager(52)).a();
     this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
@@ -70,33 +70,33 @@ public class CountrySelectActivity
     if (TextUtils.isEmpty(this.c)) {
       this.c = "0";
     }
-    Object localObject2 = getLayoutInflater().inflate(2130903306, null);
-    Object localObject3 = new fqe(null);
-    ((TextView)((View)localObject2).findViewById(2131232034)).setText("不限");
-    ImageView localImageView = (ImageView)((View)localObject2).findViewById(2131232035);
+    Object localObject2 = getLayoutInflater().inflate(2130903308, null);
+    Object localObject3 = new flr(null);
+    ((TextView)((View)localObject2).findViewById(2131232037)).setText("不限");
+    ImageView localImageView = (ImageView)((View)localObject2).findViewById(2131232038);
     label329:
     int j;
     if (this.c.equals("0"))
     {
-      paramBundle = getResources().getDrawable(2130840344);
+      paramBundle = getResources().getDrawable(2130840346);
       localImageView.setImageDrawable(paramBundle);
-      ((View)localObject2).findViewById(2131232013).setVisibility(8);
-      ((fqe)localObject3).a = "0";
+      ((View)localObject2).findViewById(2131232016).setVisibility(8);
+      ((flr)localObject3).a = "0";
       ((View)localObject2).setTag(localObject3);
       ((View)localObject2).setOnClickListener(this);
       ((View)localObject2).setContentDescription("不限，触摸两次选中");
       this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.a((View)localObject2);
-      localObject2 = getLayoutInflater().inflate(2130903306, null);
-      localObject3 = new fqe(null);
-      ((TextView)((View)localObject2).findViewById(2131232034)).setText("中国");
-      localImageView = (ImageView)((View)localObject2).findViewById(2131232035);
+      localObject2 = getLayoutInflater().inflate(2130903308, null);
+      localObject3 = new flr(null);
+      ((TextView)((View)localObject2).findViewById(2131232037)).setText("中国");
+      localImageView = (ImageView)((View)localObject2).findViewById(2131232038);
       if (!this.c.equals("0")) {
         break label558;
       }
-      paramBundle = getResources().getDrawable(2130840344);
+      paramBundle = getResources().getDrawable(2130840346);
       localImageView.setImageDrawable(paramBundle);
-      ((View)localObject2).findViewById(2131232013).setVisibility(8);
-      ((fqe)localObject3).a = "1";
+      ((View)localObject2).findViewById(2131232016).setVisibility(8);
+      ((flr)localObject3).a = "1";
       ((View)localObject2).setTag(localObject3);
       ((View)localObject2).setOnClickListener(this);
       ((View)localObject2).setContentDescription("中国，触摸两次选中");
@@ -129,15 +129,15 @@ public class CountrySelectActivity
               this.jdField_a_of_type_JavaUtilLinkedHashMap.put("ABCDEFGHIJKLMNOPQRSTUVWXYZ".substring(j, j + 1), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.k()));
               j += 1;
               continue;
-              paramBundle = getResources().getDrawable(2130840346);
+              paramBundle = getResources().getDrawable(2130840348);
               break;
               label558:
-              paramBundle = getResources().getDrawable(2130840346);
+              paramBundle = getResources().getDrawable(2130840348);
               break label329;
             }
           }
           this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject1, Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.k()));
-          paramBundle = new fqd(null);
+          paramBundle = new flq(null);
           paramBundle.a = ((String)localObject1);
           this.jdField_a_of_type_JavaUtilList.add(paramBundle);
           k = j;
@@ -153,8 +153,8 @@ public class CountrySelectActivity
       this.jdField_a_of_type_JavaUtilLinkedHashMap.put("ABCDEFGHIJKLMNOPQRSTUVWXYZ".substring(k, k + 1), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.k()));
       k += 1;
     }
-    this.jdField_a_of_type_Fqc = new fqc(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Fqc);
+    this.jdField_a_of_type_Flp = new flp(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Flp);
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setIndex(jdField_a_of_type_ArrayOfJavaLangString, false);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131230734));
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setTextView(this.jdField_a_of_type_AndroidWidgetTextView);
@@ -170,10 +170,10 @@ public class CountrySelectActivity
   public void onClick(View paramView)
   {
     paramView = paramView.getTag();
-    if ((paramView instanceof fqe))
+    if ((paramView instanceof flr))
     {
       Intent localIntent = new Intent();
-      localIntent.putExtra("key_country_code", ((fqe)paramView).a);
+      localIntent.putExtra("key_country_code", ((flr)paramView).a);
       setResult(-1, localIntent);
       finish();
     }

@@ -1,27 +1,26 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.Button;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
+import com.tencent.mobileqq.util.Utils;
 
 public class cvp
-  extends FriendListObserver
+  implements Runnable
 {
-  public cvp(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public cvp(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2, String paramString1, String paramString2) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.b.a()))) {}
-    while (this.a.a == null) {
-      return;
+    String str = Utils.c(this.jdField_a_of_type_JavaLangString, this.b);
+    if ((str != null) && (str.length() > 0) && (LoginVerifyCodeActivity2.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity2) != null))
+    {
+      LoginVerifyCodeActivity2.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity2).setText(str);
+      LoginVerifyCodeActivity2.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity2).setEnabled(true);
     }
-    paramString = GesturePWDUnlockActivity.a(this.a, this.a.b.a(), true);
-    this.a.a.setImageBitmap(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cvp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SubAccountMessageActivity;
 
-class dlw
-  implements DialogInterface.OnClickListener
+public class dlw
+  implements View.OnClickListener
 {
-  dlw(dlv paramdlv) {}
+  public dlw(SubAccountMessageActivity paramSubAccountMessageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    RegisterPhoneNumActivity.d(this.a.a);
+    SubAccountMessageActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dlw
  * JD-Core Version:    0.7.0.1
  */

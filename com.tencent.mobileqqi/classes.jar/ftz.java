@@ -1,63 +1,32 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import com.tencent.mobileqq.filemanager.activity.CloudFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.BaseFileAdapter;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnSlideListener;
-import com.tencent.widget.BubblePopupWindow;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.qphone.base.util.QLog;
 
 public class ftz
-  implements SlideDetectListView.OnSlideListener
+  implements Runnable
 {
-  public ftz(CloudFileBrowserActivity paramCloudFileBrowserActivity) {}
+  public ftz(FileTransferHandler paramFileTransferHandler, long paramLong, int paramInt, String paramString1, String paramString2) {}
   
-  public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
-      this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
-    }
-    if (!this.a.f())
+    QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Long + "] Handle upload failed notify. retCode =" + this.jdField_a_of_type_Int + "(1:cancel upload) reason=" + this.jdField_a_of_type_JavaLangString);
+    if (1 == this.jdField_a_of_type_Int)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataBaseFileAdapter.a(null);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b();
-      paramView.setPressed(false);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.b, this.jdField_a_of_type_Long);
       return;
     }
-    paramSlideDetectListView = paramView.findViewById(2131230987);
-    if (this.a.jdField_a_of_type_Long == 9L)
+    if (2 == this.jdField_a_of_type_Int)
     {
-      CloudFileBrowserActivity.a(this.a, (OfflineFileInfo)this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataBaseFileAdapter.getItem(paramInt));
-      CloudFileBrowserActivity.a(this.a, CloudFileBrowserActivity.a(this.a).a);
-    }
-    while (FMDataCache.a(CloudFileBrowserActivity.a(this.a)))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataBaseFileAdapter.a(null);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b();
-      paramView.setPressed(false);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.b, this.jdField_a_of_type_Long);
       return;
-      CloudFileBrowserActivity.a(this.a, (WeiYunFileInfo)this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataBaseFileAdapter.getItem(paramInt));
-      CloudFileBrowserActivity.a(this.a, CloudFileBrowserActivity.a(this.a).a);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataBaseFileAdapter.a(CloudFileBrowserActivity.a(this.a));
-    if (paramSlideDetectListView != null)
+    if (3 == this.jdField_a_of_type_Int)
     {
-      ((Button)paramSlideDetectListView.findViewById(2131231699)).setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
-      ((ShaderAnimLayout)paramSlideDetectListView).a();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setDeleteAreaDim(paramSlideDetectListView.getLayoutParams().width, paramSlideDetectListView.getLayoutParams().height);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().c(this.b, this.jdField_a_of_type_Long);
+      return;
     }
-    CloudFileBrowserActivity.a(this.a, true);
-  }
-  
-  public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
-  {
-    paramView.findViewById(2131230987);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataBaseFileAdapter.a(null);
-    CloudFileBrowserActivity.a(this.a, true);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.b, this.jdField_a_of_type_Long);
   }
 }
 

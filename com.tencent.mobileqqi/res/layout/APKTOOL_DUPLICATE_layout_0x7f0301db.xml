@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:paddingLeft="10.0dip" android:paddingTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b008f" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f080816" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d04ff" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f080817" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="26.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0500" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f080816" android:layout_centerHorizontal="true" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f080818" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="27.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0501" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f080817" android:layout_centerHorizontal="true" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f080819" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="27.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0502" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f080818" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqqi">
+    <com.tencent.image.URLImageView android:layout_gravity="center" android:id="@id/image" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080025" android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminateDrawable="@drawable/common_loading2" />
+</FrameLayout>

@@ -8,14 +8,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import cl;
-import cm;
-import cn;
 import com.tencent.mobileqq.app.DataLineHandler;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.statistics.StatisticAssist;
+import ct;
+import cu;
+import cv;
 import java.util.Observable;
 import java.util.Observer;
 import mqq.app.MobileQQ;
@@ -27,7 +27,7 @@ public class LiteWifiphotoActivity
   implements View.OnClickListener, Observer
 {
   public static String a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new cl(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ct(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   boolean jdField_a_of_type_Boolean = false;
@@ -74,7 +74,7 @@ public class LiteWifiphotoActivity
     this.k.setVisibility(4);
     this.m.setVisibility(0);
     this.m.setText(getString(2131558535));
-    this.m.setOnClickListener(new cm(this));
+    this.m.setOnClickListener(new cu(this));
   }
   
   private void f()
@@ -112,10 +112,10 @@ public class LiteWifiphotoActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903524);
+    setContentView(2130903526);
     d();
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("isFromStatusbar", false);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232790));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232793));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231294));
     paramBundle = (DataLineHandler)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
@@ -180,7 +180,7 @@ public class LiteWifiphotoActivity
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    runOnUiThread(new cn(this));
+    runOnUiThread(new cv(this));
   }
 }
 

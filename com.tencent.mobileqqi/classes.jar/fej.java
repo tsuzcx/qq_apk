@@ -1,22 +1,13 @@
-import com.tencent.mobileqq.app.CircleManager;
-import com.tencent.mobileqq.service.circle.IFriendObserver;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
-public class fej
+class fej
   implements Runnable
 {
-  public fej(CircleManager paramCircleManager, String paramString) {}
+  fej(fei paramfei) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppCircleManager.c != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppCircleManager.c.iterator();
-      while (localIterator.hasNext()) {
-        ((IFriendObserver)localIterator.next()).a(this.jdField_a_of_type_JavaLangString);
-      }
-    }
+    this.a.a.a();
   }
 }
 

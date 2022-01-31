@@ -1,27 +1,24 @@
-import android.util.SparseArray;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
 
 public class hcr
-  implements Runnable
+  implements View.OnClickListener
 {
-  public hcr(AvatarWallAdapter paramAvatarWallAdapter, int paramInt) {}
+  public hcr(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ProgressBar localProgressBar = (ProgressBar)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a.get(this.jdField_a_of_type_Int);
-    if (localProgressBar != null)
-    {
-      AvatarWallAdapter localAvatarWallAdapter = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter;
-      int i = localAvatarWallAdapter.n + 1;
-      localAvatarWallAdapter.n = i;
-      localProgressBar.setProgress(100 - i);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
     }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hcr
  * JD-Core Version:    0.7.0.1
  */

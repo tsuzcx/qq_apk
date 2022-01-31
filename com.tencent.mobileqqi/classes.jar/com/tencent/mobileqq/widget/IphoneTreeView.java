@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import hkz;
+import hgv;
 import java.lang.reflect.Field;
 
 public class IphoneTreeView
@@ -25,7 +25,7 @@ public class IphoneTreeView
   public int a;
   private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new hkz(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new hgv(this);
   public View a;
   private int jdField_b_of_type_Int;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;

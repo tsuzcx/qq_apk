@@ -1,28 +1,22 @@
-import android.content.Intent;
-import com.dataline.activities.LiteActivity;
-import com.dataline.util.DataLineReportUtil;
-import com.tencent.mobileqq.activity.qfileJumpActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareActivity;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class esf
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public esf(qfileJumpActivity paramqfileJumpActivity) {}
+  public esf(QvipSpecialCareActivity paramQvipSpecialCareActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DataLineReportUtil.r(this.a.b);
-    Intent localIntent = new Intent(this.a, LiteActivity.class);
-    localIntent.addFlags(67108864);
-    localIntent.putExtra("leftViewText", this.a.b.a().getString(2131561692));
-    this.a.startActivity(localIntent);
-    this.a.finish();
+    paramDialogInterface.dismiss();
+    VipUtils.b(this.a, 3, "mvip.gongneng.mobileqq.tiexintixing.numberandroid");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     esf
  * JD-Core Version:    0.7.0.1
  */

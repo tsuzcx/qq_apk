@@ -1,20 +1,41 @@
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Color;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.utils.QQCustomSingleChoiceDialog;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 public class hhr
-  implements AdapterView.OnItemClickListener
+  extends Animation
 {
-  public hhr(QQCustomSingleChoiceDialog paramQQCustomSingleChoiceDialog) {}
+  private float jdField_a_of_type_Float;
+  private View jdField_a_of_type_AndroidViewView;
+  private float b;
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public hhr(View paramView, float paramFloat1, float paramFloat2)
   {
-    this.a.jdField_a_of_type_Int = paramInt;
-    QQCustomSingleChoiceDialog.a(this.a).notifyDataSetChanged();
-    this.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.a, paramInt);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return;
+    }
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = this.b;
+    float f3 = this.jdField_a_of_type_Float;
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb((int)((f1 + (f2 - f3) * paramFloat) * 255.0F), 255, 255, 255));
+  }
+  
+  public boolean willChangeBounds()
+  {
+    return false;
+  }
+  
+  public boolean willChangeTransformationMatrix()
+  {
+    return false;
   }
 }
 

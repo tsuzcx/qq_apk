@@ -1,25 +1,16 @@
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.RichStatusEditText;
 
 public class ghf
   implements Runnable
 {
-  public ghf(QQPlayerService paramQQPlayerService) {}
+  public ghf(EditActivity paramEditActivity) {}
   
   public void run()
   {
-    if (QQPlayerService.g() == 5) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQPlayerService", 2, "===========> timeout retry to check playState:" + QQPlayerService.b(QQPlayerService.g()) + ",needRetryPlay:" + bool);
-      }
-      if ((bool) && (QQPlayerService.b() != null)) {
-        QQPlayerService.a(this.a, QQPlayerService.b().a);
-      }
-      return;
-    }
+    EditActivity.a(this.a).requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(EditActivity.a(this.a), 2);
   }
 }
 

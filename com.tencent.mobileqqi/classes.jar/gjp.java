@@ -1,24 +1,25 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.view.ProfileSocialView;
-import java.util.HashMap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantActivity;
 
-class gjp
-  implements Runnable
+public class gjp
+  implements Animation.AnimationListener
 {
-  gjp(gjo paramgjo, Bitmap paramBitmap) {}
+  public gjp(QZoneShareAlbumAssistantActivity paramQZoneShareAlbumAssistantActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_Gjo.a.a.get("map_key_face");
-    if (localImageView != null) {
-      localImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
+    QZoneShareAlbumAssistantActivity.a(this.a).setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gjp
  * JD-Core Version:    0.7.0.1
  */

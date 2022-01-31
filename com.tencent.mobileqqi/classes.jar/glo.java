@@ -1,21 +1,27 @@
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.RichStatusEditText;
+import com.tencent.mobileqq.data.SubAccountMessage;
+import com.tencent.mobileqq.subaccount.datamanager.SubAccountAssistantCache;
+import com.tencent.mobileqq.subaccount.datamanager.SubAccountMessageData;
+import java.util.Comparator;
 
 public class glo
-  implements Runnable
+  implements Comparator
 {
-  public glo(EditActivity paramEditActivity) {}
+  private glo(SubAccountAssistantCache paramSubAccountAssistantCache) {}
   
-  public void run()
+  public int a(SubAccountMessageData paramSubAccountMessageData1, SubAccountMessageData paramSubAccountMessageData2)
   {
-    EditActivity.a(this.a).requestFocus();
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(EditActivity.a(this.a), 2);
+    if ((paramSubAccountMessageData1 != null) && (paramSubAccountMessageData1.a() != null) && (paramSubAccountMessageData2 != null) && (paramSubAccountMessageData2.a() != null)) {
+      return (int)(paramSubAccountMessageData2.a().time - paramSubAccountMessageData1.a().time);
+    }
+    if ((paramSubAccountMessageData2 == null) || (paramSubAccountMessageData2.a() == null)) {
+      return -1;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     glo
  * JD-Core Version:    0.7.0.1
  */

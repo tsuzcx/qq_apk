@@ -1,26 +1,23 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.biz.ui.CustomMenuBar.OnMenuItemClickListener;
+import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
+import com.tencent.mobileqq.activity.ChatForEnterpriseActivity;
+import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class cbb
-  implements CompoundButton.OnCheckedChangeListener
+  implements CustomMenuBar.OnMenuItemClickListener
 {
-  public cbb(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public cbb(ChatForEnterpriseActivity paramChatForEnterpriseActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(String paramString, int paramInt)
   {
-    AssistantSettingActivity.d(this.a).setContentDescription("回车键发送消息");
-    paramCompoundButton = this.a.b;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Enter_sendmsg", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131563426), "qqsetting_enter_sendmsg_key", paramBoolean);
-      return;
-    }
+    ChatForEnterpriseActivity.a(this.a).setVisibility(0);
+    ChatForEnterpriseActivity.a(this.a).sendEmptyMessageDelayed(0, 10000L);
+    StructMsg.ButtonInfo localButtonInfo = ChatForEnterpriseActivity.a(this.a, paramInt);
+    EnterpriseQQManager.a(this.a.b).a(paramString, this.a.a(), this.a.b, this.a.c(), localButtonInfo);
+    ReportController.b(this.a.b, "P_CliOper", "Bqq_Crm", "", "Aio_menu", "Clk_menu", 0, 0, this.a.c(), paramInt + "", "", "");
   }
 }
 

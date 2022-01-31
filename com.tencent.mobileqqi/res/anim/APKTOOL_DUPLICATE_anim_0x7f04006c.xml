@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <animation-list android:oneshot="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="150" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020727" />
-    <item android:duration="150" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020728" />
     <item android:duration="150" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020729" />
     <item android:duration="150" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02072a" />
     <item android:duration="150" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02072b" />
     <item android:duration="150" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02072c" />
     <item android:duration="150" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02072d" />
     <item android:duration="150" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02072e" />
+    <item android:duration="150" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02072f" />
+    <item android:duration="150" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020730" />
 </animation-list>

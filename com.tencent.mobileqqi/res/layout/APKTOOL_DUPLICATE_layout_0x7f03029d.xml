@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080aca" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:clickable="false" android:layout_width="fill_parent" android:layout_height="65.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080acb" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" />
-</FrameLayout>
+    <CheckBox android:id="@id/APKTOOL_DUPLICATE_id_0x7f080ac5" android:background="@null" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:button="@null" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020813" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080ac6" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginLeft="5.0dip" android:scaleType="centerCrop" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f080ac5" android:layout_centerVertical="true" />
+    <TextView android:textSize="16.0sp" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080ac7" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0b99" android:singleLine="true" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f080ac8" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f080ac6" />
+    <ImageView android:layout_gravity="center|right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080ac8" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="15.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02079a" android:layout_alignParentRight="true" />
+</RelativeLayout>

@@ -1,17 +1,20 @@
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.conditionsearch.data.AddressData;
+import com.tencent.mobileqq.widget.QQToast;
 
-class fmd
-  implements Comparator
+public class fmd
+  implements Runnable
 {
-  fmd(fmc paramfmc) {}
+  public fmd(AddressData paramAddressData, String paramString) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void run()
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
+    int i = 0;
+    while (i < 3)
+    {
+      QQToast.a(BaseApplicationImpl.a, "条件搜素配置文件存在不同code对应相同name的问题！！！ name = " + this.jdField_a_of_type_JavaLangString, 1).a();
+      i += 1;
     }
-    return 0;
   }
 }
 

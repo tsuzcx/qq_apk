@@ -66,9 +66,9 @@ import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import hfc;
-import hfd;
-import hfe;
+import hav;
+import haw;
+import hax;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -798,7 +798,7 @@ public class ProfileCardUtil
   public static String a(Context paramContext)
   {
     paramContext = paramContext.getDir("profilecard", 0);
-    return paramContext.getAbsolutePath() + File.separator + "qvip_profile_template.json" + "6.0.1";
+    return paramContext.getAbsolutePath() + File.separator + "qvip_profile_template.json" + "6.0.2";
   }
   
   public static String a(Context paramContext, ProfileCardInfo paramProfileCardInfo)
@@ -1624,8 +1624,8 @@ public class ProfileCardUtil
   {
     Object localObject1 = null;
     int i2 = 0;
-    TextView localTextView = (TextView)paramView.findViewById(2131231506);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131232620);
+    TextView localTextView = (TextView)paramView.findViewById(2131231507);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131232623);
     if (paramRichStatus != null) {
       localObject1 = paramRichStatus.a(null, -8947849, paramResources.getColor(2131361825));
     }
@@ -1663,7 +1663,7 @@ public class ProfileCardUtil
       label220:
       if (paramBoolean)
       {
-        i1 = 2130837860;
+        i1 = 2130837862;
         label230:
         paramResources = paramResources.getDrawable(i1);
         if (localImageView.getDrawable() != paramResources)
@@ -1706,14 +1706,14 @@ public class ProfileCardUtil
       {
         i2 += 1;
         break label354;
-        localObject1 = BitmapManager.a(paramResources, 2130839653);
+        localObject1 = BitmapManager.a(paramResources, 2130839655);
         break;
         localTextView.setText((CharSequence)localObject2);
         break label208;
         label433:
         paramBoolean = paramStatusManager.a();
         break label220;
-        i1 = 2130837803;
+        i1 = 2130837804;
         break label230;
         label450:
         i1 = 0;
@@ -1747,7 +1747,7 @@ public class ProfileCardUtil
     }
     QQProgressDialog localQQProgressDialog = new QQProgressDialog(paramBaseActivity, paramBaseActivity.d());
     localQQProgressDialog.show();
-    new Thread(new hfe(paramBaseActivity, paramString2, paramBoolean, paramString1, paramString3, localQQProgressDialog)).start();
+    new Thread(new hax(paramBaseActivity, paramString2, paramBoolean, paramString1, paramString3, localQQProgressDialog)).start();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
@@ -2073,7 +2073,7 @@ public class ProfileCardUtil
     {
       paramArrayOfByte = HexUtil.a(paramArrayOfByte);
       String str = HexUtil.a(paramArrayOfByte);
-      new hfc(str, b(paramArrayOfByte)).start();
+      new hav(str, b(paramArrayOfByte)).start();
       b(str);
       return;
     }
@@ -2248,10 +2248,10 @@ public class ProfileCardUtil
     for (;;)
     {
       return bool;
-      paramImageView.setImageResource(2130840210);
+      paramImageView.setImageResource(2130840212);
       bool = true;
       continue;
-      paramImageView.setImageResource(2130840207);
+      paramImageView.setImageResource(2130840209);
       bool = true;
       continue;
       bool = false;
@@ -2438,7 +2438,7 @@ public class ProfileCardUtil
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    ThreadManager.a().post(new hfd(paramString));
+    ThreadManager.a().post(new haw(paramString));
   }
 }
 

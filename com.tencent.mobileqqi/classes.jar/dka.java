@@ -1,35 +1,56 @@
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.QuickLoginActivity;
-import mqq.observer.AccountObserver;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class dka
-  extends AccountObserver
+  implements BusinessObserver
 {
-  public dka(QuickLoginActivity paramQuickLoginActivity) {}
+  public dka(SplashActivity paramSplashActivity, int paramInt) {}
   
-  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    Toast.makeText(this.a.getApplicationContext(), "login failure! check you qq and password!", 0).show();
-  }
-  
-  public void onLoginSuccess(String paramString1, String paramString2)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login suc", 0).show();
-  }
-  
-  protected void onLoginTimeout(String paramString)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login outtime", 0).show();
-  }
-  
-  protected void onUserCancel(String paramString)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login cancel", 0).show();
+    QLog.d("SplashActivity", 2, "success:" + String.valueOf(paramBoolean));
+    if (!paramBoolean) {}
+    do
+    {
+      for (;;)
+      {
+        return;
+        if (paramBoolean) {
+          try
+          {
+            paramBundle = paramBundle.getByteArray("data");
+            if (paramBundle != null)
+            {
+              mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+              localFollowResponse.mergeFrom(paramBundle);
+              paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+              if (paramInt == 0)
+              {
+                this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b.a(), 0).edit().putBoolean(String.valueOf(this.jdField_a_of_type_Int), true).commit();
+                return;
+              }
+            }
+          }
+          catch (Exception paramBundle)
+          {
+            return;
+          }
+        }
+      }
+    } while (paramInt != 58);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dka
  * JD-Core Version:    0.7.0.1
  */

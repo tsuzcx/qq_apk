@@ -1,38 +1,32 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.NotificationActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantImpl;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import mqq.app.MobileQQ;
 
 public class cxz
-  extends FriendListObserver
+  implements DialogInterface.OnClickListener
 {
-  public cxz(Leba paramLeba) {}
+  public cxz(NotificationActivity paramNotificationActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
-    do
+    this.a.b.logout(true);
+    SharedPreUtils.a(this.a.b.a(), this.a.b.a(), false);
+    paramDialogInterface = SubAccountAssistantImpl.a().a(this.a.b);
+    if ((!TextUtils.isEmpty(paramDialogInterface)) && (!PhoneNumLoginImpl.a().a(this.a.b, paramDialogInterface)))
     {
-      Object localObject;
-      do
-      {
-        do
-        {
-          return;
-          localObject = (QZoneManagerImp)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(9);
-        } while (localObject == null);
-        localObject = ((QZoneManagerImp)localObject).a();
-      } while ((TextUtils.isEmpty((CharSequence)localObject)) || (((String)localObject).length() <= 3) || (!((String)localObject).equals(paramString)) || (this.a.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter == null));
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.lebatab.leba", 2, "FriendListObserver.newMsgUin=" + (String)localObject);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter.notifyDataSetChanged();
-      Leba.a(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.lebatab.leba", 2, "onUpdateCustomHead. notifyData.");
+      this.a.b.updateSubAccountLogin(paramDialogInterface, false);
+      this.a.b.getApplication().refreAccountList();
+    }
+    this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
+    this.a.finish();
   }
 }
 

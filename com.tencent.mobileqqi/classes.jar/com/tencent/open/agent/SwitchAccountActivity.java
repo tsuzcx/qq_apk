@@ -29,10 +29,10 @@ import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqconnect.wtlogin.Login;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import hnv;
-import hnw;
-import hnx;
-import hny;
+import hjr;
+import hjs;
+import hjt;
+import hju;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -75,9 +75,9 @@ public class SwitchAccountActivity
   {
     this.jdField_a_of_type_MqqManagerWtloginManager = null;
     this.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new hnv(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new hnx(this);
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new hny(this);
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new hjr(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new hjt(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new hju(this);
   }
   
   public static String a(String paramString1, String paramString2)
@@ -148,12 +148,12 @@ public class SwitchAccountActivity
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() != 1) {
             break label379;
           }
-          paramString.setBackgroundResource(2130837875);
+          paramString.setBackgroundResource(2130837877);
         }
       }
       return;
       label379:
-      paramString.setBackgroundResource(2130837880);
+      paramString.setBackgroundResource(2130837882);
       return;
       label386:
       i += 1;
@@ -231,7 +231,7 @@ public class SwitchAccountActivity
   {
     super.setTitle(2131562999);
     this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131234577));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131234579));
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -327,7 +327,7 @@ public class SwitchAccountActivity
     }
     this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
     LayoutInflater localLayoutInflater = super.getLayoutInflater();
-    hnw localhnw = new hnw(this);
+    hjs localhjs = new hjs(this);
     int k = 0;
     int i = 0;
     int j = i;
@@ -367,10 +367,10 @@ public class SwitchAccountActivity
           }
         }
         if (i == 0) {
-          ((View)localObject4).setBackgroundResource(2130837880);
+          ((View)localObject4).setBackgroundResource(2130837882);
         }
         ((Button)((View)localObject4).findViewById(2131230988)).setOnClickListener(this);
-        ((View)localObject4).setOnClickListener(localhnw);
+        ((View)localObject4).setOnClickListener(localhjs);
         ((View)localObject4).setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
         ((View)localObject4).setTag(localObject2);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject4);
@@ -406,10 +406,10 @@ public class SwitchAccountActivity
           }
         }
         if (j == 0) {
-          ((View)localObject1).setBackgroundResource(2130837880);
+          ((View)localObject1).setBackgroundResource(2130837882);
         }
         ((Button)((View)localObject1).findViewById(2131230988)).setOnClickListener(this);
-        ((View)localObject1).setOnClickListener(localhnw);
+        ((View)localObject1).setOnClickListener(localhjs);
         ((View)localObject1).setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
         ((View)localObject1).setTag(localObject3);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
@@ -535,7 +535,7 @@ public class SwitchAccountActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130904006);
+    super.setContentView(2130904008);
     this.jdField_a_of_type_AndroidContentSharedPreferences = super.getSharedPreferences("accountList", 0);
     this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
     if (super.getIntent().getExtras() != null) {

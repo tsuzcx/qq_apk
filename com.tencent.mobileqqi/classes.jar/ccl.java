@@ -1,16 +1,17 @@
-import android.widget.CursorAdapter;
-import com.tencent.mobileqq.activity.BaseSystemActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ccl
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ccl(BaseSystemActivity paramBaseSystemActivity) {}
+  public ccl(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a.getCursor() != null) {
-      this.a.b();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.b.b(this.jdField_a_of_type_JavaLangString, false);
   }
 }
 

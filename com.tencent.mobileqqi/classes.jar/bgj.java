@@ -1,24 +1,25 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.PoiMapActivity;
 
 public class bgj
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public bgj(VideoController paramVideoController) {}
+  public bgj(PoiMapActivity paramPoiMapActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "networkBrokenRunnable");
-    }
-    if ((this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.e > 0) && (this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.e <= 4))
+    switch (paramMotionEvent.getAction())
     {
-      this.a.a(this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_a_of_type_JavaLangString, 0);
-      this.a.c(this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_a_of_type_JavaLangString, 9);
-      return;
     }
-    this.a.a(this.a.jdField_a_of_type_Long, 15);
+    do
+    {
+      return false;
+    } while (!this.a.a);
+    this.a.k();
+    this.a.a = false;
+    return false;
   }
 }
 

@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloadBPTransEntity;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadBPTransProxy;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.music.SongInfo;
 
-public class gcy
-  implements Runnable
+public final class gcy
+  implements Parcelable.Creator
 {
-  public gcy(UniformDownloadBPTransProxy paramUniformDownloadBPTransProxy, UniformDownloadBPTransEntity paramUniformDownloadBPTransEntity) {}
-  
-  public void run()
+  public SongInfo a(Parcel paramParcel)
   {
-    UniformDownloadBPTransProxy.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloadBPTransProxy, this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloadBPTransEntity, null);
+    return new SongInfo(paramParcel, null);
+  }
+  
+  public SongInfo[] a(int paramInt)
+  {
+    return new SongInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gcy
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ import com.tencent.mobileqq.app.TroopObserver;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
-import gyw;
-import gyx;
+import gup;
+import guq;
 
 public class TroopSearchLogicActivity
   extends BaseActivity
@@ -33,8 +33,8 @@ public class TroopSearchLogicActivity
   public TroopSearchLogicActivity()
   {
     this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gyw(this);
-    this.jdField_a_of_type_AndroidOsHandler = new gyx(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gup(this);
+    this.jdField_a_of_type_AndroidOsHandler = new guq(this);
   }
   
   private boolean a(String paramString, int paramInt1, int paramInt2)

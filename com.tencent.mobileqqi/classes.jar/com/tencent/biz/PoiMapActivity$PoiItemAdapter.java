@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bnf;
+import bhb;
 import com.tencent.tencentmap.mapsdk.map.GeoPoint;
 import com.tencent.tencentmap.mapsdk.map.MapController;
 import java.util.ArrayList;
@@ -133,14 +133,14 @@ public class PoiMapActivity$PoiItemAdapter
     if (paramView == null)
     {
       paramViewGroup = new PoiMapActivity.PoiItemViewHolder(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPoiMapActivity).inflate(2130903420, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232546));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232547));
-      paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131232549);
-      paramViewGroup.c = paramView.findViewById(2131232548);
-      paramViewGroup.d = paramView.findViewById(2131232551);
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131232545);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232550));
+      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPoiMapActivity).inflate(2130903422, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232549));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232550));
+      paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131232552);
+      paramViewGroup.c = paramView.findViewById(2131232551);
+      paramViewGroup.d = paramView.findViewById(2131232554);
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131232548);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232553));
       paramView.setTag(paramViewGroup);
     }
     while ((paramInt == this.jdField_a_of_type_JavaUtilArrayList.size()) || ((this.jdField_a_of_type_Boolean) && (paramInt == this.jdField_a_of_type_JavaUtilArrayList.size() - 1)))
@@ -158,7 +158,7 @@ public class PoiMapActivity$PoiItemAdapter
     paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
     paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localPOI.jdField_a_of_type_JavaLangString);
     paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localPOI.jdField_b_of_type_JavaLangString);
-    paramViewGroup.jdField_b_of_type_AndroidViewView.setOnClickListener(new bnf(this, localPOI));
+    paramViewGroup.jdField_b_of_type_AndroidViewView.setOnClickListener(new bhb(this, localPOI));
     if (paramInt == this.jdField_a_of_type_Int)
     {
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPoiMapActivity.c);
@@ -170,7 +170,7 @@ public class PoiMapActivity$PoiItemAdapter
       paramViewGroup.jdField_b_of_type_AndroidViewView.setVisibility(0);
       if (!TextUtils.isEmpty(localPOI.d))
       {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838345);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838347);
         return paramView;
         paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_b_of_type_Int);
         paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_a_of_type_Int);
@@ -178,7 +178,7 @@ public class PoiMapActivity$PoiItemAdapter
       }
       else
       {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838344);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838346);
         return paramView;
       }
     }

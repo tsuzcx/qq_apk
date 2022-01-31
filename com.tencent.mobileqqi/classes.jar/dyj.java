@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.EnterTroopChatItemBuilder;
+import java.util.List;
 
 public class dyj
-  implements View.OnClickListener
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public dyj(TroopRequestActivity paramTroopRequestActivity) {}
+  public LinearLayout a;
+  public List a;
+  public TextView b;
   
-  public void onClick(View paramView)
-  {
-    this.a.e();
-  }
+  public dyj(EnterTroopChatItemBuilder paramEnterTroopChatItemBuilder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dyj
  * JD-Core Version:    0.7.0.1
  */

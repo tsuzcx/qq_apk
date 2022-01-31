@@ -17,7 +17,7 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import fgj;
+import fbv;
 import java.lang.reflect.Method;
 
 public class DragBaseActivity
@@ -39,7 +39,7 @@ public class DragBaseActivity
   
   public DragBaseActivity()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fgj(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fbv(this);
   }
   
   public static void a(View paramView)
@@ -85,10 +85,10 @@ public class DragBaseActivity
   {
     if (this.jdField_a_of_type_AndroidWidgetFrameLayout == null)
     {
-      super.setContentView(2130903358);
+      super.setContentView(2130903360);
       this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-      FrameLayout localFrameLayout = (FrameLayout)findViewById(2131232287);
-      localFrameLayout.setForeground(getResources().getDrawable(2130840100));
+      FrameLayout localFrameLayout = (FrameLayout)findViewById(2131232290);
+      localFrameLayout.setForeground(getResources().getDrawable(2130840102));
       this.jdField_a_of_type_AndroidWidgetFrameLayout = localFrameLayout;
       this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131231448));
       IphoneTitleBarActivity.b(this.jdField_a_of_type_AndroidViewViewGroup);
@@ -208,7 +208,7 @@ public class DragBaseActivity
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837860);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837862);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = this.b.getCompoundDrawables();
       this.jdField_a_of_type_Int = this.b.getCompoundDrawablePadding();
       this.b.setCompoundDrawablePadding(10);
@@ -250,7 +250,7 @@ public class DragBaseActivity
   
   public void setContentView(View paramView)
   {
-    super.setContentView(2130903358);
+    super.setContentView(2130903360);
     a(getIntent());
     this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(paramView);

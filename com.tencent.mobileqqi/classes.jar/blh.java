@@ -1,20 +1,20 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import com.tencent.av.thread.Future;
-import com.tencent.av.thread.FutureListener;
-import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.biz.qrcode.CodeMaskManager;
+import com.tencent.biz.qrcode.CodeMaskManager.Callback;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class blh
-  implements FutureListener
+  implements Runnable
 {
-  public blh(VideoLayerUI paramVideoLayerUI, Handler.Callback paramCallback) {}
+  public blh(CodeMaskManager paramCodeMaskManager, bli parambli, CodeMaskManager.Callback paramCallback) {}
   
-  public void a(Future paramFuture)
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler$Callback != null) {
-      new Handler(Looper.getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback).sendEmptyMessage(0);
+    if (this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.a) {}
+    while (!this.jdField_a_of_type_Bli.a.compareAndSet(false, true)) {
+      return;
     }
+    this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback.a(CodeMaskManager.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager));
+    CodeMaskManager.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager);
   }
 }
 

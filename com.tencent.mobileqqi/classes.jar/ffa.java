@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationConfigHelper;
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QPSafeCheckHandler;
+import com.tencent.mobileqq.app.SafeCenterPushHandler;
 
 public class ffa
-  implements Runnable
+  extends Thread
 {
-  public ffa(ConfigHandler paramConfigHandler) {}
+  public ffa(QPSafeCheckHandler paramQPSafeCheckHandler, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    AioAnimationConfigHelper.a().a(this.a.a.getApplication());
+    SafeCenterPushHandler.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQPSafeCheckHandler.b(this.jdField_a_of_type_ArrayOfByte);
   }
 }
 

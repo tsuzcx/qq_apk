@@ -1,14 +1,34 @@
-import android.view.View;
-import com.tencent.mobileqq.adapter.BaseWhatASmoothAdapter;
+import android.os.Process;
+import com.tencent.mobileqq.app.EmoticonManagerImp;
+import com.tencent.qphone.base.util.QLog;
 
 public class fcb
   implements Runnable
 {
-  public fcb(BaseWhatASmoothAdapter paramBaseWhatASmoothAdapter, View paramView, String paramString, int paramInt, fcc paramfcc) {}
+  public fcb(EmoticonManagerImp paramEmoticonManagerImp, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
-    BaseWhatASmoothAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterBaseWhatASmoothAdapter, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Fcc);
+    Process.setThreadPriority(10);
+    try
+    {
+      Thread.sleep(this.jdField_a_of_type_Long);
+      if (this.jdField_a_of_type_Boolean) {
+        EmoticonManagerImp.b(this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonManagerImp", 2, "asyncReloadEmoticonKeyword,isChanged=" + this.jdField_a_of_type_Boolean);
+      }
+      EmoticonManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp);
+      return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
+      {
+        localInterruptedException.printStackTrace();
+      }
+    }
   }
 }
 

@@ -1,40 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.biz.common.util.LoadedCallBack;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.biz.ui.CustomMenuBar;
 
-public final class boc
+public class boc
   implements Runnable
 {
-  public boc(QQAppInterface paramQQAppInterface, LoadedCallBack paramLoadedCallBack) {}
+  public boc(CustomMenuBar paramCustomMenuBar) {}
   
   public void run()
   {
-    Object localObject = null;
-    int i = 0;
-    for (;;)
-    {
-      if ((TextUtils.isEmpty((CharSequence)localObject)) && (i < 10))
-      {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.f();
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          this.jdField_a_of_type_ComTencentBizCommonUtilLoadedCallBack.a((String)localObject);
-        }
-      }
-      else
-      {
-        return;
-      }
-      try
-      {
-        Thread.sleep(200L);
-        label49:
-        i += 1;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        break label49;
-      }
-    }
+    this.a.b = false;
+    this.a.a.setVisibility(4);
   }
 }
 

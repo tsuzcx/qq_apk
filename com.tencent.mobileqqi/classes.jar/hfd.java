@@ -1,21 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.widget.AntiphingToast;
 
-public final class hfd
-  implements Runnable
+public class hfd
+  extends Handler
 {
-  public hfd(String paramString) {}
+  public hfd(AntiphingToast paramAntiphingToast) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    File localFile = new File(this.a);
-    if ((localFile.exists()) && (localFile.isFile()))
-    {
-      boolean bool = localFile.delete();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.VoiceIntro", 2, "delete result=" + bool + " f.path=" + this.a);
-      }
+    if (paramMessage.what == 1) {
+      this.a.a(0.0F, 0 - AntiphingToast.a(this.a).getHeight(), true);
     }
+    super.handleMessage(paramMessage);
   }
 }
 

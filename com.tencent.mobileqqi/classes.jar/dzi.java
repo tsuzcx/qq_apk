@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.item.LongMsgItemBuilder;
+import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
 
-class dzi
-  implements Runnable
+public class dzi
+  implements AnimationTextView.OnDoubleClick
 {
-  dzi(dzh paramdzh) {}
+  public dzi(LongMsgItemBuilder paramLongMsgItemBuilder) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    this.a.a.notifyDataSetChanged();
+    ChatActivityUtils.a(LongMsgItemBuilder.a(this.a), paramView, (ChatActivity)LongMsgItemBuilder.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dzi
  * JD-Core Version:    0.7.0.1
  */

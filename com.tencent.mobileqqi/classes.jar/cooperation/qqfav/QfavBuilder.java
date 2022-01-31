@@ -11,10 +11,10 @@ import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.MsgUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import iga;
+import ibg;
 
 public class QfavBuilder
-  implements iga
+  implements ibg
 {
   private Intent a;
   

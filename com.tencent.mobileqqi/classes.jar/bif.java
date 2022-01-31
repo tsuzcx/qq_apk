@@ -1,28 +1,15 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.av.opengl.QQGLGestureView;
-import com.tencent.av.opengl.gesture.GlViewTouchListener;
+import com.tencent.biz.eqq.EnterpriseDetailActivity;
 
 public class bif
-  extends GestureDetector.SimpleOnGestureListener
+  implements View.OnClickListener
 {
-  public bif(GlViewTouchListener paramGlViewTouchListener, QQGLGestureView paramQQGLGestureView) {}
+  public bif(EnterpriseDetailActivity paramEnterpriseDetailActivity, String paramString) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentAvOpenglGestureGlViewTouchListener.a(paramMotionEvent);
-    return true;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if ((!this.jdField_a_of_type_ComTencentAvOpenglGestureGlViewTouchListener.b) && (this.jdField_a_of_type_ComTencentAvOpenglGestureGlViewTouchListener.a != null))
-    {
-      this.jdField_a_of_type_ComTencentAvOpenglGestureGlViewTouchListener.a.onClick(this.jdField_a_of_type_ComTencentAvOpenglQQGLGestureView);
-      return true;
-    }
-    return false;
+    EnterpriseDetailActivity.b(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_JavaLangString);
   }
 }
 

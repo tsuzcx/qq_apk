@@ -1,19 +1,37 @@
-import android.content.DialogInterface.OnClickListener;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.IphoneTreeView;
 
 public class hgv
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public hgv(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
+  public hgv(IphoneTreeView paramIphoneTreeView) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
+    boolean bool = true;
+    switch (paramMotionEvent.getAction())
+    {
+    case 2: 
+    default: 
+      bool = false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
+    do
+    {
+      return bool;
+      paramView.setPressed(true);
+      this.a.invalidate();
+      return true;
+      paramView.setPressed(false);
+      this.a.invalidate();
+      break;
+    } while (!paramView.isPressed());
+    paramView.setPressed(false);
+    this.a.collapseGroup(this.a.jdField_a_of_type_Int);
+    this.a.setSelectedGroup(this.a.jdField_a_of_type_Int);
+    this.a.jdField_a_of_type_AndroidViewView = null;
+    return true;
   }
 }
 

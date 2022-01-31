@@ -1,44 +1,85 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.CardObserver;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.EmosmDetailActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class clc
-  extends CardObserver
+  extends BaseAdapter
 {
-  public clc(Conversation paramConversation) {}
+  public static final int a = 8;
+  private float jdField_a_of_type_Float;
+  private List jdField_a_of_type_JavaUtilList;
+  private int b = 0;
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public clc(EmosmDetailActivity paramEmosmDetailActivity, ArrayList paramArrayList)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
+    if (paramArrayList.size() <= 8) {}
+    for (this.jdField_a_of_type_JavaUtilList = paramArrayList;; this.jdField_a_of_type_JavaUtilList = paramArrayList.subList(0, 8))
     {
-      if ((paramBoolean) && (paramObject != null) && (!Utils.a(paramObject.uin, this.a.a.a())))
-      {
-        this.a.a(8, paramObject.uin, -2147483648);
-        this.a.k();
-      }
+      this.jdField_a_of_type_Float = paramEmosmDetailActivity.a.getResources().getDisplayMetrics().density;
       return;
     }
   }
   
-  protected void b(boolean paramBoolean, String paramString)
+  public int getCount()
   {
-    if ((paramBoolean) && (paramString != null) && (this.a.a.a().equals(paramString)))
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramInt == 0) {}
+    for (this.b += 1; this.b > 1; this.b = 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, "refresh recent, from_onGreetingRecv");
+      paramViewGroup = paramView;
+      if (paramView == null) {
+        paramViewGroup = new ImageView(this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.a);
       }
-      this.a.a(8, AppConstants.V, 1001);
+      return paramViewGroup;
+    }
+    if (paramView == null) {
+      paramView = new ImageView(this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.a);
+    }
+    for (;;)
+    {
+      paramView = (ImageView)paramView;
+      paramView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.d, this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.e));
+      paramViewGroup = (Emoticon)getItem(paramInt);
+      PicEmoticonInfo localPicEmoticonInfo = new PicEmoticonInfo(this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.b.a());
+      localPicEmoticonInfo.a = paramViewGroup;
+      paramViewGroup = localPicEmoticonInfo.b(this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.a, this.jdField_a_of_type_Float);
+      if ((paramViewGroup instanceof URLDrawable)) {
+        ((URLDrawable)paramViewGroup).setURLDrawableListener(new cld(this, paramView));
+      }
+      paramView.setImageDrawable(paramViewGroup);
+      return paramView;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     clc
  * JD-Core Version:    0.7.0.1
  */

@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Locale;
 
 public class SharedPreUtils
 {
@@ -26,6 +27,12 @@ public class SharedPreUtils
   public static String a(Context paramContext)
   {
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getString("last_loginuin_for_birthday_uin", "");
+  }
+  
+  public static String a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    paramString1 = String.format(Locale.getDefault(), "%s_%s_sharedpreutil", new Object[] { paramString1, paramString2 });
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getString(paramString1, paramString3);
   }
   
   public static void a(Context paramContext, int paramInt, String paramString)

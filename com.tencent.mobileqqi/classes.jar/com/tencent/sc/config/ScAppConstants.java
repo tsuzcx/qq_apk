@@ -143,7 +143,7 @@ public class ScAppConstants
   public static final int i = 2005;
   public static final String i = h + "/Tencent/MobileQQ/";
   public static final int j = 3001;
-  public static final String j = AppConstants.ay;
+  public static final String j = AppConstants.aC;
   public static final int k = 3011;
   public static final String k = Environment.getExternalStorageDirectory().getAbsolutePath();
   public static final int l = 3021;

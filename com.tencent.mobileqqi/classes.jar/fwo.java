@@ -1,35 +1,15 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter.LocalFileItemHolder;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
 
 public class fwo
-  implements View.OnLongClickListener
+  implements Runnable
 {
-  public fwo(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public fwo(UniformDownloadMgr paramUniformDownloadMgr, String paramString, Bundle paramBundle) {}
   
-  public boolean onLongClick(View paramView)
+  public void run()
   {
-    if (paramView == null) {
-      return false;
-    }
-    if (!this.a.f())
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(null);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b();
-      return false;
-    }
-    FileInfo localFileInfo = ((LocalFileAdapter.LocalFileItemHolder)paramView.getTag()).a;
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131230986, paramView.getContext().getString(2131561917));
-    LocalFileBrowserActivity.a(this.a, BubbleContextMenu.a(paramView, localQQCustomMenu, new fwp(this, paramView), localFileInfo.d()));
-    return true;
+    UniformDownloadMgr.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr);
   }
 }
 

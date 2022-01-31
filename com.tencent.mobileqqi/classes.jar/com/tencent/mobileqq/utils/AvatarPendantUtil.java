@@ -20,7 +20,7 @@ import com.tencent.mobileqq.vas.AvatarPendantMarketActivity;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewConstants;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import hfr;
+import hbk;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -321,7 +321,7 @@ public final class AvatarPendantUtil
   public static String a(long paramLong, int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AppConstants.aH).append(paramLong).append(File.separator);
+    localStringBuilder.append(AppConstants.aL).append(paramLong).append(File.separator);
     switch (paramInt)
     {
     }
@@ -349,7 +349,7 @@ public final class AvatarPendantUtil
     if ((paramQQAppInterface == null) || (jdField_a_of_type_JavaUtilVector == null) || (jdField_a_of_type_JavaUtilVector.size() == 0)) {
       return;
     }
-    ThreadManager.a(new hfr(paramQQAppInterface));
+    ThreadManager.a(new hbk(paramQQAppInterface));
   }
   
   private static void a(QQAppInterface paramQQAppInterface, long paramLong)

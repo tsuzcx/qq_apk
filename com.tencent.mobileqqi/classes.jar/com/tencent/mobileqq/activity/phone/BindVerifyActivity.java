@@ -15,12 +15,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.utils.SMSBodyObserver;
-import com.tencent.mobileqq.app.utils.SmsContent;
 import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import epa;
-import epc;
+import ekm;
+import eko;
 
 public class BindVerifyActivity
   extends DialogBaseActivity
@@ -32,7 +31,6 @@ public class BindVerifyActivity
   private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private SmsContent jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent;
   private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver;
   boolean jdField_a_of_type_Boolean = false;
   private TextView b;
@@ -45,23 +43,23 @@ public class BindVerifyActivity
   private void f()
   {
     setTitle(getResources().getString(2131558961));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232023));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232026));
     String str = getIntent().getStringExtra("k_number");
     if (this.jdField_a_of_type_Int == 0) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131559979, new Object[] { str }));
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131232024));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131232027));
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232015));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232018));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       if (this.jdField_a_of_type_Boolean) {
-        findViewById(2131232025).setVisibility(0);
+        findViewById(2131232028).setVisibility(0);
       }
-      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131232017));
+      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131232020));
       this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232018));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232021));
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
       return;
       if (1 == this.jdField_a_of_type_Int) {
@@ -79,7 +77,7 @@ public class BindVerifyActivity
     }
     if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new epa(this);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new ekm(this);
       this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     }
     this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), this.jdField_a_of_type_Int);
@@ -101,12 +99,10 @@ public class BindVerifyActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903301);
+    setContentView(2130903303);
     this.jdField_a_of_type_Int = getIntent().getIntExtra("kBindType", 0);
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("kShowAgree", false);
     f();
-    this.jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent = new SmsContent(null);
-    this.jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent.a(this, this);
     return true;
   }
   
@@ -117,10 +113,6 @@ public class BindVerifyActivity
       this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
       this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent.a();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent = null;
     super.doOnDestroy();
   }
   
@@ -136,7 +128,7 @@ public class BindVerifyActivity
   
   public void handleMessage(String paramString1, String paramString2)
   {
-    runOnUiThread(new epc(this, paramString1, paramString2));
+    runOnUiThread(new eko(this, paramString1, paramString2));
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
@@ -150,11 +142,11 @@ public class BindVerifyActivity
   {
     switch (paramView.getId())
     {
-    case 2131232016: 
-    case 2131232017: 
+    case 2131232019: 
+    case 2131232020: 
     default: 
       return;
-    case 2131232015: 
+    case 2131232018: 
       g();
       return;
     }

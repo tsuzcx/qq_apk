@@ -1,12 +1,13 @@
-import android.graphics.Bitmap;
-import com.tencent.av.utils.FriendInfoMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class blz
+  implements DialogInterface.OnClickListener
 {
-  public Bitmap a;
-  public String a;
+  public blz(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public blz(FriendInfoMap paramFriendInfoMap) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

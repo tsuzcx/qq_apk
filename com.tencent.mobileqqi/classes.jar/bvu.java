@@ -1,35 +1,48 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+
 public class bvu
+  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private Throwable jdField_a_of_type_JavaLangThrowable;
-  private long b;
-  private long c = -1L;
+  public bvu(AuthDevActivity paramAuthDevActivity) {}
   
-  public bvu(long paramLong1, String paramString, long paramLong2, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramLong2;
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(",");
-    localStringBuilder.append(this.c);
-    return localStringBuilder.toString();
+    this.a.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.devlock.AuthDevActivity", 2, "onClick.begin to CloseDevLock");
+    }
+    if (!AuthDevActivity.b(this.a)) {
+      if ((AuthDevActivity.a(this.a) == null) || (!AuthDevActivity.a(this.a).isShowing())) {
+        AuthDevActivity.a(this.a);
+      }
+    }
+    int i;
+    do
+    {
+      return;
+      AuthDevActivity.a(this.a);
+      AuthDevActivity.a(this.a, false);
+      paramView = this.a.b.a();
+      i = EquipmentLockImpl.a().b(this.a.b, paramView, AuthDevActivity.a(this.a));
+    } while (i == 0);
+    AuthDevActivity.b(this.a);
+    AuthDevActivity.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.devlock.AuthDevActivity", 2, "onClick.CloseDevLock fail ret =" + i);
+    }
+    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131562040), 0).b(this.a.d());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bvu
  * JD-Core Version:    0.7.0.1
  */

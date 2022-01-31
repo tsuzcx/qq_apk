@@ -1,16 +1,15 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.SpaceGateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.ImageCreator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class dpc
-  implements ImageCreator
+  implements DialogInterface.OnClickListener
 {
-  dpc(dpb paramdpb, String paramString) {}
+  dpc(dpb paramdpb, QQCustomDialog paramQQCustomDialog) {}
   
-  public Drawable a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.jdField_a_of_type_Dpb.a.b.b(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
   }
 }
 

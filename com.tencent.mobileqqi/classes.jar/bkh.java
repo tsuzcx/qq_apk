@@ -1,61 +1,92 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.gaudio.AVGQuality;
-import com.tencent.av.gaudio.AVGQuality.AudioQos;
-import com.tencent.av.gaudio.AVGQuality.VideoQos;
-import com.tencent.av.gaudio.AVGQuality.VideoQuality;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountMenuResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
 public class bkh
-  implements Runnable
+  implements BusinessObserver
 {
-  public bkh(MultiVideoCtrlLayerUI paramMultiVideoCtrlLayerUI) {}
+  public bkh(PublicAccountManager paramPublicAccountManager, NewIntent paramNewIntent, QQAppInterface paramQQAppInterface, String paramString, BusinessObserver paramBusinessObserver) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
-    {
-      Object localObject = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
-      if (localObject == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("MultiVideoCtrlLayerUI", 2, "can not get shape info");
-        }
-        return;
-      }
-      String str1 = new String();
-      str1 = str1 + "audioQos: ";
-      String str2 = String.format("bitR = %d, packDuration = %d, RECN = %d, RECM = %d, MTU = %d, INFEC = %.2f. \n\n", new Object[] { Integer.valueOf(((AVGQuality)localObject).audioQos.bitR), Integer.valueOf(((AVGQuality)localObject).audioQos.packDuration), Integer.valueOf(((AVGQuality)localObject).audioQos.RECN), Integer.valueOf(((AVGQuality)localObject).audioQos.RECM), Integer.valueOf(((AVGQuality)localObject).audioQos.MTU), Float.valueOf(((AVGQuality)localObject).audioQos.INFEC) });
-      str1 = str1 + str2;
-      str1 = str1 + "mainVideoSendBigViewQua: ";
-      str2 = String.format("w = %d, h = %d, fps = %d, codecType = %d, quality = %d, STnSB = %d. \n\n", new Object[] { Integer.valueOf(((AVGQuality)localObject).mainVideoSendBigViewQua.width), Integer.valueOf(((AVGQuality)localObject).mainVideoSendBigViewQua.height), Integer.valueOf(((AVGQuality)localObject).mainVideoSendBigViewQua.fps), Integer.valueOf(((AVGQuality)localObject).mainVideoSendBigViewQua.codecType), Integer.valueOf(((AVGQuality)localObject).mainVideoSendBigViewQua.quality), Integer.valueOf(((AVGQuality)localObject).mainVideoSendBigViewQua.STnSB) });
-      str1 = str1 + str2;
-      str1 = str1 + "mainVideoSendBigViewQos: ";
-      str2 = String.format("w = %d, h = %d, fps = %d, bitR = %d, codecType = %d. \n\n", new Object[] { Integer.valueOf(((AVGQuality)localObject).mainVideoSendBigViewQos.width), Integer.valueOf(((AVGQuality)localObject).mainVideoSendBigViewQos.height), Integer.valueOf(((AVGQuality)localObject).mainVideoSendBigViewQos.fps), Integer.valueOf(((AVGQuality)localObject).mainVideoSendBigViewQos.bitR), Integer.valueOf(((AVGQuality)localObject).mainVideoSendBigViewQos.codecType) });
-      str1 = str1 + str2;
-      str1 = str1 + "mainVideoSendSmallViewQua: ";
-      str2 = String.format("w = %d, h = %d, fps = %d, codecType = %d, quality = %d, STnSB = %d. \n\n", new Object[] { Integer.valueOf(((AVGQuality)localObject).mainVideoSendSmallViewQua.width), Integer.valueOf(((AVGQuality)localObject).mainVideoSendSmallViewQua.height), Integer.valueOf(((AVGQuality)localObject).mainVideoSendSmallViewQua.fps), Integer.valueOf(((AVGQuality)localObject).mainVideoSendSmallViewQua.codecType), Integer.valueOf(((AVGQuality)localObject).mainVideoSendSmallViewQua.quality), Integer.valueOf(((AVGQuality)localObject).mainVideoSendSmallViewQua.STnSB) });
-      str1 = str1 + str2;
-      str1 = str1 + "mainVideoSendSmallViewQos: ";
-      str2 = String.format("w = %d, h = %d, fps = %d, bitR = %d, codecType = %d. \n\n", new Object[] { Integer.valueOf(((AVGQuality)localObject).mainVideoSendSmallViewQos.width), Integer.valueOf(((AVGQuality)localObject).mainVideoSendSmallViewQos.height), Integer.valueOf(((AVGQuality)localObject).mainVideoSendSmallViewQos.fps), Integer.valueOf(((AVGQuality)localObject).mainVideoSendSmallViewQos.bitR), Integer.valueOf(((AVGQuality)localObject).mainVideoSendSmallViewQos.codecType) });
-      str1 = str1 + str2;
-      str1 = str1 + "mainVideoRecvQua: ";
-      str2 = String.format("w = %d, h = %d, fps = %d, codecType = %d, quality = %d, STnSB = %d. \n\n", new Object[] { Integer.valueOf(((AVGQuality)localObject).mainVideoRecvQua.width), Integer.valueOf(((AVGQuality)localObject).mainVideoRecvQua.height), Integer.valueOf(((AVGQuality)localObject).mainVideoRecvQua.fps), Integer.valueOf(((AVGQuality)localObject).mainVideoRecvQua.codecType), Integer.valueOf(((AVGQuality)localObject).mainVideoRecvQua.quality), Integer.valueOf(((AVGQuality)localObject).mainVideoRecvQua.STnSB) });
-      str1 = str1 + str2;
-      str1 = str1 + "subVideoRecvQua: ";
-      str2 = String.format("w = %d, h = %d, fps = %d, codecType = %d, quality = %d, STnSB = %d. \n\n", new Object[] { Integer.valueOf(((AVGQuality)localObject).subVideoRecvQua.width), Integer.valueOf(((AVGQuality)localObject).subVideoRecvQua.height), Integer.valueOf(((AVGQuality)localObject).subVideoRecvQua.fps), Integer.valueOf(((AVGQuality)localObject).subVideoRecvQua.codecType), Integer.valueOf(((AVGQuality)localObject).subVideoRecvQua.quality), Integer.valueOf(((AVGQuality)localObject).subVideoRecvQua.STnSB) });
-      str1 = str1 + str2;
-      str1 = str1 + "Common: ";
-      localObject = String.format("sendLossR = %.2f, sendJitterR = %d, sendBitR = %d, sendPktR = %d, recvLossR = %.2f, recvJitterR = %d, recvBitR = %d, recvPktR = %d, sysCpu = %.2f, RTT = %d. \n\n", new Object[] { Float.valueOf(((AVGQuality)localObject).sendLossR), Integer.valueOf(((AVGQuality)localObject).sendJitterR), Integer.valueOf(((AVGQuality)localObject).sendBitR), Integer.valueOf(((AVGQuality)localObject).sendPktR), Float.valueOf(((AVGQuality)localObject).recvLossR), Integer.valueOf(((AVGQuality)localObject).recvJitterR), Integer.valueOf(((AVGQuality)localObject).recvBitR), Integer.valueOf(((AVGQuality)localObject).recvPktR), Float.valueOf(((AVGQuality)localObject).sysCpu), Integer.valueOf(((AVGQuality)localObject).RTT) });
-      localObject = str1 + (String)localObject;
-      if (this.a.e != null) {
-        this.a.e.setText((CharSequence)localObject);
-      }
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    if (QLog.isColorLevel()) {
+      QLog.i("PublicAccountManager", 2, "success:" + String.valueOf(paramBoolean));
     }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
+    if (!paramBoolean) {
+      return;
+    }
+    for (;;)
+    {
+      for (;;)
+      {
+        try
+        {
+          localObject2 = paramBundle.getByteArray("data");
+          localGetPublicAccountMenuResponse = new mobileqq_mp.GetPublicAccountMenuResponse();
+        }
+        catch (Exception localException1)
+        {
+          Object localObject2;
+          mobileqq_mp.GetPublicAccountMenuResponse localGetPublicAccountMenuResponse;
+          long l;
+          int i;
+          int j;
+          Object localObject1 = null;
+          continue;
+        }
+        try
+        {
+          localGetPublicAccountMenuResponse.mergeFrom((byte[])localObject2);
+          if (!localGetPublicAccountMenuResponse.uin.has()) {
+            continue;
+          }
+          l = localGetPublicAccountMenuResponse.uin.get() & 0xFFFFFFFF;
+          if (!localGetPublicAccountMenuResponse.seqno.has()) {
+            continue;
+          }
+          i = localGetPublicAccountMenuResponse.seqno.get();
+          localObject2 = PublicAccountManager.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+          if ((localObject2 != null) && (!((List)localObject2).isEmpty())) {
+            continue;
+          }
+          paramBundle.putInt("update_type", 1);
+          j = this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a("" + l);
+          if (i == j) {
+            break;
+          }
+        }
+        catch (Exception localException2)
+        {
+          continue;
+          j = 2;
+        }
+      }
+      if (localGetPublicAccountMenuResponse == null) {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, localGetPublicAccountMenuResponse);
+      if (this.jdField_a_of_type_MqqObserverBusinessObserver == null) {
+        break;
+      }
+      this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(paramInt, paramBoolean, paramBundle);
+      return;
+      l = 0L;
+      continue;
+      i = 0;
+      continue;
+      if (!localGetPublicAccountMenuResponse.update_type.has()) {
+        continue;
+      }
+      j = localGetPublicAccountMenuResponse.update_type.get();
+      paramBundle.putInt("update_type", j);
+    }
   }
 }
 

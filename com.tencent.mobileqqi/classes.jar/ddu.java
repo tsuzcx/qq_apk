@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
-public class ddu
-  implements DialogInterface.OnClickListener
+class ddu
+  implements Runnable
 {
-  public ddu(NotificationActivity paramNotificationActivity) {}
+  ddu(ddt paramddt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.finish();
+    this.a.a.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ddu
  * JD-Core Version:    0.7.0.1
  */

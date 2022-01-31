@@ -1,26 +1,24 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.DoodleActivity;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.utils.DialogUtil;
+import java.util.List;
 
 public class cpq
-  implements View.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
-  public cpq(DoodleActivity paramDoodleActivity) {}
+  public cpq(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0) || (this.a.b.getVisibility() == 0))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.a.b.setVisibility(8);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+    if ((paramInt - 1 < 0) || (this.a.a.size() <= paramInt - 1)) {
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839723);
-    this.a.c.setVisibility(0);
+    GroupManagerActivity.a(this.a, (Groups)this.a.a.get(paramInt - 1));
+    GroupManagerActivity.a(this.a, DialogUtil.a(this.a, 2131562003, 2131562625, GroupManagerActivity.a(this.a).group_name, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
+    GroupManagerActivity.a(this.a, 1);
   }
 }
 

@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
+import com.tencent.mobileqq.filemanager.activity.VerifyPwdActivity;
 
-public class fss
+class fss
   implements Runnable
 {
-  public fss(EmoticonLinearLayout paramEmoticonLinearLayout) {}
+  fss(fsp paramfsp) {}
   
   public void run()
   {
-    if (EmoticonLinearLayout.a(this.a) != null)
-    {
-      EmoticonLinearLayout.a(this.a).a();
-      this.a.postDelayed(this, 100L);
-    }
+    VerifyPwdActivity.c(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fss
  * JD-Core Version:    0.7.0.1
  */

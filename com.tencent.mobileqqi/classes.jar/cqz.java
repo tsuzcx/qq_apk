@@ -1,26 +1,15 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.EmosmDetailActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
 
 public class cqz
-  extends EmoticonPackageDownloadListener
+  implements View.OnClickListener
 {
-  public cqz(EmosmDetailActivity paramEmosmDetailActivity) {}
+  public cqz(JoinDiscussionActivity paramJoinDiscussionActivity) {}
   
-  public void onJsonComplete(EmoticonPackage paramEmoticonPackage, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((Long.parseLong(paramEmoticonPackage.epId) == Long.parseLong(EmosmDetailActivity.a(this.a))) && (paramInt == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.emoji.EmosmDetailActivity", 2, "json is complete,result ok: " + EmosmDetailActivity.a(this.a));
-      }
-      this.a.b.getPreferences().edit().putInt("emosm_json_last_download_timestamp", (int)(System.currentTimeMillis() / 1000L)).commit();
-      this.a.runOnUiThread(new cra(this, paramEmoticonPackage));
-    }
+    this.a.a();
   }
 }
 

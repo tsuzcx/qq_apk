@@ -1,33 +1,28 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.UpdateTroop;
-import com.tencent.qphone.base.util.QLog;
+import android.net.Uri;
+import android.provider.ContactsContract.Data;
 
 public class fnc
-  extends TroopObserver
 {
-  private fnc(UpdateTroop paramUpdateTroop) {}
+  public static final int a = 0;
+  public static final Uri a;
+  public static final String a = "raw_contact_id=?";
+  public static final String[] a;
+  public static final int b = 1;
+  public static final String b = "mimetype = ?";
+  public static final String[] b = { "raw_contact_id", "data1" };
+  public static final int c = 2;
+  public static final int d = 0;
+  public static final int e = 1;
   
-  protected void b(boolean paramBoolean)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "updateTroopList:" + paramBoolean);
-    }
-    if (!paramBoolean)
-    {
-      this.a.a(6);
-      return;
-    }
-    UpdateTroop.a(this.a).a.edit().putBoolean("isTrooplistok", true).commit();
-    UpdateTroop.b(this.a).a(3, true, Integer.valueOf(2));
-    this.a.a(7);
+    jdField_a_of_type_AndroidNetUri = ContactsContract.Data.CONTENT_URI;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "_id", "mimetype", "data1" };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     fnc
  * JD-Core Version:    0.7.0.1
  */

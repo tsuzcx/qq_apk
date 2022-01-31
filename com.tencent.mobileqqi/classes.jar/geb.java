@@ -1,52 +1,28 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.mobileqq.jsp.DataApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.pic.ReportInfo;
 
-public class geb
-  extends Client.onRemoteRespObserver
+public final class geb
+  implements Parcelable.Creator
 {
-  public geb(DataApiPlugin paramDataApiPlugin) {}
-  
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle)
+  public ReportInfo a(Parcel paramParcel)
   {
-    Object localObject;
-    String str;
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.a.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver.key))
-    {
-      localObject = paramBundle.getString("cmd");
-      str = paramBundle.getString("callbackid");
-      paramBundle = paramBundle.getBundle("response");
-      if (QLog.isColorLevel()) {
-        QLog.i(DataApiPlugin.jdField_a_of_type_JavaLangString, 2, "response:" + (String)localObject);
-      }
-      if ((localObject == null) || (!"getUserVipType".equals(localObject))) {}
-    }
-    try
-    {
-      localObject = new JSONObject();
-      int i = paramBundle.getInt("type");
-      ((JSONObject)localObject).put("result", 0);
-      ((JSONObject)localObject).put("message", "ok");
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("uin", paramBundle.getString("uin"));
-      localJSONObject.put("type", i);
-      ((JSONObject)localObject).put("data", localJSONObject);
-      if (!TextUtils.isEmpty(str)) {
-        this.a.callJs(str + "(" + ((JSONObject)localObject).toString() + ");");
-      }
-      return;
-    }
-    catch (JSONException paramBundle) {}
+    ReportInfo localReportInfo = new ReportInfo();
+    localReportInfo.e = paramParcel.readInt();
+    localReportInfo.f = paramParcel.readInt();
+    localReportInfo.g = paramParcel.readInt();
+    localReportInfo.j = paramParcel.readInt();
+    localReportInfo.h = paramParcel.readInt();
+    localReportInfo.i = paramParcel.readInt();
+    localReportInfo.a = paramParcel.readLong();
+    localReportInfo.b = paramParcel.readLong();
+    localReportInfo.c = paramParcel.readLong();
+    return localReportInfo;
+  }
+  
+  public ReportInfo[] a(int paramInt)
+  {
+    return new ReportInfo[paramInt];
   }
 }
 

@@ -1,28 +1,19 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmoticonPackageChangedListener;
-import java.util.ArrayList;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import com.tencent.mobileqq.activity.IndividuationSetActivity;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
-public class cqw
-  implements EmoticonPackageChangedListener
+class cqw
+  implements Runnable
 {
-  public cqw(EmosmActivity paramEmosmActivity) {}
+  cqw(cqv paramcqv, Bitmap paramBitmap) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
-  
-  public void b(EmoticonPackage paramEmoticonPackage)
+  public void run()
   {
-    int i = 0;
-    while (i < EmosmActivity.a(this.a).size())
-    {
-      if (((EmoticonPackage)EmosmActivity.a(this.a).get(i)).epId.equals(paramEmoticonPackage.epId)) {
-        return;
-      }
-      i += 1;
-    }
-    this.a.runOnUiThread(EmosmActivity.a(this.a));
+    BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    int i = this.jdField_a_of_type_Cqv.a.getResources().getDimensionPixelSize(2131427612);
+    IndividuationSetActivity.a(this.jdField_a_of_type_Cqv.a).setRightIcon(localBitmapDrawable, i, i);
   }
 }
 

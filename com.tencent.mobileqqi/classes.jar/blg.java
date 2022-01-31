@@ -1,14 +1,16 @@
-import com.tencent.av.ui.VideoInviteLock;
-import java.util.TimerTask;
+import com.tencent.biz.qrcode.CodeMaskManager;
+import org.json.JSONArray;
 
-public class blg
-  extends TimerTask
+class blg
+  implements Runnable
 {
-  blg(VideoInviteLock paramVideoInviteLock) {}
+  blg(blf paramblf, JSONArray paramJSONArray) {}
   
   public void run()
   {
-    this.a.f();
+    if (!this.jdField_a_of_type_Blf.a.a) {
+      CodeMaskManager.a(this.jdField_a_of_type_Blf.a, this.jdField_a_of_type_OrgJsonJSONArray);
+    }
   }
 }
 

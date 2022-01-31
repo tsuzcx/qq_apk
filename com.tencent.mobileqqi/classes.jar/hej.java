@@ -1,15 +1,13 @@
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.utils.VoicePlayer;
 
 public class hej
-  extends WeakReference
+  implements Runnable
 {
-  private final String a;
+  public hej(VoicePlayer paramVoicePlayer) {}
   
-  public hej(String paramString, Object paramObject, ReferenceQueue paramReferenceQueue)
+  public void run()
   {
-    super(paramObject, paramReferenceQueue);
-    this.a = paramString;
+    VoicePlayer.a(this.a, false);
   }
 }
 

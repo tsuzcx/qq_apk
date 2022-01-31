@@ -1,98 +1,44 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
+import com.tencent.mobileqq.widget.InputMethodRelativeLayout.onSizeChangedListenner;
 import com.tencent.qphone.base.util.QLog;
 
 public class ctm
-  implements Animation.AnimationListener
+  implements InputMethodRelativeLayout.onSizeChangedListenner
 {
-  public ctm(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public ctm(LoginActivity paramLoginActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    boolean bool2 = true;
-    StringBuilder localStringBuilder;
-    if (QLog.isDevelopLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onAnimationStart, [");
-      if (paramAnimation != FriendProfileCardActivity.a(this.a)) {
-        break label106;
-      }
-      bool1 = true;
-      localStringBuilder = localStringBuilder.append(bool1).append(",");
-      if (paramAnimation != FriendProfileCardActivity.b(this.a)) {
-        break label111;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginActivity", 2, "onSizeChange isOpen:" + paramBoolean + " preH:" + paramInt1 + " curH:" + paramInt2);
     }
-    label106:
-    label111:
-    for (boolean bool1 = bool2;; bool1 = false)
+    if (paramBoolean)
     {
-      QLog.i("Q.profilecard.FrdProfileCard", 4, bool1 + "]");
-      if (FriendProfileCardActivity.a(this.a) != null) {
-        break label116;
+      int[] arrayOfInt = new int[2];
+      this.a.jdField_a_of_type_AndroidWidgetButton.getLocationInWindow(arrayOfInt);
+      paramInt1 = arrayOfInt[1];
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout.getLocationInWindow(arrayOfInt);
+      int i = arrayOfInt[1];
+      paramInt2 = paramInt1 - i + this.a.jdField_a_of_type_AndroidWidgetButton.getHeight() - paramInt2;
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginActivity", 2, "onSizeChange btnY:" + paramInt1 + " layoutY:" + i + " paddingY:" + paramInt2);
       }
-      if (QLog.isDevelopLevel()) {
-        QLog.i("Q.profilecard.FrdProfileCard", 4, "centerView is null");
+      if (paramInt2 > 0) {
+        this.a.c.setPadding(this.a.c.getPaddingLeft(), this.a.c.getPaddingTop() - paramInt2, this.a.c.getPaddingRight(), this.a.c.getPaddingBottom());
       }
+      this.a.b.setVisibility(8);
       return;
-      bool1 = false;
-      break;
     }
-    label116:
-    if (paramAnimation == FriendProfileCardActivity.b(this.a)) {
-      FriendProfileCardActivity.a(this.a).setVisibility(8);
-    }
-    FriendProfileCardActivity.a(this.a).clearAnimation();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if (QLog.isDevelopLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append("onAnimationStart, [");
-      if (paramAnimation == FriendProfileCardActivity.a(this.a))
-      {
-        bool1 = true;
-        localStringBuilder = localStringBuilder.append(bool1).append(",");
-        if (paramAnimation != FriendProfileCardActivity.b(this.a)) {
-          break label111;
-        }
-        bool1 = bool2;
-        label61:
-        QLog.i("Q.profilecard.FrdProfileCard", 4, bool1 + "]");
-      }
-    }
-    else
-    {
-      if (FriendProfileCardActivity.a(this.a) != null) {
-        break label116;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.i("Q.profilecard.FrdProfileCard", 4, "centerView is null");
-      }
-    }
-    label111:
-    label116:
-    while (paramAnimation != FriendProfileCardActivity.a(this.a))
-    {
-      return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label61;
-    }
-    FriendProfileCardActivity.a(this.a).setVisibility(0);
+    this.a.b.setVisibility(0);
+    this.a.c.setPadding(0, 0, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ctm
  * JD-Core Version:    0.7.0.1
  */

@@ -30,7 +30,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Parcelable;
 import android.os.StatFs;
 import android.preference.PreferenceManager;
 import android.text.Editable;
@@ -67,9 +66,9 @@ import bk;
 import bl;
 import bm;
 import bn;
-import bo;
-import bp;
-import br;
+import bw;
+import bx;
+import bz;
 import com.dataline.util.DatalineSessionAdapter;
 import com.dataline.util.DatalineSessionAdapter.ItemHolder;
 import com.dataline.util.DatalineSessionAdapter.ItemHolder.FileItemHolder;
@@ -120,6 +119,7 @@ import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.mobileqq.utils.AppShareIDUtil;
 import com.tencent.mobileqq.utils.BubbleContextMenu;
 import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.FileProvider7Helper;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -178,7 +178,7 @@ public class LiteActivity
   private GridView jdField_a_of_type_AndroidWidgetGridView;
   private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bp jdField_a_of_type_Bp;
+  private bx jdField_a_of_type_Bx;
   private LiteActivity.LiteJumpAction jdField_a_of_type_ComDatalineActivitiesLiteActivity$LiteJumpAction;
   private DatalineSessionAdapter jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter = null;
   private ShareAioResultDialog jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog = null;
@@ -409,7 +409,7 @@ public class LiteActivity
       QLog.d(jdField_a_of_type_JavaLangString, 1, "sendMultipleFile paths is null !!!!!!");
       return;
     }
-    bo localbo = new bo(this, paramArrayList);
+    bw localbw = new bw(this, paramArrayList);
     paramArrayList = paramArrayList.iterator();
     long l1 = 0L;
     while (paramArrayList.hasNext())
@@ -426,12 +426,12 @@ public class LiteActivity
     }
     if ((NetworkUtil.f(this)) && (!NetworkUtil.g(this)) && (l1 > 5242880L))
     {
-      paramArrayList = new ab(this, localbo, paramEFILETYPE);
+      paramArrayList = new ab(this, localbw, paramEFILETYPE);
       paramEFILETYPE = new ac(this);
       DialogUtil.a(a(), 230, getString(2131558507), getString(2131558508), 2131561746, 2131558509, paramArrayList, paramEFILETYPE).show();
       return;
     }
-    localbo.execute(new DataLineHandler.EFILETYPE[] { paramEFILETYPE });
+    localbw.execute(new DataLineHandler.EFILETYPE[] { paramEFILETYPE });
   }
   
   private void a(Observable paramObservable, Object paramObject)
@@ -506,8 +506,8 @@ public class LiteActivity
     {
       try
       {
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130837756);
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130837756);
+        this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130837757);
+        this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130837757);
         this.e = "null";
         return true;
       }
@@ -516,14 +516,14 @@ public class LiteActivity
         if (QLog.isColorLevel()) {
           paramString.printStackTrace();
         }
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130840057);
+        this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130840059);
         continue;
       }
       if ("none".equals(paramString))
       {
         if (!"none".equals(this.e))
         {
-          this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130839802);
+          this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130839804);
           this.e = "none";
         }
       }
@@ -1084,7 +1084,7 @@ public class LiteActivity
     ImageView localImageView = this.jdField_p_of_type_AndroidWidgetImageView;
     localImageView.setContentDescription(getResources().getText(2131558510));
     localImageView.setVisibility(0);
-    localImageView.setImageResource(2130838030);
+    localImageView.setImageResource(2130838032);
     localImageView.setOnClickListener(new ae(this));
     this.jdField_p_of_type_AndroidWidgetImageView.setContentDescription("进入我的电脑高级设置界面");
     g(getIntent());
@@ -1127,7 +1127,7 @@ public class LiteActivity
   private void n()
   {
     QQToast localQQToast = new QQToast(this);
-    localQQToast.a(2130837931);
+    localQQToast.a(2130837933);
     localQQToast.c(2000);
     localQQToast.b(2131558520);
     localQQToast.b(this.jdField_a_of_type_ComTencentWidgetXListView.getHeight() / 2);
@@ -1136,7 +1136,7 @@ public class LiteActivity
   private void o()
   {
     QQToast localQQToast = new QQToast(this);
-    localQQToast.a(2130837931);
+    localQQToast.a(2130837933);
     localQQToast.c(2000);
     localQQToast.b(2131558521);
     localQQToast.b(this.jdField_a_of_type_ComTencentWidgetXListView.getHeight() / 2);
@@ -1145,7 +1145,7 @@ public class LiteActivity
   private void p()
   {
     QQToast localQQToast = new QQToast(this);
-    localQQToast.a(2130837931);
+    localQQToast.a(2130837933);
     localQQToast.c(2000);
     localQQToast.b(2131558537);
     localQQToast.b(this.jdField_a_of_type_ComTencentWidgetXListView.getHeight() / 2);
@@ -1238,7 +1238,7 @@ public class LiteActivity
     String str = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
     if ((str != null) && (str.length() > 0))
     {
-      this.jdField_b_of_type_AndroidWidgetImageButton.setImageResource(2130838054);
+      this.jdField_b_of_type_AndroidWidgetImageButton.setImageResource(2130838056);
       return;
     }
     if (this.jdField_b_of_type_AndroidWidgetFrameLayout.getVisibility() == 0)
@@ -1254,7 +1254,7 @@ public class LiteActivity
     this.jdField_a_of_type_AndroidWidgetEditText.setText(c());
     int i1 = paramIntent.getIntExtra(AlbumConstants.i, -1);
     if (this.m == i1) {
-      new br(this, null).execute(new Intent[] { paramIntent });
+      new bz(this, null).execute(new Intent[] { paramIntent });
     }
     f(paramIntent);
   }
@@ -1314,7 +1314,7 @@ public class LiteActivity
         str = paramView.getContext().getResources().getString(2131559157);
         break;
         localObject1 = ((DatalineSessionAdapter.ItemHolder)localObject1).a().a;
-        localQQCustomMenu.a(2131234882, paramView.getContext().getString(2131561879));
+        localQQCustomMenu.a(2131234884, paramView.getContext().getString(2131561879));
         localQQCustomMenu.a(2131231190, paramView.getContext().getString(2131562129));
         localQQCustomMenu.a(2131231192, paramView.getContext().getString(2131560772));
         continue;
@@ -1346,14 +1346,14 @@ public class LiteActivity
         localObject4 = localObject2;
         if (a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, localDataLineMsgRecord))
         {
-          localQQCustomMenu.a(2131234883, localContext.getString(2131558525));
+          localQQCustomMenu.a(2131234885, localContext.getString(2131558525));
           localObject4 = localObject2;
           localObject3 = localObject1;
         }
       }
     }
     localObject1 = localObject3.getContext();
-    localQQCustomMenu.a(2131234876, ((Context)localObject1).getString(2131558524));
+    localQQCustomMenu.a(2131234878, ((Context)localObject1).getString(2131558524));
     boolean bool1;
     if (localDataLineMsgSet.getGroupType() != -2000)
     {
@@ -1438,17 +1438,15 @@ public class LiteActivity
   
   public void d_()
   {
-    Object localObject1 = new File(AppConstants.an + "photo/");
-    if (!((File)localObject1).exists()) {
-      ((File)localObject1).mkdirs();
+    Object localObject = new File(AppConstants.an + "photo/");
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
     }
-    Object localObject2 = AppConstants.an + "photo/" + System.currentTimeMillis() + ".jpg";
-    localObject1 = Uri.fromFile(new File((String)localObject2));
-    PreferenceManager.getDefaultSharedPreferences(this).edit().putString("camera_photo_path", (String)localObject2).commit();
-    localObject2 = new Intent("android.media.action.IMAGE_CAPTURE");
-    ((Intent)localObject2).putExtra("output", (Parcelable)localObject1);
-    ((Intent)localObject2).putExtra("android.intent.extra.videoQuality", 100);
-    startActivityForResult((Intent)localObject2, 5);
+    localObject = AppConstants.an + "photo/" + System.currentTimeMillis() + ".jpg";
+    PreferenceManager.getDefaultSharedPreferences(this).edit().putString("camera_photo_path", (String)localObject).commit();
+    Intent localIntent = new Intent("android.media.action.IMAGE_CAPTURE");
+    FileProvider7Helper.setSystemCapture(this, new File((String)localObject), localIntent);
+    startActivityForResult(localIntent, 5);
   }
   
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -1526,21 +1524,21 @@ public class LiteActivity
   {
     super.doOnCreate(paramBundle);
     getWindow().setBackgroundDrawableResource(2131361810);
-    setContentView(2130903174);
+    setContentView(2130903175);
     setTitle(2131558496);
     getWindow().setBackgroundDrawable(null);
     j();
     this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$LiteJumpAction = new LiteActivity.LiteJumpAction(this, this);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131231493));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131231494));
     this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
     Object localObject1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a();
     if (localObject1 != null) {
       ((QQMessageFacade)localObject1).addObserver(this);
     }
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131231494));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131231495));
     this.jdField_b_of_type_AndroidViewView = new View(this);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(a());
-    this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903185, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903186, this.jdField_a_of_type_ComTencentWidgetXListView, false);
     ((DataLineHandler)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).jdField_b_of_type_Boolean = true;
     this.jdField_b_of_type_AndroidViewView.setPadding(0, (int)TypedValue.applyDimension(1, 12.0F, getResources().getDisplayMetrics()), 0, 0);
     this.jdField_a_of_type_ComTencentWidgetXListView.b(this.jdField_b_of_type_AndroidViewView);
@@ -1554,13 +1552,13 @@ public class LiteActivity
       this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter = new DatalineSessionAdapter(this, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList, this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
       this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter);
       localObject1 = LayoutInflater.from(a()).inflate(2130903136, null);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(a().getResources().getDrawable(2130838673));
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(a().getResources().getDrawable(2130838675));
       this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader((View)localObject1);
       this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
       this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new aa(this));
       this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131231107));
-      this.jdField_c_of_type_AndroidViewView = findViewById(2131231495);
-      localObject1 = getResources().getDrawable(2130840136);
+      this.jdField_c_of_type_AndroidViewView = findViewById(2131231496);
+      localObject1 = getResources().getDrawable(2130840138);
       if (!(localObject1 instanceof BitmapDrawable)) {
         break label828;
       }
@@ -1582,9 +1580,9 @@ public class LiteActivity
         this.jdField_a_of_type_AndroidWidgetGridView.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131231206));
         this.jdField_a_of_type_AndroidWidgetEditText.setEditableFactory(QQTextBuilder.a);
-        this.jdField_a_of_type_Bp = new bp(this, null);
-        this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Bp);
-        this.jdField_a_of_type_AndroidViewView = findViewById(2131231498);
+        this.jdField_a_of_type_Bx = new bx(this, null);
+        this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Bx);
+        this.jdField_a_of_type_AndroidViewView = findViewById(2131231499);
         localObject1 = Build.MODEL;
         if (("SH-02E".equals(localObject1)) || ("SBM200SH".equals(localObject1))) {}
         try
@@ -1596,10 +1594,10 @@ public class LiteActivity
           this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new av(this));
           f();
           this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new bi(this));
-          this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131231497));
+          this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131231498));
           this.jdField_b_of_type_AndroidWidgetImageButton.setOnClickListener(this);
           this.jdField_b_of_type_AndroidWidgetImageButton.setOnTouchListener(new bj(this));
-          this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131231496));
+          this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131231497));
           this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
           t();
           a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
@@ -1705,14 +1703,14 @@ public class LiteActivity
   {
     int i1 = paramView.getId();
     ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004078", "0X8004078", 0, 0, "", "", "", "");
-    if (i1 == 2131231496) {
+    if (i1 == 2131231497) {
       if (this.jdField_b_of_type_AndroidWidgetFrameLayout.getVisibility() == 8)
       {
         bool = true;
         b(bool);
       }
     }
-    while (i1 != 2131231497) {
+    while (i1 != 2131231498) {
       for (;;)
       {
         return;

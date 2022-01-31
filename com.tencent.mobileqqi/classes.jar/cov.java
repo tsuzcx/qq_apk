@@ -1,10 +1,15 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
 
-public class cov
-  extends FacePreloadBaseAdapter.ViewHolder
+class cov
+  implements Runnable
 {
-  public TextView a;
+  cov(cos paramcos) {}
+  
+  public void run()
+  {
+    this.a.a.setResult(-1);
+    this.a.a.finish();
+  }
 }
 
 

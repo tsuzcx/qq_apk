@@ -1,33 +1,24 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.PinnedDividerListView;
-import com.tencent.open.agent.FriendListOpenFrame;
-import com.tencent.open.agent.FriendListOpenFrame.ViewHolder;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
 
-public class hnj
+class hnj
   implements Runnable
 {
-  public hnj(FriendListOpenFrame paramFriendListOpenFrame, String paramString, Bitmap paramBitmap) {}
+  hnj(hnh paramhnh, long paramLong1, long paramLong2, String paramString) {}
   
   public void run()
   {
-    int j = this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.a.getChildCount();
-    int i = 0;
+    int i = (int)((float)this.jdField_a_of_type_Long * 100.0F / (float)this.b);
+    DownloadInfo localDownloadInfo = this.jdField_a_of_type_Hnh.a.c(this.jdField_a_of_type_JavaLangString, i);
+    if (localDownloadInfo == null) {
+      LogUtility.d(DownloadManager.jdField_a_of_type_JavaLangString, "OnDownloadSDKTaskProgressChanged info == null");
+    }
     for (;;)
     {
-      if (i < j)
-      {
-        FriendListOpenFrame.ViewHolder localViewHolder = (FriendListOpenFrame.ViewHolder)this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.a.getChildAt(i).getTag();
-        if ((localViewHolder != null) && (this.jdField_a_of_type_JavaLangString.equals(localViewHolder.jdField_b_of_type_JavaLangString))) {
-          localViewHolder.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
+      this.jdField_a_of_type_Hnh.a.a(2, localDownloadInfo);
+      return;
+      LogUtility.a(DownloadManager.jdField_a_of_type_JavaLangString, "OnDownloadSDKTaskProgressChanged info state=" + localDownloadInfo.a() + " progress=" + localDownloadInfo.k);
     }
   }
 }

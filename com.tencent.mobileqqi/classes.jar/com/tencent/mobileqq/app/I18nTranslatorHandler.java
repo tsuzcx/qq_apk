@@ -11,8 +11,8 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import fhn;
-import fho;
+import fcz;
+import fda;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -42,7 +42,7 @@ public class I18nTranslatorHandler
       localObject1 = ((SSLContext)localObject2).getSocketFactory();
       paramString = (HttpsURLConnection)new URL(paramString).openConnection();
       paramString.setSSLSocketFactory((SSLSocketFactory)localObject1);
-      paramString.setHostnameVerifier(new fho(this));
+      paramString.setHostnameVerifier(new fda(this));
       paramString = new BufferedReader(new InputStreamReader(paramString.getInputStream()));
       localObject1 = new StringBuffer();
       for (;;)
@@ -151,7 +151,7 @@ public class I18nTranslatorHandler
       b(localToServiceMsg);
       return;
     }
-    new Thread(new fhn(this, paramString, paramLong, paramList)).start();
+    new Thread(new fcz(this, paramString, paramLong, paramList)).start();
   }
 }
 

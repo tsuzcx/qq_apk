@@ -1,11 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.maproam.Utils;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
 
 public final class gfv
-  implements View.OnClickListener
+  implements Runnable
 {
-  public void onClick(View paramView) {}
+  public gfv(RedTouchManager paramRedTouchManager, Conversation paramConversation, Handler paramHandler) {}
+  
+  public void run()
+  {
+    RedTouchManager localRedTouchManager = this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager;
+    gfw localgfw = new gfw(this);
+    localRedTouchManager.a(new int[] { 0, 1, 2 }, localgfw);
+  }
 }
 
 

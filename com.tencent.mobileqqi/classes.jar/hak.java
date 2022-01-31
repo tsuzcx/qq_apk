@@ -1,30 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.util.FaceDrawable;
 
 public class hak
-  implements DialogInterface.OnClickListener
+  extends FriendListObserver
 {
-  public hak(TroopFileItemOperation paramTroopFileItemOperation, TroopFileInfo paramTroopFileInfo) {}
+  private hak(FaceDrawable paramFaceDrawable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    }
-    TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_Long).a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Cancel_pause_download", 0, 0, "", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_Long + "", "", "");
+    FaceDrawable.a(this.a, paramBoolean, 1, paramString, FaceDrawable.a(this.a));
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    FaceDrawable.a(this.a, paramBoolean, 11, paramString, FaceDrawable.a(this.a));
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    FaceDrawable.a(this.a, paramBoolean, 4, paramString, FaceDrawable.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hak
  * JD-Core Version:    0.7.0.1
  */

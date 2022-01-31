@@ -102,54 +102,29 @@ public class WebView
         this.mSysWebView = new SystemWebView(paramContext);
         this.mSysWebView.setFocusableInTouchMode(true);
         addView(this.mSysWebView, new FrameLayout.LayoutParams(-1, -1));
-        try
+      }
+      do
+      {
+        return;
+        this.mX5WebView.getView().setFocusableInTouchMode(true);
+        addView(this.mX5WebView.getView(), new FrameLayout.LayoutParams(-1, -1));
+        showSplashLogo();
+        this.mX5WebView.setDownloadListener(new DownLoadListenerAdapter(this, null, this.isX5Core));
+        this.mX5WebView.getX5WebViewExtension().setWebViewClientExtension(new X5ProxyWebViewClientExtension(SDKEngine.getInstance(false).wizard())
         {
-          if (Build.VERSION.SDK_INT >= 11) {
-            removeJavascriptInterface("searchBoxJavaBridge_");
+          public void onScrollChanged(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4)
+          {
+            super.onScrollChanged(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousInt4);
+            WebView.this.onScrollChanged(paramAnonymousInt3, paramAnonymousInt4, paramAnonymousInt1, paramAnonymousInt2);
           }
-          return;
-        }
-        catch (Throwable paramContext)
-        {
-          paramContext.printStackTrace();
-          return;
-        }
-      }
-      this.mX5WebView.getView().setFocusableInTouchMode(true);
-      addView(this.mX5WebView.getView(), new FrameLayout.LayoutParams(-1, -1));
-      showSplashLogo();
-      this.mX5WebView.setDownloadListener(new DownLoadListenerAdapter(this, null, this.isX5Core));
-      this.mX5WebView.getX5WebViewExtension().setWebViewClientExtension(new X5ProxyWebViewClientExtension(SDKEngine.getInstance(false).wizard())
-      {
-        public void onScrollChanged(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4)
-        {
-          super.onScrollChanged(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousInt4);
-          WebView.this.onScrollChanged(paramAnonymousInt3, paramAnonymousInt4, paramAnonymousInt1, paramAnonymousInt2);
-        }
-      });
-      if (X5Version == 0) {
-        X5Version = this.mX5WebView.getX5WebViewExtension().getQQBrowserVersion();
-      }
+        });
+      } while (X5Version != 0);
+      X5Version = this.mX5WebView.getX5WebViewExtension().getQQBrowserVersion();
+      return;
     }
-    for (;;)
-    {
-      try
-      {
-        if (Build.VERSION.SDK_INT < 11) {
-          break;
-        }
-        removeJavascriptInterface("searchBoxJavaBridge_");
-        return;
-      }
-      catch (Throwable paramContext)
-      {
-        paramContext.printStackTrace();
-        return;
-      }
-      this.mSysWebView = new SystemWebView(paramContext);
-      this.mSysWebView.setFocusableInTouchMode(true);
-      addView(this.mSysWebView, new FrameLayout.LayoutParams(-1, -1));
-    }
+    this.mSysWebView = new SystemWebView(paramContext);
+    this.mSysWebView.setFocusableInTouchMode(true);
+    addView(this.mSysWebView, new FrameLayout.LayoutParams(-1, -1));
   }
   
   public WebView(Context paramContext, AttributeSet paramAttributeSet, int paramInt, boolean paramBoolean)
@@ -189,15 +164,15 @@ public class WebView
     //   0: ldc 2
     //   2: monitorenter
     //   3: iconst_0
-    //   4: invokestatic 111	com/tencent/smtt/sdk/SDKEngine:getInstance	(Z)Lcom/tencent/smtt/sdk/SDKEngine;
+    //   4: invokestatic 109	com/tencent/smtt/sdk/SDKEngine:getInstance	(Z)Lcom/tencent/smtt/sdk/SDKEngine;
     //   7: ifnull +26 -> 33
     //   10: iconst_0
-    //   11: invokestatic 111	com/tencent/smtt/sdk/SDKEngine:getInstance	(Z)Lcom/tencent/smtt/sdk/SDKEngine;
-    //   14: invokevirtual 218	com/tencent/smtt/sdk/SDKEngine:isX5Core	()Z
+    //   11: invokestatic 109	com/tencent/smtt/sdk/SDKEngine:getInstance	(Z)Lcom/tencent/smtt/sdk/SDKEngine;
+    //   14: invokevirtual 203	com/tencent/smtt/sdk/SDKEngine:isX5Core	()Z
     //   17: ifne +16 -> 33
-    //   20: ldc 220
-    //   22: ldc 239
-    //   24: invokestatic 227	com/tencent/smtt/utils/ReflectionUtils:invokeStatic	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+    //   20: ldc 205
+    //   22: ldc 224
+    //   24: invokestatic 212	com/tencent/smtt/utils/ReflectionUtils:invokeStatic	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
     //   27: astore_0
     //   28: ldc 2
     //   30: monitorexit

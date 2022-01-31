@@ -1,24 +1,15 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
 
-public class ded
-  implements CompoundButton.OnCheckedChangeListener
+class ded
+  implements Runnable
 {
-  public ded(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  ded(dec paramdec) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131561654), "qqsetting_lock_screen_whenexit_key", paramBoolean);
-    paramCompoundButton = this.a.b;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "0X80040D9", "0X80040D9", 0, i, "", "", "", "");
-      return;
-    }
+    this.a.a.e();
+    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
   }
 }
 

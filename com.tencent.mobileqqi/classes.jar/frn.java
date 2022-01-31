@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class frn
-  implements Runnable
+class frn
+  implements DialogInterface.OnClickListener
 {
-  public frn(ContactSyncManager paramContactSyncManager) {}
+  frn(frl paramfrl) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     frn
  * JD-Core Version:    0.7.0.1
  */

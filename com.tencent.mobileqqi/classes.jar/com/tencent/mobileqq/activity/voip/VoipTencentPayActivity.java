@@ -18,10 +18,10 @@ import com.tencent.unipay.plugsdk.UnipayPlugAPI;
 import cooperation.plugin.IPluginManager;
 import cooperation.plugin.IPluginManager.PluginParams;
 import cooperation.plugin.PluginInfo;
-import fbp;
-import fbq;
-import fbt;
-import fbv;
+import exb;
+import exc;
+import exf;
+import exh;
 import java.io.ByteArrayOutputStream;
 import java.net.URLEncoder;
 import javax.crypto.Mac;
@@ -39,7 +39,7 @@ public class VoipTencentPayActivity
   public static final String d = "http://dldir1.qq.com/qqfile/QQIntl/QQi_wireless/Android/TencentUnipay.apk";
   private static final String o = "HmacSHA1";
   public QQProgressDialog a;
-  IUnipayServiceCallBack.Stub jdField_a_of_type_ComTencentUnipayPlugsdkIUnipayServiceCallBack$Stub = new fbt(this);
+  IUnipayServiceCallBack.Stub jdField_a_of_type_ComTencentUnipayPlugsdkIUnipayServiceCallBack$Stub = new exf(this);
   private UnipayPlugAPI jdField_a_of_type_ComTencentUnipayPlugsdkUnipayPlugAPI = null;
   private Handler b;
   private final String e = "/v3/r/mpay/buy_goods_m";
@@ -55,7 +55,7 @@ public class VoipTencentPayActivity
   
   public VoipTencentPayActivity()
   {
-    this.jdField_b_of_type_AndroidOsHandler = new fbv(this);
+    this.jdField_b_of_type_AndroidOsHandler = new exh(this);
   }
   
   private String a(String paramString)
@@ -141,7 +141,7 @@ public class VoipTencentPayActivity
   
   private void g()
   {
-    jdField_a_of_type_AndroidOsHandler.post(new fbp(this));
+    jdField_a_of_type_AndroidOsHandler.post(new exb(this));
   }
   
   private void h()
@@ -155,7 +155,7 @@ public class VoipTencentPayActivity
     localPluginInfo.mName = "TencentUnipay.apk";
     localPluginInfo.mURL = "http://dldir1.qq.com/qqfile/QQIntl/QQi_wireless/Android/TencentUnipay.apk";
     localPluginInfo.mLength = 917504L;
-    ((IPluginManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(24)).a(this, localPluginInfo, localPluginParams, new fbq(this));
+    ((IPluginManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(24)).a(this, localPluginInfo, localPluginParams, new exc(this));
   }
   
   private void i()
@@ -164,7 +164,7 @@ public class VoipTencentPayActivity
     {
       String str1 = getAppRuntime().getAccount();
       String str2 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.d();
-      Object localObject = BitmapFactory.decodeResource(getResources(), 2130839194);
+      Object localObject = BitmapFactory.decodeResource(getResources(), 2130839196);
       ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
       ((Bitmap)localObject).compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
       localObject = localByteArrayOutputStream.toByteArray();
@@ -206,9 +206,9 @@ public class VoipTencentPayActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130904060);
+    setContentView(2130904062);
     getWindow().setBackgroundDrawableResource(2131361815);
-    setContentView(2130904060);
+    setContentView(2130904062);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131562300);
     paramBundle = getIntent().getExtras().getBundle("VoipTencentPayActivityParam");

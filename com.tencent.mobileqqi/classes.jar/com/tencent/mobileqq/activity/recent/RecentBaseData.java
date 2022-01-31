@@ -3,7 +3,6 @@ package com.tencent.mobileqq.activity.recent;
 import android.content.Context;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import com.tencent.av.gaudio.GAudioNotifyCenter;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
@@ -44,8 +43,8 @@ public abstract class RecentBaseData
   public int B;
   public int C;
   public int D;
-  protected int E;
-  protected int F = 0;
+  public int E;
+  public int F = 0;
   public volatile long a;
   protected MsgSummary a;
   public CharSequence a;
@@ -55,9 +54,9 @@ public abstract class RecentBaseData
   public CharSequence c;
   public String c;
   public String d;
-  protected String e;
+  public String e;
   public int y;
-  protected int z = 1;
+  public int z = 1;
   
   public RecentBaseData()
   {
@@ -103,47 +102,16 @@ public abstract class RecentBaseData
   public void a(QQAppInterface paramQQAppInterface)
   {
     this.y = 0;
-    if (a() == 3000) {}
-    for (;;)
+    if (this.y == 0)
     {
-      try
-      {
-        l1 = Long.parseLong(a());
-        if (paramQQAppInterface.a().a(l1) > 0L)
-        {
-          if (paramQQAppInterface.a().a(l1)) {
-            this.y = 2;
-          }
-        }
-        else
-        {
-          if (this.y == 0)
-          {
-            paramQQAppInterface = paramQQAppInterface.a();
-            if ((paramQQAppInterface == null) || (!paramQQAppInterface.b(a(), a()))) {
-              break;
-            }
-            this.y = 4;
-          }
-          return;
-        }
+      paramQQAppInterface = paramQQAppInterface.a();
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.b(a(), a()))) {
+        this.y = 4;
       }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        long l1 = 0L;
-        continue;
-        this.y = 3;
-        continue;
-      }
-      if ((paramQQAppInterface.c()) && ((paramQQAppInterface.a().a() == 1) || (paramQQAppInterface.a().a() == 2)))
-      {
-        int i1 = paramQQAppInterface.a().b();
-        String str1 = paramQQAppInterface.a().a();
-        String str2 = paramQQAppInterface.a().b();
-        if ((a() == i1) && ((a().equals(str1)) || (a().equals(str2)))) {
-          this.y = 1;
-        }
-      }
+    }
+    else
+    {
+      return;
     }
     this.y = 0;
   }
@@ -189,7 +157,7 @@ public abstract class RecentBaseData
     paramMsgSummary.d = new QQText(paramQQAppInterface.getSummary(), 3, 16);
   }
   
-  protected void a(QQMessageFacade.Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
+  public void a(QQMessageFacade.Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
     if (paramMessage != null) {}
     for (String str = paramMessage.nickName;; str = null)

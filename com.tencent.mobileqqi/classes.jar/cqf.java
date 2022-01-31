@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.EditTagActivity;
+import com.tencent.mobileqq.activity.HornListActivity;
+import com.tencent.mobileqq.app.NearHornHandler;
 
 public class cqf
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public cqf(EditTagActivity paramEditTagActivity) {}
+  public cqf(HornListActivity paramHornListActivity, Boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.finish();
+    if (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {}
+    for (String str = "1";; str = "0")
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_b_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_b_of_type_Long), str, this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
+      }
+      return;
+    }
   }
 }
 

@@ -1,28 +1,25 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.mobileqq.activity.contact.newfriend.CircleGroupListView;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.util.EUCountryUtils;
 
-public class eja
-  implements Animation.AnimationListener
+class eja
+  implements ejj
 {
-  public eja(CircleGroupListView paramCircleGroupListView) {}
+  eja(eiz parameiz) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.show();
-    this.a.b.setAnimation(null);
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (!EUCountryUtils.f(this.a.a.a.b.a())) {
+      this.a.a.f();
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eja
  * JD-Core Version:    0.7.0.1
  */

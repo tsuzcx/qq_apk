@@ -4,6 +4,10 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import coj;
+import cok;
+import col;
+import com;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,10 +19,6 @@ import com.tencent.mobileqq.transfile.filebrowser.FileUtils;
 import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.mobileqq.utils.HttpDownloadUtil.HttpDownloadListener;
 import com.tencent.qphone.base.util.QLog;
-import cuq;
-import cur;
-import cus;
-import cut;
 import java.net.URL;
 
 public class FriendProfileImageAvatar
@@ -40,10 +40,10 @@ public class FriendProfileImageAvatar
   public FriendProfileImageAvatar(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cus(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new col(this);
     this.jdField_a_of_type_JavaNetURL = null;
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new cuq(this);
+    this.jdField_a_of_type_AndroidOsHandler = new coj(this);
   }
   
   public int a()
@@ -100,7 +100,7 @@ public class FriendProfileImageAvatar
     if ((paramBoolean) && (!this.jdField_a_of_type_Boolean) && ((paramProfileImageInfo.h == 0) || (paramProfileImageInfo.h == 3)))
     {
       this.jdField_a_of_type_Boolean = true;
-      ThreadManager.b(new cur(this, paramProfileImageInfo));
+      ThreadManager.b(new cok(this, paramProfileImageInfo));
     }
     if (paramProfileImageInfo.h == 0) {
       paramProfileImageInfo.h = 1;
@@ -161,7 +161,7 @@ public class FriendProfileImageAvatar
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.jdField_a_of_type_Boolean = true;
     c(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-    new cut(this, "FriendProfileImageAvatar", paramByte, paramString2, paramString1).start();
+    new com(this, "FriendProfileImageAvatar", paramByte, paramString2, paramString1).start();
   }
   
   public void a(String paramString, int paramInt)

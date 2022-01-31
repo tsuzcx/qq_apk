@@ -1,46 +1,69 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningTaskInfo;
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.app.MobileQQ;
 
 public class ezj
-  implements View.OnTouchListener
+  extends BroadcastReceiver
 {
-  public ezj(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  public ezj(BrowserAppInterface paramBrowserAppInterface) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramMotionEvent.getAction() == 0)
+    String str = paramIntent.getAction();
+    if (str == null) {}
+    do
     {
-      paramView = new int[2];
-      VoipDialInterfaceActivity.a(this.a).getLocationInWindow(paramView);
-      paramMotionEvent = new int[2];
-      VoipDialInterfaceActivity.a(this.a).getLocationOnScreen(paramMotionEvent);
-      paramMotionEvent = new int[2];
-      VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
-      VoipDialInterfaceActivity.d(this.a).offsetTopAndBottom(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.a(this.a).getHeight() / 2 - VoipDialInterfaceActivity.d(this.a).getHeight() / 2);
-      VoipDialInterfaceActivity.d(this.a).offsetLeftAndRight(paramView[0] + VoipDialInterfaceActivity.a(this.a).getWidth() / 2 - VoipDialInterfaceActivity.d(this.a).getWidth() / 2);
-      VoipDialInterfaceActivity.d(this.a).setVisibility(0);
+      do
+      {
+        do
+        {
+          return;
+          if (!str.equals("com.tencent.process.exit")) {
+            break label192;
+          }
+          paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningTasks(1);
+          if (paramContext.size() < 1) {
+            break;
+          }
+          paramContext = ((ActivityManager.RunningTaskInfo)paramContext.get(0)).topActivity.getClassName();
+          if (QLog.isColorLevel()) {
+            QLog.d(BrowserAppInterface.b, 2, "runningActivity=" + paramContext);
+          }
+        } while ((paramContext != null) && (paramContext.length() > 0) && ((paramContext.contains("com.pay")) || (paramContext.contains("com.tenpay"))));
+        paramContext = paramIntent.getExtras();
+      } while (paramContext == null);
+      paramIntent = paramContext.getStringArrayList("procNameList");
+    } while ((!BrowserAppInterface.a(paramContext.getString("verify"), paramIntent)) || (!BrowserAppInterface.a(paramIntent, MobileQQ.getContext())));
+    try
+    {
+      MsfServiceSdk.get().unRegisterMsfService();
+      MsfServiceSdk.get().unbindMsfService();
+      new ezk(this).start();
+      return;
     }
-    while (paramMotionEvent.getAction() != 1) {
-      return false;
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        paramContext.printStackTrace();
+      }
     }
-    paramView = new int[2];
-    VoipDialInterfaceActivity.a(this.a).getLocationInWindow(paramView);
-    paramMotionEvent = new int[2];
-    VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
-    VoipDialInterfaceActivity.d(this.a).offsetTopAndBottom(-(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.a(this.a).getHeight() / 2 - VoipDialInterfaceActivity.d(this.a).getHeight() / 2));
-    VoipDialInterfaceActivity.d(this.a).offsetLeftAndRight(-(paramView[0] + VoipDialInterfaceActivity.a(this.a).getWidth() / 2 - VoipDialInterfaceActivity.d(this.a).getWidth() / 2));
-    VoipDialInterfaceActivity.d(this.a).setVisibility(4);
-    VoipDialInterfaceActivity.c(this.a).invalidate();
-    return false;
+    label192:
+    this.a.getApplication().otherProcessExit(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ezj
  * JD-Core Version:    0.7.0.1
  */

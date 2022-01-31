@@ -1,24 +1,41 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.troop.utils.TroopFileError.TroopFileErrorFilter;
+import java.lang.ref.WeakReference;
 
 public class bzy
-  implements View.OnTouchListener
+  implements TroopFileError.TroopFileErrorFilter
 {
-  public bzy(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  private WeakReference a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bzy(ChatActivity paramChatActivity)
   {
-    ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 2);
-    return false;
+    this.a = new WeakReference(paramChatActivity);
+  }
+  
+  public long a()
+  {
+    if (this.a != null)
+    {
+      ChatActivity localChatActivity = (ChatActivity)this.a.get();
+      if ((localChatActivity != null) && (localChatActivity.a.jdField_a_of_type_Int == 1)) {
+        try
+        {
+          long l = Long.parseLong(localChatActivity.a.jdField_a_of_type_JavaLangString);
+          return l;
+        }
+        catch (Exception localException)
+        {
+          return 0L;
+        }
+      }
+    }
+    return 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bzy
  * JD-Core Version:    0.7.0.1
  */

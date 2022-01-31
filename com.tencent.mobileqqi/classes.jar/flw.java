@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
 
 public class flw
+  extends Handler
 {
-  public long a;
-  public String a;
+  public flw(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public flw(TroopQZoneUploadAlbumHandler paramTroopQZoneUploadAlbumHandler, String paramString, long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    if (paramMessage.what == 1000) {
+      this.a.a(((Boolean)((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[0]).booleanValue(), (String[])((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[1]);
+    }
   }
 }
 

@@ -1,27 +1,15 @@
-import android.view.View;
-import android.widget.ExpandableListAdapter;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.adapter.TroopMessageSettingAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.statistics.StatisticTroopAssist;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.ExpandableListView.OnChildClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class dtv
-  implements ExpandableListView.OnChildClickListener
+  implements DialogInterface.OnClickListener
 {
-  public dtv(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public dtv(UpgradeActivity paramUpgradeActivity) {}
   
-  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (((TroopMessageSettingAdapter)paramExpandableListView.a()).getChildType(paramInt1, paramInt2) == 1) {
-      return true;
-    }
-    StatisticTroopAssist.c(this.a.a(), this.a.b.a());
-    paramExpandableListView = (TroopInfo)paramExpandableListView.a().getChild(paramInt1, paramInt2);
-    this.a.a(paramExpandableListView);
-    return true;
+    this.a.finish();
   }
 }
 

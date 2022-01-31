@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity.NativeChromeClient;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import tencent.im.kqq.searchgroup.SearchGroup.GroupInfo;
 
 public class dhl
-  implements Runnable
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public dhl(QQBrowserActivity.NativeChromeClient paramNativeChromeClient, String paramString) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity$NativeChromeClient.a.setTitle(this.jdField_a_of_type_JavaLangString);
-  }
+  public ImageView a;
+  public TextView a;
+  public SearchGroup.GroupInfo a;
+  public TextView b;
+  public TextView c;
 }
 
 

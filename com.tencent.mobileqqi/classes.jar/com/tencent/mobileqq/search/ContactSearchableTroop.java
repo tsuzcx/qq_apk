@@ -46,7 +46,7 @@ public class ContactSearchableTroop
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin) != 3) {
       return 0;
     }
-    return 2130840233;
+    return 2130840235;
   }
   
   public Drawable a()

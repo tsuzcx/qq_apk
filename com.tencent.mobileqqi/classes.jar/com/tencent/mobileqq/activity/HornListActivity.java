@@ -13,8 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import ccj;
-import cck;
+import bwo;
+import bwp;
 import com.tencent.mobileqq.app.NearHornHandler;
 import com.tencent.mobileqq.app.NearHornObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -23,12 +23,12 @@ import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.qphone.base.util.QLog;
-import cwj;
-import cwk;
-import cwl;
-import cwm;
-import cwn;
-import cwo;
+import cqd;
+import cqe;
+import cqf;
+import cqg;
+import cqh;
+import cqi;
 import java.util.Iterator;
 import java.util.List;
 
@@ -48,7 +48,7 @@ public class HornListActivity
   {
     this.jdField_b_of_type_Long = 0L;
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqAppNearHornObserver = new cwj(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppNearHornObserver = new cqd(this);
   }
   
   private void a(Boolean paramBoolean)
@@ -71,7 +71,7 @@ public class HornListActivity
         {
           this.jdField_b_of_type_AndroidWidgetTextView.setText(2131562492);
           this.jdField_b_of_type_AndroidWidgetTextView.setGravity(1);
-          this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130839179);
+          this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130839181);
           this.jdField_b_of_type_AndroidWidgetTextView.setPadding(0, (int)(32.0F * this.jdField_a_of_type_Float), 0, 0);
         }
         this.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity$BaseHornAdapter.notifyDataSetChanged();
@@ -88,11 +88,11 @@ public class HornListActivity
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity$BaseHornAdapter.notifyDataSetChanged();
     if (NetworkUtil.e(this))
     {
-      this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new cwl(this, paramBoolean));
+      this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new cqf(this, paramBoolean));
       return;
     }
-    paramBoolean = this.jdField_a_of_type_Ccj.obtainMessage(2);
-    this.jdField_a_of_type_Ccj.sendMessage(paramBoolean);
+    paramBoolean = this.jdField_a_of_type_Bwo.obtainMessage(2);
+    this.jdField_a_of_type_Bwo.sendMessage(paramBoolean);
   }
   
   private void e()
@@ -100,47 +100,47 @@ public class HornListActivity
     this.jdField_a_of_type_ComTencentMobileqqDataHornDetail = this.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.jdField_a_of_type_ComTencentMobileqqDataHornDetail;
     if (this.jdField_a_of_type_ComTencentMobileqqDataHornDetail != null)
     {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903673, null);
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903675, null);
       this.jdField_a_of_type_AndroidViewView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-      cck localcck = new cck();
-      localcck.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233358));
-      localcck.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView = ((AnimationTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233361));
-      localcck.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233362));
-      localcck.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setSpannableFactory(QQText.a);
-      localcck.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setText(this.jdField_a_of_type_ComTencentMobileqqDataHornDetail.content, TextView.BufferType.SPANNABLE);
-      localcck.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233360));
-      localcck.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233363));
-      localcck.c.setContentDescription("查看该喇叭评论内容");
+      bwp localbwp = new bwp();
+      localbwp.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233360));
+      localbwp.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView = ((AnimationTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233363));
+      localbwp.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233364));
+      localbwp.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setSpannableFactory(QQText.a);
+      localbwp.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setText(this.jdField_a_of_type_ComTencentMobileqqDataHornDetail.content, TextView.BufferType.SPANNABLE);
+      localbwp.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233362));
+      localbwp.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233365));
+      localbwp.c.setContentDescription("查看该喇叭评论内容");
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataHornDetail.distance + " ").append(this.jdField_a_of_type_ComTencentMobileqqDataHornDetail.time);
-      localcck.jdField_a_of_type_AndroidWidgetTextView.setText(((StringBuilder)localObject).toString());
-      localcck.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqDataHornDetail.nickName);
-      localcck.c.setText("" + this.jdField_a_of_type_ComTencentMobileqqDataHornDetail.commentCnt);
+      localbwp.jdField_a_of_type_AndroidWidgetTextView.setText(((StringBuilder)localObject).toString());
+      localbwp.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqDataHornDetail.nickName);
+      localbwp.c.setText("" + this.jdField_a_of_type_ComTencentMobileqqDataHornDetail.commentCnt);
       this.jdField_a_of_type_AndroidWidgetListView.addHeaderView(this.jdField_a_of_type_AndroidViewView, null, false);
-      this.jdField_a_of_type_AndroidViewView.setTag(localcck);
+      this.jdField_a_of_type_AndroidViewView.setTag(localbwp);
       localObject = this.jdField_a_of_type_ComTencentMobileqqDataHornDetail.uin;
-      super.a((String)localObject, 0, localcck.jdField_a_of_type_AndroidWidgetImageView);
-      localcck.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new cwm(this, (String)localObject));
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new cwn(this));
+      super.a((String)localObject, 0, localbwp.jdField_a_of_type_AndroidWidgetImageView);
+      localbwp.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new cqg(this, (String)localObject));
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new cqh(this));
     }
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130903672);
+    super.setContentView(2130903674);
     super.setTitle(2131562437);
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity = this;
     this.jdField_a_of_type_AndroidContentContext = this;
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131233356));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131233358));
     this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(this);
     super.a();
     e();
     super.a(getResources().getString(2131562438));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131230821));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131233357));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new cwk(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity$BaseHornAdapter = new cwo(this, null);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131233359));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new cqe(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity$BaseHornAdapter = new cqi(this, null);
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity$BaseHornAdapter);
     this.jdField_b_of_type_JavaLangString = super.getIntent().getStringExtra("lastHornKey");
     this.jdField_a_of_type_JavaLangString = super.getIntent().getStringExtra("lastSvrBuff");

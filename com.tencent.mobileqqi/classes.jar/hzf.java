@@ -1,66 +1,92 @@
-import android.media.AudioManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
+import common.qzone.component.cache.common.SoftHashMap;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.SoftReference;
+import java.util.Map.Entry;
 
 public class hzf
-  extends hzg
+  extends SoftReference
+  implements Map.Entry
 {
-  public hzf(TraeAudioManager paramTraeAudioManager)
+  private final int jdField_a_of_type_Int;
+  private hzf jdField_a_of_type_Hzf;
+  private Object jdField_a_of_type_JavaLangObject;
+  
+  public hzf(Object paramObject1, Object paramObject2, ReferenceQueue paramReferenceQueue, int paramInt, hzf paramhzf)
   {
-    super(paramTraeAudioManager);
+    super(paramObject1, paramReferenceQueue);
+    this.jdField_a_of_type_JavaLangObject = paramObject2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Hzf = paramhzf;
   }
   
-  public String a()
+  public boolean equals(Object paramObject)
   {
-    return "DEVICE_SPEAKERPHONE";
+    if (!(paramObject instanceof Map.Entry)) {}
+    Object localObject1;
+    do
+    {
+      Object localObject2;
+      do
+      {
+        return false;
+        paramObject = (Map.Entry)paramObject;
+        localObject1 = getKey();
+        localObject2 = paramObject.getKey();
+      } while ((localObject1 != localObject2) && ((localObject1 == null) || (!localObject1.equals(localObject2))));
+      localObject1 = getValue();
+      paramObject = paramObject.getValue();
+    } while ((localObject1 != paramObject) && ((localObject1 == null) || (!localObject1.equals(paramObject))));
+    return true;
   }
   
-  public void a()
+  public Object getKey()
+  {
+    return SoftHashMap.a(get());
+  }
+  
+  public Object getValue()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public int hashCode()
   {
     int j = 0;
-    this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.b(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext, true);
-    e();
-    int i = j;
-    if (QLog.isColorLevel())
+    Object localObject1 = getKey();
+    Object localObject2 = getValue();
+    int i;
+    if (localObject1 == null)
     {
-      QLog.w("TRAE", 2, " _run:" + a() + " _running:" + this.jdField_a_of_type_Boolean);
-      i = j;
+      i = 0;
+      if (localObject2 != null) {
+        break label36;
+      }
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Boolean == true)
-      {
-        if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.isSpeakerphoneOn() != true) {
-          this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.b(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext, true);
-        }
-        long l;
-        if (i < 5) {
-          l = 1000L;
-        }
-        try
-        {
-          for (;;)
-          {
-            Thread.sleep(l);
-            label123:
-            i += 1;
-            break;
-            l = 4000L;
-          }
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          break label123;
-        }
-      }
+      return j ^ i;
+      i = localObject1.hashCode();
+      break;
+      label36:
+      j = localObject2.hashCode();
     }
   }
   
-  public void b() {}
+  public Object setValue(Object paramObject)
+  {
+    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    return localObject;
+  }
+  
+  public String toString()
+  {
+    return getKey() + "=" + getValue();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hzf
  * JD-Core Version:    0.7.0.1
  */

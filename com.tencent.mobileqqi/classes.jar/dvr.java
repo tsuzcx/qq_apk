@@ -1,24 +1,23 @@
-import com.tencent.mobileqq.activity.TroopManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionBase;
 
-class dvr
-  implements Runnable
+public final class dvr
+  implements Parcelable.Creator
 {
-  dvr(dvq paramdvq) {}
-  
-  public void run()
+  public ForwardUtils.SectionBase a(Parcel paramParcel)
   {
-    TroopHandler localTroopHandler = (TroopHandler)this.a.a.b.a(19);
-    if (localTroopHandler != null) {
-      localTroopHandler.k(this.a.a.a.troopuin);
-    }
+    return new ForwardUtils.SectionBase(paramParcel);
+  }
+  
+  public ForwardUtils.SectionBase[] a(int paramInt)
+  {
+    return new ForwardUtils.SectionBase[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dvr
  * JD-Core Version:    0.7.0.1
  */

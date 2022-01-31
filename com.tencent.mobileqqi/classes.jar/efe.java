@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.PATextItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
 
-public class efe
-  extends AbstractChatItemBuilder.ViewHolder
+public final class efe
+  implements Runnable
 {
-  public int a;
-  public Object a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
+  public efe(QQAppInterface paramQQAppInterface) {}
   
-  public efe(PATextItemBuilder paramPATextItemBuilder) {}
+  public void run()
+  {
+    FriendSystemMsgController.a().c(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     efe
  * JD-Core Version:    0.7.0.1
  */

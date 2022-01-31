@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.troop.activity.TroopLocationModifyActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.widget.MediaControllerX;
 
 public class gys
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public gys(TroopLocationModifyActivity paramTroopLocationModifyActivity) {}
+  public gys(MediaControllerX paramMediaControllerX) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (paramDialogInterface == this.a.b) {
-      this.a.b = null;
+    if (this.a.a != null) {
+      this.a.a.onClick(paramView);
     }
   }
 }

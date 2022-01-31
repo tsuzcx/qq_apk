@@ -47,16 +47,16 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
-import ehy;
-import ehz;
-import eia;
-import eib;
-import eid;
-import eie;
-import eif;
-import eig;
-import eih;
-import eii;
+import ecv;
+import ecw;
+import ecx;
+import ecy;
+import eda;
+import edb;
+import edc;
+import edd;
+import ede;
+import edf;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,7 +75,7 @@ public class CircleMemberListActivity
   public volatile int a;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler = new eib(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new ecy(this);
   public View a;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   public RelativeLayout a;
@@ -83,13 +83,13 @@ public class CircleMemberListActivity
   public SearchResultDialog a;
   public CircleManager a;
   FriendManager jdField_a_of_type_ComTencentMobileqqModelFriendManager;
-  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new eia(this);
+  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new ecx(this);
   StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
-  private IFriendObserver jdField_a_of_type_ComTencentMobileqqServiceCircleIFriendObserver = new ehz(this);
-  IGroupObserver jdField_a_of_type_ComTencentMobileqqServiceCircleIGroupObserver = new ehy(this);
+  private IFriendObserver jdField_a_of_type_ComTencentMobileqqServiceCircleIFriendObserver = new ecw(this);
+  IGroupObserver jdField_a_of_type_ComTencentMobileqqServiceCircleIGroupObserver = new ecv(this);
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  public eih a;
+  public ede a;
   public ArrayList a;
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
   public int b;
@@ -111,7 +111,7 @@ public class CircleMemberListActivity
       return;
     }
     Contacts.jdField_a_of_type_Int += 1;
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog = new eid(this, this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog = new eda(this, this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.setCanceledOnTouchOutside(true);
     paramInt = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
     TranslateAnimation localTranslateAnimation1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -paramInt);
@@ -119,9 +119,9 @@ public class CircleMemberListActivity
     localTranslateAnimation1.setFillAfter(true);
     TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(0.0F, 0.0F, -paramInt, 0.0F);
     localTranslateAnimation2.setDuration(200L);
-    localTranslateAnimation1.setAnimationListener(new eie(this));
-    localTranslateAnimation2.setAnimationListener(new eif(this, paramInt));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.setOnDismissListener(new eig(this, paramInt, localTranslateAnimation2));
+    localTranslateAnimation1.setAnimationListener(new edb(this));
+    localTranslateAnimation2.setAnimationListener(new edc(this, paramInt));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.setOnDismissListener(new edd(this, paramInt, localTranslateAnimation2));
     this.jdField_a_of_type_AndroidViewView.startAnimation(localTranslateAnimation1);
   }
   
@@ -129,7 +129,7 @@ public class CircleMemberListActivity
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837860);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837862);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawables();
       this.g = this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawablePadding();
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
@@ -162,8 +162,8 @@ public class CircleMemberListActivity
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this);
-    this.jdField_a_of_type_Eih = new eih(this, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Eih);
+    this.jdField_a_of_type_Ede = new ede(this, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ede);
   }
   
   private void f()
@@ -195,8 +195,8 @@ public class CircleMemberListActivity
       IphoneTitleBarActivity.b(this.jdField_c_of_type_AndroidWidgetTextView);
       IphoneTitleBarActivity.b(this.jdField_a_of_type_AndroidWidgetImageView);
       IphoneTitleBarActivity.b(this.jdField_b_of_type_AndroidWidgetTextView);
-      findViewById(2131231116).setBackgroundResource(2130837850);
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232903));
+      findViewById(2131231116).setBackgroundResource(2130837852);
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232906));
       this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130837729);
       this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this);
       findViewById(2131231460).setVisibility(0);
@@ -230,19 +230,19 @@ public class CircleMemberListActivity
   
   public View a()
   {
-    View localView = getLayoutInflater().inflate(2130903553, null);
-    eii localeii = new eii(null);
-    localeii.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131230940));
-    localeii.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231395));
-    localeii.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231396));
-    localeii.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131232031));
-    localeii.jdField_b_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131232032));
-    localeii.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    localeii.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    localView.setTag(localeii);
+    View localView = getLayoutInflater().inflate(2130903555, null);
+    edf localedf = new edf(null);
+    localedf.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131230940));
+    localedf.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231395));
+    localedf.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231396));
+    localedf.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131232034));
+    localedf.jdField_b_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131232035));
+    localedf.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    localedf.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
+    localView.setTag(localedf);
     localView.setOnClickListener(this);
-    localeii.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    localeii.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
+    localedf.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    localedf.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     return localView;
   }
   
@@ -332,11 +332,11 @@ public class CircleMemberListActivity
       while (paramInt1 < paramInt2)
       {
         Object localObject = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt1).getTag();
-        if ((localObject != null) && ((localObject instanceof eii)))
+        if ((localObject != null) && ((localObject instanceof edf)))
         {
-          localObject = (eii)localObject;
-          if (((eii)localObject).jdField_a_of_type_ComTencentMobileqqDataCircleBuddy.uin.equals(paramString)) {
-            ((eii)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+          localObject = (edf)localObject;
+          if (((edf)localObject).jdField_a_of_type_ComTencentMobileqqDataCircleBuddy.uin.equals(paramString)) {
+            ((edf)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
           }
         }
         paramInt1 += 1;
@@ -346,7 +346,7 @@ public class CircleMemberListActivity
   
   public void a(View paramView, CircleBuddy paramCircleBuddy)
   {
-    eii localeii = (eii)paramView.getTag();
+    edf localedf = (edf)paramView.getTag();
     Bitmap localBitmap2 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(1, paramCircleBuddy.uin);
     Bitmap localBitmap1 = localBitmap2;
     if (localBitmap2 == null)
@@ -359,14 +359,14 @@ public class CircleMemberListActivity
       }
       localBitmap1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
     }
-    localeii.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap1);
-    localeii.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(paramCircleBuddy));
-    a(localeii, paramCircleBuddy);
-    localeii.jdField_a_of_type_ComTencentMobileqqDataCircleBuddy = paramCircleBuddy;
-    paramCircleBuddy = localeii.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
+    localedf.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap1);
+    localedf.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(paramCircleBuddy));
+    a(localedf, paramCircleBuddy);
+    localedf.jdField_a_of_type_ComTencentMobileqqDataCircleBuddy = paramCircleBuddy;
+    paramCircleBuddy = localedf.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
     paramView.setContentDescription(paramCircleBuddy + ",连按两次进入资料卡");
-    localeii.jdField_a_of_type_AndroidWidgetButton.setContentDescription("向" + paramCircleBuddy + "发消息按钮");
-    localeii.jdField_b_of_type_AndroidWidgetButton.setContentDescription("添加" + paramCircleBuddy + "为好友");
+    localedf.jdField_a_of_type_AndroidWidgetButton.setContentDescription("向" + paramCircleBuddy + "发消息按钮");
+    localedf.jdField_b_of_type_AndroidWidgetButton.setContentDescription("添加" + paramCircleBuddy + "为好友");
   }
   
   void a(CircleBuddy paramCircleBuddy)
@@ -414,22 +414,22 @@ public class CircleMemberListActivity
     paramInt = 0;
     while (paramInt < i)
     {
-      eii localeii = (eii)this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt).getTag();
-      if (localeii != null)
+      edf localedf = (edf)this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt).getTag();
+      if (localedf != null)
       {
-        Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(1, localeii.jdField_a_of_type_ComTencentMobileqqDataCircleBuddy.uin);
+        Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(1, localedf.jdField_a_of_type_ComTencentMobileqqDataCircleBuddy.uin);
         paramAbsListView = localBitmap;
         if (localBitmap == null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(localeii.jdField_a_of_type_ComTencentMobileqqDataCircleBuddy.uin, 1, false, (byte)1);
+          this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(localedf.jdField_a_of_type_ComTencentMobileqqDataCircleBuddy.uin, 1, false, (byte)1);
           if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
             this.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a();
           }
           paramAbsListView = this.jdField_a_of_type_AndroidGraphicsBitmap;
         }
-        localeii.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramAbsListView);
-        if (localeii.jdField_b_of_type_AndroidWidgetTextView.getText().length() == 0) {
-          localeii.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(localeii.jdField_a_of_type_ComTencentMobileqqDataCircleBuddy.uin, 0).a(""));
+        localedf.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramAbsListView);
+        if (localedf.jdField_b_of_type_AndroidWidgetTextView.getText().length() == 0) {
+          localedf.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(localedf.jdField_a_of_type_ComTencentMobileqqDataCircleBuddy.uin, 0).a(""));
         }
       }
       paramInt += 1;
@@ -439,7 +439,7 @@ public class CircleMemberListActivity
   
   public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(eii parameii, CircleBuddy paramCircleBuddy)
+  public void a(edf paramedf, CircleBuddy paramCircleBuddy)
   {
     paramCircleBuddy = this.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(paramCircleBuddy.uin, this.jdField_a_of_type_Int);
     if (!TextUtils.isEmpty(paramCircleBuddy.jdField_c_of_type_JavaLangString))
@@ -448,17 +448,17 @@ public class CircleMemberListActivity
       localObject = new BitmapDrawable(getResources(), (Bitmap)localObject);
       int i = this.f;
       ((Drawable)localObject).setBounds(0, 0, Math.round(((Drawable)localObject).getIntrinsicWidth() * 1.0F / ((Drawable)localObject).getIntrinsicHeight() * i), i);
-      parameii.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables((Drawable)localObject, null, null, null);
+      paramedf.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables((Drawable)localObject, null, null, null);
     }
-    for (parameii.jdField_a_of_type_Int = paramCircleBuddy.jdField_b_of_type_Int;; parameii.jdField_a_of_type_Int = 0)
+    for (paramedf.jdField_a_of_type_Int = paramCircleBuddy.jdField_b_of_type_Int;; paramedf.jdField_a_of_type_Int = 0)
     {
       paramCircleBuddy = paramCircleBuddy.a(null);
-      parameii.jdField_b_of_type_AndroidWidgetTextView.setText(paramCircleBuddy);
+      paramedf.jdField_b_of_type_AndroidWidgetTextView.setText(paramCircleBuddy);
       if (this.jdField_a_of_type_Int == 0) {
         d();
       }
       return;
-      parameii.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+      paramedf.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
     }
   }
   
@@ -535,7 +535,7 @@ public class CircleMemberListActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903552);
+    setContentView(2130903554);
     getWindow().setBackgroundDrawable(null);
     this.jdField_b_of_type_Int = getIntent().getIntExtra("k_group_id", 0);
     this.jdField_c_of_type_JavaLangString = getIntent().getStringExtra("k_group_name");
@@ -570,7 +570,7 @@ public class CircleMemberListActivity
     switch (paramView.getId())
     {
     default: 
-      paramView = (eii)paramView.getTag();
+      paramView = (edf)paramView.getTag();
       if (this.jdField_a_of_type_Boolean)
       {
         setResult(1);
@@ -578,17 +578,17 @@ public class CircleMemberListActivity
         c(paramView.jdField_a_of_type_ComTencentMobileqqDataCircleBuddy);
       }
       break;
-    case 2131232031: 
-    case 2131232032: 
+    case 2131232034: 
+    case 2131232035: 
     case 2131231460: 
     case 2131231456: 
     case 2131231380: 
       do
       {
         return;
-        a(((eii)((View)paramView.getParent()).getTag()).jdField_a_of_type_ComTencentMobileqqDataCircleBuddy);
+        a(((edf)((View)paramView.getParent()).getTag()).jdField_a_of_type_ComTencentMobileqqDataCircleBuddy);
         return;
-        b(((eii)((View)paramView.getParent()).getTag()).jdField_a_of_type_ComTencentMobileqqDataCircleBuddy);
+        b(((edf)((View)paramView.getParent()).getTag()).jdField_a_of_type_ComTencentMobileqqDataCircleBuddy);
         return;
         if (this.jdField_a_of_type_Boolean)
         {

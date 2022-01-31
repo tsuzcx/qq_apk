@@ -1,15 +1,29 @@
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
-import com.tencent.mobileqq.music.SongInfo;
+import android.view.View;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class ghd
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public ghd(QQPlayerService paramQQPlayerService, QQPlayerService.QQPlayerCallback paramQQPlayerCallback, SongInfo paramSongInfo) {}
+  public ghd(EditActivity paramEditActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback.onPlaySongChanged(this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo);
+    this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    switch (paramInt)
+    {
+    default: 
+    case 0: 
+      do
+      {
+        return;
+      } while (System.currentTimeMillis() - this.a.jdField_a_of_type_Long <= 1300L);
+      this.a.e();
+      return;
+    }
+    EditActivity.a(this.a).e = null;
+    EditActivity.c(this.a, true);
   }
 }
 

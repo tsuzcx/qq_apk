@@ -1,27 +1,27 @@
-import android.view.View;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.biz.qrcode.activity.ScannerActivity.QQDialogCancelListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AddContactsActivity;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
+import mqq.app.permission.PermissionCallback;
 
 class btf
-  extends ScannerActivity.QQDialogCancelListener
+  implements PermissionCallback
 {
   btf(bte parambte) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a.a.setVisibility(8);
-    if (this.a.a.e) {
-      this.a.a.d();
-    }
-    while (!this.a.a.h) {
-      return;
-    }
-    this.a.a.a(null);
+    new PermissionsDialog().a(this.a.a, paramInt, paramArrayOfString, new btg(this));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.a.startActivity(new Intent(this.a.a, NearbyTroopsActivity.class));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     btf
  * JD-Core Version:    0.7.0.1
  */

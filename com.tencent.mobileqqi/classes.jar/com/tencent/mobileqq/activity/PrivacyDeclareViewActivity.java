@@ -11,6 +11,7 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import com.tencent.biz.pubaccount.CustomWebView;
@@ -18,7 +19,7 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import dfm;
+import czv;
 import java.net.URLDecoder;
 
 public class PrivacyDeclareViewActivity
@@ -30,7 +31,7 @@ public class PrivacyDeclareViewActivity
   private static final int c = 102;
   private int jdField_a_of_type_Int = 0;
   private boolean jdField_a_of_type_Boolean = false;
-  private Handler jdField_b_of_type_AndroidOsHandler = new dfm(this, Looper.getMainLooper());
+  private Handler jdField_b_of_type_AndroidOsHandler = new czv(this, Looper.getMainLooper());
   private QQCustomDialog jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   private String jdField_b_of_type_JavaLangString;
   
@@ -83,14 +84,10 @@ public class PrivacyDeclareViewActivity
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.canGoBack())
-      {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.canGoBack()) {
         this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.goBack();
-      }
-      else
-      {
+      } else {
         r();
-        finish();
       }
     }
     catch (Exception localException)
@@ -136,7 +133,7 @@ public class PrivacyDeclareViewActivity
       {
         return bool1;
         if (!paramString.startsWith("privacy://")) {
-          break label283;
+          break label291;
         }
         if (this.jdField_a_of_type_Int != 1) {
           break;
@@ -150,7 +147,7 @@ public class PrivacyDeclareViewActivity
       } while (!paramString.startsWith("privacy://cancelClick"));
       r();
       return true;
-      if (this.jdField_a_of_type_Int != 2) {
+      if ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 3)) {
         break;
       }
       bool1 = bool2;
@@ -172,12 +169,12 @@ public class PrivacyDeclareViewActivity
         int i = 0;
         paramString = null;
         if (j >= k) {
-          break label294;
+          break label302;
         }
         str1 = arrayOfString[j];
         int m = str1.indexOf('=');
         if (m == -1) {
-          break label291;
+          break label299;
         }
         String str2 = URLDecoder.decode(str1.substring(0, m), "UTF-8");
         str1 = URLDecoder.decode(str1.substring(m + 1), "UTF-8");
@@ -185,13 +182,13 @@ public class PrivacyDeclareViewActivity
         {
           i = 1;
           paramWebView = str1;
-          break label300;
+          break label308;
         }
         if (!"language".equals(str2)) {
-          break label291;
+          break label299;
         }
         if (i == 0) {
-          break label285;
+          break label293;
         }
         bool1 = bool2;
         if (i == 0) {
@@ -209,17 +206,17 @@ public class PrivacyDeclareViewActivity
       }
       QLog.d("PrivacyDeclareViewActivity", 2, "in privacy browser shouldOverrideUrl, error:" + paramWebView.toString());
       return true;
-      label283:
-      return false;
-      label285:
-      paramString = str1;
-      break label300;
       label291:
-      break label300;
-      label294:
+      return false;
+      label293:
+      paramString = str1;
+      break label308;
+      label299:
+      break label308;
+      label302:
       String str1 = paramString;
       continue;
-      label300:
+      label308:
       j += 1;
     }
   }
@@ -227,6 +224,24 @@ public class PrivacyDeclareViewActivity
   protected void d()
   {
     f();
+  }
+  
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (paramInt1 == 2000)
+    {
+      if (paramInt2 != 2001) {
+        break label19;
+      }
+      q();
+    }
+    label19:
+    while (paramInt2 != 2002) {
+      return;
+    }
+    paramIntent = this.jdField_b_of_type_AndroidOsHandler.obtainMessage();
+    paramIntent.what = 101;
+    paramIntent.sendToTarget();
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
@@ -292,6 +307,17 @@ public class PrivacyDeclareViewActivity
       return;
     }
     paramDialogInterface.dismiss();
+  }
+  
+  public boolean onOptionsItemSelected(MenuItem paramMenuItem)
+  {
+    switch (paramMenuItem.getItemId())
+    {
+    default: 
+      return super.onOptionsItemSelected(paramMenuItem);
+    }
+    r();
+    return true;
   }
 }
 

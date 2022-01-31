@@ -1,29 +1,18 @@
-import com.tencent.mobileqq.activity.DevlockPushActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class cmy
-  implements Runnable
+  implements IIconListener
 {
-  public cmy(DevlockPushActivity paramDevlockPushActivity) {}
+  public cmy(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    try
-    {
-      if ((DevlockPushActivity.a(this.a) != null) && (DevlockPushActivity.a(this.a).isShowing()))
-      {
-        DevlockPushActivity.a(this.a).dismiss();
-        DevlockPushActivity.a(this.a).cancel();
-      }
-      DevlockPushActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+    if ((this.a.a.a != null) && (this.a.a.a.b == paramInt1) && (paramInt2 == 200) && (paramBitmap != null)) {
+      this.a.a.a(this.a.a.a);
     }
   }
 }

@@ -1,30 +1,18 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.data.TroopBarPageEntity.TypeListEntity;
-import com.tencent.mobileqq.troop.data.TroopBarPostLayoutTab;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnSeekCompleteListener;
+import com.tencent.mobileqq.troop.widget.VideoViewX;
+import com.tencent.mobileqq.troop.widget.VideoViewX.OnSeekListener;
 
 public class gzu
-  implements Animation.AnimationListener
+  implements MediaPlayer.OnSeekCompleteListener
 {
-  public gzu(TroopBarPostLayoutTab paramTroopBarPostLayoutTab, TroopBarPageEntity.TypeListEntity paramTypeListEntity, View paramView) {}
+  public gzu(VideoViewX paramVideoViewX) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    paramAnimation = new Intent();
-    paramAnimation.setAction("change_post_type");
-    paramAnimation.putExtra("post_type", this.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity$TypeListEntity);
-    this.jdField_a_of_type_AndroidViewView.getContext().sendBroadcast(paramAnimation);
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPostLayoutTab.a = true;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPostLayoutTab.a = false;
+    if (VideoViewX.a(this.a) != null) {
+      VideoViewX.a(this.a).i();
+    }
   }
 }
 

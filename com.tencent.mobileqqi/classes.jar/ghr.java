@@ -1,14 +1,21 @@
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
-import java.util.TimerTask;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.richstatus.StatusHistoryActivity;
 
 public class ghr
-  extends TimerTask
+  extends Handler
 {
-  public ghr(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
-  
-  public void run()
+  public ghr(StatusHistoryActivity paramStatusHistoryActivity, Looper paramLooper)
   {
-    MusicGeneWebViewPlugin.a(this.a);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      this.a.a = false;
+    }
   }
 }
 

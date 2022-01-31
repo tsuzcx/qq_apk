@@ -1,23 +1,27 @@
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.res.Resources;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class cnu
   implements Runnable
 {
-  public cnu(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, String paramString) {}
+  public cnu(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
   public void run()
   {
-    Object localObject = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.b.getManager(48);
-    new ArrayList();
-    localObject = ((DiscussionManager)localObject).a(this.jdField_a_of_type_JavaLangString);
-    if (localObject != null) {
-      DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity, ((List)localObject).size());
+    this.a.jdField_c_of_type_Boolean = false;
+    if (this.a.a != 0L)
+    {
+      this.a.b.setVisibility(0);
+      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, this.a.getResources().getDimension(2131427548), 0.0F);
+      localTranslateAnimation.setDuration(300L);
+      localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
+      this.a.jdField_c_of_type_AndroidWidgetRelativeLayout.startAnimation(localTranslateAnimation);
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a((List)localObject);
+    this.a.b.setVisibility(8);
   }
 }
 

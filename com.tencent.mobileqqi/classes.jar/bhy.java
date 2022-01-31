@@ -1,12 +1,41 @@
-import com.tencent.av.gaudio.QQGAudioCtrl;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.LoadedCallBack;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bhy
+public final class bhy
+  implements Runnable
 {
-  public int a;
-  public long a;
-  public long b;
+  public bhy(QQAppInterface paramQQAppInterface, LoadedCallBack paramLoadedCallBack) {}
   
-  bhy(QQGAudioCtrl paramQQGAudioCtrl) {}
+  public void run()
+  {
+    Object localObject = null;
+    int i = 0;
+    for (;;)
+    {
+      if ((TextUtils.isEmpty((CharSequence)localObject)) && (i < 10))
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.f();
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          this.jdField_a_of_type_ComTencentBizCommonUtilLoadedCallBack.a((String)localObject);
+        }
+      }
+      else
+      {
+        return;
+      }
+      try
+      {
+        Thread.sleep(200L);
+        label49:
+        i += 1;
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        break label49;
+      }
+    }
+  }
 }
 
 

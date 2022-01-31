@@ -14,7 +14,7 @@ import com.tencent.open.base.LogUtility;
 import com.tencent.open.business.base.StaticAnalyz;
 import com.tencent.open.widget.IKeyboardChanged;
 import com.tencent.open.widget.KeyboardDetectorRelativeLayout;
-import hna;
+import hiw;
 
 public class BragActivity
   extends ChallengeBragBase
@@ -62,14 +62,14 @@ public class BragActivity
   
   protected void d()
   {
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131232135));
-    this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout = ((KeyboardDetectorRelativeLayout)super.findViewById(2131232134));
+    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131232138));
+    this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout = ((KeyboardDetectorRelativeLayout)super.findViewById(2131232137));
     this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout.a(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232137));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131232139));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232140));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131232142));
     this.b = ((TextView)super.findViewById(2131231473));
     this.c = ((TextView)super.findViewById(2131231472));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232138));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232141));
     this.jdField_a_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[] { new LengthInputFilter(this.jdField_a_of_type_AndroidWidgetEditText, 100) };
     this.jdField_a_of_type_AndroidWidgetEditText.setFilters(this.jdField_a_of_type_ArrayOfAndroidTextInputFilter);
     this.jdField_a_of_type_AndroidWidgetEditText.setText(this.j);
@@ -91,8 +91,8 @@ public class BragActivity
       f();
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838008);
-    ImageLoader.a().a(this.k, new hna(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838010);
+    ImageLoader.a().a(this.k, new hiw(this));
   }
   
   public void e()
@@ -109,7 +109,7 @@ public class BragActivity
   {
     super.onCreate(paramBundle);
     super.getWindow().requestFeature(1);
-    super.setContentView(2130903337);
+    super.setContentView(2130903339);
     super.c();
     d();
     StaticAnalyz.a("100", "ANDROIDQQ.BRAG.FS", this.d);

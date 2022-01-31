@@ -1,31 +1,13 @@
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
 
 public class dac
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public dac(LoginInfoActivity paramLoginInfoActivity) {}
+  public dac(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void run()
-  {
-    try
-    {
-      if ((LoginInfoActivity.a(this.a) != null) && (LoginInfoActivity.a(this.a).isShowing()))
-      {
-        LoginInfoActivity.a(this.a).dismiss();
-        LoginInfoActivity.a(this.a).cancel();
-      }
-      LoginInfoActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

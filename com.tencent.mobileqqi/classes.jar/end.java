@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.photo.PhotoMagicStickUtils;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class end
-  extends FMObserver
+public final class end
+  implements ActionSheet.OnButtonClickListener
 {
-  public end(MainAssistObserver paramMainAssistObserver) {}
+  public end(Activity paramActivity, String paramString1, ActionSheet paramActionSheet, boolean paramBoolean, String paramString2, String paramString3, String paramString4) {}
   
-  protected void b() {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    PhotoMagicStickUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentWidgetActionSheet, this.jdField_a_of_type_Boolean, paramInt, this.b, this.c, this.d);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     end
  * JD-Core Version:    0.7.0.1
  */

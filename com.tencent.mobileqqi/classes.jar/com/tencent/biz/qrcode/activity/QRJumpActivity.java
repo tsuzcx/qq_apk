@@ -3,8 +3,8 @@ package com.tencent.biz.qrcode.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bsr;
-import bss;
+import bmn;
+import bmo;
 import com.tencent.biz.qrcode.QRCodeServlet;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -28,15 +28,15 @@ public class QRJumpActivity
     }
     this.a = new QQProgressDialog(this, super.d());
     this.a.b(2131560529);
-    this.a.setOnCancelListener(new bsr(this));
+    this.a.setOnCancelListener(new bmn(this));
     this.a.show();
     paramBundle = URLDecoder.decode(paramBundle);
-    bss localbss = new bss(this, this, paramBundle);
+    bmo localbmo = new bmo(this, this, paramBundle);
     NewIntent localNewIntent = new NewIntent(this, QRCodeServlet.class);
     localNewIntent.putExtra("d", paramBundle);
     localNewIntent.putExtra("cmd", "QRCodeSvc.decode");
     localNewIntent.putExtra("bqq", "1");
-    localNewIntent.setObserver(localbss);
+    localNewIntent.setObserver(localbmo);
     this.b.startServlet(localNewIntent);
     return true;
   }

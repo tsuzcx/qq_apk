@@ -1,27 +1,30 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.GetConfig;
-import com.tencent.mobileqq.config.ResourcePluginListener;
+import com.tencent.mobileqq.config.AboutConfig;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class fmj
-  extends ResourcePluginListener
+  implements Runnable
 {
-  private fmj(GetConfig paramGetConfig) {}
+  public fmj(AboutConfig paramAboutConfig) {}
   
-  public void a(byte paramByte)
+  public void run()
   {
-    if (GetConfig.a(this.a) == 38)
+    EntityManager localEntityManager = AboutConfig.a(this.a).a().createEntityManager();
+    List localList = ResourcePluginInfo.getAll(localEntityManager, 32, false);
+    localEntityManager.a();
+    if ((localList != null) && (localList.size() > 0))
     {
-      if ((paramByte != 2) && (paramByte == 3)) {}
-      GetConfig.a(this.a).a.c(GetConfig.a(this.a));
-      this.a.a(7);
+      this.a.b();
+      AboutConfig.a(this.a, localList);
+      if (QLog.isColorLevel()) {
+        QLog.d("AboutConfig", 2, "Load about config from DB = " + AboutConfig.a(this.a));
+      }
+      this.a.c();
     }
-  }
-  
-  public void b(byte paramByte)
-  {
-    if ((paramByte != 2) && (paramByte == 3)) {}
-    GetConfig.b(this.a).a.d(this);
   }
 }
 

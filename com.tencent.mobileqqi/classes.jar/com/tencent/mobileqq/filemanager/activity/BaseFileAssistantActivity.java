@@ -17,16 +17,16 @@ import com.tencent.mobileqq.filemanager.data.FMDataCache;
 import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qlink.QQProxyForQlink;
-import ftw;
-import ftx;
-import fty;
+import fpk;
+import fpl;
+import fpm;
 
 public abstract class BaseFileAssistantActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int;
-  FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new fty(this);
+  FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new fpm(this);
   private SendBottomBar jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar;
   final String jdField_a_of_type_JavaLangString = "BaseFileAssistantActivity<FileAssistant>";
   public boolean a;
@@ -62,7 +62,7 @@ public abstract class BaseFileAssistantActivity
     {
       this.m.setVisibility(0);
       this.m.setText(getString(2131558705));
-      this.m.setOnClickListener(new ftx(this));
+      this.m.setOnClickListener(new fpl(this));
       return;
     }
     this.m.setVisibility(4);
@@ -70,7 +70,7 @@ public abstract class BaseFileAssistantActivity
   
   private void h()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar = ((SendBottomBar)findViewById(2131232752));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar = ((SendBottomBar)findViewById(2131232755));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.a();
     SendBottomBar localSendBottomBar = this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar;
     if (g()) {}
@@ -83,7 +83,7 @@ public abstract class BaseFileAssistantActivity
   
   private void i()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131232757);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131232760);
     if (g())
     {
       localRelativeLayout.setVisibility(0);
@@ -135,7 +135,7 @@ public abstract class BaseFileAssistantActivity
   public void d()
   {
     this.jdField_b_of_type_Boolean = false;
-    new Handler().postDelayed(new ftw(this), 1500L);
+    new Handler().postDelayed(new fpk(this), 1500L);
   }
   
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -254,8 +254,8 @@ public abstract class BaseFileAssistantActivity
   
   public void setContentView(int paramInt)
   {
-    super.setContentView(2130903506);
-    ((RelativeLayout)findViewById(2131232756)).addView(((LayoutInflater)getSystemService("layout_inflater")).inflate(paramInt, null));
+    super.setContentView(2130903508);
+    ((RelativeLayout)findViewById(2131232759)).addView(((LayoutInflater)getSystemService("layout_inflater")).inflate(paramInt, null));
     e();
   }
   

@@ -6,9 +6,9 @@ import java.lang.reflect.Method;
 public abstract class JsWebViewPlugin
   extends WebViewPlugin
 {
-  protected abstract String a();
+  public abstract String a();
   
-  protected Method a(String paramString1, String paramString2, int paramInt)
+  public Method a(String paramString1, String paramString2, int paramInt)
   {
     if (!a().equals(paramString1)) {}
     for (;;)
@@ -28,7 +28,7 @@ public abstract class JsWebViewPlugin
     }
   }
   
-  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     boolean bool = false;
     paramString2 = a(paramString2, paramString3, paramVarArgs.length);

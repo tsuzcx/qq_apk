@@ -1,38 +1,29 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
-public class eil
-  implements TextWatcher
+class eil
+  implements DialogInterface.OnClickListener
 {
-  public eil(SearchResultDialog paramSearchResultDialog) {}
+  eil(eij parameij, String paramString) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramEditable = SearchResultDialog.a(this.a).getText().toString();
-    String str = paramEditable.trim();
-    if (TextUtils.isEmpty(str)) {
-      this.a.a(paramEditable, paramEditable);
-    }
-    while (paramEditable.equals(""))
+    try
     {
-      this.a.findViewById(2131233086).setVisibility(8);
+      paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_Eij.a.a.startActivity(paramDialogInterface);
       return;
-      this.a.a(str, paramEditable);
     }
-    this.a.findViewById(2131233086).setVisibility(0);
+    catch (Exception paramDialogInterface) {}
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eil
  * JD-Core Version:    0.7.0.1
  */

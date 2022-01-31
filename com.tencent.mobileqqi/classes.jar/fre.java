@@ -1,57 +1,35 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.config.DownloadIconsListener;
-import com.tencent.mobileqq.config.LebaConfig;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.URL;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class fre
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public fre(LebaConfig paramLebaConfig, URL paramURL, File paramFile, String paramString) {}
+  public fre(FMRecentFileActivity paramFMRecentFileActivity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      if (!HttpDownloadUtil.a(LebaConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigLebaConfig), this.jdField_a_of_type_JavaNetURL, this.jdField_a_of_type_JavaIoFile)) {
-        break label199;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.lebatab.config", 2, "Download icon key = " + this.jdField_a_of_type_JavaLangString + "suc--------");
-      }
-      Bitmap localBitmap = LebaConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigLebaConfig, this.jdField_a_of_type_JavaIoFile);
-      if (localBitmap != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.lebatab.config", 2, "Download icon key = " + this.jdField_a_of_type_JavaLangString + "notify UI++++++++");
-        }
-        Iterator localIterator = LebaConfig.c(this.jdField_a_of_type_ComTencentMobileqqConfigLebaConfig).iterator();
-        while (localIterator.hasNext()) {
-          ((DownloadIconsListener)localIterator.next()).a(this.jdField_a_of_type_JavaLangString, localBitmap);
-        }
-      }
-      LebaConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigLebaConfig, this.jdField_a_of_type_JavaLangString);
     }
-    catch (Exception localException)
+    for (;;)
     {
-      LebaConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigLebaConfig).remove(this.jdField_a_of_type_JavaLangString);
-      LebaConfig.b(this.jdField_a_of_type_ComTencentMobileqqConfigLebaConfig, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMRecentFileActivity.b.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMRecentFileActivity.jdField_a_of_type_Long)) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMRecentFileActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
+      }
+      FMRecentFileActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMRecentFileActivity);
     }
-    return;
-    label199:
-    LebaConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigLebaConfig).remove(this.jdField_a_of_type_JavaLangString);
-    LebaConfig.b(this.jdField_a_of_type_ComTencentMobileqqConfigLebaConfig, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fre
  * JD-Core Version:    0.7.0.1
  */

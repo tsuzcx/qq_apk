@@ -1,17 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.StrangerManageActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopMemberCardActivity;
 
 public class dqo
-  implements View.OnClickListener
+  extends Handler
 {
-  public dqo(StrangerManageActivity paramStrangerManageActivity) {}
+  public dqo(TroopMemberCardActivity paramTroopMemberCardActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.b(true);
-    ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Manage_stranger_edit", 0, 0, "", "", "", "");
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    if (this.a.o != 1)
+    {
+      paramMessage = new Intent();
+      paramMessage.putExtra("finish_chat_setting", true);
+      this.a.a.setResult(-1, paramMessage);
+    }
+    this.a.a.finish();
   }
 }
 

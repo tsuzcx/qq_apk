@@ -1,18 +1,16 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class dud
-  extends TransProcessorHandler
+  implements DialogInterface.OnClickListener
 {
-  public dud(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public dud(UpgradeActivity paramUpgradeActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = paramMessage.what;
-    if ((i == 1003) || (i == 2003)) {
-      this.a.h();
-    }
+    this.a.finish();
+    this.a.e();
   }
 }
 

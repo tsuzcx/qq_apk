@@ -1,26 +1,45 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.av.utils.UITools;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.assistant.PubAccountAssistantManager;
+import com.tencent.biz.pubaccount.assistant.PubAccountAssistantSettingAdapter;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SetFunctionFlagResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import mqq.observer.BusinessObserver;
 
 public class bky
-  implements Runnable
+  implements BusinessObserver
 {
-  public bky(VideoControlUI paramVideoControlUI) {}
+  public bky(PubAccountAssistantSettingAdapter paramPubAccountAssistantSettingAdapter, PublicAccountInfo paramPublicAccountInfo) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.g))
+    if (!paramBoolean) {}
+    for (;;)
     {
-      this.a.e = UITools.a(this.a.jdField_a_of_type_ComTencentAvVideoController.a());
-      VideoControlUI localVideoControlUI = this.a;
-      localVideoControlUI.h += 1;
-      if ((this.a.f != null) && (!this.a.i)) {
-        this.a.f.setText(this.a.e);
+      return;
+      if (paramBoolean) {
+        try
+        {
+          paramBundle = paramBundle.getByteArray("data");
+          if (paramBundle != null)
+          {
+            mobileqq_mp.SetFunctionFlagResponse localSetFunctionFlagResponse = new mobileqq_mp.SetFunctionFlagResponse();
+            localSetFunctionFlagResponse.mergeFrom(paramBundle);
+            if (((mobileqq_mp.RetInfo)localSetFunctionFlagResponse.ret_info.get()).ret_code.get() == 0)
+            {
+              if (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mShowMsgFlag == 1)
+              {
+                PubAccountAssistantManager.a().c(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin(), PubAccountAssistantSettingAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantSettingAdapter));
+                return;
+              }
+              PubAccountAssistantManager.a().a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin(), PubAccountAssistantSettingAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantSettingAdapter));
+              return;
+            }
+          }
+        }
+        catch (Exception paramBundle) {}
       }
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
     }
   }
 }

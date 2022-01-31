@@ -1,16 +1,26 @@
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.SearchTroopListActivity;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.XListView;
+import java.util.List;
 
 public class dhe
-  implements Runnable
+  implements AbsListView.OnScrollListener
 {
-  public dhe(QQBrowserActivity paramQQBrowserActivity) {}
+  public dhe(SearchTroopListActivity paramSearchTroopListActivity) {}
   
-  public void run()
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    QLog.doReportLogSelf(AppSetting.a, "FeedbackReport", "");
+    if ((paramInt == 0) && (this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_Boolean))
+    {
+      paramInt = this.a.jdField_a_of_type_ComTencentWidgetXListView.r();
+      if (this.a.jdField_a_of_type_JavaUtilList.size() <= paramInt) {
+        this.a.e();
+      }
+    }
   }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

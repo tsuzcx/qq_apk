@@ -1,38 +1,43 @@
-import android.content.Intent;
-import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.photo.AlbumListActivity;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.data.QQAlbumInfo;
-import com.tencent.mobileqq.utils.AlbumUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
+import java.util.ArrayList;
 
 public class eqq
-  implements AdapterView.OnItemClickListener
+  implements View.OnKeyListener
 {
-  private eqq(AlbumListActivity paramAlbumListActivity) {}
+  public eqq(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    paramAdapterView = this.a.a.a(paramInt);
-    if ((paramAdapterView == null) || (paramAdapterView.imageCount <= 0) || (TextUtils.isEmpty(paramAdapterView.name)))
+    if ((paramInt == 67) && (paramKeyEvent.getAction() == 0))
     {
-      QQToast.a(this.a, 2131563072, 0).a();
-      return;
+      SelectMemberActivity.a(this.a).requestFocus();
+      if ((SelectMemberActivity.a(this.a).getText().toString().equals("")) && (this.a.c.size() != 0))
+      {
+        paramView = ((SelectMemberActivity.ResultRecord)this.a.c.get(this.a.c.size() - 1)).a;
+        if (this.a.a(paramView))
+        {
+          this.a.a(paramView);
+          this.a.d();
+          paramInt = this.a.a.a();
+          if ((paramInt == 8) || (paramInt == 9) || (paramInt == 6) || (paramInt == 5)) {
+            ((SelectMemberInnerFrame)this.a.a.getCurrentView()).f();
+          }
+          this.a.a(false);
+        }
+      }
     }
-    paramView = this.a.getIntent();
-    paramView.putExtra("ALBUM_ID", paramAdapterView._id);
-    paramView.putExtra("ALBUM_NAME", paramAdapterView.name);
-    paramView.putExtra("PhotoConst.CURRENT_QUALITY_TYPE", paramView.getIntExtra("PhotoConst.CURRENT_QUALITY_TYPE", 0));
-    paramView.putExtra("album_enter_directly", false);
-    AlbumListActivity.a(this.a, true);
-    paramView.setClass(this.a, PhotoListActivity.class);
-    paramView.addFlags(603979776);
-    this.a.startActivity(paramView);
-    this.a.finish();
-    AlbumUtil.a(this.a, true, true);
+    while ((paramInt != 4) || (!SelectMemberActivity.a(this.a).getText().toString().trim().equals(""))) {
+      return false;
+    }
+    this.a.i();
+    return false;
   }
 }
 

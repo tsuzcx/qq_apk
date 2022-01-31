@@ -1,25 +1,21 @@
-import android.view.View;
-import com.tencent.widget.AbsListView;
+import common.qzone.component.cache.common.SoftHashMap;
 
 public class hzm
-  implements Runnable
+  extends hzi
 {
-  public hzm(AbsListView paramAbsListView, View paramView, hzx paramhzx) {}
-  
-  public void run()
+  hzm(SoftHashMap paramSoftHashMap)
   {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.ab = -1;
-    this.jdField_a_of_type_AndroidViewView.setPressed(false);
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.setPressed(false);
-    if (!this.jdField_a_of_type_ComTencentWidgetAbsListView.p) {
-      this.jdField_a_of_type_Hzx.run();
-    }
-    AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, null);
+    super(paramSoftHashMap);
+  }
+  
+  public Object next()
+  {
+    return hzf.a(a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hzm
  * JD-Core Version:    0.7.0.1
  */

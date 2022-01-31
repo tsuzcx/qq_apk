@@ -94,7 +94,7 @@ public class LockPatternView
       setClickable(true);
       this.s = getResources().getColor(2131361849);
       this.t = getResources().getColor(2131361850);
-      this.u = getResources().getDimensionPixelSize(2131427482);
+      this.u = getResources().getDimensionPixelSize(2131427485);
       this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
       this.jdField_b_of_type_AndroidGraphicsPaint.setDither(true);
       this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.s);
@@ -114,7 +114,7 @@ public class LockPatternView
       this.m = getResources().getColor(2131361859);
       this.n = getResources().getColor(2131361860);
       this.o = getResources().getColor(2131361861);
-      this.jdField_g_of_type_Float = getResources().getDimensionPixelSize(2131427483);
+      this.jdField_g_of_type_Float = getResources().getDimensionPixelSize(2131427486);
       this.p = (getWidth() / 4);
       this.q = (getHeight() / 4);
       return;

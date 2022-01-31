@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
+import java.util.TimerTask;
 
-class gdf
-  implements Runnable
+public class gdf
+  extends TimerTask
 {
-  gdf(gde paramgde, String paramString, long paramLong1, long paramLong2) {}
+  public gdf(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
   
   public void run()
   {
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Gde.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
+    MusicGeneWebViewPlugin.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gdf
  * JD-Core Version:    0.7.0.1
  */

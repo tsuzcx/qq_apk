@@ -36,19 +36,19 @@ public class ConfigObserver
     a(paramObject.uin, paramObject.uinType, paramObject.taskList);
   }
   
-  protected void a(String paramString, int paramInt, ArrayList paramArrayList) {}
+  public void a(String paramString, int paramInt, ArrayList paramArrayList) {}
   
-  protected void a(boolean paramBoolean, int paramInt) {}
+  public void a(boolean paramBoolean, int paramInt) {}
   
-  protected void a(boolean paramBoolean, long paramLong) {}
+  public void a(boolean paramBoolean, long paramLong) {}
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper) {}
+  public void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper) {}
   
-  protected void a(boolean paramBoolean, AppShareID paramAppShareID) {}
+  public void a(boolean paramBoolean, AppShareID paramAppShareID) {}
   
-  protected void a(boolean paramBoolean, String paramString) {}
+  public void a(boolean paramBoolean, String paramString) {}
   
-  protected void a(boolean paramBoolean, GetResourceRespInfo paramGetResourceRespInfo) {}
+  public void a(boolean paramBoolean, GetResourceRespInfo paramGetResourceRespInfo) {}
   
   protected void b(boolean paramBoolean, long paramLong) {}
 }

@@ -1,14 +1,14 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.dataline.activities.LiteVideoActivity.ImageAdapter;
+import com.dataline.activities.LiteMutiPicViewerActivity;
 
-public class ck
+class ck
+  implements Runnable
 {
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
+  ck(cf paramcf) {}
   
-  public ck(LiteVideoActivity.ImageAdapter paramImageAdapter) {}
+  public void run()
+  {
+    LiteMutiPicViewerActivity.b(this.a.a);
+  }
 }
 
 

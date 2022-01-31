@@ -1,18 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.widget.XEditTextEx;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SecurityProtectActivity;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
 public class dhn
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public dhn(QQLSActivity paramQQLSActivity) {}
+  public dhn(SecurityProtectActivity paramSecurityProtectActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    QQLSActivity.a(this.a).setCursorVisible(true);
-    return false;
+    SecurityProtectActivity.a(this.a, false);
+    SecurityProtectActivity.a(this.a).setText(2131558466);
+    SecurityProtectActivity.b(this.a).setVisibility(0);
+    SecurityProtectActivity.a(this.a).setVisibility(0);
+    ((LinearLayout)this.a.findViewById(2131234418)).setVisibility(8);
+    FMToastUtil.a(2131562488);
   }
 }
 

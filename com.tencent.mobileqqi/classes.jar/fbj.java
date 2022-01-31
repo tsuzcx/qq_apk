@@ -1,26 +1,19 @@
-import com.tencent.mobileqq.activity.voip.VoipHistoryAllType;
-import com.tencent.mobileqq.activity.voip.VoipHistoryInterface;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
 public class fbj
-  implements Comparator
+  implements Runnable
 {
-  public fbj(VoipHistoryInterface paramVoipHistoryInterface) {}
+  public fbj(DataLineHandler paramDataLineHandler) {}
   
-  public int a(VoipHistoryAllType paramVoipHistoryAllType1, VoipHistoryAllType paramVoipHistoryAllType2)
+  public void run()
   {
-    if (paramVoipHistoryAllType1.time > paramVoipHistoryAllType2.time) {
-      return -1;
-    }
-    if (paramVoipHistoryAllType1.time < paramVoipHistoryAllType2.time) {
-      return 1;
-    }
-    return 0;
+    FMToastUtil.a(2131558549);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fbj
  * JD-Core Version:    0.7.0.1
  */

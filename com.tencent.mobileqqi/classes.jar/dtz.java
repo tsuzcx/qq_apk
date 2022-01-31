@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.TroopAssistSetGuideActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class dtz
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public dtz(TroopAssistSetGuideActivity paramTroopAssistSetGuideActivity) {}
+  public dtz(UpgradeActivity paramUpgradeActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.d();
+    this.a.finish();
   }
 }
 

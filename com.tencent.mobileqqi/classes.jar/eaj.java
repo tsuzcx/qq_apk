@@ -1,15 +1,25 @@
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.VerifyCodeActivity2;
+import com.tencent.mobileqq.activity.aio.item.QzoneFeedItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQzoneFeed;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
 
 public class eaj
   implements View.OnClickListener
 {
-  public eaj(VerifyCodeActivity2 paramVerifyCodeActivity2) {}
+  public eaj(QzoneFeedItemBuilder paramQzoneFeedItemBuilder, MessageForQzoneFeed paramMessageForQzoneFeed) {}
   
   public void onClick(View paramView)
   {
-    this.a.e();
+    paramView = paramView.getContext();
+    QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.a();
+    localUserInfo.a = QzoneFeedItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder).a();
+    localUserInfo.b = QzoneFeedItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder).e();
+    localUserInfo.c = QzoneFeedItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder).getSid();
+    QZoneHelper.b((Activity)paramView, localUserInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl, "mqqChat.QzoneCard", this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.appId, -1);
   }
 }
 

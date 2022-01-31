@@ -1,15 +1,39 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.qphone.base.util.QLog;
 
-class cev
-  implements View.OnTouchListener
+public class cev
+  extends CardObserver
 {
-  cev(ceu paramceu) {}
+  public cev(Conversation paramConversation) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    return true;
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
+    {
+      if ((paramBoolean) && (paramObject != null) && (!Utils.a(paramObject.uin, this.a.a.a())))
+      {
+        this.a.a(8, paramObject.uin, -2147483648);
+        this.a.k();
+      }
+      return;
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (paramString != null) && (this.a.a.a().equals(paramString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_onGreetingRecv");
+      }
+      this.a.a(8, AppConstants.V, 1001);
+    }
   }
 }
 

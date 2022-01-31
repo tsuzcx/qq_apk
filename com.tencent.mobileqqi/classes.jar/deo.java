@@ -1,18 +1,30 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.PeopleAroundBaseActivity;
-import com.tencent.mobileqq.app.LBSHandler;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class deo
   implements Runnable
 {
-  public deo(PeopleAroundBaseActivity paramPeopleAroundBaseActivity) {}
+  public deo(RecentLoginDevActivity paramRecentLoginDevActivity) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131561836);
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    PeopleAroundBaseActivity.a(this.a).a();
+    try
+    {
+      if ((RecentLoginDevActivity.a(this.a) == null) && (!this.a.isFinishing())) {
+        RecentLoginDevActivity.a(this.a, new QQProgressDialog(this.a.a(), this.a.d()));
+      }
+      if ((RecentLoginDevActivity.a(this.a) != null) && (!RecentLoginDevActivity.a(this.a).isShowing())) {
+        RecentLoginDevActivity.a(this.a).show();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

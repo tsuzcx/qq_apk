@@ -544,7 +544,7 @@ public class BubbleInfo
         localObject3 = paramQQAppInterface.a().getResources();
         if (paramBoolean1)
         {
-          i1 = 2130839797;
+          i1 = 2130839799;
           label594:
           localObject2 = ((Resources)localObject3).getDrawable(i1);
           if (!paramBoolean1) {
@@ -552,14 +552,14 @@ public class BubbleInfo
           }
         }
         label671:
-        for (int i1 = 2130839796;; i1 = 2130839761)
+        for (int i1 = 2130839798;; i1 = 2130839763)
         {
           localObject4 = ((Resources)localObject3).getDrawable(i1);
           localObject3 = new StateListDrawable();
           ((StateListDrawable)localObject3).addState(new int[] { 16842919 }, (Drawable)localObject2);
           ((StateListDrawable)localObject3).addState(new int[] { 16842910 }, (Drawable)localObject4);
           break;
-          i1 = 2130839762;
+          i1 = 2130839764;
           break label594;
         }
       }

@@ -1,87 +1,25 @@
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.ShieldListObserver;
-import com.tencent.mobileqq.util.Utils;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.activity.Contacts;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class cei
-  extends ShieldListObserver
+  extends ContactBindObserver
 {
-  public cei(ChatActivity paramChatActivity) {}
+  public cei(Contacts paramContacts) {}
   
-  protected void a(boolean paramBoolean, List paramList)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    
-    if (this.a.a == null) {
-      return;
-    }
-    String str = this.a.a.jdField_a_of_type_JavaLangString;
-    if (this.a.a.jdField_a_of_type_Int == 1006) {
-      str = this.a.a.f;
-    }
-    for (;;)
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this);
+    if (!((PhoneContactManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10)).f())
     {
-      if (paramList == null) {}
-      int k;
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        k = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
+      if (this.a.b != null) {
+        this.a.b.setVisibility(8);
       }
-      if (k == 0) {
-        break;
+      if (this.a.jdField_a_of_type_AndroidViewView != null) {
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
       }
-      ChatActivityUtils.a(this.a, paramBoolean, false);
-      if (!paramBoolean) {
-        break;
-      }
-      ChatActivity.e(this.a);
-      return;
-    }
-  }
-  
-  protected void b(boolean paramBoolean, List paramList)
-  {
-    int k = 0;
-    ChatActivityUtils.a();
-    if (this.a.a == null) {
-      return;
-    }
-    String str = this.a.a.jdField_a_of_type_JavaLangString;
-    if (this.a.a.jdField_a_of_type_Int == 1006) {
-      str = this.a.a.f;
-    }
-    for (;;)
-    {
-      if (paramList == null) {}
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k == 0) {
-        break;
-      }
-      ChatActivityUtils.a();
-      if (!paramBoolean) {
-        break;
-      }
-      ChatActivity.e(this.a);
-      return;
     }
   }
 }

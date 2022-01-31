@@ -1,29 +1,22 @@
-import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.widget.AlbumImageProxy;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.open.agent.OpenSdkFriendService;
+import java.util.ArrayList;
 
 public class hji
-  extends Thread
+  implements Runnable
 {
-  public hji(AlbumImageProxy paramAlbumImageProxy, String paramString, int paramInt) {}
+  public hji(OpenSdkFriendService paramOpenSdkFriendService, Handler paramHandler) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AlbumImageProxy", 2, "AlbumImageProxy, decode Thread: filekey :" + this.jdField_a_of_type_JavaLangString);
-    }
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqWidgetAlbumImageProxy.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    Message localMessage = new Message();
-    localMessage.what = 0;
-    localMessage.obj = localBitmap;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAlbumImageProxy.a.sendMessage(localMessage);
+    ArrayList localArrayList = this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService.a();
+    Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 888802, localArrayList).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hji
  * JD-Core Version:    0.7.0.1
  */

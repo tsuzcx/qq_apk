@@ -11,11 +11,8 @@ import android.view.WindowManager;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.TextView;
-import cf;
-import cg;
-import ch;
-import ci;
-import cj;
+import cn;
+import co;
 import com.dataline.util.file.FileUtil;
 import com.dataline.util.file.ImageInfo;
 import com.dataline.util.file.SendInfo;
@@ -26,6 +23,9 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import cp;
+import cq;
+import cr;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -34,13 +34,13 @@ public class LiteVideoActivity
   extends IphoneTitleBarActivity
 {
   public static String a;
-  private static Comparator jdField_a_of_type_JavaUtilComparator = new cj();
+  private static Comparator jdField_a_of_type_JavaUtilComparator = new cr();
   public static final String b = "NEED_WARNING_WHEN_OVER_5M_IN_G234";
   private static int jdField_c_of_type_Int = 0;
   private static final int e = 4;
   int jdField_a_of_type_Int;
   private DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics = null;
-  private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new ci(this);
+  private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new cq(this);
   private GridView jdField_a_of_type_AndroidWidgetGridView = null;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private LiteVideoActivity.ImageAdapter jdField_a_of_type_ComDatalineActivitiesLiteVideoActivity$ImageAdapter = null;
@@ -115,9 +115,9 @@ public class LiteVideoActivity
   private void d()
   {
     Object localObject = ((WindowManager)getSystemService("window")).getDefaultDisplay();
-    this.h = getResources().getDimensionPixelSize(2131427455);
-    this.f = getResources().getDimensionPixelSize(2131427453);
-    this.g = getResources().getDimensionPixelSize(2131427454);
+    this.h = getResources().getDimensionPixelSize(2131427458);
+    this.f = getResources().getDimensionPixelSize(2131427456);
+    this.g = getResources().getDimensionPixelSize(2131427457);
     this.jdField_a_of_type_Int = ((((Display)localObject).getWidth() - this.h * 2 - this.f * 3) / 4);
     this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
     localObject = getIntent();
@@ -134,9 +134,9 @@ public class LiteVideoActivity
     }
     this.jdField_b_of_type_AndroidWidgetTextView = this.k;
     if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new cf(this));
+      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new cn(this));
     }
-    b(2131558516, new cg(this));
+    b(2131558516, new co(this));
     if (b() == 0)
     {
       d(false);
@@ -168,7 +168,7 @@ public class LiteVideoActivity
   
   private void g()
   {
-    FMDialogUtil.a(a(), 2131558759, 2131558756, new ch(this));
+    FMDialogUtil.a(a(), 2131558759, 2131558756, new cp(this));
   }
   
   private void h()
@@ -176,7 +176,7 @@ public class LiteVideoActivity
     QQToast localQQToast = new QQToast(this);
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
     getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
-    localQQToast.a(2130837931);
+    localQQToast.a(2130837933);
     localQQToast.c(2000);
     localQQToast.b(2131558517);
     localQQToast.b(localDisplayMetrics.heightPixels / 2);
@@ -185,7 +185,7 @@ public class LiteVideoActivity
   private void i()
   {
     QQToast localQQToast = new QQToast(this);
-    localQQToast.a(2130837931);
+    localQQToast.a(2130837933);
     localQQToast.c(2000);
     localQQToast.b(2131558519);
     localQQToast.b(this.jdField_a_of_type_AndroidUtilDisplayMetrics.heightPixels / 2);
@@ -217,7 +217,7 @@ public class LiteVideoActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903190);
+    setContentView(2130903191);
     e();
     d();
     this.jdField_c_of_type_JavaLangString = ((String)getResources().getText(2131558512));

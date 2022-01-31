@@ -1,24 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class euk
-  extends Handler
+  implements View.OnClickListener
 {
-  public euk(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  public euk(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.a.setPadding(0, 0, 40, 0);
-      return;
-    }
-    this.a.a.setPadding(0, 0, 0, 0);
+    this.a.a(paramView);
   }
 }
 

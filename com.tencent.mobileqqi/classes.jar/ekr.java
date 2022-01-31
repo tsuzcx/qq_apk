@@ -1,27 +1,16 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.mobileqq.activity.contact.troop.DiscussionView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.FriendManager;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.ContactListView;
 
 public class ekr
-  extends SearchResultDialog
+  implements DialogInterface.OnClickListener
 {
-  public ekr(DiscussionView paramDiscussionView, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
-  {
-    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
-  }
+  public ekr(ContactListView paramContactListView) {}
   
-  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    if ((FriendManager)paramQQAppInterface.getManager(8) == null) {
-      return localArrayList;
-    }
-    return c(paramContext, paramQQAppInterface, 0L, 0);
+    this.a.f();
+    this.a.m();
   }
 }
 

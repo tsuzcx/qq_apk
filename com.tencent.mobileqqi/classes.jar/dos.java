@@ -1,39 +1,30 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
 
 public class dos
-  implements CompoundButton.OnCheckedChangeListener
+  extends TroopObserver
 {
-  public dos(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public dos(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void a(int paramInt, byte paramByte, String paramString)
   {
-    int i = 1;
-    if (paramBoolean)
-    {
-      this.a.b.c(1);
-      paramCompoundButton = this.a.b;
-      if (!paramBoolean) {
-        break label68;
+    if (paramInt == 6) {
+      if (paramByte == 0) {
+        this.a.a.sendEmptyMessage(1);
       }
     }
-    for (;;)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_gupsound", 0, i, "", "", "", "");
+    while ((paramInt != 2) || (paramByte != 0)) {
       return;
-      this.a.b.c(0);
-      break;
-      label68:
-      i = 0;
     }
+    TroopAssistantManager.a().b(paramString, this.a.b);
+    this.a.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dos
  * JD-Core Version:    0.7.0.1
  */

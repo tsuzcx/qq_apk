@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.activity.SubAccountMessageActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class dri
-  implements Runnable
+  implements View.OnClickListener
 {
-  public dri(SubAccountMessageActivity paramSubAccountMessageActivity) {}
+  public dri(TroopMemberListActivity paramTroopMemberListActivity, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (SubAccountMessageActivity.a(this.a) != null) {
-      SubAccountMessageActivity.a(this.a).B();
-    }
+    TroopMemberListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, this.jdField_a_of_type_JavaLangString);
   }
 }
 

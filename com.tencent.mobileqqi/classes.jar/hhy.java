@@ -1,25 +1,15 @@
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomSplitDialog;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class hhy
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  
-  public hhy(QQCustomSplitDialog paramQQCustomSplitDialog, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public hhy(TabBarView paramTabBarView, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog.a != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog.a.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog.a(this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog.dismiss();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
   }
 }
 

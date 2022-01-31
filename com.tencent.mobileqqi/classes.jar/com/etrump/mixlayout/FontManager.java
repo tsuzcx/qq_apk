@@ -30,8 +30,8 @@ import com.tencent.mobileqq.vip.DownloaderInterface;
 import com.tencent.mobileqq.vip.IPCDownloadListener;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import ff;
-import fg;
+import fn;
+import fo;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -58,7 +58,7 @@ public class FontManager
   private static final String j = "FontManager";
   public ETEngine a;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new fg(this, "param_WIFIFontDownloadFlow", "param_XGFontDownloadFlow");
+  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new fo(this, "param_WIFIFontDownloadFlow", "param_XGFontDownloadFlow");
   private DownloaderFactory.DownloadConfig jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory$DownloadConfig = null;
   private DownloaderFactory jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory = null;
   public IPCDownloadListener a;
@@ -106,12 +106,12 @@ public class FontManager
     {
       try
       {
-        k = paramAppInterface.getApplication().getResources().getDimensionPixelSize(2131427580);
-        m = paramAppInterface.getApplication().getResources().getDimensionPixelSize(2131427581);
+        k = paramAppInterface.getApplication().getResources().getDimensionPixelSize(2131427583);
+        m = paramAppInterface.getApplication().getResources().getDimensionPixelSize(2131427584);
         if (paramInt != 0) {
           continue;
         }
-        localObject1 = BitmapManager.a(paramAppInterface.a().getResources(), 2130839110, k, m);
+        localObject1 = BitmapManager.a(paramAppInterface.a().getResources(), 2130839112, k, m);
       }
       catch (Throwable localThrowable)
       {
@@ -781,7 +781,7 @@ public class FontManager
     } while (!QLog.isColorLevel());
     QLog.i("FontManager", 2, "fontFeatureSupported=" + this.jdField_a_of_type_Boolean + ",inited=" + this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ",ready=" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
     return;
-    ThreadManager.a(new ff(this));
+    ThreadManager.a(new fn(this));
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)

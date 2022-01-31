@@ -1,59 +1,85 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBaby.IUniformDownloaderAppBabyListener;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
 import com.tencent.qphone.base.util.QLog;
 
 public class fyx
-  implements Runnable
 {
-  public fyx(FileManagerRSWorker paramFileManagerRSWorker) {}
+  int jdField_a_of_type_Int;
+  public final long a;
+  public UniformDownloaderAppBaby.IUniformDownloaderAppBabyListener a;
+  Object jdField_a_of_type_JavaLangObject = new Object();
+  final String jdField_a_of_type_JavaLangString;
+  public int b;
+  public final long b;
+  Object b;
+  long jdField_c_of_type_Long;
+  Object jdField_c_of_type_JavaLangObject = new Object();
+  long d;
   
-  public void run()
+  public fyx(UniformDownloaderAppBabySdk paramUniformDownloaderAppBabySdk, long paramLong1, String paramString, long paramLong2)
   {
-    Object localObject;
-    if (QLog.isColorLevel())
+    this.jdField_b_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_c_of_type_Long = 0L;
+    this.d = 0L;
+    this.jdField_b_of_type_Int = -1;
+  }
+  
+  int a()
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
     {
-      if ("run task sessionid[" + String.valueOf(this.a.c) + "]," + " actionType[" + String.valueOf(this.a.jdField_b_of_type_Int) + "], " + "strUin[" + this.a.e != null)
-      {
-        localObject = FileManagerUtil.e(this.a.e);
-        QLog.d("FileManagerRSWorker<FileAssistant>", 2, (String)localObject);
-      }
+      int i = this.jdField_a_of_type_Int;
+      return i;
     }
-    else
+  }
+  
+  public long a()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      this.a.g = System.currentTimeMillis();
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
-      switch (this.a.jdField_b_of_type_Int)
-      {
-      }
+      long l = this.jdField_c_of_type_Long;
+      return l;
     }
-    for (;;)
+  }
+  
+  public void a(int paramInt)
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 3, null);
+      QLog.i(UniformDownloaderAppBabySdk.jdField_a_of_type_JavaLangString, 1, "[UniformDL] setStatus:" + this.jdField_a_of_type_Int + " -> " + paramInt + "url:" + this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Int = paramInt;
       return;
-      if ("null], filePath[" + this.a.jdField_b_of_type_JavaLangString != null)
-      {
-        localObject = this.a.jdField_b_of_type_JavaLangString;
-        break;
-      }
-      localObject = "null], uniseq[" + String.valueOf(this.a.jdField_b_of_type_Long) + "]";
-      break;
-      localObject = new FileManagerReporter.fileAssistantReportData();
-      ((FileManagerReporter.fileAssistantReportData)localObject).a = "send_file_number";
-      FileManagerReporter.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), (FileManagerReporter.fileAssistantReportData)localObject);
-      this.a.b();
-      continue;
-      localObject = new FileManagerReporter.fileAssistantReportData();
-      ((FileManagerReporter.fileAssistantReportData)localObject).a = "rece_file_number";
-      FileManagerReporter.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), (FileManagerReporter.fileAssistantReportData)localObject);
-      this.a.a();
-      continue;
-      this.a.g();
-      continue;
-      this.a.h();
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_c_of_type_Long = paramLong;
+      return;
+    }
+  }
+  
+  public long b()
+  {
+    synchronized (this.jdField_c_of_type_JavaLangObject)
+    {
+      long l = this.d;
+      return l;
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    synchronized (this.jdField_c_of_type_JavaLangObject)
+    {
+      this.d = paramLong;
+      return;
     }
   }
 }

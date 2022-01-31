@@ -1,39 +1,19 @@
-import android.os.Build.VERSION;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.core.VcSystemInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.PoiMapActivity;
 
 public class bgs
-  implements Runnable
+  implements View.OnTouchListener
 {
-  String jdField_a_of_type_JavaLangString;
+  public bgs(PoiMapActivity paramPoiMapActivity) {}
   
-  public bgs(VideoController paramVideoController, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().h < 0)
-    {
-      VcSystemInfo localVcSystemInfo = new VcSystemInfo();
-      localVcSystemInfo.a();
-      int i = localVcSystemInfo.d();
-      long l = VcSystemInfo.a();
-      int j = Build.VERSION.SDK_INT;
-      if ((i < 4) || (l / 1000L < 800L) || (j < 9)) {
-        this.jdField_a_of_type_ComTencentAvVideoController.a().h = 0;
-      }
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.b();
     }
-    this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(30), this.jdField_a_of_type_JavaLangString });
-    this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_Bgs = null;
+    return true;
   }
 }
 

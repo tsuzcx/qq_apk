@@ -2,7 +2,7 @@ package com.google.zxing.qrcode.decoder;
 
 import com.google.zxing.ReaderException;
 import com.google.zxing.common.BitMatrix;
-import fv;
+import gd;
 
 public final class Version
 {
@@ -272,7 +272,7 @@ public final class Version
       if (k == paramInt) {
         return b(i + 7);
       }
-      int n = fv.a(paramInt, k);
+      int n = gd.a(paramInt, k);
       k = j;
       if (n < j)
       {

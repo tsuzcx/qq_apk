@@ -1,16 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.text.TextUtils;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.troop.jsp.TroopAssistantFeedsJsHandler;
 
 public class gwp
-  implements View.OnClickListener
+  implements TroopMemberApiClient.Callback
 {
-  public gwp(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public gwp(TroopAssistantFeedsJsHandler paramTroopAssistantFeedsJsHandler, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void a(Bundle paramBundle)
   {
-    TextUtils.a(this.a.b);
+    if (paramBundle != null)
+    {
+      if (paramBundle.getBoolean("ret", false)) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopJspTroopAssistantFeedsJsHandler.a(this.jdField_a_of_type_JavaLangString, this.b);
+      }
+    }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopJspTroopAssistantFeedsJsHandler.c(this.jdField_a_of_type_JavaLangString);
   }
 }
 

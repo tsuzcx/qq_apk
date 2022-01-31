@@ -1,21 +1,28 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SubAccountSettingActivity;
-import com.tencent.mobileqq.activity.SubaccountUgActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class dsf
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  dsf(dsc paramdsc) {}
+  dsf(dsd paramdsd, TroopMemberListActivity.ATroopMember paramATroopMember) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.a().setTitle("");
-    paramDialogInterface = new Intent(this.a.a.a(), SubaccountUgActivity.class);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    if (!this.jdField_a_of_type_Dsd.a.b) {
+      return;
+    }
+    if (!NetworkUtil.e(BaseApplication.getContext()))
+    {
+      this.jdField_a_of_type_Dsd.a.a(this.jdField_a_of_type_Dsd.a.a, this.jdField_a_of_type_Dsd.a.getString(2131562452), this.jdField_a_of_type_Dsd.a.getString(2131562948));
+      return;
+    }
+    DialogUtil.a(this.jdField_a_of_type_Dsd.a, 230).setMessage(2131561973).setPositiveButton(2131562539, new dsh(this)).setNegativeButton(2131561746, new dsg(this)).show();
   }
 }
 

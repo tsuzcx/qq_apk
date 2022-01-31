@@ -1,16 +1,16 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
-import com.tencent.mobileqq.app.DataLineHandler;
-import java.util.List;
-import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MsgHeader;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ffo
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public ffo(DataLineHandler paramDataLineHandler, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List paramList, boolean paramBoolean) {}
+  public ffo(QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.onFileComing0x211_0x2_0xa(this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0x7SubMsgType0x7$MsgBody$MsgHeader, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
+    paramIntent.getAction();
   }
 }
 

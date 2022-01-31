@@ -41,17 +41,17 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import giq;
-import gir;
-import gis;
-import git;
-import giu;
-import giv;
-import gix;
-import giy;
-import giz;
-import gja;
-import gjb;
+import geh;
+import gei;
+import gej;
+import gek;
+import gel;
+import gem;
+import geo;
+import gep;
+import geq;
+import ger;
+import ges;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -107,10 +107,10 @@ public class ProfileCardBrowserActivity
   public TextView a;
   public ProfileActivity.AllInOne a;
   public CardHandler a;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new gis(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new gej(this);
   public ProfileCardBrowserActivity.ImageGalleryAdapter a;
   public QQCustomDialog a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new gir(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new gei(this);
   public List a;
   public ConcurrentHashMap a;
   public AtomicBoolean a;
@@ -151,14 +151,14 @@ public class ProfileCardBrowserActivity
     this.jdField_c_of_type_AndroidWidgetTextView = null;
     this.jdField_a_of_type_AndroidViewView = null;
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new giq(this);
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new giy(this);
-    this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new giz(this);
+    this.jdField_a_of_type_AndroidOsHandler = new geh(this);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new gep(this);
+    this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new geq(this);
   }
   
   private void a(long paramLong, int paramInt)
   {
-    ThreadManager.a(new giv(this, paramLong, paramInt));
+    ThreadManager.a(new gem(this, paramLong, paramInt));
   }
   
   private void k()
@@ -221,7 +221,7 @@ public class ProfileCardBrowserActivity
     Object localObject = a(paramInt1);
     if (localObject != null)
     {
-      localObject = (CircularProgressBar)((View)localObject).findViewById(2131233397);
+      localObject = (CircularProgressBar)((View)localObject).findViewById(2131233399);
       if ((localObject != null) && (((CircularProgressBar)localObject).getTag() != null) && (((Integer)((CircularProgressBar)localObject).getTag()).intValue() == paramInt1)) {}
     }
     else
@@ -237,7 +237,7 @@ public class ProfileCardBrowserActivity
     if (paramObject == null) {
       return;
     }
-    paramObject = (gjb)paramObject;
+    paramObject = (ges)paramObject;
     Object localObject = paramObject.jdField_a_of_type_AndroidWidgetImageView;
     int i1;
     if ((paramInt & 0x4) == 4)
@@ -356,7 +356,7 @@ public class ProfileCardBrowserActivity
       continue;
       i();
       ((ProfileCardTemplateInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt1)).jdField_a_of_type_Int = 4;
-      ThreadManager.a(new gja(this));
+      ThreadManager.a(new ger(this));
       continue;
       if (paramInt1 != -1) {
         ((ProfileCardTemplateInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt1)).jdField_a_of_type_Int = 2;
@@ -385,15 +385,15 @@ public class ProfileCardBrowserActivity
   
   public void d()
   {
-    ThreadManager.b(new gix(this));
+    ThreadManager.b(new geo(this));
   }
   
   @TargetApi(9)
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903690);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131233077);
+    setContentView(2130903692);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131233079);
     int i1;
     if ((this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface != null) && (ThemeUtil.isInNightMode(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface)))
     {
@@ -436,7 +436,7 @@ public class ProfileCardBrowserActivity
         }
         if (!this.jdField_c_of_type_Boolean)
         {
-          paramBundle = (ViewStub)findViewById(2131233440);
+          paramBundle = (ViewStub)findViewById(2131233442);
           if (QLog.isColorLevel()) {
             QLog.d("ProfileCard.ProfileCardBrowserActivity", 2, "onCreate, viewStub inflate start.");
           }
@@ -456,19 +456,19 @@ public class ProfileCardBrowserActivity
       e();
       d();
       paramBundle = new LinearLayout.LayoutParams(this.C, -1);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233435));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233437));
       this.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams(paramBundle);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233437));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233439));
       this.jdField_c_of_type_AndroidWidgetTextView.setLayoutParams(paramBundle);
-      this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131233436));
+      this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131233438));
       this.jdField_a_of_type_AndroidWidgetGridView.setFadingEdgeLength(0);
-      this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(new git(this));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131233438));
+      this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(new gek(this));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131233440));
       if (this.y == 1) {
         break label682;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233439));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new giu(this));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233441));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new gel(this));
     }
     for (;;)
     {

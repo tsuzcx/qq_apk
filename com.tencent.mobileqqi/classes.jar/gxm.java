@@ -1,17 +1,23 @@
-import android.widget.ImageButton;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.util.Iterator;
+import java.util.List;
 
-public class gxm
+public final class gxm
   implements Runnable
 {
-  public gxm(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  public gxm(QQAppInterface paramQQAppInterface, List paramList) {}
   
   public void run()
   {
-    this.a.a.setVisibility(0);
-    this.a.b.setImageResource(2130839368);
-    this.a.b.setContentDescription(this.a.getString(2131558490));
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      localEntityManager.a((Entity)localIterator.next());
+    }
+    localEntityManager.a();
   }
 }
 

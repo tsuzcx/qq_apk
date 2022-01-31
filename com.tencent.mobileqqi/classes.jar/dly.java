@@ -1,20 +1,54 @@
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SubAccountMessageActivity;
+import com.tencent.mobileqq.adapter.SubAccountMessageAdapter;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class dly
-  implements View.OnLongClickListener
+  extends FriendListObserver
 {
-  public dly(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  public dly(SubAccountMessageActivity paramSubAccountMessageActivity) {}
   
-  public boolean onLongClick(View paramView)
+  protected void a(String paramString, boolean paramBoolean)
   {
-    paramView = new QQCustomMenu();
-    paramView.a(2131234877, this.a.getString(2131561879));
-    RegisterQQNumberActivity.a(this.a, BubbleContextMenu.a(RegisterQQNumberActivity.a(this.a), paramView, new dlz(this), null));
-    return true;
+    if ((paramBoolean) && (SubAccountMessageActivity.a(this.a) != null) && (SubAccountMessageActivity.a(this.a).subuin != null) && (paramString != null) && (SubAccountMessageActivity.a(this.a).subuin.equals(paramString)))
+    {
+      paramString = ContactUtils.b(this.a.b, paramString, false);
+      if ((!TextUtils.isEmpty(paramString)) && ((TextUtils.isEmpty(SubAccountMessageActivity.a(this.a).subname)) || (!paramString.equals(SubAccountMessageActivity.a(this.a).subname))))
+      {
+        SubAccountMessageActivity.a(this.a).subname = paramString;
+        if (SubAccountMessageActivity.a(this.a) != null) {
+          SubAccountMessageActivity.a(this.a).setText(paramString);
+        }
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    do
+    {
+      return;
+      if (SubAccountMessageActivity.a(this.a) != null)
+      {
+        int i = 0;
+        while (i < SubAccountMessageActivity.a(this.a).getChildCount())
+        {
+          View localView = SubAccountMessageActivity.a(this.a).getChildAt(i);
+          SubAccountMessageActivity.a(this.a).a(paramString, localView);
+          i += 1;
+        }
+      }
+    } while ((SubAccountMessageActivity.a(this.a) == null) || (SubAccountMessageActivity.a(this.a).subuin == null) || (!SubAccountMessageActivity.a(this.a).subuin.equals(paramString)));
+    paramString = this.a.b.b(paramString);
+    SubAccountMessageActivity.a(this.a).setImageDrawable(paramString);
   }
 }
 

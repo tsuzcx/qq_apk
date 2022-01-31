@@ -1,20 +1,42 @@
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.statistics.StatisticAssist;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class fws
+  implements Runnable
 {
-  public int a;
-  public int b;
+  public fws(UniformDownloadMgr paramUniformDownloadMgr, String paramString, Bundle paramBundle) {}
   
-  public fws(LocalFileBrowserActivity paramLocalFileBrowserActivity)
+  public void run()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-  }
-  
-  public fws(LocalFileBrowserActivity paramLocalFileBrowserActivity, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_AndroidOsBundle == null))
+    {
+      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] onDownloadNotificationBeClean. param error!!");
+      return;
+    }
+    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("_notify_param_Id");
+    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>onDownloadNotificationBeClean. URL:" + this.jdField_a_of_type_JavaLangString + " nofiyid:" + i);
+    fwv localfwv = UniformDownloadMgr.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString);
+    if ((localfwv != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.a != null))
+    {
+      if (localfwv.a != 1) {
+        break label175;
+      }
+      StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.a.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.a.a(), "Stop_download_2-1_3-0");
+    }
+    for (;;)
+    {
+      UniformDownloadMgr.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString);
+      UniformDownloadMgr.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.b(this.jdField_a_of_type_JavaLangString);
+      UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr);
+      return;
+      label175:
+      StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.a.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.a.a(), "Stop_download_2-1_3-1");
+    }
   }
 }
 

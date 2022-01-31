@@ -1,33 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.dataline.mpfile.LiteMpFileActionListActivity;
-import com.dataline.mpfile.MpFileConstant;
-import com.dataline.util.DatalineMathUtil;
+import com.dataline.activities.LiteVideoActivity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
 public class cp
-  extends BroadcastReceiver
+  implements FMDialogUtil.FMDialogInterface
 {
-  public cp(LiteMpFileActionListActivity paramLiteMpFileActionListActivity) {}
+  public cp(LiteVideoActivity paramLiteVideoActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    if (paramIntent != null)
-    {
-      paramContext = paramIntent.getAction();
-      if ((paramContext != null) && (paramContext.equals(MpFileConstant.d)))
-      {
-        paramContext = paramIntent.getExtras();
-        paramIntent = DatalineMathUtil.a(paramContext.getLong("ip"));
-        int i = paramContext.getInt("port");
-        LiteMpFileActionListActivity.jdField_a_of_type_JavaLangString = paramIntent;
-        LiteMpFileActionListActivity.jdField_a_of_type_Int = i;
-        LiteMpFileActionListActivity.a(this.a, String.format("http://%s:%d/qqmpfile/?action=fileList&offset=0&limit=100", new Object[] { LiteMpFileActionListActivity.jdField_a_of_type_JavaLangString, Integer.valueOf(LiteMpFileActionListActivity.jdField_a_of_type_Int) }));
-        LiteMpFileActionListActivity.a(this.a);
-      }
-    }
+    LiteVideoActivity.b(this.a);
   }
+  
+  public void b() {}
 }
 
 

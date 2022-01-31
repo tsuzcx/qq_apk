@@ -1,13 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class dvi
-  implements DialogInterface.OnClickListener
 {
-  public dvi(TroopInfoActivity paramTroopInfoActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
+  TextView d;
+  TextView e;
 }
 
 

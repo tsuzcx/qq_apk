@@ -16,8 +16,8 @@ import android.os.RemoteException;
 import android.text.TextUtils;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import hib;
-import hic;
+import hdu;
+import hdv;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -195,9 +195,9 @@ public class QQShortCutUtils
     //   107: ifeq +251 -> 358
     //   110: aload_1
     //   111: astore_0
-    //   112: new 231	hic
+    //   112: new 231	hdv
     //   115: dup
-    //   116: invokespecial 232	hic:<init>	()V
+    //   116: invokespecial 232	hdv:<init>	()V
     //   119: astore_2
     //   120: aload_1
     //   121: astore_0
@@ -205,56 +205,56 @@ public class QQShortCutUtils
     //   123: aload_1
     //   124: iconst_0
     //   125: invokeinterface 236 2 0
-    //   130: putfield 238	hic:jdField_a_of_type_Int	I
+    //   130: putfield 238	hdv:jdField_a_of_type_Int	I
     //   133: aload_1
     //   134: astore_0
     //   135: aload_2
     //   136: aload_1
     //   137: iconst_1
     //   138: invokeinterface 242 2 0
-    //   143: putfield 244	hic:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   143: putfield 244	hdv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   146: aload_1
     //   147: astore_0
     //   148: aload_2
     //   149: aload_1
     //   150: iconst_2
     //   151: invokeinterface 236 2 0
-    //   156: putfield 246	hic:b	I
+    //   156: putfield 246	hdv:b	I
     //   159: aload_1
     //   160: astore_0
     //   161: aload_2
     //   162: aload_1
     //   163: iconst_3
     //   164: invokeinterface 236 2 0
-    //   169: putfield 248	hic:d	I
+    //   169: putfield 248	hdv:d	I
     //   172: aload_1
     //   173: astore_0
     //   174: aload_2
     //   175: aload_1
     //   176: iconst_4
     //   177: invokeinterface 236 2 0
-    //   182: putfield 250	hic:e	I
+    //   182: putfield 250	hdv:e	I
     //   185: aload_1
     //   186: astore_0
     //   187: aload_2
     //   188: aload_1
     //   189: iconst_5
     //   190: invokeinterface 236 2 0
-    //   195: putfield 252	hic:f	I
+    //   195: putfield 252	hdv:f	I
     //   198: aload_1
     //   199: astore_0
     //   200: aload_2
     //   201: aload_1
     //   202: bipush 6
     //   204: invokeinterface 236 2 0
-    //   209: putfield 254	hic:g	I
+    //   209: putfield 254	hdv:g	I
     //   212: aload_1
     //   213: astore_0
     //   214: aload_2
     //   215: aload_1
     //   216: bipush 7
     //   218: invokeinterface 236 2 0
-    //   223: putfield 256	hic:c	I
+    //   223: putfield 256	hdv:c	I
     //   226: aload_1
     //   227: astore_0
     //   228: aload_1
@@ -276,7 +276,7 @@ public class QQShortCutUtils
     //   262: astore_0
     //   263: aload_2
     //   264: iconst_0
-    //   265: putfield 268	hic:h	I
+    //   265: putfield 268	hdv:h	I
     //   268: aload_1
     //   269: astore_0
     //   270: aload_3
@@ -313,7 +313,7 @@ public class QQShortCutUtils
     //   332: astore_0
     //   333: aload_2
     //   334: iconst_1
-    //   335: putfield 268	hic:h	I
+    //   335: putfield 268	hdv:h	I
     //   338: goto -70 -> 268
     //   341: astore_2
     //   342: aload_0
@@ -415,16 +415,16 @@ public class QQShortCutUtils
     Object localObject2;
     if (i3 < paramList.size())
     {
-      localObject2 = (hic)paramList.get(i3);
-      if ((localObject2 == null) || (TextUtils.isEmpty(((hic)localObject2).jdField_a_of_type_JavaLangString))) {
+      localObject2 = (hdv)paramList.get(i3);
+      if ((localObject2 == null) || (TextUtils.isEmpty(((hdv)localObject2).jdField_a_of_type_JavaLangString))) {
         break label2171;
       }
-      if ((((hic)localObject2).c >= 0) && (((hic)localObject2).c <= n))
+      if ((((hdv)localObject2).c >= 0) && (((hdv)localObject2).c <= n))
       {
-        i4 = ((hic)localObject2).c;
+        i4 = ((hdv)localObject2).c;
         arrayOfInt[i4] += 1;
       }
-      if ((paramContext != null) || (!((hic)localObject2).jdField_a_of_type_JavaLangString.equals(paramString)) || (((hic)localObject2).h != 0)) {
+      if ((paramContext != null) || (!((hdv)localObject2).jdField_a_of_type_JavaLangString.equals(paramString)) || (((hdv)localObject2).h != 0)) {
         break label2168;
       }
       paramContext = (Context)localObject2;
@@ -449,7 +449,7 @@ public class QQShortCutUtils
       label223:
       int i5;
       if (i4 < b.length) {
-        if ((((hic)localObject2).jdField_a_of_type_JavaLangString.equals(b[i4])) && ((((hic)localObject2).d != k) || (((hic)localObject2).e != m)))
+        if ((((hdv)localObject2).jdField_a_of_type_JavaLangString.equals(b[i4])) && ((((hdv)localObject2).d != k) || (((hdv)localObject2).e != m)))
         {
           i2 = 4;
           i5 = i3;
@@ -473,7 +473,7 @@ public class QQShortCutUtils
           localObject1 = localObject3;
           if (i6 < jdField_c_of_type_ArrayOfJavaLangString.length)
           {
-            if ((((hic)localObject2).jdField_a_of_type_JavaLangString.equals(jdField_c_of_type_ArrayOfJavaLangString[i6])) && ((((hic)localObject2).d != k) || (((hic)localObject2).e != m)))
+            if ((((hdv)localObject2).jdField_a_of_type_JavaLangString.equals(jdField_c_of_type_ArrayOfJavaLangString[i6])) && ((((hdv)localObject2).d != k) || (((hdv)localObject2).e != m)))
             {
               i1 = 3;
               i4 = i3;
@@ -500,7 +500,7 @@ public class QQShortCutUtils
           localObject3 = localObject1;
           if (i6 < d.length)
           {
-            if ((((hic)localObject2).jdField_a_of_type_JavaLangString.equals(d[i6])) && ((((hic)localObject2).d != k) || (((hic)localObject2).e != m)))
+            if ((((hdv)localObject2).jdField_a_of_type_JavaLangString.equals(d[i6])) && ((((hdv)localObject2).d != k) || (((hdv)localObject2).e != m)))
             {
               i2 = 2;
               i5 = i3;
@@ -525,7 +525,7 @@ public class QQShortCutUtils
           if (i1 >= e.length) {
             break label2184;
           }
-          if ((((hic)localObject2).jdField_a_of_type_JavaLangString.equals(e[i1])) && ((((hic)localObject2).d != k) || (((hic)localObject2).e != m)))
+          if ((((hdv)localObject2).jdField_a_of_type_JavaLangString.equals(e[i1])) && ((((hdv)localObject2).d != k) || (((hdv)localObject2).e != m)))
           {
             i2 = 1;
             localObject1 = localObject2;
@@ -546,7 +546,7 @@ public class QQShortCutUtils
           if (QLog.isColorLevel()) {
             QLog.d("Q.shortcut", 2, "getMoveShortCut.baseShortcuts!=null");
           }
-          a((hic)localObject1, paramContext);
+          a((hdv)localObject1, paramContext);
           if (QLog.isColorLevel()) {
             QLog.d("Q.shortcut", 2, "getMoveShortCut.qqShortcuts.screen=" + paramContext.c + ",y=" + paramContext.e + ",x=" + paramContext.d);
           }
@@ -555,20 +555,20 @@ public class QQShortCutUtils
           paramString = localObject4;
           if (i2 < paramList.size())
           {
-            localObject1 = (hic)paramList.get(i2);
-            if ((paramContext.jdField_a_of_type_Int == ((hic)localObject1).jdField_a_of_type_Int) && (((hic)localObject1).jdField_a_of_type_JavaLangString != null) && (paramContext.jdField_a_of_type_JavaLangString.equals(((hic)localObject1).jdField_a_of_type_JavaLangString)))
+            localObject1 = (hdv)paramList.get(i2);
+            if ((paramContext.jdField_a_of_type_Int == ((hdv)localObject1).jdField_a_of_type_Int) && (((hdv)localObject1).jdField_a_of_type_JavaLangString != null) && (paramContext.jdField_a_of_type_JavaLangString.equals(((hdv)localObject1).jdField_a_of_type_JavaLangString)))
             {
               if (QLog.isColorLevel()) {
                 QLog.d("Q.shortcut", 2, "getMoveShortCut.qq is right here,no need to move.");
               }
               return null;
             }
-            if ((localObject1 == null) || (((hic)localObject1).c != paramContext.c) || (((hic)localObject1).d != paramContext.d) || (((hic)localObject1).e != paramContext.e)) {
+            if ((localObject1 == null) || (((hdv)localObject1).c != paramContext.c) || (((hdv)localObject1).d != paramContext.d) || (((hdv)localObject1).e != paramContext.e)) {
               break label2149;
             }
             paramString = (String)localObject1;
             if (QLog.isColorLevel()) {
-              QLog.d("Q.shortcut", 2, "getMoveShortCut.toReplaceShortcuts.screen=" + ((hic)localObject1).c + ",y=" + ((hic)localObject1).e + ",x=" + ((hic)localObject1).d);
+              QLog.d("Q.shortcut", 2, "getMoveShortCut.toReplaceShortcuts.screen=" + ((hdv)localObject1).c + ",y=" + ((hdv)localObject1).e + ",x=" + ((hdv)localObject1).d);
             }
           }
         }
@@ -587,44 +587,44 @@ public class QQShortCutUtils
               QLog.d("Q.shortcut", 2, "getMoveShortCut.need to move replaceshortcut.");
             }
             i2 = paramList.size();
-            localObject1 = (hic)paramList.get(i2 - 1);
-            if ((localObject1 == null) || (paramContext == null) || (((hic)localObject1).jdField_a_of_type_Int != paramContext.jdField_a_of_type_Int)) {
+            localObject1 = (hdv)paramList.get(i2 - 1);
+            if ((localObject1 == null) || (paramContext == null) || (((hdv)localObject1).jdField_a_of_type_Int != paramContext.jdField_a_of_type_Int)) {
               break label2143;
             }
             i2 -= 1;
             localObject2 = paramList.subList(i4, i2);
-            paramList = (hic)((List)localObject2).get(0);
-            localObject1 = (hic)((List)localObject2).get(((List)localObject2).size() - 1);
-            i2 = ((hic)localObject1).c;
+            paramList = (hdv)((List)localObject2).get(0);
+            localObject1 = (hdv)((List)localObject2).get(((List)localObject2).size() - 1);
+            i2 = ((hdv)localObject1).c;
             i3 = paramList.c;
             i4 = h;
-            i5 = ((hic)localObject1).e;
+            i5 = ((hdv)localObject1).e;
             i6 = paramList.e;
             int i7 = i;
-            int i8 = ((hic)localObject1).d;
+            int i8 = ((hdv)localObject1).d;
             int i9 = paramList.d;
-            int i10 = ((hic)localObject1).f;
-            i4 = (i2 - i3) * i4 + (i5 - i6) * i7 + (i8 - i9) + ((hic)localObject1).g * i10;
-            localObject1 = new hic[i4];
+            int i10 = ((hdv)localObject1).f;
+            i4 = (i2 - i3) * i4 + (i5 - i6) * i7 + (i8 - i9) + ((hdv)localObject1).g * i10;
+            localObject1 = new hdv[i4];
             localObject2 = ((List)localObject2).iterator();
             if (((Iterator)localObject2).hasNext())
             {
-              localObject3 = (hic)((Iterator)localObject2).next();
-              i5 = ((hic)localObject3).c;
+              localObject3 = (hdv)((Iterator)localObject2).next();
+              i5 = ((hdv)localObject3).c;
               i6 = paramList.c;
               i7 = h;
-              i8 = ((hic)localObject3).e;
+              i8 = ((hdv)localObject3).e;
               i9 = paramList.e;
               i10 = i;
-              int i11 = ((hic)localObject3).d;
+              int i11 = ((hdv)localObject3).d;
               int i12 = paramList.d;
               i2 = 1;
-              if (i2 <= ((hic)localObject3).f)
+              if (i2 <= ((hdv)localObject3).f)
               {
                 i3 = 1;
                 for (;;)
                 {
-                  if (i3 <= ((hic)localObject3).g)
+                  if (i3 <= ((hdv)localObject3).g)
                   {
                     int i13 = (i3 - 1) * i + ((i5 - i6) * i7 + (i8 - i9) * i10 + i11 - i12) + i2 - 1;
                     if (i13 < i4) {
@@ -656,7 +656,7 @@ public class QQShortCutUtils
                     if (i2 >= paramList.size()) {
                       break label2146;
                     }
-                    paramString = (hic)paramList.get(i2);
+                    paramString = (hdv)paramList.get(i2);
                     if ((paramString != null) && (paramString.c == i3) && (paramString.f <= 1))
                     {
                       localObject1 = paramString;
@@ -679,7 +679,7 @@ public class QQShortCutUtils
             if (localObject1 == null) {
               break label880;
             }
-            if ((paramContext.jdField_a_of_type_Int == ((hic)localObject1).jdField_a_of_type_Int) && (((hic)localObject1).jdField_a_of_type_JavaLangString != null) && (paramContext.jdField_a_of_type_JavaLangString.equals(((hic)localObject1).jdField_a_of_type_JavaLangString)))
+            if ((paramContext.jdField_a_of_type_Int == ((hdv)localObject1).jdField_a_of_type_Int) && (((hdv)localObject1).jdField_a_of_type_JavaLangString != null) && (paramContext.jdField_a_of_type_JavaLangString.equals(((hdv)localObject1).jdField_a_of_type_JavaLangString)))
             {
               if (QLog.isColorLevel()) {
                 QLog.d("Q.shortcut", 2, "getMoveShortCut.the first icon is qq,no need move.");
@@ -690,14 +690,14 @@ public class QQShortCutUtils
             }
             paramContext.c = i3;
             paramContext.d = j;
-            paramContext.e = ((hic)localObject1).e;
+            paramContext.e = ((hdv)localObject1).e;
             i4 = i2;
             paramString = localObject4;
-            if (((hic)localObject1).d != j) {
+            if (((hdv)localObject1).d != j) {
               break label880;
             }
             if (QLog.isColorLevel()) {
-              QLog.d("Q.shortcut", 2, "getMoveShortCut.toReplaceShortcuts.screen=" + ((hic)localObject1).c + ",y=" + ((hic)localObject1).e + ",x=" + ((hic)localObject1).d);
+              QLog.d("Q.shortcut", 2, "getMoveShortCut.toReplaceShortcuts.screen=" + ((hdv)localObject1).c + ",y=" + ((hdv)localObject1).e + ",x=" + ((hdv)localObject1).d);
             }
             paramString = (String)localObject1;
             i4 = i2;
@@ -827,21 +827,21 @@ public class QQShortCutUtils
       return;
       Iterator localIterator = localArrayList.iterator();
       while (localIterator.hasNext()) {
-        if (((hic)localIterator.next()).b != -100) {
+        if (((hdv)localIterator.next()).b != -100) {
           localIterator.remove();
         }
       }
       localIterator = localArrayList.iterator();
       while (localIterator.hasNext())
       {
-        hic localhic = (hic)localIterator.next();
-        if (localhic.b == -100)
+        hdv localhdv = (hdv)localIterator.next();
+        if (localhdv.b == -100)
         {
-          j = Math.min(j, localhic.d);
-          k = Math.max(k, localhic.d);
-          l = Math.min(l, localhic.e);
-          m = Math.max(m, localhic.e);
-          n = Math.max(n, localhic.c);
+          j = Math.min(j, localhdv.d);
+          k = Math.max(k, localhdv.d);
+          l = Math.min(l, localhdv.e);
+          m = Math.max(m, localhdv.e);
+          n = Math.max(n, localhdv.c);
         }
       }
       i = k - j + 1;
@@ -849,35 +849,35 @@ public class QQShortCutUtils
       if (QLog.isColorLevel()) {
         QLog.d("Q.shortcut", 2, "moveShortCut MAX_X=" + k + ",max_y=" + m + ",per_x=" + i + ",per_screen=" + h);
       }
-      Collections.sort(localArrayList, new hib());
+      Collections.sort(localArrayList, new hdu());
     } while (!a(paramContext, a(paramContext, localArrayList, str)));
     a(paramContext);
   }
   
-  private static void a(hic paramhic1, hic paramhic2)
+  private static void a(hdv paramhdv1, hdv paramhdv2)
   {
-    if ((paramhic1 != null) && (paramhic2 != null))
+    if ((paramhdv1 != null) && (paramhdv2 != null))
     {
-      if ((paramhic1.d == k) && (paramhic1.e == m))
+      if ((paramhdv1.d == k) && (paramhdv1.e == m))
       {
-        paramhic2.d = j;
-        paramhic2.e = l;
-        paramhic1.c += 1;
+        paramhdv2.d = j;
+        paramhdv2.e = l;
+        paramhdv1.c += 1;
       }
     }
     else {
       return;
     }
-    if (paramhic1.d == k)
+    if (paramhdv1.d == k)
     {
-      paramhic2.d = j;
-      paramhic1.e += 1;
-      paramhic2.c = paramhic1.c;
+      paramhdv2.d = j;
+      paramhdv1.e += 1;
+      paramhdv2.c = paramhdv1.c;
       return;
     }
-    paramhic1.d += 1;
-    paramhic2.e = paramhic1.e;
-    paramhic2.c = paramhic1.c;
+    paramhdv1.d += 1;
+    paramhdv2.e = paramhdv1.e;
+    paramhdv2.c = paramhdv1.c;
   }
   
   private static boolean a(Context paramContext)
@@ -922,14 +922,14 @@ public class QQShortCutUtils
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      hic localhic = (hic)paramList.next();
+      hdv localhdv = (hdv)paramList.next();
       ContentValues localContentValues = new ContentValues();
-      localContentValues.put("cellX", Integer.valueOf(localhic.d));
-      localContentValues.put("cellY", Integer.valueOf(localhic.e));
-      localContentValues.put("spanX", Integer.valueOf(localhic.f));
-      localContentValues.put("spanY", Integer.valueOf(localhic.g));
-      localContentValues.put("screen", Integer.valueOf(localhic.c));
-      localArrayList.add(ContentProviderOperation.newUpdate(Uri.parse(a(paramContext))).withSelection("_id=?", new String[] { localhic.jdField_a_of_type_Int + "" }).withValues(localContentValues).build());
+      localContentValues.put("cellX", Integer.valueOf(localhdv.d));
+      localContentValues.put("cellY", Integer.valueOf(localhdv.e));
+      localContentValues.put("spanX", Integer.valueOf(localhdv.f));
+      localContentValues.put("spanY", Integer.valueOf(localhdv.g));
+      localContentValues.put("screen", Integer.valueOf(localhdv.c));
+      localArrayList.add(ContentProviderOperation.newUpdate(Uri.parse(a(paramContext))).withSelection("_id=?", new String[] { localhdv.jdField_a_of_type_Int + "" }).withValues(localContentValues).build());
     }
     try
     {

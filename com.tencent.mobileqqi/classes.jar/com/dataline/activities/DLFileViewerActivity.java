@@ -158,7 +158,7 @@ public class DLFileViewerActivity
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.filename);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130838585);
+      this.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130838587);
       this.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setAsyncImage(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.strMoloIconUrl);
       return;
     }

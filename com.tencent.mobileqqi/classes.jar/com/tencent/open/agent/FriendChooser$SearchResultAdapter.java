@@ -11,8 +11,8 @@ import com.tencent.open.agent.datamodel.Friend;
 import com.tencent.open.agent.datamodel.FriendDataManager;
 import com.tencent.open.agent.datamodel.ImageLoader;
 import com.tencent.open.agent.datamodel.QZonePortraitData;
-import hng;
-import hnh;
+import hjc;
+import hjd;
 import java.util.List;
 
 public class FriendChooser$SearchResultAdapter
@@ -47,17 +47,17 @@ public class FriendChooser$SearchResultAdapter
   {
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater().inflate(2130903968, paramViewGroup, false);
-      paramViewGroup = new hnh();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231567));
+      paramView = this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater().inflate(2130903970, paramViewGroup, false);
+      paramViewGroup = new hjd();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231568));
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231411));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131234479));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131234481));
       paramView.setTag(paramViewGroup);
     }
     while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
     {
       return paramView;
-      paramViewGroup = (hnh)paramView.getTag();
+      paramViewGroup = (hjd)paramView.getTag();
     }
     Friend localFriend = (Friend)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     Object localObject;
@@ -71,9 +71,9 @@ public class FriendChooser$SearchResultAdapter
       if (localObject != null) {
         break label290;
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838008);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838010);
       localObject = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
-      ImageLoader.a().a(localFriend.d, new hng(this, (ImageView)localObject));
+      ImageLoader.a().a(localFriend.d, new hjc(this, (ImageView)localObject));
     }
     for (;;)
     {

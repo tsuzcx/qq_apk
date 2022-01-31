@@ -1,25 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
+import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity.UIHandler;
+import com.tencent.mobileqq.troop.widget.NearbyTroopsMapView;
+import com.tencent.tencentmap.mapsdk.map.MapController;
 
 public class gqb
   implements Runnable
 {
-  public gqb(FriendSystemMsgController paramFriendSystemMsgController, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
+  public gqb(NearbyTroopsActivity.UIHandler paramUIHandler) {}
   
   public void run()
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putBoolean("friend_system_msg_nomore_msg", this.jdField_a_of_type_Boolean).commit();
-    }
+    this.a.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapController.setZoom(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapView.getMaxZoomLevel() - 1);
+    this.a.a.a(this.a.a.d, this.a.a.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     gqb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
 
 public class car
-  implements View.OnClickListener
+  implements Runnable
 {
-  public car(AddRequestActivity paramAddRequestActivity) {}
+  public car(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.r_();
+    this.a.a();
   }
 }
 

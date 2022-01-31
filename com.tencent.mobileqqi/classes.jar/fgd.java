@@ -1,27 +1,15 @@
-import com.tencent.mobileqq.app.DiscussionIconHelper;
-import java.util.Comparator;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.SQLiteDatabase;
 
 public class fgd
-  implements Comparator
+  implements Runnable
 {
-  public fgd(DiscussionIconHelper paramDiscussionIconHelper) {}
+  fgd(SQLiteDatabase paramSQLiteDatabase) {}
   
-  public int a(String paramString1, String paramString2)
+  public void run()
   {
-    try
-    {
-      long l1 = Long.parseLong(paramString1);
-      long l2 = Long.parseLong(paramString2);
-      if (l1 == l2) {
-        return 0;
-      }
-      if (l1 > l2) {
-        return 2;
-      }
-      return -1;
-    }
-    catch (Exception paramString1) {}
-    return 0;
+    Toast.makeText(BaseApplicationImpl.getContext(), "transaction exception!", 1).show();
   }
 }
 

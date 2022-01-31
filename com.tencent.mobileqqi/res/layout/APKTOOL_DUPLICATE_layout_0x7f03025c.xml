@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/title" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0230" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08076c" android:visibility="gone" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0233" />
-    <LinearLayout android:id="@id/content" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0237">
-        <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e0241" />
-        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080312" style="@style/APKTOOL_DUPLICATE_style_0x7f0e023b" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0809c7" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020418" android:layout_marginLeft="5.0dip" android:layout_marginTop="2.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e023b" />
-    </LinearLayout>
+    <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0809c5" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a013b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0809c6" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00c7" android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00c3" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0809c5" />
 </RelativeLayout>

@@ -1,27 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
-public class dnk
-  extends BroadcastReceiver
+class dnk
+  implements Runnable
 {
-  public dnk(SendMultiPictureHelper paramSendMultiPictureHelper) {}
+  dnk(dni paramdni) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ((this.a.jdField_a_of_type_AndroidOsBundle == null) || (TextUtils.isEmpty(this.a.c))) {}
-    while (NetworkUtil.e(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity)) {
-      return;
+    String str = SubLoginActivity.a(this.a.a).getText().toString();
+    if ((str != null) && (str.equals("!@#ewaGbhkc$!!="))) {
+      SubLoginActivity.a(this.a.a).setText("");
     }
-    Toast.makeText(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131562444), 1).show();
-    paramContext = new dnl(this);
-    new Handler().postDelayed(paramContext, 3000L);
   }
 }
 

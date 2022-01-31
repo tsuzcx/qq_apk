@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class dqt
-  extends MessageObserver
+  implements View.OnClickListener
 {
-  public dqt(SubAccountBindActivity paramSubAccountBindActivity) {}
+  public dqt(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public void onClick(View paramView)
   {
-    paramString = this.a.getString(2131562520);
-    if (paramSubAccountBackProtocData.p == 0) {}
-    for (int i = 2131563288;; i = 2131563291)
-    {
-      paramSubAccountBackProtocData = this.a.getString(i);
-      this.a.a(paramString, paramSubAccountBackProtocData, this.a.getString(2131562543), new dqu(this));
-      return;
-    }
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
   }
 }
 
